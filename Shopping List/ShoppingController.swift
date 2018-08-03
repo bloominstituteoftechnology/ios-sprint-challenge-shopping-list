@@ -22,8 +22,6 @@ class ShoppingController {
         } else { return }
     }
     
-    
-    
     // Create items
     func createShoppingList(image: UIImage, name: String, addedToList: Bool = false) {
         let shoppingItem = ShoppingItem(image: image, name: name)
