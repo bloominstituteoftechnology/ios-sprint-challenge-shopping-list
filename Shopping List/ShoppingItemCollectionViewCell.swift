@@ -11,6 +11,12 @@ import UIKit
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
     
+    // MARK: - Properties
+    
+    var shoppingItem: ShoppingItem?
+    var shoppingItemController: ShoppingItemController?
+    
+    
     // MARK: - Outlets
     
     @IBOutlet weak var shoppingItemImageView: UIImageView!

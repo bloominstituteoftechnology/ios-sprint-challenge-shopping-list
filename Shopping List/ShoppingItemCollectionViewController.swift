@@ -12,7 +12,11 @@ private let reuseIdentifier = "Cell"
 
 class ShoppingItemCollectionViewController: UICollectionViewController {
 
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+    }
     
 
     // MARK: UICollectionViewDataSource
@@ -25,17 +29,26 @@ class ShoppingItemCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 0
+        return shoppingItemController.shoppingItems.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingItemCell", for: indexPath) as! ShoppingItemCollectionViewCell
     
-        
+        cell.shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
     
         return cell
     }
-
+    
+    
+    // MARK: - Functions
+    
+    
+    
+    // MARK: - Properties
+    
+    var settingsHelper = SettingsHelper()
+    var shoppingItemController = ShoppingItemController()
     
     
      // MARK: - Navigation
