@@ -17,7 +17,6 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
 
     // MARK: UICollectionViewDataSource
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return shoppingItemController.shoppingList.count
     }
@@ -35,6 +34,10 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         return cell
     }
 
+    
+    
+    
+    
     //Toggles Added Label
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let shoppingItem = shoppingItemController.shoppingList[indexPath.item]
@@ -43,7 +46,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     }
     
     
-    
+    //MARK: - SEGUES
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowDetails" {
             let destinationVC = segue.destination as? DetailsViewController

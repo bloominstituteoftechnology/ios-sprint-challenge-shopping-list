@@ -10,6 +10,7 @@ import Foundation
 
 class ShoppingItemController {
     
+    //MARK: - PROPERTIES
     var itemsThatAreAdded: Int {
         var count = 0
         for item in shoppingList {
@@ -31,6 +32,8 @@ class ShoppingItemController {
         ShoppingItem(name: "strawberries", imageName: "strawberries")
     ]
     
+    
+    //MARK: - METHODS
     func switchAddedToShoppingList(item: ShoppingItem) {
         guard let index = shoppingList.index(of: item) else {return}
         shoppingList[index].addedToShoppingList = !shoppingList[index].addedToShoppingList

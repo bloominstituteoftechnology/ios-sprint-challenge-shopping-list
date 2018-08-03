@@ -17,6 +17,8 @@ class DetailsViewController: UIViewController {
         descriptionLabel.text = "You currently have \(items) item(s) in your shopping list."
     }
 
+    
+    //MARK: - PROPERTIES
     var shoppingItemController: ShoppingItemController? 
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
@@ -25,7 +27,7 @@ class DetailsViewController: UIViewController {
     
     
     
-    
+    //MARK: - METHODS
     @IBAction func sendOrderButtonPressed(_ sender: Any) {
         localNotificationHelper.requestAuthorization { (true) in
             self.sendNotification()
@@ -52,7 +54,8 @@ class DetailsViewController: UIViewController {
                 return
             }
         }
-        
     }
+    
+    
     
 }
