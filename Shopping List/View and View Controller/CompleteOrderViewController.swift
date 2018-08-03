@@ -25,6 +25,8 @@ class CompleteOrderViewController: UIViewController {
         messageLabel.text = "You currently have \(numberOfItems) item(s) in your shopping list"
     }
     
+    
+    
     @IBAction func sendOrder(_ sender: Any) {
         
         notificationHelper.requestAuthorization { (authorizationStatus) in
@@ -32,6 +34,8 @@ class CompleteOrderViewController: UIViewController {
                 self.notificationHelper.setNotification()
             }
         }
+//        nameLabel.text = ""
+//        addressLabel.text = ""
     }
 
     

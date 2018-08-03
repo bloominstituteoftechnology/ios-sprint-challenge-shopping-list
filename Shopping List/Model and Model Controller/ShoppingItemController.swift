@@ -14,8 +14,7 @@ class ShoppingItemController {
     init() {
         //set up stuff, if never been initialized before
         isInitialized = UserDefaults.standard.bool(forKey: setupKey)
-        
-        if(isInitialized == nil){
+        if(isInitialized == false){
             let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
             
             for item in itemNames{
@@ -27,9 +26,9 @@ class ShoppingItemController {
                 shoppingList.append(newItem)
             }
             UserDefaults.standard.set(true, forKey: setupKey)
-        } 
+        }
             //set user default to reflect that it has been set up.
- 
+        loadFromPersistenceStore()
     }
     
     func saveToPersistenceStore(){
@@ -66,9 +65,7 @@ class ShoppingItemController {
         saveToPersistenceStore()
     }
     
-    
-    
-    
+        
     //MARK: - Properties
     private(set) var shoppingList = [ShoppingItem]()
     
