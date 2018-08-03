@@ -78,7 +78,12 @@ class ShoppingController {
     // MARK: - Properties
     
     // Read
+    
     var shoppingItems = [ShoppingItem]()
+    
+    var addedToShoppingItems: [ShoppingItem] {
+        shopp
+    }
     
     // UserDefaults
     let userDefaultsManager = UserDefaultsManager()
