@@ -35,16 +35,9 @@ class ShoppingItemController
         if let index = shoppingItems.index(of: shoppingItem)
         {
             shoppingItems[index].isSelected = shoppingItem.isSelected ? false : true
-//            saveToPersistence()
+            saveToPersistence()
         }
     }
-    
-    func deleteShoppingItem(at index: Int)
-    {
-        shoppingItems.remove(at: index)
-        saveToPersistence()
-    }
-    
     
     //MARK: - Check if launched before
     

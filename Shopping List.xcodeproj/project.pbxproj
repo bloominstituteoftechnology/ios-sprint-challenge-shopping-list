@@ -66,20 +66,60 @@
 		4613E91021143BFC00E7FF73 /* Shopping List */ = {
 			isa = PBXGroup;
 			children = (
+				AC1004742114C71B00B047EF /* ViewControllers */,
+				AC1004732114C70A00B047EF /* Helpers */,
+				AC1004722114C6FC00B047EF /* ModelController */,
+				AC1004712114C6F000B047EF /* Model */,
 				4613E91121143BFC00E7FF73 /* AppDelegate.swift */,
-				4613E91321143BFC00E7FF73 /* ShoppingListCollectionViewController.swift */,
 				4613E91821143BFD00E7FF73 /* Assets.xcassets */,
 				4613E91A21143BFD00E7FF73 /* LaunchScreen.storyboard */,
 				4613E91D21143BFD00E7FF73 /* Info.plist */,
+			);
+			path = "Shopping List";
+			sourceTree = "<group>";
+		};
+		AC1004712114C6F000B047EF /* Model */ = {
+			isa = PBXGroup;
+			children = (
 				AC1004632114A89300B047EF /* ShoppingItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AC1004722114C6FC00B047EF /* ModelController */ = {
+			isa = PBXGroup;
+			children = (
 				AC1004652114A90700B047EF /* ShoppingItemController.swift */,
-				AC1004672114AD4200B047EF /* ShoppingItemCell.swift */,
+			);
+			path = ModelController;
+			sourceTree = "<group>";
+		};
+		AC1004732114C70A00B047EF /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
 				AC1004692114AEC900B047EF /* AutoLayoutHelper.swift */,
 				AC10046A2114AEC900B047EF /* LocalNotificationHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		AC1004742114C71B00B047EF /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				AC1004752114C73200B047EF /* CollectionViewCell */,
+				4613E91321143BFC00E7FF73 /* ShoppingListCollectionViewController.swift */,
 				AC10046D2114B42800B047EF /* SendOrderViewController.swift */,
 				AC10046F2114BF6B00B047EF /* AddShoppingItemViewController.swift */,
 			);
-			path = "Shopping List";
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		AC1004752114C73200B047EF /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				AC1004672114AD4200B047EF /* ShoppingItemCell.swift */,
+			);
+			path = CollectionViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
