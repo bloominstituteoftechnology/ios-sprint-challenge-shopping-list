@@ -50,6 +50,7 @@ class ShoppingItemController {
     func create(withImageData imageData: Data, named name: String) {
         let item = ShoppingItem(image: imageData, name: name, addedToList: false)
         shoppingItems.append(item)
+        saveToPersistentStore()
     }
     
     func update(withShoppingItem shoppingItem: ShoppingItem, addedToList: Bool) {
@@ -61,5 +62,6 @@ class ShoppingItemController {
         tempShoppingItem.addedToList = !tempShoppingItem.addedToList
         shoppingItems.remove(at: index)
         shoppingItems.insert(tempShoppingItem, at: index)
+        saveToPersistentStore()
     }
 }
