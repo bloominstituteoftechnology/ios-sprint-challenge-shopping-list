@@ -10,21 +10,21 @@ import UIKit
 import UserNotifications
 
 class DetailsViewController: UIViewController {
-    
+
     //MARK: - OVERRIDES
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let items = shoppingItemController?.itemsThatAreAdded else {return}
+        guard let items = listController?.itemsThatAreAdded else {return}
         descriptionLabel.text = "You currently have \(items) item(s) in your shopping list."
     }
     
     //MARK: - PROPERTIES
-    var shoppingItemController: ShoppingItemController? 
+    var listController: ListController?
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     let localNotificationHelper = LocalNotificationHelper()
-
+    
     //MARK: - METHODS
     @IBAction func sendOrderButtonPressed(_ sender: Any) {
         localNotificationHelper.requestAuthorization { (true) in

@@ -7,29 +7,21 @@
 //
 
 import Foundation
-import UIKit
 
-struct ShoppingItem: Equatable {
+
+struct ShoppingItem: Equatable, Codable {
+    
+    //MARK: PROPERTIES
+    var name: String
+    var image: Data
+    var beenAdded: Bool
     
     
-    //MARK: - INITIALIZER
-    init(name: String, imageName: String) {
-        self.name = name
-        self.image = UIImage(named: imageName)!
-        self.addedToShoppingList = false
-    }
-    
-    init(name: String, image: UIImage) {
+    //MARK: INITIALIZER
+    init(name: String, image: Data) {
         self.name = name
         self.image = image
-        self.addedToShoppingList = false
+        self.beenAdded = false
     }
-    
-    //MARK: - PROPERTIES
-    var name: String
-    var image: UIImage
-    var addedToShoppingList: Bool
-    
-    
     
 }

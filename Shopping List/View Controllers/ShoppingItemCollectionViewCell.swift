@@ -10,10 +10,10 @@ import UIKit
 
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
-    
     //MARK: - PROPERTIES
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var addedLabel: UILabel!
+    @IBOutlet weak var beenAddedLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    
     
 }
