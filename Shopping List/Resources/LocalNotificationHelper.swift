@@ -34,7 +34,7 @@ class LocalNotificationHelper{
         let content = UNMutableNotificationContent()
         content.title = "Friendly Reminder:"
         content.body = "Your order will be ready in 15 minutes!"
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 30, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
         let request = UNNotificationRequest(identifier: "orderReadyNotification", content: content, trigger: trigger)
         
         let notificationCenter = UNUserNotificationCenter.current()
