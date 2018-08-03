@@ -17,7 +17,6 @@ class ShoppingCollectionViewController: UICollectionViewController, ShoppingItem
         collectionView?.reloadData()
     }
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -33,13 +32,16 @@ class ShoppingCollectionViewController: UICollectionViewController, ShoppingItem
         cell.shoppingItemImageView.image = shoppingController.shoppingItems[indexPath.item].image
         cell.shoppingItem = shoppingController.shoppingItems[indexPath.item]
         cell.delegate = self
-        
     
         return cell
     }
     
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Cell \(indexPath.row) selected")
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "PlaceOrder") {
+            if let vc = segue.destination as? CreateShoppingOrderViewController {
+                vc.shoppingController = shoppingController
+            }
+        }
     }
     
     var shoppingController: ShoppingController = ShoppingController()
