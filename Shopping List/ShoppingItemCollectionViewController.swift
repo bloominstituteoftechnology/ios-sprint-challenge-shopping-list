@@ -21,6 +21,7 @@ class ShoppingItemCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDataSource
 
+    // If I have time
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         
         return 1
@@ -29,32 +30,37 @@ class ShoppingItemCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return shoppingItemController.shoppingItems.count
+        return settingsHelper.shoppingItemController.shoppingItems.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingItemCell", for: indexPath) as! ShoppingItemCollectionViewCell
     
-        cell.shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
+        cell.shoppingItem = settingsHelper.shoppingItemController.shoppingItems[indexPath.item]
     
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = settingsHelper.shoppingItemController.shoppingItems[indexPath.item]
+        settingsHelper.shoppingItemController.updateIsAdded(item: item)
+    }
     
-    // MARK: - Functions
-    
-    
-    
+
     // MARK: - Properties
     
     var settingsHelper = SettingsHelper()
-    var shoppingItemController = ShoppingItemController()
     
     
      // MARK: - Navigation
     
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if segue.identifier == "ShowDetails" {
+            let destVC = segue.destination as! ShoppingListDetailViewController
+            let isAddedArray = settingsHelper.shoppingItemController.shoppingItems.filter {$0.isAdded}
+            let number = isAddedArray.count
+            destVC.numberInCart = number
+        }
      }
 
 }

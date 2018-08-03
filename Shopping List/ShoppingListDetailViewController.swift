@@ -10,12 +10,32 @@ import UIKit
 
 class ShoppingListDetailViewController: UIViewController {
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        updateViews()
+    }
+    
+    
+    // MARK: - Functions
+    
+    func updateViews() {
+        guard let number = numberInCart else { return }
+        numberOfItemsLabel.text = "You currently have \(number) item(s) in your shopping list."
+    }
+    
     
     // MARK: - Actions
     
     @IBAction func sendOrder(_ sender: Any) {
         
     }
+    
+    
+    
+    // MARK: - Properties
+    
+    var numberInCart: Int?
     
     
     // MARK: - Outlets
