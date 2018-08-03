@@ -9,12 +9,12 @@
 import Foundation
 
 func setUpShoppingItems() -> ShoppingItemController {
-    let shoppingItemController = ShoppingItemController()
+    let controller = ShoppingItemController()
     let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
     for item in itemNames {
-        shoppingItemController.createFromProvided(name: item, isAdded: false)
+        controller.createFromProvided(name: item, isAdded: false)
     }
-    return shoppingItemController
+    return controller
 }
 
 class SettingsHelper {
@@ -43,12 +43,12 @@ class SettingsHelper {
     
     func setShoppingItemsToProvided() {
         UserDefaults.standard.set(providedValue, forKey: shoppingItemsKey)
+        
     }
     
     // If I have time
     func setShoppingItemsToInteractive() {
         UserDefaults.standard.set(interactiveValue, forKey: shoppingItemsKey)
-        shoppingItemController = setUpShoppingItems()
     }
     
 }
