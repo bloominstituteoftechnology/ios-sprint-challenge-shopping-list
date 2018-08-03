@@ -26,7 +26,7 @@
                             <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoppingListCell" id="hp0-bU-57I">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoppingListCell" id="hp0-bU-57I" customClass="ShoppingListCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="10" y="10" width="170" height="170"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -61,6 +61,11 @@
                                     <constraint firstItem="Ylk-AZ-YXN" firstAttribute="height" secondItem="hp0-bU-57I" secondAttribute="height" multiplier="0.5" id="ICW-vB-F7A"/>
                                 </constraints>
                                 <size key="customSize" width="170" height="170"/>
+                                <connections>
+                                    <outlet property="cartLabel" destination="On3-aS-cnP" id="ScB-yT-GiT"/>
+                                    <outlet property="itemImageView" destination="Ylk-AZ-YXN" id="Hjj-aW-KDj"/>
+                                    <outlet property="nameLabel" destination="kgT-yQ-bTE" id="NlO-r2-haW"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>

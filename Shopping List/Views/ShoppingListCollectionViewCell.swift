@@ -10,4 +10,22 @@ import UIKit
 
 class ShoppingListCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var cartLabel: UILabel!
+    @IBOutlet weak var itemImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    var shoppingItem: ShoppingItem? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    private func updateViews() {
+        guard let shoppingItem = shoppingItem else {return }
+        
+        let image = UIImage(data: shoppingItem.image)
+        itemImageView.image = image
+        nameLabel.text = shoppingItem.name
+        
+    }
 }

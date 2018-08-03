@@ -17,7 +17,13 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         
         // Check if it is the first run of the app
         checkUserDefaults()
+        shoppingItemController.loadFromPersistentStore()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
+        collectionView?.reloadData()
     }
     
     
@@ -34,21 +40,19 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
     // MARK: UICollectionViewDataSource
     
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-    
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+        
+        return shoppingItemController.shoppingItems.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingListCell", for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingListCell", for: indexPath) as? ShoppingListCollectionViewCell else { fatalError("Not a ShoppingListCollectionViewCell")}
         
         // Configure the cell
+        let shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
+        cell.shoppingItem = shoppingItem
+        
         
         return cell
     }
