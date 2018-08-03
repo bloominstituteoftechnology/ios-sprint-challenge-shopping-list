@@ -32,6 +32,15 @@ class ShoppingItemController {
         ShoppingItem(name: "strawberries", imageName: "strawberries")
     ]
     
+    var addedShoppingList: [ShoppingItem] {
+        return shoppingList.filter { $0.addedToShoppingList }
+    }
+    
+    var notAddedShoppingList: [ShoppingItem] { return shoppingList.filter { !$0.addedToShoppingList}}
+    
+    var sortedShoppingList: [ShoppingItem] {
+        return addedShoppingList + notAddedShoppingList
+    }
     
     //MARK: - METHODS
     func switchAddedToShoppingList(item: ShoppingItem) {
@@ -39,7 +48,4 @@ class ShoppingItemController {
         shoppingList[index].addedToShoppingList = !shoppingList[index].addedToShoppingList
     }
     
-
-    
-
 }

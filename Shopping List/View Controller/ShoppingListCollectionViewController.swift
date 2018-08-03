@@ -23,7 +23,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ShoppingItemCollectionViewCell
-        let shoppingItem = shoppingItemController.shoppingList[indexPath.item]
+        let shoppingItem = shoppingItemController.sortedShoppingList[indexPath.item]
         cell.imageView.image = shoppingItem.image
         cell.nameLabel.text = shoppingItem.name
         if shoppingItem.addedToShoppingList {
@@ -34,6 +34,19 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         return cell
     }
 
+
+//    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ShoppingItemCollectionViewCell
+//        let shoppingItem = shoppingItemController.shoppingList[indexPath.item]
+//        cell.imageView.image = shoppingItem.image
+//        cell.nameLabel.text = shoppingItem.name
+//        if shoppingItem.addedToShoppingList {
+//            cell.addedLabel.text = "Added"
+//        } else {
+//            cell.addedLabel.text = "Not Added"
+//        }
+//        return cell
+//    }
     
     
     
