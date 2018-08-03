@@ -75,7 +75,7 @@
                     <navigationItem key="navigationItem" title="Shopping List" id="fIf-vn-MDE">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="4BU-gR-DiE">
                             <connections>
-                                <segue destination="EcS-3F-bLB" kind="show" id="CQx-wA-W2K"/>
+                                <segue destination="EcS-3F-bLB" kind="show" identifier="ShowDetails" id="CQx-wA-W2K"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -84,10 +84,10 @@
             </objects>
             <point key="canvasLocation" x="1087.2" y="125.4872563718141"/>
         </scene>
-        <!--View Controller-->
+        <!--Details View Controller-->
         <scene sceneID="jEk-h6-plf">
             <objects>
-                <viewController id="EcS-3F-bLB" sceneMemberID="viewController">
+                <viewController id="EcS-3F-bLB" customClass="DetailsViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EmK-0e-Qit">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -117,11 +117,19 @@
                                 <rect key="frame" x="137" y="296" width="79" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Send Order"/>
+                                <connections>
+                                    <action selector="sendOrderButtonPressed:" destination="EcS-3F-bLB" eventType="touchUpInside" id="Zqw-kr-3Cf"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="uLV-ho-kZP"/>
                     </view>
+                    <connections>
+                        <outlet property="addressTextField" destination="rTP-QD-85I" id="mKk-bO-1v4"/>
+                        <outlet property="descriptionLabel" destination="oVf-jh-DQV" id="9ZY-Ej-kAX"/>
+                        <outlet property="nameTextField" destination="Jij-Yn-cPS" id="Pk3-oO-QVO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A2c-Yx-Wlw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

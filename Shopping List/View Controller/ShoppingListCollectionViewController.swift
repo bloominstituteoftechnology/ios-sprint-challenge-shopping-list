@@ -15,8 +15,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     //MARK: - PROPERTIES
     let shoppingItemController = ShoppingItemController()
     
-    
-    
+
     // MARK: UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -42,5 +41,15 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         shoppingItemController.switchAddedToShoppingList(item: shoppingItem)
         collectionView.reloadData()
     }
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDetails" {
+            let destinationVC = segue.destination as? DetailsViewController
+            destinationVC?.shoppingItemController = shoppingItemController
+        }
+    }
+    
 
 }

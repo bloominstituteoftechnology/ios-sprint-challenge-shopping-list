@@ -10,6 +10,16 @@ import Foundation
 
 class ShoppingItemController {
     
+    var itemsThatAreAdded: Int {
+        var count = 0
+        for item in shoppingList {
+            if item.addedToShoppingList {
+                count += 1
+            }
+        }
+        return count
+    }
+    
     
     private (set) var shoppingList = [
         ShoppingItem(name: "apple", imageName: "apple"),
@@ -25,6 +35,8 @@ class ShoppingItemController {
         guard let index = shoppingList.index(of: item) else {return}
         shoppingList[index].addedToShoppingList = !shoppingList[index].addedToShoppingList
     }
+    
+
     
 
 }
