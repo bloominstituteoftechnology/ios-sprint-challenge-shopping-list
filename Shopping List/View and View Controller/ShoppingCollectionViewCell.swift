@@ -19,16 +19,15 @@ class ShoppingCollectionViewCell: UICollectionViewCell {
         itemNameLabel?.text = shoppingItem.name
         
         let addedStatus = shoppingItem.isAdded ? "Added" : "Not Added"
-        addedStatusLabel?.text = addedStatus
+        isAddedLabel.setTitle(addedStatus, for: .normal)
 
     }
     
     
-    
-    
     // MARK - Properties
     @IBOutlet weak var itemNameLabel: UILabel!
-    @IBOutlet weak var addedStatusLabel: UILabel!
+
+    @IBOutlet weak var isAddedLabel: UIButton!
     @IBOutlet weak var imageView: UIImageView!
     
     var shoppingItem:ShoppingItem?{
