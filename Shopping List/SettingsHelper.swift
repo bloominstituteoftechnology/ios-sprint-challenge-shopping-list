@@ -8,20 +8,11 @@
 
 import Foundation
 
-func setUpShoppingItems() -> ShoppingItemController {
-    let controller = ShoppingItemController()
-    let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
-    for item in itemNames {
-        controller.createFromProvided(name: item, isAdded: false)
-    }
-    return controller
-}
-
 class SettingsHelper {
     
     init() {
         // If the user hasn't set a default then this code will run and then the default will be set to provided
-        guard let _ = shoppingItemsValue else {
+        guard shoppingItemsValue else {
             setShoppingItemsToProvided()
             return
         }
@@ -30,20 +21,20 @@ class SettingsHelper {
     // MARK: - Properties
     
     let shoppingItemsKey = "Shopping Items"
-    let providedValue = "Provided"
-    let interactiveValue = "Interactive"
+    let providedValue = true
+    let interactiveValue = false
     
     var shoppingItemController = ShoppingItemController()
     
-    var shoppingItemsValue: String? {
-        return UserDefaults.standard.string(forKey: shoppingItemsKey)
+    var shoppingItemsValue: Bool {
+        return UserDefaults.standard.bool(forKey: shoppingItemsKey)
     }
     
     // MARK: - Methods
     
     func setShoppingItemsToProvided() {
         UserDefaults.standard.set(providedValue, forKey: shoppingItemsKey)
-        
+        shoppingItemController.saveGivenItemsToPersistentStore()
     }
     
     // If I have time

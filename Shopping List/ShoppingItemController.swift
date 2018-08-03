@@ -81,4 +81,17 @@ class ShoppingItemController {
             NSLog("Error loading Data: \(error)")
         }
     }
+    
+    func saveGivenItemsToPersistentStore() {
+        let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
+        for item in itemNames {
+            guard let image = UIImage(named: item),
+                let imageData = UIImagePNGRepresentation(image) else {
+                    return
+            }
+            let shoppingItem = ShoppingItem(name: item, imageData: imageData, isAdded: false)
+            shoppingItems.append(shoppingItem)
+        }
+        saveToPersistentStore()
+    }
 }

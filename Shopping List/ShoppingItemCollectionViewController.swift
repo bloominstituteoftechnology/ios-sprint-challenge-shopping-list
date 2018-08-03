@@ -14,8 +14,6 @@ class ShoppingItemCollectionViewController: UICollectionViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        
     }
     
 
@@ -36,12 +34,14 @@ class ShoppingItemCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingItemCell", for: indexPath) as! ShoppingItemCollectionViewCell
     
+        
         cell.shoppingItem = settingsHelper.shoppingItemController.shoppingItems[indexPath.item]
     
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         let item = settingsHelper.shoppingItemController.shoppingItems[indexPath.item]
         settingsHelper.shoppingItemController.updateIsAdded(item: item)
         collectionView.reloadData()
@@ -50,21 +50,12 @@ class ShoppingItemCollectionViewController: UICollectionViewController {
     
     // MARK: - Func
     
-    func makeController() {
-        guard let preference = settingsHelper.shoppingItemsValue else { return }
-        switch preference {
-        case settingsHelper.interactiveValue:
-            shoppingItemController = ShoppingItemController()
-        default:
-            shoppingItemController = settingsHelper.shoppingItemController
-        }
-    }
+    
     
 
     // MARK: - Properties
     
     var settingsHelper = SettingsHelper()
-    var shoppingItemController: ShoppingItemController?
     
     
      // MARK: - Navigation
