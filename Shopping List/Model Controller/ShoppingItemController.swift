@@ -53,7 +53,7 @@ class ShoppingItemController {
         saveToPersistentStore()
     }
     
-    func update(withShoppingItem shoppingItem: ShoppingItem, addedToList: Bool) {
+    func update(withShoppingItem shoppingItem: ShoppingItem) {
         guard let index = shoppingItems.index(of: shoppingItem) else { return }
         
         var tempShoppingItem = shoppingItem
