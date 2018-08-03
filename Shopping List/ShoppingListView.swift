@@ -7,15 +7,11 @@
 //
 
 /*
-The story so far...
+Controlling the selectedness of items in a CollectionView is terrible
+and whoever designed and implemented this API should be ashamed.
 
-UICollectionViewCell has a property called "isSelected",
-which determines whether or not a cell should be considered selected.
-
-As far as I can find, the ONLY WAY to know, from the cell's point
-of view, if it has been clicked on is BY LISTENING TO THIS. The problem:
-OTHER THINGS SET THIS PROPERTY--there's no guarantee these are real changes
-based on real user input.
+I hope it's better in objective-c, where you can have real references to things
+because this is awful.
 */
 
 
@@ -47,12 +43,14 @@ class CartItemCell:UICollectionViewCell
 	var item:CartItem! {
 		didSet {
 			isSelected = item.requested
+			print("From set item")
 			updateViews()
 		}
 	}
 
 	override var isSelected: Bool {
 		didSet {
+			print("Selected set to \(isSelected)")
 			delegate.updateItem(item, isSelected)
 			updateViews()
 		}
@@ -89,6 +87,7 @@ class CartListCVC: UICollectionViewController, CartCellDelegate
 	{
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CartItemCell", for: indexPath) as! CartItemCell
 		cell.delegate = self
+		print("Reloading..")
 		cell.item = controller.items[indexPath.item]
 		return cell
 	}
@@ -115,15 +114,14 @@ class CartListCVC: UICollectionViewController, CartCellDelegate
 	{
 		print("Selected")
 		controller.items[indexPath.item].requested = true
-		collectionView.reloadSections([0])
+		//collectionView.reloadSections([0])
 	}
 	override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath)
 	{
 		print("Deselected")
 		controller.items[indexPath.item].requested = false
-		collectionView.reloadSections([0])
+		//collectionView.reloadSections([0])
 	}
-
 }
 
 class RequestOrderVC: UIViewController
