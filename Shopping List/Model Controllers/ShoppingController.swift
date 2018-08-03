@@ -42,10 +42,6 @@ class ShoppingController {
         return shoppingItems.filter { $0.addedToList }
     }
 
-    var notInShoppingList: [ShoppingItem] {
-        return shoppingItems.filter { !$0.addedToList }
-    }
-
     var shoppingListURL: URL? {
         let fm = FileManager.default
         guard let documentDir = fm.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
