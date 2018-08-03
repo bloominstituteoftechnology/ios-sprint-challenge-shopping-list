@@ -7,15 +7,14 @@
 //
 
 import Foundation
-import UIKit
 
-struct ShoppingItem: Equatable {
-    let image: UIImage
+struct ShoppingItem: Equatable, Codable {
+    let imageData: Data
     let name: String
     var addedToList: Bool
     
-    init(image: UIImage, name: String, addedToList: Bool = false) {
-        self.image = image
+    init(imageData: Data, name: String, addedToList: Bool = false) {
+        self.imageData = imageData
         self.name = name
         self.addedToList = addedToList
     }
