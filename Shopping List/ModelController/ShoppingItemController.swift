@@ -10,16 +10,22 @@ import Foundation
 
 class ShoppingItemController
 {
-    private(set) var shoppingItems: [ShoppingItem] = []
+    //private(set) var shoppingItems: [ShoppingItem] = []
     
-    var starterShoppingList = [
-        ShoppingItem(itemName: "apple", iconName: "apple", checkedName: "unchecked"),
-        ShoppingItem(itemName: "grapes", iconName: "grapes", checkedName: "unchecked"),
-        ShoppingItem(itemName: "milk", iconName: "milk", checkedName: "unchecked"),
-        ShoppingItem(itemName: "muffin", iconName: "muffin", checkedName: "unchecked"),
-        ShoppingItem(itemName: "popcorn", iconName: "popcorn", checkedName: "unchecked"),
-        ShoppingItem(itemName: "soda", iconName: "soda", checkedName: "unchecked"),
-        ShoppingItem(itemName: "strawberries", iconName: "strawberries", checkedName: "unchecked")
+    private(set) var shoppingItems: [ShoppingItem] = [
+        ShoppingItem(itemName: "apple", iconName: "apple"),
+        ShoppingItem(itemName: "grapes", iconName: "grapes"),
+        ShoppingItem(itemName: "milk", iconName: "milk"),
+        ShoppingItem(itemName: "muffin", iconName: "muffin"),
+        ShoppingItem(itemName: "popcorn", iconName: "popcorn"),
+        ShoppingItem(itemName: "soda", iconName: "soda"),
+        ShoppingItem(itemName: "strawberries", iconName: "strawberries")
     ]
+    
+    func updateItemAdded(for shoppingItem: ShoppingItem)
+    {
+        guard let index = shoppingItems.index(of: shoppingItem) else {return}
+        shoppingItems[index].itemAdded = !shoppingItems[index].itemAdded
+    }
     
 }

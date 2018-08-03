@@ -9,19 +9,18 @@
 import Foundation
 import UIKit
 
-struct ShoppingItem
+struct ShoppingItem: Equatable
 {
     var imageIcon: UIImage
     var itemName: String
     var itemAdded: Bool
-    var checkboxImage: UIImage
     
-    init(itemName:String, iconName: String, checkedName: String, itemAdded: Bool = false)
+    init(itemName:String, iconName: String, itemAdded: Bool = false)
     {
         self.itemName = itemName
         self.imageIcon = UIImage(named:iconName)!
         self.itemAdded = itemAdded
-        self.checkboxImage = UIImage(named:checkedName)!
+        
     }
     
 }

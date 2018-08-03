@@ -8,10 +8,15 @@
 
 import UIKit
 
-class ShoppingListCollectionViewController: UICollectionViewController
+class ShoppingListCollectionViewController: UICollectionViewController, ItemListCollectionCellDelegate
 {
     let shoppingItemController = ShoppingItemController()
     
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(true)
+        collectionView?.reloadData()
+    }
     
     override func viewDidLoad()
     {
@@ -28,20 +33,32 @@ class ShoppingListCollectionViewController: UICollectionViewController
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        return shoppingItemController.starterShoppingList.count
+        return shoppingItemController.shoppingItems.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemListCell", for: indexPath) as! ItemListCollectionViewCell
     
-        let shoppingItem = shoppingItemController.starterShoppingList[indexPath.item]
-        cell.itemImageView.image = shoppingItem.imageIcon
-        cell.itemNameLabel.text = shoppingItem.itemName
-        cell.itemAddedLabel.text = "Add Item"
-        cell.checkboxImageView.image = shoppingItem.checkboxImage
+        let shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
+        cell.shoppingItem = shoppingItem
+        cell.delegate = self
     
         return cell
+    }
+    
+    func toggleItemAdded(for cell: ItemListCollectionViewCell)
+    {
+        guard let indexPath = collectionView?.indexPath(for: cell) else {return}
+        let shoppingItem = shoppingItemController.shoppingItems[indexPath.row]
+        shoppingItemController.updateItemAdded(for: shoppingItem)
+        collectionView?.reloadItems(at: [indexPath])
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath)
+    {
+        let cell = collectionView.cellForItem(at: indexPath)
+        toggleItemAdded(for: cell as! ItemListCollectionViewCell)
     }
 
      // MARK: - Navigation
