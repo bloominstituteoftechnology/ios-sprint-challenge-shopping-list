@@ -64,4 +64,14 @@ class ShoppingItemController {
         shoppingItems.insert(tempShoppingItem, at: index)
         saveToPersistentStore()
     }
+    
+    func totalItemsAdded() -> Int {
+        var addedItemCount = 0
+        for item in shoppingItems {
+            if item.addedToList {
+                addedItemCount += 1
+            }
+        }
+        return addedItemCount
+    }
 }
