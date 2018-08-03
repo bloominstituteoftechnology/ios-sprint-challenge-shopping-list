@@ -10,11 +10,23 @@ import UIKit
 
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
+    func updateViews() {
+        guard let name = shoppingItem?.name,
+            let imageData = shoppingItem?.imageData,
+            let image = UIImage(data: imageData) else {
+                return
+        }
+        shoppingItemLabel.text = name
+        shoppingItemImageView.image = image
+    }
     
     // MARK: - Properties
     
-    var shoppingItem: ShoppingItem?
-    var shoppingItemController: ShoppingItemController?
+    var shoppingItem: ShoppingItem? {
+        didSet {
+            updateViews()
+        }
+    }
     
     
     // MARK: - Outlets
