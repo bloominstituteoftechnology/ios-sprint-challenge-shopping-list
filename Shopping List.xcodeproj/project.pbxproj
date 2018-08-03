@@ -17,6 +17,8 @@
 		F82EAD3A2114BB9700FFAC45 /* ShoppingListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82EAD392114BB9700FFAC45 /* ShoppingListCollectionViewController.swift */; };
 		F82EAD3C2114BC6F00FFAC45 /* ShoppingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82EAD3B2114BC6F00FFAC45 /* ShoppingCollectionViewCell.swift */; };
 		F82EAD3E2114BED800FFAC45 /* DeliveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82EAD3D2114BED800FFAC45 /* DeliveryViewController.swift */; };
+		F82EAD442114FAB800FFAC45 /* DeliveryAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82EAD432114FAB800FFAC45 /* DeliveryAddress.swift */; };
+		F82EAD472114FBD400FFAC45 /* DeliveryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82EAD462114FBD400FFAC45 /* DeliveryController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		F82EAD392114BB9700FFAC45 /* ShoppingListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListCollectionViewController.swift; sourceTree = "<group>"; };
 		F82EAD3B2114BC6F00FFAC45 /* ShoppingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCollectionViewCell.swift; sourceTree = "<group>"; };
 		F82EAD3D2114BED800FFAC45 /* DeliveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryViewController.swift; sourceTree = "<group>"; };
+		F82EAD432114FAB800FFAC45 /* DeliveryAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryAddress.swift; sourceTree = "<group>"; };
+		F82EAD462114FBD400FFAC45 /* DeliveryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,9 +70,9 @@
 			children = (
 				4613E91121143BFC00E7FF73 /* AppDelegate.swift */,
 				4613E91521143BFC00E7FF73 /* Main.storyboard */,
-				F82EAD322114A8D500FFAC45 /* ShoppingItem.swift */,
-				F82EAD342114A94600FFAC45 /* ShoppingController.swift */,
-				F82EAD362114ACC000FFAC45 /* UserDefaultsManager.swift */,
+				F82EAD422114FA4E00FFAC45 /* Models */,
+				F82EAD452114FBAD00FFAC45 /* ModelControllers */,
+				F82EAD3F2114F4FB00FFAC45 /* Helpers */,
 				F82EAD382114B9B400FFAC45 /* ViewControllers */,
 				4613E91821143BFD00E7FF73 /* Assets.xcassets */,
 				4613E91A21143BFD00E7FF73 /* LaunchScreen.storyboard */,
@@ -85,6 +89,32 @@
 				F82EAD3D2114BED800FFAC45 /* DeliveryViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F82EAD3F2114F4FB00FFAC45 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F82EAD362114ACC000FFAC45 /* UserDefaultsManager.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		F82EAD422114FA4E00FFAC45 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F82EAD322114A8D500FFAC45 /* ShoppingItem.swift */,
+				F82EAD432114FAB800FFAC45 /* DeliveryAddress.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F82EAD452114FBAD00FFAC45 /* ModelControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F82EAD342114A94600FFAC45 /* ShoppingController.swift */,
+				F82EAD462114FBD400FFAC45 /* DeliveryController.swift */,
+			);
+			path = ModelControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,6 +188,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F82EAD442114FAB800FFAC45 /* DeliveryAddress.swift in Sources */,
 				F82EAD332114A8D500FFAC45 /* ShoppingItem.swift in Sources */,
 				F82EAD372114ACC000FFAC45 /* UserDefaultsManager.swift in Sources */,
 				4613E91221143BFC00E7FF73 /* AppDelegate.swift in Sources */,
@@ -165,6 +196,7 @@
 				F82EAD3A2114BB9700FFAC45 /* ShoppingListCollectionViewController.swift in Sources */,
 				F82EAD3C2114BC6F00FFAC45 /* ShoppingCollectionViewCell.swift in Sources */,
 				F82EAD352114A94600FFAC45 /* ShoppingController.swift in Sources */,
+				F82EAD472114FBD400FFAC45 /* DeliveryController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

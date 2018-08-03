@@ -13,6 +13,14 @@ class DeliveryViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         displayAddedItems()
+        if deliveryController.deliveries.first != nil {
+            nameTextField.text = deliveryController.deliveries.first?.name
+            addressLine1TextField.text = deliveryController.deliveries.first?.addressLineOne
+            addressLine2TextField.text = deliveryController.deliveries.first?.addressLineTwo
+            cityTextField.text = deliveryController.deliveries.first?.city
+            stateTextField.text = deliveryController.deliveries.first?.state
+            zipCodeTextField.text = deliveryController.deliveries.first?.zipCode
+        }
     }
     
     // Display shopping list items
@@ -51,6 +59,15 @@ class DeliveryViewController: UIViewController {
     }
     
     func scheduleNotification() {
+        // save delivery address
+        guard let name = nameTextField.text,
+            let address1 = addressLine1TextField.text,
+            let address2 = addressLine2TextField.text,
+            let city = cityTextField.text,
+            let state = stateTextField.text,
+            let zip = zipCodeTextField.text else { return }
+        deliveryController.savecurrentDeliveryAddress(name: name, addressLineOne: address1, addressLineTwo: address2, city: city, state: state, zipCode: zip)
+        
         let identifier = UUID().uuidString
         let content = UNMutableNotificationContent()
         content.title = "Your delivery is on its way"
@@ -85,5 +102,6 @@ class DeliveryViewController: UIViewController {
     
     // Passed properties
     var shoppingController: ShoppingController?
+    let deliveryController = DeliveryController()
 
 }
