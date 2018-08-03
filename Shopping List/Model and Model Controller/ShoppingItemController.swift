@@ -27,10 +27,12 @@ class ShoppingItemController {
             }
             UserDefaults.standard.set(true, forKey: setupKey)
         }
-            //set user default to reflect that it has been set up.
+        //set user default to reflect that it has been set up.
         loadFromPersistenceStore()
     }
     
+    
+    //MARK: - Persistence
     func saveToPersistenceStore(){
         guard let fileURL = fileURL else {return}
         let encoder = PropertyListEncoder()
@@ -47,7 +49,7 @@ class ShoppingItemController {
     func loadFromPersistenceStore(){
         let fm = FileManager.default
         guard let fileURL = fileURL, fm.fileExists(atPath: fileURL.path) else {return}
-   
+        
         let decoder = PropertyListDecoder()
         
         do{
@@ -64,27 +66,32 @@ class ShoppingItemController {
         
         saveToPersistenceStore()
     }
-    
+    //MARK: - Relevant CRUD methods
     func clearCart(){
         for index in 0...shoppingList.count - 1{
             shoppingList[index].isAdded = false
         }
     }
+    
         
-    //MARK: - Properties
+        //MARK: - Properties
     private(set) var shoppingList = [ShoppingItem]()
-    
+        
     var shoppingCart: [ShoppingItem]{
-        return shoppingList.filter{$0.isAdded == true }
+            return shoppingList.filter{$0.isAdded == true }
     }
+    var itemsOnShelf: [ShoppingItem]{
+            return shoppingList.filter{$0.isAdded == false }
+    }
+        
     private var fileURL: URL?{
-        let fm = FileManager.default
-        let documentDirectory = fm.urls(for: .documentDirectory, in: .userDomainMask).first
-        let filename = "ShoppingList.plist"
-        return documentDirectory?.appendingPathComponent(filename)
+            let fm = FileManager.default
+            let documentDirectory = fm.urls(for: .documentDirectory, in: .userDomainMask).first
+            let filename = "ShoppingList.plist"
+            return documentDirectory?.appendingPathComponent(filename)
     }
-    
-    
+        
+        
     private let setupKey = "SetupKey"
     private(set) var isInitialized:Bool?
 }

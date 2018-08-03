@@ -21,13 +21,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iSB-KC-qQS">
                             <size key="itemSize" width="150" height="170"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="headerReferenceSize" width="50" height="50"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="25" minY="25" maxX="25" maxY="25"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoppingCell" id="e85-4s-Ixm" customClass="ShoppingCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
-                                <rect key="frame" x="25" y="25" width="150" height="170"/>
+                                <rect key="frame" x="25" y="75" width="150" height="170"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="170"/>
@@ -46,8 +46,8 @@
                                                     <rect key="frame" x="0.0" y="39" width="150" height="103.5"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BbJ-Kv-Z0d">
-                                                    <rect key="frame" x="54.5" y="150.5" width="41.5" height="19.5"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                    <rect key="frame" x="55.5" y="150.5" width="39" height="19.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -69,6 +69,27 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="Header" id="khx-Aq-TMJ" customClass="ShoppingHeaderCollectionReusableView" customModule="Shopping_List" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46m-eW-DbQ">
+                                    <rect key="frame" x="25" y="0.0" width="325" height="50"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                    <color key="textColor" red="0.067788125363318213" green="0.28866592639593913" blue="0.00022205074547242636" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="46m-eW-DbQ" firstAttribute="top" secondItem="khx-Aq-TMJ" secondAttribute="top" id="1Ct-AH-5bK"/>
+                                <constraint firstAttribute="trailing" secondItem="46m-eW-DbQ" secondAttribute="trailing" constant="25" id="5Jr-wN-UZR"/>
+                                <constraint firstAttribute="bottom" secondItem="46m-eW-DbQ" secondAttribute="bottom" id="tfe-Re-11T"/>
+                                <constraint firstItem="46m-eW-DbQ" firstAttribute="leading" secondItem="khx-Aq-TMJ" secondAttribute="leading" constant="25" id="zpg-LH-JpM"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="headerLabel" destination="46m-eW-DbQ" id="SWc-ol-QTO"/>
+                            </connections>
+                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="DbJ-C4-dUh" id="oye-1a-A1O"/>
                             <outlet property="delegate" destination="DbJ-C4-dUh" id="A3c-tx-qas"/>
