@@ -18,7 +18,9 @@ Please view the screen recording so you will know what your finished project sho
 
 ![](https://user-images.githubusercontent.com/16965587/43629692-37015176-96bb-11e8-851b-dba8f56f06e0.gif)
 
-### Requirements
+(The gif is fairly large in size. It may take a few seconds for it to appear)
+
+## Requirements
 
 1. A `ShoppingItem` model object with properties for an image, name of the item, and `Bool` indicating whether the item has been added to the shopping list.
 2. On the first launch of the application, use the given shopping item names and images to create instances of the `ShoppingItem` model, and save them to a file. **These shopping items should be persisted between launches of the application.** Use `UserDefaults` to make sure that new shopping items are initialized only once. 
@@ -32,7 +34,7 @@ This snippet has the names of the images in the assets folder. Use it to create 
 5. A bar button item on the collection view controller that performs a "Show" segue to a detail `UIViewController`. This `UIViewController` should allow the user to fill in their name and address. It should also display how many items have been added to "shopping list".
 6. In the same view controller, add a button that schedules a local notification saying that the user's delivery will be to their address in 15 minutes. The notification's content must contain their name and address.
 
-#### Extra Challenges
+### Extra Challenges
 
 - Add functionality to add more shopping items.
 - Group the shopping items in sections by whether they have been added to the shopping list.
