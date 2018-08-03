@@ -12,7 +12,11 @@ class ShoppingDetailViewController: UIViewController {
 
     // MARK: - Properties
     
-    var shoppingItemController: ShoppingItemController?
+    var shoppingItemController: ShoppingItemController? { // ass did set for updateViews()
+        didSet {
+            updateViews()
+        }
+    }
     
     let localNotificationHelper = LocalNotificationHelper()
     
@@ -23,24 +27,31 @@ class ShoppingDetailViewController: UIViewController {
     @IBAction func sendOrder(_ sender: Any) {
         guard let name = nameTextField.text, let address = addressTextField.text else { return }
         
+        
         localNotificationHelper.requestAuthorization() { (success) in
             if success  == true {
-                self.localNotificationHelper.scheduleDailyReminderNotification()
+                self.localNotificationHelper.scheduleDailyReminderNotification(name: name, address: address)
             }
         }
     }
     
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        localNotificationHelper.getAuthorizationStatus() { (success) in
-//            self.localNotificationHelper.scheduleDailyReminderNotification()
-//            }
-//        }
-//    }
-//
-    
-    
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
+        updateViews()
+    }
+    
+    func updateViews() {
+        guard let shoppingItems = shoppingItemController?.shoppingItems else { return }
+        
+        var numberOfItems = 0
+        for item in shoppingItems {
+            if item.isAdded {
+                numberOfItems += 1
+            }
+        }
+        
+        // use numberOfItems to build your string
+        textLabel?.text = "You currently have \(numberOfItems) item(s) in your shopping list."
+    }
 }

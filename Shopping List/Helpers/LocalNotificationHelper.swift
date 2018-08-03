@@ -32,14 +32,14 @@ class LocalNotificationHelper {
         }
     }
     
-    func scheduleDailyReminderNotification() {
+    func scheduleDailyReminderNotification(name: String, address: String) {
         
         let content = UNMutableNotificationContent()
-//        content.title = "Delivery For \(name)!"
-//        content.body = "Your shopping items will be delivered tp \(address) in 15 mintutes."
+        content.title = "Delivery For \(name)!"
+        content.body = "Your shopping items will be delivered to \(address) in 15 mintutes."
         content.sound = UNNotificationSound.default()
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         
         // Unique and random identifer
         let uuidString = UUID().uuidString
