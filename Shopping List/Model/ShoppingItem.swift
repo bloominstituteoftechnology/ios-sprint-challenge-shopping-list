@@ -11,7 +11,7 @@ import Foundation
 struct ShoppingItem: Equatable, Codable {
     
     var name: String
-    var imageName: String
+    var image: String
     var hasBeenAdded: Bool
 }
 

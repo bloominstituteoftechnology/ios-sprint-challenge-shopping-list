@@ -13,26 +13,44 @@ class ShoppingItemController {
     // MARK: - Initializers
     
     init() {
-        loadFromPersistentStore()
+        
+        // check if the user defaults contains a key for LaunchedBefore
+        if UserDefaults.standard.bool(forKey: "LaunchedBefore") {
+            // if it does, load from the file
+            loadFromPersistentStore()
+            
+            // otherwise, set the key to true for next time, and make all the necessary items
+        } else {
+            UserDefaults.standard.set(true, forKey: "LaunchedBefore")
+            
+            // create all the items
+            self.createShoppingItem(withName: "Apple", image: "apple")
+            self.createShoppingItem(withName: "Grapes", image: "grapes")
+            self.createShoppingItem(withName: "Milk", image: "milk")
+            self.createShoppingItem(withName: "Muffin", image: "muffin")
+            self.createShoppingItem(withName: "Popcorn", image: "popcorn")
+            self.createShoppingItem(withName: "Soda", image: "soda")
+            self.createShoppingItem(withName: "Strawberries", image: "strawberries")
+        }
     }
     
     // MARK: - CRUD
     
     private(set) var shoppingItems: [ShoppingItem] = []
     
-    func createShoppingItem(withName name: String, imageName: String, hasBeenAdded: Bool = false) {
-        let shoppingItem = ShoppingItem(name: name, imageName: imageName, hasBeenAdded: hasBeenAdded)
+    func createShoppingItem(withName name: String, image: String, hasBeenAdded: Bool = false) {
+        let shoppingItem = ShoppingItem(name: name, image: image, hasBeenAdded: hasBeenAdded)
         shoppingItems.append(shoppingItem)
         
         saveToPersistentStore()
     }
     
-    func update(shoppingItem: ShoppingItem, name: String, imageName: String, hasBeenAdded: Bool) {
+    func update(shoppingItem: ShoppingItem, name: String, image: String, hasBeenAdded: Bool) {
         guard let index = shoppingItems.index(of: shoppingItem) else { return }
         
         var shoppingItem = shoppingItem
         shoppingItem.name = name
-        shoppingItem.imageName = imageName
+        shoppingItem.image = image
         
         shoppingItem.hasBeenAdded = hasBeenAdded
         
@@ -53,7 +71,15 @@ class ShoppingItemController {
     // MARK: - Methods
     
     func updateHasBeenAdded(for shoppingItem: ShoppingItem) {
+        guard let index = shoppingItems.index(of: shoppingItem) else  { return }
         
+        var shoppingItem = shoppingItem
+        shoppingItem.hasBeenAdded = !shoppingItem.hasBeenAdded
+        
+        shoppingItems.remove(at: index)
+        shoppingItems.insert(shoppingItem, at: index)
+        
+        saveToPersistentStore()
     }
     
     // MARK: - Archiving

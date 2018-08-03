@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		398B85562114AE270006D78E /* ShoppingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398B85552114AE270006D78E /* ShoppingItem.swift */; };
 		398B85592114AE3F0006D78E /* ShoppingItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398B85582114AE3F0006D78E /* ShoppingItemController.swift */; };
+		398B855C2114C1F70006D78E /* LocalNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398B855B2114C1F70006D78E /* LocalNotificationHelper.swift */; };
 		39AA44262114AA84006FABAE /* ShoppingListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AA44252114AA84006FABAE /* ShoppingListCollectionViewController.swift */; };
 		39AA44282114AAAD006FABAE /* ShoppingItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AA44272114AAAD006FABAE /* ShoppingItemCollectionViewCell.swift */; };
 		39AA442B2114ABD6006FABAE /* ShoppingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AA442A2114ABD6006FABAE /* ShoppingDetailViewController.swift */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		398B85552114AE270006D78E /* ShoppingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItem.swift; sourceTree = "<group>"; };
 		398B85582114AE3F0006D78E /* ShoppingItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemController.swift; sourceTree = "<group>"; };
+		398B855B2114C1F70006D78E /* LocalNotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationHelper.swift; sourceTree = "<group>"; };
 		39AA44252114AA84006FABAE /* ShoppingListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListCollectionViewController.swift; sourceTree = "<group>"; };
 		39AA44272114AAAD006FABAE /* ShoppingItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		39AA442A2114ABD6006FABAE /* ShoppingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingDetailViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +59,14 @@
 				398B85582114AE3F0006D78E /* ShoppingItemController.swift */,
 			);
 			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
+		398B855D2114C1FB0006D78E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				398B855B2114C1F70006D78E /* LocalNotificationHelper.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		39AA44232114A70D006FABAE /* View Controllers */ = {
@@ -112,6 +122,7 @@
 				39AA44242114A717006FABAE /* Storyboards */,
 				4613E91821143BFD00E7FF73 /* Assets.xcassets */,
 				4613E91D21143BFD00E7FF73 /* Info.plist */,
+				398B855D2114C1FB0006D78E /* Helpers */,
 			);
 			path = "Shopping List";
 			sourceTree = "<group>";
@@ -190,6 +201,7 @@
 				39AA44262114AA84006FABAE /* ShoppingListCollectionViewController.swift in Sources */,
 				39AA44282114AAAD006FABAE /* ShoppingItemCollectionViewCell.swift in Sources */,
 				4613E91221143BFC00E7FF73 /* AppDelegate.swift in Sources */,
+				398B855C2114C1F70006D78E /* LocalNotificationHelper.swift in Sources */,
 				398B85562114AE270006D78E /* ShoppingItem.swift in Sources */,
 				398B85592114AE3F0006D78E /* ShoppingItemController.swift in Sources */,
 				39AA442B2114ABD6006FABAE /* ShoppingDetailViewController.swift in Sources */,

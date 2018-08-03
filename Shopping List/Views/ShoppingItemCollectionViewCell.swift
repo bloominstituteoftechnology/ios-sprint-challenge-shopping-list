@@ -31,12 +31,12 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     func updateViews() {
         guard let shoppingItem = shoppingItem else { return }
         
+        
+        
         if shoppingItem.hasBeenAdded ==  true {
             addedNotAddedLabel.text = "Added"
         } else {
             addedNotAddedLabel.text = "Not Added"
         }
-        
-        
     }
 }

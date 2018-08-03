@@ -10,18 +10,29 @@ import UIKit
 
 class ShoppingDetailViewController: UIViewController {
 
+    // MARK: - Properties
+    
+    var shoppingItemController: ShoppingItemController?
+    
+    let localNotificationHelper = LocalNotificationHelper()
+    
     @IBOutlet var textLabel: UILabel!
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var addressTextField: UITextField!
     
     @IBAction func sendOrder(_ sender: Any) {
+        
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//
+//        localNotificationHelper.getAuthorizationStatus() { (success) in
+//            self.localNotificationHelper.scheduleDailyReminderNotification()
+//            }
+//        }
+//    }
+//    
+    
 
 }
