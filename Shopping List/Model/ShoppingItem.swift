@@ -19,6 +19,12 @@ struct ShoppingItem: Equatable {
         self.addedToShoppingList = false
     }
     
+    init(name: String, image: UIImage) {
+        self.name = name
+        self.image = image
+        self.addedToShoppingList = false
+    }
+    
     //MARK: - PROPERTIES
     var name: String
     var image: UIImage

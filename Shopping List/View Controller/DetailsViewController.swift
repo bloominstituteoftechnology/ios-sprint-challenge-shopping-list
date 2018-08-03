@@ -11,12 +11,12 @@ import UserNotifications
 
 class DetailsViewController: UIViewController {
     
+    //MARK: - OVERRIDES
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let items = shoppingItemController?.itemsThatAreAdded else {return}
         descriptionLabel.text = "You currently have \(items) item(s) in your shopping list."
     }
-
     
     //MARK: - PROPERTIES
     var shoppingItemController: ShoppingItemController? 
@@ -24,16 +24,14 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     let localNotificationHelper = LocalNotificationHelper()
-    
-    
-    
+
     //MARK: - METHODS
     @IBAction func sendOrderButtonPressed(_ sender: Any) {
         localNotificationHelper.requestAuthorization { (true) in
             self.sendNotification()
+            self.navigationController?.popViewController(animated: true)
         }
     }
-    
     
     func sendNotification() {
         guard let name = nameTextField.text,
@@ -55,7 +53,4 @@ class DetailsViewController: UIViewController {
             }
         }
     }
-    
-    
-    
 }

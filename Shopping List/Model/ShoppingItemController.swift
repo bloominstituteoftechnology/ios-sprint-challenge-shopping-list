@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class ShoppingItemController {
     
@@ -21,7 +22,6 @@ class ShoppingItemController {
         return count
     }
     
-    
     private (set) var shoppingList = [
         ShoppingItem(name: "apple", imageName: "apple"),
         ShoppingItem(name: "grapes", imageName: "grapes"),
@@ -32,14 +32,8 @@ class ShoppingItemController {
         ShoppingItem(name: "strawberries", imageName: "strawberries")
     ]
     
-    var addedShoppingList: [ShoppingItem] {
-        return shoppingList.filter { $0.addedToShoppingList }
-    }
-    
-    var notAddedShoppingList: [ShoppingItem] { return shoppingList.filter { !$0.addedToShoppingList}}
-    
     var sortedShoppingList: [ShoppingItem] {
-        return addedShoppingList + notAddedShoppingList
+        return shoppingList.filter { $0.addedToShoppingList } + shoppingList.filter { !$0.addedToShoppingList}
     }
     
     //MARK: - METHODS
@@ -48,4 +42,8 @@ class ShoppingItemController {
         shoppingList[index].addedToShoppingList = !shoppingList[index].addedToShoppingList
     }
     
+    func addItem(name: String, image: UIImage) {
+        let newItem = ShoppingItem(name: name, image: image)
+        shoppingList.append(newItem)
+    }
 }
