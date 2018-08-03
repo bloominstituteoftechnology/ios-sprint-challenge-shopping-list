@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import UIKit
 
 struct ShoppingItem {
-    var image: Data
+    var image: UIImage!
     var name: String
     var addedToList: Bool
 }
