@@ -12,8 +12,8 @@ class ShoppingItemController {
     
     var shoppingItems: [ShoppingItem] = []
     
+    var shoppingList: ShoppingList?
     
-    let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
     
     // create and update methods to handle data and interface changes
     

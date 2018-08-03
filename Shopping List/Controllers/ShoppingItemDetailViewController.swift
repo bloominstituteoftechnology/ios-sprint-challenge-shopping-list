@@ -49,16 +49,17 @@ class ShoppingItemDetailViewController: UIViewController {
             switch status {
                 
             case .authorized: do {
-                self.performSegue(withIdentifier: .notification, sender: nil)
+                NSLog("User authorization status is successful")
                 }
                 
             case .denied: do {
                 NSLog("User denied authorization access")
+                return
                 }
                 
             case .notDetermined: do {
                 NSLog("User authorization status is undetermined")
-
+                return
                 }
             }
         }

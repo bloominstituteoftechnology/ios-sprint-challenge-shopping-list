@@ -43,16 +43,17 @@ class LocalNotificationHelper {
         date.second = 5
         
         let content = UNMutableNotificationContent()
-        content.body = "Hi, \(String(describing: shoppingDetailVC.nameTextField.text)) 👋. Your delivery to \(String(describing: shoppingDetailVC.addressTextField.text)) will be there in 15 minutes!"
+        content.title = "Shopping List"
+        content.body = "Delivery for \(String(describing: shoppingDetailVC.nameTextField.text))!. Your shopping items will be delivered to \(String(describing: shoppingDetailVC.addressTextField.text)) in 15 minutes!"
         content.sound = .default()
-        content.subtitle = "Thank you"
         
-        let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: false)
+       let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
         
         let request = UNNotificationRequest(identifier: .notification, content: content, trigger: trigger)
         
         let notificationCenter = UNUserNotificationCenter.current()
         notificationCenter.add(request) { (error) in
+            
             if let error = error {
                 NSLog("Error scheduling notification \(error)")
                 return

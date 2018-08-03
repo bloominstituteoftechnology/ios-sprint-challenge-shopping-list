@@ -15,4 +15,5 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var shoppingItemImage: UIImageView!
     
     
+    
 }

@@ -20,3 +20,8 @@ struct ShoppingItem: Equatable, Codable {
         self.itemName = itemName
     }
 }
+
+struct ShoppingList {
+    let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
+}
+
