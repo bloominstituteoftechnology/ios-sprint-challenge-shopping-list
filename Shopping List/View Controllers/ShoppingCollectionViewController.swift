@@ -19,6 +19,7 @@ class ShoppingCollectionViewController: UICollectionViewController, ShoppingItem
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        shoppingController.loadFromPersistentStore()
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -29,7 +30,7 @@ class ShoppingCollectionViewController: UICollectionViewController, ShoppingItem
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingItemCell", for: indexPath) as! ShoppingCollectionViewCell
         
         cell.shoppingItemLabel.text = shoppingController.shoppingItems[indexPath.item].name
-        cell.shoppingItemImageView.image = shoppingController.shoppingItems[indexPath.item].image
+        cell.shoppingItemImageView.image = UIImage(data: shoppingController.shoppingItems[indexPath.item].image)
         cell.shoppingItem = shoppingController.shoppingItems[indexPath.item]
         cell.delegate = self
     

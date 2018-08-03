@@ -14,8 +14,18 @@ class CreateShoppingOrderViewController: UIViewController {
         guard let itemCount = shoppingController?.inShoppingList.count else { return }
         itemsInShoppingListLabel?.text = "You currently have \(itemCount) items(s) in your shopping list."
     }
-    
-    
+
+    @IBAction func createOrder(_ sender: Any) {
+        guard let name = nameTextField.text,
+            let address = addressTextField.text else { return }
+        localNotificationHelper.requestAuthorization { (success) in
+            self.localNotificationHelper.scheduleShoppingOrder(name: name, address: address)
+        }
+    }
+
+    @IBOutlet var addressTextField: UITextField!
+    @IBOutlet var nameTextField: UITextField!
     @IBOutlet var itemsInShoppingListLabel: UILabel!
     var shoppingController: ShoppingController?
+    var localNotificationHelper: LocalNotificationHelper = LocalNotificationHelper()
 }
