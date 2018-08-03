@@ -16,20 +16,20 @@ class ShoppingCollectionViewCell: UICollectionViewCell {
             shoppingItemAddedLabel?.text = "Not Added"
         }
     }
-    
+
     @IBAction func toggleAdd(_ sender: Any) {
         delegate?.toggleAddedToList(for: self)
     }
-    
+
     @IBOutlet var shoppingItemAddedLabel: UILabel!
     @IBOutlet var shoppingItemLabel: UILabel!
     @IBOutlet var shoppingItemImageView: UIImageView!
-    
+
     var shoppingItem: ShoppingItem! {
         didSet {
             updateViews()
         }
     }
-    
+
     weak var delegate: ShoppingItemCollectionCellDelegate?
 }
