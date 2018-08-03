@@ -25,6 +25,7 @@ class ShoppingCollectionViewCell: UICollectionViewCell {
     }
     
     
+    
     // MARK - Properties
     @IBOutlet weak var itemNameLabel: UILabel!
 

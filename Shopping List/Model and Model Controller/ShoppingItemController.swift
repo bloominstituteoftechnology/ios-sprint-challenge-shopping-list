@@ -65,6 +65,11 @@ class ShoppingItemController {
         saveToPersistenceStore()
     }
     
+    func clearCart(){
+        for index in 0...shoppingList.count - 1{
+            shoppingList[index].isAdded = false
+        }
+    }
         
     //MARK: - Properties
     private(set) var shoppingList = [ShoppingItem]()

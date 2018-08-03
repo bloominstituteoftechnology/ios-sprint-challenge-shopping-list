@@ -24,6 +24,11 @@ class ShoppingCollectionViewController: UICollectionViewController {
         // Do any additional setup after loading the view.
     }
 
+   override func  viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView?.reloadData()
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         return shoppingItemController.shoppingList.count //Shopping list must have been created or something went horribly wrong

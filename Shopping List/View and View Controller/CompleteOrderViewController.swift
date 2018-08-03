@@ -14,8 +14,6 @@ class CompleteOrderViewController: UIViewController {
         super.viewWillAppear(animated)
         updateView()
         
-        
-        
     }
     
     func updateView(){
@@ -28,14 +26,29 @@ class CompleteOrderViewController: UIViewController {
     
     
     @IBAction func sendOrder(_ sender: Any) {
+       //checks to make sure label has text else do nothing
+        guard let name = nameLabel.text,
+            let address = addressLabel.text else {return}
         
+        //checks to see if the shopping cart is empty or the text is empty.
+        let numberOfItems = shoppingItemController?.shoppingCart.count
+        if numberOfItems == 0 || name.isEmpty || address.isEmpty {return}
+        
+        //request Authorization for notification
         notificationHelper.requestAuthorization { (authorizationStatus) in
             if authorizationStatus == true{
                 self.notificationHelper.setNotification()
+            } else {
+                return
             }
         }
-//        nameLabel.text = ""
-//        addressLabel.text = ""
+        
+        //Once authorized, clear everything, save to persistent store and pop back to previous VC
+        nameLabel.text = ""
+        addressLabel.text = ""
+        shoppingItemController?.clearCart()
+        shoppingItemController?.saveToPersistenceStore()
+        navigationController?.popViewController(animated: true)
     }
 
     
