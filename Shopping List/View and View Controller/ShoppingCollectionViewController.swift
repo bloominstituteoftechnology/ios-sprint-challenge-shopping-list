@@ -36,15 +36,12 @@ class ShoppingCollectionViewController: UICollectionViewController {
         return cell
     }
     
-    @IBAction func toggeAddStatus(_ sender: Any) {
-        guard let indexPath = collectionView?.indexPathsForSelectedItems?.first else {return}
-        let shoppingItem = shoppingItemController.shoppingList[indexPath.row]
-        
-        shoppingItemController.toggleAddStatus(forItem: shoppingItem)
-        collectionView?.reloadData()
-        
+   
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let itemTapped = shoppingItemController.shoppingList[indexPath.row]
+        shoppingItemController.toggleAddStatus(forItem: itemTapped)
+        collectionView.reloadData()
     }
-    
 
      // MARK: - Navigation
      
