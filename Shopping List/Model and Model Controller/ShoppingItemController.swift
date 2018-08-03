@@ -13,7 +13,9 @@ class ShoppingItemController {
     
     init() {
         //set up stuff, if never been initialized before
-        if(setupBool == nil) {
+        isInitialized = UserDefaults.standard.bool(forKey: setupKey)
+        
+        if(isInitialized == nil){
             let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
             
             for item in itemNames{
@@ -24,14 +26,10 @@ class ShoppingItemController {
                 let newItem = ShoppingItem(imageData: imageData, name: item, isAdded: false)
                 shoppingList.append(newItem)
             }
+            UserDefaults.standard.set(true, forKey: setupKey)
+        } 
             //set user default to reflect that it has been set up.
-            setupBool = true
-            UserDefaults.standard.set(setupBool, forKey: setupKey)
-        } else {
-            loadFromPersistenceStore()
-            setupBool = true
-            UserDefaults.standard.set(setupBool, forKey: setupKey)
-        }
+ 
     }
     
     func saveToPersistenceStore(){
@@ -86,5 +84,5 @@ class ShoppingItemController {
     
     
     private let setupKey = "SetupKey"
-    private(set) var setupBool: Bool?
+    private(set) var isInitialized:Bool?
 }

@@ -14,6 +14,7 @@ class ShoppingCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        shoppingItemController.loadFromPersistenceStore()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
