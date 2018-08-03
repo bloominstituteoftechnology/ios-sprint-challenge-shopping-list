@@ -35,5 +35,19 @@ class LocalNotificationHelper {
         let content = UNMutableNotificationContent()
         content.title = "Delivery for \(name)!"
         content.body = "Your delivery will be shipped to \(address)"
+        
+        let sound = UNNotificationSound.default()
+        content.sound = sound
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 7, repeats: false)
+        let request = UNNotificationRequest(identifier: "NotificationID", content: content, trigger: trigger)
+        
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.add(request) { (error) in
+            if let error = error {
+                NSLog("There was an error scheduling a notification: \(error)")
+                return
+            }
+        }
     }
 }

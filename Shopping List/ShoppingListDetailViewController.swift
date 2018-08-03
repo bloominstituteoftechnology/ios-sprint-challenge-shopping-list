@@ -28,7 +28,15 @@ class ShoppingListDetailViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func sendOrder(_ sender: Any) {
-        
+        guard let name = nameTextField.text,
+            let address = adressTextField.text else {
+                return
+        }
+        localNotificationHelper.requestAuthorization { (success) in
+            if success == true {
+                self.localNotificationHelper.sendNotification(name: name, address: address)
+            }
+        }
     }
     
     
@@ -36,6 +44,7 @@ class ShoppingListDetailViewController: UIViewController {
     // MARK: - Properties
     
     var numberInCart: Int?
+    let localNotificationHelper = LocalNotificationHelper()
     
     
     // MARK: - Outlets
