@@ -7,16 +7,38 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
 
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        let center = UNUserNotificationCenter.current()
+        center.delegate = self // set the delegate of the notification center for this notification
+        // request authorization for notifications
+        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+            if let error = error {
+                NSLog("There was an error request auth from notifications: \(error)")
+            }
+            
+            NSLog("Notifications authorization granted? \(granted)")
+        }
+        
         return true
+        
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, // notification handler
+        willPresent notification: UNNotification, // the notification which is about to be presented
+        withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        // this gets called right before the notification when your app is running in the foreground
+        print("The notification arrived!")
+        
+        // to make banner show up, we call the completion handler with the notification type (alert, carPlay, sound, badge)
+        completionHandler([.alert, .sound])
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

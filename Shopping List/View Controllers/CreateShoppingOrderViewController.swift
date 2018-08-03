@@ -21,6 +21,7 @@ class CreateShoppingOrderViewController: UIViewController {
         localNotificationHelper.requestAuthorization { (success) in
             self.localNotificationHelper.scheduleShoppingOrder(name: name, address: address)
         }
+        navigationController?.popViewController(animated: true)
     }
 
     @IBOutlet var addressTextField: UITextField!
