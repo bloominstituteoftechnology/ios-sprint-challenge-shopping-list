@@ -32,21 +32,20 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as! ShoppingItemCollectionViewCell
     
         let shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
+        cell.shoppingItem = shoppingItem
         
-        cell.nameLabel?.text = shoppingItem.name
-        cell.imageview?.image = UIImage(named: shoppingItem.image)
     
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let index = collectionView.indexPathsForSelectedItems?.first?.item else { return }
+//        guard let index = collectionView.indexPathsForSelectedItems?.first?.item else { return }
+        let index = indexPath.item
         
         let shoppingItem = shoppingItemController.shoppingItems[index]
+        shoppingItemController.updateIsAdded(for: shoppingItem)
         
-        if shoppingItem.hasBeenAdded == true {
-            shoppingItemController.updateHasBeenAdded(for: shoppingItem)
-        } 
+        collectionView.reloadData()
     }
     
     // MARK: - Navigation
@@ -54,7 +53,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let detailVC = segue.destination as? ShoppingDetailViewController else { return }
         
-        detailVC.shoppingItemController = shoppingItemController
+        detailVC.shoppingItemController = shoppingItemController 
     }
     
 

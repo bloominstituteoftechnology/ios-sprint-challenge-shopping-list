@@ -38,21 +38,21 @@ class ShoppingItemController {
     
     private(set) var shoppingItems: [ShoppingItem] = []
     
-    func createShoppingItem(withName name: String, image: String, hasBeenAdded: Bool = false) {
-        let shoppingItem = ShoppingItem(name: name, image: image, hasBeenAdded: hasBeenAdded)
+    func createShoppingItem(withName name: String, image: String, isAdded: Bool = false) {
+        let shoppingItem = ShoppingItem(name: name, image: image, isAdded: isAdded)
         shoppingItems.append(shoppingItem)
         
         saveToPersistentStore()
     }
     
-    func update(shoppingItem: ShoppingItem, name: String, image: String, hasBeenAdded: Bool) {
+    func update(shoppingItem: ShoppingItem, name: String, image: String, isAdded: Bool) {
         guard let index = shoppingItems.index(of: shoppingItem) else { return }
         
         var shoppingItem = shoppingItem
         shoppingItem.name = name
         shoppingItem.image = image
         
-        shoppingItem.hasBeenAdded = hasBeenAdded
+        shoppingItem.isAdded = isAdded
         
         shoppingItems.remove(at: index)
         shoppingItems.insert(shoppingItem, at: index)
@@ -70,16 +70,21 @@ class ShoppingItemController {
     
     // MARK: - Methods
     
-    func updateHasBeenAdded(for shoppingItem: ShoppingItem) {
+    func updateIsAdded(for shoppingItem: ShoppingItem) {
         guard let index = shoppingItems.index(of: shoppingItem) else  { return }
         
-        var shoppingItem = shoppingItem
-        shoppingItem.hasBeenAdded = !shoppingItem.hasBeenAdded
+        var shoppingItem = shoppingItems[index]
+        shoppingItem.isAdded = !shoppingItem.isAdded
         
+        // you arent saving the item back in over here. you made a copy, but didn't remove the old and add the new back in
         shoppingItems.remove(at: index)
         shoppingItems.insert(shoppingItem, at: index)
         
         saveToPersistentStore()
+    }
+    
+    func shoppingCart(for shoppingItem: ShoppingItem) {
+        
     }
     
     // MARK: - Archiving

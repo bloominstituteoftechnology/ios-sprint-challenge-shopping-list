@@ -35,8 +35,8 @@ class LocalNotificationHelper {
     func scheduleDailyReminderNotification() {
         
         let content = UNMutableNotificationContent()
-        content.title = "Delivery For \(name)!"
-        content.body = "Your shopping items will be delivered tp \(address) in 15 mintutes."
+//        content.title = "Delivery For \(name)!"
+//        content.body = "Your shopping items will be delivered tp \(address) in 15 mintutes."
         content.sound = UNNotificationSound.default()
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)

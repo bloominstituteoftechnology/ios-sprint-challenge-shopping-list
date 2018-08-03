@@ -12,6 +12,6 @@ struct ShoppingItem: Equatable, Codable {
     
     var name: String
     var image: String
-    var hasBeenAdded: Bool
+    var isAdded: Bool
 }
 

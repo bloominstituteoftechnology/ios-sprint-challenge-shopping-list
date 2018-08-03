@@ -21,7 +21,13 @@ class ShoppingDetailViewController: UIViewController {
     @IBOutlet var addressTextField: UITextField!
     
     @IBAction func sendOrder(_ sender: Any) {
+        guard let name = nameTextField.text, let address = addressTextField.text else { return }
         
+        localNotificationHelper.requestAuthorization() { (success) in
+            if success  == true {
+                self.localNotificationHelper.scheduleDailyReminderNotification()
+            }
+        }
     }
     
 //    override func viewDidLoad() {
@@ -32,7 +38,9 @@ class ShoppingDetailViewController: UIViewController {
 //            }
 //        }
 //    }
-//    
+//
+    
+    
     
 
 }

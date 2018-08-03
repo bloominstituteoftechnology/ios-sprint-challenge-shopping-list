@@ -31,9 +31,10 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     func updateViews() {
         guard let shoppingItem = shoppingItem else { return }
         
+        imageview?.image = UIImage(named: shoppingItem.image)
+        nameLabel?.text = shoppingItem.name
         
-        
-        if shoppingItem.hasBeenAdded ==  true {
+        if shoppingItem.isAdded ==  true {
             addedNotAddedLabel.text = "Added"
         } else {
             addedNotAddedLabel.text = "Not Added"
