@@ -65,7 +65,13 @@ class ShoppingListCollectionViewController: UICollectionViewController, ItemList
      //ShowAddressForm
      override func prepare(for segue: UIStoryboardSegue, sender: Any?)
      {
-     
+        guard let addressView = segue.destination as? AddressFormViewController else {return}
+        addressView.shoppingItemController = shoppingItemController
+        let itemsSelected = shoppingItemController.selectedItems.count
+        if itemsSelected > 0
+        {
+            addressView.itemCount = itemsSelected
+        }
      }
     
 

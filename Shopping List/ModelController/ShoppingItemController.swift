@@ -22,6 +22,16 @@ class ShoppingItemController
         ShoppingItem(itemName: "strawberries", iconName: "strawberries")
     ]
     
+    var selectedItems: [ShoppingItem]
+    {
+        return shoppingItems.filter({ $0.itemAdded == true })
+    }
+    
+    var unselectedItems: [ShoppingItem]
+    {
+        return shoppingItems.filter ({ $0.itemAdded == false })
+    }
+    
     func updateItemAdded(for shoppingItem: ShoppingItem)
     {
         guard let index = shoppingItems.index(of: shoppingItem) else {return}
