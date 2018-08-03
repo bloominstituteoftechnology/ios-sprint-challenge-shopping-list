@@ -81,7 +81,7 @@ class SendOrderViewController: UIViewController
     @objc private func handleSendOrder()
     {
         notificationHelper?.getAuthorizationStatus(completion: { (status) in
-            
+
             if status != .authorized
             {
                 self.requestNotificationAuthorization()
@@ -100,7 +100,7 @@ class SendOrderViewController: UIViewController
             }
             else
             {
-                let alert = UIAlertController(title: "We need permission to send you notifications in order for the app to work.", message: "Please grant permission and try again!", preferredStyle: .alert)
+                let alert = UIAlertController(title: "We need permission to send you notifications in order for the app to work.", message: "Please go to your settings and grant permission and try again.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }

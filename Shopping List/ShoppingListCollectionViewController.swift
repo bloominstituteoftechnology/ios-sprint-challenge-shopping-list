@@ -32,7 +32,16 @@ class ShoppingListCollectionViewController: UICollectionViewController, UICollec
     private func setupNavBar()
     {
         title = "Shopping List"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(handleNextButton))
+        let addBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleAddNewShoppingItem))
+        let nextBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(handleNextButton))
+        navigationItem.rightBarButtonItems = [nextBarButtonItem, addBarButtonItem]
+    }
+    
+    @objc private func handleAddNewShoppingItem()
+    {
+        let addShoppingItemViewController = AddShoppingItemViewController()
+        addShoppingItemViewController.shoppingItemController = self.shoppingItemController
+        navigationController?.pushViewController(addShoppingItemViewController, animated: true)
     }
     
     @objc func handleNextButton()
@@ -60,6 +69,8 @@ class ShoppingListCollectionViewController: UICollectionViewController, UICollec
         navigationController?.pushViewController(sendOrderViewController, animated: true)
     }
 
+    //MARK: - DataSource & FlowLayout
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
         return shoppingItemController.shoppingItems.count
@@ -89,12 +100,9 @@ class ShoppingListCollectionViewController: UICollectionViewController, UICollec
         let shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
         self.shoppingItemController.didSelectShoppingItem(on: shoppingItem)
         
-        UIView.animate(withDuration: 0.3, animations: {
-            
+        UIView.animate(withDuration: 0.3)
+        {
             cell.didSelectImageView.isHidden = shoppingItem.isSelected ? true : false
-            
-        }) { (completed) in
-            
         }
     }
     
