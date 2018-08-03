@@ -23,6 +23,7 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
     private func updateViews() {
         guard let shoppingItem = shoppingItem else {return }
         
+        cartLabel.text = shoppingItem.addedToList ? "Added" : "Not Added"
         let image = UIImage(data: shoppingItem.image)
         itemImageView.image = image
         nameLabel.text = shoppingItem.name

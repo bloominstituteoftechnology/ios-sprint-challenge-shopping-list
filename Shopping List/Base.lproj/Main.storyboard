@@ -117,6 +117,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I8G-5H-b8x">
                                         <rect key="frame" x="0.0" y="110.5" width="355" height="30"/>
                                         <state key="normal" title="Send Order"/>
+                                        <connections>
+                                            <action selector="sendOrder:" destination="mCo-d2-eLN" eventType="touchUpInside" id="DDe-9h-C2f"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -129,6 +132,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ztq-XP-J0c"/>
                     </view>
+                    <connections>
+                        <outlet property="addressTextField" destination="3QQ-ve-uDy" id="LiK-SF-VZ4"/>
+                        <outlet property="nameTextField" destination="BTn-VP-sbJ" id="12d-oN-blF"/>
+                        <outlet property="summaryLabel" destination="YxM-zT-wn4" id="DpA-NT-1dA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aQ0-ON-efy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

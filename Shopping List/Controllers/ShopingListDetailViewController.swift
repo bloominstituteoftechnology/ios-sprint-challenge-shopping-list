@@ -9,6 +9,14 @@
 import UIKit
 
 class ShopingListDetailViewController: UIViewController {
+    
+    @IBOutlet weak var summaryLabel: UILabel!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var addressTextField: UITextField!
+    
+    @IBAction func sendOrder(_ sender: Any) {
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
