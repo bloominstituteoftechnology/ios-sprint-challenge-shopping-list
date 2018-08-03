@@ -17,6 +17,9 @@
 		DE5981ED2114AE3200C1278C /* ShoppingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5981EC2114AE3200C1278C /* ShoppingItem.swift */; };
 		DE5981F32114B2E200C1278C /* ShoppingItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5981F22114B2E200C1278C /* ShoppingItemController.swift */; };
 		DE5981F52114C38C00C1278C /* ItemListCollectionCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5981F42114C38C00C1278C /* ItemListCollectionCellDelegate.swift */; };
+		DE5981F72114E0D100C1278C /* ShoppingOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5981F62114E0D100C1278C /* ShoppingOrder.swift */; };
+		DE5981F92114E10C00C1278C /* ShoppingOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5981F82114E10C00C1278C /* ShoppingOrderController.swift */; };
+		DE5981FB2114E5CD00C1278C /* LocalNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5981FA2114E5CD00C1278C /* LocalNotificationHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		DE5981EC2114AE3200C1278C /* ShoppingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItem.swift; sourceTree = "<group>"; };
 		DE5981F22114B2E200C1278C /* ShoppingItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemController.swift; sourceTree = "<group>"; };
 		DE5981F42114C38C00C1278C /* ItemListCollectionCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListCollectionCellDelegate.swift; sourceTree = "<group>"; };
+		DE5981F62114E0D100C1278C /* ShoppingOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingOrder.swift; sourceTree = "<group>"; };
+		DE5981F82114E10C00C1278C /* ShoppingOrderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingOrderController.swift; sourceTree = "<group>"; };
+		DE5981FA2114E5CD00C1278C /* LocalNotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,9 +71,10 @@
 			isa = PBXGroup;
 			children = (
 				4613E91121143BFC00E7FF73 /* AppDelegate.swift */,
+				DE5981FA2114E5CD00C1278C /* LocalNotificationHelper.swift */,
 				DE5981F42114C38C00C1278C /* ItemListCollectionCellDelegate.swift */,
-				DE5981F02114AE5400C1278C /* Model */,
-				DE5981F12114AE5C00C1278C /* ModelController */,
+				DE5981F02114AE5400C1278C /* Models */,
+				DE5981F12114AE5C00C1278C /* ModelControllers */,
 				DE5981EA2114AC1300C1278C /* CustomCell */,
 				DE5981E52114ABB700C1278C /* ViewControllers */,
 				DE5981EB2114ADDA00C1278C /* SupportingFiles */,
@@ -103,20 +110,22 @@
 			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
-		DE5981F02114AE5400C1278C /* Model */ = {
+		DE5981F02114AE5400C1278C /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				DE5981EC2114AE3200C1278C /* ShoppingItem.swift */,
+				DE5981F62114E0D100C1278C /* ShoppingOrder.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
-		DE5981F12114AE5C00C1278C /* ModelController */ = {
+		DE5981F12114AE5C00C1278C /* ModelControllers */ = {
 			isa = PBXGroup;
 			children = (
 				DE5981F22114B2E200C1278C /* ShoppingItemController.swift */,
+				DE5981F82114E10C00C1278C /* ShoppingOrderController.swift */,
 			);
-			path = ModelController;
+			path = ModelControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,8 +201,11 @@
 			files = (
 				4613E91221143BFC00E7FF73 /* AppDelegate.swift in Sources */,
 				DE5981F52114C38C00C1278C /* ItemListCollectionCellDelegate.swift in Sources */,
+				DE5981F72114E0D100C1278C /* ShoppingOrder.swift in Sources */,
 				DE5981E42114ABAC00C1278C /* ShoppingListCollectionViewController.swift in Sources */,
+				DE5981FB2114E5CD00C1278C /* LocalNotificationHelper.swift in Sources */,
 				DE5981E92114AC0D00C1278C /* ItemListCollectionViewCell.swift in Sources */,
+				DE5981F92114E10C00C1278C /* ShoppingOrderController.swift in Sources */,
 				DE5981ED2114AE3200C1278C /* ShoppingItem.swift in Sources */,
 				DE5981F32114B2E200C1278C /* ShoppingItemController.swift in Sources */,
 				DE5981E22114AB7F00C1278C /* AddressFormViewController.swift in Sources */,
