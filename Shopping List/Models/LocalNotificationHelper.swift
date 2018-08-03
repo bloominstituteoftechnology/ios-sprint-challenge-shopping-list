@@ -37,15 +37,17 @@ class LocalNotificationHelper {
     
     func scheduleDailyReminderNotification() {
         
+        let shoppingDetailVC = ShoppingItemDetailViewController()
+        
         var date = DateComponents()
         date.second = 5
         
         let content = UNMutableNotificationContent()
-        content.body = "Hi, Alice. Your delivery will be there in 15 minutes!"
+        content.body = "Hi, \(String(describing: shoppingDetailVC.nameTextField.text)) 👋. Your delivery to \(String(describing: shoppingDetailVC.addressTextField.text)) will be there in 15 minutes!"
         content.sound = .default()
         content.subtitle = "Thank you"
         
-        let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: false)
         
         let request = UNNotificationRequest(identifier: .notification, content: content, trigger: trigger)
         
