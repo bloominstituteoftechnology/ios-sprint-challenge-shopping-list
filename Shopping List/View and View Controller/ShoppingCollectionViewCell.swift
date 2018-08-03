@@ -20,9 +20,7 @@ class ShoppingCollectionViewCell: UICollectionViewCell {
         
         let addedStatus = shoppingItem.isAdded ? "Added" : "Not Added"
         addedStatusLabel?.text = addedStatus
-        
 
-        
     }
     
     

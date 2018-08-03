@@ -22,16 +22,14 @@ class ShoppingItemController {
                 let imageData = UIImagePNGRepresentation(image) else {return}
             
             let newItem = ShoppingItem(imageData: imageData, name: item, isAdded: false)
-            shoppingList?.append(newItem)
+            shoppingList.append(newItem)
         }
     }
     
     func toggleAddStatus(forItem item: ShoppingItem) {
-        guard var shoppingList = shoppingList,
-            let index = shoppingList.index(of: item) else {return}
-        
-        shoppingList[index].isAdded = !shoppingList[index].isAdded
+        guard let index = shoppingList.index(of: item) else {return}
+        shoppingList[index].isAdded = shoppingList[index].isAdded
     }
     
-    private(set) var shoppingList: [ShoppingItem]?
+    private(set) var shoppingList = [ShoppingItem]()
 }
