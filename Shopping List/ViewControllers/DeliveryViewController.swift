@@ -14,24 +14,16 @@ class DeliveryViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         displayAddedItems()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     // Display shopping list items
     func displayAddedItems() {
         var string = ""
         guard let items = shoppingController?.shoppingItems else { return }
         for item in items {
-            let prettyItem = "\(item.name)\n"
-            string.append(prettyItem)
+            if item.addedToList == true {
+                let prettyItem = "\(item.name)\n"
+                string.append(prettyItem)
+            }
         }
         shoppingListTextView.text = string
     }
@@ -61,8 +53,10 @@ class DeliveryViewController: UIViewController {
     func scheduleNotification() {
         let identifier = UUID().uuidString
         let content = UNMutableNotificationContent()
-        content.title = "Your deliver is on its way"
-        content.body = "Your shopping will be delivered to your address in 15 minutes: \(addressLine1TextField.text ?? "" ), \(addressLine2TextField.text ?? "" ), \(cityTextField.text ?? "" ), \(stateTextField.text ?? "" ), \(zipCodeTextField.text ?? "" )"
+        content.title = "Your delivery is on its way"
+        content.body = "Your shopping will be delivered to your address in 15 minutes: \(nameTextField.text ?? "" ), \(addressLine1TextField.text ?? "" ), \(addressLine2TextField.text ?? "" ), \(cityTextField.text ?? "" ), \(stateTextField.text ?? "" ), \(zipCodeTextField.text ?? "" )"
+        let sound = UNNotificationSound.default()
+        content.sound = sound
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 2, repeats: false)
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
         let notificationCenter = UNUserNotificationCenter.current()
@@ -70,10 +64,14 @@ class DeliveryViewController: UIViewController {
     }
     
     
-    // Button functions
+    // MARK: - Button functions
     
     @IBAction func scheduleDelivery(_ sender: Any) {
+        self.requestAuthorization() { (success) in
+            self.scheduleNotification()
+        }
     }
+    
     // Outlets
     
     @IBOutlet weak var nameTextField: UITextField!
