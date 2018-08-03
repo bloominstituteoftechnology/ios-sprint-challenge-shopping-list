@@ -12,17 +12,25 @@ import UIKit
 class ShoppingItemController {
     
     init() {
-        //Use UserDefaults later to make sure it has been initialized before initializing
-        
-        let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
-        
-        for item in itemNames{
+        //set up stuff, if never been initialized before
+        if(setupBool == nil) {
+            let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
             
-            guard let image = UIImage(named:item),
-                let imageData = UIImagePNGRepresentation(image) else {return}
-            
-            let newItem = ShoppingItem(imageData: imageData, name: item, isAdded: false)
-            shoppingList.append(newItem)
+            for item in itemNames{
+                
+                guard let image = UIImage(named:item),
+                    let imageData = UIImagePNGRepresentation(image) else {return}
+                
+                let newItem = ShoppingItem(imageData: imageData, name: item, isAdded: false)
+                shoppingList.append(newItem)
+            }
+            //set user default to reflect that it has been set up.
+            setupBool = true
+            UserDefaults.standard.set(setupBool, forKey: setupKey)
+        } else {
+            loadFromPersistenceStore()
+            setupBool = true
+            UserDefaults.standard.set(setupBool, forKey: setupKey)
         }
     }
     
@@ -75,4 +83,8 @@ class ShoppingItemController {
         let filename = "ShoppingList.plist"
         return documentDirectory?.appendingPathComponent(filename)
     }
+    
+    
+    private let setupKey = "SetupKey"
+    private(set) var setupBool: Bool?
 }
