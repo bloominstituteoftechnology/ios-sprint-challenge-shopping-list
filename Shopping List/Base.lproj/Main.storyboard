@@ -50,10 +50,18 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AGt-JI-t0I">
+                                            <rect key="frame" x="0.0" y="0.0" width="202" height="215"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <connections>
+                                                <action selector="toggleAdd:" destination="Ypz-7V-aXv" eventType="touchUpInside" id="T8O-5Y-SUE"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
+                                    <outlet property="shoppingItemAddedLabel" destination="eZE-sj-S6S" id="Fyy-hX-7he"/>
                                     <outlet property="shoppingItemImageView" destination="kbe-ev-qI9" id="rdf-hk-Zs0"/>
                                     <outlet property="shoppingItemLabel" destination="7n3-qa-ukp" id="pDk-vF-XRd"/>
                                 </connections>
@@ -67,7 +75,7 @@
                     <navigationItem key="navigationItem" title="Shopping List" largeTitleDisplayMode="always" id="yf4-SP-6Mw">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="qV1-vG-FPx">
                             <connections>
-                                <segue destination="D19-v4-a4b" kind="show" id="ZMc-eh-5Z1"/>
+                                <segue destination="D19-v4-a4b" kind="show" identifier="PlaceOrder" id="ZMc-eh-5Z1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -76,10 +84,10 @@
             </objects>
             <point key="canvasLocation" x="957.60000000000002" y="120.98950524737631"/>
         </scene>
-        <!--View Controller-->
+        <!--Create Shopping Order View Controller-->
         <scene sceneID="hkV-sh-JlO">
             <objects>
-                <viewController id="D19-v4-a4b" sceneMemberID="viewController">
+                <viewController id="D19-v4-a4b" customClass="CreateShoppingOrderViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="l6O-u5-bTp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -128,7 +136,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fUX-97-YAn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1613.5999999999999" y="122.78860569715144"/>
+            <point key="canvasLocation" x="1793" y="121"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kP4-2a-Ca5">

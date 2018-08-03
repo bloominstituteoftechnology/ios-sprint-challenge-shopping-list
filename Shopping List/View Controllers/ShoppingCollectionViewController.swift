@@ -8,7 +8,15 @@
 
 import UIKit
 
-class ShoppingCollectionViewController: UICollectionViewController {
+class ShoppingCollectionViewController: UICollectionViewController, ShoppingItemCollectionCellDelegate {
+    
+    func toggleAddedToList(for item: ShoppingCollectionViewCell) {
+        guard let index = collectionView?.indexPath(for: item) else { return }
+        let shoppingItem = shoppingController.shoppingItems[index.item]
+        shoppingController.shoppingItemAddedToList(for: shoppingItem)
+        collectionView?.reloadData()
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,9 +31,15 @@ class ShoppingCollectionViewController: UICollectionViewController {
         
         cell.shoppingItemLabel.text = shoppingController.shoppingItems[indexPath.item].name
         cell.shoppingItemImageView.image = shoppingController.shoppingItems[indexPath.item].image
+        cell.shoppingItem = shoppingController.shoppingItems[indexPath.item]
+        cell.delegate = self
         
     
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("Cell \(indexPath.row) selected")
     }
     
     var shoppingController: ShoppingController = ShoppingController()

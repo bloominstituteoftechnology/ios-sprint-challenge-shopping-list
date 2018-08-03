@@ -10,7 +10,20 @@ import UIKit
 import Foundation
 
 class ShoppingController {
-
+    
+    func shoppingItemAddedToList(for shoppingItem: ShoppingItem) {
+        guard let index = shoppingItems.index(of: shoppingItem) else { return }
+        shoppingItems[index].addedToList.toggle()
+    }
+    
+    var inShoppingList: [ShoppingItem] {
+        return shoppingItems.filter { $0.addedToList }
+    }
+    
+    var notInShoppingList: [ShoppingItem] {
+        return shoppingItems.filter {!$0.addedToList}
+    }
+    
     var shoppingListURL: URL? {
         let fm = FileManager.default
         guard let documentDir = fm.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
