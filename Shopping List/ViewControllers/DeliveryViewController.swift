@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import UserNotifications
 
 class DeliveryViewController: UIViewController {
 
-
+    override func viewWillAppear(_ animated: Bool) {
+        displayAddedItems()
+    }
 
     /*
     // MARK: - Navigation
@@ -22,11 +25,55 @@ class DeliveryViewController: UIViewController {
     }
     */
     
+    // Display shopping list items
+    func displayAddedItems() {
+        var string = ""
+        guard let items = shoppingController?.shoppingItems else { return }
+        for item in items {
+            let prettyItem = "\(item.name)\n"
+            string.append(prettyItem)
+        }
+        shoppingListTextView.text = string
+    }
+    
+    // MARK: - Notifications
+    
+    // gets authorization from the user to receive notifications (boilerplate)
+    func getAuthorizationStatus(completion: @escaping (UNAuthorizationStatus) -> Void) {
+        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+            DispatchQueue.main.async {
+                completion(settings.authorizationStatus)
+            }
+        }
+    }
+    
+    func requestAuthorization(completion: @escaping (Bool) -> Void) {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (success, error) in
+            
+            if let error = error { NSLog("Error requesting authorization status for local notifications: \(error)") }
+            
+            DispatchQueue.main.async {
+                completion(success)
+            }
+        }
+    }
+    
+    func scheduleNotification() {
+        let identifier = UUID().uuidString
+        let content = UNMutableNotificationContent()
+        content.title = "Your deliver is on its way"
+        content.body = "Your shopping will be delivered to your address in 15 minutes: \(addressLine1TextField.text ?? "" ), \(addressLine2TextField.text ?? "" ), \(cityTextField.text ?? "" ), \(stateTextField.text ?? "" ), \(zipCodeTextField.text ?? "" )"
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 2, repeats: false)
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.add(request)
+    }
+    
+    
     // Button functions
     
     @IBAction func scheduleDelivery(_ sender: Any) {
     }
-    
     // Outlets
     
     @IBOutlet weak var nameTextField: UITextField!

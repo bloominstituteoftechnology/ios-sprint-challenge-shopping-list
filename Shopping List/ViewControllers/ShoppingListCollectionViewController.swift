@@ -27,8 +27,8 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingItemCell", for: indexPath) as! ShoppingCollectionViewCell
-    
-        cell.shoppingImageView.image = shoppingController.shoppingItems[indexPath.item].image
+        let image = UIImage(data: shoppingController.shoppingItems[indexPath.item].imageData)
+        cell.shoppingImageView.image = image
         cell.nameOfItemLabel.text = shoppingController.shoppingItems[indexPath.item].name
         if shoppingController.shoppingItems[indexPath.item].addedToList == false {
             cell.addedOrNotLabel.text = ""
