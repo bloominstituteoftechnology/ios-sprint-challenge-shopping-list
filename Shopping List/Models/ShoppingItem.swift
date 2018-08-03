@@ -8,6 +8,8 @@
 
 import Foundation
 
+// initialize a data model that conforms to `Equatable` and `Codable`
+
 struct ShoppingItem: Equatable, Codable {
     var itemImage: Data
     var itemName: String
