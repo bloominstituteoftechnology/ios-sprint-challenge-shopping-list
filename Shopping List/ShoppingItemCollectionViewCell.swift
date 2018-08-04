@@ -12,12 +12,18 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
     func updateViews() {
         guard let name = shoppingItem?.name,
+            let isAdded = shoppingItem?.isAdded,
             let imageData = shoppingItem?.imageData,
             let image = UIImage(data: imageData) else {
                 return
         }
         shoppingItemLabel.text = name
         shoppingItemImageView.image = image
+        if isAdded == true {
+            shoppingItemIsAddedLabel.text = "Added"
+        } else {
+            shoppingItemIsAddedLabel.text = "Not added"
+        }
     }
     
     // MARK: - Properties
@@ -33,5 +39,6 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var shoppingItemImageView: UIImageView!
     @IBOutlet weak var shoppingItemLabel: UILabel!
+    @IBOutlet weak var shoppingItemIsAddedLabel: UILabel!
     
 }
