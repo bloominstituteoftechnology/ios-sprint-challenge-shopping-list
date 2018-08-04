@@ -18,11 +18,12 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
                 return
         }
         shoppingItemLabel.text = name
+        shoppingItemLabel.adjustsFontSizeToFitWidth = true
         shoppingItemImageView.image = image
         if isAdded == true {
             shoppingItemIsAddedLabel.text = "Added"
         } else {
-            shoppingItemIsAddedLabel.text = "Not added"
+            shoppingItemIsAddedLabel.text = ""
         }
     }
     
