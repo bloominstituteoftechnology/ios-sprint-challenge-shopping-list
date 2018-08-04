@@ -81,10 +81,6 @@ class ShoppingController {
     
     var shoppingItems = [ShoppingItem]()
     
-    var addedToShoppingItems: [ShoppingItem] {
-        shopp
-    }
-    
     // UserDefaults
     let userDefaultsManager = UserDefaultsManager()
     
