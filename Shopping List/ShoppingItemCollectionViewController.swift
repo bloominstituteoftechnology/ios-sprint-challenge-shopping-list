@@ -47,11 +47,6 @@ class ShoppingItemCollectionViewController: UICollectionViewController {
         collectionView.reloadData()
     }
     
-    
-    // MARK: - Func
-    
-    
-    
 
     // MARK: - Properties
     

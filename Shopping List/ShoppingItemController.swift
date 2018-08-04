@@ -24,27 +24,11 @@ class ShoppingItemController {
     
     // MARK: - Functions
     
-    func createFromProvided(name: String, isAdded: Bool) {
-        guard let image = UIImage(contentsOfFile: name),
-            let imageData = UIImagePNGRepresentation(image) else {
-                return
-        }
-        let shoppingItem = ShoppingItem(name: name, imageData: imageData, isAdded: isAdded)
-        shoppingItems.append(shoppingItem)
-        saveToPersistentStore()
-    }
-    
     func updateIsAdded(item: ShoppingItem) {
         guard let index = shoppingItems.index(of: item) else { return }
         shoppingItems[index].isAdded = !item.isAdded
         
     }
-    
-    func loadSettings() {
-        
-        
-    }
-    // To implement the rest of CRUD if I finish early
     
     
     // MARK: - Persistence
