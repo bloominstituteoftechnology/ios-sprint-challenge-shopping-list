@@ -25,7 +25,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="nps-wQ-4ZD" customClass="ShoppingListCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoppingCell" id="nps-wQ-4ZD" customClass="ShoppingListCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -75,7 +75,7 @@
                     <navigationItem key="navigationItem" title="Shopping List" id="XaV-YZ-ATm">
                         <barButtonItem key="rightBarButtonItem" title="Order" id="a1Z-Ba-LpG">
                             <connections>
-                                <segue destination="J2g-y7-dZh" kind="show" id="N9h-jg-Twb"/>
+                                <segue destination="J2g-y7-dZh" kind="show" identifier="OrderItemsSegue" id="N9h-jg-Twb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
