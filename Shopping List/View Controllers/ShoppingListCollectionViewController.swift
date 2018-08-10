@@ -28,9 +28,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ShoppingListCollectionViewCell else { return UICollectionViewCell() }
     
         let shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
-        cell.itemImage.image = UIImage(named: shoppingItem.image)
-        cell.itemLabel.text = shoppingItem.item
-        cell.isAddedLabel.text = String(shoppingItem.isAdded)
+        cell.shoppingItem = shoppingItem
     
         return cell
     }
