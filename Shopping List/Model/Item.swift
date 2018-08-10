@@ -7,16 +7,18 @@
 //
 
 import Foundation
+import UIKit
 
-struct Item: Equatable, Codable {
+struct Item: Equatable, Codable{
     
     var name: String
-    var itemImage: Data
+    var image: Data
     var isAdded: Bool
     
-    init(name: String, itemImage: Data, isAdded: Bool = false){
+    init(name: String, image: String, isAdded: Bool = true){
         self.name = name
-        self.itemImage = itemImage
+        self.image = UIImagePNGRepresentation(UIImage(named: image)!)!
         self.isAdded = isAdded
     }
+
 }

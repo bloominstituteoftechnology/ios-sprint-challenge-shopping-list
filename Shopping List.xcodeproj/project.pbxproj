@@ -13,6 +13,8 @@
 		4613E91921143BFD00E7FF73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91821143BFD00E7FF73 /* Assets.xcassets */; };
 		4613E91C21143BFD00E7FF73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91A21143BFD00E7FF73 /* LaunchScreen.storyboard */; };
 		94222101211DE59B00AC17AF /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94222100211DE59B00AC17AF /* Item.swift */; };
+		94222104211DE7EB00AC17AF /* ShoppingItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94222103211DE7EB00AC17AF /* ShoppingItemController.swift */; };
+		94222107211DF37000AC17AF /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94222106211DF37000AC17AF /* PersistenceController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		4613E91B21143BFD00E7FF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4613E91D21143BFD00E7FF73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94222100211DE59B00AC17AF /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		94222103211DE7EB00AC17AF /* ShoppingItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemController.swift; sourceTree = "<group>"; };
+		94222106211DF37000AC17AF /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 		4613E91021143BFC00E7FF73 /* Shopping List */ = {
 			isa = PBXGroup;
 			children = (
+				94222105211DF2C700AC17AF /* Persistence */,
+				94222102211DE7B200AC17AF /* Model Controlller */,
 				942220FF211DE56200AC17AF /* Model */,
 				4613E91121143BFC00E7FF73 /* AppDelegate.swift */,
 				4613E91321143BFC00E7FF73 /* ViewController.swift */,
@@ -73,6 +79,22 @@
 				94222100211DE59B00AC17AF /* Item.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		94222102211DE7B200AC17AF /* Model Controlller */ = {
+			isa = PBXGroup;
+			children = (
+				94222103211DE7EB00AC17AF /* ShoppingItemController.swift */,
+			);
+			path = "Model Controlller";
+			sourceTree = "<group>";
+		};
+		94222105211DF2C700AC17AF /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				94222106211DF37000AC17AF /* PersistenceController.swift */,
+			);
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,7 +170,9 @@
 			files = (
 				4613E91421143BFC00E7FF73 /* ViewController.swift in Sources */,
 				94222101211DE59B00AC17AF /* Item.swift in Sources */,
+				94222104211DE7EB00AC17AF /* ShoppingItemController.swift in Sources */,
 				4613E91221143BFC00E7FF73 /* AppDelegate.swift in Sources */,
+				94222107211DF37000AC17AF /* PersistenceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
