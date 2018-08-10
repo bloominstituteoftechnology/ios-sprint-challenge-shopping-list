@@ -21,7 +21,7 @@ class ShoppingItemController {
             self.create(image: "muffin", item: "Muffin")
             self.create(image: "popcorn", item: "Popcorn")
             self.create(image: "soda", item: "Soda")
-            self.create(image: "straberries", item: "Strawberries")
+            self.create(image: "strawberries", item: "Strawberries")
         }
     }
     
