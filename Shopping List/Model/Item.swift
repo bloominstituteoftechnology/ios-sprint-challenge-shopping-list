@@ -15,7 +15,7 @@ struct Item: Equatable, Codable{
     var image: Data
     var isAdded: Bool
     
-    init(name: String, image: String, isAdded: Bool = true){
+    init(name: String, image: String, isAdded: Bool = false){
         self.name = name
         self.image = UIImagePNGRepresentation(UIImage(named: image)!)!
         self.isAdded = isAdded
