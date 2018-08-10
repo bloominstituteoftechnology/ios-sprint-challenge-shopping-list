@@ -18,21 +18,19 @@ class ShoppingItemController{
         for names in itemNames{
             let shoppingItem = Item(name: names, image: names)
             shoppingItems.append(shoppingItem)
+            
         }
     }
     
     
+    func toggleButton(shoppingItem: Item){
+        if shoppingItem.isAdded == false{
+          var scratch = shoppingItem
+            scratch.isAdded = true
+        }
+    }
     
    
-    func toggleIsSeen(shoppingItem: Item){
-        if shoppingItem.isAdded == false{
-            shoppingItem.isAdded = true
-            } else {
-            shoppingItem.isAdded = false
-            }
-
-        }
-    
     
     
     //for read section
