@@ -10,6 +10,21 @@ import Foundation
 
 class ShoppingItemController {
     
+    init() {
+        if UserDefaults.standard.bool(forKey: "ShoppingKey") {
+            loadFromPersistence()
+        } else {
+            UserDefaults.standard.set(true, forKey: "ShoppingKey")
+            self.create(image: "apple", item: "Apple")
+            self.create(image: "grapes", item: "Grapes")
+            self.create(image: "milk", item: "Milk")
+            self.create(image: "muffin", item: "Muffin")
+            self.create(image: "popcorn", item: "Popcorn")
+            self.create(image: "soda", item: "Soda")
+            self.create(image: "straberries", item: "Strawberries")
+        }
+    }
+    
     func create(image: String, item: String) {
         let shoppingItem = ShoppingItem(image: image, item: item)
         shoppingItems.append(shoppingItem)

@@ -43,6 +43,11 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         collectionView.reloadData()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let detailVC = segue.destination as? OrderingViewController else { return }
+        detailVC.shoppingItemController = shoppingItemController
+    }
+    
     var shoppingItemController = ShoppingItemController()
     
 }
