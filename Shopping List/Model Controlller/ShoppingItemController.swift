@@ -23,16 +23,26 @@ class ShoppingItemController{
     
     
     
-    func updateIsAdded(shoppingItem: Item){
-        guard let index = shoppingItems.index(of: shoppingItem) else {return}
-        var scratch = shoppingItem
-        scratch.isAdded = !shoppingItem.isAdded
-        shoppingItems.remove(at: index)
-        shoppingItems.insert(scratch, at: index)
-        saveToPersistence()
+   
+    func toggleIsSeen(shoppingItem: Item){
+        if shoppingItem.isAdded == false{
+            shoppingItem.isAdded = true
+            } else {
+            shoppingItem.isAdded = false
+            }
+
+        }
+    
+    
+    
+    //for read section
+    var addedItem: [Item]{
+        return shoppingItems.filter({$0.isAdded})
     }
     
-    
+    var notAddedItem: [Item]{
+        return shoppingItems.filter({$0.isAdded == false})
+    }
 
     
     
