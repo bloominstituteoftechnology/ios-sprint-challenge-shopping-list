@@ -107,7 +107,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="sE0-DC-AZv">
                                 <rect key="frame" x="6.5" y="137" width="362" height="138"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You currently have 0 item(s) in your shopping list" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYC-l5-IfV">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="You currently have 0 item(s) in your shopping list" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYC-l5-IfV">
                                         <rect key="frame" x="43.5" y="0.0" width="275.5" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -134,10 +134,15 @@
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="WxG-cZ-z9k" firstAttribute="top" secondItem="yYC-l5-IfV" secondAttribute="bottom" constant="6" id="BSv-ti-bnD"/>
+                                    <constraint firstItem="laz-AJ-Szy" firstAttribute="top" secondItem="WxG-cZ-z9k" secondAttribute="bottom" constant="6" id="Dcp-DN-ucI"/>
+                                    <constraint firstItem="fBK-De-gUI" firstAttribute="top" secondItem="laz-AJ-Szy" secondAttribute="bottom" constant="6" id="LUE-j8-agY"/>
                                     <constraint firstAttribute="trailing" secondItem="laz-AJ-Szy" secondAttribute="trailing" id="N0E-UE-aO1"/>
                                     <constraint firstAttribute="trailing" secondItem="WxG-cZ-z9k" secondAttribute="trailing" id="TeU-yb-jIt"/>
                                     <constraint firstItem="WxG-cZ-z9k" firstAttribute="leading" secondItem="sE0-DC-AZv" secondAttribute="leading" id="lgO-eR-f4R"/>
+                                    <constraint firstItem="laz-AJ-Szy" firstAttribute="top" secondItem="WxG-cZ-z9k" secondAttribute="bottom" constant="6" id="s35-4V-hf8"/>
                                     <constraint firstItem="laz-AJ-Szy" firstAttribute="leading" secondItem="sE0-DC-AZv" secondAttribute="leading" id="vgr-zA-Shi"/>
+                                    <constraint firstItem="WxG-cZ-z9k" firstAttribute="top" secondItem="yYC-l5-IfV" secondAttribute="bottom" constant="6" id="yxe-Lz-b5M"/>
                                 </constraints>
                             </stackView>
                         </subviews>

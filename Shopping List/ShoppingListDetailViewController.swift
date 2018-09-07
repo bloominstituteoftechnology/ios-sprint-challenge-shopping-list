@@ -32,6 +32,7 @@ class ShoppingListDetailViewController: UIViewController {
                 self.localNotificationHelper?.sendOrderNotification(name: name, address: address)
             case .notDetermined:
                 self.localNotificationHelper?.requestAuthorization(completion: { (granted) in
+                    
                     if (granted) {
                         self.localNotificationHelper?.sendOrderNotification(name: name, address: address)
                     }

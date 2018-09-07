@@ -54,6 +54,8 @@ class ShoppingListCollectionViewController: UICollectionViewController, Shopping
         //let cell = collectionView.cellForItem(at: indexPath)
         let shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
         shoppingItemController.toggleIsAdded(shoppingItem: shoppingItem)
+        //collectionView.reloadData()
+        collectionView.reloadItems(at: [indexPath])
     }
 
     // MARK: UICollectionViewDataSource

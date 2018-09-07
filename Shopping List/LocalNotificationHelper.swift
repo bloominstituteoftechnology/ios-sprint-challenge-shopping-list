@@ -9,7 +9,15 @@
 import Foundation
 import UserNotifications
 
-class LocalNotificationHelper {
+class LocalNotificationHelper: NSObject, UNUserNotificationCenterDelegate {
+    
+    
+    override init() {
+        super.init()
+        let center = UNUserNotificationCenter.current()
+        center.delegate = self
+    }
+    
     func getAuthorizationStatus(completion: @escaping (UNAuthorizationStatus) -> Void) {
         UNUserNotificationCenter.current().getNotificationSettings { (settings) in
             DispatchQueue.main.async {
@@ -33,7 +41,7 @@ class LocalNotificationHelper {
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         //This is called right before the notifcation gets shown to the user.
-        
+
         //Calling this will show the alert in the app.
         completionHandler([.alert])
     }
@@ -48,7 +56,7 @@ class LocalNotificationHelper {
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         
-        let request = UNNotificationRequest(identifier: "notifydelivery", content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: "NotificationID", content: content, trigger: trigger)
         
         UNUserNotificationCenter.current().add(request) {error in
             if let error = error {
