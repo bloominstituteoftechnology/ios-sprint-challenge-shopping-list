@@ -12,6 +12,18 @@ class ShoppingItemController {
     // MARK: - Properties
     private(set) var shoppingItems: [ShoppingItem] = []
     
+    var shoppingItemsOnList: [ShoppingItem] {
+        return shoppingItems.filter { (shoppingItem) -> Bool in
+            return shoppingItem.isOnShoppingList
+        }
+    }
+    
+    var shoppingItemsNotOnList: [ShoppingItem] {
+        return shoppingItems.filter { (shoppingItem) -> Bool in
+            return !shoppingItem.isOnShoppingList
+        }
+    }
+    
     // MARK: - Initializers
     init() {
         loadFromPersistentStore()
@@ -23,6 +35,22 @@ class ShoppingItemController {
         let shoppingItem = ShoppingItem(imageData: imageData, name: name, isOnShoppingList: isOnShoppingList)
         
         shoppingItems.append(shoppingItem)
+        saveToPersistentStore()
+    }
+    
+    // Toggle is on shopping list for item
+    func toggleIsOnList(for shoppingItem: ShoppingItem) {
+        guard let index = shoppingItems.index(of: shoppingItem) else { return }
+        
+        shoppingItems[index].isOnShoppingList = !shoppingItems[index].isOnShoppingList
+        saveToPersistentStore()
+    }
+    
+    // Reset shopping list
+    func resetShoppingList() {
+        for index in 0 ..< shoppingItems.count {
+            shoppingItems[index].isOnShoppingList = false
+        }
         saveToPersistentStore()
     }
     
@@ -40,7 +68,7 @@ class ShoppingItemController {
     }
     // MARK: - Persistence
     // Computed property to get the path to the shopping items array plist file
-    var persistentStoreURL: URL? {
+    private var persistentStoreURL: URL? {
         guard let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
         let fileName = "shoppingItems.plist"
         

@@ -11,4 +11,6 @@ import Foundation
 extension String {
     static let shoppingItemCellIdentifier = "ShoppingItemCell"
     static let placeOrderSegueIdentifier = "PlaceOrderSegue"
+    
+    static let shoppingListOrderNotificationIdentifier = "ShoppingListOrderNotification"
 }
