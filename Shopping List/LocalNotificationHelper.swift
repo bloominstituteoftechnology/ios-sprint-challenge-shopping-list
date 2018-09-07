@@ -29,17 +29,26 @@ class LocalNotificationHelper {
         }
     }
     
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        //This is called right before the notifcation gets shown to the user.
+        
+        //Calling this will show the alert in the app.
+        completionHandler([.alert])
+    }
+    
     func sendOrderNotification(name: String, address: String) {
-        let identifier = "SendingOrder"
+        //let identifier = "SendingOrder"
         
         let content = UNMutableNotificationContent()
         content.title = "Delivery for \(name)"
-        content.body = "Your order will be sent to \(address)"
+        content.body = "Your order will be sent to \(address) in 15 minutes"
 
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         
-        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: "notifydelivery", content: content, trigger: trigger)
         
         UNUserNotificationCenter.current().add(request) {error in
             if let error = error {

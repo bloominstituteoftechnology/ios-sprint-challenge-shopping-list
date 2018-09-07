@@ -49,7 +49,12 @@ class ShoppingListCollectionViewController: UICollectionViewController, Shopping
         }
             
     }
-
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //let cell = collectionView.cellForItem(at: indexPath)
+        let shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
+        shoppingItemController.toggleIsAdded(shoppingItem: shoppingItem)
+    }
 
     // MARK: UICollectionViewDataSource
 

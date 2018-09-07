@@ -13,6 +13,17 @@ class ShoppingItemController {
     
     init() {
         loadFromPersistentStore()
+        if self.shoppingItems.isEmpty {
+           self.shoppingItems  = [
+                ShoppingItem(item: "apple", addedToList: true, imageData: UIImagePNGRepresentation(UIImage(named: "apple")!)!),
+                ShoppingItem(item: "grapes", addedToList: false, imageData: UIImagePNGRepresentation(UIImage(named: "grapes")!)!),
+                ShoppingItem(item: "milk", addedToList: true, imageData: UIImagePNGRepresentation(UIImage(named: "milk")!)!),
+                ShoppingItem(item: "muffin", addedToList: true, imageData: UIImagePNGRepresentation(UIImage(named: "muffin")!)!),
+                ShoppingItem(item: "popcorn", addedToList: false, imageData: UIImagePNGRepresentation(UIImage(named: "popcorn")!)!),
+                ShoppingItem(item: "soda", addedToList: false, imageData: UIImagePNGRepresentation(UIImage(named: "soda")!)!),
+                ShoppingItem(item: "strawberries", addedToList: false, imageData: UIImagePNGRepresentation(UIImage(named: "strawberries")!)!)
+            ]
+        }
     }
     
     func create(item: String, addedToList: Bool, imageData: Data) {
@@ -86,13 +97,5 @@ class ShoppingItemController {
         return count
     }
     
-    private(set) var shoppingItems: [ShoppingItem] = [
-        ShoppingItem(item: "apple", addedToList: true, imageData: UIImagePNGRepresentation(UIImage(named: "apple")!)!),
-        ShoppingItem(item: "grapes", addedToList: false, imageData: UIImagePNGRepresentation(UIImage(named: "grapes")!)!),
-        ShoppingItem(item: "milk", addedToList: false, imageData: UIImagePNGRepresentation(UIImage(named: "milk")!)!),
-        ShoppingItem(item: "muffin", addedToList: false, imageData: UIImagePNGRepresentation(UIImage(named: "muffin")!)!),
-        ShoppingItem(item: "popcorn", addedToList: false, imageData: UIImagePNGRepresentation(UIImage(named: "popcorn")!)!),
-        ShoppingItem(item: "soda", addedToList: false, imageData: UIImagePNGRepresentation(UIImage(named: "soda")!)!),
-        ShoppingItem(item: "strawberries", addedToList: false, imageData: UIImagePNGRepresentation(UIImage(named: "strawberries")!)!)
-    ]
+    private(set) var shoppingItems: [ShoppingItem] = []
 }
