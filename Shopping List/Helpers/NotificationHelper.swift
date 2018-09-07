@@ -31,7 +31,8 @@ class NotificationHelper: NSObject, UNUserNotificationCenterDelegate {
         }
     }
     
-    func scheduleDeliverRequest(name: String, address: String, numberOfItems: Int) {
+    // Method to schedule delivery notifications
+    func scheduleDeliveryRequest(name: String, address: String, numberOfItems: Int) {
         //Need three things to make a request: identifier, content, trigger
         let identifier: String = .shoppingListOrderNotificationIdentifier
         

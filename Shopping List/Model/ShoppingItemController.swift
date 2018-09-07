@@ -12,12 +12,14 @@ class ShoppingItemController {
     // MARK: - Properties
     private(set) var shoppingItems: [ShoppingItem] = []
     
+    // Computed property that returns items on the list
     var shoppingItemsOnList: [ShoppingItem] {
         return shoppingItems.filter { (shoppingItem) -> Bool in
             return shoppingItem.isOnShoppingList
         }
     }
     
+    // Computed property that returns the items not on the list
     var shoppingItemsNotOnList: [ShoppingItem] {
         return shoppingItems.filter { (shoppingItem) -> Bool in
             return !shoppingItem.isOnShoppingList

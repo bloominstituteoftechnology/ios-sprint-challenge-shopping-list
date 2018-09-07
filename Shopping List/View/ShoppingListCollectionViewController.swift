@@ -38,7 +38,6 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     }
     
     // MARK: - UI Collection View Delegate
-
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
         shoppingItemController.toggleIsOnList(for: shoppingItem)

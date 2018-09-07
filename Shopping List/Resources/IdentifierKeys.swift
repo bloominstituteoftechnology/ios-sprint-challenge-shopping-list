@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Holds Identifier keys for various places
 extension String {
     static let shoppingItemCellIdentifier = "ShoppingItemCell"
     static let placeOrderSegueIdentifier = "PlaceOrderSegue"

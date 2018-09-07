@@ -25,6 +25,7 @@ class PlaceOrderViewController: UIViewController {
         updateViews()
     }
     
+    // MARK: - Utility Methods
     @IBAction func placeOrder(_ sender: Any) {
         guard let name = nameTextField.text, !name.isEmpty,
             let address = addressTextField.text, !address.isEmpty,
@@ -34,12 +35,12 @@ class PlaceOrderViewController: UIViewController {
         notificationHelper.getAuthorizationStatus { (status) in
             if status == .authorized {
                 // If the user has already granted authorization, schedule the notification
-                self.notificationHelper.scheduleDeliverRequest(name: name, address: address, numberOfItems: numberOfItems)
+                self.notificationHelper.scheduleDeliveryRequest(name: name, address: address, numberOfItems: numberOfItems)
             } else if status == .notDetermined {
                 // If the user hasn't been asked for authorization, ask them
                 self.notificationHelper.requestAuthorization(completion: { (success) in
                     if success {
-                        self.notificationHelper.scheduleDeliverRequest(name: name, address: address, numberOfItems: numberOfItems)
+                        self.notificationHelper.scheduleDeliveryRequest(name: name, address: address, numberOfItems: numberOfItems)
                     }
                 })
             } else {
@@ -51,6 +52,7 @@ class PlaceOrderViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    // MARK: - Private Utility Methods
     private func updateViews() {
         guard let shoppingItemController = shoppingItemController else { return }
         orderLabel.text = "Enter your name and address to place order for \(shoppingItemController.shoppingItemsOnList.count) items."

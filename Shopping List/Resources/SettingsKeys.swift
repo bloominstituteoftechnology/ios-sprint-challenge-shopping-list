@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Holds keys for UserDefaults
 extension String {
     static let hasLoadedSampleItems = "HasLoadedSampleApps"
 }
