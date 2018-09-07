@@ -78,6 +78,9 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         if segue.identifier == String.placeOrderSegueIdentifier {
             guard let destinationVC = segue.destination as? PlaceOrderViewController else { return }
             destinationVC.shoppingItemController = shoppingItemController
+        } else if segue.identifier == String.addItemSegueIdentifier {
+            guard let destinationVC = segue.destination as? ItemDetailViewController else { return }
+            destinationVC.shoppingItemController = shoppingItemController
         }
     }
     

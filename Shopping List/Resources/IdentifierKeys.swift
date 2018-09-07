@@ -14,6 +14,7 @@ extension String {
     static let collectionViewSectionHeaderIdentifier = "CollectionViewSectionHeader"
     
     static let placeOrderSegueIdentifier = "PlaceOrderSegue"
+    static let addItemSegueIdentifier = "AddItemSegue"
     
     static let shoppingListOrderNotificationIdentifier = "ShoppingListOrderNotification"
 }
