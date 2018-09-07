@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 
 class ShoppingItemController {
     
@@ -26,6 +26,14 @@ class ShoppingItemController {
         shoppingItems[index].addedToList = !shoppingItems[index].addedToList
         saveToPersistentStore()
     }
+
+//    let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
+//
+//    func loadAssets() {
+//        for item in itemNames {
+//            self.create(item: item, addedToList: false, imageData: <#T##Data#>)
+//        }
+//    }
     
 //Persistence Functions
     private func loadFromPersistentStore() {
@@ -68,5 +76,13 @@ class ShoppingItemController {
         return documentDirectory?.appendingPathComponent(fileName)
     }
     
-    private(set) var shoppingItems: [ShoppingItem] = []
+    private(set) var shoppingItems: [ShoppingItem] = [
+        ShoppingItem(item: "apple", addedToList: false, imageData: UIImagePNGRepresentation(UIImage(named: "apple")!)!),
+        ShoppingItem(item: "grapes", addedToList: false, imageData: UIImagePNGRepresentation(UIImage(named: "grapes")!)!),
+        ShoppingItem(item: "milk", addedToList: false, imageData: UIImagePNGRepresentation(UIImage(named: "milk")!)!),
+        ShoppingItem(item: "muffin", addedToList: false, imageData: UIImagePNGRepresentation(UIImage(named: "muffin")!)!),
+        ShoppingItem(item: "popcorn", addedToList: false, imageData: UIImagePNGRepresentation(UIImage(named: "popcorn")!)!),
+        ShoppingItem(item: "soda", addedToList: false, imageData: UIImagePNGRepresentation(UIImage(named: "soda")!)!),
+        ShoppingItem(item: "strawberries", addedToList: false, imageData: UIImagePNGRepresentation(UIImage(named: "strawberries")!)!)
+    ]
 }

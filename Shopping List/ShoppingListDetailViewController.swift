@@ -20,8 +20,15 @@ class ShoppingListDetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    @IBAction func sendOrder(_ sender: Any) {
+    }
+    
     
 
+    @IBOutlet weak var currentItemsLabel: UILabel!
+    @IBOutlet weak var addressTextField: UITextField!
+    @IBOutlet weak var nameTextField: UITextField!
+    
     /*
     // MARK: - Navigation
 
