@@ -104,37 +104,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name" textAlignment="natural" minimumFontSize="17" background="Enter your Address" translatesAutoresizingMaskIntoConstraints="NO" id="WxG-cZ-z9k">
-                                <rect key="frame" x="16" y="207" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="laz-AJ-Szy">
-                                <rect key="frame" x="16" y="256" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You currently have 0 item(s) in your shopping list" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYC-l5-IfV">
-                                <rect key="frame" x="16" y="137" width="343" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fBK-De-gUI">
-                                <rect key="frame" x="148" y="307" width="79" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Send Order"/>
-                                <connections>
-                                    <action selector="sendOrder:" destination="Izy-Ni-l3F" eventType="touchUpInside" id="ANe-iN-ahD"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="sE0-DC-AZv">
+                                <rect key="frame" x="6.5" y="137" width="362" height="138"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You currently have 0 item(s) in your shopping list" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYC-l5-IfV">
+                                        <rect key="frame" x="43.5" y="0.0" width="275.5" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name" textAlignment="natural" minimumFontSize="17" background="Enter your Address" translatesAutoresizingMaskIntoConstraints="NO" id="WxG-cZ-z9k">
+                                        <rect key="frame" x="0.0" y="36" width="362" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="laz-AJ-Szy">
+                                        <rect key="frame" x="0.0" y="72" width="362" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fBK-De-gUI">
+                                        <rect key="frame" x="141.5" y="108" width="79" height="30"/>
+                                        <state key="normal" title="Send Order"/>
+                                        <connections>
+                                            <action selector="sendOrder:" destination="Izy-Ni-l3F" eventType="touchUpInside" id="ANe-iN-ahD"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="laz-AJ-Szy" secondAttribute="trailing" id="N0E-UE-aO1"/>
+                                    <constraint firstAttribute="trailing" secondItem="WxG-cZ-z9k" secondAttribute="trailing" id="TeU-yb-jIt"/>
+                                    <constraint firstItem="WxG-cZ-z9k" firstAttribute="leading" secondItem="sE0-DC-AZv" secondAttribute="leading" id="lgO-eR-f4R"/>
+                                    <constraint firstItem="laz-AJ-Szy" firstAttribute="leading" secondItem="sE0-DC-AZv" secondAttribute="leading" id="vgr-zA-Shi"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="sE0-DC-AZv" firstAttribute="top" secondItem="fXH-Ez-SXy" secondAttribute="top" constant="21" id="GcK-QW-vOg"/>
+                            <constraint firstItem="fXH-Ez-SXy" firstAttribute="bottom" secondItem="sE0-DC-AZv" secondAttribute="bottom" constant="392" id="J54-Ko-MBY"/>
+                            <constraint firstItem="fXH-Ez-SXy" firstAttribute="trailing" secondItem="sE0-DC-AZv" secondAttribute="trailing" constant="6.5" id="awP-DE-3MA"/>
+                            <constraint firstItem="sE0-DC-AZv" firstAttribute="leading" secondItem="mGd-rs-pwl" secondAttribute="leading" constant="6.5" id="b0z-uh-LGV"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="fXH-Ez-SXy"/>
                     </view>
                     <connections>

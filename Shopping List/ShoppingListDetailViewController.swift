@@ -30,6 +30,7 @@ class ShoppingListDetailViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     
     var shoppingItemController: ShoppingItemController?
+    var localNotificationHelper: LocalNotificationHelper?
     
     /*
     // MARK: - Navigation

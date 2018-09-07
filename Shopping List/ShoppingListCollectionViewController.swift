@@ -38,6 +38,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         if(segue.identifier == "AddPhoto"){
             guard let destinationVC = segue.destination as? ShoppingListDetailViewController else { return }
             destinationVC.shoppingItemController = shoppingItemController
+            destinationVC.localNotificationHelper = localNotificationHelper
         }
             
     }
