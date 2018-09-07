@@ -27,8 +27,8 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         
         shoppingItemImageView.image = UIImage(data: shoppingItem.imageData)
         nameLabel.text = shoppingItem.name
-        isOnShoppingListLabel.text = shoppingItem.isOnShoppingList ? "Added" : "Not Added"
-        isOnShoppingListLabel.textColor = shoppingItem.isOnShoppingList ? .magenta : .black
+        isOnShoppingListLabel.text = shoppingItem.isOnShoppingList ? "Added ✔︎" : "Not Added"
+        isOnShoppingListLabel.textColor = shoppingItem.isOnShoppingList ? .red : .black
     }
     
 }

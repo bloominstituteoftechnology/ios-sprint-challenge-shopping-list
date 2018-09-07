@@ -29,7 +29,8 @@ class PlaceOrderViewController: UIViewController {
     @IBAction func placeOrder(_ sender: Any) {
         guard let name = nameTextField.text, !name.isEmpty,
             let address = addressTextField.text, !address.isEmpty,
-        let shoppingItemController = shoppingItemController else { return }
+            let shoppingItemController = shoppingItemController,
+            !shoppingItemController.shoppingItemsOnList.isEmpty else { return }
         let numberOfItems = shoppingItemController.shoppingItemsOnList.count
         
         notificationHelper.getAuthorizationStatus { (status) in
@@ -55,7 +56,8 @@ class PlaceOrderViewController: UIViewController {
     // MARK: - Private Utility Methods
     private func updateViews() {
         guard let shoppingItemController = shoppingItemController else { return }
-        orderLabel.text = "Enter your name and address to place order for \(shoppingItemController.shoppingItemsOnList.count) items."
+        let numberOfItems = shoppingItemController.shoppingItemsOnList.count
+        orderLabel.text = "Enter your name and address to place order for \(numberOfItems) item\(numberOfItems == 1 ? "" : "s")."
     }
     
 }
