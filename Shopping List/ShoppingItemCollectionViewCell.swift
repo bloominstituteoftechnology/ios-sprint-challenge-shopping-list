@@ -8,6 +8,9 @@
 
 import UIKit
 
+protocol ShoppingItemCollectionViewCellDelegate: class {
+    func itemToggled(on cell: ShoppingItemCollectionViewCell)
+}
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
     func updateViews() {
@@ -22,11 +25,18 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
     }
     
+    @IBAction func itemToggled(_ sender: Any) {
+        delegate?.itemToggled(on: self)
+    }
+
+    
     var shoppingItem: ShoppingItem? {
         didSet {
             updateViews()
         }
     }
+    
+    weak var delegate: ShoppingItemCollectionViewCellDelegate?
     
     
     

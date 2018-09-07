@@ -12,7 +12,8 @@ class ShoppingListDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        guard let amount = shoppingItemController?.totalInCart() else { return }
+        currentItemsLabel?.text = "You currently have \(amount) item(s) in your shopping list"
         // Do any additional setup after loading the view.
     }
 
@@ -21,6 +22,24 @@ class ShoppingListDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func sendOrder(_ sender: Any) {
+        guard let name = nameTextField.text,
+            let address = addressTextField.text
+            else { return }
+        
+        localNotificationHelper?.getAuthorizationStatus { (status) in
+            switch status {
+            case .authorized:
+                self.localNotificationHelper?.sendOrderNotification(name: name, address: address)
+            case .notDetermined:
+                self.localNotificationHelper?.requestAuthorization(completion: { (granted) in
+                    if (granted) {
+                        self.localNotificationHelper?.sendOrderNotification(name: name, address: address)
+                    }
+                })
+            default:
+                return
+            }
+        }
     }
     
     

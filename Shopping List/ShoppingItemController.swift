@@ -76,8 +76,18 @@ class ShoppingItemController {
         return documentDirectory?.appendingPathComponent(fileName)
     }
     
+    func totalInCart() -> Int {
+        var count: Int = 0
+        for item in shoppingItems {
+            if item.addedToList == true {
+                count += 1
+            }
+        }
+        return count
+    }
+    
     private(set) var shoppingItems: [ShoppingItem] = [
-        ShoppingItem(item: "apple", addedToList: false, imageData: UIImagePNGRepresentation(UIImage(named: "apple")!)!),
+        ShoppingItem(item: "apple", addedToList: true, imageData: UIImagePNGRepresentation(UIImage(named: "apple")!)!),
         ShoppingItem(item: "grapes", addedToList: false, imageData: UIImagePNGRepresentation(UIImage(named: "grapes")!)!),
         ShoppingItem(item: "milk", addedToList: false, imageData: UIImagePNGRepresentation(UIImage(named: "milk")!)!),
         ShoppingItem(item: "muffin", addedToList: false, imageData: UIImagePNGRepresentation(UIImage(named: "muffin")!)!),

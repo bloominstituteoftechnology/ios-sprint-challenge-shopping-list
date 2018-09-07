@@ -10,7 +10,14 @@ import UIKit
 
 private let reuseIdentifier = "ItemCell"
 
-class ShoppingListCollectionViewController: UICollectionViewController {
+class ShoppingListCollectionViewController: UICollectionViewController, ShoppingItemCollectionViewCellDelegate {
+    func itemToggled(on cell: ShoppingItemCollectionViewCell) {
+        guard let index = collectionView?.indexPath(for: cell) else { return }
+        let shoppingItem = shoppingItemController.shoppingItems[index.item]
+        shoppingItemController.toggleIsAdded(shoppingItem: shoppingItem)
+        collectionView?.reloadData()
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +42,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "AddPhoto"){
+        if(segue.identifier == "SendOrder"){
             guard let destinationVC = segue.destination as? ShoppingListDetailViewController else { return }
             destinationVC.shoppingItemController = shoppingItemController
             destinationVC.localNotificationHelper = localNotificationHelper
@@ -55,6 +62,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as? ShoppingItemCollectionViewCell else { return UICollectionViewCell() }
         cell.shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
+        cell.delegate = self
         // Configure the cell
         return cell
     }
