@@ -45,6 +45,7 @@ class ShoppingListCollectionViewController: UICollectionViewController, UICollec
         let shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
         
         shoppingItemController.update(shoppingItem: shoppingItem)
+        collectionView.reloadData()
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
