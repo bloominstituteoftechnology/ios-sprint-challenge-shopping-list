@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class SendOrderViewController: UIViewController {
 
@@ -34,25 +35,28 @@ class SendOrderViewController: UIViewController {
     
     @IBAction func sendOrder(_ sender: Any) {
         guard let name = nameTextField.text,
-            let address = addressTextField.text else { return }
+            let address = addressTextField.text,
+            let localNotificationHelper = localNotificationHelper else { return }
         
         localNotificationHelper.getAuthorizationStatus { (status) in
             switch status {
             case .notDetermined:
-                self.localNotificationHelper.requestAuthorization { (granted) in
-                    self.localNotificationHelper.scheduleDeliveryNotification(name: name, address: address)
+                localNotificationHelper.requestAuthorization { (granted) in
+                    localNotificationHelper.scheduleDeliveryNotification(name: name, address: address)
                 }
             case .authorized:
-                self.localNotificationHelper.scheduleDeliveryNotification(name: name, address: address)
+                localNotificationHelper.scheduleDeliveryNotification(name: name, address: address)
             
             case .denied:
                 break
             }
         }
         
+        navigationController?.popViewController(animated: true)
+        
     }
     
-    let localNotificationHelper = LocalNotificationHelper()
+    var localNotificationHelper: LocalNotificationHelper?
     var shoppingItemController: ShoppingItemController?
     
     @IBOutlet weak var numberOfItemsLabel: UILabel!

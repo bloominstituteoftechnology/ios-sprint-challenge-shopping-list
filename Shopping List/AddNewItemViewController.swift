@@ -24,6 +24,7 @@ class AddNewItemViewController: UIViewController {
         
     }
     
+    var shoppingItemController: ShoppingItemController?
     
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!

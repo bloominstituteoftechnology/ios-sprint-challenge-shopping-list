@@ -13,9 +13,11 @@ struct ShoppingItem: Equatable, Codable {
         self.name = name
         self.imageName = imageName
         self.isAdded = false
+        
     }
     
     let name: String
     let imageName: String
     var isAdded: Bool
+    var imageData: Data?
 }

@@ -24,6 +24,7 @@ class ShoppingListCollectionViewController: UICollectionViewController, UICollec
             guard let destinationVC = segue.destination as? SendOrderViewController else {return}
             
             destinationVC.shoppingItemController = shoppingItemController
+            destinationVC.localNotificationHelper = localNotificationHelper
         }
     }
 
@@ -41,7 +42,6 @@ class ShoppingListCollectionViewController: UICollectionViewController, UICollec
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Got clicked!")
         let shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
         
         shoppingItemController.update(shoppingItem: shoppingItem)
@@ -58,7 +58,7 @@ class ShoppingListCollectionViewController: UICollectionViewController, UICollec
     }
     
     
-    
+    let localNotificationHelper = LocalNotificationHelper()
     let shoppingItemController = ShoppingItemController()
 
 }
