@@ -29,6 +29,8 @@ class ShoppingListDetailViewController: UIViewController {
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
     
+    var shoppingItemController: ShoppingItemController?
+    
     /*
     // MARK: - Navigation
 
