@@ -12,6 +12,11 @@ class ShoppingItemController {
     // MARK: - Properties
     private(set) var shoppingItems: [ShoppingItem] = []
     
+    // MARK: - Initializers
+    init() {
+        loadFromPersistentStore()
+    }
+    
     // MARK: - CRUD Methods
     // Create a new shopping item and add it to the array
     func createShoppingItem(name: String, imageData: Data, isOnShoppingList: Bool) {
@@ -57,7 +62,7 @@ class ShoppingItemController {
     
     // Private method to read the data from disk and decode it
     private func loadFromPersistentStore() {
-        
+        loadSampleShoppingItems()
         guard let url = persistentStoreURL,
             FileManager.default.fileExists(atPath: url.path) else { return }
         let plistDecoder = PropertyListDecoder()
