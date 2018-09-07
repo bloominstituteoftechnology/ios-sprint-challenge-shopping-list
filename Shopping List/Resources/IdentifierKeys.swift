@@ -11,6 +11,8 @@ import Foundation
 // Holds Identifier keys for various places
 extension String {
     static let shoppingItemCellIdentifier = "ShoppingItemCell"
+    static let collectionViewSectionHeaderIdentifier = "CollectionViewSectionHeader"
+    
     static let placeOrderSegueIdentifier = "PlaceOrderSegue"
     
     static let shoppingListOrderNotificationIdentifier = "ShoppingListOrderNotification"
