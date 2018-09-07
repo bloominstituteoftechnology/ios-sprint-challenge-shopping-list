@@ -13,15 +13,35 @@ import UIKit
 class ShoppingItemController {
     
     init() {
-        guard let defaultItems = UserDefaults.standard.array(forKey: .shoppingListKey) as? [ShoppingItem] else {
-            create()
-            return
-        }
-        shoppingItems = defaultItems
+        uploadUserDefaults()
     }
     
-    private func saveUserDefaults (){
-        UserDefaults.standard.set(shoppingItems, forKey: .shoppingListKey)
+    private func uploadUserDefaults() {
+        
+        do {
+        
+        guard let shoppingListData = UserDefaults.standard.data(forKey: .shoppingListKey) else {
+            create()
+            return
+            }
+        
+        let plistDecoder = PropertyListDecoder()
+        self.shoppingItems = try plistDecoder.decode([ShoppingItem].self, from: shoppingListData)
+        } catch {
+            NSLog("Error decoding shopping items: \(error)")
+        }
+    }
+    
+    private func saveUserDefaults() {
+        
+        let plistEncoder = PropertyListEncoder()
+        
+        do {
+            let shoppingItemsData = try plistEncoder.encode(shoppingItems)
+            UserDefaults.standard.set(shoppingItemsData, forKey: .shoppingListKey)
+        } catch {
+            NSLog("Error enconding shopping items: \(error)")
+        }
     }
     
     func create() {
