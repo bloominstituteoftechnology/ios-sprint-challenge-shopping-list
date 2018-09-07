@@ -6,11 +6,60 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Add a shopping item-->
+        <scene sceneID="xyl-qe-3SD">
+            <objects>
+                <viewController title="Add a shopping item" id="ayA-bR-xK7" customClass="AddNewItemViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xFa-WY-xyu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="KzN-nh-970">
+                                <rect key="frame" x="20" y="156" width="335" height="333.5"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="zjI-vk-LXE">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="257.5"/>
+                                    </imageView>
+                                    <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter name of item:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pid-j5-Sug">
+                                        <rect key="frame" x="0.0" y="265.5" width="335" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fk9-dl-nL3">
+                                        <rect key="frame" x="0.0" y="303.5" width="335" height="30"/>
+                                        <state key="normal" title="Save"/>
+                                        <connections>
+                                            <action selector="saveItem:" destination="ayA-bR-xK7" eventType="touchUpInside" id="Fci-fW-IYu"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="KzN-nh-970" firstAttribute="top" secondItem="uhL-QU-aBc" secondAttribute="top" constant="40" id="0wL-qL-gSt"/>
+                            <constraint firstItem="KzN-nh-970" firstAttribute="height" secondItem="xFa-WY-xyu" secondAttribute="height" multiplier="1/2" id="RFD-gB-VkX"/>
+                            <constraint firstItem="KzN-nh-970" firstAttribute="leading" secondItem="uhL-QU-aBc" secondAttribute="leading" constant="20" id="XcA-X6-UMe"/>
+                            <constraint firstItem="uhL-QU-aBc" firstAttribute="trailing" secondItem="KzN-nh-970" secondAttribute="trailing" constant="20" id="kWt-nJ-JIf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="uhL-QU-aBc"/>
+                    </view>
+                    <connections>
+                        <outlet property="itemImageView" destination="zjI-vk-LXE" id="IuJ-gL-31f"/>
+                        <outlet property="nameTextField" destination="pid-j5-Sug" id="XoP-GE-NkI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hje-lr-ZYU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="904.79999999999995" y="-565.36731634182911"/>
+        </scene>
         <!--Shopping List-->
         <scene sceneID="a2b-EF-ejZ">
             <objects>
@@ -74,6 +123,11 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Shopping List" id="TqR-Kb-IOm">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="W3M-hF-jrI">
+                            <connections>
+                                <segue destination="ayA-bR-xK7" kind="show" id="WAA-0V-noo"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="xF9-YX-D4T">
                             <connections>
                                 <segue destination="b14-B1-LhT" kind="show" identifier="NextSegue" id="UZL-DY-wwA"/>

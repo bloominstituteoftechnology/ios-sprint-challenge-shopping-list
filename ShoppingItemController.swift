@@ -54,6 +54,10 @@ class ShoppingItemController {
         saveUserDefaults()
     }
     
+    func createNewItem(name: String, image: UIImage) {
+        let image = 
+    }
+    
     func update(shoppingItem: ShoppingItem) {
         guard let index = shoppingItems.index(of: shoppingItem) else { return }
         
