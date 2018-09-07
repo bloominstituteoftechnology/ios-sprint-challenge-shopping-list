@@ -166,12 +166,16 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="JUS-9h-Kvq" firstAttribute="trailing" secondItem="T1m-1S-xo1" secondAttribute="trailing" constant="20" id="3mt-ub-ZtX"/>
                             <constraint firstItem="T1m-1S-xo1" firstAttribute="top" secondItem="JUS-9h-Kvq" secondAttribute="top" constant="20" id="9Uj-Y9-7xd"/>
                             <constraint firstItem="T1m-1S-xo1" firstAttribute="leading" secondItem="JUS-9h-Kvq" secondAttribute="leading" constant="20" id="hUS-2x-KbV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JUS-9h-Kvq"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="VrW-Of-jsr" appends="YES" id="pKI-Ys-HT5"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="itemImageView" destination="PON-dK-YnM" id="LGE-le-zIX"/>
@@ -179,6 +183,12 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ToK-pd-39P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="5Dy-Ya-tFJ" userLabel="Exit" sceneMemberID="exit"/>
+                <swipeGestureRecognizer direction="right" id="VrW-Of-jsr">
+                    <connections>
+                        <segue destination="5Dy-Ya-tFJ" kind="unwind" unwindAction="unwindToShoppingListCollectionViewController:" id="ZBq-UK-pNb"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1028" y="948.57571214392806"/>
         </scene>

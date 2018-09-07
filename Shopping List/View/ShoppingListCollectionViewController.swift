@@ -60,7 +60,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
             }
             return headerView
         default:
-            // TODO: - I'm not sure the right way to handle if I get an element of a different kind. This works for now, but not a final solution.
+            // TODO: I'm not sure the right way to handle if I get an element of a different kind. This works for now, but not a final solution.
             NSLog("Got an unexpected element kind")
             return (UICollectionReusableView())
         }
@@ -83,6 +83,8 @@ class ShoppingListCollectionViewController: UICollectionViewController {
             destinationVC.shoppingItemController = shoppingItemController
         }
     }
+    
+    @IBAction func unwindToShoppingListCollectionViewController(_ sender: UIStoryboardSegue){}
     
     // MARK: - Private Utility Functions
     private func shoppingItemFor(_ indexPath: IndexPath) -> ShoppingItem {
