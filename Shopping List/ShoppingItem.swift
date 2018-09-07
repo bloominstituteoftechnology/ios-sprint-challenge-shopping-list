@@ -15,4 +15,5 @@ struct ShoppingItem: Equatable {
     var image: UIImage
     var isSelected: Bool
     
+    
 }

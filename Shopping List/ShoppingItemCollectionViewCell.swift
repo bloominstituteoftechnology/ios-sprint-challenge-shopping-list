@@ -23,7 +23,6 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction func itemPressed(_ sender: Any) {
-        
         item?.isSelected = !(item?.isSelected)!
     }
     
