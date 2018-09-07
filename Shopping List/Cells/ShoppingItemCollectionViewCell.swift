@@ -19,6 +19,9 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         
         isInShoppingListLabel.text = item.isInShoppingList ? "ADDED ✓" : "NOT ADDED"
         isInShoppingListLabel.textColor = item.isInShoppingList ? .orange : .lightGray
+        
+        background.backgroundColor = item.isInShoppingList ? .lightGray : .clear
+        background.alpha = 0.25
     }
     
     var item: ShoppingItem? { didSet { updateViews() }}
@@ -26,5 +29,6 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var itemNameLabel: UILabel!
     @IBOutlet weak var isInShoppingListLabel: UILabel!
+    @IBOutlet weak var background: UIView!
     
 }

@@ -60,6 +60,8 @@ class NewOrderFromItemsViewController: UIViewController, UNUserNotificationCente
     
     // Trigger view updates
     private func updateViews() {
+        billingAddressTextView.tintColor = .orange
+        
         guard let shoppingItemController = shoppingItemController else { return }
         
         var shoppingList = Array(shoppingItemController.addedItems)

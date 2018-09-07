@@ -60,6 +60,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
     private func barButtonStateCheck() {
         collectionView?.reloadData()
+        collectionView?.setContentOffset(CGPoint.zero, animated: true)
         orderItemsBarButton.isEnabled = shoppingItemController.addedItems.isEmpty ? false : true
     }
     
