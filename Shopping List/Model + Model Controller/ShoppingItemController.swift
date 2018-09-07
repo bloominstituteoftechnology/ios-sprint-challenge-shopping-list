@@ -43,13 +43,13 @@ class ShoppingItemController {
     }
     
     // Update an existing shopping item object
-    func update(item: ShoppingItem, name: String, image: UIImage, isInShoppingList: Bool) {
-        guard let index = items.index(of: item),
-              let imageData = UIImagePNGRepresentation(image) else { return }
+    func update(item: ShoppingItem, isInShoppingList: Bool) {
+        guard let index = items.index(of: item) else { return }
         
-        items[index].name = name
-        items[index].imageData = imageData
-        items[index].isInShoppingList = isInShoppingList
+        let tempItem = ShoppingItem(name: item.name, imageData: item.imageData, isInShoppingList: isInShoppingList)
+        
+        items.remove(at: index)
+        items.insert(tempItem, at: index)
         
         saveToPersistentStore()
     }

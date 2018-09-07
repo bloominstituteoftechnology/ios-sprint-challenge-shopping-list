@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NZj-50-6A9">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="10" id="NZj-50-6A9">
                             <size key="itemSize" width="156" height="180"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -33,9 +33,9 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dso-48-X6v">
-                                            <rect key="frame" x="0.0" y="0.0" width="156" height="124"/>
+                                            <rect key="frame" x="20" y="4" width="116" height="110"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="124" id="dgc-up-bLe"/>
+                                                <constraint firstAttribute="height" constant="110" id="dgc-up-bLe"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" misplaced="YES" text="NOT ADDED" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIZ-Ql-RHb">
@@ -43,8 +43,8 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="22" id="7Kt-O5-sUq"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                            <color key="textColor" red="0.34438743090000001" green="0.34237346930000001" blue="0.34640139250000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="16"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Item name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpb-RR-UHJ">
@@ -59,16 +59,21 @@
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="Dso-48-X6v" firstAttribute="top" secondItem="BuI-kW-P1V" secondAttribute="top" id="21I-xE-neZ"/>
+                                    <constraint firstItem="Dso-48-X6v" firstAttribute="top" secondItem="BuI-kW-P1V" secondAttribute="top" constant="4" id="21I-xE-neZ"/>
                                     <constraint firstItem="BIZ-Ql-RHb" firstAttribute="leading" secondItem="BuI-kW-P1V" secondAttribute="leading" id="6LX-SJ-Ckm"/>
                                     <constraint firstAttribute="trailing" secondItem="BIZ-Ql-RHb" secondAttribute="trailing" id="Af2-e1-DgH"/>
-                                    <constraint firstItem="Dso-48-X6v" firstAttribute="leading" secondItem="BuI-kW-P1V" secondAttribute="leading" id="Cy6-nZ-fg1"/>
+                                    <constraint firstItem="Dso-48-X6v" firstAttribute="leading" secondItem="BuI-kW-P1V" secondAttribute="leading" constant="20" id="Cy6-nZ-fg1"/>
                                     <constraint firstAttribute="bottom" secondItem="BIZ-Ql-RHb" secondAttribute="bottom" id="Nt7-oS-dkH"/>
                                     <constraint firstAttribute="trailing" secondItem="fpb-RR-UHJ" secondAttribute="trailing" id="dOO-gt-3ed"/>
-                                    <constraint firstAttribute="trailing" secondItem="Dso-48-X6v" secondAttribute="trailing" id="k4v-N0-Vsw"/>
+                                    <constraint firstAttribute="trailing" secondItem="Dso-48-X6v" secondAttribute="trailing" constant="20" id="k4v-N0-Vsw"/>
                                     <constraint firstItem="BIZ-Ql-RHb" firstAttribute="top" secondItem="fpb-RR-UHJ" secondAttribute="bottom" id="oef-Gi-8xw"/>
                                     <constraint firstItem="fpb-RR-UHJ" firstAttribute="leading" secondItem="BuI-kW-P1V" secondAttribute="leading" id="pLP-Y0-2H0"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="isInShoppingListLabel" destination="BIZ-Ql-RHb" id="MVG-n0-Fg2"/>
+                                    <outlet property="itemImageView" destination="Dso-48-X6v" id="9d9-Vl-wBO"/>
+                                    <outlet property="itemNameLabel" destination="fpb-RR-UHJ" id="dID-Qv-yJE"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -77,37 +82,19 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Shopping List" id="Qh6-9c-reo">
-                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="qdC-I7-lwD">
-                            <connections>
-                                <segue destination="Urc-wf-S2H" kind="show" identifier="NewItem" id="cKT-bD-QDW"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Order Items" id="wLB-t6-X8Z">
                             <connections>
                                 <segue destination="uIg-1o-5Mm" kind="show" identifier="NewOrder" id="Esz-MT-Egb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="orderItemsBarButton" destination="wLB-t6-X8Z" id="U6u-oj-Rl4"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IhW-Xl-nZT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1114.4000000000001" y="87.192118226600982"/>
-        </scene>
-        <!--Add a new item-->
-        <scene sceneID="ZA4-Pc-AsX">
-            <objects>
-                <viewController id="Urc-wf-S2H" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="hk0-L5-UM3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="672"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="yKa-vU-Vqv"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Add a new item" id="XTR-s5-pC6"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FC4-JE-EWd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2398" y="-338"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1an-lN-Ysg">
@@ -117,7 +104,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" largeTitles="YES" id="Qu4-SC-oBp">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.34438743090281959" green="0.34237346931859258" blue="0.3464013924870466" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -131,7 +118,7 @@
         <!--Ordering {count} items-->
         <scene sceneID="8pv-Mw-bM4">
             <objects>
-                <viewController id="uIg-1o-5Mm" sceneMemberID="viewController">
+                <viewController id="uIg-1o-5Mm" customClass="NewOrderFromItemsViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Vb-JB-uHM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -141,7 +128,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="88" id="Sf0-xi-khR"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -185,6 +172,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1d5-0C-Q0z">
                                 <rect key="frame" x="16" y="264" width="343" height="110"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="110" id="ZyL-zq-NQn"/>
                                 </constraints>
@@ -217,12 +205,22 @@
                         <viewLayoutGuide key="safeArea" id="4YT-aR-JYm"/>
                     </view>
                     <navigationItem key="navigationItem" title="Ordering {count} items" id="Lva-UH-R86">
-                        <barButtonItem key="rightBarButtonItem" title="📦  Send Order" id="mFj-5U-gnj"/>
+                        <barButtonItem key="rightBarButtonItem" title="📦  Send Order" id="mFj-5U-gnj">
+                            <connections>
+                                <action selector="sendOrder:" destination="uIg-1o-5Mm" id="gzW-sJ-hZn"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="billingAddressTextView" destination="1d5-0C-Q0z" id="TSn-HN-Pza"/>
+                        <outlet property="nameTextField" destination="b1u-5h-LQg" id="Mlb-0x-uzN"/>
+                        <outlet property="sendOrderBarButtonItem" destination="mFj-5U-gnj" id="JxJ-cD-2cb"/>
+                        <outlet property="shoppingCartListLabel" destination="lZb-e9-ZMb" id="eb3-oZ-fUI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ad8-jm-rXU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2397.5999999999999" y="363.54679802955667"/>
+            <point key="canvasLocation" x="2114" y="87"/>
         </scene>
     </scenes>
 </document>

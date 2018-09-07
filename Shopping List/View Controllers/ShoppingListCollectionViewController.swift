@@ -10,7 +10,6 @@ import UIKit
 
 private let reuseIdentifier = "ShoppingItemCell"
 private let newOrderSegueIdentifier = "NewOrder"
-private let newShoppingItemSegueIdentifier = "NewItem"
 
 class ShoppingListCollectionViewController: UICollectionViewController {
     
@@ -18,16 +17,19 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     // Refresh collection view data when the view reappears
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        collectionView?.reloadData()
+        barButtonStateCheck()
     }
-
+    
     
     // MARK: - Navigation methods
     // Inject data as a storyboard segue is being performed
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // PREPARE FOR SEGUE
+        if segue.identifier == newOrderSegueIdentifier {
+            guard let destVC = segue.destination as? NewOrderFromItemsViewController else { return }
+            destVC.shoppingItemController = shoppingItemController
+        }
     }
-
+    
     
     // MARK:- UICollectionViewDataSource methods
     // Number of sections
@@ -45,12 +47,27 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ShoppingItemCollectionViewCell else { return UICollectionViewCell() }
     
-        
+        cell.item = indexPath.section == 0 ? shoppingItemController.addedItems[indexPath.item] : shoppingItemController.notAddedItems[indexPath.item]
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let item = indexPath.section == 0 ? shoppingItemController.addedItems[indexPath.item] : shoppingItemController.notAddedItems[indexPath.item]
+        shoppingItemController.update(item: item, isInShoppingList: !item.isInShoppingList)
+        barButtonStateCheck()
+    }
+    
+    private func barButtonStateCheck() {
+        collectionView?.reloadData()
+        orderItemsBarButton.isEnabled = shoppingItemController.addedItems.isEmpty ? false : true
     }
     
     
     // MARK:- Properties
     let shoppingItemController = ShoppingItemController()
+    
+    // MARK:- IBOutlets
+    @IBOutlet weak var orderItemsBarButton: UIBarButtonItem!
     
 }

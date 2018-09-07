@@ -16,7 +16,7 @@
 		96D281842142D7EB0074740E /* ShoppingItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D281822142D7EB0074740E /* ShoppingItemCollectionViewCell.swift */; };
 		96D281852142D7EB0074740E /* ShoppingListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D281832142D7EB0074740E /* ShoppingListCollectionViewController.swift */; };
 		96D281882142D8E40074740E /* NewOrderFromItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D281872142D8E40074740E /* NewOrderFromItemsViewController.swift */; };
-		96D2818A2142D9A70074740E /* NewShoppingItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D281892142D9A70074740E /* NewShoppingItemViewController.swift */; };
+		96D2818F2142F16E0074740E /* LocalNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D2818E2142F16E0074740E /* LocalNotificationHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +31,7 @@
 		96D281822142D7EB0074740E /* ShoppingItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShoppingItemCollectionViewCell.swift; path = "Shopping List/Cells/ShoppingItemCollectionViewCell.swift"; sourceTree = SOURCE_ROOT; };
 		96D281832142D7EB0074740E /* ShoppingListCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShoppingListCollectionViewController.swift; path = "Shopping List/View Controllers/ShoppingListCollectionViewController.swift"; sourceTree = SOURCE_ROOT; };
 		96D281872142D8E40074740E /* NewOrderFromItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewOrderFromItemsViewController.swift; path = "Shopping List/View Controllers/NewOrderFromItemsViewController.swift"; sourceTree = SOURCE_ROOT; };
-		96D281892142D9A70074740E /* NewShoppingItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewShoppingItemViewController.swift; path = "Shopping List/View Controllers/NewShoppingItemViewController.swift"; sourceTree = SOURCE_ROOT; };
+		96D2818E2142F16E0074740E /* LocalNotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +69,7 @@
 				96D2817F2142D43F0074740E /* View Controllers */,
 				96D281862142D8170074740E /* Cells */,
 				96D2817C2142D38D0074740E /* Model + Model Controller */,
+				96D2818D2142F15C0074740E /* Helpers */,
 				96D281772142C7550074740E /* Resources */,
 			);
 			path = "Shopping List";
@@ -98,7 +99,6 @@
 			children = (
 				96D281832142D7EB0074740E /* ShoppingListCollectionViewController.swift */,
 				96D281872142D8E40074740E /* NewOrderFromItemsViewController.swift */,
-				96D281892142D9A70074740E /* NewShoppingItemViewController.swift */,
 			);
 			name = "View Controllers";
 			path = "New Group";
@@ -110,6 +110,14 @@
 				96D281822142D7EB0074740E /* ShoppingItemCollectionViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		96D2818D2142F15C0074740E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				96D2818E2142F16E0074740E /* LocalNotificationHelper.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,7 +193,7 @@
 			files = (
 				96D281792142C9410074740E /* ShoppingItem.swift in Sources */,
 				96D281882142D8E40074740E /* NewOrderFromItemsViewController.swift in Sources */,
-				96D2818A2142D9A70074740E /* NewShoppingItemViewController.swift in Sources */,
+				96D2818F2142F16E0074740E /* LocalNotificationHelper.swift in Sources */,
 				96D281842142D7EB0074740E /* ShoppingItemCollectionViewCell.swift in Sources */,
 				96D2817B2142C9F60074740E /* ShoppingItemController.swift in Sources */,
 				96D281852142D7EB0074740E /* ShoppingListCollectionViewController.swift in Sources */,
