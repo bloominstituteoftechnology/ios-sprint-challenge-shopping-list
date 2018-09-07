@@ -13,34 +13,11 @@ import UIKit
 class ShoppingItemController {
     
     init() {
-        uploadUserDefaults()
-    }
-    
-    private func uploadUserDefaults() {
-        
-        do {
-        
-        guard let shoppingListData = UserDefaults.standard.data(forKey: .shoppingListKey) else {
+        let isInitiated = UserDefaults.standard.bool(forKey: .isInitiatedKey)
+        if isInitiated {
+            loadFromPersistentStore()
+        } else {
             create()
-            return
-            }
-        
-        let plistDecoder = PropertyListDecoder()
-        self.shoppingItems = try plistDecoder.decode([ShoppingItem].self, from: shoppingListData)
-        } catch {
-            NSLog("Error decoding shopping items: \(error)")
-        }
-    }
-    
-    private func saveUserDefaults() {
-        
-        let plistEncoder = PropertyListEncoder()
-        
-        do {
-            let shoppingItemsData = try plistEncoder.encode(shoppingItems)
-            UserDefaults.standard.set(shoppingItemsData, forKey: .shoppingListKey)
-        } catch {
-            NSLog("Error enconding shopping items: \(error)")
         }
     }
     
@@ -50,13 +27,13 @@ class ShoppingItemController {
             let shoppingItem = ShoppingItem(name: name, imageName: name)
             shoppingItems.append(shoppingItem)
         }
-        
-        saveUserDefaults()
+        UserDefaults.standard.set(true, forKey: .isInitiatedKey)
+        saveToPersistentStore()
     }
     
-    func createNewItem(name: String, image: UIImage) {
-        let image = 
-    }
+//    func createNewItem(name: String, image: UIImage) {
+//        let image =
+//    }
     
     func update(shoppingItem: ShoppingItem) {
         guard let index = shoppingItems.index(of: shoppingItem) else { return }
@@ -67,7 +44,7 @@ class ShoppingItemController {
         shoppingItems.remove(at: index)
         shoppingItems.insert(scratch, at: index)
         
-        saveUserDefaults()
+        saveToPersistentStore()
     }
     
     func saveToPersistentStore() {

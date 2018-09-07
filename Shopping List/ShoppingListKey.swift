@@ -9,5 +9,5 @@
 import Foundation
 
 extension String {
-    static var shoppingListKey = "ShoppingList"
+    static var isInitiatedKey = "isInitiated"
 }
