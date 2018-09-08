@@ -8,12 +8,20 @@
 
 import UIKit
 
-class ShoppingListCollectionViewController: UICollectionViewController {
+class ShoppingListCollectionViewController: UICollectionViewController, UIViewControllerPreviewingDelegate {
 
     // MARK: - Properties
     let shoppingItemController = ShoppingItemController()
     
     // MARK: - Lifecycle Methods
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if traitCollection.forceTouchCapability == .available {
+            registerForPreviewing(with: self, sourceView: view)
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         collectionView?.reloadData()
@@ -71,6 +79,24 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         let shoppingItem = shoppingItemFor(indexPath)
         shoppingItemController.toggleIsOnList(for: shoppingItem)
         collectionView.reloadData()
+    }
+    
+    // MARK: - UI View Controller Previewing Delegate
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        guard let indexPath = collectionView?.indexPathForItem(at: location),
+        let cell = collectionView?.cellForItem(at: indexPath),
+        let detailVC = storyboard?.instantiateViewController(withIdentifier: .itemDetailViewIdentifier) as? ItemDetailViewController else { return nil }
+        detailVC.shoppingItemController = shoppingItemController
+        detailVC.shoppingItem = shoppingItemFor(indexPath)
+        
+        detailVC.preferredContentSize = CGSize(width: 0.0, height: 260)
+        previewingContext.sourceRect = cell.frame
+        
+        return detailVC
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        showDetailViewController(viewControllerToCommit, sender: self)
     }
 
     // MARK: - Navigation

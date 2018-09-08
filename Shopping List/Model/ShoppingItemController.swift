@@ -57,7 +57,7 @@ class ShoppingItemController {
     }
     
     // Update an existing shopping item in the array
-    func update(shoppingItem: ShoppingItem, name: String, imageData: Data, isOnShoppingList: Bool) {
+    func update(shoppingItem: ShoppingItem, name: String, imageData: Data) {
         guard let index = shoppingItems.index(of: shoppingItem) else {
             NSLog("Wasn't able to find the shopping item in the shopping items array")
             return
@@ -65,7 +65,14 @@ class ShoppingItemController {
         
         shoppingItems[index].name = name
         shoppingItems[index].imageData = imageData
-        shoppingItems[index].isOnShoppingList = isOnShoppingList
+        saveToPersistentStore()
+    }
+    
+    // Delete an existing shopping item from the array
+    func delete(_ shoppingItem: ShoppingItem) {
+        guard let index = shoppingItems.index(of: shoppingItem) else { return }
+        
+        shoppingItems.remove(at: index)
         saveToPersistentStore()
     }
     // MARK: - Persistence

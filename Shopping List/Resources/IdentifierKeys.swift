@@ -16,5 +16,7 @@ extension String {
     static let placeOrderSegueIdentifier = "PlaceOrderSegue"
     static let addItemSegueIdentifier = "AddItemSegue"
     
+    static let itemDetailViewIdentifier = "ItemDetailView"
+    
     static let shoppingListOrderNotificationIdentifier = "ShoppingListOrderNotification"
 }
