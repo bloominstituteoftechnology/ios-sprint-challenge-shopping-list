@@ -9,10 +9,10 @@
 import Foundation
 import UIKit
 
-struct ShoppingItem: Equatable {
+struct ShoppingItem: Equatable, Codable {
     
     var name: String
-    var image: UIImage
+    var image: Data
     var isSelected: Bool
     
     

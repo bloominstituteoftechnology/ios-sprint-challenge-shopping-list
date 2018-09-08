@@ -10,22 +10,21 @@ import UIKit
 
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
-    weak var delegate: ItemCollectionCellDelegate?
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    
+    weak var delegate: ItemCollectionCellDelegate?
     @IBOutlet weak var selectItem: UIButton!
     
     var item: ShoppingItem?{
         didSet {
             updateViews()
             
+
         }
     }
     
     @IBAction func itemPressed(_ sender: Any) {
-//        item?.isSelected = !(item?.isSelected)!
         delegate?.hasBeenSelected(for: self)
     }
     
@@ -37,8 +36,13 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         
         if item.isSelected{
             selectItem.setTitle("✅", for: UIControlState.normal)
+//            UserDefaults.standard.set(selectItem.titleLabel, forKey: .SaveSelected)
+            
         } else if item.isSelected == false {
-             selectItem.setTitle("❌", for: UIControlState.normal)
+            selectItem.setTitle("❌", for: UIControlState.normal)
+//             UserDefaults.standard.set(selectItem.titleLabel, forKey: .SaveSelected)
         }
+        
+        
     }
 }

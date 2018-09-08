@@ -9,19 +9,27 @@
 import UIKit
 
 private let reuseIdentifier = "ItemCell"
-let shoppingItemController = ShoppingItemController()
+
 
 class ShoppingListCollectionViewController: UICollectionViewController, ItemCollectionCellDelegate {
-   
+    
+    let shoppingItemController = ShoppingItemController()
+
     func hasBeenSelected(for cell: ShoppingItemCollectionViewCell) {
+        
         guard let item = cell.item else {return}
-        shoppingItemController.updateIsSelected(for: item)
+        shoppingItemController.toggleIsSelected(for: item)
         collectionView?.reloadData()
     }
     
-
     override func viewDidLoad() {
-        super.viewDidLoad()        
+        super.viewDidLoad()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+         collectionView?.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,15 +37,23 @@ class ShoppingListCollectionViewController: UICollectionViewController, ItemColl
         // Dispose of any resources that can be recreated.
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "OrderSegue"{
+            guard let destinationVC = segue.destination as? ShoppingDetailViewController else { return }
+            
+            destinationVC.shoppingItemController = shoppingItemController
+        }
+        
+        
     }
-    */
+    
 
     // MARK: UICollectionViewDataSource
 
@@ -57,9 +73,19 @@ class ShoppingListCollectionViewController: UICollectionViewController, ItemColl
         
         let item = shoppingItemController.items[indexPath.item]
         cell.item = item
-        cell.delegate = self
+        // Configure the cell
     
         return cell
+    }
+    
+    func areSelected () -> Int{
+        var counter = 0
+        for item in shoppingItemController.items {
+            if item.isSelected {
+                counter += 1
+            }
+        }
+        return counter
     }
 
     // MARK: UICollectionViewDelegate
