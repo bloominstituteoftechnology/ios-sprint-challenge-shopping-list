@@ -25,10 +25,20 @@ class ShoppingItemController {
        
         guard let index = items.index(of: item) else {return}
         
-        let temp = ShoppingItem(name: item.name, image: item.image, isSelected: item.isSelected)
+        let temp = ShoppingItem(name: item.name, image: item.image, isSelected: !(item.isSelected))
         items.remove(at: index)
         items.insert(temp, at: index)
         
         }
+    
+    func areSelected() -> Int{
+        var counter = 0
+        for item in items{
+            if item.isSelected{
+                counter += 1
+            }
+        }
+        return counter
+    }
     
 }

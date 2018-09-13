@@ -25,7 +25,6 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction func itemPressed(_ sender: Any) {
-//        item?.isSelected = !(item?.isSelected)!
         delegate?.hasBeenSelected(for: self)
     }
     

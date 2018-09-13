@@ -15,19 +15,16 @@ class ShoppingDetailViewController: UIViewController, UNUserNotificationCenterDe
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var addressField: UITextField!
     
+    var shoppingItemController: ShoppingItemController?
+    
     let localNotificationHelper = LocalNotifHelper()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+        view.backgroundColor = UIColor.darkGray
+        let count = shoppingItemController?.areSelected()
+        counterLabel.text = "\(count ?? 1) Item(s) selected"
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func confirmOrder(_ sender: Any) {
@@ -39,8 +36,6 @@ class ShoppingDetailViewController: UIViewController, UNUserNotificationCenterDe
             if let error = error {
                 NSLog("Error requesting auth for notifcations: \(error)")
             }
-            
-            
         }
         
         localNotificationHelper.requestAuthorization { (notificationsAllowed) in
