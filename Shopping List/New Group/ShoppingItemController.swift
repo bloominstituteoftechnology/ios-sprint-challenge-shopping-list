@@ -11,7 +11,10 @@ import UIKit
 import Photos
 
 class ShoppingItemController {
-    
+
+    init() {
+        loadFromPersistentStorage()
+    }
 
     var items: [ShoppingItem] = [ShoppingItem(name: "Apple", image: UIImagePNGRepresentation(UIImage(named: "apple")!)!, isSelected: true ),
                  ShoppingItem(name: "Grapes", image: UIImagePNGRepresentation(UIImage(named: "grapes")!)!, isSelected: true ),
@@ -28,6 +31,7 @@ class ShoppingItemController {
         let temp = ShoppingItem(name: item.name, image: item.image, isSelected: !(item.isSelected))
         items.remove(at: index)
         items.insert(temp, at: index)
+        saveToPersistentStorage()
         
         }
     
@@ -39,6 +43,46 @@ class ShoppingItemController {
             }
         }
         return counter
+    }
+    
+    var shoppingListURL: URL? {
+        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+        
+        let fileName = "ShoppingList.plist"
+        
+        return documentDirectory?.appendingPathComponent(fileName)
+    }
+    
+    func saveToPersistentStorage(){
+        
+        let plistEncoder = PropertyListEncoder()
+        
+        do{
+            let shoppingListData = try plistEncoder.encode(items)
+            guard let shoppingListURL = shoppingListURL else {return}
+            try shoppingListData.write(to: shoppingListURL)
+            
+        } catch {
+            NSLog("Encoding Error \(error)")
+        }
+    }
+    
+    func loadFromPersistentStorage(){
+        
+        do {
+            guard let shoppingListURL = shoppingListURL else {return}
+            let pListData = try Data(contentsOf: shoppingListURL)
+            
+            let plistDecoder = PropertyListDecoder()
+            
+            let decodedList = try plistDecoder.decode([ShoppingItem].self, from: pListData)
+            
+            self.items = decodedList
+            
+        } catch {
+            NSLog("Decoding Error \(error)")
+        }
+        
     }
     
 }
