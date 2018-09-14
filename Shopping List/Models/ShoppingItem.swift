@@ -7,3 +7,15 @@
 //
 
 import Foundation
+
+struct ShoppingItem: Equatable, Codable {
+    var itemName: String
+    var addToList: Bool
+    var imageData: Data
+    
+    init(itemName: String, addedToList: Bool, imageData: Data) {
+        self.itemName = itemName
+        self.addToList = false
+        self.imageData = imageData
+    }
+}

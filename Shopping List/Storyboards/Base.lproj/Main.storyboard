@@ -62,6 +62,11 @@
                                     <constraint firstItem="jKT-nT-bHW" firstAttribute="leading" secondItem="ZGv-7T-UEg" secondAttribute="leading" id="n9I-WT-fKp"/>
                                     <constraint firstItem="ZGv-7T-UEg" firstAttribute="top" secondItem="jKT-nT-bHW" secondAttribute="bottom" constant="8" symbolic="YES" id="xNw-SA-hva"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="addToOrder" destination="jKT-nT-bHW" id="1RQ-zk-SCP"/>
+                                    <outlet property="imageView" destination="ZGv-7T-UEg" id="zMB-4s-LiG"/>
+                                    <outlet property="itemName" destination="e1x-qE-z7J" id="C8r-XT-pz7"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -120,6 +125,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Send Order"/>
+                                <connections>
+                                    <action selector="sendOrderButton:" destination="W73-WN-RyW" eventType="touchUpInside" id="w8r-5X-8RK"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -139,6 +147,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Wzk-rh-LUv"/>
                     </view>
+                    <connections>
+                        <outlet property="addressTextField" destination="SOd-Ih-Bxa" id="eKW-dm-uIC"/>
+                        <outlet property="itemsInOrderLabel" destination="9RX-9z-nFw" id="MZK-d6-iu4"/>
+                        <outlet property="nameTextField" destination="gzw-Yl-QQ6" id="FVl-OR-hEz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nFf-JL-dYw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -10,4 +10,8 @@ import UIKit
 
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var itemName: UILabel!
+    @IBOutlet weak var addToOrder: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
+    
 }

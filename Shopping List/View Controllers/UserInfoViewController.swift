@@ -7,29 +7,53 @@
 //
 
 import UIKit
+import UserNotifications
 
 class UserInfoViewController: UIViewController {
-
+    
+    @IBOutlet weak var itemsInOrderLabel: UILabel!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var addressTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func sendOrderButton(_ sender: Any) {
+        
+        let center = UNUserNotificationCenter.current()
+        // Request permission to display alerts and play sounds.
+        center.requestAuthorization(options: [.alert, .sound])
+        { (granted, error) in
+            if let error = error {
+                NSLog("There was an error requesting authorization for notification: \(error)")
+                return
+            }
+            
+            NSLog("Notifiation authorization granted? \(granted)")
+        }
+        
+        
+        guard let name = nameTextField.text,
+            let address = addressTextField.text else { return }
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Delivery for \(name)!"
+        content.body = "Your shopping list will be delivered to \(address) in 15 minutes"
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let request = UNNotificationRequest(identifier: "ShoppingListID", content: content, trigger: trigger)
+        
+        // Schedule the request with the system.
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.add(request) { (error) in
+            if let error = error {
+                NSLog("There was an error schedluling a notification: \(error)")
+                return
+            }
+        }
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
