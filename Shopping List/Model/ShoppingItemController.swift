@@ -24,14 +24,15 @@ class ShoppingItemController {
     // Crud
     
     // Read
+    
     var shoppingItems: [ShoppingItem] = []
     
     private let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
     
-    // Create
+     // Create
     
 //    func createList(){
-//        for _ in itemNames {
+//        for item in itemNames {
 //            let shoppingItem = ShoppingItem(name: name, imageName: name)
 //            shoppingItems.append(shoppingItem)
 //        }
@@ -39,7 +40,7 @@ class ShoppingItemController {
 //        saveToPersistentStore()
 //    }
     
-    // Update
+     // Update
     
     func update(shoppingItem: ShoppingItem) {
         guard let index = shoppingItems.index(of: shoppingItem) else {return}
