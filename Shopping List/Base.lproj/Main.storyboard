@@ -36,13 +36,6 @@
                                             <rect key="frame" x="0.0" y="30" width="173" height="127"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9U3-CK-Pev">
-                                            <rect key="frame" x="0.0" y="158" width="173" height="26"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="03R-w9-pbN">
                                             <rect key="frame" x="0.0" y="0.0" width="173" height="26"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -50,8 +43,21 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vvl-Uy-Wt8">
+                                            <rect key="frame" x="0.0" y="154" width="173" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Button"/>
+                                            <connections>
+                                                <action selector="isAddedButton:" destination="G4k-8X-c4c" eventType="touchUpInside" id="b2T-jD-wRN"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </view>
+                                <connections>
+                                    <outlet property="imageCell" destination="iEn-c1-u39" id="umG-Sy-b5L"/>
+                                    <outlet property="isAddedLabel" destination="03R-w9-pbN" id="pvI-GF-ODZ"/>
+                                    <outlet property="nameButton" destination="Vvl-Uy-Wt8" id="9HW-Bb-8UP"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>

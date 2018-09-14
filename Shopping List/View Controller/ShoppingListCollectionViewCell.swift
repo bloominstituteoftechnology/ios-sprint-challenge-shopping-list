@@ -17,27 +17,23 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
     weak var delegate: ShoppingListCellDelegate?
     
     var shoppingItem: Item?{
-        
         didSet{
             updateView()
         }
     }
     
-    @IBOutlet weak var isAddedButtonOut: UIButton!
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var label: UILabel!
-    
+    @IBOutlet weak var isAddedLabel: UILabel!
+    @IBOutlet weak var imageCell: UIImageView!
+    @IBOutlet weak var nameButton: UIButton!
     @IBAction func isAddedButton(_ sender: Any) {
         delegate?.toggleHasBeenAdded(for: self)
-        
     }
     
     func updateView(){
-        guard let imageCell = shoppingItem else {return}
-        imageView.image = UIImage(data: imageCell.image)
-        label.text = imageCell.name
-        let text = imageCell.isAdded ? "Not Added" : "Added"
-        isAddedButtonOut.setTitle(text, for: .normal)
-        
+        if let shoppingItem = shoppingItem{
+            imageCell.image = UIImage(data: shoppingItem.image)
+            nameButton.setTitle(shoppingItem.name, for: .normal)
+            isAddedLabel.text = shoppingItem.isAdded ? "Added" : "Not Added"
+        }
     }
 }

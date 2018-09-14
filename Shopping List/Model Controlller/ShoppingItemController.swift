@@ -39,8 +39,7 @@ class ShoppingItemController{
         scratch.isAdded = !item.isAdded
         shoppingItems.remove(at: index)
         shoppingItems.insert(scratch, at: index)
-        
-        
+        saveToPersistence()
     }
     
     
