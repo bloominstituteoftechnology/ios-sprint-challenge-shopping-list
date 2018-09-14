@@ -34,7 +34,7 @@ class ShoppingItemController{
     
     func updateIsAdded(item: Item){
         guard let index = shoppingItems.index(of: item) else {return}
-        shoppingItems[index].isAdded = shoppingItems[index].isAdded
+        shoppingItems[index].isAdded = !shoppingItems[index].isAdded
         saveToPersistence()
     }
     

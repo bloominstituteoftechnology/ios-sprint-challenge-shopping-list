@@ -54,9 +54,9 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
     func itemAt(indexPath:IndexPath) -> Item{
         if indexPath.section == 0 {
-            return shoppingItemController.addedItem[indexPath.row]
+            return shoppingItemController.addedItem[indexPath.item]
         } else {
-            return shoppingItemController.notAddedItem[indexPath.row]
+            return shoppingItemController.notAddedItem[indexPath.item]
         }
         
     }
