@@ -12,25 +12,24 @@ import UIKit
 
 
 class ShoppingItemController{
-    init(){
-        persistItem()
-    }
-    var shoppingItems : [Item] = []
-    let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
-    
-    
-    let itemPreferenceKey = "itemPreference"
-    let userDefaults = UserDefaults.standard
-    func persistItem(){
-        userDefaults.set(shoppingItems, forKey: itemPreferenceKey)
-    }
-    
-    func createShoppingItem(name: String, image: Data) ->[Item] {
-        for names in itemNames{
-            let shoppingItem = Item(name: names, image: UIImagePNGRepresentation(UIImage(named: names)!)!)
-            shoppingItems.append(shoppingItem)
+    init() {
+        //set up stuff, if never been initialized before
+        isInitialized = UserDefaults.standard.bool(forKey: setupKey)
+        if(isInitialized == false){
+            let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
+            
+            for item in itemNames{
+                
+                guard let image = UIImage(named:item),
+                    let imageData = UIImagePNGRepresentation(image) else {return}
+                
+                let newItem = Item(name: item, image: imageData)
+                shoppingItems.append(newItem)
+            }
+            UserDefaults.standard.set(true, forKey: setupKey)
         }
-        return shoppingItems
+        //set user default to reflect that it has been set up.
+        loadFromPersistence()
     }
     
     func updateIsAdded(item: Item){
@@ -57,6 +56,8 @@ class ShoppingItemController{
         return shoppingItems.filter({$0.isAdded == false})
     }
 
-    
+    var shoppingItems = [Item]()
+    private let setupKey = "SetupKey"
+    private(set) var isInitialized:Bool?
     
 }

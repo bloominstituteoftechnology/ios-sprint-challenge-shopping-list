@@ -20,7 +20,11 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     let shoppingItemController = ShoppingItemController()
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
+        if segue.identifier == "showSelectedList"{
+            guard let destinationVC = segue.destination as? DetailShoppingListViewController else {return}
+            
+            destinationVC.shoppingItemController = shoppingItemController
+        }
     }
 
 
