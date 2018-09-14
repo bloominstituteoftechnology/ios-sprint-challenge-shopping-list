@@ -36,29 +36,34 @@
                                             <rect key="frame" x="0.0" y="0.0" width="156" height="180"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cXV-1B-XcD">
-                                                    <rect key="frame" x="16" y="8" width="124" height="114"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Item name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qfp-Xf-VIk">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Item name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qfp-Xf-VIk" userLabel="Item Labell">
                                                     <rect key="frame" x="0.0" y="130" width="156" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NOT ADDED" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqf-DB-q2e">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NOT ADDED" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqf-DB-q2e" userLabel="Added Label">
                                                     <rect key="frame" x="0.0" y="151" width="156" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cXV-1B-XcD" userLabel="Photo Image View">
+                                                    <rect key="frame" x="16" y="8" width="124" height="114"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
                                     </subviews>
                                 </view>
+                                <connections>
+                                    <outlet property="addedLabel" destination="gqf-DB-q2e" id="dqB-em-pR8"/>
+                                    <outlet property="itemLabel" destination="qfp-Xf-VIk" id="8LE-ya-Byv"/>
+                                    <outlet property="photoImageView" destination="cXV-1B-XcD" id="gAK-tx-8qn"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -106,18 +111,12 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
-                                                <connections>
-                                                    <action selector="nameTextField:" destination="BTm-Os-dH2" eventType="editingDidEnd" id="KVr-3G-0Cm"/>
-                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your address" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4J7-lF-Omr" userLabel="Address Text Field">
                                                 <rect key="frame" x="109.5" y="72" width="143" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
-                                                <connections>
-                                                    <action selector="addressTextField:" destination="BTm-Os-dH2" eventType="editingDidEnd" id="MJb-1O-rMi"/>
-                                                </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="heJ-ld-jgP">
                                                 <rect key="frame" x="141.5" y="108" width="79" height="30"/>
@@ -150,7 +149,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="uAS-XJ-DmH"/>
                     <connections>
-                        <outlet property="currentItemsLabel" destination="ULW-T0-4gl" id="MzH-FK-s2p"/>
+                        <outlet property="addressTextField" destination="4J7-lF-Omr" id="6mq-5C-Wv3"/>
+                        <outlet property="currentItemsLabel" destination="ULW-T0-4gl" id="jN7-QL-g6j"/>
+                        <outlet property="nameTextField" destination="zDT-xy-18r" id="DOx-1E-OTb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lwz-ge-G9f" userLabel="First Responder" sceneMemberID="firstResponder"/>
