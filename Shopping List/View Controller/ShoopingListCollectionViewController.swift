@@ -30,11 +30,6 @@ class ShoppingListCollectionViewController: UICollectionViewController, Shopping
         if segue.identifier == "NextBarButtonSegue" {
             guard let destionationVC = segue.destination as? SendOrderViewController else { return }
             destionationVC.shoppingItemController = shoppinItemController
-            
-//            let count = shoppinItemController.shoppingList.count
-//            let text = "You currently have \(count) items in your shopping list"
-//            
-//            destionationVC.shoppingInfoLabel.text = text
         }
     }
 
@@ -76,6 +71,7 @@ class ShoppingListCollectionViewController: UICollectionViewController, Shopping
             cell.addButtonOutlet.setTitle("Added", for: .normal)
     
         } else {
+            shoppinItemController.changeStatus(for: item)
             shoppinItemController.removeFromShoppingList(item: item)
             cell.addButtonOutlet.setTitle("Not Added", for: .normal)
         }

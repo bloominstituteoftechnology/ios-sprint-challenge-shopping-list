@@ -27,6 +27,12 @@ class SendOrderViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        guard let count = shoppingItemController?.shoppingList.count else { return }
+        shoppingInfoLabel.text = "You have \(count) items in you Shopping List"
+    }
+    
     // MARK: - Actions
     
     @IBAction func sendOrderButtonTapped(_ sender: Any) {
