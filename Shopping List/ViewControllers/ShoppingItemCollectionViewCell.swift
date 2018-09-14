@@ -28,10 +28,4 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         shoppingItemLabel.text = item.name
         addedItemLabel.text = item.isInList ? "In Cart" : ""
     }
-    
-    
-    
-    
-    
-    
 }
