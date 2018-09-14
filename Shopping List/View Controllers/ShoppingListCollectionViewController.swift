@@ -8,26 +8,18 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+
 
 class ShoppingListCollectionViewController: UICollectionViewController {
+    
+    let shoppingItemController = ShoppingItemController()
+    var shoppingItems = [ShoppingItem]()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView?.reloadData()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
     /*
     // MARK: - Navigation
@@ -41,26 +33,33 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+        return shoppingItemController.shoppingItems.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        // Configure the cell
-    
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingItem", for: indexPath) as! ShoppingItemCollectionViewCell
+        
+        let shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
+        cell.itemName.text = shoppingItem.itemName
+        if shoppingItem.addToList {
+            cell.addToOrder.text = "Added"
+        } else {
+         cell.addToOrder.text = "Not Added"
+        }
+        cell.imageView.image = shoppingItem.image
+        
         return cell
     }
 
     // MARK: UICollectionViewDelegate
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            print("item selected \(indexPath.item)")
+        let shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
+        shoppingItemController.toggleAdd(for: shoppingItem)
+    }
 
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking

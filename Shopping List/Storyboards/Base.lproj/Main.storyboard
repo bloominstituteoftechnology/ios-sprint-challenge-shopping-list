@@ -33,35 +33,26 @@
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="170"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add to Order" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jKT-nT-bHW">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add to Order" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jKT-nT-bHW">
                                             <rect key="frame" x="0.0" y="0.0" width="161" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1x-qE-z7J">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Item Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1x-qE-z7J">
                                             <rect key="frame" x="0.0" y="149" width="150" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZGv-7T-UEg">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZGv-7T-UEg">
                                             <rect key="frame" x="0.0" y="29" width="150" height="112"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
                                 </view>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="ZGv-7T-UEg" secondAttribute="trailing" id="40D-eL-AGW"/>
-                                    <constraint firstItem="e1x-qE-z7J" firstAttribute="top" secondItem="ZGv-7T-UEg" secondAttribute="bottom" constant="8" symbolic="YES" id="CDy-q7-B3X"/>
-                                    <constraint firstItem="jKT-nT-bHW" firstAttribute="leading" secondItem="dtG-uv-iuA" secondAttribute="leading" id="DZ7-zJ-fqn"/>
-                                    <constraint firstItem="ZGv-7T-UEg" firstAttribute="trailing" secondItem="e1x-qE-z7J" secondAttribute="trailing" id="HqC-O5-1Po"/>
-                                    <constraint firstItem="jKT-nT-bHW" firstAttribute="top" secondItem="dtG-uv-iuA" secondAttribute="top" id="MTh-7Y-niq"/>
-                                    <constraint firstItem="ZGv-7T-UEg" firstAttribute="leading" secondItem="e1x-qE-z7J" secondAttribute="leading" id="Opa-1B-gJJ"/>
-                                    <constraint firstAttribute="bottom" secondItem="e1x-qE-z7J" secondAttribute="bottom" id="R6I-rT-iHl"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="jKT-nT-bHW" secondAttribute="trailing" constant="-19" id="YBi-pb-UPv"/>
-                                    <constraint firstItem="jKT-nT-bHW" firstAttribute="leading" secondItem="ZGv-7T-UEg" secondAttribute="leading" id="n9I-WT-fKp"/>
-                                    <constraint firstItem="ZGv-7T-UEg" firstAttribute="top" secondItem="jKT-nT-bHW" secondAttribute="bottom" constant="8" symbolic="YES" id="xNw-SA-hva"/>
-                                </constraints>
                                 <connections>
                                     <outlet property="addToOrder" destination="jKT-nT-bHW" id="1RQ-zk-SCP"/>
                                     <outlet property="imageView" destination="ZGv-7T-UEg" id="zMB-4s-LiG"/>
