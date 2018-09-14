@@ -8,14 +8,11 @@
 
 import UIKit
 
-protocol ShoppingListCellDelegate: class {
-    func toggleHasBeenAdded(for cell: ShoppingListCollectionViewCell)
-}
+
 
 class ShoppingListCollectionViewCell: UICollectionViewCell {
     
-    weak var delegate: ShoppingListCellDelegate?
-    
+
     var shoppingItem: Item?{
         didSet{
             updateView()
@@ -24,16 +21,15 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var isAddedLabel: UILabel!
     @IBOutlet weak var imageCell: UIImageView!
-    @IBOutlet weak var nameButton: UIButton!
-    @IBAction func isAddedButton(_ sender: Any) {
-        delegate?.toggleHasBeenAdded(for: self)
-    }
+    @IBOutlet weak var nameLabel: UILabel!
+    
     
     func updateView(){
         if let shoppingItem = shoppingItem{
             imageCell.image = UIImage(data: shoppingItem.image)
-            nameButton.setTitle(shoppingItem.name, for: .normal)
-            isAddedLabel.text = shoppingItem.isAdded ? "Added" : "Not Added"
+            nameLabel.text = shoppingItem.name
+           let status = shoppingItem.isAdded ? "Added" : "Not Added"
+            isAddedLabel.text = status
         }
     }
 }

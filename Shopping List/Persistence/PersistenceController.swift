@@ -12,7 +12,7 @@ extension ShoppingItemController{
     
     var shoppingItemURL : URL?{
         guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {return nil}
-        let fileName = "Shopping List.plist"
+        let fileName = "ShoppingList.plist"
         return documentsDirectory.appendingPathComponent(fileName)
         
         }

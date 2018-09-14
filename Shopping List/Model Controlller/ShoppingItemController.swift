@@ -57,7 +57,7 @@ class ShoppingItemController{
     }
 
     var shoppingItems = [Item]()
-    private let setupKey = "SetupKey"
+    private let setupKey = "Key"
     private(set) var isInitialized:Bool?
     
 }
