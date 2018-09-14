@@ -17,15 +17,15 @@ class ShoppingItemController {
     
     private let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
     
-//    // Create
-//    func createList(){
-//        for item in itemNames {
-//            let shoppingItem = ShoppingItem(name: name, imageName: name)
-//            shoppingItems.append(shoppingItem)
-//        }
-//        //UserDefaults.standard.set(true, forKey: .isInitiatedKey)
-//        // saveToPersistentStore()
-//    }
+    // Create
+    func createList(){
+        for item in itemNames {
+            let shoppingItem = ShoppingItem(name: name, imageName: name)
+            shoppingItems.append(shoppingItem)
+        }
+        //UserDefaults.standard.set(true, forKey: .isInitiatedKey)
+        // saveToPersistentStore()
+    }
     
     // Update
     
@@ -42,7 +42,7 @@ class ShoppingItemController {
         
     }
    
-    // MARK - Perssitence Functions
+    // MARK - Persistence Functions
     
     private var shoppingItemsFileURL: URL? {
         let fm = FileManager.default
@@ -50,9 +50,52 @@ class ShoppingItemController {
         return directory.appendingPathComponent("shoppingItems.plist")
     }
     
+    func saveToPersistentStore() {
+        guard let url = shoppingItemsFileURL else {return}
+        
+        do {
+            
+            let encoder = PropertyListEncoder()
+            
+           
+            let data = try encoder.encode(shoppingItems)
+            
+            
+            try data.write(to: url)
+            
+        } catch  {
+            
+           
+            NSLog("Error saving memories data: \(error)")
+            
+        }
+    }
     
-    
-    
+    func loadFromPersistentStore() {
+        
+       
+        let fm = FileManager.default
+        
+        
+        guard let url = shoppingItemsFileURL, fm.fileExists(atPath: url.path) else {return}
+        
+        do {
+          
+            let decoder = PropertyListDecoder ()
+            
+            
+            let data = try Data(contentsOf: url)
+            
+          
+            shoppingItems = try decoder.decode([ShoppingItem].self, from: data)
+            
+        } catch  {
+            
+            // this stores in the users' log for errors
+            NSLog("Error loading memories data: \(error)")
+            
+        }
+    }
     
     
     
