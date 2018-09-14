@@ -8,6 +8,27 @@
 
 import UIKit
 
+protocol ShoppingListCollectionViewCellDelegate: class {
+    func heyItemAddedToList(for cell: ShoppingListCollectionViewCell)
+}
+
 class ShoppingListCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - Properties
+    
+    var shoppingListController: ShoppingItemController?
+    
+    weak var shoppingListCVCellDelegate: ShoppingListCollectionViewCellDelegate?
+    
+    // MARK: - Outlets
+    
+    @IBOutlet weak var shoppingItemImage: UIImageView!
+    @IBOutlet weak var shoppingItemNameLabel: UILabel!
+    @IBOutlet weak var addButtonOutlet: UIButton!
+    
+    // MARK: - Actions
+    
+    @IBAction func addButtonTapped(_ sender: Any) {
+        
+    }
 }
