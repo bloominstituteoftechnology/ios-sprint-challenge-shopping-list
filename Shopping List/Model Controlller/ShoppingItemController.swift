@@ -29,16 +29,13 @@ class ShoppingItemController{
         for names in itemNames{
             let shoppingItem = Item(name: names, image: UIImagePNGRepresentation(UIImage(named: names)!)!)
             shoppingItems.append(shoppingItem)
-            return shoppingItems
         }
+        return shoppingItems
     }
     
     func updateIsAdded(item: Item){
         guard let index = shoppingItems.index(of: item) else {return}
-        var scratch = item
-        scratch.isAdded = !item.isAdded
-        shoppingItems.remove(at: index)
-        shoppingItems.insert(scratch, at: index)
+        shoppingItems[index].isAdded = shoppingItems[index].isAdded
         saveToPersistence()
     }
     
