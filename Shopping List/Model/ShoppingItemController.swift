@@ -16,7 +16,7 @@ class ShoppingItemController {
         if isInitiated {
             loadFromPersistentStore()
         } else {
-            createList()
+           // createList()
         }
     }
     
@@ -29,14 +29,15 @@ class ShoppingItemController {
     private let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
     
     // Create
-    func createList(){
-        for item in itemNames {
-            let shoppingItem = ShoppingItem(name: name, imageName: name)
-            shoppingItems.append(shoppingItem)
-        }
-        UserDefaults.standard.set(true, forKey: .isInitiatedKey)
-        saveToPersistentStore()
-    }
+    
+//    func createList(){
+//        for _ in itemNames {
+//            let shoppingItem = ShoppingItem(name: name, imageName: name)
+//            shoppingItems.append(shoppingItem)
+//        }
+//        UserDefaults.standard.set(true, forKey: .isInitiatedKey)
+//        saveToPersistentStore()
+//    }
     
     // Update
     

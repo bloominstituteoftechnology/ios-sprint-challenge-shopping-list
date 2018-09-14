@@ -9,15 +9,18 @@
 import Foundation
 
 struct ShoppingItem: Codable, Equatable {
+    
     var name:String
     var imageName:String
     var isAdded:Bool
-    var imageData:Data
-    
-    init(name:String, imageName:String, isAdded:Bool, imageData:Data) {
+    var imageData:Data?
+
+    init(name:String, imageName:String) {
         self.name = name
         self.imageName = imageName
-        self.isAdded = isAdded
-        self.imageData = imageData
+        self.isAdded = false
     }
+    
 }
+
+
