@@ -20,8 +20,6 @@ class ShoppingItemController {
     func addShoppingList(itemName: String, imageData: Data, hasBeenAdded: Bool) {
         let newItem = ShoppingItem(name: itemName, imageData: imageData, hasBeenAdded: hasBeenAdded)
         shoppingList.append(newItem)
-        
-        saveToPersistentStore()
     }
     
     func changeStatus(for item: ShoppingItem) {
@@ -34,8 +32,6 @@ class ShoppingItemController {
     func removeFromShoppingList(item: ShoppingItem) {
         guard let index = shoppingList.index(of: item) else { return }
         shoppingList.remove(at: index)
-        
-        saveToPersistentStore()
     }
     
     // MARK: Persistence
