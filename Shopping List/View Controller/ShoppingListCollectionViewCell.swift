@@ -16,8 +16,6 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     
-    var shoppingItemController: ShoppingItemController?
-    
     weak var shoppingListCVCellDelegate: ShoppingListCollectionViewCellDelegate?
     
     // MARK: - Outlets

@@ -14,7 +14,7 @@ class ShoppingListCollectionViewController: UICollectionViewController, Shopping
 
     // MARK: - Properties
     
-    var shoppinItemController = ShoppingItemController()
+    var shoppinItemController: ShoppingItemController?
     
     // MARK: - Functions
     
@@ -31,9 +31,10 @@ class ShoppingListCollectionViewController: UICollectionViewController, Shopping
             guard let destionationVC = segue.destination as? SendOrderViewController else { return }
             destionationVC.shoppingItemController = shoppinItemController
             
-            let count = shoppinItemController.shoppingList.count
+            guard let count = shoppinItemController?.shoppingList.count else { return }
+            let text = "You currently have \(count) items in your shopping list"
             
-            destionationVC.shoppingInfoLabel.text = "You currently have \(count) items in your shopping list"
+            destionationVC.shoppingInfoLabel.text = text
         }
     }
 
@@ -45,12 +46,12 @@ class ShoppingListCollectionViewController: UICollectionViewController, Shopping
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return shoppinItemController.itemNames.count
+        return shoppinItemController!.itemNames.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ShoppingListCollectionViewCell else { return UICollectionViewCell() }
-        let item = shoppinItemController.itemNames[indexPath.item]
+        guard let item = shoppinItemController?.itemNames[indexPath.item] else { return cell }
         
         cell.shoppingItemImage.image = UIImage(named: item)
         cell.shoppingItemNameLabel.text = item
@@ -67,10 +68,16 @@ class ShoppingListCollectionViewController: UICollectionViewController, Shopping
               let data = UIImageJPEGRepresentation(image, 1.0),
               let index = collectionView?.indexPath(for: cell) else { return }
         
-        shoppinItemController.addShoppingList(itemName: name, imageData: data, hasBeenAdded: true)
+        let item = shoppinItemController?.shoppingList[index.item]
         
-        let item = shoppinItemController.shoppingList[index.item]
-        shoppinItemController.changeStatus(for: item)
+        if item == nil {
+            shoppinItemController?.addShoppingList(itemName: name, imageData: data, hasBeenAdded: true)
+            shoppinItemController?.changeStatus(for: item!)
+            cell.addButtonOutlet.setTitle("Added", for: .normal)
+        } else if item != nil {
+            shoppinItemController?.removeFromShoppingList(item: item!)
+            cell.addButtonOutlet.setTitle("Not Added", for: .normal)
+        }
     }
 
 }

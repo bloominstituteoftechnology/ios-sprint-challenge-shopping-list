@@ -31,6 +31,13 @@ class ShoppingItemController {
         saveToPersistentStore()
     }
     
+    func removeFromShoppingList(item: ShoppingItem) {
+        guard let index = shoppingList.index(of: item) else { return }
+        shoppingList.remove(at: index)
+        
+        saveToPersistentStore()
+    }
+    
     // MARK: Persistence
     
     var persistentFileURL: URL? {
