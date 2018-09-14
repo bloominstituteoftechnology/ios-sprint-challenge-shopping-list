@@ -39,6 +39,11 @@ class ShoppingItemController{
         saveToPersistence()
     }
     
+    func clearCart(){
+        for index in 0...shoppingItems.count - 1{
+            shoppingItems[index].isAdded = false
+        }
+    }
     
    
     

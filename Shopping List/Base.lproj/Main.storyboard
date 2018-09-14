@@ -110,11 +110,19 @@
                                 <rect key="frame" x="148" y="318" width="79" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Send Order"/>
+                                <connections>
+                                    <action selector="sendOrder:" destination="c9i-ZQ-aL8" eventType="touchUpInside" id="f8r-n4-6Xn"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="giD-H7-9WK"/>
                     </view>
+                    <connections>
+                        <outlet property="addressLabel" destination="pQ0-uo-cdc" id="8eT-7d-2K2"/>
+                        <outlet property="messageLabel" destination="y2M-04-Ox4" id="BVx-xs-luh"/>
+                        <outlet property="nameTextField" destination="JuH-53-A2R" id="T2o-Bm-tZp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gYA-8R-AEq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
