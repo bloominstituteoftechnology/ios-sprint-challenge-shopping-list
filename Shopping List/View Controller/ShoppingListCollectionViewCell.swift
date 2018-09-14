@@ -16,7 +16,7 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     
-    var shoppingListController: ShoppingItemController?
+    var shoppingItemController: ShoppingItemController?
     
     weak var shoppingListCVCellDelegate: ShoppingListCollectionViewCellDelegate?
     
@@ -29,6 +29,6 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
     // MARK: - Actions
     
     @IBAction func addButtonTapped(_ sender: Any) {
-        
+        shoppingListCVCellDelegate?.heyItemAddedToList(for: self)
     }
 }

@@ -9,19 +9,37 @@
 import UIKit
 
 class SendOrderViewController: UIViewController {
+    
+    // MARK: - Properties
+    var item: ShoppingItem?
+    var shoppingItemController: ShoppingItemController?
+    let notificationHelper = NotificationHelper()
 
+    // MARK: - Outlets
+    
+    @IBOutlet weak var shoppingInfoLabel: UILabel!
+    @IBOutlet weak var customerNameTextField: UITextField!
+    @IBOutlet weak var customerAddressTextField: UITextField!
+    
+    // MARK: - App life cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // MARK: - Actions
+    
+    @IBAction func sendOrderButtonTapped(_ sender: Any) {
+        guard let name = customerNameTextField.text,
+              let address = customerAddressTextField.text else { return }
+        
+        notificationHelper.getAuthorizationStatus { (status) in
+            if status == .authorized {
+                self.notificationHelper.scheduleNotification(customerName: name, customerAddress: address)
+            } else {
+                self.notificationHelper.requestAuthorization()
+            }
+        }
     }
-    */
 
 }

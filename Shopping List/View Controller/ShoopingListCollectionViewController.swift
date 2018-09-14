@@ -10,7 +10,7 @@ import UIKit
 
 private let reuseIdentifier = "ShoppingListCell"
 
-class ShoppingListCollectionViewController: UICollectionViewController {
+class ShoppingListCollectionViewController: UICollectionViewController, ShoppingListCollectionViewCellDelegate {
 
     // MARK: - Properties
     
@@ -20,12 +20,21 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        collectionView?.reloadData()
     }
 
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        if segue.identifier == "NextBarButtonSegue" {
+            guard let destionationVC = segue.destination as? SendOrderViewController else { return }
+            destionationVC.shoppingItemController = shoppinItemController
+            
+            let count = shoppinItemController.shoppingList.count
+            
+            destionationVC.shoppingInfoLabel.text = "You currently have \(count) items in your shopping list"
+        }
     }
 
     // MARK: UICollectionViewDataSource
@@ -45,11 +54,23 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         
         cell.shoppingItemImage.image = UIImage(named: item)
         cell.shoppingItemNameLabel.text = item
-        
+        cell.shoppingListCVCellDelegate = self
         
         return cell
     }
 
-    // MARK: UICollectionViewDelegate
+    // MARK: Delegate
+    
+    func heyItemAddedToList(for cell: ShoppingListCollectionViewCell) {
+        guard let name = cell.shoppingItemNameLabel.text,
+              let image = cell.shoppingItemImage.image,
+              let data = UIImageJPEGRepresentation(image, 1.0),
+              let index = collectionView?.indexPath(for: cell) else { return }
+        
+        shoppinItemController.addShoppingList(itemName: name, imageData: data, hasBeenAdded: true)
+        
+        let item = shoppinItemController.shoppingList[index.item]
+        shoppinItemController.changeStatus(for: item)
+    }
 
 }
