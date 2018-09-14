@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j9N-bZ-3dK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j9N-bZ-3dK">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -43,22 +43,15 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vyH-Iy-stv">
-                                            <rect key="frame" x="2" y="0.0" width="169" height="30"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="03R-w9-pbN">
+                                            <rect key="frame" x="0.0" y="0.0" width="173" height="26"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Not Added"/>
-                                            <connections>
-                                                <action selector="isAddedButton:" destination="G4k-8X-c4c" eventType="touchUpInside" id="pRA-fK-cYr"/>
-                                            </connections>
-                                        </button>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </view>
-                                <connections>
-                                    <outlet property="imageView" destination="iEn-c1-u39" id="RIP-Ae-FAe"/>
-                                    <outlet property="isAddedButtonOut" destination="vyH-Iy-stv" id="RW2-Pm-gpo"/>
-                                    <outlet property="itemButton" destination="vyH-Iy-stv" id="ItJ-dL-uPS"/>
-                                    <outlet property="label" destination="9U3-CK-Pev" id="jRn-6s-4P5"/>
-                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -124,7 +117,6 @@
         <!--Navigation Controller-->
         <scene sceneID="ejD-Lx-l9b">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Noz-Ln-BvW" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="j9N-bZ-3dK" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="0Za-4y-KvQ">
@@ -136,6 +128,7 @@
                         <segue destination="8X4-7J-C6N" kind="relationship" relationship="rootViewController" id="ZTn-LS-5LD"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Noz-Ln-BvW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-13.6" y="179.46026986506749"/>
         </scene>

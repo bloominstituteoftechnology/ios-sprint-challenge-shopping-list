@@ -7,28 +7,42 @@
 //
 
 import Foundation
+import UIKit
+
 
 
 class ShoppingItemController{
+    init(){
+        persistItem()
+    }
+    var shoppingItems : [Item] = []
     let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
     
-    var shoppingItems : [Item] = []
-     
-    func createShoppingItem(name: String, image: String){
+    
+    let itemPreferenceKey = "itemPreference"
+    let userDefaults = UserDefaults.standard
+    func persistItem(){
+        userDefaults.set(shoppingItems, forKey: itemPreferenceKey)
+    }
+    
+    func createShoppingItem(name: String, image: Data) ->[Item] {
         for names in itemNames{
-            let shoppingItem = Item(name: names, image: names)
+            let shoppingItem = Item(name: names, image: UIImagePNGRepresentation(UIImage(named: names)!)!)
             shoppingItems.append(shoppingItem)
-            
+            return shoppingItems
         }
     }
     
-    
-    func toggleButton(shoppingItem: Item){
-        if shoppingItem.isAdded == false{
-          var scratch = shoppingItem
-            scratch.isAdded = true
-        }
+    func updateIsAdded(item: Item){
+        guard let index = shoppingItems.index(of: item) else {return}
+        var scratch = item
+        scratch.isAdded = !item.isAdded
+        shoppingItems.remove(at: index)
+        shoppingItems.insert(scratch, at: index)
+        
+        
     }
+    
     
    
     

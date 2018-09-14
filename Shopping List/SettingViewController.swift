@@ -10,7 +10,7 @@ import Foundation
 
 class SettingViewController{
     
-    let itemPreferenceKey = "saveThemePreference"
+    let itemPreferenceKey = "itemPreference"
     let userDefaults = UserDefaults.standard
     
     
