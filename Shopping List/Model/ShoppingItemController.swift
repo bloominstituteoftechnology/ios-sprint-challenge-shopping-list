@@ -10,6 +10,17 @@ import Foundation
 
 class ShoppingItemController {
     
+    init() {
+        let isInitiated = UserDefaults.standard.bool(forKey: .isInitiatedKey)
+        
+        if isInitiated {
+            loadFromPersistentStore()
+        } else {
+            createList()
+        }
+    }
+    
+    
     // Crud
     
     // Read
@@ -23,8 +34,8 @@ class ShoppingItemController {
             let shoppingItem = ShoppingItem(name: name, imageName: name)
             shoppingItems.append(shoppingItem)
         }
-        //UserDefaults.standard.set(true, forKey: .isInitiatedKey)
-        // saveToPersistentStore()
+        UserDefaults.standard.set(true, forKey: .isInitiatedKey)
+        saveToPersistentStore()
     }
     
     // Update
@@ -38,7 +49,7 @@ class ShoppingItemController {
         shoppingItems.remove(at: index)
         shoppingItems.insert(scratchItem, at: index)
         
-        // saveToPersistentStore()
+        saveToPersistentStore()
         
     }
    
@@ -66,7 +77,7 @@ class ShoppingItemController {
         } catch  {
             
            
-            NSLog("Error saving memories data: \(error)")
+            NSLog("Error saving ShoppingList data: \(error)")
             
         }
     }
@@ -92,7 +103,7 @@ class ShoppingItemController {
         } catch  {
             
             // this stores in the users' log for errors
-            NSLog("Error loading memories data: \(error)")
+            NSLog("Error loading ShoppingList data: \(error)")
             
         }
     }
