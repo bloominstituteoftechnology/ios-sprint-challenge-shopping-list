@@ -19,11 +19,11 @@ extension ShoppingItemController{
     
     //SaveToPersistence
     func saveToPersistence(){
+        guard let itemUrl = shoppingItemURL else {return}
         let plistEncoder = PropertyListEncoder()
         do {
-            guard let shoppingItems = shoppingItemURL else {return}
             let itemData = try plistEncoder.encode(shoppingItems)
-            try itemData.write(to: shoppingItems)
+            try itemData.write(to: itemUrl)
         }catch let error{
             print("Error trying to save data! \(error.localizedDescription)")
         }
@@ -31,12 +31,13 @@ extension ShoppingItemController{
     
     //decodable is when you get the translated data from the system
     func loadFromPersistence() {
+        let fm = FileManager.default
+        guard let itemUrl = shoppingItemURL, fm.fileExists(atPath: itemUrl.path) else {return}
+        let plistDecoder = PropertyListDecoder()
         do {
-            guard let shoppingItems = shoppingItemURL else {return}
-            let itemData = try Data(contentsOf: shoppingItems)
-            let plistDecoder = PropertyListDecoder()
+            let itemData = try Data(contentsOf: itemUrl)
             let decodedItem = try plistDecoder.decode([Item].self, from: itemData)
-            self.shoppingItems = decodedItem
+            shoppingItems = decodedItem
         } catch let error{
             //print there was a problem saving your data
             print("Error trying to save data! \(error.localizedDescription)")
