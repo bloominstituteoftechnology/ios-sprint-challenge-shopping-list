@@ -57,6 +57,8 @@ class NotificationHelper {
                         NSLog("Daily notification error: \(error)")
                     }
                 }
+            } else {
+                self.requestAuthorization()
             }
         }
     }

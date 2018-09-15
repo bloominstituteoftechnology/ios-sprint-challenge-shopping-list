@@ -6,21 +6,52 @@
 //  Copyright © 2018 Lambda School. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class ShoppingItemController {
+    
+    
+    // MARK - Initializer
+    
+    init() {
+        createItem()
+        loadFromPersistentStore()
+    }
     
     // MARK: - Properties:
     
     var shoppingList = [ShoppingItem]()
-    var itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
+    
+    // MARK: - Seperate Added Items
+    
+    var added: [ShoppingItem] {
+        let allAdded = shoppingList.filter{ $0.hasBeenAdded == true }
+        return allAdded
+    }
+    
+    var notAdded: [ShoppingItem] {
+        let allNotAdded = shoppingList.filter{ $0.hasBeenAdded == false }
+        return allNotAdded
+    }
+    
+    // MARK: - Create properties
+    
+    func createItem() {
+        
+        let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
+        
+        for item in itemNames {
+            if let image = UIImage(named: item) {
+                if let data = UIImageJPEGRepresentation(image, 1.0) {
+                    let newItem = ShoppingItem(name: item, imageData: data)
+                    shoppingList.append(newItem)
+                }
+            }
+        }
+        saveToPersistentStore()
+    }
     
     // MARK: CRUD methods
-    
-    func addShoppingList(itemName: String, imageData: Data, hasBeenAdded: Bool) {
-        let newItem = ShoppingItem(name: itemName, imageData: imageData, hasBeenAdded: hasBeenAdded)
-        shoppingList.append(newItem)
-    }
     
     func changeStatus(for item: ShoppingItem) {
         guard let index = shoppingList.index(of: item) else { return }
@@ -28,12 +59,7 @@ class ShoppingItemController {
         
         saveToPersistentStore()
     }
-    
-    func removeFromShoppingList(item: ShoppingItem) {
-        guard let index = shoppingList.index(of: item) else { return }
-        shoppingList.remove(at: index)
-    }
-    
+
     // MARK: Persistence
     
     var persistentFileURL: URL? {
@@ -66,11 +92,4 @@ class ShoppingItemController {
             NSLog("Error loading data: \(error)")
         }
     }
-    
-    // MARK - Initializer
-    
-    init() {
-        loadFromPersistentStore()
-    }
-    
 }

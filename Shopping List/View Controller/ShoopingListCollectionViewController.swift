@@ -10,7 +10,7 @@ import UIKit
 
 private let reuseIdentifier = "ShoppingListCell"
 
-class ShoppingListCollectionViewController: UICollectionViewController, ShoppingListCollectionViewCellDelegate {
+class ShoppingListCollectionViewController: UICollectionViewController {
 
     // MARK: - Properties
     
@@ -21,6 +21,16 @@ class ShoppingListCollectionViewController: UICollectionViewController, Shopping
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         collectionView?.reloadData()
+    }
+    
+    // MARK: - Seperate section
+    
+    func shoppingItemSections(indexPath: IndexPath) -> ShoppingItem {
+        if indexPath.section == 0 {
+            return shoppinItemController.added[indexPath.item]
+        } else {
+            return shoppinItemController.notAdded[indexPath.item]
+        }
     }
 
     // MARK: - Navigation
@@ -39,42 +49,79 @@ class ShoppingListCollectionViewController: UICollectionViewController, Shopping
         return 1
     }
 
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return shoppinItemController.itemNames.count
+        return shoppinItemController.shoppingList.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ShoppingListCollectionViewCell else { return UICollectionViewCell() }
-        let item = shoppinItemController.itemNames[indexPath.item]
+        let item = shoppinItemController.shoppingList[indexPath.item]
         
-        cell.shoppingItemImage.image = UIImage(named: item)
-        cell.shoppingItemNameLabel.text = item
-        cell.shoppingListCVCellDelegate = self
+        cell.shoppingItemImage.image = UIImage(data: item.imageData)
+        cell.shoppingItemNameLabel.text = item.name
         
+        if item.hasBeenAdded {
+            cell.statusLabel.text = "Added"
+        } else {
+            cell.statusLabel.text = "Not Added"
+        }
+
         return cell
     }
-
-    // MARK: Delegate
     
-    func heyItemAddedToList(for cell: ShoppingListCollectionViewCell) {
-        guard let name = cell.shoppingItemNameLabel.text,
-              let image = cell.shoppingItemImage.image,
-              let data = UIImageJPEGRepresentation(image, 1.0),
-              let index = collectionView?.indexPath(for: cell) else { return }
-        
-        shoppinItemController.addShoppingList(itemName: name, imageData: data, hasBeenAdded: true)
-        let item = shoppinItemController.shoppingList[index.item]
-        
-        if item.hasBeenAdded == true {
-            shoppinItemController.changeStatus(for: item)
-            cell.addButtonOutlet.setTitle("Added", for: .normal)
-    
-        } else {
-            shoppinItemController.changeStatus(for: item)
-            shoppinItemController.removeFromShoppingList(item: item)
-            cell.addButtonOutlet.setTitle("Not Added", for: .normal)
-        }
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = shoppinItemController.shoppingList[indexPath.item]
+        shoppinItemController.changeStatus(for: item)
+        collectionView.reloadItems(at: [indexPath])
     }
-
+    
+//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ShoppingListCollectionViewCell else { return }
+//        
+//        guard let name = cell.shoppingItemNameLabel.text,
+//              let image = cell.shoppingItemImage.image,
+//              let data = UIImageJPEGRepresentation(image, 1.0) else { return }
+//        
+//        if cell.isSelected {
+//            if shoppinItemController.shoppingList.isEmpty {
+//                shoppinItemController.addShoppingList(itemName: name, imageData: data, hasBeenAdded: true)
+//            } else {
+//                let shoppingItem = shoppinItemController.shoppingList[indexPath.item]
+//                shoppinItemController.removeFromShoppingList(item: shoppingItem)
+//                shoppinItemController.changeStatus(for: shoppingItem)
+//            }
+//            
+//        }
+//    }
+    
+    // MARK: - Delegate
+    
+//    func heyAddedButtonTapped(for cell: ShoppingListCollectionViewCell) {
+//        guard let index = collectionView?.indexPath(for: cell),
+//              let title = cell.shoppingItemNameLabel.text,
+//              let image = cell.shoppingItemImage.image,
+//              let data = UIImageJPEGRepresentation(image, 1.0) else { return}
+//
+//        if shoppinItemController.shoppingList.isEmpty {
+//            shoppinItemController.addShoppingList(itemName: title, imageData: data, hasBeenAdded: true)
+//            cell.addedButtonOutlet.setTitle("Added", for: .normal)
+//            let count = shoppinItemController.shoppingList.count
+//            cell.countLabel.text = "(\(count))"
+//        } else {
+//
+//            if title == item.name {
+//                let item = shoppinItemController.shoppingList[index.item]
+//                shoppinItemController.removeFromShoppingList(item: item)
+//                shoppinItemController.changeStatus(for: item)
+//                cell.addedButtonOutlet.setTitle("Not Added", for: .normal)
+//                let count = shoppinItemController.shoppingList.count
+//                cell.countLabel.text = "(\(count))"
+//            } else {
+//                shoppinItemController.addShoppingList(itemName: title, imageData: data, hasBeenAdded: true)
+//                cell.addedButtonOutlet.setTitle("Added", for: .normal)
+//                let count = shoppinItemController.shoppingList.count
+//                cell.countLabel.text = "(\(count))"
+//            }
+//        }
+//    }
 }

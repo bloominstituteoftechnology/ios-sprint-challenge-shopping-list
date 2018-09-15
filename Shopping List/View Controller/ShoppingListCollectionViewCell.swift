@@ -8,25 +8,32 @@
 
 import UIKit
 
-protocol ShoppingListCollectionViewCellDelegate: class {
-    func heyItemAddedToList(for cell: ShoppingListCollectionViewCell)
-}
-
 class ShoppingListCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     
-    weak var shoppingListCVCellDelegate: ShoppingListCollectionViewCellDelegate?
+    let shoppingItemController = ShoppingItemController()
+    var shoppingItem: ShoppingItem?
     
     // MARK: - Outlets
     
     @IBOutlet weak var shoppingItemImage: UIImageView!
     @IBOutlet weak var shoppingItemNameLabel: UILabel!
-    @IBOutlet weak var addButtonOutlet: UIButton!
+    @IBOutlet weak var statusLabel: UILabel! {
+        didSet { updateViews() }
+    }
     
-    // MARK: - Actions
-    
-    @IBAction func addButtonTapped(_ sender: Any) {
-        shoppingListCVCellDelegate?.heyItemAddedToList(for: self)
+    func updateViews() {
+        
+        guard let name = shoppingItemNameLabel.text,
+              let item = shoppingItem else { return }
+        
+        if name == item.name {
+            if item.hasBeenAdded {
+                self.statusLabel.text = "Added"
+            } else {
+                self.statusLabel.text = "Not Added"
+            }
+        }
     }
 }
