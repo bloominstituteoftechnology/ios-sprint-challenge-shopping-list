@@ -7,74 +7,91 @@
 //
 
 import Foundation
+import UIKit
+
 class ShoppingItemController {
     
-//    private(set) var shoppingItems = [ShoppingItem]()
-    
-    var shoppingItems: [ShoppingItem] = [
-        ShoppingItem(itemName: "apple", addToList: false, imageName: "apple"),
-        ShoppingItem(itemName: "grapes", addToList: false, imageName: "grapes"),
-        ShoppingItem(itemName: "milk", addToList: false, imageName: "milk"),
-        ShoppingItem(itemName: "muffin", addToList: false, imageName: "muffin"),
-        ShoppingItem(itemName: "popcorn", addToList: false, imageName: "popcorn"),
-        ShoppingItem(itemName: "soda", addToList: false, imageName: "soda"),
-        ShoppingItem(itemName: "strawberries", addToList: false, imageName: "strawberries"),
-    ]
-    
-    func toggleAdd(for shoppingItem: ShoppingItem) {
-        print(shoppingItem)
-//        shoppingItem.addToList = !shoppingItem.addToList
-//        shoppingItem.addToList.toggle()
-
-        }
-    
-//    init() {
-//        loadFromPersistentStore()
-//    }
-//
-//    func createItem(withName itemName: String, addToList: String, imageData: Data) {
-//        let item = ShoppingItem(itemName: itemName, addedToList: false, imageData: imageData)
-//        shoppingItems.append(item)
-//    }
-//
-//
-//    // MARK: - Persistence
-//
-//    func saveToPersistentStore() {
-//        guard let url = persistentFileURL else { return }
-//
-//        do {
-//            let encoder = PropertyListEncoder()
-//            let data = try encoder.encode(shoppingItems)
-//            try data.write(to: url)
-//        } catch {
-//            NSLog("Error saving stars data: \(error)")
-//        }
-//    }
-//
-//    func loadFromPersistentStore() {
-//        let fm = FileManager.default
-//        guard let url = persistentFileURL,fm.fileExists(atPath: url.path) else { return }
-//
-//        do {
-//            let data = try Data(contentsOf: url)
-//            let decoder = PropertyListDecoder()
-//            shoppingItems = try decoder.decode([ShoppingItem].self, from: data)
-//        } catch {
-//            NSLog("Error saving stars data: \(error)")
-//        }
-//    }
-//
-//    private var persistentFileURL: URL? {
-//        let fm = FileManager.default
-//        guard let documentsDir = fm.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
-//        return documentsDir.appendingPathComponent("Shopping List.plist")
-//    }
-    
-}
-
-extension Bool {
-    mutating func toggle() {
-        self = !self
+    init() {
+        loadFromPersistentStore()
+        createShoppingListItems()
     }
+    
+    var shoppingListItems = [ShoppingListItem]()
+    
+// Mark: - Computed Properties
+    
+    private var persistentFileURL: URL? {
+        let fm = FileManager.default
+        guard let documentsDir = fm.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
+        return documentsDir.appendingPathComponent("Shopping List.plist")
+    }
+    
+    
+// MARK: - Persistence
+
+    func saveToPersistentStore() {
+        guard let url = persistentFileURL else { return }
+
+        do {
+            let encoder = PropertyListEncoder()
+            let data = try encoder.encode(shoppingListItems)
+            try data.write(to: url)
+        } catch {
+            NSLog("Error saving stars data: \(error)")
+        }
+    }
+
+    func loadFromPersistentStore() {
+        let fm = FileManager.default
+        guard let url = persistentFileURL,fm.fileExists(atPath: url.path) else { return }
+
+        do {
+            let decoder = PropertyListDecoder()
+            let data = try Data(contentsOf: url)
+            let decode = try decoder.decode([ShoppingListItem].self, from: data)
+            shoppingListItems = decode
+        } catch {
+            NSLog("Error saving stars data: \(error)")
+        }
+    }
+    
+    
+// Mark: - Crud
+    
+    // Create and Save
+    func createShoppingListItems() {
+        guard UserDefaults.standard.bool(forKey: "hasCreatedItemsKey") == false else { return }
+        let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
+        for itemName in itemNames {
+            let item = ShoppingListItem(itemName: itemName)
+            shoppingListItems.append(item)
+        }
+        saveToPersistentStore()
+        UserDefaults.standard.set(true, forKey: "hasCreatedItemsKey")
+    }
+    
+
+    // Update and Save
+    func updateShoppingListItems(for item: ShoppingListItem, itemName: String, addToList: Bool) {
+        guard let index = shoppingListItems.index(of: item) else { return }
+        shoppingListItems[index].itemName = itemName
+        shoppingListItems[index].addToList = addToList
+        saveToPersistentStore()
+        
+    }
+    
+
+    // ToggleAdd and Save
+    func toggleAdd(for shoppingListItem: ShoppingListItem) {
+        guard let index = shoppingListItems.index(of: shoppingListItem) else { return }
+        shoppingListItems[index].addToList.toggle()
+        saveToPersistentStore()
+    }
+
 }
+
+
+
+
+
+

@@ -9,17 +9,19 @@
 import Foundation
 import UIKit
 
-struct ShoppingItem: Equatable {
+
+
+struct ShoppingListItem: Equatable, Codable {
     var itemName: String
     var addToList: Bool
-    var image: UIImage
-    
-    init(itemName: String, addToList: Bool, imageName: String) {
+    var image: UIImage {
+        return UIImage(named: itemName)!
+    }
+
+    init(itemName: String, addToList: Bool = false) {
         self.itemName = itemName
         self.addToList = addToList
-        self.image = UIImage(named: itemName)!
     }
 }
 
-// let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
 

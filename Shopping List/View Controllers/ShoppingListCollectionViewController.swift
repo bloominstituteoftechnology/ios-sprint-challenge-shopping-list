@@ -13,7 +13,7 @@ import UIKit
 class ShoppingListCollectionViewController: UICollectionViewController {
     
     let shoppingItemController = ShoppingItemController()
-    var shoppingItems = [ShoppingItem]()
+    var shoppingListItems = [ShoppingListItem]()
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -35,19 +35,15 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return shoppingItemController.shoppingItems.count
+        return shoppingItemController.shoppingListItems.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingItem", for: indexPath) as! ShoppingItemCollectionViewCell
         
-        let shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
+        let shoppingItem = shoppingItemController.shoppingListItems[indexPath.item]
         cell.itemName.text = shoppingItem.itemName
-        if shoppingItem.addToList {
-            cell.addToOrder.text = "Added"
-        } else {
-         cell.addToOrder.text = "Not Added"
-        }
+        cell.addToOrder.text = shoppingItem.addToList ? "Added" : "Not Added"
         cell.imageView.image = shoppingItem.image
         
         return cell
@@ -56,11 +52,20 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDelegate
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            print("item selected \(indexPath.item)")
-        let shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
-        shoppingItemController.toggleAdd(for: shoppingItem)
+        let shoppingListItem = shoppingItemController.shoppingListItems[indexPath.item]
+        shoppingItemController.toggleAdd(for: shoppingListItem)
+        collectionView.reloadData()
     }
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
