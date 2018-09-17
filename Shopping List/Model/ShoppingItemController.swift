@@ -12,11 +12,11 @@ import UIKit
 class ShoppingItemController {
     
     
-    private var appStartedKey = "appStartedKey"
+   
     private(set) var shoppingItems: [ShoppingItem] = []
     
     private var persistentFileURL: URL? {
-        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+         let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first 
         let fileName = "shopping-items.plist"
         return documentDirectory?.appendingPathComponent(fileName)
     }
@@ -24,14 +24,14 @@ class ShoppingItemController {
     
      //Use `UserDefaults` to make sure that new shopping items are initialized only once.
     init() {
-        let appStarted = UserDefaults.standard.bool(forKey: appStartedKey)
+        let appStarted = UserDefaults.standard.bool(forKey: .appStartedKey)
    
             if !appStarted {
                 let shoppingItems = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
                 for itemName in shoppingItems {
                     createShoppingItem(name: itemName, image: UIImage(named: itemName) ?? UIImage())
                 }
-                UserDefaults.standard.set(true, forKey: appStartedKey)
+                UserDefaults.standard.set(true, forKey: .appStartedKey)
            } else { loadFromPersistentStore() }
     }
     
@@ -44,10 +44,11 @@ class ShoppingItemController {
         saveToPersistentStore()
     }
     
-    func update(item: ShoppingItem, isInList: Bool) {
+    func update(item: ShoppingItem) {
         
         guard let index = shoppingItems.index(of: item) else { return }
-        let itemToInsert = ShoppingItem(image: item.image, name: item.name, isInList: isInList)
+        let isInListScratch = !item.isInList
+        let itemToInsert = ShoppingItem(image: item.image, name: item.name, isInList: isInListScratch)
         
         shoppingItems.remove(at: index)
         shoppingItems.insert(itemToInsert, at: index)
@@ -61,20 +62,20 @@ class ShoppingItemController {
     
 
     private func loadFromPersistentStore() {
-        let proprtyListDecoder = PropertyListDecoder()
         do {
             guard let persistentFileURL = persistentFileURL,
                 FileManager.default.fileExists(atPath: persistentFileURL.path) else { return }
+            let proprtyListDecoder = PropertyListDecoder()
             let shoppingItemsData = try Data(contentsOf: persistentFileURL)
             self.shoppingItems = try proprtyListDecoder.decode([ShoppingItem].self, from: shoppingItemsData)
-        } catch { NSLog("There was an issue encoding shoppingItems:\(error)") }
+        } catch { NSLog("There was an issue decoding shoppingItems:\(error)") }
     }
     
     
     private func saveToPersistentStore() {
-        let proprtyListEncoder = PropertyListEncoder()
         do {
             guard let persistentFileURL = persistentFileURL else { return }
+             let proprtyListEncoder = PropertyListEncoder()
             let itemsData = try proprtyListEncoder.encode(shoppingItems)
             try itemsData.write(to: persistentFileURL)
         } catch { NSLog("There was an issue encoding shoppingItems:\(error)") }

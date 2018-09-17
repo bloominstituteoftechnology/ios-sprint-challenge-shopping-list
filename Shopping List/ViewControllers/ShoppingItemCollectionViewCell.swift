@@ -21,11 +21,18 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var shoppingItemImageView: UIImageView!
     
      func updateViews() {
-        guard let item = item,
-            let image = UIImage(data: item.image) else { return }
+        guard let item = item else { return }
         
-        shoppingItemImageView.image = image
+        
+        
+        
+        shoppingItemImageView.image = UIImage(data: item.image)
         shoppingItemLabel.text = item.name
-        addedItemLabel.text = item.isInList ? "In Cart" : ""
+        if item.isInList == true {
+            addedItemLabel.text = "Added"
+        } else {
+            addedItemLabel.text = "Not Added"
+        }
+        
     }
 }

@@ -21,4 +21,6 @@ struct ShoppingItem: Codable, Equatable {
         self.name = name
         self.isInList = isInList
     }
-}
+    
+    
+    }
