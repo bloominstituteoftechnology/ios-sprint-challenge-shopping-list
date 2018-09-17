@@ -72,13 +72,13 @@ class ShoppingItemController {
     
 
     // Update and Save
-    func updateShoppingListItems(for item: ShoppingListItem, itemName: String, addToList: Bool) {
-        guard let index = shoppingListItems.index(of: item) else { return }
-        shoppingListItems[index].itemName = itemName
-        shoppingListItems[index].addToList = addToList
-        saveToPersistentStore()
-        
-    }
+//    func updateShoppingListItems(for item: ShoppingListItem, itemName: String, addToList: Bool) {
+//        guard let index = shoppingListItems.index(of: item) else { return }
+//        shoppingListItems[index].itemName = itemName.capitalized
+//        shoppingListItems[index].addToList = addToList
+//        saveToPersistentStore()
+//        
+//    }
     
 
     // ToggleAdd and Save
@@ -86,6 +86,17 @@ class ShoppingItemController {
         guard let index = shoppingListItems.index(of: shoppingListItem) else { return }
         shoppingListItems[index].addToList.toggle()
         saveToPersistentStore()
+    }
+    
+    func countAdded() -> Int {
+        var count = 0
+        for items in shoppingListItems {
+            if items.addToList == true {
+                count += 1
+            }
+        }
+        
+        return count
     }
 
 }

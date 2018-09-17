@@ -9,17 +9,28 @@
 import UIKit
 import UserNotifications
 
-class UserInfoViewController: UIViewController {
+class SendOrderViewController: UIViewController {
     
     @IBOutlet weak var itemsInOrderLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    var shoppingItemController: ShoppingItemController?
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateView()
     }
+    
+    func updateView() {
+        guard let numberOfItems = shoppingItemController?.countAdded() else { return }
+        itemsInOrderLabel.text = "You currently have \(numberOfItems) items in your shopping list."
+        
+    }
+    
 
+    // Send order with notification
     @IBAction func sendOrderButton(_ sender: Any) {
         
         let center = UNUserNotificationCenter.current()
