@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 
-
 struct ShoppingListItem: Equatable, Codable {
     var itemName: String
     var addToList: Bool
