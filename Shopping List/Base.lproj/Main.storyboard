@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1p6-Ss-9tk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1p6-Ss-9tk">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -87,7 +86,7 @@
             </objects>
             <point key="canvasLocation" x="983.20000000000005" y="139.880059970015"/>
         </scene>
-        <!--Shopping Detail View Controller-->
+        <!--Order-->
         <scene sceneID="Mrm-58-Uq5">
             <objects>
                 <viewController id="jFP-JT-DhO" customClass="ShoppingDetailViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
@@ -134,6 +133,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UWs-bj-Et4"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Order" id="tWn-E5-t1S"/>
                     <connections>
                         <outlet property="addressField" destination="iWO-FI-2sW" id="FJH-JM-IDY"/>
                         <outlet property="counterLabel" destination="4db-vb-ff1" id="een-QV-chF"/>

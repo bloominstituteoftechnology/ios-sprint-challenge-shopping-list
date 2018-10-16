@@ -35,23 +35,37 @@ class ShoppingDetailViewController: UIViewController, UNUserNotificationCenterDe
             
             if let error = error {
                 NSLog("Error requesting auth for notifcations: \(error)")
-            }
-        }
-        
-        localNotificationHelper.requestAuthorization { (notificationsAllowed) in
-            
-        guard let name = self.nameField.text, let address = self.addressField.text else {return}
-            
-            if notificationsAllowed {
-                
-                self.localNotificationHelper.scheduleOrderNotification(with: name, and: address)
-                self.navigationController?.popViewController(animated: true)
-            } else {
                 return
             }
             
-           
+            if granted {
+                
+                DispatchQueue.main.async {
+                    guard let name = self.nameField.text, let address = self.addressField.text else {return}
+                    
+                    self.scheduleOrderNotification(with: center, name: name, and: address)
+                    self.navigationController?.popViewController(animated: true)
+                }
+                
+                
+            }
         }
+    }
+    
+    private func scheduleOrderNotification (with center: UNUserNotificationCenter, name:String, and address: String){
+        
+        // Notification Setup
+        let identifier = "OrderNotification"
+        let content = UNMutableNotificationContent()
+        content.title = "Order Confirmation for \(name)"
+        content.body = "Your shopping list has been ordered to \(address) in 15 minutes."
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+        
+        center.add(request, withCompletionHandler: nil)
+        
     }
     
 }

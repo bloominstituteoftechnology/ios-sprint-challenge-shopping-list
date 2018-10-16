@@ -38,14 +38,12 @@ class LocalNotifHelper: NSObject, UNUserNotificationCenterDelegate{
         content.title = "Order Confirmation for \(name)"
         content.body = "Your shopping list has been ordered to \(address) in 15 minutes."
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: true)
         
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
         
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
 
-
-        
     }
     
 }
