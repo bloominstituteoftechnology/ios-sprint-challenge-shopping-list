@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7nG-rW-yee">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -31,7 +31,19 @@
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xz2-tJ-2bT" customClass="ShoppingItem" customModule="Shopping_List" customModuleProvider="target">
+                                            <rect key="frame" x="8" y="28" width="359" height="567"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </view>
+                                    </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="Xz2-tJ-2bT" firstAttribute="leading" secondItem="Mll-QR-KxC" secondAttribute="leadingMargin" id="R6d-Fi-xQe"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="Xz2-tJ-2bT" secondAttribute="trailing" id="VSC-jZ-rHA"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="Xz2-tJ-2bT" secondAttribute="bottom" id="kVt-t2-ciY"/>
+                                    <constraint firstItem="Xz2-tJ-2bT" firstAttribute="top" secondItem="Mll-QR-KxC" secondAttribute="topMargin" id="t5w-Vj-8X9"/>
+                                </constraints>
                             </collectionViewCell>
                         </cells>
                         <connections>
