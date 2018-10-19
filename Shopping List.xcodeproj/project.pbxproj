@@ -12,8 +12,8 @@
 		4613E91721143BFC00E7FF73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91521143BFC00E7FF73 /* Main.storyboard */; };
 		4613E91921143BFD00E7FF73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91821143BFD00E7FF73 /* Assets.xcassets */; };
 		4613E91C21143BFD00E7FF73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91A21143BFD00E7FF73 /* LaunchScreen.storyboard */; };
+		849E8834217A4DFC00CCAA37 /* ShoppingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E8833217A4DFC00CCAA37 /* ShoppingItem.swift */; };
 		84D81C0B217A2B1400745B13 /* ShoppingItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D81C0A217A2B1400745B13 /* ShoppingItem.xib */; };
-		84D81C0D217A346600745B13 /* ShoppingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D81C0C217A346600745B13 /* ShoppingItem.swift */; };
 		84D81C0F217A468400745B13 /* TimerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D81C0E217A468400745B13 /* TimerController.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,8 +25,8 @@
 		4613E91821143BFD00E7FF73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4613E91B21143BFD00E7FF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4613E91D21143BFD00E7FF73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		849E8833217A4DFC00CCAA37 /* ShoppingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItem.swift; sourceTree = "<group>"; };
 		84D81C0A217A2B1400745B13 /* ShoppingItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingItem.xib; sourceTree = "<group>"; };
-		84D81C0C217A346600745B13 /* ShoppingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItem.swift; sourceTree = "<group>"; };
 		84D81C0E217A468400745B13 /* TimerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -62,9 +62,9 @@
 			children = (
 				4613E91121143BFC00E7FF73 /* AppDelegate.swift */,
 				84D81C0A217A2B1400745B13 /* ShoppingItem.xib */,
+				849E8833217A4DFC00CCAA37 /* ShoppingItem.swift */,
 				4613E91321143BFC00E7FF73 /* ViewController.swift */,
 				4613E91521143BFC00E7FF73 /* Main.storyboard */,
-				84D81C0C217A346600745B13 /* ShoppingItem.swift */,
 				84D81C0E217A468400745B13 /* TimerController.swift */,
 				4613E91821143BFD00E7FF73 /* Assets.xcassets */,
 				4613E91A21143BFD00E7FF73 /* LaunchScreen.storyboard */,
@@ -105,6 +105,7 @@
 				TargetAttributes = {
 					4613E90D21143BFC00E7FF73 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -145,7 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84D81C0D217A346600745B13 /* ShoppingItem.swift in Sources */,
+				849E8834217A4DFC00CCAA37 /* ShoppingItem.swift in Sources */,
 				84D81C0F217A468400745B13 /* TimerController.swift in Sources */,
 				4613E91421143BFC00E7FF73 /* ViewController.swift in Sources */,
 				4613E91221143BFC00E7FF73 /* AppDelegate.swift in Sources */,
@@ -301,7 +302,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LambdaSchool.Shopping-List";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -319,7 +320,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LambdaSchool.Shopping-List";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

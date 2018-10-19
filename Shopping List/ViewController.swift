@@ -2,6 +2,20 @@
 //
 //class ShoppingItem: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 //
+//   @IBOutlet weak var name: UITextField!
+// save name code save with JSON
+
+//@IBOutlet weak var address: UITextField!
+// save address code save with JSON
+//@IBAction func send(_ sender: Any)
+
+// -- send order code save with JSON
+//case countDownTimer = 900
+// for 15 min timer
+//}
+
+
+//
 //    let reuseIdentifier = "cell"
 //    var images: [UIImage] = []
 //

@@ -1,6 +1,23 @@
 import UIKit
 
 class ShoppingItem: UIView {
+    
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        UINib(nibName: "ShoppingItem", bundle: nil).instantiate(withOwner: self, options: nil)
+        
+  //      ShoppingList: - let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
+    }
+}
+
+
+
+
+
+
+
+
 
 
 //    let reuseIdentifier = "cell"
@@ -12,9 +29,9 @@ class ShoppingItem: UIView {
 //        collectionView.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
 //
 //
-    
-    
-    
+
+
+
 //   // var view: UIView!
 //    override init(frame: CGRect)
 //    {
@@ -32,7 +49,7 @@ class ShoppingItem: UIView {
 ////
 //required init?(coder aDecoder: NSCoder) {
 //    UINib(nibName: "ShoppingItem", bundle: nil).instantiate(withOwner: self, options: nil)
-////    super.init(coder: aDecoder)
+//    super.init(coder: aDecoder)
 //    let _ = loadViewFromNib()
 //}
 //
@@ -44,7 +61,7 @@ class ShoppingItem: UIView {
 //        view.autoresizingMask = [UIViewAutoresizing.flexibleWidth , UIViewAutoresizing.flexibleHeight]
 //            addSubview(view)
 //            return view
-    }
+
 
 
 

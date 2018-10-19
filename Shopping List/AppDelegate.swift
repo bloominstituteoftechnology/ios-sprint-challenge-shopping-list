@@ -4,29 +4,29 @@ import UserNotifications
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     var window: UIWindow?
-    
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        checkNotificationAuthorization()
-        return true
+//
+//    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+//        checkNotificationAuthorization()
+//        return true
     }
     
-    func checkNotificationAuthorization() {
-        // see whether the user has already granted permission
-        // and if not, start request process
-        let center = UNUserNotificationCenter.current()
-        center.delegate = self
-        
-        center.getNotificationSettings { settings in
-            guard settings.notificationCenterSetting != .enabled else {
-                NSLog("Location notifications have been granted")
-                return
-            }
-            
-            // Handle ungranted notification permissions
-            self.checkNotificationAuthorization()
-        }
-    }
-    
+//    func checkNotificationAuthorization() {
+//        // see whether the user has already granted permission
+//        // and if not, start request process
+//        let center = UNUserNotificationCenter.current()
+//        center.delegate = self
+//
+//        center.getNotificationSettings { settings in
+//            guard settings.notificationCenterSetting != .enabled else {
+//                NSLog("Location notifications have been granted")
+//                return
+//            }
+//
+//            // Handle ungranted notification permissions
+//            self.checkNotificationAuthorization()
+//        }
+//    }
+//
 //    func requestNotificationAuthorization() {
 //        let center = UNUserNotificationCenter.current()
 //
@@ -70,4 +70,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 //        completionHandler(.alert)
 //    }
 //}
-}
+
