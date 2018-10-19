@@ -101,9 +101,52 @@
                     <view key="view" contentMode="scaleToFill" id="qTH-x0-4ym">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Jiv-vu-ZkX">
+                                <rect key="frame" x="20" y="84" width="335" height="200"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMb-AL-BdJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="39"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t3F-CG-DPU">
+                                        <rect key="frame" x="0.0" y="54" width="335" height="38.5"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A3f-Di-Ph9">
+                                        <rect key="frame" x="0.0" y="107.5" width="335" height="39"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1oI-yN-USX">
+                                        <rect key="frame" x="0.0" y="161.5" width="335" height="38.5"/>
+                                        <state key="normal" title="Place Order"/>
+                                        <connections>
+                                            <action selector="placeOrderButton:" destination="UMm-ii-9Si" eventType="touchUpInside" id="S8n-1b-w9u"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Jiv-vu-ZkX" firstAttribute="leading" secondItem="0mr-1n-Xbk" secondAttribute="leading" constant="20" id="VQk-Ll-yp3"/>
+                            <constraint firstItem="Jiv-vu-ZkX" firstAttribute="height" secondItem="qTH-x0-4ym" secondAttribute="height" multiplier="0.3" id="cSJ-M0-fKS"/>
+                            <constraint firstItem="Jiv-vu-ZkX" firstAttribute="top" secondItem="0mr-1n-Xbk" secondAttribute="top" constant="20" id="ff9-FN-Xtk"/>
+                            <constraint firstItem="0mr-1n-Xbk" firstAttribute="trailing" secondItem="Jiv-vu-ZkX" secondAttribute="trailing" constant="20" id="gjg-eL-t0p"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="0mr-1n-Xbk"/>
                     </view>
+                    <connections>
+                        <outlet property="addressTextField" destination="A3f-Di-Ph9" id="glI-jd-GFd"/>
+                        <outlet property="itemCountLabel" destination="TMb-AL-BdJ" id="5be-lo-Rni"/>
+                        <outlet property="nameTextField" destination="t3F-CG-DPU" id="Lpz-5w-Z08"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KUu-Lf-7fh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

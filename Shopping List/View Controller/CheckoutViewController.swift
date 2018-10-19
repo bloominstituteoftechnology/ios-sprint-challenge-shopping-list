@@ -9,22 +9,25 @@
 import UIKit
 
 class CheckoutViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    
+    var shoppingItemController: ShoppingItemController?
+    
+    @IBOutlet weak var itemCountLabel: UILabel!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var addressTextField: UITextField!
+    
+    @IBAction func placeOrderButton(_ sender: Any) {
+        //Notification
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        updateViews()
     }
-    */
+    
+    func updateViews() {
+        let addedItems = shoppingItemController?.items.filter({ $0.added })
+        itemCountLabel.text = "You currently have \(addedItems?.count ?? 0) item(s) in your shopping cart"
+    }
+
 
 }
