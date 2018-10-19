@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ShoppingItem {
+class ShoppingItem: Codable {
     
     let name: String
     var added: Bool

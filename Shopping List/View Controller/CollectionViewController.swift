@@ -17,45 +17,45 @@ class CollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadItems() //Temporary until data persistence setup
+        collectionView.reloadData()
     }
     
     let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
     
     func loadItems() {
         for i in itemNames {
-            
+            shoppingItemController.create(name: i)
         }
+        // SAVE TO FILE
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     // MARK: UICollectionViewDataSource
-    let reuseIdentifier = "cell"
+    let reuseIdentifier = "itemCell"
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         return shoppingItemController.items.count
     }
-
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CollectionViewCell
+        
+        let item = shoppingItemController.items[indexPath.item]
+        if item.added {
+            cell.addedLabel.text = "Added"
+            cell.addedLabel.textColor = .red
+        } else {
+            cell.addedLabel.text = "Not Added"
+            cell.addedLabel.textColor = .black
+        }
+        
+        cell.nameLabel.text = item.name
+        cell.image.image = UIImage(named: item.name)
     
-        // Configure the cell
     
         return cell
     }
@@ -70,4 +70,13 @@ class CollectionViewController: UICollectionViewController {
     */
 
 
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using [segue destinationViewController].
+     // Pass the selected object to the new view controller.
+     }
+     */
 }
