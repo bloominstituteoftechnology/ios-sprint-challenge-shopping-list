@@ -22,11 +22,14 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
     
     func updateViews(){
         guard let shoppingItem = shoppingItem else {return}
-        shoppingItemImageView.image = UIImage(data: shoppingItem.imageData)
         nameLabel.text? = shoppingItem.name
-        isSelectedLabel.text? = shoppingItem.isSelected ? "Added" :
-    "Not Added"
-        isSelectedLabel.textColor = shoppingItem.isSelected ? .black : .orange
+        isSelectedLabel.text? = shoppingItem.isAdded ? "Added" : "Not Added"
+        isSelectedLabel.textColor = shoppingItem.isAdded ? .black : .orange
+        
+        let itemImage = UIImage(named: shoppingItem.imageName)
+        shoppingItemImageView.image = itemImage
+        nameLabel.text = shoppingItem.name
+        
     }
     
 }

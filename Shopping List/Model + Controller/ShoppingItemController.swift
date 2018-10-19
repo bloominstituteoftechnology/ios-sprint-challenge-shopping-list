@@ -16,59 +16,59 @@ class ShoppingItemController {
     // create func - done
     // user defaults - done
     
-    //private(set) var shoppingItems: [ShoppingItem] = []
-    var shoppingItems = [ShoppingItem]()
+    var shoppingItems: [ShoppingItem] = []
     
-    // create the list
-    func createShoppingItems(name: String, isSelected:Bool, imageData:Data) {
-        let shoppingItem = ShoppingItem(name: name, isSelected: isSelected, imageData: imageData)
-        shoppingItems.append(shoppingItem)
-        saveShoppingItems()
-    }
- 
+    private let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
     
+    // Start over.
+    // CRUD
     
-//    // update on list - not needed
-//
-//    var itemsOnList: [ShoppingItem] {
-//        return shoppingItems.filter { (shoppingItems) -> Bool in
-//            return shoppingItems.isSelected
-//        }
-//    }
-//
-//    // delete off list
-//
-//    var itemsOffList: [ShoppingItem] {
-//        return shoppingItems.filter { (shoppingItems) -> Bool in
-//            return !shoppingItems.isSelected
-//        }
-//    }
-    
-    //incorporate persistence
-    var url: URL? {
-        guard let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {return nil}
-        let fileName = "shoppingItems.json"
-        return directory.appendingPathComponent(fileName)
+    func createItem() {
+        for name in itemNames {
+            let shoppingItem = ShoppingItem(name: name, imageName: name)
+            shoppingItems.append(shoppingItem)
+            UserDefaults.standard.set(true, forKey: .isInitiatedKey)
+            saveToPersistentStore()
+        }
     }
     
-    func saveShoppingItems() {
+    func update(shoppingItem: ShoppingItem) {
+        guard let index = shoppingItems.index(of: shoppingItem) else { return }
+        var scratch = shoppingItem
+        scratch.isAdded = !shoppingItem.isAdded
+        shoppingItems.remove(at: index)
+        shoppingItems.insert(scratch, at: index)
+        saveToPersistentStore()
+    }
+    
+    func saveToPersistentStore() {
+        let plistEncoder = PropertyListEncoder()
         do {
-            guard let url = url else {return}
-            let itemsEncoded = try JSONEncoder().encode(shoppingItems)
-            try itemsEncoded.write(to: url)
-        } catch {print("Error: \(error)") }
+            let shoppingItemsData = try plistEncoder.encode(shoppingItems)
+            guard let shoppingItemsFileURL = shoppingItemsFileURL else { return }
+            try shoppingItemsData.write(to: shoppingItemsFileURL)
+        } catch {
+            NSLog("Error enconding shopping items: \(error)")
+        }
+        
     }
     
-    func loadShoppingItems() {
+    func loadFromPersistentStore() {
         do {
-            guard let url = url, FileManager.default.fileExists(atPath: url.path) else {return}
-            let data = try Data(contentsOf: url)
-            let itemsDecoded = try JSONDecoder().decode([ShoppingItem].self, from: data)
-            shoppingItems = itemsDecoded
-        } catch { print("Error: \(error)")}
+            guard let shoppingItemsFileURL = shoppingItemsFileURL,
+                FileManager.default.fileExists(atPath: shoppingItemsFileURL.path) else  { return }
+            let shoppingListData = try Data(contentsOf: shoppingItemsFileURL)
+            let plistDecoder = PropertyListDecoder()
+            self.shoppingItems = try plistDecoder.decode([ShoppingItem].self, from: shoppingListData)
+        } catch {
+            NSLog("Error decoding shopping items: \(error)")
+        }
     }
     
+    var shoppingItemsFileURL: URL? {
+        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+        let fileName = "shoppingItems.plist"
+        return documentDirectory?.appendingPathComponent(fileName)
+    }
 }
-
-
 

@@ -11,7 +11,7 @@ import UIKit
 class PlaceOrderViewController: UIViewController {
 
     var shoppingItemController: ShoppingItemController?
-    let notificationHelper = NotificationHelper()
+    var notificationHelper = NotificationHelper()
     
     @IBOutlet weak var placeOrderLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
@@ -21,12 +21,8 @@ class PlaceOrderViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
-    // should I add a notification Helper file?
-        
         
     }
-    
-
     
     @IBAction func placeOrderButton(_ sender: Any) {
         guard let name = nameTextField.text, !name.isEmpty,
@@ -40,8 +36,8 @@ class PlaceOrderViewController: UIViewController {
                 NSLog("There was an error with the notification")
         }
     }
+    navigationController?.popViewController(animated: true)
     }
-    
     
     private func updateViews() {
         guard let shoppingItemController = shoppingItemController else { return }

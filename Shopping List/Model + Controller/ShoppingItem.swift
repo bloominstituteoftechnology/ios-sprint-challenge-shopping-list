@@ -8,16 +8,19 @@
 
 import Foundation
 
-struct ShoppingItem: Equatable, Codable{
-    
-    
-    var name: String
-    var isSelected: Bool
-    
-    init(name: String, isSelected:Bool) {
-        self.name = name
-        self.isSelected = false
+// restructured model
 
-    }
+struct ShoppingItem: Equatable, Codable {
+
+    let name: String
+    let imageName: String
+    var isAdded: Bool
+    var imageData: Data?
     
+    init(name: String, imageName: String) {
+        self.name = name
+        self.imageName = imageName
+        self.isAdded = false
+    }
 }
+
