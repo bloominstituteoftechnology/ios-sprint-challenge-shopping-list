@@ -23,6 +23,16 @@ class ShoppingItemController {
     // Start over.
     // CRUD
     
+    // initiate user Defaults
+    init() {
+        let isInitiated = UserDefaults.standard.bool(forKey: .isInitiatedKey)
+        if isInitiated {
+            loadFromPersistentStore()
+        } else {
+            createItem()
+        }
+    }
+    
     func createItem() {
         for name in itemNames {
             let shoppingItem = ShoppingItem(name: name, imageName: name)

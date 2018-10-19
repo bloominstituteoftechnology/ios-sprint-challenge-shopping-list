@@ -12,6 +12,7 @@ class ShoppingListCollectionViewController: UICollectionViewController, UICollec
 
     // restructured CollectionViewController
 
+    let reuseIdentifier = "cell"
     let notificationHelper = NotificationHelper()
     let shoppingItemController = ShoppingItemController()
     
@@ -35,7 +36,7 @@ class ShoppingListCollectionViewController: UICollectionViewController, UICollec
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ShoppingListCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ShoppingListCollectionViewCell
         
         let shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
         cell.shoppingItem = shoppingItem
