@@ -10,4 +10,43 @@ import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
     
+    func updateViews() {
+      
+        }
+        
+        
+        
+        @IBOutlet weak var AddItem: UILabel!
+        
+        
+        var shoppingItem: shoppingItem! {
+            didSet {
+                updateViews()
+            }
+        }
+        
+        weak var delegate: ShoppingCollectionCellDelegate?
+ 
+    
+    
+    
+    
+    
+    
+    
+    @IBAction func added(_ sender: Any) {
+        
+        
+        
+    }
+    
+    
+    @IBOutlet weak var showimage: UIImageView!
+    
+    
+    @IBOutlet weak var itemName: UILabel!
+    
+    
+
+    
 }
