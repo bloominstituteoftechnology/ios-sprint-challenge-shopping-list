@@ -65,9 +65,6 @@ class ShoppingItemController {
     var notAddedItems: [ShoppingItem] {
         return items.filter { !$0.isInShoppingList }
     }
-    
     var hasLaunchedKey = "hasLaunchedKey"
-    
     var items: [ShoppingItem] = []
-    
 }
