@@ -27,7 +27,7 @@ class LocalNotificationHelper {
         
         let content = UNMutableNotificationContent()
         content.title = "Thanks for the order, [name here] "
-        content.body = "You items will be delivered to: [address here]"
+        content.body = "You items will be delivered to: [address here] in 15 minutes."
         
         var dateComponents = DateComponents()
         dateComponents.hour = 20

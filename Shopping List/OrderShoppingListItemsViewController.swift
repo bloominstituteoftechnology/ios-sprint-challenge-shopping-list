@@ -1,6 +1,8 @@
 import UIKit
 
 class OrderShoppingListItemsViewController: UIViewController {
+    
+    let localNotificationHelper = LocalNotificationHelper()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -13,6 +15,7 @@ class OrderShoppingListItemsViewController: UIViewController {
     @IBAction func orderButton(_ sender: Any) {
         
         //authorizer permision for notifications
+        // send text in name text field and address field to notification title and body
         
     }
     
