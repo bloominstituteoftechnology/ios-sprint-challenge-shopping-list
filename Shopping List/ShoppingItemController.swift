@@ -2,8 +2,6 @@ import UIKit
 
 class ShoppingItemController {
     
- 
-    
     private(set) var shoppingItems: [ShoppingItem] = []
   
     private var shoppingListURL: URL? {
