@@ -19,16 +19,26 @@ class ShoppingItemContorller {
 
     private(set) var shoppingItems: [ShoppingItem] = []
     
+    // create the list
     func createShoppingItems(name: String, isSelected:Bool, imageData:Data) {
         let shoppingItem = ShoppingItem(name: name, isSelected: isSelected, imageData: imageData)
         shoppingItems.append(shoppingItem)
-        
     }
     
+    // update
+    // delete
+    
+    // load the images
     func loadShoppingItems() {
-        
+        let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
+        for item in itemNames {
+            if let image = UIImage(named: item), let imageData = image.pngData()
+            { createShoppingItems(name: item, isSelected: false, imageData: imageData)
+        }
+    
     }
     
+}
     
     
 }

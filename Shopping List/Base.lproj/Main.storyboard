@@ -13,7 +13,7 @@
         <!--Shopping List-->
         <scene sceneID="j5J-kh-DbB">
             <objects>
-                <collectionViewController id="ZKX-wA-Q2C" sceneMemberID="viewController">
+                <collectionViewController id="ZKX-wA-Q2C" customClass="ShoppingListCollectionViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="wdw-hj-tkD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,7 +25,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="QLc-Fl-9xA">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="QLc-Fl-9xA" customClass="ShoppingListCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="176" height="176"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -36,19 +36,19 @@
                                             <rect key="frame" x="0.0" y="0.0" width="172" height="196"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4kk-qR-3sB">
-                                                    <rect key="frame" x="10" y="0.0" width="156" height="131"/>
+                                                    <rect key="frame" x="10" y="0.0" width="156" height="156"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="4kk-qR-3sB" secondAttribute="height" multiplier="44:37" id="Mgo-HV-N2l"/>
+                                                        <constraint firstAttribute="width" secondItem="4kk-qR-3sB" secondAttribute="height" multiplier="1:1" id="Mgo-HV-N2l"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nTo-jl-a0Q">
-                                                    <rect key="frame" x="0.0" y="135" width="176" height="16.5"/>
+                                                    <rect key="frame" x="0.0" y="160" width="176" height="0.0"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KeG-fU-Z14">
-                                                    <rect key="frame" x="0.0" y="155.5" width="176" height="20.5"/>
+                                                    <rect key="frame" x="0.0" y="164" width="176" height="12"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -71,6 +71,11 @@
                                     <constraint firstItem="Qep-8V-fSP" firstAttribute="leading" secondItem="QLc-Fl-9xA" secondAttribute="leading" id="pSg-Ty-efs"/>
                                     <constraint firstAttribute="trailing" secondItem="Qep-8V-fSP" secondAttribute="trailing" id="uDP-27-Yyg"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="isSelectedLabel" destination="KeG-fU-Z14" id="HRk-lk-2g4"/>
+                                    <outlet property="nameLabel" destination="nTo-jl-a0Q" id="huV-9b-R2h"/>
+                                    <outlet property="shoppingItemImageView" destination="4kk-qR-3sB" id="H3X-Gb-IPV"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -90,10 +95,10 @@
             </objects>
             <point key="canvasLocation" x="1149.5999999999999" y="205.54722638680661"/>
         </scene>
-        <!--View Controller-->
+        <!--Place Order View Controller-->
         <scene sceneID="PiI-tm-FW0">
             <objects>
-                <viewController id="zSP-Dn-6P3" sceneMemberID="viewController">
+                <viewController id="zSP-Dn-6P3" customClass="PlaceOrderViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dEC-uU-lNf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
