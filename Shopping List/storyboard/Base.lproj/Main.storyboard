@@ -36,28 +36,35 @@
                                             <rect key="frame" x="0.0" y="0.0" width="180" height="41"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JZF-qx-Zdq">
-                                                    <rect key="frame" x="0.0" y="0.0" width="180" height="20.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="614.5" height="40.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oFr-Yu-Xjb">
-                                                    <rect key="frame" x="0.0" y="20.5" width="180" height="20.5"/>
+                                                    <rect key="frame" x="0.0" y="40.5" width="614.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zed-Br-dmT">
-                                                    <rect key="frame" x="0.0" y="41" width="180" height="79"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zed-Br-dmT">
+                                                    <rect key="frame" x="0.0" y="61" width="614.5" height="79"/>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="XXf-sA-Osf" secondAttribute="height" multiplier="180:41" id="rWR-Q2-hzV"/>
+                                            </constraints>
                                         </stackView>
                                     </subviews>
                                 </view>
                                 <constraints>
                                     <constraint firstItem="XXf-sA-Osf" firstAttribute="top" secondItem="QLc-Fl-9xA" secondAttribute="top" id="51r-3a-eR7"/>
+                                    <constraint firstAttribute="bottom" secondItem="XXf-sA-Osf" secondAttribute="bottom" id="J9E-Xp-yi0"/>
                                     <constraint firstItem="XXf-sA-Osf" firstAttribute="leading" secondItem="QLc-Fl-9xA" secondAttribute="leading" id="Wha-WI-UXi"/>
+                                    <constraint firstAttribute="trailing" secondItem="XXf-sA-Osf" secondAttribute="trailing" id="h4t-33-eKu"/>
+                                    <constraint firstItem="XXf-sA-Osf" firstAttribute="leading" secondItem="QLc-Fl-9xA" secondAttribute="leading" id="hAF-Es-JhA"/>
                                     <constraint firstAttribute="trailing" secondItem="XXf-sA-Osf" secondAttribute="trailing" id="iHj-mW-qmS"/>
+                                    <constraint firstItem="XXf-sA-Osf" firstAttribute="top" secondItem="QLc-Fl-9xA" secondAttribute="top" id="sIA-HP-7Yq"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="isSelectedLabel" destination="oFr-Yu-Xjb" id="hOT-RQ-GWs"/>
