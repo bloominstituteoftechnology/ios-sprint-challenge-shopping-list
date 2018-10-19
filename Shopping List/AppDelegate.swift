@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             
             let okayAction = UIAlertAction(title: "Understood", style: .default, handler: nil)
             let settingsAction = UIAlertAction(title: "Open Settings", style: .default, handler: { action in
-                guard let url = URL(string: UIApplication.openSettingsURLString) else {
+                guard let url = URL(string: UIApplicationOpenSettingsURLString) else {
                     fatalError("Application-supplied openSettingsURLString failed to create cromulent URL")
                 }
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
