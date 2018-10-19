@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4613E91221143BFC00E7FF73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4613E91121143BFC00E7FF73 /* AppDelegate.swift */; };
-		4613E91421143BFC00E7FF73 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4613E91321143BFC00E7FF73 /* ViewController.swift */; };
 		4613E91721143BFC00E7FF73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91521143BFC00E7FF73 /* Main.storyboard */; };
 		4613E91921143BFD00E7FF73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91821143BFD00E7FF73 /* Assets.xcassets */; };
 		4613E91C21143BFD00E7FF73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91A21143BFD00E7FF73 /* LaunchScreen.storyboard */; };
@@ -24,7 +23,6 @@
 /* Begin PBXFileReference section */
 		4613E90E21143BFC00E7FF73 /* Shopping List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shopping List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4613E91121143BFC00E7FF73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4613E91321143BFC00E7FF73 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4613E91621143BFC00E7FF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4613E91821143BFD00E7FF73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4613E91B21143BFD00E7FF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -53,6 +51,7 @@
 			isa = PBXGroup;
 			children = (
 				4613E91021143BFC00E7FF73 /* Shopping List */,
+				471B1586217A9181005CBE09 /* Resources */,
 				4613E90F21143BFC00E7FF73 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,15 +67,9 @@
 		4613E91021143BFC00E7FF73 /* Shopping List */ = {
 			isa = PBXGroup;
 			children = (
-				4613E91121143BFC00E7FF73 /* AppDelegate.swift */,
-				4613E91321143BFC00E7FF73 /* ViewController.swift */,
-				4613E91521143BFC00E7FF73 /* Main.storyboard */,
-				471B1582217A8931005CBE09 /* ShoppingKey.swift */,
+				471B1585217A9161005CBE09 /* storyboard */,
 				471B1559217A3A53005CBE09 /* View Controllers */,
 				471B1554217A3191005CBE09 /* Model + Controller */,
-				4613E91821143BFD00E7FF73 /* Assets.xcassets */,
-				4613E91A21143BFD00E7FF73 /* LaunchScreen.storyboard */,
-				4613E91D21143BFD00E7FF73 /* Info.plist */,
 			);
 			path = "Shopping List";
 			sourceTree = "<group>";
@@ -93,12 +86,32 @@
 		471B1559217A3A53005CBE09 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				471B1582217A8931005CBE09 /* ShoppingKey.swift */,
 				471B155C217A3A90005CBE09 /* PlaceOrderViewController.swift */,
 				471B155E217A3AD9005CBE09 /* ShoppingListCollectionViewCell.swift */,
 				471B155A217A3A76005CBE09 /* ShoppingListCollectionViewController.swift */,
 				471B1560217A4F01005CBE09 /* NotificationHelper.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		471B1585217A9161005CBE09 /* storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				4613E91521143BFC00E7FF73 /* Main.storyboard */,
+			);
+			path = storyboard;
+			sourceTree = "<group>";
+		};
+		471B1586217A9181005CBE09 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4613E91121143BFC00E7FF73 /* AppDelegate.swift */,
+				4613E91821143BFD00E7FF73 /* Assets.xcassets */,
+				4613E91A21143BFD00E7FF73 /* LaunchScreen.storyboard */,
+				4613E91D21143BFD00E7FF73 /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,7 +187,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				471B1553217A318D005CBE09 /* ShoppingItem.swift in Sources */,
-				4613E91421143BFC00E7FF73 /* ViewController.swift in Sources */,
 				471B1556217A32CD005CBE09 /* ShoppingItemController.swift in Sources */,
 				471B1561217A4F01005CBE09 /* NotificationHelper.swift in Sources */,
 				471B155B217A3A76005CBE09 /* ShoppingListCollectionViewController.swift in Sources */,
