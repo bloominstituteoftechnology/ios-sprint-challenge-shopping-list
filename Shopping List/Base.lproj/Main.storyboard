@@ -74,10 +74,10 @@
             </objects>
             <point key="canvasLocation" x="999.20000000000005" y="80.50974512743629"/>
         </scene>
-        <!--View Controller-->
+        <!--Shopping List Detail View Controller-->
         <scene sceneID="l35-Vo-bsQ">
             <objects>
-                <viewController id="bTr-os-jf2" sceneMemberID="viewController">
+                <viewController id="bTr-os-jf2" customClass="ShoppingListDetailViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ljH-DZ-czc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -107,11 +107,19 @@
                                 <rect key="frame" x="124" y="279" width="128" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Send Order"/>
+                                <connections>
+                                    <action selector="sendOrder:" destination="bTr-os-jf2" eventType="touchUpInside" id="A9l-sU-oVb"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="YXb-QT-cvc"/>
                     </view>
+                    <connections>
+                        <outlet property="addressTextField" destination="gVM-id-gbT" id="Jbe-Qc-AgM"/>
+                        <outlet property="currentItemsLabel" destination="pNj-Ea-iPe" id="IjZ-Yc-akd"/>
+                        <outlet property="nameTextField" destination="tl7-Kz-4Bb" id="MSY-ds-Ysd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jha-lh-fg0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
