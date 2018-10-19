@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="f0w-Uu-qhZ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Shopping Items Collection View Controller-->
+        <!--Shopping  List-->
         <scene sceneID="W5G-gD-xu8">
             <objects>
                 <collectionViewController id="zFb-cY-m5j" customClass="ShoppingItemsCollectionViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
@@ -36,17 +36,24 @@
                                             <rect key="frame" x="13" y="5" width="148" height="197"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cb1-ho-gvN">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cb1-ho-gvN">
                                                     <rect key="frame" x="0.0" y="0.0" width="108" height="98"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="98" id="9Ay-1y-yQ9"/>
+                                                        <constraint firstAttribute="width" constant="108" id="OX7-6q-oGS"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cM-HN-RrZ">
-                                                    <rect key="frame" x="0.0" y="107" width="108" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cM-HN-RrZ">
+                                                    <rect key="frame" x="0.0" y="107" width="108" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="G04-tA-a9x"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Added" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Cy-q8-wws">
-                                                    <rect key="frame" x="0.0" y="136.5" width="108" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Added" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Cy-q8-wws">
+                                                    <rect key="frame" x="0.0" y="137" width="108" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -67,10 +74,10 @@
                             <outlet property="delegate" destination="zFb-cY-m5j" id="ujD-K1-HIu"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="d3Y-1D-o33">
+                    <navigationItem key="navigationItem" title="Shopping  List" id="d3Y-1D-o33">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="qGC-Wm-NQT">
                             <connections>
-                                <segue destination="0Nd-bd-Yxu" kind="show" id="V8a-jj-rX8"/>
+                                <segue destination="0Nd-bd-Yxu" kind="show" identifier="CartSegue" id="V8a-jj-rX8"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -88,13 +95,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lfe-yJ-9iW">
-                                <rect key="frame" x="5" y="106" width="370" height="42"/>
+                                <rect key="frame" x="5" y="158.5" width="370" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3LE-J7-aQW">
-                                <rect key="frame" x="5" y="170" width="370" height="30"/>
+                                <rect key="frame" x="5" y="201" width="370" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Shb-ad-1dT"/>
                                 </constraints>
@@ -103,7 +110,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your address:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rce-ZV-TUL">
-                                <rect key="frame" x="5" y="233" width="370" height="30"/>
+                                <rect key="frame" x="5" y="264" width="370" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="IzM-vt-M1N"/>
                                 </constraints>
@@ -112,7 +119,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTC-ad-mHT">
-                                <rect key="frame" x="148" y="303" width="79" height="30"/>
+                                <rect key="frame" x="148" y="334" width="79" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="eLT-OR-Hgm"/>
                                 </constraints>
@@ -156,8 +163,8 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="f0w-Uu-qhZ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mJ8-OJ-oZA">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="mJ8-OJ-oZA">
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
