@@ -62,7 +62,7 @@ class OrderItemsViewController: UIViewController, UNUserNotificationCenterDelega
             title = "Ordering \(shoppingItemController.addedItems.count) items"
         } else {
             shoppingCartListLabel.text = shoppingItemController.addedItems.first?.name ?? ""
-            title = "Ordering 1 item"
+            title = "Ordering 0 item"
         }
     }
     
