@@ -31,22 +31,21 @@ class PlaceOrderViewController: UIViewController {
     @IBAction func placeOrderButton(_ sender: Any) {
         guard let name = nameTextField.text, !name.isEmpty,
             let address = addressTextField.text, !address.isEmpty,
-            let numberOfItems = shoppingItemController?.itemsOnList.count
+            let numberOfItems = shoppingItemController?.shoppingItems.count
         else {return}
         notificationHelper.requestAuthorization { success in
             if success {
                 self.notificationHelper.scheduleDelivery(name: name, address: address, numberOfItems: numberOfItems)
             } else {
-                // write the error message if time allowes. 
-            }
+                NSLog("There was an error with the notification")
+        }
     }
     }
     
     
     private func updateViews() {
-        
         guard let shoppingItemController = shoppingItemController else { return }
-        let numberOfItems = shoppingItemController.itemsOnList.count
+        let numberOfItems = shoppingItemController.shoppingItems.count
         placeOrderLabel.text = "Enter your name and address for your \(numberOfItems) item\(numberOfItems == 1 ? "" : "s")."
     }
         

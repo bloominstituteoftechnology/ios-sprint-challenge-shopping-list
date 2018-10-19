@@ -10,14 +10,14 @@ import Foundation
 
 struct ShoppingItem: Equatable, Codable{
     
+    
     var name: String
     var isSelected: Bool
-    var imageData: Data
     
-    init(name: String, isSelected:Bool, imageData: Data) {
+    init(name: String, isSelected:Bool) {
         self.name = name
         self.isSelected = false
-        self.imageData = imageData
+
     }
     
 }

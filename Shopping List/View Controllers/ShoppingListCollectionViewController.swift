@@ -22,53 +22,47 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+    let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
+    
+    func loadItems() {
+        for i in itemNames {
+            shoppingItemController.createShoppingItems(name: i, isSelected: false, imageData: )
+        }
+        shoppingItemController.saveShoppingItems()
     }
-    */
-
-     
     
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 1
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == 0 {
-            return shoppingItemController.itemsOnList.count
-        } else  {
-            return shoppingItemController.itemsOffList.count
-        }
+        return shoppingItemController.shoppingItems.count
     }
-        
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ShoppingListCollectionViewCell
-     
-        let shoppingItem = shoppingItemPath(indexPath)
-        cell.shoppingItem = shoppingItem
+        
+        let item = shoppingItemController.shoppingItems[indexPath.item]
+        
+        cell.nameLabel.text = item.name
+        cell.shoppingItemImageView.image = UIImage(named: item.name)
         
         return cell
     }
 
-    // access the index path. 
-    private func shoppingItemPath(_ indexPath: IndexPath) -> ShoppingItem {
-        if indexPath.section == 0 {
-            return shoppingItemController.itemsOnList[indexPath.item]
-        } else {
-            return shoppingItemController.itemsOffList[indexPath.item]
-        }
+
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destination = segue.destination as? PlaceOrderViewController else {return}
+        destination.shoppingItemController = shoppingItemController
     }
+    
+    
     
     
     // MARK: UICollectionViewDelegate
