@@ -23,7 +23,27 @@ class LocalNotificationHelper: NSObject, UNUserNotificationCenterDelegate {
         }
     }
     
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert])
+    }
     
+    func sendOrderNotification(name: String, address: String) {
+        let content = UNMutableNotificationContent()
+        content.title = "Delivery for \(name)"
+        content.body = "Your order will be sent to \(address) in 15 minutes"
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let request = UNNotificationRequest(identifier: "NotificationID", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request) {error in
+            if let error = error {
+                NSLog("There was an error scheduling a notifictation: \(error)")
+                return
+            }
+        }
+    }
     
     
     
