@@ -9,7 +9,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //
+        collectionView.reloadData()
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -18,7 +18,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            return shoppingItemController.addeditems.count
+            return shoppingItemController.addedItems.count
         } else if section == 1 {
             return shoppingItemController.notAddedItems.count
         } else {
@@ -29,7 +29,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ShoppingItemCollectionViewCell else { fatalError("No Cell")
         }
-        cell.item = indexPath.section == 0 ? shoppingItemController.addeditems[indexPath.item] : shoppingItemController.notAddedItems[indexPath.item]
+        cell.item = indexPath.section == 0 ? shoppingItemController.addedItems[indexPath.item] : shoppingItemController.notAddedItems[indexPath.item]
         return cell
     }
     

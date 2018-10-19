@@ -4,7 +4,7 @@ class ShoppingItemController {
     
     init() {
         let hasLaunched = UserDefaults.standard.bool(forKey: hasLaunchedKey)
-        if hasLaunched {
+        if !hasLaunched {
             let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
             for i in itemNames {
                 create(with: i, image: UIImage(named: i) ?? UIImage())
@@ -12,15 +12,17 @@ class ShoppingItemController {
             UserDefaults.standard.set(true, forKey: hasLaunchedKey)
         } else { readFromFile() }
     }
+    
     var hasLaunchedKey = "hasLaunchedKey"
     var items: [ShoppingItem] = []
-    var addeditems: [ShoppingItem] {
+    var addedItems: [ShoppingItem] {
         return items.filter { $0.isInShoppingList }
     }
     
     var notAddedItems: [ShoppingItem] {
         return items.filter { $0.isInShoppingList }
     }
+    
     //Create Item
     func create(with name: String, image: UIImage) {
         guard let imageData = image.pngData() else { return }  //png....

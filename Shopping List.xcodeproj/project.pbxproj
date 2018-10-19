@@ -16,6 +16,7 @@
 		7BB6EED7217A29BD00AC0C7B /* ShoppingItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB6EED6217A29BD00AC0C7B /* ShoppingItemController.swift */; };
 		7BB6EED9217A318E00AC0C7B /* ShoppingItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB6EED8217A318D00AC0C7B /* ShoppingItemCollectionViewCell.swift */; };
 		7BB6EEDB217A347400AC0C7B /* OrderItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB6EEDA217A347400AC0C7B /* OrderItemsViewController.swift */; };
+		7BB6EEE0217A3EFB00AC0C7B /* LocalNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB6EEDF217A3EFB00AC0C7B /* LocalNotificationHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		7BB6EED6217A29BD00AC0C7B /* ShoppingItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemController.swift; sourceTree = "<group>"; };
 		7BB6EED8217A318D00AC0C7B /* ShoppingItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		7BB6EEDA217A347400AC0C7B /* OrderItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItemsViewController.swift; sourceTree = "<group>"; };
+		7BB6EEDF217A3EFB00AC0C7B /* LocalNotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,16 +66,49 @@
 			children = (
 				4613E91121143BFC00E7FF73 /* AppDelegate.swift */,
 				4613E91521143BFC00E7FF73 /* Main.storyboard */,
-				7BB6EEDA217A347400AC0C7B /* OrderItemsViewController.swift */,
-				7BB6EED2217A295600AC0C7B /* ShoppingCollectionViewController.swift */,
-				7BB6EED4217A299D00AC0C7B /* ShoppingItem.swift */,
-				7BB6EED6217A29BD00AC0C7B /* ShoppingItemController.swift */,
-				7BB6EED8217A318D00AC0C7B /* ShoppingItemCollectionViewCell.swift */,
+				7BB6EEDC217A3EB900AC0C7B /* View Controllers */,
+				7BB6EEDD217A3EC700AC0C7B /* Cell */,
+				7BB6EEDE217A3EDE00AC0C7B /* Model & Controller */,
+				7BB6EEE1217A3F0000AC0C7B /* Helper */,
 				4613E91821143BFD00E7FF73 /* Assets.xcassets */,
 				4613E91A21143BFD00E7FF73 /* LaunchScreen.storyboard */,
 				4613E91D21143BFD00E7FF73 /* Info.plist */,
 			);
 			path = "Shopping List";
+			sourceTree = "<group>";
+		};
+		7BB6EEDC217A3EB900AC0C7B /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7BB6EEDA217A347400AC0C7B /* OrderItemsViewController.swift */,
+				7BB6EED2217A295600AC0C7B /* ShoppingCollectionViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		7BB6EEDD217A3EC700AC0C7B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				7BB6EED8217A318D00AC0C7B /* ShoppingItemCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		7BB6EEDE217A3EDE00AC0C7B /* Model & Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7BB6EED4217A299D00AC0C7B /* ShoppingItem.swift */,
+				7BB6EED6217A29BD00AC0C7B /* ShoppingItemController.swift */,
+			);
+			path = "Model & Controller";
+			sourceTree = "<group>";
+		};
+		7BB6EEE1217A3F0000AC0C7B /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				7BB6EEDF217A3EFB00AC0C7B /* LocalNotificationHelper.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +186,7 @@
 				7BB6EEDB217A347400AC0C7B /* OrderItemsViewController.swift in Sources */,
 				7BB6EED9217A318E00AC0C7B /* ShoppingItemCollectionViewCell.swift in Sources */,
 				7BB6EED5217A299D00AC0C7B /* ShoppingItem.swift in Sources */,
+				7BB6EEE0217A3EFB00AC0C7B /* LocalNotificationHelper.swift in Sources */,
 				7BB6EED3217A295600AC0C7B /* ShoppingCollectionViewController.swift in Sources */,
 				7BB6EED7217A29BD00AC0C7B /* ShoppingItemController.swift in Sources */,
 				4613E91221143BFC00E7FF73 /* AppDelegate.swift in Sources */,
