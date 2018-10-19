@@ -8,10 +8,10 @@
 
 import UIKit
 
-private let reuseIdentifier = "cell"
-
 class ShoppingListCollectionViewController: UICollectionViewController {
 
+    private let reuseIdentifier = "cell"
+    
     let shoppingItemController = ShoppingItemController()
     
     override func viewDidLoad() {
@@ -35,10 +35,10 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     }
     */
 
+     
+    
     // MARK: UICollectionViewDataSource
 
-    
-    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
     }

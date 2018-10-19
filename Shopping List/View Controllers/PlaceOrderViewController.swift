@@ -11,6 +11,7 @@ import UIKit
 class PlaceOrderViewController: UIViewController {
 
     var shoppingItemController: ShoppingItemController?
+    let notificationHelper = NotificationHelper()
     
     @IBOutlet weak var placeOrderLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
@@ -19,7 +20,7 @@ class PlaceOrderViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        updateViews()
     // should I add a notification Helper file?
         
         
@@ -29,8 +30,16 @@ class PlaceOrderViewController: UIViewController {
     
     @IBAction func placeOrderButton(_ sender: Any) {
         guard let name = nameTextField.text, !name.isEmpty,
-            let address = addressTextField.text, !address.isEmpty else
-        {return}
+            let address = addressTextField.text, !address.isEmpty,
+            let numberOfItems = shoppingItemController?.itemsOnList.count
+        else {return}
+        notificationHelper.requestAuthorization { success in
+            if success {
+                self.notificationHelper.scheduleDelivery(name: name, address: address, numberOfItems: numberOfItems)
+            } else {
+                // write the error message if time allowes. 
+            }
+    }
     }
     
     

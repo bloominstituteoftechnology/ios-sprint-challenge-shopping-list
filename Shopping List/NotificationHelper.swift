@@ -32,13 +32,13 @@ class NotificationHelper: NSObject, UNUserNotificationCenterDelegate {
     }
     
    
-    func scheduleDeliveryRequest(name: String, address: String, numberOfItems: Int) {
+    func scheduleDelivery(name: String, address: String, numberOfItems: Int) {
         
         let content = UNMutableNotificationContent()
         content.title = "\(name)'s order"
         content.body = "Your \(numberOfItems) items will be delivered to \(address) within the hour"
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 8, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 2, repeats: false)
         
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
         
