@@ -20,11 +20,12 @@ class ShoppingListCollectionViewController: UICollectionViewController, Shopping
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        <#code#>
+        let shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
+        shoppingItemController.toggleIsAdded(shoppingItem: shoppingItem)
+        collectionView.reloadItems(at: [indexPath])
     }
     
     // MARK: UICollectionViewDataSource
-    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return shoppingItemController.shoppingItems.count
     }
@@ -39,13 +40,12 @@ class ShoppingListCollectionViewController: UICollectionViewController, Shopping
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        <#code#>
+        if(segue.identifier == "SendOrder") {
+            guard let destinationVC = segue.destination as? ShoppingListDetailViewController else { return }
+            destinationVC.shoppingItemController = shoppingItemController
+            destinationVC.localNotificationHelper = localNotificationHelper
+        }
     }
-    
-    
-    
-    
-    
     
     let shoppingItemController = ShoppingItemController()
     let localNotificationHelper = LocalNotificationHelper()
