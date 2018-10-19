@@ -9,7 +9,12 @@
 
 import Foundation
 import UIKit
-struct ShoppingItem: Equatable, Codable {
+
+class ShoppingItem: Equatable, Codable {
+    static func == (lhs: ShoppingItem, rhs: ShoppingItem) -> Bool {
+        return lhs.name == rhs.name
+    }
+    
     let image: Data
     let name: String
     var added: Bool

@@ -12,7 +12,6 @@ import Foundation
 import UIKit
 
 
- var shoppingItems = [ShoppingItem]()
 
 class UserDefaultsManager {
     
@@ -31,15 +30,20 @@ class UserDefaultsManager {
 
 
 class ShoppingController {
+ 
+    var shoppingItems = [ShoppingItem]()
+    
+    
+    let userDefaultsManager = UserDefaultsManager()
     
     init() {
         loadFromPersistentStore()
         if userDefaultsManager.hasShoppingListBeenInitialized == false {
             let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
             for itemName in itemNames {
-                guard let image = Data(image:imageData),
-                    let imageData = UIImagePNGRepresentation(image) else { return }
-                createItem(imageData: image, name: uname)
+                guard let image = UIImage(named: itemName) else {return}
+                guard let imageData = UIImagePNGRepresentation(image) else { return }
+                createItem(image: imageData, name: itemName)
                 userDefaultsManager.initShoppingList()
             }
         } else { return }
@@ -47,8 +51,8 @@ class ShoppingController {
     
 
     // Create items
-    func createItem(imageData: Data, name: String, addedToList: Bool = false) {
-        let shoppingItem = ShoppingItem(image: imageData, name: name, added: Bool)
+    func createItem(image: Data, name: String, added: Bool = false) {
+        let shoppingItem = ShoppingItem(image: image, name: name, added:added )
         shoppingItems.append(shoppingItem)
         saveToPersistentStore()
     }
@@ -93,10 +97,7 @@ class ShoppingController {
     }
     
     
-    var shoppingItems = [ShoppingItem]()
-    
-
-    let userDefaultsManager = UserDefaultsManager()
+   
     
 }
 

@@ -8,10 +8,6 @@
 
 import UIKit
 
-
-
-
-
 class ShoppingCollectionViewController: UICollectionViewController {
     
 var shoppingController = ShoppingController()
@@ -20,7 +16,6 @@ var shoppingController = ShoppingController()
 
 
 
-        
         let reuseIdentifier = "cell"
         
         override func viewDidLoad() {
@@ -48,7 +43,7 @@ var shoppingController = ShoppingController()
             else { fatalError("error") }
         
         cell.selectedBackgroundView = UIView()
-        cell.selectedBackgroundView?.backgroundColor = .yellow
+        
         
         return cell
     }
@@ -66,8 +61,7 @@ var shoppingController = ShoppingController()
     override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         
     }
-    
-}
+
     
     
     
@@ -76,26 +70,17 @@ var shoppingController = ShoppingController()
         //    return 1
         //  }
         
-        override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
             return 7
         }
     
     
     
     
-    
-    
-    
-    
-    
-    
+
     
     
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return shoppingController.shoppingItems.count
     }
@@ -177,4 +162,5 @@ var shoppingController = ShoppingController()
         
         
         
+}
 }

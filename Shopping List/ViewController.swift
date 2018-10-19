@@ -7,34 +7,33 @@
 //
 
 import UIKit
- import UserNotifications
+import UserNotifications
 
 class ViewController: UIViewController {
-
+    
     
     
     var shoppingController: ShoppingController?
     
     
-        override func viewWillAppear(_ animated: Bool) {
-            showAddedItems()
-        }
-
+    override func viewWillAppear(_ animated: Bool) {
+        showAddedItems()
+    }
+    
     
     func showAddedItems() {
         var string = ""
         guard let items = shoppingController?.shoppingItems else { return }
         for item in items {
-         if item.added == true {
-            let diffItem = "\(item.name)\n"
-            string.append(diffItem)
+            if item.added == true {
+                let diffItem = "\(item.name)\n"
+                string.append(diffItem)
+            }
+            
         }
-        
     }
-    
     // MARK: - Notifications
-    
-    // gets authorization from the user to receive notifications (boilerplate)
+
     func getAuthorizationStatus(completion: @escaping (UNAuthorizationStatus) -> Void) {
         UNUserNotificationCenter.current().getNotificationSettings { (settings) in
             DispatchQueue.main.async {
@@ -54,18 +53,19 @@ class ViewController: UIViewController {
         }
     }
     
-        func scheduleNotification() {
-        guard let name = name.text
-        let address1 = address1.text
-        let address2 = address2.text
-    
-       msg.title = "Your deliver is on its way"
-      msg.body = "Your shopping will be delivered to your address in 15 minutes: \(address1.text ?? "" ), \(address2.text ?? "" )"
+    func scheduleNotification() {
+        guard let name = name.text else {return}
+        
+        let msg = UNMutableNotificationContent()
+        msg.title = "Your deliver is on its way"
+        msg.body = "Your shopping will be delivered to your address in 15 minutes: \(address1.text ?? "" ), \(address2.text ?? "" )"
+        
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 2, repeats: false)
-        let request = UNNotificationRequest(identifier: identifier, content: msg, trigger: trigger)
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: msg, trigger: trigger)
         let notificationCenter = UNUserNotificationCenter.current()
         notificationCenter.add(request)
     }
+    
     
     
     
@@ -75,12 +75,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     
     
     
@@ -90,20 +90,20 @@ class ViewController: UIViewController {
     
     
     @IBOutlet weak var address1: UITextField!
-
+    
     @IBOutlet weak var address2: UITextField!
     
     
     @IBAction func sendButton(_ sender: Any) {
-       scheduleNotification()
-      
+        scheduleNotification()
+        
         
         
     }
-  
     
+   
     
-    
-
-
 }
+
+
+
