@@ -59,15 +59,21 @@ class CollectionViewController: UICollectionViewController {
     
         return cell
     }
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
+    
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = shoppingItemController.items[indexPath.item]
+        item.added.toggle()
+        collectionView.reloadData()
     }
-    */
+    
+    
+    override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let item = shoppingItemController.items[indexPath.item]
+        item.added.toggle()
+        collectionView.reloadData()
+    }
+
 
 
     /*
