@@ -20,4 +20,20 @@ class LocalNotificationHelper {
             }
         }
     }
+    
+    func scheduleNotification(name: String, address: String) {
+        let content = UNMutableNotificationContent()
+        content.title = "Delivery for \(name)!"
+        content.body = "Your order will arrive at \(address) in 15 minutes"
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        let center = UNUserNotificationCenter.current()
+        center.add(request) { error in
+            if let error = error {
+                NSLog("Error scheduling notification: \(error)")
+                return
+            }
+        }
+    }
+    
 }
