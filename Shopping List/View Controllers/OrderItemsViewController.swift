@@ -88,7 +88,7 @@ class OrderItemsViewController: UIViewController, UNUserNotificationCenterDelega
     @IBOutlet weak var sendOrderBarButtonItem: UIBarButtonItem!
     
 }
-
+//
 extension OrderItemsViewController {
     
     func triggerOrderNotification(with name: String, address: String, itemCount: Int) {

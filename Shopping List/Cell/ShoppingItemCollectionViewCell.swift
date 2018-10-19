@@ -17,3 +17,4 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         isInShoppingListLabel.textColor = item.isInShoppingList ? .orange : .lightGray
     }
 }
+//
