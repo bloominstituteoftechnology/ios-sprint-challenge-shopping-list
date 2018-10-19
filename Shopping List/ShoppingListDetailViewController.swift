@@ -2,6 +2,9 @@ import UIKit
 
 class ShoppingListDetailViewController: UIViewController {
     
+    override func viewDidLoad() {
+        <#code#>
+    }
     
     @IBAction func sendOrder(_ sender: Any) {
         
