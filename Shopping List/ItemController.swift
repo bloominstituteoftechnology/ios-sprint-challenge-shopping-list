@@ -17,6 +17,9 @@ class ItemController {
     var selections: [ShoppingItem]{
         return shoppingList.filter{$0.added == true } }
     
+    var remainders: [ShoppingItem]{
+        return shoppingList.filter{$0.added == false } }
+    
     //Creating file to store items in
     var fileURL: URL?{
         let fileStorage = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first

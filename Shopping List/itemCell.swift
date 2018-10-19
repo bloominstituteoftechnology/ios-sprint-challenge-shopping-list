@@ -13,13 +13,15 @@ class itemProtoCell: UICollectionViewCell {
     
     //Outlets here
     
-    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var groceryPhoto: UIImageView!
     
     //
     func reloadListView(){
         
-        guard let mygrocery = ShoppingItem,
-            let photo = UIImage(data:mygrocery.picture) else {return}
+        guard let mygrocery = self.groceryItem,
+            let photo = UIImage(data: mygrocery.picture) else {return}
         
         groceryPhoto?.image = photo
         nameLabel?.text = mygrocery.name

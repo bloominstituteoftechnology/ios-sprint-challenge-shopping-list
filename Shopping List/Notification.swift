@@ -22,7 +22,7 @@ class Notifier {
     func requestAuthorisation(completion: @escaping (Bool) -> Void) {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (success, error) in
             
-            if let error = error { NSLog("Error requesting authorization status for local notifications: \(error)") }
+            if let error = error { NSLog("Couldn't get permission for notification: \(error)") }
             
             DispatchQueue.main.async {
                 completion(success)
@@ -35,10 +35,9 @@ class Notifier {
         content.title = "Delivery Notification:"
         content.body = "Your order will be delivered in 15 minutes!"
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
-        let request = UNNotificationRequest(identifier: "orderReadyNotification", content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: "shoppingNotification", content: content, trigger: trigger)
         
-        let notificationCenter = UNUserNotificationCenter.current()
-        notificationCenter.add(request) { (error) in
+        UNUserNotificationCenter.current().add(request) { (error) in
             if let error = error{
                 NSLog("\(error)")
                 return
