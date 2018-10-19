@@ -75,9 +75,9 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Shopping  List" id="d3Y-1D-o33">
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="qGC-Wm-NQT">
+                        <barButtonItem key="rightBarButtonItem" title="Cart" id="6DG-Az-ehV">
                             <connections>
-                                <segue destination="0Nd-bd-Yxu" kind="show" identifier="CartSegue" id="V8a-jj-rX8"/>
+                                <segue destination="0Nd-bd-Yxu" kind="show" id="ZVO-iD-6Is"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -86,7 +86,7 @@
             </objects>
             <point key="canvasLocation" x="280.80000000000001" y="-93.103448275862078"/>
         </scene>
-        <!--Title-->
+        <!--ShoppingCart-->
         <scene sceneID="EjI-dl-EF2">
             <objects>
                 <viewController id="0Nd-bd-Yxu" customClass="CartViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
@@ -125,7 +125,7 @@
                                 </constraints>
                                 <state key="normal" title="Send Order"/>
                                 <connections>
-                                    <action selector="order:" destination="0Nd-bd-Yxu" eventType="touchUpInside" id="EtO-Pa-jLg"/>
+                                    <action selector="order:" destination="0Nd-bd-Yxu" eventType="touchUpInside" id="YKI-NJ-AK9"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -147,11 +147,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mlz-nd-ww1"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="8cf-eM-mw7"/>
+                    <navigationItem key="navigationItem" title="ShoppingCart" id="8cf-eM-mw7"/>
                     <connections>
                         <outlet property="addressTextField" destination="Rce-ZV-TUL" id="vbr-ky-mJY"/>
                         <outlet property="itemsLabel" destination="Lfe-yJ-9iW" id="SBG-0o-SoP"/>
-                        <outlet property="nameTextField" destination="3LE-J7-aQW" id="EKJ-yI-278"/>
+                        <outlet property="nameTextField" destination="3LE-J7-aQW" id="3KU-mp-Rp7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gZr-w4-R4M" userLabel="First Responder" sceneMemberID="firstResponder"/>

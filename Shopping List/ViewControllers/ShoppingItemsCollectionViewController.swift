@@ -14,14 +14,20 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
 
     
     let shoppingItemController = ShoppingItemController()
+     let notification = Notification()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+      //  print("View did load")
 
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView?.reloadData()
+     //   print("View will appear")
     }
 
    
@@ -31,7 +37,7 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CartSegue" {
             guard let destinationVC = segue.destination as? CartViewController else {return}
-            // pass notification object
+            destinationVC.notification = notification
             destinationVC.shoppingItemController = shoppingItemController
             
         }

@@ -7,47 +7,57 @@
 //
 
 import UIKit
+import UserNotifications
 
-class CartViewController: UIViewController {
+class CartViewController: UIViewController, UNUserNotificationCenterDelegate {
 
-    
-    
-     var shoppingItemController: ShoppingItemController?
-    
+  
+    var shoppingItemController: ShoppingItemController?
+    var notification: Notification?
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var itemsLabel: UILabel!
     
     
-    @IBAction func order(_ sender: Any) {
-        // create notification
-    }
-    
     override func viewDidLoad() {
-        super.viewDidLoad()
         updateCart()
     }
     
-    private func updateCart() {
-        var itemNumber = 0
-        guard let shoppingItemController = shoppingItemController else {return}
-        for item in shoppingItemController.shoppingItems{
-            if item.isInList {
-                itemNumber += 1
+    
+    @IBAction func order(_ sender: Any) {
+        guard let name = nameTextField.text,
+            let address = addressTextField.text,
+            let notification = notification else { return }
+            
+            notification.getAuthorizationStatus { (status) in
+                switch status {
+                case .notDetermined:
+                    notification.requestAuthorization { (granted) in
+                        notification.scheduleDeliveryNotification(name: name, address: address)
+                    }
+                case .authorized:
+                    notification.scheduleDeliveryNotification(name: name, address: address)
+                case .denied:
+                    return
+                default:
+                    return
+                }
             }
+            navigationController?.popViewController(animated: true)
         }
-        itemsLabel.text = "You have \(itemNumber) item(s) in your shopping cart."
+        
+
+private func updateCart() {
+    
+    var itemNumber = 0
+    
+    guard let shoppingItemController = shoppingItemController else {return}
+    
+    for item in shoppingItemController.shoppingItems{
+        if item.isInList {
+            itemNumber += 1
+        }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
-
 }
