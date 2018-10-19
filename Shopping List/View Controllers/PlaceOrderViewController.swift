@@ -29,7 +29,8 @@ class PlaceOrderViewController: UIViewController {
     
     @IBAction func placeOrderButton(_ sender: Any) {
         guard let name = nameTextField.text, !name.isEmpty,
-            let address = addressTextField.text, !address.isEmpty else {return}
+            let address = addressTextField.text, !address.isEmpty else
+        {return}
     }
     
     
