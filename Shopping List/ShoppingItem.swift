@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 //Grocery item model
 struct ShoppingItem: Codable, Equatable {

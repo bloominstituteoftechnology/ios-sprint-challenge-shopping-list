@@ -20,13 +20,13 @@ class itemProtoCell: UICollectionViewCell {
     //
     func reloadListView(){
         
-        guard let mygrocery = self.groceryItem,
-            let photo = UIImage(data: mygrocery.picture) else {return}
+        guard let groceryItem = groceryItem,
+            let photo = UIImage(data: groceryItem.picture) else {return}
         
         groceryPhoto?.image = photo
-        nameLabel?.text = mygrocery.name
+        nameLabel?.text = groceryItem.name
         
-        let addStatus = mygrocery.added ? "Added" : "Not Added"
+        let addStatus = groceryItem.added ? "Added" : "Not Added"
         statusLabel?.text = addStatus
         
     } //End of function

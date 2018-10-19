@@ -56,10 +56,12 @@ class ItemController {
         
 
     //Initialisation
-        
+    let initKey = "myKey"
+    private(set) var initialisationCheck: Bool?
+    
     init() {
     
-    var initialisationCheck: Bool? = UserDefaults.standard.bool(forKey: "myKey")
+     initialisationCheck = UserDefaults.standard.bool(forKey: initKey)
     
         //Making sure item only initialises once.
     if initialisationCheck == false {
@@ -79,7 +81,7 @@ class ItemController {
             
         } //End of for loop.
         
-        UserDefaults.standard.set(true, forKey: "myKey")
+        UserDefaults.standard.set(true, forKey: initKey)
         
     }//End of if statement.
         

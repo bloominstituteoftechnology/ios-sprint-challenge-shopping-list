@@ -2,6 +2,7 @@
 //  Lotanna iOS3 Sprint 2 Challenge begins!
 
 import UIKit
+import Foundation
 
 class ShoppingListController: UICollectionViewController {
     
