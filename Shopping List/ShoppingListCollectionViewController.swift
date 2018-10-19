@@ -11,7 +11,7 @@ class ShoppingListCollectionViewController: UICollectionViewController, Shopping
     }
 
     override func viewDidLoad() {
-        <#code#>
+        super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {

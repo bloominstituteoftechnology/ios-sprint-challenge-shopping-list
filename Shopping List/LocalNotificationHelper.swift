@@ -3,6 +3,11 @@ import UserNotifications
 
 class LocalNotificationHelper: NSObject, UNUserNotificationCenterDelegate {
     
+    override init() {
+        super.init()
+        let center = UNUserNotificationCenter.current()
+        center.delegate = self
+    }
     // Copy pasta
     func getAuthorizationStatus(completion: @escaping (UNAuthorizationStatus) -> Void) {
         UNUserNotificationCenter.current().getNotificationSettings { (settings) in
@@ -44,9 +49,4 @@ class LocalNotificationHelper: NSObject, UNUserNotificationCenterDelegate {
             }
         }
     }
-    
-    
-    
-    
-    
 }
