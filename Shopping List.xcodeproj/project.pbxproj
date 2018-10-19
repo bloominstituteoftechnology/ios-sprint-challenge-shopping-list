@@ -13,6 +13,7 @@
 		39A967FD217A325A006B0446 /* OrderShoppingListItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A967FC217A325A006B0446 /* OrderShoppingListItemsViewController.swift */; };
 		39A967FF217A32A2006B0446 /* ShoppingItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39A967FE217A32A2006B0446 /* ShoppingItemCollectionViewCell.xib */; };
 		39A96801217A32E5006B0446 /* LocalNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A96800217A32E5006B0446 /* LocalNotificationHelper.swift */; };
+		39A96805217A45CC006B0446 /* ShoppingItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A96804217A45CC006B0446 /* ShoppingItemController.swift */; };
 		4613E91221143BFC00E7FF73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4613E91121143BFC00E7FF73 /* AppDelegate.swift */; };
 		4613E91721143BFC00E7FF73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91521143BFC00E7FF73 /* Main.storyboard */; };
 		4613E91921143BFD00E7FF73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91821143BFD00E7FF73 /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 		39A967FC217A325A006B0446 /* OrderShoppingListItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderShoppingListItemsViewController.swift; sourceTree = "<group>"; };
 		39A967FE217A32A2006B0446 /* ShoppingItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingItemCollectionViewCell.xib; sourceTree = "<group>"; };
 		39A96800217A32E5006B0446 /* LocalNotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationHelper.swift; sourceTree = "<group>"; };
+		39A96804217A45CC006B0446 /* ShoppingItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemController.swift; sourceTree = "<group>"; };
 		4613E90E21143BFC00E7FF73 /* Shopping List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shopping List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4613E91121143BFC00E7FF73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4613E91621143BFC00E7FF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				4613E91121143BFC00E7FF73 /* AppDelegate.swift */,
 				4613E91521143BFC00E7FF73 /* Main.storyboard */,
 				39A967F6217A2F48006B0446 /* ShoppingItem.swift */,
+				39A96804217A45CC006B0446 /* ShoppingItemController.swift */,
 				39A967F8217A3188006B0446 /* ShoppingListItemsCollectionViewController.swift */,
 				39A967FA217A31DE006B0446 /* ShoppingItemCollectionViewCell.swift */,
 				39A967FE217A32A2006B0446 /* ShoppingItemCollectionViewCell.xib */,
@@ -111,6 +114,7 @@
 				TargetAttributes = {
 					4613E90D21143BFC00E7FF73 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -157,6 +161,7 @@
 				4613E91221143BFC00E7FF73 /* AppDelegate.swift in Sources */,
 				39A967FD217A325A006B0446 /* OrderShoppingListItemsViewController.swift in Sources */,
 				39A967F9217A3188006B0446 /* ShoppingListItemsCollectionViewController.swift in Sources */,
+				39A96805217A45CC006B0446 /* ShoppingItemController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,7 +314,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LambdaSchool.Shopping-List";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -327,7 +332,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LambdaSchool.Shopping-List";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
