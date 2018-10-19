@@ -16,8 +16,15 @@ class CheckoutViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     
+    let localNotificationHelper = LocalNotificationHelper()
     @IBAction func placeOrderButton(_ sender: Any) {
-        //Notification
+        guard let name = nameTextField.text, !name.isEmpty else {return}
+        guard let address = addressTextField.text, !address.isEmpty else {return}
+        localNotificationHelper.requestAuthorization { success in
+            if success {
+                self.localNotificationHelper.scheduleNotification(name: name, address: address)
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,6 +35,10 @@ class CheckoutViewController: UIViewController {
         let addedItems = shoppingItemController?.items.filter({ $0.added })
         itemCountLabel.text = "You currently have \(addedItems?.count ?? 0) item(s) in your shopping cart"
     }
+    
+
+    
+    
 
 
 }
