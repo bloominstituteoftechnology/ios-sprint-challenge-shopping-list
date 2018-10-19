@@ -8,17 +8,23 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+private let reuseIdentifier = "cell"
 
 class ShoppingListCollectionViewController: UICollectionViewController {
 
+    let shoppingItemController = ShoppingItemController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        
+        collectionView.reloadData()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -31,25 +37,40 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDataSource
 
+    
+    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        
-        return 0
+        return 2
     }
-
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+        if section == 0 {
+            return shoppingItemController.itemsOnList.count
+        } else  {
+            return shoppingItemController.itemsOffList.count
+        }
     }
+        
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        // Configure the cell
-    
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ShoppingListCollectionViewCell
+     
+        let shoppingItem = shoppingItemPath(indexPath)
+        cell.shoppingItem = shoppingItem
+        
         return cell
     }
 
+    // access the index path. 
+    private func shoppingItemPath(_ indexPath: IndexPath) -> ShoppingItem {
+        if indexPath.section == 0 {
+            return shoppingItemController.itemsOnList[indexPath.item]
+        } else {
+            return shoppingItemController.itemsOffList[indexPath.item]
+        }
+    }
+    
+    
     // MARK: UICollectionViewDelegate
 
     /*

@@ -127,6 +127,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBz-UL-S6C">
                                         <rect key="frame" x="0.0" y="125" width="335" height="30"/>
                                         <state key="normal" title="Place order"/>
+                                        <connections>
+                                            <action selector="placeOrderButton:" destination="zSP-Dn-6P3" eventType="touchUpInside" id="N1l-eC-aLt"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -147,10 +150,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Y3U-JX-D4d"/>
                     </view>
+                    <connections>
+                        <outlet property="addressTextField" destination="2W2-k1-yao" id="dU0-wG-Huh"/>
+                        <outlet property="nameTextField" destination="ErW-QV-Mwm" id="VQS-ti-WVL"/>
+                        <outlet property="placeOrderLabel" destination="rMf-NN-0zh" id="jhN-6q-cqo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CCk-BK-Tbr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1912.8" y="205.54722638680661"/>
+            <point key="canvasLocation" x="2124" y="206"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Qtf-Ur-cqS">

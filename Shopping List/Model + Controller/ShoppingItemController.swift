@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ShoppingItemContorller {
+class ShoppingItemController {
 
     // create array
     // persistence
@@ -25,8 +25,21 @@ class ShoppingItemContorller {
         shoppingItems.append(shoppingItem)
     }
     
-    // update
-    // delete
+    // update on list
+    
+    var itemsOnList: [ShoppingItem] {
+        return shoppingItems.filter { (shoppingItems) -> Bool in
+            return shoppingItems.isSelected
+        }
+    }
+    
+    // delete off list
+    
+    var itemsOffList: [ShoppingItem] {
+        return shoppingItems.filter { (shoppingItems) -> Bool in
+            return !shoppingItems.isSelected
+        }
+    }
     
     // load the images
     func loadShoppingItems() {
@@ -37,6 +50,7 @@ class ShoppingItemContorller {
         }
     
     }
+        
     
 }
     

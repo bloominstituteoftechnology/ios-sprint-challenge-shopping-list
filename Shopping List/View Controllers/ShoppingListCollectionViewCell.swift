@@ -22,7 +22,6 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
     
     func updateViews(){
         guard let shoppingItem = shoppingItem else {return}
-        
         shoppingItemImageView.image = UIImage(data: shoppingItem.imageData)
         nameLabel.text? = shoppingItem.name
         isSelectedLabel.text? = shoppingItem.isSelected ? "Added" :
