@@ -44,7 +44,7 @@ class LocalNotificationHelper: NSObject, UNUserNotificationCenterDelegate {
         
         UNUserNotificationCenter.current().add(request) {error in
             if let error = error {
-                NSLog("There was an error scheduling a notifictation: \(error)")
+                NSLog("There was an error scheduling a notification: \(error)")
                 return
             }
         }

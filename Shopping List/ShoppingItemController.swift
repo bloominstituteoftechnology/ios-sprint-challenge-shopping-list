@@ -14,10 +14,10 @@ class ShoppingItemController {
         loadFromPersistentStore()
         if self.shoppingItems.isEmpty {
             self.shoppingItems  = [
-                ShoppingItem(imageData: UIImagePNGRepresentation(UIImage(named: "apple")!)!, item: "apple", addedToList: true),
+                ShoppingItem(imageData: UIImagePNGRepresentation(UIImage(named: "apple")!)!, item: "apple", addedToList: false),
                 ShoppingItem(imageData: UIImagePNGRepresentation(UIImage(named: "grapes")!)!, item: "grapes", addedToList: false),
-                ShoppingItem(imageData: UIImagePNGRepresentation(UIImage(named: "milk")!)!, item: "milk", addedToList: true),
-                ShoppingItem(imageData: UIImagePNGRepresentation(UIImage(named: "muffin")!)!, item: "muffin", addedToList: true),
+                ShoppingItem(imageData: UIImagePNGRepresentation(UIImage(named: "milk")!)!, item: "milk", addedToList: false),
+                ShoppingItem(imageData: UIImagePNGRepresentation(UIImage(named: "muffin")!)!, item: "muffin", addedToList: false),
                 ShoppingItem(imageData: UIImagePNGRepresentation(UIImage(named: "popcorn")!)!, item: "popcorn", addedToList: false),
                 ShoppingItem(imageData: UIImagePNGRepresentation(UIImage(named: "soda")!)!, item: "soda", addedToList: false),
                 ShoppingItem(imageData: UIImagePNGRepresentation(UIImage(named: "strawberries")!)!, item: "strawberries", addedToList: false)
