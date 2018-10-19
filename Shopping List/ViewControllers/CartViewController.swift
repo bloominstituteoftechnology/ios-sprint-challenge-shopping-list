@@ -10,12 +10,35 @@ import UIKit
 
 class CartViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    
+    
+     var shoppingItemController: ShoppingItemController?
+    
+    
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var addressTextField: UITextField!
+    @IBOutlet weak var itemsLabel: UILabel!
+    
+    
+    @IBAction func order(_ sender: Any) {
+        // create notification
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateCart()
+    }
+    
+    private func updateCart() {
+        var itemNumber = 0
+        guard let shoppingItemController = shoppingItemController else {return}
+        for item in shoppingItemController.shoppingItems{
+            if item.isInList {
+                itemNumber += 1
+            }
+        }
+        itemsLabel.text = "You have \(itemNumber) item(s) in your shopping cart."
+    }
 
     /*
     // MARK: - Navigation
