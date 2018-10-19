@@ -13,16 +13,22 @@ class CollectionViewController: UICollectionViewController {
     
     let shoppingItemController = ShoppingItemController()
     
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadItems() //Temporary until data persistence setup
+        checkHasLaunched()
         collectionView.reloadData()
+    }
+    
+    func checkHasLaunched() {
+        let hasLaunched = UserDefaults.standard.bool(forKey: "hasLaunched")
+        
+        if !hasLaunched {
+            loadItems()
+            UserDefaults.standard.set(true, forKey: "hasLaunched")
+        } else {
+            shoppingItemController.loadData()
+        }
     }
     
     let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
@@ -31,7 +37,7 @@ class CollectionViewController: UICollectionViewController {
         for i in itemNames {
             shoppingItemController.create(name: i)
         }
-        // SAVE TO FILE
+        shoppingItemController.saveData()
     }
 
     // MARK: UICollectionViewDataSource
@@ -48,9 +54,11 @@ class CollectionViewController: UICollectionViewController {
         if item.added {
             cell.addedLabel.text = "Added"
             cell.addedLabel.textColor = .red
+            shoppingItemController.saveData()
         } else {
             cell.addedLabel.text = "Not Added"
             cell.addedLabel.textColor = .black
+            shoppingItemController.saveData()
         }
         
         cell.nameLabel.text = item.name
