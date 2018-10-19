@@ -13,7 +13,7 @@
         <!--Shopping List-->
         <scene sceneID="ilt-Vr-i8O">
             <objects>
-                <collectionViewController title="Shopping List" id="HVU-Kr-12Z" sceneMemberID="viewController">
+                <collectionViewController title="Shopping List" id="HVU-Kr-12Z" customClass="ShoppingListController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="rCN-Dh-vrS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,7 +25,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="rs7-co-jIb">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="rs7-co-jIb" customClass="itemProtoCell" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="92" y="50" width="191" height="190"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -90,39 +90,51 @@
         <!--Get Notified-->
         <scene sceneID="rRO-4C-k1e">
             <objects>
-                <viewController title="Get Notified" id="fKg-Tn-7Xn" sceneMemberID="viewController">
+                <viewController title="Get Notified" id="fKg-Tn-7Xn" customClass="GetNotifiedController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3H4-RI-YDG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="So far, you've picked out X items!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lda-mj-lep">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="So far, you've picked out X items!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lda-mj-lep">
                                 <rect key="frame" x="58" y="86" width="259" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="259" id="oRN-jv-3YA"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AWa-sE-fal">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AWa-sE-fal">
                                 <rect key="frame" x="72" y="140" width="230" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ULL-Rb-vIh">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ULL-Rb-vIh">
                                 <rect key="frame" x="72" y="192" width="230" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gVJ-r6-c0Z">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gVJ-r6-c0Z">
                                 <rect key="frame" x="141" y="262" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Bombs Away!"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="AWa-sE-fal" firstAttribute="leading" secondItem="Otk-OW-P94" secondAttribute="leading" constant="72" id="2xy-df-Azs"/>
+                            <constraint firstItem="ULL-Rb-vIh" firstAttribute="leading" secondItem="Otk-OW-P94" secondAttribute="leading" constant="72" id="7kM-0Z-10r"/>
+                            <constraint firstItem="gVJ-r6-c0Z" firstAttribute="top" secondItem="ULL-Rb-vIh" secondAttribute="bottom" constant="40" id="8oE-Pt-waA"/>
+                            <constraint firstItem="lda-mj-lep" firstAttribute="top" secondItem="Otk-OW-P94" secondAttribute="top" constant="22" id="AQf-xE-khW"/>
+                            <constraint firstItem="ULL-Rb-vIh" firstAttribute="top" secondItem="AWa-sE-fal" secondAttribute="bottom" constant="22" id="B46-5d-O56"/>
+                            <constraint firstItem="AWa-sE-fal" firstAttribute="top" secondItem="lda-mj-lep" secondAttribute="bottom" constant="33" id="FEq-af-9Mj"/>
+                            <constraint firstItem="Otk-OW-P94" firstAttribute="trailing" secondItem="ULL-Rb-vIh" secondAttribute="trailing" constant="73" id="IS5-3j-hZE"/>
+                            <constraint firstItem="Otk-OW-P94" firstAttribute="trailing" secondItem="AWa-sE-fal" secondAttribute="trailing" constant="73" id="LRM-NT-oW8"/>
+                            <constraint firstItem="Otk-OW-P94" firstAttribute="trailing" secondItem="gVJ-r6-c0Z" secondAttribute="trailing" constant="142" id="Lv5-9V-OXP"/>
+                            <constraint firstItem="gVJ-r6-c0Z" firstAttribute="leading" secondItem="Otk-OW-P94" secondAttribute="leading" constant="141" id="V2W-uH-tgX"/>
+                            <constraint firstItem="lda-mj-lep" firstAttribute="centerX" secondItem="Otk-OW-P94" secondAttribute="centerX" id="reA-0Q-U5o"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Otk-OW-P94"/>
                     </view>
                 </viewController>

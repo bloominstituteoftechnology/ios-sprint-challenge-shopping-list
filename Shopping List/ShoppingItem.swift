@@ -8,9 +8,12 @@
 
 import Foundation
 
+//Grocery item model
 struct ShoppingItem: Codable, Equatable {
     var name: String
     var added: Bool
     var picture: Data
     
 }
+
+
