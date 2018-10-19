@@ -72,7 +72,7 @@ class ItemController {
         for item in itemNames {
             
             guard let itemPhoto = UIImage(named: item), //Unwraps the UIimage name of each item
-            let picture = UIImagePNGRepresentation(itemPhoto) else {return} //Assigns the corresponding photo to each item
+            let picture = itemPhoto.pngData() else {return} //Assigns the corresponding photo to each item
             
             //Create an instance of ShoppingItem for each item in the array
             let singleItem = ShoppingItem(name: item, added: false, picture: picture)

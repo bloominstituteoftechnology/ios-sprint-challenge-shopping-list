@@ -12,10 +12,13 @@ import UIKit
 class itemProtoCell: UICollectionViewCell {
     
     //Outlets here
-    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var groceryPhoto: UIImageView!
+    
+   
+    var groceryItem: ShoppingItem?{ didSet{ reloadListView() }
+    }
     
     //
     func reloadListView(){
@@ -26,16 +29,9 @@ class itemProtoCell: UICollectionViewCell {
         groceryPhoto?.image = photo
         nameLabel?.text = groceryItem.name
         
-        let addStatus = groceryItem.added ? "Added" : "Not Added"
-        statusLabel?.text = addStatus
+        statusLabel?.text = groceryItem.added ? "Added" : "Not Added"
         
     } //End of function
     
-    var groceryItem: ShoppingItem?{
-        didSet{
-            reloadListView() }
-    }
-    
     
 } //End of itemProtoCell class
-
