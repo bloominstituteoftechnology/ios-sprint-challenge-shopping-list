@@ -23,49 +23,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             }
             
             // Handle ungranted notification permissions
-            self.requestNotificationAuthorization()
+            self.checkNotificationAuthorization()
         }
     }
     
-    func requestNotificationAuthorization() {
-        let center = UNUserNotificationCenter.current()
-        
-        center.requestAuthorization(options: [.alert, .sound]) { granted, error in
-            
-            if let error = error {
-                NSLog("Error requesting notification authorization: \(error)")
-                return
-            }
-            
-            NSLog("Notification authorization status: \(granted ? "granted" : "not granted")")
-            
-            //if granted { return }
-            // line 42 and 44 do the same, line 44 is clearer
-            guard !granted else { return }
-            
-            let alertController = UIAlertController(
-                title: "Authorization not granted",
-                message: "This app cannot present notifications without your explicit consent",
-                preferredStyle: .alert)
-            
-            let okayAction = UIAlertAction(title: "Understood", style: .default, handler: nil)
-            let settingsAction = UIAlertAction(title: "Open Settings", style: .default, handler: { action in
-                guard let url = URL(string: UIApplication.openSettingsURLString) else {
-                    fatalError("Application-supplied openSettingsURLString failed to create cromulent URL")
-                }
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            })
-            
-            alertController.addAction(okayAction)
-            alertController.addAction(settingsAction)
-            
-            self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
-        }
-    }
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        
-        NSLog ("Will present notification: \(notification)")
-        completionHandler(.alert)
-    }
+//    func requestNotificationAuthorization() {
+//        let center = UNUserNotificationCenter.current()
+//
+//        center.requestAuthorization(options: [.alert, .sound]) { granted, error in
+//
+//            if let error = error {
+//                NSLog("Error requesting notification authorization: \(error)")
+//                return
+//            }
+//
+//            NSLog("Notification authorization status: \(granted ? "granted" : "not granted")")
+//
+//            //if granted { return }
+//            // line 42 and 44 do the same, line 44 is clearer
+//            guard !granted else { return }
+//
+//            let alertController = UIAlertController(
+//                title: "Authorization not granted",
+//                message: "This app cannot present notifications without your explicit consent",
+//                preferredStyle: .alert)
+//
+////            let okayAction = UIAlertAction(title: "Understood", style: .default, handler: nil)
+////            let settingsAction = UIAlertAction(title: "Open Settings", style: .default, handler: { action in
+// //               guard let url = URL(string: UIApplication.UIApplicationOpenSettingsURLString) else
+//                {
+//                    fatalError("Application-supplied openSettingsURLString failed to create cromulent URL")
+//                }
+//                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+//            })
+//
+//            alertController.addAction(okayAction)
+//            alertController.addAction(settingsAction)
+//
+//            self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+//        }
+//    }
+//
+//    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+//
+//        NSLog ("Will present notification: \(notification)")
+//        completionHandler(.alert)
+//    }
+//}
 }
