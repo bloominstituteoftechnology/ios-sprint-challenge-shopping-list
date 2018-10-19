@@ -19,26 +19,34 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="BMi-ps-KmN">
                     <rect key="frame" x="0.0" y="0.0" width="368" height="314"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Added" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MFt-Tc-e9t">
-                            <rect key="frame" x="143" y="0.0" width="82.5" height="20.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Added" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MFt-Tc-e9t">
+                            <rect key="frame" x="0.0" y="0.0" width="368" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yTK-6g-t2d">
-                            <rect key="frame" x="64" y="28.5" width="240" height="257"/>
+                            <rect key="frame" x="0.0" y="28.5" width="368" height="257"/>
                             <color key="backgroundColor" red="1" green="0.79135268020000005" blue="0.69153569150000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shpping Item Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcu-b7-C9c">
-                            <rect key="frame" x="108.5" y="293.5" width="151" height="20.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shpping Item Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcu-b7-C9c">
+                            <rect key="frame" x="0.0" y="293.5" width="368" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
+                    <constraints>
+                        <constraint firstItem="tcu-b7-C9c" firstAttribute="leading" secondItem="BMi-ps-KmN" secondAttribute="leading" id="Iv9-0G-dgP"/>
+                        <constraint firstAttribute="trailing" secondItem="tcu-b7-C9c" secondAttribute="trailing" id="QMa-A4-VZj"/>
+                        <constraint firstItem="yTK-6g-t2d" firstAttribute="leading" secondItem="BMi-ps-KmN" secondAttribute="leading" id="c9q-EQ-xFs"/>
+                        <constraint firstAttribute="trailing" secondItem="MFt-Tc-e9t" secondAttribute="trailing" id="qE9-8A-osm"/>
+                        <constraint firstItem="MFt-Tc-e9t" firstAttribute="leading" secondItem="BMi-ps-KmN" secondAttribute="leading" id="yex-yA-MDY"/>
+                        <constraint firstAttribute="trailing" secondItem="yTK-6g-t2d" secondAttribute="trailing" id="zfI-Qt-BXr"/>
+                    </constraints>
                 </stackView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="1" green="0.79135268020000005" blue="0.69153569150000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
                 <constraint firstItem="BMi-ps-KmN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="25Y-D4-FQR"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="BMi-ps-KmN" secondAttribute="trailing" id="BW9-cV-rTo"/>
