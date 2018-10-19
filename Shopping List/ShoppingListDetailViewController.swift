@@ -29,6 +29,7 @@ class ShoppingListDetailViewController: UIViewController {
         }
     }
     
+    
     @IBOutlet weak var currentItemsLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
