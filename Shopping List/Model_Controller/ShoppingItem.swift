@@ -13,7 +13,13 @@ struct ShoppingItem: Equatable, Codable {
     
     var name: String
     var image: Data
-    var isSelected: Bool
+    var isInList: Bool
     
+    init(image: Data,name: String, isInList: Bool = false){
+        
+        self.image = image
+        self.name = name
+        self.isInList = isInList
+    }
     
 }

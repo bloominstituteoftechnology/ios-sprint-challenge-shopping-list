@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Collection View Controller-->
+        <!--Shopping Items Collection View Controller-->
         <scene sceneID="W5G-gD-xu8">
             <objects>
-                <collectionViewController id="zFb-cY-m5j" sceneMemberID="viewController">
+                <collectionViewController id="zFb-cY-m5j" customClass="ShoppingItemsCollectionViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="tcJ-yc-Vm0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -74,10 +74,10 @@
             </objects>
             <point key="canvasLocation" x="280.80000000000001" y="-93.103448275862078"/>
         </scene>
-        <!--View Controller-->
+        <!--Title-->
         <scene sceneID="EjI-dl-EF2">
             <objects>
-                <viewController id="0Nd-bd-Yxu" sceneMemberID="viewController">
+                <viewController id="0Nd-bd-Yxu" customClass="CartViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NAa-ay-lyZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -132,10 +132,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mlz-nd-ww1"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="8cf-eM-mw7"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gZr-w4-R4M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="946.39999999999998" y="-93.103448275862078"/>
+            <point key="canvasLocation" x="1082" y="-64"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jbO-dn-Fbb">
