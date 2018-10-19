@@ -2,12 +2,51 @@ import UIKit
 
 class ShoppingItemController {
     
-    var shoppingItems: [ShoppingItem] = []
+ 
+    
+    private(set) var shoppingItems: [ShoppingItem] = []
   
     private var shoppingListURL: URL? {
         let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
         let fileName = "shoppinglist.plist"
         return documentDirectory?.appendingPathComponent(fileName)
+    }
+
+    init() {
+        loadFromPersistentStore()
+        if self.shoppingItems.isEmpty {
+            self.shoppingItems  = [
+                ShoppingItem(imageData: UIImagePNGRepresentation(UIImage(named: "apple")!)!, item: "apple", addedToList: true),
+                ShoppingItem(imageData: UIImagePNGRepresentation(UIImage(named: "grapes")!)!, item: "grapes", addedToList: false),
+                ShoppingItem(imageData: UIImagePNGRepresentation(UIImage(named: "milk")!)!, item: "milk", addedToList: true),
+                ShoppingItem(imageData: UIImagePNGRepresentation(UIImage(named: "muffin")!)!, item: "muffin", addedToList: true),
+                ShoppingItem(imageData: UIImagePNGRepresentation(UIImage(named: "popcorn")!)!, item: "popcorn", addedToList: false),
+                ShoppingItem(imageData: UIImagePNGRepresentation(UIImage(named: "soda")!)!, item: "soda", addedToList: false),
+                ShoppingItem(imageData: UIImagePNGRepresentation(UIImage(named: "strawberries")!)!, item: "strawberries", addedToList: false)
+            ]
+        }
+    }
+    
+    func create(item: String, addedToList: Bool, imageData: Data) {
+        let shoppingItem = ShoppingItem(imageData: imageData, item: item, addedToList: addedToList)
+        shoppingItems.append(shoppingItem)
+        saveToPersistentStore()
+    }
+    
+    func toggleIsAdded(shoppingItem: ShoppingItem) {
+        guard let index = shoppingItems.index(of: shoppingItem) else { return }
+        shoppingItems[index].addedToList = !shoppingItems[index].addedToList
+        saveToPersistentStore()
+    }
+    
+    func totalInCart() -> Int {
+        var count: Int = 0
+        for item in shoppingItems {
+            if item.addedToList == true {
+                count += 1
+            }
+        }
+        return count
     }
     
     // Persistence Functions
