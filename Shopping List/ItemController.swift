@@ -57,7 +57,8 @@ class ItemController {
     init() {
     
     var initialisationCheck: Bool? = UserDefaults.standard.bool(forKey: "myKey")
-    //Making sure item only initialises once.
+    
+        //Making sure item only initialises once.
     if initialisationCheck == false {
         
         let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
@@ -87,6 +88,14 @@ class ItemController {
         shoppingList[index].added = !shoppingList[index].added
         
         saveShoppingFile()
+    }
+    
+    //Discard selected items
+    
+    func dropItems() {
+        for index in 0...shoppingList.count - 1{
+            shoppingList[index].added = false
+        }
     }
 
 }//End of ItemController Class.

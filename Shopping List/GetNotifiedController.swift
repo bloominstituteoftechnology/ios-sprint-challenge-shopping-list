@@ -29,7 +29,38 @@ class GetNotifiedController: UIViewController {
     func changeMessage(){
     guard let itemController = itemController else { return }
     let selectedItems = itemController.selections.count
-    messageLabel.text = "So far, you've picked out  \(selectedItems) items!"
-}
+    messageLabel.text = "So far, you've picked out \(selectedItems) items!"
+    } // End of function
     
-}
+    //Get Notified Button
+    @IBAction func notifyMe(_ sender: UIButton) {
+    
+    //Don't do anything if there's nothing in the name and address fields
+    guard let name = nameField.text,
+    let address = addressField.text else {return}
+    
+    //Don't do anything if either the fields are empty or there are no selected items
+    let selectedItems = itemController?.selections.count
+    if selectedItems == 0 || name.isEmpty || address.isEmpty {return}
+    
+    //Ask permission to be notified
+    Notifier().requestAuthorisation { (authorizationStatus) in
+    if authorizationStatus == true{
+    Notifier().notify()
+    } else {
+    return
+    }
+    }
+    
+    //Clear fields and selections after being notified
+    nameField.text = ""
+    addressField.text = ""
+    itemController?.dropItems()
+        
+    //Save to persistence
+    itemController?.saveShoppingFile()
+    navigationController?.popViewController(animated: true)
+        
+    } //End of Get Notified Button
+
+}//End of class
