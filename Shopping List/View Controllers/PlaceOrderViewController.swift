@@ -20,6 +20,7 @@ class PlaceOrderViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = #colorLiteral(red: 0.09027298141, green: 0.9328450561, blue: 0.6452093752, alpha: 1)
         updateViews()
         
     }
@@ -46,6 +47,6 @@ class PlaceOrderViewController: UIViewController {
     }
         
 }
-   
+
 
 

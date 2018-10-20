@@ -24,7 +24,7 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
         guard let shoppingItem = shoppingItem else {return}
         nameLabel.text? = shoppingItem.name
         isSelectedLabel.text? = shoppingItem.isAdded ? "Added" : "Not Added"
-        isSelectedLabel.textColor = shoppingItem.isAdded ? .black : .orange
+        isSelectedLabel.textColor = shoppingItem.isAdded ? .orange : .black
         
         let itemImage = UIImage(named: shoppingItem.imageName)
         shoppingItemImageView.image = itemImage

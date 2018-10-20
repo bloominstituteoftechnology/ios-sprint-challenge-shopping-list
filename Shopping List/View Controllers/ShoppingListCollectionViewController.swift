@@ -21,11 +21,21 @@ class ShoppingListCollectionViewController: UICollectionViewController, UICollec
         collectionView?.reloadData()
     }
 
+//    override var isSelected: Bool {
+//            didSet{
+//                UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseOut, animations: {
+//                    self.transform = self.isSelected ? CGAffineTransform(scaleX: 1.1, y: 1.1) : CGAffineTransform.identity
+//                }, completion: nil)
+//
+//            }
+//        }
+    
     // restructured Datasource
     // MARK: UICollectionViewDataSource
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return shoppingItemController.shoppingItems.count
+      return shoppingItemController.shoppingItems.count
+       
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -33,6 +43,7 @@ class ShoppingListCollectionViewController: UICollectionViewController, UICollec
         
         shoppingItemController.update(shoppingItem: shoppingItem)
         collectionView.reloadData()
+        
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -40,9 +51,13 @@ class ShoppingListCollectionViewController: UICollectionViewController, UICollec
         
         let shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
         cell.shoppingItem = shoppingItem
+        cell.layer.borderWidth = 1.5
+        cell.backgroundColor = UIColor.yellow
         
         return cell
     }
+    
+
     
     // MARK: - Navigation
     
