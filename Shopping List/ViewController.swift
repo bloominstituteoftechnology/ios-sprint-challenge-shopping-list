@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         showAddedItems()
+        updateViews()
     }
     
     
@@ -54,16 +55,19 @@ class ViewController: UIViewController {
     }
     
     func scheduleNotification() {
-        guard let name = name.text else {return}
+        self.requestAuthorization(completion:{
+            if !$0 {return}
+            let msg = UNMutableNotificationContent()
+            msg.title = "Your deliver is on its way"
+            msg.body = "Your shopping will be delivered to your address in 15 minutes: \(self.address1.text ?? "" ), \(self.address2.text ?? "" )"
+            
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 2, repeats: false)
+            let request = UNNotificationRequest(identifier: UUID().uuidString, content: msg, trigger: trigger)
+            let notificationCenter = UNUserNotificationCenter.current()
+            notificationCenter.add(request)
+        })
         
-        let msg = UNMutableNotificationContent()
-        msg.title = "Your deliver is on its way"
-        msg.body = "Your shopping will be delivered to your address in 15 minutes: \(address1.text ?? "" ), \(address2.text ?? "" )"
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 2, repeats: false)
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: msg, trigger: trigger)
-        let notificationCenter = UNUserNotificationCenter.current()
-        notificationCenter.add(request)
+    
     }
     
     
@@ -73,7 +77,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -81,9 +85,11 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func updateViews() {
     
-    
-    
+        let addeditems = shoppingController?.shoppingItems.filter( {$0.added})
+        name.text = "You currently have \(addeditems?.count ?? 0) item(s) in your shopping cart"
+    }
     
     
     @IBOutlet weak var name: UILabel!

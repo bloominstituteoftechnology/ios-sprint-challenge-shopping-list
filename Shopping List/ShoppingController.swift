@@ -13,6 +13,15 @@ import UIKit
 
 
 
+
+//func didSelectShoppingItem(on shoppingItem: ShoppingItem)
+//{
+//    if let index = shoppingItem.index(of: shoppingItem)
+//    {
+//        shoppingItem[index].isSelected = shoppingItem.isSelected ? false : true
+//
+//    }
+//}
 class UserDefaultsManager {
     
     let shoppingListInitKey: String = "ShoppingListInitKey"
@@ -22,8 +31,7 @@ class UserDefaultsManager {
     }
     
     var hasShoppingListBeenInitialized: Bool {
-        let shoppingInit = UserDefaults.standard.bool(forKey: shoppingListInitKey)
-        return shoppingInit
+        return UserDefaults.standard.bool(forKey: shoppingListInitKey)
     }
 }
 
@@ -37,16 +45,18 @@ class ShoppingController {
     let userDefaultsManager = UserDefaultsManager()
     
     init() {
-        loadFromPersistentStore()
-        if userDefaultsManager.hasShoppingListBeenInitialized == false {
+        if !userDefaultsManager.hasShoppingListBeenInitialized {
             let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
             for itemName in itemNames {
                 guard let image = UIImage(named: itemName) else {return}
                 guard let imageData = UIImagePNGRepresentation(image) else { return }
                 createItem(image: imageData, name: itemName)
-                userDefaultsManager.initShoppingList()
             }
-        } else { return }
+            userDefaultsManager.initShoppingList()
+        } else {
+            loadFromPersistentStore()
+
+        }
     }
     
 
@@ -59,9 +69,8 @@ class ShoppingController {
     
     
  
-    func updateAddedToList(shoppingItem: ShoppingItem) {
-        guard let index = shoppingItems.index(of: shoppingItem) else { return }
-        shoppingItems[index].added = !shoppingItems[index].added
+    func updateAddedToList(item: ShoppingItem) {
+        item.added.toggle()
         saveToPersistentStore()
     }
     
@@ -84,6 +93,9 @@ class ShoppingController {
             let data = try Data(contentsOf: url)
             let decoder = PropertyListDecoder()
             shoppingItems = try decoder.decode([ShoppingItem].self, from: data)
+            for item in shoppingItems {
+                print(item.added)
+            }
         } catch {
             NSLog("Error loading shopping items: \(error)")
         }
@@ -97,7 +109,10 @@ class ShoppingController {
     }
     
     
-   
+  
+    
+    
+    
     
 }
 

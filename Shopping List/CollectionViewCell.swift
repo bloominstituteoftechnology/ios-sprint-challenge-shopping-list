@@ -10,35 +10,34 @@ import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
     
-    func updateViews() {
-      
+    var shoppingController: ShoppingController?
+    var shoppingItem:ShoppingItem?
+    
+    
+    
+    func updateUI(){
+        guard let item = self.shoppingItem else {return}
+        if item.added {
+            self.addedLabel.text = "Added"
+        }
+        else {
+            self.addedLabel.text = "Not Added"
         }
         
+        self.showimage.image = UIImage(data: item.image)
+        self.itemName.text = item.name
         
-        
-        @IBOutlet weak var AddItem: UILabel!
-        
-        
-        var shoppingItem: shoppingItem! {
-            didSet {
-                updateViews()
-            }
-        }
-        
+    }
+
         weak var delegate: ShoppingCollectionCellDelegate?
  
     
     
     
     
+
+    @IBOutlet weak var addedLabel: UILabel!
     
-    
-    
-    @IBAction func added(_ sender: Any) {
-        
-        
-        
-    }
     
     
     @IBOutlet weak var showimage: UIImageView!
