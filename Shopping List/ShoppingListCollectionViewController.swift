@@ -25,7 +25,7 @@ class ShoppingListCollectionViewController: UICollectionViewController, Shopping
         collectionView.reloadItems(at: [indexPath])
     }
     
-    // MARK: UICollectionViewDataSource
+    // MARK: - UICollectionViewDataSource
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return shoppingItemController.shoppingItems.count
     }

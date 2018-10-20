@@ -4,29 +4,23 @@ class ShoppingItemController {
     
     private(set) var shoppingItems: [ShoppingItem] = []
   
-    private var shoppingListURL: URL? {
-        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-        let fileName = "shoppinglist.plist"
-        return documentDirectory?.appendingPathComponent(fileName)
-    }
-
     init() {
-        loadFromPersistentStore()
-        if self.shoppingItems.isEmpty {
-            self.shoppingItems  = [
-                ShoppingItem(imageData: UIImagePNGRepresentation(UIImage(named: "apple")!)!, item: "apple", addedToList: false),
-                ShoppingItem(imageData: UIImagePNGRepresentation(UIImage(named: "grapes")!)!, item: "grapes", addedToList: false),
-                ShoppingItem(imageData: UIImagePNGRepresentation(UIImage(named: "milk")!)!, item: "milk", addedToList: false),
-                ShoppingItem(imageData: UIImagePNGRepresentation(UIImage(named: "muffin")!)!, item: "muffin", addedToList: false),
-                ShoppingItem(imageData: UIImagePNGRepresentation(UIImage(named: "popcorn")!)!, item: "popcorn", addedToList: false),
-                ShoppingItem(imageData: UIImagePNGRepresentation(UIImage(named: "soda")!)!, item: "soda", addedToList: false),
-                ShoppingItem(imageData: UIImagePNGRepresentation(UIImage(named: "strawberries")!)!, item: "strawberries", addedToList: false)
-            ]
+        if UserDefaults.standard.bool(forKey: "ShoppingKey") {
+            loadFromPersistentStore()
+        } else {
+            UserDefaults.standard.set(true, forKey: "ShoppingKey")
+            self.create(image: "apple", item: "Apple")
+            self.create(image: "grapes", item: "Grapes")
+            self.create(image: "milk", item: "Milk")
+            self.create(image: "muffin", item: "Muffin")
+            self.create(image: "popcorn", item: "Popcorn")
+            self.create(image: "soda", item: "Soda")
+            self.create(image: "strawberries", item: "Strawberries")
         }
     }
     
-    func create(item: String, addedToList: Bool, imageData: Data) {
-        let shoppingItem = ShoppingItem(imageData: imageData, item: item, addedToList: addedToList)
+    func create(image: String, item: String) {
+        let shoppingItem = ShoppingItem(image: image, item: item)
         shoppingItems.append(shoppingItem)
         saveToPersistentStore()
     }
@@ -45,6 +39,12 @@ class ShoppingItemController {
             }
         }
         return count
+    }
+    
+    private var shoppingListURL: URL? {
+        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+        let fileName = "shoppinglist.plist"
+        return documentDirectory?.appendingPathComponent(fileName)
     }
     
     // Persistence Functions
