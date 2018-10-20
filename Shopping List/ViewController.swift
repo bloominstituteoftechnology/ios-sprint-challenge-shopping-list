@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  Shopping List
-//
-//  Created by Spencer Curtis on 8/3/18.
-//  Copyright © 2018 Lambda School. All rights reserved.
-//
 
 import UIKit
 import UserNotifications
@@ -33,8 +26,8 @@ class ViewController: UIViewController {
             
         }
     }
-    // MARK: - Notifications
-
+    
+    
     func getAuthorizationStatus(completion: @escaping (UNAuthorizationStatus) -> Void) {
         UNUserNotificationCenter.current().getNotificationSettings { (settings) in
             DispatchQueue.main.async {
@@ -67,7 +60,7 @@ class ViewController: UIViewController {
             notificationCenter.add(request)
         })
         
-    
+        
     }
     
     
@@ -86,7 +79,7 @@ class ViewController: UIViewController {
     }
     
     func updateViews() {
-    
+        
         let addeditems = shoppingController?.shoppingItems.filter( {$0.added})
         name.text = "You currently have \(addeditems?.count ?? 0) item(s) in your shopping cart"
     }
@@ -107,7 +100,7 @@ class ViewController: UIViewController {
         
     }
     
-   
+    
     
 }
 

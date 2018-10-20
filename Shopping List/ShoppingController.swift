@@ -14,14 +14,7 @@ import UIKit
 
 
 
-//func didSelectShoppingItem(on shoppingItem: ShoppingItem)
-//{
-//    if let index = shoppingItem.index(of: shoppingItem)
-//    {
-//        shoppingItem[index].isSelected = shoppingItem.isSelected ? false : true
-//
-//    }
-//}
+
 class UserDefaultsManager {
     
     let shoppingListInitKey: String = "ShoppingListInitKey"
@@ -38,7 +31,7 @@ class UserDefaultsManager {
 
 
 class ShoppingController {
- 
+    
     var shoppingItems = [ShoppingItem]()
     
     
@@ -55,11 +48,11 @@ class ShoppingController {
             userDefaultsManager.initShoppingList()
         } else {
             loadFromPersistentStore()
-
+            
         }
     }
     
-
+    
     // Create items
     func createItem(image: Data, name: String, added: Bool = false) {
         let shoppingItem = ShoppingItem(image: image, name: name, added:added )
@@ -68,13 +61,13 @@ class ShoppingController {
     }
     
     
- 
+    
     func updateAddedToList(item: ShoppingItem) {
         item.added.toggle()
         saveToPersistentStore()
     }
     
-   
+    
     func saveToPersistentStore() {
         guard let url = persistentFileURL else { return }
         do {
@@ -101,7 +94,7 @@ class ShoppingController {
         }
     }
     
-
+    
     private var persistentFileURL: URL? {
         let fm = FileManager.default
         guard let docsDir = fm.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
@@ -109,7 +102,7 @@ class ShoppingController {
     }
     
     
-  
+    
     
     
     

@@ -28,14 +28,9 @@ class CollectionViewCell: UICollectionViewCell {
         self.itemName.text = item.name
         
     }
-
-        weak var delegate: ShoppingCollectionCellDelegate?
- 
     
     
     
-    
-
     @IBOutlet weak var addedLabel: UILabel!
     
     
@@ -46,6 +41,6 @@ class CollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var itemName: UILabel!
     
     
-
+    
     
 }
