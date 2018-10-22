@@ -19,6 +19,7 @@ class ShoppingListCollectionViewController: UICollectionViewController, UICollec
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         collectionView?.reloadData()
+        collectionView.backgroundColor = #colorLiteral(red: 0.6238838434, green: 0.6157867312, blue: 0.9108973145, alpha: 1)
     }
 
 //    override var isSelected: Bool {

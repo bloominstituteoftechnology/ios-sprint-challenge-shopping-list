@@ -20,7 +20,7 @@ class PlaceOrderViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = #colorLiteral(red: 0.09027298141, green: 0.9328450561, blue: 0.6452093752, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 0.6238838434, green: 0.6157867312, blue: 0.9108973145, alpha: 1)
         updateViews()
         
     }
@@ -42,8 +42,9 @@ class PlaceOrderViewController: UIViewController {
     
     private func updateViews() {
         guard let shoppingItemController = shoppingItemController else { return }
-        let numberOfItems = shoppingItemController.shoppingItems.count
-        placeOrderLabel.text = "Enter your name and address for your \(numberOfItems) item\(numberOfItems == 1 ? "" : "s")."
+        //let numberOfItems = shoppingItemController.shoppingItems.count
+        let numberOfItems = shoppingItemController.shoppingItems.filter({$0.isAdded})
+        placeOrderLabel.text = "Enter your name and address for your \(numberOfItems.count) item(s)"
     }
         
 }
