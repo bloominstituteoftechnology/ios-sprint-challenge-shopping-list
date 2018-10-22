@@ -6,6 +6,7 @@ import Foundation
 
 class ShoppingListController: UICollectionViewController {
     
+    @IBOutlet var groceryList: UICollectionView!
     
 
     override func viewDidLoad() {

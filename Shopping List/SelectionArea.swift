@@ -13,4 +13,5 @@ import UIKit
 class SelectionArea: UICollectionReusableView {
     @IBOutlet weak var selectedTitle: UILabel!
     
+    
 }

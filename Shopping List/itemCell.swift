@@ -13,10 +13,9 @@ class itemProtoCell: UICollectionViewCell {
     
     //Outlets here
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var groceryPhoto: UIImageView!
+    @IBOutlet weak var statusLabel: UILabel!
     
-   
     var groceryItem: ShoppingItem?{ didSet{ reloadListView() }
     }
     

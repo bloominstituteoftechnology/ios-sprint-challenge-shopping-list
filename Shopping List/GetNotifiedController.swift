@@ -15,7 +15,6 @@ class GetNotifiedController: UIViewController {
     @IBOutlet weak var addressField: UITextField!
     @IBOutlet weak var messageLabel: UILabel!
     
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         changeMessage()
