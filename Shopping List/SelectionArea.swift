@@ -2,7 +2,7 @@
 //  SelectionArea.swift
 //  Shopping List
 //
-//  Created by Lotanna Igwe-Odunze on 10/19/18.
+//  Created by Lotanna on 10/19/18.
 //  Copyright © 2018 Lambda School. All rights reserved.
 //
 
