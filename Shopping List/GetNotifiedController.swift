@@ -28,7 +28,20 @@ class GetNotifiedController: UIViewController {
     
         guard let name = nameField.text, !name.isEmpty else { return }
         guard let address = addressField.text, !address.isEmpty else { return }
-        guard let itemCount = myItemController?.groceryList.count else { return }
+        
+        guard let selectBag = myItemController?.groceryList else { return }
+
+        var selections: [ShoppingItem] = [] //Array of added items
+        
+        for selectedItem in selectBag {
+            
+            if selectedItem.added == true {
+                selections.append(selectedItem)
+            }
+        }
+        
+        let itemCount = selections.count
+        
         
         //Ask for notification Permission
         Notifier().AskPermission { success in
@@ -43,7 +56,16 @@ class GetNotifiedController: UIViewController {
     
     private func reloadListView() {
         guard let myItemController = myItemController else { return }
-        let itemCount = myItemController.groceryList.count
+        var selections: [ShoppingItem] = [] //Array of added items
+        
+        for selectedItem in myItemController.groceryList {
+            
+            if selectedItem.added == true {
+                selections.append(selectedItem)
+            }
+        }
+        
+        let itemCount = selections.count
         messageLabel.text = "So far, You've added \(itemCount) item\(itemCount == 1 ? "" : "s")!"
     }
     

@@ -16,18 +16,6 @@ class ShoppingListController: UICollectionViewController, UICollectionViewDelega
         collectionView?.reloadData()
     }
     
-    //    override var isSelected: Bool {
-    //            didSet{
-    //                UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseOut, animations: {
-    //                    self.transform = self.isSelected ? CGAffineTransform(scaleX: 1.1, y: 1.1) : CGAffineTransform.identity
-    //                }, completion: nil)
-    //
-    //            }
-    //        }
-    
-    // restructured Datasource
-    // MARK: UICollectionViewDataSource
-    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return itemControllerReference.groceryList.count
         

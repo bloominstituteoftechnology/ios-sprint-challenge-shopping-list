@@ -81,20 +81,3 @@ class ItemController {
 
 
     
-    //Switching between Added and Not Added status
-    /*func changeSelection(forItem item: ShoppingItem) {
-        guard let index = shoppingList.index(of: item) else {return}
-        shoppingList[index].added = !shoppingList[index].added
-        
-        saveShoppingFile()
-    }
-    
-    //Discard selected items
-    
-    func dropItems() {
-        for index in 0...shoppingList.count - 1{
-            shoppingList[index].added = false
-        }
-    } */
-
-//End of ItemController Class.
