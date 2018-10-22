@@ -11,26 +11,23 @@ import UIKit
 
 class itemProtoCell: UICollectionViewCell {
     
-    //Outlets here
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var groceryPhoto: UIImageView!
     @IBOutlet weak var statusLabel: UILabel!
     
-    var groceryItem: ShoppingItem?{ didSet{ reloadListView() }
+    var groceryItem: ShoppingItem? { didSet { reloadListView() } }
+    
+    func reloadListView(){
+        guard let groceryItem = groceryItem else {return}
+        let photo = UIImage(named: groceryItem.pictureName)
+        
+        
+        nameLabel.text? = groceryItem.name
+        statusLabel.text? = groceryItem.added ? "Added" : "Not Added"
+        
+        groceryPhoto.image = photo
+        nameLabel.text = groceryItem.name
+        
     }
     
-    //
-    func reloadListView(){
-        
-        guard let groceryItem = groceryItem,
-            let photo = UIImage(data: groceryItem.picture) else {return}
-        
-        groceryPhoto?.image = photo
-        nameLabel?.text = groceryItem.name
-        
-        statusLabel?.text = groceryItem.added ? "Added" : "Not Added"
-        
-    } //End of function
-    
-    
-} //End of itemProtoCell class
+}

@@ -10,8 +10,9 @@ import Foundation
 import UIKit
 import UserNotifications
 
-class Notifier {
+class Notifier: NSObject, UNUserNotificationCenterDelegate {
     
+    //Find out if we've been granted permission already
     func checkAuthorisation(completion: @escaping (UNAuthorizationStatus) -> Void) {
         UNUserNotificationCenter.current().getNotificationSettings { (settings) in
             DispatchQueue.main.async {
@@ -20,10 +21,10 @@ class Notifier {
         }
     }
     
-    func requestAuthorisation(completion: @escaping (Bool) -> Void) {
+    //Get Authorisation to make the notification
+    func AskPermission(completion: @escaping (Bool) -> Void ) {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (success, error) in
-            
-            if let error = error { NSLog("Couldn't get permission for notification: \(error)") }
+            if let error = error { NSLog("Error requesting authorization status for local notifications: \(error)") }
             
             DispatchQueue.main.async {
                 completion(success)
@@ -31,19 +32,18 @@ class Notifier {
         }
     }
     
-    func notify(){
-        let content = UNMutableNotificationContent()
-        content.title = "Delivery Notification:"
-        content.body = "Your order will be delivered in 15 minutes!"
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
-        let request = UNNotificationRequest(identifier: "shoppingNotification", content: content, trigger: trigger)
+    //Make the Notification
+    func Notify(name: String, address: String, itemCount: Int) {
         
-        UNUserNotificationCenter.current().add(request) { (error) in
-            if let error = error{
-                NSLog("\(error)")
-                return
-            }
-        }
+        let notice = UNMutableNotificationContent()
+        notice.title = "Delivery Notification"
+        notice.body = "Hey, \(name)! Your \(itemCount) items will be delivered to \(address) in 15 minutes!"
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 2, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: notice, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
 }
 

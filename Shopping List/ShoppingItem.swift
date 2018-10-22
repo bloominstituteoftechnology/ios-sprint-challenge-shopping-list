@@ -10,11 +10,17 @@ import Foundation
 import UIKit
 
 //Grocery item model
-struct ShoppingItem: Codable, Equatable {
+struct ShoppingItem: Equatable, Codable {
     var name: String
     var added: Bool
-    var picture: Data
+    var pictureName: String
+    var picture: Data?
     
+    init(name: String, pictureName: String) {
+        self.name = name
+        self.pictureName = pictureName
+        self.added = false
+    }
 }
 
 

@@ -15,51 +15,41 @@ class GetNotifiedController: UIViewController {
     @IBOutlet weak var addressField: UITextField!
     @IBOutlet weak var messageLabel: UILabel!
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        changeMessage()
+    var myItemController: ItemController?
+    var mynotifier: Notifier?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        reloadListView()
         
     }
     
-    //Change the message to match the items selected
+    @IBAction func notifyButton(_ sender: UIButton) {
     
-    var itemController: ItemController?
-    
-    func changeMessage(){
-    guard let itemController = itemController else { return }
-    let selectedItems = itemController.selections.count
-    messageLabel.text = "So far, you've picked out \(selectedItems) items!"
-    } // End of function
-    
-    //Get Notified Button
-    @IBAction func notifyMe(_ sender: UIButton) {
-    
-    //Don't do anything if there's nothing in the name and address fields
-    guard let name = nameField.text,
-    let address = addressField.text else {return}
-    
-    //Don't do anything if either the fields are empty or there are no selected items
-    let selectedItems = itemController?.selections.count
-    if selectedItems == 0 || name.isEmpty || address.isEmpty {return}
-    
-    //Ask permission to be notified
-    Notifier().requestAuthorisation { (authorizationStatus) in
-    if authorizationStatus == true{
-    Notifier().notify()
-    } else {
-    return
-    }
+        guard let name = nameField.text, !name.isEmpty else { return }
+        guard let address = addressField.text, !address.isEmpty else { return }
+        guard let itemCount = myItemController?.groceryList.count else { return }
+        
+        //Ask for notification Permission
+        Notifier().AskPermission { success in
+            if success {
+                Notifier().Notify(name: name, address: address, itemCount: itemCount)
+            } else {
+                NSLog("Something went wrong trying to notify you")
+            }
+        }
+        navigationController?.popViewController(animated: true)
     }
     
-    //Clear fields and selections after being notified
-    nameField.text = ""
-    addressField.text = ""
-    itemController?.dropItems()
-        
-    //Save to persistence
-    itemController?.saveShoppingFile()
-    navigationController?.popViewController(animated: true)
-        
-    } //End of Get Notified Button
+    private func reloadListView() {
+        guard let myItemController = myItemController else { return }
+        let itemCount = myItemController.groceryList.count
+        messageLabel.text = "So far, You've added \(itemCount) item\(itemCount == 1 ? "" : "s")!"
+    }
+    
+}
 
-}//End of class
+
+
+
+

@@ -4,93 +4,61 @@
 import UIKit
 import Foundation
 
-class ShoppingListController: UICollectionViewController {
+class ShoppingListController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    @IBOutlet var groceryList: UICollectionView!
+    // restructured CollectionViewController
     
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Registering the cell class
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "groceryCell")
-        
-    }
-
+    let mynotifier = Notifier()
+    let itemControllerReference = ItemController()
     
-    override func  viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         collectionView?.reloadData()
     }
     
+    //    override var isSelected: Bool {
+    //            didSet{
+    //                UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseOut, animations: {
+    //                    self.transform = self.isSelected ? CGAffineTransform(scaleX: 1.1, y: 1.1) : CGAffineTransform.identity
+    //                }, completion: nil)
     //
-    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if let selectionsGroup = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "selectedArea", for: indexPath) as? SelectionArea {
-            if indexPath.section == 0 {
-                selectionsGroup.selectedTitle.text = "What You've Picked!"
-            } else {
-                selectionsGroup.selectedTitle.text = "Sad Items You Left Behind"
-            }
-            return selectionsGroup
-        }
-        return UICollectionReusableView()
-    }
+    //            }
+    //        }
     
+    // restructured Datasource
+    // MARK: UICollectionViewDataSource
     
-    //Add a new section for the selected items to be displayed.
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
-    }
-    
-    //
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == 0 {
-            return ItemController().selections.count
-        } else {
-            return ItemController().remainders.count
-        }
+        return itemControllerReference.groceryList.count
+        
     }
     
-    //
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "groceryCell", for: indexPath) as? itemProtoCell else {return UICollectionViewCell()}
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let shoppingItem = itemControllerReference.groceryList[indexPath.item]
         
-        cell.groceryItem = itemAt(indexPath: indexPath)
+        itemControllerReference.updateGroceries(singleItem: shoppingItem)
+        collectionView.reloadData()
+        
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "groceryCell", for: indexPath) as! itemProtoCell
+        
+        let shoppingItem = itemControllerReference.groceryList[indexPath.item]
+        cell.groceryItem = shoppingItem
+        
         return cell
     }
     
-    //
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        ItemController().changeSelection(forItem: itemAt(indexPath: indexPath))
-        collectionView.reloadData()
-    }
     
-    //
-    func itemAt(indexPath:IndexPath) -> ShoppingItem {
-        if indexPath.section == 0 {
-            return ItemController().selections[indexPath.row]
-        } else {
-            return ItemController().remainders[indexPath.row]
-        }
-        
-    }
-    
-    //
+    //Prepare for Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "orderNotify"{
-            guard let destinationVC = segue.destination as? GetNotifiedController else {return}
+        if segue.identifier == "orderNotify" {
+            guard let nextViewController = segue.destination as? GetNotifiedController else {return}
             
-            destinationVC.itemController = ItemController()
+            nextViewController.myItemController = itemControllerReference
+            nextViewController.mynotifier = mynotifier
         }
     }
-    
-    
-    //Default Code, not going to touch you.
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
 }
 

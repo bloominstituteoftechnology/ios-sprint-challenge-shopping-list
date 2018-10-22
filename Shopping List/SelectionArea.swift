@@ -6,7 +6,7 @@
 //  Copyright © 2018 Lambda School. All rights reserved.
 //
 
-import Foundation
+/*import Foundation
 
 import UIKit
 
@@ -15,3 +15,4 @@ class SelectionArea: UICollectionReusableView {
     
     
 }
+*/

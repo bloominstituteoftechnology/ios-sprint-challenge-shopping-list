@@ -11,84 +11,78 @@ import UIKit
 
 class ItemController {
     
-    var shoppingList: [ShoppingItem] = []
+    var groceryList: [ShoppingItem] = []
     
-    //Selected items
-    var selections: [ShoppingItem]{
-        return shoppingList.filter{$0.added == true } }
+    private let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
     
-    var remainders: [ShoppingItem]{
-        return shoppingList.filter{$0.added == false } }
+    var initKey = "initKey"
     
-    //Creating file to store items in
-    var fileURL: URL?{
-        let fileStorage = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-        let shoppingFile = "ShoppingList.plist"
-        return fileStorage?.appendingPathComponent(shoppingFile)
-    }
-    
-    //Saving to persistence
-    func saveShoppingFile(){
-        guard let fileURL = fileURL else {return}
-        let encoder = PropertyListEncoder()
-        do{
-            let data = try encoder.encode(shoppingList)
-            try data.write(to: fileURL)
-            
-        } catch {
-            NSLog("Something went wrong") }
-    }
-    
-    //Loading from persistence
-    
-    func retrieveShoppingFile(){
-        guard let fileURL = fileURL, FileManager.default.fileExists(atPath: fileURL.path) else {return}
-        
-        let decoder = PropertyListDecoder()
-        
-        do{
-            let data = try Data(contentsOf: fileURL)
-            shoppingList = try decoder.decode([ShoppingItem].self, from: data)
-        } catch {
-            NSLog("Error decoding")
+    // Initialisation
+    init() {
+        let initialisationCheck = UserDefaults.standard.bool(forKey: initKey)
+        if initialisationCheck == true {
+            retrieveFromPersistence()
+        } else {
+            createGroceries()
         }
     }
-        
-
-    //Initialisation
-    let initKey = "myKey"
-    private(set) var initialisationCheck: Bool?
     
-    init() {
-    
-     initialisationCheck = UserDefaults.standard.bool(forKey: initKey)
-    
-        //Making sure item only initialises once.
-    if initialisationCheck == false {
-        
-        let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
-    
-        //Adding name, image, and status to each item.
+    func createGroceries() {
         for item in itemNames {
-            
-            guard let itemPhoto = UIImage(named: item), //Unwraps the UIimage name of each item
-            let picture = itemPhoto.pngData() else {return} //Assigns the corresponding photo to each item
-            
-            //Create an instance of ShoppingItem for each item in the array
-            let singleItem = ShoppingItem(name: item, added: false, picture: picture)
-            
-            shoppingList.append(singleItem) //Add each item to the shopping list
-            
-        } //End of for loop.
+            let singleItem = ShoppingItem(name: item, pictureName: item)
+            groceryList.append(singleItem)
+            UserDefaults.standard.set(true, forKey: initKey)
+            saveToPersistence()
+        }
+    }
+    
+    func updateGroceries(singleItem: ShoppingItem) {
+        guard let index = groceryList.index(of: singleItem) else { return }
+        var tempItem = singleItem
+        tempItem.added = !singleItem.added
+        groceryList.remove(at: index)
+        groceryList.insert(tempItem, at: index)
+        saveToPersistence()
+    }
+    
+    //Saving
+    func saveToPersistence() {
+        let plistEncoder = PropertyListEncoder()
+        do {
+            let groceryData = try plistEncoder.encode(groceryList)
+            guard let groceryFileURL = groceryFileURL else { return }
+            try groceryData.write(to: groceryFileURL)
+        } catch {
+            NSLog("Something went wrong encoding the file: \(error)")
+        }
         
-        UserDefaults.standard.set(true, forKey: initKey)
-        
-    }//End of if statement.
-        
-        }//End of Init.
+    }
+    
+    //Retrieving
+    func retrieveFromPersistence() {
+        do {
+            guard let groceryFileURL = groceryFileURL,
+                FileManager.default.fileExists(atPath: groceryFileURL.path) else  { return }
+            let groceryData = try Data(contentsOf: groceryFileURL)
+            let plistDecoder = PropertyListDecoder()
+            self.groceryList = try plistDecoder.decode([ShoppingItem].self, from: groceryData)
+        } catch {
+            NSLog("Something went wrong decoding the file: \(error)")
+        }
+    }
+    
+    var groceryFileURL: URL? {
+        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+        let fileName = "groceryList.plist"
+        return documentDirectory?.appendingPathComponent(fileName)
+    }
+}
+
+
+
     
     //Switching between Added and Not Added status
-    func changeSelection(forItem item: ShoppingItem) {
+    /*func changeSelection(forItem item: ShoppingItem) {
         guard let index = shoppingList.index(of: item) else {return}
         shoppingList[index].added = !shoppingList[index].added
         
@@ -101,6 +95,6 @@ class ItemController {
         for index in 0...shoppingList.count - 1{
             shoppingList[index].added = false
         }
-    }
+    } */
 
-}//End of ItemController Class.
+//End of ItemController Class.
