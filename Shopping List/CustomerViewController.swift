@@ -3,8 +3,8 @@ import UserNotifications
 
 class CustomerViewController: UIViewController, UIApplicationDelegate, UNUserNotificationCenterDelegate{
     
-    var name: String
-    var address: String
+    var name: String = ""
+    var address: String = ""
     var window: UIWindow?
     
     var shoppingItemController: ShoppingItemController
@@ -52,53 +52,4 @@ class CustomerViewController: UIViewController, UIApplicationDelegate, UNUserNot
             }
         }
     }
-    init() {
-        loadFromPersistence()
-    }
-    
-    func createShoppingItem(name: String, image: UIImage(named:imageName), isAdded: Bool){
-        let shoppingItem = ShoppingItem(name: name, image: image, isAdded: false)
-        shoppingItems.append(shoppingItem)
-        
-        saveToPersistence()
-    }
-    
-    func updateShoppingItem(shoppingItem: ShoppingItem, name:String, image: UIImage){
-        shoppingItem.name = name
-        shoppingItem.image = UIImage
-        shoppingItem.isAdded = false
-        
-        saveToPersistence()
-        
-    }
-    func deleteShoppingItem(index: Int){
-        shoppingItems.isAdded = false
-        
-        saveToPersistence()
-    }
-    private func loadFromPersistence() {
-        do {
-            let shoppingItemsData = try Data(contentsOf: shoppingItemsFileURL)
-            let decoder = JSONDecoder()
-            let decodedShoppingItems = try decoder.decode([ShoppingItem].self, from: shoppingItemsData)
-            
-            shoppingItems = decodedShoppingItems
-        } catch {
-            NSLog("Error decoding shoppingItems: \(error)")
-        }
-    }
-    
-    private func saveToPersistence() {
-        let encoder = JSONEncoder()
-        
-        do {
-            let shoppingItemsData = try encoder.encode(shoppingItems)
-            try shoppingItems.write(to: shoppingItemsFileURL)
-        } catch {
-            NSLog("Error encoding shoppingItems: \(error)")
-        }
-    }
-    var memoriesFileURL = URL(fileURLWithPath: NSHomeDirectory())
-        .appendingPathComponent("Documents")
-        .appendingPathComponent("shoppingItems.json")
 }
