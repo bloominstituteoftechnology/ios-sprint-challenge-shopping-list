@@ -28,6 +28,15 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
 
         return cell
         
-        
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "nextSegue" {
+            guard let memoryDetailViewController = segue.destination as? CustomerViewController else { return }
+            memoryDetailViewController.memoryController = memoryController
+            
+            let memory = memoryController.memories[indexPath.row]
+            memoryDetailViewController.memoryController = memoryController
+            memoryDetailViewController.memory = memory
+        }
     }
 }

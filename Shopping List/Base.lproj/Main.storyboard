@@ -46,10 +46,14 @@
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8Qy-yp-DOf">
                                             <rect key="frame" x="109" y="0.0" width="49" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <connections>
+                                                <action selector="addItem:" destination="2Fu-Fc-3OB" eventType="valueChanged" id="UHw-mS-J0S"/>
+                                            </connections>
                                         </switch>
                                     </subviews>
                                 </view>
                                 <connections>
+                                    <outlet property="addedSwitch" destination="8Qy-yp-DOf" id="4gp-n6-uPv"/>
                                     <outlet property="shoppingItemLabel" destination="im1-wi-2dT" id="Paf-sZ-VCf"/>
                                     <outlet property="shoppingItemView" destination="hoG-ek-djY" id="YRQ-G3-GVY"/>
                                 </connections>
@@ -61,7 +65,11 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="CTn-cn-LSE">
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="3GH-52-ZZJ"/>
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="3GH-52-ZZJ">
+                            <connections>
+                                <segue destination="omN-vG-P4E" kind="show" identifier="nextSegue" id="Jpm-q1-6yx"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jFs-JJ-L7s" userLabel="First Responder" sceneMemberID="firstResponder"/>

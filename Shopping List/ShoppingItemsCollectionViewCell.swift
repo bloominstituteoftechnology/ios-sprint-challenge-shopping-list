@@ -9,7 +9,7 @@ class ShoppingItemsCollectionViewCell: UICollectionViewCell {
 //    }
 //    private func updateViews() {
 //        let userDefaults = UserDefaults.standard
-//        isAdded.isOn = userDefaults.bool(forKey: .isAddedKey)
+//        added.isOn = userDefaults.bool(forKey: .addedKey)
 //    }
     
 
@@ -17,5 +17,11 @@ class ShoppingItemsCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var shoppingItemLabel: UILabel!
 
-
+    @IBOutlet weak var addedSwitch: UISwitch!
+    
+    @IBAction func addItem(_ sender: Any) {
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(addedSwitch.isOn, forKey: "addPreferenceKey")
+    }
+    
 }
