@@ -2,7 +2,7 @@ import Foundation
 
 class ShoppingItemController {
     
-    let shoppingItems = [
+    var shoppingItems = [
     ShoppingItem (name: "Apple", imageName: "apple"),
     ShoppingItem (name: "Grapes", imageName: "grapes"),
     ShoppingItem (name: "Milk", imageName: "milk"),
@@ -11,14 +11,12 @@ class ShoppingItemController {
     ShoppingItem (name: "Soda", imageName: "soda"),
     ShoppingItem (name: "Strawberries", imageName: "strawberries"),
     ]
-    
-    var shoppingItems: [ShoppingItem] = []
-    
+        
     init() {
         loadFromPersistence()
     }
     
-    func createShoppingItem(name: String, image: UIImage, isAdded: Bool){
+    func createShoppingItem(name: String, image: UIImage(named:imageName), isAdded: Bool){
         let shoppingItem = ShoppingItem(name: name, image: image, isAdded: false)
         shoppingItems.append(shoppingItem)
         
