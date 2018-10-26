@@ -7,9 +7,10 @@ class CustomerViewController: UIViewController, UIApplicationDelegate, UNUserNot
     var address: String
     var window: UIWindow?
     
-    init() {
-        loadFromPersistence()
-    }
+    var shoppingItemController: ShoppingItemController
+    var shoppingItem: ShoppingItem
+
+    
     
     @IBOutlet weak var nameTextField: UITextField!
     
@@ -51,7 +52,9 @@ class CustomerViewController: UIViewController, UIApplicationDelegate, UNUserNot
             }
         }
     }
-    
+    init() {
+        loadFromPersistence()
+    }
     
     func createShoppingItem(name: String, image: UIImage(named:imageName), isAdded: Bool){
         let shoppingItem = ShoppingItem(name: name, image: image, isAdded: false)

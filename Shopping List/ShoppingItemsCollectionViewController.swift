@@ -31,12 +31,9 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "nextSegue" {
-            guard let memoryDetailViewController = segue.destination as? CustomerViewController else { return }
-            memoryDetailViewController.memoryController = memoryController
+            guard let customerViewController = segue.destination as? CustomerViewController else { return }
+            customerViewController.shoppingItemController = shoppingItemController
             
-            let memory = memoryController.memories[indexPath.row]
-            memoryDetailViewController.memoryController = memoryController
-            memoryDetailViewController.memory = memory
         }
     }
 }
