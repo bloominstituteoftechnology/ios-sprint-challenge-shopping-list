@@ -3,21 +3,34 @@ import UIKit
 class ShoppingItemController {
     
     init() {
-        saveToPersistence()
+        loadFromPersistence()
+        shoppingItems.append(ShoppingItem(name: "apple", inShoppingList: false, imageName: "apple"))
+        shoppingItems.append(ShoppingItem(name: "grapes", inShoppingList: false, imageName: "grapes"))
+        shoppingItems.append(ShoppingItem(name: "milk", inShoppingList: false, imageName: "milk"))
+        shoppingItems.append(ShoppingItem(name: "muffin", inShoppingList: false, imageName: "muffin"))
+        shoppingItems.append(ShoppingItem(name: "popcorn", inShoppingList: false, imageName: "popcorn"))
+        shoppingItems.append(ShoppingItem(name: "soda", inShoppingList: false, imageName: "soda"))
+        shoppingItems.append(ShoppingItem(name: "strawberries", inShoppingList: false, imageName: "strawberries"))
         
     }
     
     //MARK: - CRUD
     
-    func create(name: String, inShoppingList: Bool, imageData: Data) {
-        let shoppingItem = ShoppingItem(name: name, inShoppingList: inShoppingList, imageData: imageData)
+    func create(name: String, inShoppingList: Bool, imageName: String) {
+        let shoppingItem = ShoppingItem(name: name, inShoppingList: inShoppingList, imageName: imageName)
         shoppingItems.append(shoppingItem)
     }
     
-    func update(shoppingItem: ShoppingItem, withTitle title: String, inShoppingList: Bool, imageData: Data) {
+    var url: URL? {
+        guard let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+            else {return nil}
+        let filName = "shoppingItems.json"
+        return directory.appendingPathComponent(filName)
+    }
+    func update(shoppingItem: ShoppingItem, withTitle title: String, inShoppingList: Bool, imageName: String) {
         
         shoppingItem.inShoppingList = inShoppingList
-        shoppingItem.imageData = imageData
+        shoppingItem.imageName = imageName
         
         saveToPersistence()
     }
@@ -30,15 +43,16 @@ class ShoppingItemController {
     
     //Mark: - Private Functions
     
-    private func loadFromPersistence() {
+    func loadFromPersistence() {
         do {
+            guard let url = url, FileManager.default.fileExists(atPath: url.path) else {return}
             let shoppingItemData = try Data(contentsOf: shoppingItemFileURL)
             let decoder = JSONDecoder()
             let decodedShoppingItem = try decoder.decode([ShoppingItem].self, from: shoppingItemData)
             
             shoppingItems = decodedShoppingItem
         } catch {
-            NSLog("Error decoding Shopping Items")
+            NSLog("Error decoding Shopping Items: \(error)")
         }
     }
     
@@ -57,9 +71,9 @@ class ShoppingItemController {
     .appendingPathComponent("shoppingItem.json")
 
 
-var shoppingItems: [ShoppingItem] = []
-var launchedKey = "launchedKey"
-let items = ["apple", "grapes", "milk", "popcorn", "soda", "strawberries"]
+    var shoppingItems: [ShoppingItem] = [ShoppingItem]()
+    var launchedKey = "launchedKey"
+
 
 
 }

@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,7 +13,7 @@
         <!--Shopping List-->
         <scene sceneID="u4p-aE-oKM">
             <objects>
-                <viewController title="Shopping List" id="u4D-lx-giY" customClass="ShoppingListViewControllerCell" customModule="Sprint2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Shopping List" id="u4D-lx-giY" customClass="ShoppingListController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eS7-ne-NYC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,7 +29,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="B32-SD-R11" customClass="ShoppingListViewControllerCell" customModule="Sprint2" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="B32-SD-R11" customClass="ShoppingListViewControllerCell" customModule="Shopping_List" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="177" height="157"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -62,6 +63,10 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="u4D-lx-giY" id="VBb-8k-fjq"/>
+                                    <outlet property="delegate" destination="u4D-lx-giY" id="6yW-4g-WzS"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -74,6 +79,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="zJK-wd-Uur" id="CPf-1B-jcm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T5P-8y-aho" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -82,8 +90,7 @@
         <!--Selected Items-->
         <scene sceneID="HFo-Fu-Zru">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mnf-mZ-cHx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController title="Selected Items" id="RZR-ot-n9t" customClass="SubmitOrderViewController" customModule="Sprint2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Selected Items" id="RZR-ot-n9t" customClass="SubmitOrderViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tmm-zX-Kya">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -140,11 +147,12 @@
                     <navigationItem key="navigationItem" title="Delivery Information" id="3IM-mI-gkq">
                         <barButtonItem key="rightBarButtonItem" title="Submit Order" id="LFf-eX-1Ju">
                             <connections>
-                                <action selector="submitButton:" destination="RZR-ot-n9t" id="qJy-BD-U7h"/>
+                                <action selector="submitOrder:" destination="RZR-ot-n9t" id="uGh-gM-mGC"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mnf-mZ-cHx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2848.8000000000002" y="335.98200899550227"/>
         </scene>

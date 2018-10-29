@@ -1,37 +1,63 @@
 import UIKit
 
-class ShoppingListController: UICollectionViewController {
+class ShoppingListController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     let shoppingItemController = ShoppingItemController()
     let reuseIdentifier = "cell"
     let segueIdentifier = "OrderSegue"
     
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        collectionView?.reloadData()
+        collectionView?.backgroundColor = UIColor.yellow
+ 
     }
     
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 4
+    func checkIfLaunched() {
+        let hasLaunched = UserDefaults.standard.bool(forKey: "hasLaunched")
+        
+        if !hasLaunched {
+            loadView()
+            UserDefaults.standard.set(true, forKey: "hasLaunched")
+        } else {
+            shoppingItemController.loadFromPersistence()
+            
+        }
     }
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return shoppingItemController.items.count
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return shoppingItemController.shoppingItems.count
         
     }
     
-//    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ShoppingListViewControllerCell else {
-//            fatalError("no cell to cast")
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        as! ShoppingListViewControllerCell
+        
+        let shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
+        cell.layer.borderWidth = 1
+        cell.backgroundColor = UIColor.blue
+        cell.item = shoppingItem
             
-//            return cell
+            return cell
             
             
         }
-
-
-//}
     
-//}
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
+        
+    }
+    
+
+
+}
+    
+
 
 
 
