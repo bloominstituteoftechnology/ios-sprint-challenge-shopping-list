@@ -69,4 +69,14 @@ class ShoppingController {
         }
     }
     
+    func totalInCart() -> Int {
+        var count: Int = 0
+        for item in shoppingItems {
+            if item.hasBeenAdded == true {
+                count += 1
+            }
+        }
+        return count
+    }
+    
 }

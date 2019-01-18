@@ -13,6 +13,7 @@ private let reuseIdentifier = "Cell"
 class ShoppingListCollectionViewController: UICollectionViewController {
     
     let shoppingController = ShoppingController()
+    let localNotificationHelper = LocalNotificationHelper()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,12 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+        if segue.identifier == "toOtherVC" {
+            let vc = segue.destination as? OrderViewController
+
+            vc?.shoppingController = shoppingController
+            vc?.localNotificationHelper = localNotificationHelper
+        }
     }
    
 
