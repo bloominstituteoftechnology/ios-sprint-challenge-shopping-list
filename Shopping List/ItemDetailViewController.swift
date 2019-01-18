@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ItemDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +19,27 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    var shoppingItemController: ShoppingItemController?
+    
+    // segue = "orderDetail"
+    
+    @IBOutlet weak var amountTextView: UITextView!
+    
+    
+    @IBOutlet weak var personNameTextField: UITextField!
+    
+    
+    @IBOutlet weak var addressTextField: UITextField!
+    
+    
+    @IBAction func sendOrderTapped(_ sender: UIButton) {
+    }
+    
+    
+    
+    
+    
 
 
 }
