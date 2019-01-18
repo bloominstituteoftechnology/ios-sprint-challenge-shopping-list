@@ -27,7 +27,7 @@ class ShoppingListDetailViewController: UIViewController {
     private func updateViews() {
         guard let shoppingList = shoppingListController?.addedShoppingList else  { return }
         
-        textLabel.text = "You currently have (\(shoppingList.count)) item(s) in your shopping cart."
+        textLabel.text = "You currently have \(shoppingList.count) item(s) in your shopping cart."
     }
     
     //MARK: - Properties

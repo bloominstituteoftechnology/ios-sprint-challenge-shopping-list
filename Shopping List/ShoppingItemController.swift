@@ -11,8 +11,7 @@ import UIKit
 class ShoppingItemController {
     
     init() {
-        loadFromPersistantStore()
-        createShoppingList()
+       checkForSameUser()
     }
     
     let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
@@ -58,6 +57,20 @@ class ShoppingItemController {
             shoppingList = decodedShoppingList
         } catch {
             print(error)
+        }
+    }
+    
+    func checkForSameUser() {
+        let userDefaults = UserDefaults.standard
+        userDefaults.bool(forKey: "CheckUser")
+        userDefaults.set(true, forKey: "CheckUser")
+        
+        let sameUser = userDefaults.bool(forKey: "CheckUser")
+        
+        if sameUser {
+            loadFromPersistantStore()
+        } else {
+            createShoppingList()
         }
     }
     
