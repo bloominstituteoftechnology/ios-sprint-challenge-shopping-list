@@ -12,6 +12,7 @@ class ShoppingItemController {
     
     init() {
         loadFromPersistantStore()
+        createShoppingList()
     }
     
     let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
@@ -19,7 +20,7 @@ class ShoppingItemController {
     func createShoppingList() {
         for name in itemNames {
             guard let image = UIImage(named: name),
-            let imageData = image.pngData() else { return }
+                let imageData = image.pngData() else { return }
             let shoppingItem = ShoppingItem(name: name, image: imageData)
             shoppingList.append(shoppingItem)
             
