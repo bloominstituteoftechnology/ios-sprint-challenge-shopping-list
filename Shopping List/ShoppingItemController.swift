@@ -63,14 +63,13 @@ class ShoppingItemController {
     func checkForSameUser() {
         let userDefaults = UserDefaults.standard
         userDefaults.bool(forKey: "CheckUser")
-        userDefaults.set(true, forKey: "CheckUser")
-        
         let sameUser = userDefaults.bool(forKey: "CheckUser")
         
-        if sameUser {
-            loadFromPersistantStore()
-        } else {
+        if !sameUser {
             createShoppingList()
+            userDefaults.set(true, forKey: "CheckUser")
+        } else {
+            loadFromPersistantStore()
         }
     }
     
