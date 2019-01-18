@@ -22,12 +22,25 @@ class OrderViewController: UIViewController {
     }
   
     @IBOutlet weak var orderLabel: UILabel!
+    @IBOutlet weak var nameLabel: UITextField!
+    @IBOutlet weak var addressLabel: UITextField!
+    
     
     @IBAction func sendOrderTapped(_ sender: UIButton) {
         guard let addedItems = addedItems else { return }
+        guard let name = nameLabel.text else { return }
+        guard let address = addressLabel.text else { return }
         
-        let orderMessage = ""
-        print(addedItems)
+        
+        var orderMessage = "\(name)'s order:\n"
+        
+        for item in addedItems {
+            orderMessage.append("\(item.name)\n")
+        }
+        
+        orderMessage.append("Deliver to: \(address)")
+        
+        print(orderMessage)
     }
     
     var addedItems: [ShoppingItem]?
