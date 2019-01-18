@@ -35,17 +35,22 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="E2d-dB-wj4">
                                             <rect key="frame" x="14" y="20" width="152" height="247"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Added" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H0g-Rg-4Yf">
-                                                    <rect key="frame" x="0.0" y="0.0" width="84" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gHN-Ex-T6R">
-                                                    <rect key="frame" x="0.0" y="28.5" width="84" height="72"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ggw-9t-5Pl">
+                                                    <rect key="frame" x="0.0" y="0.0" width="89" height="30"/>
+                                                    <state key="normal" title="Not Added"/>
+                                                    <connections>
+                                                        <action selector="addedButtonTapped:" destination="lsN-D7-V7V" eventType="touchUpInside" id="vrt-e1-Bgs"/>
+                                                    </connections>
+                                                </button>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gHN-Ex-T6R">
+                                                    <rect key="frame" x="0.0" y="38" width="89" height="79"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="89" id="UeQ-YL-OKQ"/>
+                                                        <constraint firstAttribute="height" constant="79" id="wiN-d7-PmO"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Apple" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T8Y-SR-mEq">
-                                                    <rect key="frame" x="0.0" y="108.5" width="84" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apple" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T8Y-SR-mEq">
+                                                    <rect key="frame" x="0.0" y="125" width="89" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -59,6 +64,11 @@
                                     <constraint firstItem="E2d-dB-wj4" firstAttribute="centerX" secondItem="lsN-D7-V7V" secondAttribute="centerX" id="kZk-kF-Cx8"/>
                                 </constraints>
                                 <size key="customSize" width="120" height="170"/>
+                                <connections>
+                                    <outlet property="isAddedLabel" destination="Ggw-9t-5Pl" id="9ev-t4-ykX"/>
+                                    <outlet property="itemImage" destination="gHN-Ex-T6R" id="KlN-6x-mzA"/>
+                                    <outlet property="itemLabel" destination="T8Y-SR-mEq" id="Imt-3v-Gyb"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -69,7 +79,7 @@
                     <navigationItem key="navigationItem" title="Shopping List" id="nmm-2T-3er">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="UcS-bC-W4g">
                             <connections>
-                                <segue destination="f3o-Un-dOy" kind="show" id="rXc-Ik-O8S"/>
+                                <segue destination="f3o-Un-dOy" kind="show" identifier="NextSegue" id="rXc-Ik-O8S"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -81,7 +91,7 @@
         <!--Place Order-->
         <scene sceneID="nXX-Ln-KGF">
             <objects>
-                <viewController id="f3o-Un-dOy" sceneMemberID="viewController">
+                <viewController id="f3o-Un-dOy" customClass="OrderViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Moa-TX-6uF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -110,6 +120,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LNx-3F-O1G">
                                         <rect key="frame" x="0.0" y="125" width="343" height="30"/>
                                         <state key="normal" title="Send Order"/>
+                                        <connections>
+                                            <action selector="sendOrderTapped:" destination="f3o-Un-dOy" eventType="touchUpInside" id="pGm-9b-5Ms"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -124,6 +137,9 @@
                         <viewLayoutGuide key="safeArea" id="kOA-HG-elD"/>
                     </view>
                     <navigationItem key="navigationItem" title="Place Order" id="ZVI-lQ-RUn"/>
+                    <connections>
+                        <outlet property="orderLabel" destination="3X7-IS-DCi" id="Jnd-5H-a04"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ldd-cW-WPP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
