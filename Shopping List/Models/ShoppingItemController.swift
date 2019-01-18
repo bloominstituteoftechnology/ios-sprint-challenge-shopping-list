@@ -15,10 +15,13 @@ import UIKit
 class ShoppingItemController {
     
     var shoppingItems = [
-        ShoppingItem(item: "apple", image: "apple", isAdded: false)
-        
-    
-    
+        ShoppingItem(item: "apple", imageName: "apple", isAdded: false),
+        ShoppingItem(item: "grapes", imageName: "grapes", isAdded: false),
+        ShoppingItem(item: "milk", imageName: "milk", isAdded: false),
+        ShoppingItem(item: "muffin", imageName: "muffin", isAdded: false),
+        ShoppingItem(item: "popcorn", imageName: "popcorn", isAdded: false),
+        ShoppingItem(item: "soda", imageName: "soda", isAdded: false),
+        ShoppingItem(item: "strawberries", imageName: "strawberries", isAdded: false)
     
     ]
     
@@ -33,7 +36,7 @@ class ShoppingItemController {
     
     
     
-}
+
 
 
 
