@@ -9,11 +9,13 @@ class ShoppingController: Codable {
     var addedItems: [Shopping] {
         let add = shopping.filter({ $0.like == true })
         return add
+        saveToPersitentStore()
     }
     
     var notAddedItems: [Shopping] {
         let notAdded = shopping.filter({ $0.like == false })
         return notAdded
+        saveToPersitentStore()
     }
     
     func saveToPersitentStore() {
@@ -45,13 +47,13 @@ class ShoppingController: Codable {
             return nil
         }
         
-        let finalLocation = documentsDirectory.appendingPathComponent("readingList.plist")
+        let finalLocation = documentsDirectory.appendingPathComponent("shoppingList.plist")
         return finalLocation
     }
 }
 
 
-}
+
 
 
 
