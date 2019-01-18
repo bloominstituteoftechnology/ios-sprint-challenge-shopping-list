@@ -12,6 +12,13 @@ class ShoppingController {
     
     let userDefaults = UserDefaults.standard
     
+    init(){
+        
+        //TODO : Try to load from UserDefaults first
+        
+        loadShoppingItemsFromAssets()
+    }
+    
     let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
     
     var shoppingList : [ShoppingItem] = []
@@ -26,6 +33,10 @@ class ShoppingController {
             let shoppingItem = ShoppingItem(imageData: imageData, name: imageName, addedToList: false)
             shoppingList.append(shoppingItem)
         }
+    }
+    
+    func toggleAddedToList(on index: Int){
+        shoppingList[index].addedToList = !shoppingList[index].addedToList
     }
 
 }
