@@ -8,13 +8,17 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
 class ShoppingItemCollectionViewController: UICollectionViewController, ShoppingItemCollectionViewCellDelegate {
     
+    let reuseIdentifier = "ItemCell"
+    
+    let shoppingListController = ShoppingItemController()
     
     func tapIsAddedButton(on cell: ShoppingItemCollectionViewCell) {
-        <#code#>
+        guard let indexPath = collectionView?.indexPath(for: cell) else { return }
+        
+        shoppingListController.isAddedToggle(at: indexPath)
+        collectionView?.reloadData()
     }
     
 

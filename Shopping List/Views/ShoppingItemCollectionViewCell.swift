@@ -18,6 +18,10 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var itemName: UILabel!
     
+    @IBAction func tappedIsAdded(_ sender: UIButton) {
+        
+        delegate?.tapIsAddedButton(on: self)
+    }
     
     
     weak var delegate: ShoppingItemCollectionViewCellDelegate?
