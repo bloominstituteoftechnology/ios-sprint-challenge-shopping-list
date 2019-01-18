@@ -30,9 +30,20 @@ class ShoppingItemController {
     
     ]
     
+    func numberOfItems() -> Int {
+        return shoppingItems.count
     }
     
+    func item(for indexPath: IndexPath) -> ShoppingItem {
+        return shoppingItems[indexPath.row]
+    }
     
+    func isAddedToggle(at indexPath: IndexPath) {
+        shoppingItems[indexPath.row].isAdded.toggle()
+    }
+    
+}
+     
     
     
     
