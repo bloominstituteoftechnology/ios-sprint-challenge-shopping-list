@@ -34,11 +34,7 @@ class ShoppingListDetailViewController: UIViewController {
 
     var shoppingListController: ShoppingItemController?
     
-    var shoppingList: [ShoppingItem]? {
-        didSet {
-            updateViews()
-        }
-    }
+    var shoppingList: [ShoppingItem]? 
     
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
