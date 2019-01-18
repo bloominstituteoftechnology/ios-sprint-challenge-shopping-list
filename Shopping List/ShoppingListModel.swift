@@ -12,20 +12,31 @@ import Foundation
 import UIKit
 class ShoppingListModel{
     var shoppingList : [ShoppingListItem] = []
+    var addedItemsList : [ShoppingListItem] = []
+    var arrayData : Data = Data()
     let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
     func saveList(){
-        UserDefaults.standard.set(shoppingList, forKey: .userDefaultKey)
+        do{
+            try arrayData = PropertyListEncoder().encode(shoppingList)
+        }catch{
+            print(error)
+        }
+        UserDefaults.standard.set(arrayData, forKey: .userDefaultKey)
     }
     func loadList(){
-        guard let savedShoppingList = UserDefaults.standard.object(forKey: .userDefaultKey) else {
-            print("There was nothing saved in user defaults")
-            return
-            
+        guard let nilCheck = UserDefaults.standard.object(forKey: .userDefaultKey) else {return}
+        if(nilCheck != nil){
+        arrayData = UserDefaults.standard.object(forKey: .userDefaultKey) as! Data
+        do{
+            let savedShoppingList = try PropertyListDecoder().decode([ShoppingListItem].self, from: arrayData)
+            shoppingList = savedShoppingList
+        }catch{
+            print(error)
         }
-        shoppingList = savedShoppingList as! [ShoppingListItem]
+        }
     }
-    func createShoppingList(){
-        
+    func createShoppingListArray(){
+        addedItemsList = shoppingList.filter{$0.itemAdded==true}
     }
     func editItemInList(sender: CustomCollectionViewCell){
         guard let index = shoppingList.index(of: sender.item!) else {return}
@@ -41,7 +52,7 @@ class ShoppingListModel{
         for x in 0...6{
             var item = ShoppingListItem()
             item.nameOfItem = itemNames[x]
-            item.image = UIImage(named: itemNames[x])
+            item.image = UIImageJPEGRepresentation(UIImage(named: itemNames[x])!, 1)
             shoppingList.append(item)
         }
     }

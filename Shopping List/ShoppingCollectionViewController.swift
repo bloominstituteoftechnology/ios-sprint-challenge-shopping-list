@@ -13,10 +13,18 @@ private let reuseIdentifier = "Cell"
 class ShoppingCollectionViewController: UICollectionViewController, ButtonDelegate {
     func tappedButton(on: CustomCollectionViewCell) {
         model.editItemInList(sender: on)
+        model.saveList()
         collectionView?.reloadData()
     }
     let model = ShoppingListModel()
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "NextSegue"){
+            model.createShoppingListArray()
+            let destination = segue.destination as! CheckoutViewController
+            destination.model = model
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         model.createShoppingList()
@@ -57,7 +65,7 @@ class ShoppingCollectionViewController: UICollectionViewController, ButtonDelega
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCell", for: indexPath) as! CustomCollectionViewCell
         cell.label.text = model.shoppingList[indexPath.row].nameOfItem
-        cell.imageView.image = model.shoppingList[indexPath.row].image
+        cell.imageView.image = UIImage(data: model.shoppingList[indexPath.row].image!)
         cell.item = model.shoppingList[indexPath.row]
         cell.delegate = self
         if(model.shoppingList[indexPath.row].itemAdded == false){

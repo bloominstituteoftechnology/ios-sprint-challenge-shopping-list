@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 
-struct ShoppingListItem: Equatable{
-    var image : UIImage?
+struct ShoppingListItem: Equatable, Encodable, Decodable{
+    var image : Data?
     var nameOfItem : String
     var itemAdded : Bool
     init(){
