@@ -1,6 +1,17 @@
 import UIKit
 
 class DetailViewController: UIViewController {
+    
+    @IBOutlet weak var numberOfItems: UILabel!
+    
+    var shopping = Shopping?
+    
+    func updateViews() {
+        
+        let text = shopping
+        var number = "You currently have \(text) of items in shopping cart."
+        number = numberOfItems.text
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
