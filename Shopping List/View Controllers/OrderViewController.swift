@@ -38,6 +38,8 @@ class OrderViewController: UIViewController {
         
         guard let name = nameTextField.text, !name.isEmpty, let address = addressTextField.text, !address.isEmpty else {return}
         
+       
+        
         localNotificationHelper?.getAuthorizationStatus { (status) in
             switch status {
             case .authorized:
@@ -52,6 +54,7 @@ class OrderViewController: UIViewController {
                 return
             }
         }
+        
         navigationController?.popViewController(animated: true)
         
     }
