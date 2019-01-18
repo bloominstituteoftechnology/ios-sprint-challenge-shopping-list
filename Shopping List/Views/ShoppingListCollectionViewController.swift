@@ -9,23 +9,28 @@
 import UIKit
 
 private let reuseIdentifier = "Cell"
+let shoppingItemController = ShoppingItemController()
 
 class ShoppingListCollectionViewController: UICollectionViewController {
     
-    let shoppingItemController = ShoppingItemController()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         collectionView?.reloadData()
     }
+
+    //Below is causing an error?
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//
+//        // Uncomment the following line to preserve selection between presentations
+//        // self.clearsSelectionOnViewWillAppear = false
+//
+//        // Register cell classes
+//        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+//
+//        // Do any additional setup after loading the view.
+//        collectionView?.reloadData()
+//    }
 
     /*
     // MARK: - Navigation
@@ -45,13 +50,24 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PlanetCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ShoppingCollectionViewCell
     
-        // Configure the cell
+        let list = shoppingItems[indexPath.item]
+        cell.imageView.image = list.image
+        cell.textLabel.text = list.nameOfItem
     
         return cell
     }
 
+    //Mark: - Properties
+    
+    
+    
+    var shoppingItems: [ShoppingItem] = shoppingItemController.itemNames
+    
+    
+    
+    
     // MARK: UICollectionViewDelegate
 
     /*
