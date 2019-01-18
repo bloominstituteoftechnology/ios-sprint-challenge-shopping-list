@@ -35,11 +35,24 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0u2-RL-u75">
                                             <rect key="frame" x="1" y="0.0" width="162" height="183"/>
                                             <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On List" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZ8-Gz-YWq">
+                                                    <rect key="frame" x="0.0" y="0.0" width="163" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n0I-7w-fON">
+                                                    <rect key="frame" x="0.0" y="28.5" width="163" height="30"/>
+                                                    <state key="normal" title="Update Item"/>
+                                                    <connections>
+                                                        <action selector="addToListTapped:" destination="H1a-xK-HjF" eventType="touchUpInside" id="rsK-yv-OLL"/>
+                                                    </connections>
+                                                </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ozg-rM-U8M">
-                                                    <rect key="frame" x="0.0" y="0.0" width="163" height="98.5"/>
+                                                    <rect key="frame" x="0.0" y="66.5" width="163" height="68"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0GA-1B-kS5">
-                                                    <rect key="frame" x="0.0" y="106.5" width="163" height="56.5"/>
+                                                    <rect key="frame" x="0.0" y="142.5" width="163" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -55,6 +68,7 @@
                                     <constraint firstItem="0u2-RL-u75" firstAttribute="leading" secondItem="H1a-xK-HjF" secondAttribute="leading" id="zcL-cj-iop"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="addedLabel" destination="wZ8-Gz-YWq" id="VN4-zp-G6Q"/>
                                     <outlet property="imageView" destination="Ozg-rM-U8M" id="ctR-bF-UaH"/>
                                     <outlet property="textLabel" destination="0GA-1B-kS5" id="dIB-Hx-KRl"/>
                                 </connections>
@@ -109,6 +123,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dwu-8Z-UqW">
                                         <rect key="frame" x="140" y="197.5" width="79" height="30"/>
                                         <state key="normal" title="Send Order"/>
+                                        <connections>
+                                            <action selector="sendOrderTapped:" destination="eWB-kY-g2w" eventType="touchUpInside" id="vk6-Qv-1NM"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -130,6 +147,7 @@
                         <viewLayoutGuide key="safeArea" id="wkh-ug-Hpu"/>
                     </view>
                     <connections>
+                        <outlet property="address" destination="YTi-yT-Iad" id="rW0-0M-luR"/>
                         <outlet property="itemCountLabel" destination="3Co-Ku-BH2" id="UXp-gI-a9c"/>
                         <outlet property="name" destination="i71-w9-dUr" id="eO6-hf-6UF"/>
                     </connections>

@@ -18,5 +18,8 @@ class ShoppingItemController {
         ShoppingItem(image: "soda", nameOfItem: "Soda"),
         ShoppingItem(image: "strawberries", nameOfItem: "Strawberries")
     ]
+    
+    
+    
 }
 

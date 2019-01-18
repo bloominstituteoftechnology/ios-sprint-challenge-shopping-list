@@ -55,6 +55,12 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         let list = shoppingItems[indexPath.item]
         cell.imageView.image = list.image
         cell.textLabel.text = list.nameOfItem
+        
+//        if list.addedToCart == true {
+//            cell.addToListTapped.setTitle("my text here", forState: .normal)
+//        } else {
+//            cell.onListLabel.text = "Not Added"
+//        }
     
         return cell
     }
