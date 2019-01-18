@@ -50,6 +50,8 @@ class OrderViewController: UIViewController {
                         self.localNotificationHelper?.sendOrderNotification(name: name, address: address)
                     }
                 })
+            case.denied:
+               print("Permission Denied")
             default:
                 return
             }
