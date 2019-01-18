@@ -9,5 +9,7 @@
 import Foundation
 
 class Helper {
-    
+    func add(){
+        
+    }
 }
