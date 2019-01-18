@@ -14,6 +14,8 @@ class ShoppingController {
     init(){
         if UserDefaults.standard.bool(forKey: .isInitiatedKey){
             
+            loadFromPersistentStore()
+            
         } else {
           createItems()
         }

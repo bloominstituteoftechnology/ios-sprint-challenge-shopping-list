@@ -23,7 +23,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
@@ -40,8 +40,9 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "shoppingCell", for: indexPath) as! ShoppingListCollectionViewCell
     
-       
-    
+        let items = shoppingController.shoppingItems[indexPath.item]
+        cell.shopping = items
+        cell.delegate = self
         return cell
     }
 
@@ -75,5 +76,24 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
     }
     */
+    
+    private func shoppingItemFor(indexPath: IndexPath) -> Shopping {
+        
+            return shoppingController.shoppingItems[indexPath.item]
+    }
 
+}
+
+extension ShoppingListCollectionViewController: ShoppingCellDelegate {
+    func toggleHasBeenAdded(for cell: ShoppingListCollectionViewCell) {
+        guard let indexPath = collectionView?.indexPath(for: cell) else {return}
+        
+        let item = shoppingItemFor(indexPath: indexPath)
+        shoppingController.toggleIsAdded(shoppingItem: item)
+        
+        collectionView?.reloadData()
+        
+    }
+    
+    
 }

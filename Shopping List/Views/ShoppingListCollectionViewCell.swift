@@ -14,6 +14,7 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var notAddedButton: UIButton!
     
+    weak var delegate: ShoppingCellDelegate?
     
     var shopping: Shopping? {
         didSet{
@@ -33,6 +34,7 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
     
     
     @IBAction func notAddedPressed(_ sender: UIButton) {
+        delegate?.toggleHasBeenAdded(for: self)
     }
     
 }
