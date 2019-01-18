@@ -12,7 +12,7 @@ struct ShoppingItem: Equatable {
     
     let name: String
     let image: UIImage
-    let isAdded: Bool
+    var isAdded: Bool
     
     init(name: String, image: UIImage, isAdded: Bool = false) {
         (self.name, self.image, self.isAdded) = (name, image, isAdded)

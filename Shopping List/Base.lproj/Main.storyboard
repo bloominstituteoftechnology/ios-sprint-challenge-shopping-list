@@ -14,7 +14,7 @@
         <!--Shopping List-->
         <scene sceneID="c0T-Xe-s96">
             <objects>
-                <collectionViewController id="Hgg-Z1-EU4" sceneMemberID="viewController">
+                <collectionViewController id="Hgg-Z1-EU4" customClass="ShoppingListCollectionViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="utU-JP-mef">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,7 +26,7 @@
                             <inset key="sectionInset" minX="20" minY="10" maxX="20" maxY="10"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemCell" id="qhJ-9U-ALU">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoppingItemCell" id="qhJ-9U-ALU" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="20" y="10" width="150" height="190"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -37,17 +37,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="190" height="181"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Added" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ff5-MC-POd">
-                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="21.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T2C-sO-Ise">
-                                                    <rect key="frame" x="0.0" y="20.5" width="150" height="144"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T2C-sO-Ise">
+                                                    <rect key="frame" x="0.0" y="21.5" width="150" height="139.5"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="item name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CFb-UU-l1d">
-                                                    <rect key="frame" x="0.0" y="164.5" width="150" height="25.5"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="item name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CFb-UU-l1d">
+                                                    <rect key="frame" x="0.0" y="161" width="150" height="29"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -61,6 +61,11 @@
                                     <constraint firstAttribute="trailing" secondItem="cRv-D2-xur" secondAttribute="trailing" id="aqy-6J-Q0b"/>
                                     <constraint firstAttribute="bottom" secondItem="cRv-D2-xur" secondAttribute="bottom" id="wSu-ob-HHZ"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="addedLabel" destination="ff5-MC-POd" id="Fo6-IJ-5Vq"/>
+                                    <outlet property="imageView" destination="T2C-sO-Ise" id="38z-Hh-xhc"/>
+                                    <outlet property="itemNameLabel" destination="CFb-UU-l1d" id="FAD-2P-YRq"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -71,7 +76,7 @@
                     <navigationItem key="navigationItem" title="Shopping List" id="9ZY-Qy-rcZ">
                         <barButtonItem key="rightBarButtonItem" title="Add to Cart" id="uca-VD-aVW">
                             <connections>
-                                <segue destination="Dir-ry-ggP" kind="show" id="ax3-N8-1on"/>
+                                <segue destination="Dir-ry-ggP" kind="show" identifier="ShowDetail" id="7cH-Pj-tkh"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -80,10 +85,10 @@
             </objects>
             <point key="canvasLocation" x="908" y="10.344827586206897"/>
         </scene>
-        <!--View Controller-->
+        <!--Shopping List Detail View Controller-->
         <scene sceneID="IdT-xE-6aU">
             <objects>
-                <viewController id="Dir-ry-ggP" sceneMemberID="viewController">
+                <viewController id="Dir-ry-ggP" customClass="ShoppingListDetailViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LbK-QY-Nx2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -93,7 +98,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="You currently have (n) items in your shopping cart." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBu-q6-PjT">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="53"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
