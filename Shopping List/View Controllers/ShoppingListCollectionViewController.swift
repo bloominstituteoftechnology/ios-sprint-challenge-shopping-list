@@ -28,15 +28,11 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         // Pass the selected object to the new view controller.
         if segue.identifier == "toOtherVC" {
             let vc = segue.destination as? OrderViewController
-
             vc?.shoppingController = shoppingController
             vc?.localNotificationHelper = localNotificationHelper
         }
     }
    
-
-   
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
        
         return shoppingController.shoppingItems.count

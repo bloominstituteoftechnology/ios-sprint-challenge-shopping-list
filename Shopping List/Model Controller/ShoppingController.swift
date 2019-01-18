@@ -12,11 +12,12 @@ class ShoppingController {
     private(set) var shoppingItems: [Shopping] = []
     private let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
     init(){
+        //if its not first launch then load items from persistance
+        //first launch UserDefaults bool for key will be false
         if UserDefaults.standard.bool(forKey: .isInitiatedKey){
-            
             loadFromPersistentStore()
-            
         } else {
+            //if its first lauch
           createItems()
         }
     }
