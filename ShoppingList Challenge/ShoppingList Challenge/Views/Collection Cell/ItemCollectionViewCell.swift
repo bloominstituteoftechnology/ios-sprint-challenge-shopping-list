@@ -14,6 +14,8 @@ protocol ItemCollectionViewCellDelegate: class {
 
 class ItemCollectionViewCell: UICollectionViewCell {
     
+    var shoppingItemController: ShoppingItemController?
+    
     var item: ShoppingItem? {
         didSet {
             updateViews()
@@ -32,14 +34,16 @@ class ItemCollectionViewCell: UICollectionViewCell {
     }
     
     func updateViews(){
-        guard let passedInItem = item else { return }
-        itemImage.image = passedInItem.image
+        guard let passedInItem = item, let image = UIImage(named: passedInItem.image) else { return }
+        itemImage.image = image
         namelabel.text = passedInItem.item
         
-        if passedInItem.isAdded {
+       if passedInItem.isAdded {
             addButtonProperties.setTitle("Added", for: .normal)
         } else {
             addButtonProperties.setTitle("Not Added", for: .normal)
         }
+        
+       
     }
 }

@@ -14,25 +14,18 @@ class ShoppingListCollectionViewController: UICollectionViewController, ItemColl
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
-   
-    
     
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-        
         if segue.identifier == "toSendOrderVC" {
             guard let toDestinationVC = segue.destination as? SendOrderViewController else { return }
             toDestinationVC.shoppingItemConroller = shoppingItemController
         }
     }
  
-
     // MARK: UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -49,6 +42,9 @@ class ShoppingListCollectionViewController: UICollectionViewController, ItemColl
         //pass the item into the itemCollectionViewCell's file
         cell.item = item
         
+        //pass oer shoppingItemController
+        cell.shoppingItemController = shoppingItemController
+
         //set the delegate to here
         cell.delegate = self
     
@@ -67,7 +63,7 @@ class ShoppingListCollectionViewController: UICollectionViewController, ItemColl
         
         //toggle the model's property
         shoppingItemController.toggle(item: item)
-        
+
         //reload collectionView
         collectionView.reloadData()
         

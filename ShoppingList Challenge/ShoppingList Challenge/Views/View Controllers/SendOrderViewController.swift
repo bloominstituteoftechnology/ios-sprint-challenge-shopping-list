@@ -17,7 +17,6 @@ class SendOrderViewController: UIViewController {
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var itemsLabel: UILabel!
  
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         guard let addedArray = shoppingItemConroller?.items.filter({$0.isAdded == true}) else { return }

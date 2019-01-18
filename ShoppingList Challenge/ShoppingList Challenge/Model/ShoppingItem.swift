@@ -9,12 +9,12 @@
 import Foundation
 import UIKit
 
-class ShoppingItem {
+class ShoppingItem: Codable {
     var item: String
     var isAdded: Bool
-    var image: UIImage
+    var image: String
     
-    init(item: String, isAdded: Bool = true, image: UIImage){
+    init(item: String, isAdded: Bool = true, image: String){
         self.item = item
         self.isAdded = isAdded
         self.image = image
