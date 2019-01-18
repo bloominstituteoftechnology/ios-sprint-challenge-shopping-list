@@ -13,42 +13,59 @@ private let reuseIdentifier = "shopcell"
 class ShoppingListCollectionViewController: UICollectionViewController {
     
     let shoppingController = ShoppingController()
+    let listHelper = ListHelper()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.collectionView.reloadData()
+    }
 
         
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+        switch segue.identifier {
+        case "nextSegue":
+            let nextVC = segue.destination as! ShoppingDetailViewController
+            nextVC.shoppingController = shoppingController
+        case "cellSegue":
+            let nextVC = segue.destination as! ShoppingDetailViewController
+            nextVC.shoppingController = shoppingController
+        default:
+            return
+        }
     }
-    */
+    
 
     // MARK: UICollectionViewDataSource
-
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return shoppingController.shoppingList.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "shopcell", for: indexPath)
+        guard let unwrappedCell = cell as? ShoppingListCollectionViewCell else { fatalError("Cell could not be found")}
+        
+        let shoppingItem = shoppingController.shoppingList[indexPath.item]
+        
+        shoppingController.toggleAddedToList(on: indexPath.item)
+        unwrappedCell.imageView.image = UIImage(data: shoppingItem.imageData)
+        unwrappedCell.addedLabel.text = shoppingItem.addedToList ? "Added" : "Not Added"
+        unwrappedCell.nameLabel.text = shoppingItem.name
         // Configure the cell
     
-        return cell
+        return unwrappedCell
     }
 
     // MARK: UICollectionViewDelegate

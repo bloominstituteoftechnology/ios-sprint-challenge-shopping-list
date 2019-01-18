@@ -10,13 +10,14 @@ import UIKit
 
 class ShoppingController {
     
-    let userDefaults = UserDefaults.standard
+    var itemsAdded = 0
     
     init(){
         
         //TODO : Try to load from UserDefaults first
-        
+//        if UserDefaults.standard.array(forKey: "shoppingKey") == nil {
         loadShoppingItemsFromAssets()
+//        } else { loadShoppingFromDefaults() }
     }
     
     let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
@@ -35,8 +36,18 @@ class ShoppingController {
         }
     }
     
+    func loadShoppingFromDefaults(){
+        guard let persistedList = UserDefaults.standard.array(forKey: "shoppingKey") else { return }
+        for item in persistedList {
+            let imageName = item
+            guard let image = UIImage(named: imageName as! String) else { return }
+            guard let imageData = image.pngData() else { return }   }
+    
+    }
+    
     func toggleAddedToList(on index: Int){
         shoppingList[index].addedToList = !shoppingList[index].addedToList
+        itemsAdded += 1
     }
 
 }
