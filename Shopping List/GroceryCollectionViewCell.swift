@@ -8,39 +8,36 @@
 
 import UIKit
 
-protocol GroceryCollectionViewCellDelegate: class {
-    func toggleAdded(for cell: GroceryCollectionViewCell)
-}
-
 class GroceryCollectionViewCell: UICollectionViewCell {
     
-    @IBAction func addedButtonTapped(_ sender: UIButton) {
-        delegate?.toggleAdded(for: self)
-    }
     
     private func updateViews() {
         if let item = item {
             itemLabel.text = item.name
-            itemImage.image = item.image
             
-            let key = UserDefaults.standard.bool(forKey: .isAddedToCartKey)
+            guard let image = UIImage(named: item.image) else { return }
+            
+            itemImage.image = image
 
-            if key == true {
-                isAddedLabel.titleLabel?.text = "Added"
-            } else if key == false {
-                isAddedLabel.titleLabel?.text = "Not Added"
+            if item.isAdded {
+                addedLabel.text = "Added"
+            } else {
+                addedLabel.text = "Not Added"
             }
+            
+            let addedValue = item.isAdded
+            
+            UserDefaults.standard.set(addedValue, forKey: .isAddedToCartKey)
+            UserDefaults.standard.synchronize()
         }
     }
     
-    @IBOutlet weak var isAddedLabel: UIButton!
+    @IBOutlet weak var addedLabel: UILabel!
     @IBOutlet weak var itemLabel: UILabel!
     @IBOutlet weak var itemImage: UIImageView!
     
     var item: ShoppingItem? {
         didSet{ updateViews() }
     }
-    
-    weak var delegate: GroceryCollectionViewCellDelegate?
     
 }

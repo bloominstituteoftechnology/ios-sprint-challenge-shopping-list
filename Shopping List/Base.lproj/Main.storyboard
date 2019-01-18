@@ -35,22 +35,21 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="E2d-dB-wj4">
                                             <rect key="frame" x="14" y="20" width="152" height="247"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ggw-9t-5Pl">
-                                                    <rect key="frame" x="0.0" y="0.0" width="89" height="30"/>
-                                                    <state key="normal" title="Not Added"/>
-                                                    <connections>
-                                                        <action selector="addedButtonTapped:" destination="lsN-D7-V7V" eventType="touchUpInside" id="vrt-e1-Bgs"/>
-                                                    </connections>
-                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Zg-59-fxo">
+                                                    <rect key="frame" x="0.0" y="0.0" width="89" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gHN-Ex-T6R">
-                                                    <rect key="frame" x="0.0" y="38" width="89" height="79"/>
+                                                    <rect key="frame" x="0.0" y="28.5" width="89" height="79"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="89" id="UeQ-YL-OKQ"/>
                                                         <constraint firstAttribute="height" constant="79" id="wiN-d7-PmO"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apple" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T8Y-SR-mEq">
-                                                    <rect key="frame" x="0.0" y="125" width="89" height="20.5"/>
+                                                    <rect key="frame" x="0.0" y="115.5" width="89" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -65,7 +64,7 @@
                                 </constraints>
                                 <size key="customSize" width="120" height="170"/>
                                 <connections>
-                                    <outlet property="isAddedLabel" destination="Ggw-9t-5Pl" id="9ev-t4-ykX"/>
+                                    <outlet property="addedLabel" destination="7Zg-59-fxo" id="kzp-ci-d3j"/>
                                     <outlet property="itemImage" destination="gHN-Ex-T6R" id="KlN-6x-mzA"/>
                                     <outlet property="itemLabel" destination="T8Y-SR-mEq" id="Imt-3v-Gyb"/>
                                 </connections>

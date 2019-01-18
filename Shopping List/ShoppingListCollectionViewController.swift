@@ -10,17 +10,7 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class ShoppingListCollectionViewController: UICollectionViewController, GroceryCollectionViewCellDelegate {
-    
-    func toggleAdded(for cell: GroceryCollectionViewCell) {
-        guard let indexPath = collectionView.indexPath(for: cell) else { return }
-        let item = shoppingItemController.shoppingList[indexPath.row]
-        shoppingItemController.updateIsAdded(item: item)
-        
-        UserDefaults.standard.set(item.isAdded, forKey: .isAddedToCartKey)
-        
-        collectionView.reloadData()
-    }
+class ShoppingListCollectionViewController: UICollectionViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -38,29 +28,29 @@ class ShoppingListCollectionViewController: UICollectionViewController, GroceryC
         let item = shoppingItemController.shoppingList[indexPath.row]
         
         groceryCell.item = item
-        groceryCell.delegate = self
     
         return groceryCell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let item = shoppingItemController.shoppingList[indexPath.row]
+        
+        shoppingItemController.updateIsAdded(item: item)
+        
+        collectionView.reloadData()
+        
+    }
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "NextSegue" {
             guard let orderVC = segue.destination as? OrderViewController else { return }
-            orderVC.addedItems = addedItems
+            orderVC.addedItems = shoppingItemController.addedItems
         }
     }
     
     
     let shoppingItemController = ShoppingItemController()
-    
-    var addedItems: [ShoppingItem] {
-        let addedItems = shoppingItemController.shoppingList.filter({ $0.isAdded == true })
-        return addedItems
-    }
-    
-    var notAddedItems: [ShoppingItem] {
-        let notAddedItems = shoppingItemController.shoppingList.filter({ $0.isAdded == false })
-        return notAddedItems
-    }
 
 }

@@ -25,6 +25,8 @@ class OrderViewController: UIViewController {
     
     @IBAction func sendOrderTapped(_ sender: UIButton) {
         guard let addedItems = addedItems else { return }
+        
+        let orderMessage = ""
         print(addedItems)
     }
     
