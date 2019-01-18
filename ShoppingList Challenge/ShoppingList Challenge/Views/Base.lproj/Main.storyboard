@@ -13,7 +13,7 @@
         <!--Shopping List-->
         <scene sceneID="LC2-3p-Aor">
             <objects>
-                <collectionViewController id="EJM-V1-ZCO" sceneMemberID="viewController">
+                <collectionViewController id="EJM-V1-ZCO" customClass="ShoppingListCollectionViewController" customModule="ShoppingList_Challenge" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="S5u-pQ-DYC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,7 +25,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="iNt-Gl-4vj">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="iNt-Gl-4vj" customClass="ItemCollectionViewCell" customModule="ShoppingList_Challenge" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="180" height="153"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -35,14 +35,26 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dqq-3R-OEc">
                                             <rect key="frame" x="106" y="0.0" width="74" height="30"/>
                                             <state key="normal" title="Not Added"/>
+                                            <connections>
+                                                <action selector="changeAddStatus:" destination="iNt-Gl-4vj" eventType="touchUpInside" id="IwN-rs-R1S"/>
+                                            </connections>
                                         </button>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="249" image="apple" translatesAutoresizingMaskIntoConstraints="NO" id="smx-Am-uJy">
-                                            <rect key="frame" x="0.0" y="32" width="180" height="121"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="249" misplaced="YES" image="apple" translatesAutoresizingMaskIntoConstraints="NO" id="smx-Am-uJy">
+                                            <rect key="frame" x="0.0" y="32" width="180" height="101"/>
                                         </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3yT-St-Yzz">
+                                            <rect key="frame" x="20" y="132" width="140" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </view>
                                 <constraints>
                                     <constraint firstItem="dqq-3R-OEc" firstAttribute="top" secondItem="iNt-Gl-4vj" secondAttribute="top" id="4BM-bp-1FP"/>
+                                    <constraint firstItem="3yT-St-Yzz" firstAttribute="top" secondItem="smx-Am-uJy" secondAttribute="bottom" constant="3" id="7kl-Qt-s44"/>
+                                    <constraint firstAttribute="trailing" secondItem="3yT-St-Yzz" secondAttribute="trailing" constant="20" id="BCI-Ce-8kH"/>
+                                    <constraint firstItem="3yT-St-Yzz" firstAttribute="leading" secondItem="iNt-Gl-4vj" secondAttribute="leading" constant="20" id="DM0-Ml-pyn"/>
                                     <constraint firstItem="smx-Am-uJy" firstAttribute="firstBaseline" secondItem="dqq-3R-OEc" secondAttribute="baseline" constant="11.5" symbolType="layoutAnchor" id="IEO-rM-qlH"/>
                                     <constraint firstItem="smx-Am-uJy" firstAttribute="leading" secondItem="iNt-Gl-4vj" secondAttribute="leading" id="L3N-Sz-RgW"/>
                                     <constraint firstItem="dqq-3R-OEc" firstAttribute="leading" secondItem="iNt-Gl-4vj" secondAttribute="leading" constant="106" id="UYg-ju-hE2"/>
@@ -50,6 +62,11 @@
                                     <constraint firstAttribute="bottom" secondItem="smx-Am-uJy" secondAttribute="bottom" id="wgD-ro-Pd8"/>
                                     <constraint firstAttribute="trailing" secondItem="dqq-3R-OEc" secondAttribute="trailing" id="wrf-c6-eqd"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="addButtonProperties" destination="dqq-3R-OEc" id="ssT-fc-eBk"/>
+                                    <outlet property="itemImage" destination="smx-Am-uJy" id="oN3-JW-xPg"/>
+                                    <outlet property="namelabel" destination="3yT-St-Yzz" id="ADE-lt-wUS"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -60,7 +77,7 @@
                     <navigationItem key="navigationItem" title="Shopping List" id="Rzb-AW-iCY">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="JwC-rP-FSy">
                             <connections>
-                                <segue destination="eTV-XX-b7J" kind="show" id="kTk-6Y-NVq"/>
+                                <segue destination="eTV-XX-b7J" kind="show" identifier="toSendOrderVC" id="kTk-6Y-NVq"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -69,10 +86,10 @@
             </objects>
             <point key="canvasLocation" x="1311.2" y="115.59220389805098"/>
         </scene>
-        <!--View Controller-->
+        <!--Send Order View Controller-->
         <scene sceneID="f4G-ch-ASo">
             <objects>
-                <viewController id="eTV-XX-b7J" sceneMemberID="viewController">
+                <viewController id="eTV-XX-b7J" customClass="SendOrderViewController" customModule="ShoppingList_Challenge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mnM-Tj-jjd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -97,7 +114,7 @@
                             <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="TAl-v5-0Px">
                                 <rect key="frame" x="30" y="219" width="315" height="76"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mGa-lr-dec">
+                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mGa-lr-dec">
                                         <rect key="frame" x="0.0" y="0.0" width="315" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -106,6 +123,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DVB-ca-ScP">
                                         <rect key="frame" x="0.0" y="46" width="315" height="30"/>
                                         <state key="normal" title="Send Order"/>
+                                        <connections>
+                                            <action selector="sendOrder:" destination="eTV-XX-b7J" eventType="touchUpInside" id="rFh-fr-lTp"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -121,6 +141,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xtc-x4-AdS"/>
                     </view>
+                    <connections>
+                        <outlet property="addressTextField" destination="mGa-lr-dec" id="scR-bD-jAV"/>
+                        <outlet property="itemsLabel" destination="L5b-px-iBd" id="s2Y-U2-4aP"/>
+                        <outlet property="nameTextField" destination="qxN-L8-VuZ" id="QJm-Fj-dEq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ta-uF-b7L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

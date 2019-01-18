@@ -1,5 +1,5 @@
 //
-//  ShoppingItemController.swift
+//  Helper.swift
 //  ShoppingList Challenge
 //
 //  Created by Michael Flowers on 1/18/19.
@@ -8,10 +8,6 @@
 
 import Foundation
 
-
-class ShoppingItemController {
-    
-    private(set) var items = [ShoppingItem]()
-    
+class Helper {
     
 }

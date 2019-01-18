@@ -7,13 +7,16 @@
 //
 
 import Foundation
+import UIKit
 
-struct ShoppingItem {
+class ShoppingItem {
     var item: String
     var isAdded: Bool
+    var image: UIImage
     
-    init(item: String, isAdded: Bool = true){
+    init(item: String, isAdded: Bool = true, image: UIImage){
         self.item = item
         self.isAdded = isAdded
+        self.image = image
     }
 }

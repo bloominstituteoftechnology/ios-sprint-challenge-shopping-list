@@ -13,6 +13,10 @@
 		1B22B74021F231AB00C88B4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B22B73E21F231AB00C88B4D /* LaunchScreen.storyboard */; };
 		1B22B74821F237BB00C88B4D /* ShoppingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B22B74721F237BB00C88B4D /* ShoppingItem.swift */; };
 		1B22B74A21F2382D00C88B4D /* ShoppingItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B22B74921F2382D00C88B4D /* ShoppingItemController.swift */; };
+		1B22B74C21F239F800C88B4D /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B22B74B21F239F800C88B4D /* Helper.swift */; };
+		1B22B74E21F23B7700C88B4D /* ShoppingListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B22B74D21F23B7700C88B4D /* ShoppingListCollectionViewController.swift */; };
+		1B22B75021F23B9500C88B4D /* SendOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B22B74F21F23B9500C88B4D /* SendOrderViewController.swift */; };
+		1B22B75221F23CAD00C88B4D /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B22B75121F23CAD00C88B4D /* ItemCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		1B22B74121F231AB00C88B4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1B22B74721F237BB00C88B4D /* ShoppingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItem.swift; sourceTree = "<group>"; };
 		1B22B74921F2382D00C88B4D /* ShoppingItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemController.swift; sourceTree = "<group>"; };
+		1B22B74B21F239F800C88B4D /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		1B22B74D21F23B7700C88B4D /* ShoppingListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListCollectionViewController.swift; sourceTree = "<group>"; };
+		1B22B74F21F23B9500C88B4D /* SendOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendOrderViewController.swift; sourceTree = "<group>"; };
+		1B22B75121F23CAD00C88B4D /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +64,67 @@
 		1B22B73421F231AA00C88B4D /* ShoppingList Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				1B22B75321F23E2300C88B4D /* Model */,
+				1B22B75421F23E2C00C88B4D /* Model Controller */,
+				1B22B74B21F239F800C88B4D /* Helper.swift */,
+				1B22B75821F23E6F00C88B4D /* Views */,
+				1B22B75921F23E8F00C88B4D /* Resources */,
+			);
+			path = "ShoppingList Challenge";
+			sourceTree = "<group>";
+		};
+		1B22B75321F23E2300C88B4D /* Model */ = {
+			isa = PBXGroup;
+			children = (
 				1B22B74721F237BB00C88B4D /* ShoppingItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1B22B75421F23E2C00C88B4D /* Model Controller */ = {
+			isa = PBXGroup;
+			children = (
 				1B22B74921F2382D00C88B4D /* ShoppingItemController.swift */,
-				1B22B73521F231AA00C88B4D /* AppDelegate.swift */,
+			);
+			path = "Model Controller";
+			sourceTree = "<group>";
+		};
+		1B22B75521F23E3500C88B4D /* Collection Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1B22B75121F23CAD00C88B4D /* ItemCollectionViewCell.swift */,
+			);
+			path = "Collection Cell";
+			sourceTree = "<group>";
+		};
+		1B22B75721F23E5600C88B4D /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1B22B74F21F23B9500C88B4D /* SendOrderViewController.swift */,
+				1B22B74D21F23B7700C88B4D /* ShoppingListCollectionViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		1B22B75821F23E6F00C88B4D /* Views */ = {
+			isa = PBXGroup;
+			children = (
 				1B22B73921F231AA00C88B4D /* Main.storyboard */,
+				1B22B75521F23E3500C88B4D /* Collection Cell */,
+				1B22B75721F23E5600C88B4D /* View Controllers */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1B22B75921F23E8F00C88B4D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				1B22B73C21F231AB00C88B4D /* Assets.xcassets */,
+				1B22B73521F231AA00C88B4D /* AppDelegate.swift */,
 				1B22B73E21F231AB00C88B4D /* LaunchScreen.storyboard */,
 				1B22B74121F231AB00C88B4D /* Info.plist */,
 			);
-			path = "ShoppingList Challenge";
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +201,10 @@
 				1B22B74821F237BB00C88B4D /* ShoppingItem.swift in Sources */,
 				1B22B74A21F2382D00C88B4D /* ShoppingItemController.swift in Sources */,
 				1B22B73621F231AA00C88B4D /* AppDelegate.swift in Sources */,
+				1B22B75021F23B9500C88B4D /* SendOrderViewController.swift in Sources */,
+				1B22B74E21F23B7700C88B4D /* ShoppingListCollectionViewController.swift in Sources */,
+				1B22B74C21F239F800C88B4D /* Helper.swift in Sources */,
+				1B22B75221F23CAD00C88B4D /* ItemCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,7 +352,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X4W7EQ4E4R;
-				INFOPLIST_FILE = "ShoppingList Challenge/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/ShoppingList Challenge/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -306,7 +370,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X4W7EQ4E4R;
-				INFOPLIST_FILE = "ShoppingList Challenge/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/ShoppingList Challenge/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
