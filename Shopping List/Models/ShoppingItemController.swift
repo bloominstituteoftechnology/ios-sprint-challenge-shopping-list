@@ -6,4 +6,36 @@
 //  Copyright © 2019 Lambda School. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+// work to be done here:
+// - create the array
+// itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
+
+class ShoppingItemController {
+    
+    var shoppingItems = [
+        ShoppingItem(item: "apple", image: "apple", isAdded: false)
+        
+    
+    
+    
+    ]
+    
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+
+
