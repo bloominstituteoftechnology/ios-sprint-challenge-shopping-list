@@ -1,6 +1,6 @@
 import UIKit
 
-class ShoppingController: Codable {
+class ShoppingController {
     
     var shopping: [Shopping] = []
 
@@ -9,37 +9,37 @@ class ShoppingController: Codable {
     var addedItems: [Shopping] {
         let add = shopping.filter({ $0.like == true })
         return add
-        saveToPersitentStore()
+   //     saveToPersitentStore()
     }
     
     var notAddedItems: [Shopping] {
         let notAdded = shopping.filter({ $0.like == false })
         return notAdded
-        saveToPersitentStore()
+   //     saveToPersitentStore()
     }
     
-    func saveToPersitentStore() {
-        guard let url = readingListURL else { return }
-        let propertyListEncoder = PropertyListEncoder()
-        do {
-            let data = try propertyListEncoder.encode(shopping)
-            try data.write(to: url)
-        } catch {
-            print(error)
-        }
-    }
-    
-    func loadToPersistentStore() {
-        guard let url = readingListURL,
-            FileManager.default.fileExists(atPath: url.path)   else { return }
-        do {
-            let decoder = PropertyListDecoder()
-            let data = try Data(contentsOf: url)
-            shopping = try decoder.decode([Shopping].self, from: data)
-        } catch {
-            print(error)
-        }
-    }
+//    func saveToPersitentStore() {
+//        guard let url = readingListURL else { return }
+//        let propertyListEncoder = PropertyListEncoder()
+//        do {
+//            let data = try propertyListEncoder.encode(shopping)
+//            try data.write(to: url)
+//        } catch {
+//            print(error)
+//        }
+//    }
+//
+//    func loadToPersistentStore() {
+//        guard let url = readingListURL,
+//            FileManager.default.fileExists(atPath: url.path)   else { return }
+//        do {
+//            let decoder = PropertyListDecoder()
+//            let data = try Data(contentsOf: url)
+//            shopping = try decoder.decode([Shopping].self, from: data)
+//        } catch {
+//            print(error)
+//        }
+//    }
     
     var readingListURL: URL? {
         let fileManger = FileManager.default

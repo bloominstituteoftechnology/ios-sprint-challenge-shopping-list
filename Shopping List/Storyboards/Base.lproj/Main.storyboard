@@ -35,14 +35,15 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="Tiw-oo-Gg0">
                                             <rect key="frame" x="44" y="20" width="113" height="126"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="addOrNot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXu-ax-oqg">
-                                                    <rect key="frame" x="34.5" y="0.0" width="76" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KwS-oe-56h">
+                                                    <rect key="frame" x="35.5" y="0.0" width="74" height="30"/>
+                                                    <state key="normal" title="Not Added"/>
+                                                </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="STi-i0-rPP">
-                                                    <rect key="frame" x="36" y="21.5" width="73" height="82"/>
+                                                    <rect key="frame" x="36.5" y="31" width="72.5" height="72.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="STi-i0-rPP" secondAttribute="height" id="CG8-AR-DRD"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="foodName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2UL-SN-fL0">
                                                     <rect key="frame" x="32.5" y="104.5" width="80" height="20.5"/>
@@ -61,7 +62,6 @@
                                     <constraint firstItem="Tiw-oo-Gg0" firstAttribute="top" secondItem="LJ2-M7-pE6" secondAttribute="topMargin" constant="8" id="oWk-Ld-ocv"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="addOrNot" destination="aXu-ax-oqg" id="N8u-vc-t3f"/>
                                     <outlet property="foodName" destination="2UL-SN-fL0" id="Z0W-21-xVV"/>
                                     <outlet property="imageView" destination="STi-i0-rPP" id="5af-XP-Yqq"/>
                                 </connections>

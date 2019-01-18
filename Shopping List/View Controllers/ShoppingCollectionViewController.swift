@@ -34,12 +34,12 @@ class ShoppingCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ShoppingCollectionViewCell
         
-        let name = shop[indexPath.row].name
-        let sho = shop[indexPath.row].image
+        let name = shop[indexPath.row]
+        let sho = shop[indexPath.row]
         let isLiked = shop[indexPath.row].like
         
-        cell.imageView.image = sho
-        cell.foodName.text = name
+        cell.imageView.image = sho.image
+        cell.foodName.text = name.name
        // cell.addOrNot.
         
         return cell

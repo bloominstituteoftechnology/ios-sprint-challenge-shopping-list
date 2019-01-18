@@ -1,6 +1,6 @@
 import UIKit
 
-struct Shopping: Codable, Equatable {
+struct Shopping: Equatable {
     
     let image: UIImage
     let name: String
