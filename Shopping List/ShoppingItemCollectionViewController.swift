@@ -10,13 +10,29 @@ import UIKit
 
 
 
-class ShoppingItemCollectionViewController: UICollectionViewController {
+class ShoppingItemCollectionViewController: UICollectionViewController, ItemCollectionViewCellDelegate {
+    
+    
+    func toggleHasBeenAdded(for cell: ShoppingItemCollectionViewCell) {
+        guard let indexPath = collectionView?.indexPath(for: cell) else { return }
+        
+        let shoppingItem = shoppingItemController.shoppingList[indexPath.item]
+        
+        shoppingItemController.updateIsAdded(for: shoppingItem)
+        collectionView?.reloadData()
+    }
+    
     
     let shoppingItemController = ShoppingItemController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        collectionView?.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView?.reloadData()
     }
 
     
@@ -25,9 +41,10 @@ class ShoppingItemCollectionViewController: UICollectionViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "orderDetail" {
-            guard let cellDetailController = segue.destination as? ItemDetailViewController else { return }
+            guard let cellDetailController = segue.destination as? ItemDetailViewController, let cell = sender as? ShoppingItemCollectionViewCell  else { return }
             
             cellDetailController.shoppingItemController = shoppingItemController
+            cellDetailController.shoppingItem = cell.shoppingItem
             
     }
     
@@ -40,18 +57,22 @@ class ShoppingItemCollectionViewController: UICollectionViewController {
     }*/
 
 
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+            return shoppingItemController.shoppingList.count
     }
 
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath)
+        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! ShoppingItemCollectionViewCell
     
-        // Configure the cell
+            // Configure the cell
+            let shoppingItem = shoppingItemController.shoppingList[indexPath.item]
+            cell.shoppingItem = shoppingItem
+            cell.delegate = self
     
-        return cell
+            return cell
     }
+        
 
     // MARK: UICollectionViewDelegate
 
@@ -83,5 +104,7 @@ class ShoppingItemCollectionViewController: UICollectionViewController {
     
     }
     */
+
+}
 
 }

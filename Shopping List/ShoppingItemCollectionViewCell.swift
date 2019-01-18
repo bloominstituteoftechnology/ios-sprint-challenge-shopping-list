@@ -14,7 +14,8 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var itemImageView: UIImageView!
     
-    @IBOutlet weak var isAddedLabel: UILabel!
+    
+    @IBOutlet weak var isAddedLabel: UIButton!
     
     
     @IBOutlet weak var foodNameLabel: UILabel!
@@ -27,12 +28,11 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         }
     }
     
-   // weak var delegate: BookTableViewCellDelegate?
+    weak var delegate: ItemCollectionViewCellDelegate?
     
-   
-  /*  @IBAction func checkBoxTapped(_ sender: UIButton) {
-        delegate?.toggleHasBeenRead(for: self)
-    } */
+    @IBAction func isAddedButtonTapped(_ sender: UIButton) {
+        delegate?.toggleHasBeenAdded(for: self)
+    }
     
     func updateViews() {
         guard let shoppingItem = shoppingItem else { return }
@@ -41,7 +41,7 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         itemImageView.image = shoppingItem.image
         
         let isAddedButton = shoppingItem.isAdded ? "Added" : "Not Added"
-        isAddedLabel.text = isAddedButton
+        isAddedLabel.setTitle(isAddedButton, for: .normal)
         
     }
     
