@@ -94,12 +94,30 @@
                                     </textField>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="TAl-v5-0Px">
+                                <rect key="frame" x="30" y="219" width="315" height="76"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mGa-lr-dec">
+                                        <rect key="frame" x="0.0" y="0.0" width="315" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DVB-ca-ScP">
+                                        <rect key="frame" x="0.0" y="46" width="315" height="30"/>
+                                        <state key="normal" title="Send Order"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Xs9-aG-MI7" firstAttribute="leading" secondItem="xtc-x4-AdS" secondAttribute="leading" constant="30" id="8Vu-59-pMP"/>
                             <constraint firstItem="xtc-x4-AdS" firstAttribute="trailing" secondItem="Xs9-aG-MI7" secondAttribute="trailing" constant="30" id="DV8-Ut-J7Q"/>
                             <constraint firstItem="Xs9-aG-MI7" firstAttribute="top" secondItem="xtc-x4-AdS" secondAttribute="top" constant="16" id="SwR-gQ-AEI"/>
+                            <constraint firstItem="TAl-v5-0Px" firstAttribute="leading" secondItem="qxN-L8-VuZ" secondAttribute="leading" id="Z7h-un-eFc"/>
+                            <constraint firstItem="TAl-v5-0Px" firstAttribute="top" secondItem="Xs9-aG-MI7" secondAttribute="bottom" constant="8" id="yuf-Wz-AJE"/>
+                            <constraint firstItem="TAl-v5-0Px" firstAttribute="trailing" secondItem="qxN-L8-VuZ" secondAttribute="trailing" id="zL6-12-lDT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xtc-x4-AdS"/>
                     </view>
