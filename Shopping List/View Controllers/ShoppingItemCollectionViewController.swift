@@ -12,19 +12,25 @@ class ShoppingItemCollectionViewController: UICollectionViewController, Shopping
     
     let reuseIdentifier = "ItemCell"
     
-    let shoppingListController = ShoppingItemController()
+    let shoppingController = ShoppingItemController()
     
     func tapIsAddedButton(on cell: ShoppingItemCollectionViewCell) {
         guard let indexPath = collectionView?.indexPath(for: cell) else { return }
         
-        shoppingListController.isAddedToggle(at: indexPath)
+        shoppingController.isAddedToggle(at: indexPath)
         collectionView?.reloadData()
     }
     
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+      collectionView?.reloadData()
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -46,19 +52,21 @@ class ShoppingItemCollectionViewController: UICollectionViewController, Shopping
 
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return shoppingListController.numberOfItems()
+        return shoppingController.numberOfItems()
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ShoppingItemCollectionViewCell
+ 
+        let items = shoppingController.shoppingItems[indexPath.item]
+      
+        cell.shoppingItem = items
+        cell.delegate = self
+
+        
+ 
     
         // Configure the cell
     

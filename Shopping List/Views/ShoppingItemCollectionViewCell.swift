@@ -25,7 +25,7 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
     
     weak var delegate: ShoppingItemCollectionViewCellDelegate?
-    
+    var shoppingItem: ShoppingItem?
     
     
 }

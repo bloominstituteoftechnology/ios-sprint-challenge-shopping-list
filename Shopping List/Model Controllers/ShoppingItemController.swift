@@ -19,7 +19,7 @@ protocol ShoppingItemCollectionViewCellDelegate: class {
 
 class ShoppingItemController {
     
-    var shoppingItems = [
+    var shoppingList = [
         ShoppingItem(item: "apple", imageName: "apple", isAdded: false),
         ShoppingItem(item: "grapes", imageName: "grapes", isAdded: false),
         ShoppingItem(item: "milk", imageName: "milk", isAdded: false),
@@ -38,8 +38,9 @@ class ShoppingItemController {
         return shoppingItems[indexPath.row]
     }
     
-    func isAddedToggle(at indexPath: IndexPath) {
-        shoppingItems[indexPath.row].isAdded.toggle()
+    func isAddedToggle(item: ShoppingItem) {
+        guard let index = shoppingItems.index(of: item) else { return }
+        shoppingItems[index].isAdded.toggle()
     }
     
 }
