@@ -24,7 +24,17 @@ class ShoppingItemController {
         }
     }
     
+    func updateIsAdded(shoppingItem: ShoppingItem) {
+        guard let index = shoppingList.index(of: shoppingItem) else { return }
+        shoppingList[index].isAdded.toggle()
+    }
+    
     //MARK: - properties
+    
+    var addedShoppingList: [ShoppingItem] {
+        let added = shoppingList.filter { $0.isAdded == true }
+        return added
+    }
     
     private(set) var shoppingList: [ShoppingItem] = []
 }
