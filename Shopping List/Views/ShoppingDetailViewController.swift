@@ -22,13 +22,11 @@ class ShoppingDetailViewController: UIViewController {
     @IBOutlet weak var addressTextField: UITextField!
     
     
-    override func viewWillAppear(_ animated: Bool) {
-        updateViews()
-    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        updateViews()
 
         // Do any additional setup after loading the view.
     }
