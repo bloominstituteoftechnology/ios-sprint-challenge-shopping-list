@@ -10,7 +10,13 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class ShoppingItemCollectionViewController: UICollectionViewController {
+class ShoppingItemCollectionViewController: UICollectionViewController, ShoppingItemCollectionViewCellDelegate {
+    
+    
+    func tapIsAddedButton(on cell: ShoppingItemCollectionViewCell) {
+        <#code#>
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

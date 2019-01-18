@@ -10,4 +10,18 @@ import UIKit
 
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
+    static let reuseIdentifier = "ItemCell"
+    
+    @IBOutlet weak var isAddedButton: UIButton!
+    
+    @IBOutlet weak var itemImage: UIImageView!
+    
+    @IBOutlet weak var itemName: UILabel!
+    
+    
+    
+    weak var delegate: ShoppingItemCollectionViewCellDelegate?
+    
+    
+    
 }

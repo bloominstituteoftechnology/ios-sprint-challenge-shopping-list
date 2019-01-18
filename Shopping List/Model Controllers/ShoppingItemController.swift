@@ -12,6 +12,11 @@ import UIKit
 // - create the array
 // itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
 
+protocol ShoppingItemCollectionViewCellDelegate: class {
+    func tapIsAddedButton(on cell: ShoppingItemCollectionViewCell)
+}
+
+
 class ShoppingItemController {
     
     var shoppingItems = [

@@ -35,12 +35,10 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="oyd-bH-Ocu">
                                             <rect key="frame" x="-45" y="12" width="280" height="233"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K1U-GV-hRV">
-                                                    <rect key="frame" x="111" y="0.0" width="42" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNV-nf-Sh6">
+                                                    <rect key="frame" x="109" y="0.0" width="46" height="20.5"/>
+                                                    <state key="normal" title="Button"/>
+                                                </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jBC-Rw-4s2">
                                                     <rect key="frame" x="49" y="29.5" width="166" height="166"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -66,6 +64,11 @@
                                     <constraint firstItem="oyd-bH-Ocu" firstAttribute="top" secondItem="OAr-PF-GrO" secondAttribute="top" id="eJS-0y-UKs"/>
                                     <constraint firstItem="oyd-bH-Ocu" firstAttribute="leading" secondItem="OAr-PF-GrO" secondAttribute="leading" id="giv-j4-r8u"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="isAddedButton" destination="eNV-nf-Sh6" id="a6y-Hf-Hxb"/>
+                                    <outlet property="itemImage" destination="jBC-Rw-4s2" id="jFD-uU-HPg"/>
+                                    <outlet property="itemName" destination="YMN-Gq-2rA" id="iiH-V5-2Zr"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
