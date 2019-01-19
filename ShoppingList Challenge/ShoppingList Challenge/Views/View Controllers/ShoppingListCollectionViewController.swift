@@ -68,7 +68,4 @@ class ShoppingListCollectionViewController: UICollectionViewController, ItemColl
         collectionView.reloadData()
         
     }
-    
-    
-
 }

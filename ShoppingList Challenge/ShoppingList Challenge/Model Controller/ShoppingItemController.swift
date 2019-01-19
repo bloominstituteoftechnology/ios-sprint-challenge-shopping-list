@@ -18,8 +18,8 @@ class ShoppingItemController {
     var fileManagerURL: URL? {
         let fileManager = FileManager.default
         guard let DocumentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
-        let fileName = DocumentDirectory.appendingPathComponent("shoppingList.plist")
-        return fileName
+        let finalLocation = DocumentDirectory.appendingPathComponent("shoppingList.plist")
+        return finalLocation
     }
     
     //MARK: - CRUD Functions
@@ -32,19 +32,23 @@ class ShoppingItemController {
     
     func addItems(){
         let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
-        for items in itemNames {
-            createItem(item: items, image: items)
-            guard UserDefaults.standard.bool(forKey: "ItemsHaveBeenCreated") == true else { return }
+        for item in itemNames {
+            createItem(item: item, image: item)
+            print(item)
         }
+        guard UserDefaults.standard.bool(forKey: "ItemsHaveBeenCreated") == true else { return }
+        saveToPersistenceStore()
     }
     
     func toggle(item: ShoppingItem){
         item.isAdded = !item.isAdded
+        saveToPersistenceStore()
     }
     
     //create an init so that you can call the function that creates the model objects.
     init(){
         addItems()
+        loadFromPersistenceStore()
     }
     
     //MARK: - Persistence
@@ -66,7 +70,6 @@ class ShoppingItemController {
             print("Error trying to save to persistence store: \(error.localizedDescription)")
         }
     }
-    
     
     func loadFromPersistenceStore(){
         //get url

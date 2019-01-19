@@ -14,7 +14,7 @@ class ShoppingItem: Codable {
     var isAdded: Bool
     var image: String
     
-    init(item: String, isAdded: Bool = true, image: String){
+    init(item: String, isAdded: Bool = false, image: String){
         self.item = item
         self.isAdded = isAdded
         self.image = image
