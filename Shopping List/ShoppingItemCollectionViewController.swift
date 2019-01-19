@@ -17,21 +17,27 @@ class ShoppingItemCollectionViewController: UICollectionViewController, ItemColl
         guard let indexPath = collectionView?.indexPath(for: cell) else { return }
         
         let shoppingItem = shoppingItemController.shoppingList[indexPath.item]
+        //let shoppingItem = shoppingFor(indexPath: indexPath)
         
         shoppingItemController.updateIsAdded(for: shoppingItem)
+       // listHelper.setThemePreferenceToAddedList()
+        //collectionView?.reloadItems(at: [indexPath])
         collectionView?.reloadData()
     }
     
     
     let shoppingItemController = ShoppingItemController()
+    let listHelper = ListHelper()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setTheme()
         collectionView?.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setTheme()
         collectionView?.reloadData()
     }
 
@@ -39,72 +45,72 @@ class ShoppingItemCollectionViewController: UICollectionViewController, ItemColl
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "orderDetail" {
-            guard let cellDetailController = segue.destination as? ItemDetailViewController, let cell = sender as? ShoppingItemCollectionViewCell  else { return }
-            
-            cellDetailController.shoppingItemController = shoppingItemController
-            cellDetailController.shoppingItem = cell.shoppingItem
-            
-    }
     
-
     // MARK: UICollectionViewDataSource
 
    /* override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 2
     }*/
 
 
-        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
+          /*  if section == 0 {
+                return shoppingItemController.addedItems.count
+            } else {
+                return shoppingItemController.unaddedItems.count
+            } */
             return shoppingItemController.shoppingList.count
     }
 
-        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! ShoppingItemCollectionViewCell
     
             // Configure the cell
             let shoppingItem = shoppingItemController.shoppingList[indexPath.item]
             cell.shoppingItem = shoppingItem
+            
+            cell.itemImageView.image = shoppingItem.image
+            cell.foodNameLabel.text = shoppingItem.name
+            
             cell.delegate = self
     
             return cell
     }
-        
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
+   /* func shoppingFor(indexPath: IndexPath) -> ShoppingItem {
+        if indexPath.section == 0 {
+            return shoppingItemController.addedItems[indexPath.item]
+        } else {
+            return shoppingItemController.unaddedItems[indexPath.item]
+        }
+    } */
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "orderDetail" {
+            guard let cellDetailController = segue.destination as? ItemDetailViewController, let cell = sender as? ShoppingItemCollectionViewCell  else { return }
+            
+            cellDetailController.shoppingItemController = shoppingItemController
+            cellDetailController.listHelper = listHelper
+            cellDetailController.shoppingItem = cell.shoppingItem
+            
+        }
+        
     }
-    */
+    
+    func setTheme() {
+        guard let theme = listHelper.themePreference else { return }
+        
+        if theme == "Added List" {
+            shoppingItemController.saveToPersistentStore()
+        } else {
+            shoppingItemController.loadFoodFromAssets()
+        }
+        
+    }
+  
 
 }
 
-}

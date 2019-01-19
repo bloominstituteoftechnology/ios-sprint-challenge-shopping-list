@@ -12,21 +12,34 @@ class ItemDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+       // shoppingItemController?.updateIsAdded(for: shoppingItem!)
+        //shoppingItemController?.loadFromPersistentStore()
         updateViews()
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func setTheme() {
+        guard let theme = listHelper!.themePreference else { return }
+        
+        if theme == "Added List" {
+            shoppingItemController!.updateIsAdded(for: shoppingItem!)
+        } else {
+            shoppingItemController!.loadFoodFromAssets()
+        }
+        
     }
+
     
     var shoppingItemController: ShoppingItemController?
     var shoppingItem: ShoppingItem?
-    
+    var listHelper: ListHelper?
+   
     // segue = "orderDetail"
     
-    @IBOutlet weak var amountTextView: UITextView!
+    
+    @IBOutlet weak var amountLabel: UILabel!
     
     
     @IBOutlet weak var personNameTextField: UITextField!
@@ -36,22 +49,28 @@ class ItemDetailViewController: UIViewController {
     
     
     @IBAction func sendOrderTapped(_ sender: UIButton) {
-        
+
         navigationController?.popViewController(animated: true)
+        
     }
     
     func updateViews() {
-        //  guard let bookTitle = titleTextField.text else { return }
+       // guard
         
-        if let shoppingItem = shoppingItem {
-            let numberOfItems = shoppingItemController?.addedItems.count
-            let itemText: String = "You currently have \(numberOfItems ?? 0) item(s) in your shopping list."
+       // if let shoppingItem = shoppingItem {
+       
+        shoppingItemController?.loadFromPersistentStore()
+        print(shoppingItemController?.shoppingList)
+       // setTheme()
+        amountLabel.text = "You currently have \(shoppingItemController?.shoppingList.filter({$0.isAdded}).count) item(s) in your shopping list."
+           
+        
+            
+          /*  let numberOfItems = shoppingItemController?.addedItems.count
+            print(numberOfItems)
+            let itemText: String = "You currently have \(numberOfItems) item(s) in your shopping list."
             amountTextView.text = itemText
-            navigationItem.title = "Change Shopping List"
-        
-    }
-    
-    
+            navigationItem.title = "Change Shopping List"*/
     
 
 

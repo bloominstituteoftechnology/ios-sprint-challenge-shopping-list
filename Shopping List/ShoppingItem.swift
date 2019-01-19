@@ -15,7 +15,7 @@ struct ShoppingItem: Equatable, Codable {
     var name: String
     var isAdded: Bool
     
-    init(isAdded: Bool = false, name: String) {
+    init(isAdded: Bool = false, name: String, image: UIImage) {
         self.isAdded = isAdded
         self.name = name
     }
@@ -23,6 +23,7 @@ struct ShoppingItem: Equatable, Codable {
     var image: UIImage {
         return UIImage(named: name)!
     }
+    
     
     
 }

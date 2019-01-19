@@ -15,19 +15,28 @@ class ShoppingItemController {
     
     var shoppingList: [ShoppingItem] = []
     
+    var listHelper = ListHelper()
+    
+    
     init() {
         loadFoodFromAssets()
         loadFromPersistentStore()
     }
     
+    
+    
     func loadFoodFromAssets() {
         
-        for food in itemNames {
-            let imageName = food
+        if listHelper.listKey != "Added List" {
+            for food in itemNames {
+                let imageName = food
             
-            guard let image = UIImage(named: imageName) else { return }
-            let shoppingItem = ShoppingItem(isAdded: false, name: imageName)
-            shoppingList.append(shoppingItem)
+                guard let image = UIImage(named: imageName) else { return }
+                let shoppingItem = ShoppingItem(isAdded: false, name: imageName, image: image)
+                shoppingList.append(shoppingItem)
+            }
+        } else {
+            print("Out of the initializer")
         }
     
     }
@@ -38,13 +47,14 @@ class ShoppingItemController {
             return nil
         }
         
-        let finalLocation = documentsDirectory.appendingPathComponent("Shopping List.plist")
+        let finalLocation = documentsDirectory.appendingPathComponent("Shopping-List.plist")
         
         return finalLocation
     }
     
     func saveToPersistentStore() {
         guard let url = shoppingListURL else { return }
+        
         let encoder = PropertyListEncoder()
         do {
             let itemsData = try encoder.encode(shoppingList)
@@ -68,21 +78,21 @@ class ShoppingItemController {
         }
     }
     
-    func sentOrder() {
-        
-    }
-    
-    func update(shoppingItem: ShoppingItem, name: String, isAdded: Bool) {
+   
+   /* func update(shoppingItem: ShoppingItem, name: String, isAdded: Bool, image: UIImage) {
         guard let index = shoppingList.index(of: shoppingItem) else { return }
         shoppingList[index].name = name
         shoppingList[index].isAdded = isAdded
         
-    }
+    }*/
     
     func updateIsAdded(for shoppingItem: ShoppingItem) {
         guard let index = shoppingList.index(of: shoppingItem) else { return }
         
         shoppingList[index].isAdded = !shoppingList[index].isAdded
+        
+       // listHelper.setThemePreferenceToAddedList()
+        saveToPersistentStore()
         
     }
     

@@ -21,17 +21,14 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var foodNameLabel: UILabel!
     
     
+    //var listHelper: ListHelper?
     
-    var shoppingItem: ShoppingItem? {
-        didSet {
-            updateViews()
-        }
-    }
     
     weak var delegate: ItemCollectionViewCellDelegate?
     
     @IBAction func isAddedButtonTapped(_ sender: UIButton) {
         delegate?.toggleHasBeenAdded(for: self)
+       // updateViews()
     }
     
     func updateViews() {
@@ -43,6 +40,13 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         let isAddedButton = shoppingItem.isAdded ? "Added" : "Not Added"
         isAddedLabel.setTitle(isAddedButton, for: .normal)
         
+        
+    }
+    
+    var shoppingItem: ShoppingItem? {
+        didSet {
+            updateViews()
+        }
     }
     
     
