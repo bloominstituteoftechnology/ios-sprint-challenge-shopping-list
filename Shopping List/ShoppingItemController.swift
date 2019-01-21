@@ -11,12 +11,8 @@ import UIKit
 class ShoppingItemController {
     
     init() {
-       checkForSameUser()
+        userSetUp()
     }
-    
-    let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
-    
-    let userDefaults = UserDefaults.standard
     
     func createShoppingList() {
         for name in itemNames {
@@ -38,9 +34,8 @@ class ShoppingItemController {
     }
     
     func saveToPersistantStore() {
-        guard let url = ShoppingListURL else { return }
-        
         let encoder = PropertyListEncoder()
+        
         do {
             let shoppingListData = try encoder.encode(shoppingList)
             try shoppingListData.write(to: url)
@@ -50,10 +45,8 @@ class ShoppingItemController {
     }
     
     func loadFromPersistantStore() {
-        guard let url = ShoppingListURL,
-            FileManager.default.fileExists(atPath: url.path) else { return }
-        
         let decoder = PropertyListDecoder()
+        
         do {
             let data = try Data(contentsOf: url)
             let decodedShoppingList = try decoder.decode([ShoppingItem].self, from: data)
@@ -63,23 +56,26 @@ class ShoppingItemController {
         }
     }
     
-    func checkForSameUser() {
+    func userSetUp() {
         let sameUser = userDefaults.bool(forKey: "CheckUser")
         
         if sameUser {
             loadFromPersistantStore()
+        } else {
+            createShoppingList()
         }
     }
     
     //MARK: - properties
     
-    private var ShoppingListURL: URL? {
-        let fileManager = FileManager.default
-        guard let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
-        
-        let finalURL = documentsDirectory.appendingPathComponent("ShoppingList.plist")
-        return finalURL
-    }
+    let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
+    
+    let userDefaults = UserDefaults.standard
+    
+    let url = URL(fileURLWithPath: NSHomeDirectory())
+        .appendingPathComponent("Library")
+        .appendingPathComponent("ShoppingList")
+        .appendingPathExtension("plist")
     
     var addedShoppingList: [ShoppingItem] {
         let added = shoppingList.filter { $0.isAdded == true }
