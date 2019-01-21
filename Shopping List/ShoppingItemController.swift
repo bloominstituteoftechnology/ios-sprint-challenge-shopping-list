@@ -16,6 +16,8 @@ class ShoppingItemController {
     
     let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
     
+    let userDefaults = UserDefaults.standard
+    
     func createShoppingList() {
         for name in itemNames {
             guard let image = UIImage(named: name),
@@ -24,6 +26,7 @@ class ShoppingItemController {
             shoppingList.append(shoppingItem)
             
             saveToPersistantStore()
+            userDefaults.set(true, forKey: "CheckUser")
         }
     }
     
@@ -61,14 +64,9 @@ class ShoppingItemController {
     }
     
     func checkForSameUser() {
-        let userDefaults = UserDefaults.standard
-        userDefaults.bool(forKey: "CheckUser")
         let sameUser = userDefaults.bool(forKey: "CheckUser")
         
-        if !sameUser {
-            createShoppingList()
-            userDefaults.set(true, forKey: "CheckUser")
-        } else {
+        if sameUser {
             loadFromPersistantStore()
         }
     }
