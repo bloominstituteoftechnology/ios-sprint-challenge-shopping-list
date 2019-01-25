@@ -13,7 +13,6 @@ class OrderViewController: UIViewController {
     var addedItems: [ShoppingItem]?
     
     
-    
     @IBOutlet weak var orderLabel: UILabel!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var addressField: UITextField!
@@ -30,16 +29,14 @@ class OrderViewController: UIViewController {
   
     }
     
-    
-    
-    
-    
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        guard let addedItems = addedItems else { return }
+        
+        orderLabel.text = "You have \(addedItems) in your cart"
+    
         // Do any additional setup after loading the view.
     }
     
