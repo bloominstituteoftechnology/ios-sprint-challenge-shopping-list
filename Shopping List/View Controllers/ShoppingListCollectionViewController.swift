@@ -18,9 +18,6 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         collectionView?.reloadData()
     }
     
-    
-
-    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -29,7 +26,6 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         detailVC.shoppingItemController = shoppingItemController
     }
  
-
     // MARK: UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

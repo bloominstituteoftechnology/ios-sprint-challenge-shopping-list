@@ -16,6 +16,7 @@
 		4B13576D21FB739E009F6A12 /* ShoppingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B13576C21FB739E009F6A12 /* ShoppingDetailViewController.swift */; };
 		4B13576F21FB73CB009F6A12 /* ShoppingListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B13576E21FB73CB009F6A12 /* ShoppingListCollectionViewController.swift */; };
 		4B13577221FB7612009F6A12 /* ShoppingItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B13577121FB7612009F6A12 /* ShoppingItemCollectionViewCell.swift */; };
+		4B13577521FB8915009F6A12 /* LocalNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B13577421FB8915009F6A12 /* LocalNotificationHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		4B13576C21FB739E009F6A12 /* ShoppingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingDetailViewController.swift; sourceTree = "<group>"; };
 		4B13576E21FB73CB009F6A12 /* ShoppingListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListCollectionViewController.swift; sourceTree = "<group>"; };
 		4B13577121FB7612009F6A12 /* ShoppingItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		4B13577421FB8915009F6A12 /* LocalNotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				4B13577321FB7622009F6A12 /* Views */,
 				4B13577021FB73D9009F6A12 /* View Controllers */,
 				4B13576B21FB70F7009F6A12 /* Storyboards */,
+				4B13577621FB8AC4009F6A12 /* Helpers */,
 				4613E91821143BFD00E7FF73 /* Assets.xcassets */,
 				4B13576A21FB70C5009F6A12 /* SupportFiles */,
 			);
@@ -122,6 +125,14 @@
 				4B13577121FB7612009F6A12 /* ShoppingItemCollectionViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		4B13577621FB8AC4009F6A12 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4B13577421FB8915009F6A12 /* LocalNotificationHelper.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +209,7 @@
 				4B13576521FB6A61009F6A12 /* ShoppingItem.swift in Sources */,
 				4B13577221FB7612009F6A12 /* ShoppingItemCollectionViewCell.swift in Sources */,
 				4B13576821FB6B9B009F6A12 /* ShoppingItemController.swift in Sources */,
+				4B13577521FB8915009F6A12 /* LocalNotificationHelper.swift in Sources */,
 				4613E91221143BFC00E7FF73 /* AppDelegate.swift in Sources */,
 				4B13576F21FB73CB009F6A12 /* ShoppingListCollectionViewController.swift in Sources */,
 				4B13576D21FB739E009F6A12 /* ShoppingDetailViewController.swift in Sources */,
@@ -346,7 +358,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VXUQXR6S56;
-				INFOPLIST_FILE = "Shopping List/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Shopping List/SupportFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -364,7 +376,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VXUQXR6S56;
-				INFOPLIST_FILE = "Shopping List/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Shopping List/SupportFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
