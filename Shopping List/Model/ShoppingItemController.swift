@@ -22,6 +22,12 @@ class ShoppingItemController  {
         ShoppingItem(image: "strawberries", nameOfItem: "Strawberries")
     ]
     
-
-    
+    func updateBool(item: ShoppingItem) {
+        var itemToUpdate = item
+        if itemToUpdate.addedToCart == false {
+            itemToUpdate.addedToCart = true
+        } else {
+            itemToUpdate.addedToCart = false
+        }
+    }
 }

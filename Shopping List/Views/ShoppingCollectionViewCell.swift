@@ -10,6 +10,10 @@ import UIKit
 
 class ShoppingCollectionViewCell: UICollectionViewCell {
     
+    let shoppingItemController = ShoppingItemController()
+    
+    
+    
     
     //MARK: - Outlets
     
@@ -18,6 +22,7 @@ class ShoppingCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var groceryItemName: UILabel!
     
     @IBAction func addedButton(_ sender: UIButton) {
+        
     }
     
    
