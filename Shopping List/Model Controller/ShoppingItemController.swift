@@ -41,6 +41,8 @@ class ShoppingItemController {
         let shoppingItem = ShoppingItem(name: name, image: image, isAdded: isAdded)
         shoppingItems.append(shoppingItem)
         
+        saveToPersistentStore()
+        
     }
     
     func update(shoppingItem: ShoppingItem, name: String, image: String, isAdded: Bool) {
@@ -54,12 +56,16 @@ class ShoppingItemController {
         shoppingItems.remove(at: index)
         shoppingItems.insert(shoppingItem, at: index)
         
+        saveToPersistentStore()
+        
     }
     
     func delete(shoppingItem: ShoppingItem) {
         guard let index = shoppingItems.index(of: shoppingItem) else { return }
         
         shoppingItems.remove(at: index)
+        
+        saveToPersistentStore()
     }
     
     // MARK: - Methods
@@ -72,6 +78,8 @@ class ShoppingItemController {
         
         shoppingItems.remove(at: index)
         shoppingItems.insert(shoppingItem, at: index)
+        
+        saveToPersistentStore()
         
     }
     
