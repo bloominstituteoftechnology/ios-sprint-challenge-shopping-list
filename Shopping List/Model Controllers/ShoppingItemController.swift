@@ -24,6 +24,10 @@ class ShoppingItemController {
     // create initial items and initialize
     // use provided snippet: let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
     
+    init() {
+        createItems()
+    }
+    
     func createItems() {
         let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
         for name in itemNames {
