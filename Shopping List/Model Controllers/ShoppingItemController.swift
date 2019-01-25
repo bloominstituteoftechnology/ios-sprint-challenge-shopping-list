@@ -58,6 +58,23 @@ class ShoppingItemController {
         return notAddedItems
     }
     
+    // Persistence
+    
+    private var shoppingListURL: URL? {
+        let fileManager = FileManager.default
+        
+        guard let directory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
+        
+        let path = directory.appendingPathComponent("shoppinglist.plist")
+        
+        return path
+        
+        
+        
+    }
+    
+    
+    
     
     
 }

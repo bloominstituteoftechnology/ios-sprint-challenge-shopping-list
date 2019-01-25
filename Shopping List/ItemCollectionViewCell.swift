@@ -49,6 +49,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
             let addedBool = item.isAdded
             
             userDefaults.set(addedBool, forKey: .isAddedToCartKey)
+            userDefaults.synchronize()
             
         
             
