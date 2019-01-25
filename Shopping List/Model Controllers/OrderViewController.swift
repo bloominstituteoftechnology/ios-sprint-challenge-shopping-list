@@ -9,6 +9,21 @@
 import UIKit
 
 class OrderViewController: UIViewController {
+    
+    
+    @IBOutlet weak var orderLabel: UILabel!
+    @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var addressField: UITextField!
+    
+    @IBAction func printOrderTapped(_ sender: UIButton) {
+    }
+    
+    
+    
+    
+    
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -111,6 +111,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fvf-jG-GLT">
                                         <rect key="frame" x="0.0" y="104.5" width="343" height="30"/>
                                         <state key="normal" title="Print Order to Console"/>
+                                        <connections>
+                                            <action selector="printOrderTapped:" destination="yj3-iT-x3D" eventType="touchUpInside" id="Yfs-4Y-DRe"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -124,6 +127,11 @@
                         <viewLayoutGuide key="safeArea" id="tJ8-b3-pUY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Cart" id="DuA-rh-2ea"/>
+                    <connections>
+                        <outlet property="addressField" destination="5hq-75-6DM" id="0d2-37-AwD"/>
+                        <outlet property="nameField" destination="e3T-9b-ntv" id="wKN-MN-bqg"/>
+                        <outlet property="orderLabel" destination="xko-5T-bCj" id="7vr-jv-DXX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LXu-od-lVG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
