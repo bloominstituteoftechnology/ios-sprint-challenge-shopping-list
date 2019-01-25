@@ -17,6 +17,12 @@ class SendOrderViewController: UIViewController {
     }
     
     @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var addressField: UITextField!
+    
+    @IBAction func send(_ sender: UIButton) {
+        
+    }
     
     var shoppingItemController: ShoppingItemController?
 }

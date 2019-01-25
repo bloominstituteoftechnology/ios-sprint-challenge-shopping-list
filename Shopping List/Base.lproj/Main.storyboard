@@ -91,7 +91,7 @@
             </objects>
             <point key="canvasLocation" x="1002.4" y="50.824587706146929"/>
         </scene>
-        <!--Your Order-->
+        <!--Send Order-->
         <scene sceneID="9cK-ux-Ne1">
             <objects>
                 <viewController id="iUw-KZ-C29" customClass="SendOrderViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
@@ -123,6 +123,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bLw-OJ-NIF">
                                         <rect key="frame" x="0.0" y="104.5" width="343" height="30"/>
                                         <state key="normal" title="Send Order"/>
+                                        <connections>
+                                            <action selector="send:" destination="iUw-KZ-C29" eventType="touchUpInside" id="PHB-KX-mVe"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -135,9 +138,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hwb-ix-CL4"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Your Order" id="TqR-BR-rfb"/>
+                    <navigationItem key="navigationItem" title="Send Order" id="TqR-BR-rfb"/>
                     <connections>
+                        <outlet property="addressField" destination="8Hb-ER-uth" id="8Wx-A7-d60"/>
                         <outlet property="label" destination="sVJ-Du-pnU" id="0JT-zm-yVG"/>
+                        <outlet property="nameField" destination="OvY-hb-h4f" id="k8B-CZ-Vyg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mZs-gH-dg6" userLabel="First Responder" sceneMemberID="firstResponder"/>
