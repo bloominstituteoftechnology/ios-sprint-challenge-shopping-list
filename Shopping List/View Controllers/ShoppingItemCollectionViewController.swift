@@ -10,20 +10,20 @@ import UIKit
 
 class ShoppingItemCollectionViewController: UICollectionViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView?.reloadData()
     }
 
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "NextBarButtonSegue" {
+            guard let destionationVC = segue.destination as? SendOrderViewController else { return }
+            destionationVC.shoppingItemController = shoppingItemController
+        }
     }
-    */
 
     // MARK: UICollectionViewDataSource
 

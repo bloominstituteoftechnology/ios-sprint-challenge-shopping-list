@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct ShoppingItem: Equatable {
+struct ShoppingItem: Equatable/*, Decodable */ {
     var image: UIImage
     var name: String
     var hasBeenAdded: Bool
