@@ -1,18 +1,69 @@
 import UIKit
 
-private let reuseIdentifier = "ShoppingCell"
+class ShoppingCollectionViewController: UICollectionViewController, ShoppingCollectionViewCellDelegate {
+    
+    func addButtonWasTapped(on cell: ShoppingCollectionViewCell) {
+    
+        guard let shopping = cell.shopping, let indexPath = collectionView?.indexPath(for: cell) else { return }
+            
+            //Update isLiked on the painting
+            shoppingController.toggleIsLiked(for: shopping)
+            
+            //Reload the row
+            collectionView?.reloadItems(at: [indexPath])
+        }
+        
+        
+        
 
-class ShoppingCollectionViewController: UICollectionViewController {
+    
+    
+    private let reuseIdentifier = "ShoppingCell"
+    
+    let shoppingController = ShoppingController()
+    
+    struct PropertyKeys {
+        static let paintingDetailSegue = "DetailSegue"
+        static let paintingCellIdentifier = "ShoppingCell"
+    }
+    
+    
+    
+//    func addButtonWasTapped(on cell: ShoppingCollectionViewCell) {
+//
+//        let location = sender.location(in: self.tableView)
+//        guard let indexPath = collectionView.indexPathForRow(at: location), let cell = collectionView.cellForRow(at: indexPath) as? PaintingTableViewCell else { return }
+//
+//        performSegue(withIdentifier: PropertyKeys.paintingDetailSegue, sender: cell)
+//    }
+//
+//    func likeButtonWasTapped(on cell: ShoppingCollectionViewCell) {
+//        //Unwrap the cell's painting and the indexPath of the cell
+//        guard let shopping = cell.ImageFoodOutlet, let indexPath = collectionView?.indexPath(for: cell) else { return }
+//
+//        //Update isLiked on the painting
+//        shoppingController.toggleIsLiked(for: shopping)
+//
+//        //Reload the row
+//        collectionView.reloadRows(at: [indexPath], with: .fade)
+//    }
+//
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView?.reloadData()
+//    }
+//
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+        collectionView?.delegate = self
+        collectionView?.dataSource = self
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
+//        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+//        collectionView?.reloadData()
         // Do any additional setup after loading the view.
     }
 
@@ -28,21 +79,19 @@ class ShoppingCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return shoppingController.shopping.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ShoppingCollectionViewCell
     
-        // Configure the cell
+            let shopping = shoppingController.shopping[indexPath.row]
+        
+        cell.ImageFoodOutlet.image = shopping.image
+        cell.foodNameLabel.text = shopping.foodName
+       // cell.addOrNotLabel = shopping.addOrNot
     
         return cell
     }

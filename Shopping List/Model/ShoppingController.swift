@@ -10,17 +10,19 @@ class ShoppingController {
     
     func loadImages() {
         for i in 1 ... 7 {
-            let string = "Image\(i)"
+            let string = "image\(i)"
             guard let image = UIImage(named: string) else { return }
             let food = Shopping(image: image, foodName: "food\(i)")
             shopping.append(food)
+            print("images loaded")
         }
+    }
         
         func toggleIsLiked(for painting: Shopping) {
             //Make sure you can get an index for the painting, then toggle the isLiked property
             guard let index = shopping.index(of: painting) else { return }
             shopping[index].addOrNot = !shopping[index].addOrNot
-        }
+        
         
         
     }
