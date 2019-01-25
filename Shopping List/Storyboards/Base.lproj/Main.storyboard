@@ -32,9 +32,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bmB-v8-eff">
+                                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bmB-v8-eff">
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vnc-Pv-jPs">
                                                     <rect key="frame" x="0.0" y="0.0" width="150" height="20.5"/>
@@ -42,10 +41,10 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hH0-30-UnO">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hH0-30-UnO">
                                                     <rect key="frame" x="0.0" y="20.5" width="150" height="109"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wRw-cn-HK8">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wRw-cn-HK8">
                                                     <rect key="frame" x="0.0" y="129.5" width="150" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -55,10 +54,16 @@
                                         </stackView>
                                     </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="bmB-v8-eff" firstAttribute="top" secondItem="dBG-jx-xYj" secondAttribute="top" id="Uh8-iA-BXi"/>
+                                    <constraint firstAttribute="bottom" secondItem="bmB-v8-eff" secondAttribute="bottom" id="aim-dN-uNv"/>
+                                    <constraint firstAttribute="trailing" secondItem="bmB-v8-eff" secondAttribute="trailing" id="s75-C6-av5"/>
+                                    <constraint firstItem="bmB-v8-eff" firstAttribute="leading" secondItem="dBG-jx-xYj" secondAttribute="leading" id="z5F-qY-7h2"/>
+                                </constraints>
                                 <connections>
-                                    <outlet property="addedNotAddedLabel" destination="Vnc-Pv-jPs" id="wE9-4K-MlE"/>
-                                    <outlet property="imageView" destination="hH0-30-UnO" id="vDY-4K-cMN"/>
-                                    <outlet property="nameLabel" destination="wRw-cn-HK8" id="oyn-AD-DbA"/>
+                                    <outlet property="addedNotAddedLabel" destination="Vnc-Pv-jPs" id="8gK-P5-vva"/>
+                                    <outlet property="imageView" destination="hH0-30-UnO" id="t7R-VB-Nbl"/>
+                                    <outlet property="nameLabel" destination="wRw-cn-HK8" id="hef-Td-aYz"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -70,14 +75,14 @@
                     <navigationItem key="navigationItem" title="Shopping List" id="yZ7-Ea-ziV">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="nxe-wc-Z8G">
                             <connections>
-                                <segue destination="ttZ-nU-mdw" kind="show" identifier="ShowOrder" id="8ed-7k-UzN"/>
+                                <segue destination="ttZ-nU-mdw" kind="show" identifier="ShowShopping" id="8ed-7k-UzN"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vjD-Dq-x6h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1110" y="63"/>
+            <point key="canvasLocation" x="1109.5999999999999" y="62.518740629685162"/>
         </scene>
         <!--Shopping Detail View Controller-->
         <scene sceneID="g08-dn-qii">
@@ -120,6 +125,9 @@
                                                 <integer key="value" value="8"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="sendOrder:" destination="ttZ-nU-mdw" eventType="touchUpInside" id="Xx8-Jb-w2n"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -132,6 +140,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="T9w-m8-1zD"/>
                     </view>
+                    <connections>
+                        <outlet property="addressTextField" destination="56h-Mc-IDT" id="GWf-GS-7zl"/>
+                        <outlet property="nameTextField" destination="A5o-Kn-CQd" id="9BM-yk-CCz"/>
+                        <outlet property="textLabel" destination="uEr-P7-No2" id="UNg-pS-4R4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NAW-Gu-Pjd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

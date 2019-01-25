@@ -15,17 +15,25 @@ class ShoppingDetailViewController: UIViewController {
         }
     }
     
+    let localNotificationHelper = LocalNotificationHelper()
+    
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     
     @IBAction func sendOrder(_ sender: Any) {
-        guard let name = nameTextField.text,
-            let address = addressTextField.text else { return }
+        guard let name = nameTextField.text, let address = addressTextField.text else { return }
+        
+        localNotificationHelper.requestAuthorization() { (success) in
+            if success  == true {
+                self.localNotificationHelper.scheduleDailyReminderNotification(name: name, address: address)
+            }
+        }
     }
     
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
+    super.viewDidLoad()
 
         updateViews()
     }
