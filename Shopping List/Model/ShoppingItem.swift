@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ShoppingItem {
+struct ShoppingItem: Equatable, Codable {
     var name: String
     var image: String
     var isAdded: Bool
