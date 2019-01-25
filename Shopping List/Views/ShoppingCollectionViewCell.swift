@@ -2,31 +2,25 @@
 //  ShoppingCollectionViewCell.swift
 //  Shopping List
 //
-//  Created by Dustin Koch on 1/18/19.
+//  Created by Dustin Koch on 1/25/19.
 //  Copyright © 2019 Lambda School. All rights reserved.
 //
 
 import UIKit
 
-
-
 class ShoppingCollectionViewCell: UICollectionViewCell {
     
     
-    @IBOutlet weak var imageView: UIImageView!
+    //MARK: - Outlets
     
-    @IBOutlet weak var addedLabel: UILabel!
-    @IBOutlet weak var textLabel: UILabel!
+    @IBOutlet weak var groceryImage: UIImageView!
+    @IBOutlet weak var buttonOutlet: UIButton!
+    @IBOutlet weak var groceryItemName: UILabel!
     
-    @IBAction func addToListTapped(_ sender: UIButton) {
-        if addedLabel.text == "On List"{
-            addedLabel.text = "Off List"
-        } else {
-            addedLabel.text = "On List"
-        }
+    @IBAction func addedButton(_ sender: UIButton) {
     }
-
+    
+   
+    
     
 }
-
-

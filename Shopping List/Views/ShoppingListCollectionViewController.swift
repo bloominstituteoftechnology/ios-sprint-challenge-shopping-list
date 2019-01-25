@@ -2,35 +2,27 @@
 //  ShoppingListCollectionViewController.swift
 //  Shopping List
 //
-//  Created by Dustin Koch on 1/18/19.
+//  Created by Dustin Koch on 1/25/19.
 //  Copyright © 2019 Lambda School. All rights reserved.
 //
 
 import UIKit
 
 private let reuseIdentifier = "Cell"
-let shoppingItemController = ShoppingItemController()
 
 class ShoppingListCollectionViewController: UICollectionViewController {
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        collectionView?.reloadData()
-    }
 
-    //Below is causing an error?
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        // Uncomment the following line to preserve selection between presentations
-//        // self.clearsSelectionOnViewWillAppear = false
-//
-//        // Register cell classes
-//        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-//
-//        // Do any additional setup after loading the view.
-//        collectionView?.reloadData()
-//    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Register cell classes
+        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+
+        // Do any additional setup after loading the view.
+    }
 
     /*
     // MARK: - Navigation
@@ -44,36 +36,25 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDataSource
 
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 0
+    }
+
+
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return shoppingItemController.itemNames.count
+        return 0
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ShoppingCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
     
-        let list = shoppingItems[indexPath.item]
-        cell.imageView.image = list.image
-        cell.textLabel.text = list.nameOfItem
-        
-//        if list.addedToCart == true {
-//            cell.addToListTapped.setTitle("my text here", forState: .normal)
-//        } else {
-//            cell.onListLabel.text = "Not Added"
-//        }
+        // Configure the cell
     
         return cell
     }
 
-    //Mark: - Properties
-    
-    
-    
-    var shoppingItems: [ShoppingItem] = shoppingItemController.itemNames
-    
-    
-    
-    
     // MARK: UICollectionViewDelegate
 
     /*
