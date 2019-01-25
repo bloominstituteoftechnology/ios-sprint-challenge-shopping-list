@@ -51,6 +51,12 @@ class ShoppingItemCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDelegate
 
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
+        shoppingItemController.changeStatus(for: shoppingItem)
+        collectionView.reloadItems(at: [indexPath])
+    }
+    
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {

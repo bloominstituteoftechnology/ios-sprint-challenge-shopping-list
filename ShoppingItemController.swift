@@ -10,7 +10,13 @@ import UIKit
 
 class ShoppingItemController {
     
-    let shoppingItems: [ShoppingItem] = [
+    func changeStatus(for item: ShoppingItem) {
+        guard let index = shoppingItems.index(of: item) else { return }
+        
+        shoppingItems[index].hasBeenAdded = !shoppingItems[index].hasBeenAdded
+    }
+    
+    private(set) var shoppingItems: [ShoppingItem] = [
         ShoppingItem(name: "apple"),
         ShoppingItem(name: "grapes"),
         ShoppingItem(name: "milk"),
