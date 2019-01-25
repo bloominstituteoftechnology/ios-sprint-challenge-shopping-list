@@ -16,7 +16,22 @@ class ShoppingCollectionViewCell: UICollectionViewCell {
         guard let shopping = shopping else { return }
         
         ImageFoodOutlet.image = shopping.image
-        foodNameLabel.text = shopping.foodName
+        
+        
+        
+
+        var food = shopping.foodName
+        foodNameLabel.text = food
+        
+        if food == "image1" {
+            foodNameLabel.text = "Apple"
+        
+        
+        }
+        
+        
+        
+        
         print("updateViews on ShoppingCollectionViewCell")
         
         if shopping.addOrNot {
