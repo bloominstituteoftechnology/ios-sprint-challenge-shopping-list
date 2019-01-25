@@ -8,13 +8,13 @@
 
 import UIKit
 
-struct shoppingItem {
+struct ShoppingItem {
     var image: UIImage
     var name: String
     var hasBeenAdded: Bool
     
-    init(image: UIImage, name: String, hasBeenAdded: Bool = false) {
-        self.image = image
+    init(image: String, name: String, hasBeenAdded: Bool = false) {
+        self.image = UIImage(named: image)!
         self.name = name
         self.hasBeenAdded = hasBeenAdded
     }
