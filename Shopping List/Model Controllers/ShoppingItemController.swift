@@ -46,5 +46,18 @@ class ShoppingItemController {
     }
     
     
+    // add computed properties:
+    
+    var addedItems: [ShoppingItem] {
+        let addedItems = shoppingList.filter({ $0.isAdded == true })
+        return addedItems
+    }
+    
+    var notAddedItems: [ShoppingItem] {
+        let notAddedItems = shoppingList.filter({ $0.isAdded == false })
+        return notAddedItems
+    }
+    
+    
     
 }
