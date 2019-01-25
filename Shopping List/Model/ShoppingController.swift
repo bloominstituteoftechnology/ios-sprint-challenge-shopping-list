@@ -10,9 +10,24 @@ class ShoppingController {
     
     func loadImages() {
         for i in 1 ... 7 {
-            let string = "image\(i)"
+           var string = "image\(i)"
+            
+            var anotherString: String
+            
             guard let image = UIImage(named: string) else { return }
-            let food = Shopping(image: image, foodName: "food\(i)")
+            
+//            if string == "image1" {
+//                var x = i
+//                x = "Apple"
+////                var x: String
+////                x = "Apple"
+//            }
+            
+            let food = Shopping(image: image, foodName: string)
+            
+//            if food.foodName == "image1" {
+//                shopping.append(image: image, foodName: anotherString)
+//            }
             shopping.append(food)
             print("images loaded")
         }

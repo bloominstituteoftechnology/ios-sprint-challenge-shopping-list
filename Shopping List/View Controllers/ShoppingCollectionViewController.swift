@@ -63,6 +63,7 @@ class ShoppingCollectionViewController: UICollectionViewController, ShoppingColl
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         collectionView?.reloadData()
+        
 //    }
 //
 //    override func viewDidLoad() {

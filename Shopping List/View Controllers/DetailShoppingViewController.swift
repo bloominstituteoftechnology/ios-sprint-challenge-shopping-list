@@ -11,7 +11,8 @@ class DetailShoppingViewController: UIViewController {
     }
     
     func updateViews() {
-     //   you have \(items) in cart
+        let x = 1
+        itemsInListLabel.text = "You have \(x) items in your cart."
     }
     
     
