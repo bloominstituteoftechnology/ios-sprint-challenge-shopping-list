@@ -65,6 +65,19 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         
 
     }
+    
+    
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let item = shoppingItemController.shoppingList[indexPath.row]
+        
+        shoppingItemController.updateIsAdded(item: item)
+        
+        collectionView.reloadData()
+        
+    }
+    
 
     // MARK: UICollectionViewDelegate
 
