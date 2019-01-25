@@ -32,29 +32,36 @@
                                     <rect key="frame" x="0.0" y="0.0" width="277" height="209"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Item Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QkA-9f-gaz">
-                                            <rect key="frame" x="81" y="11" width="115" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9kj-ce-uV1">
-                                            <rect key="frame" x="18" y="40" width="240" height="128"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="90" id="9M5-oK-PHb"/>
-                                                <constraint firstAttribute="height" constant="80" id="u7f-Aj-3S0"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="35u-9y-nh8">
-                                            <rect key="frame" x="93" y="178" width="91" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="r5A-3Z-DPE">
+                                            <rect key="frame" x="-1.5" y="11" width="280" height="228"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Item Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QkA-9f-gaz">
+                                                    <rect key="frame" x="0.0" y="0.0" width="90" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9kj-ce-uV1">
+                                                    <rect key="frame" x="0.0" y="28.5" width="90" height="80"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="90" id="9M5-oK-PHb"/>
+                                                        <constraint firstAttribute="height" constant="80" id="u7f-Aj-3S0"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="35u-9y-nh8">
+                                                    <rect key="frame" x="0.0" y="116.5" width="90" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
                                     </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="r5A-3Z-DPE" firstAttribute="centerX" secondItem="EvG-fk-o0g" secondAttribute="centerX" id="YCv-cF-VR2"/>
+                                    <constraint firstItem="r5A-3Z-DPE" firstAttribute="centerY" secondItem="EvG-fk-o0g" secondAttribute="centerY" id="tKe-yv-XvJ"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="addedLabel" destination="QkA-9f-gaz" id="pVr-Tb-cmd"/>
                                     <outlet property="itemImage" destination="9kj-ce-uV1" id="lFY-yy-Ja7"/>
