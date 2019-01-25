@@ -20,12 +20,14 @@ class OrderViewController: UIViewController {
     
     @IBAction func printOrderTapped(_ sender: UIButton) {
         
-    add
+        guard let addedItems = addedItems else { return }
+        guard let name = nameField.text else { return }
+        guard let address = addressField.text else { return }
         
+        let printMessage = "\(name)'s order of \(addedItems) will  be delivered to \(address)"
         
-        
-        
-        
+        print(printMessage)
+  
     }
     
     
