@@ -40,6 +40,12 @@ class ShoppingItemCollectionViewController: UICollectionViewController {
         shoppingItemCell.imageView.image = shoppingItem.image
         shoppingItemCell.itemLabel.text = shoppingItem.name
         
+        if shoppingItem.hasBeenAdded {
+            shoppingItemCell.hasBeenAddedLabel.text = "✅"
+        } else {
+            shoppingItemCell.hasBeenAddedLabel.text = "❌"
+        }
+        
         return shoppingItemCell
     }
 

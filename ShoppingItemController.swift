@@ -11,12 +11,12 @@ import UIKit
 class ShoppingItemController {
     
     let shoppingItems: [ShoppingItem] = [
-        ShoppingItem(image: "apple", name: "apple"),
-        ShoppingItem(image: "grapes", name: "grapes"),
-        ShoppingItem(image: "milk", name: "milk"),
-        ShoppingItem(image: "muffin", name: "muffin"),
-        ShoppingItem(image: "popcorn", name: "popcorn"),
-        ShoppingItem(image: "soda", name: "soda"),
-        ShoppingItem(image: "strawberries", name: "strawberries")
+        ShoppingItem(name: "apple"),
+        ShoppingItem(name: "grapes"),
+        ShoppingItem(name: "milk"),
+        ShoppingItem(name: "muffin"),
+        ShoppingItem(name: "popcorn"),
+        ShoppingItem(name: "soda"),
+        ShoppingItem(name: "strawberries")
         ]
 }
