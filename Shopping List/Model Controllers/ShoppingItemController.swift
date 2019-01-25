@@ -28,6 +28,7 @@ class ShoppingItemController {
     
     init() {
         createItems()
+        loadFromPersistence()
     }
     
     func createItems() {
@@ -44,6 +45,7 @@ class ShoppingItemController {
     func updateIsAdded(item: ShoppingItem) {
         guard let index = shoppingList.index(of: item) else { return }
         shoppingList[index].isAdded = !shoppingList[index].isAdded
+        saveToPersistence()
         
     }
     
