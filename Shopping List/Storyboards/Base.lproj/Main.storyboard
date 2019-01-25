@@ -19,37 +19,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CW5-Th-UDR">
-                            <size key="itemSize" width="277" height="209"/>
+                            <size key="itemSize" width="150" height="150"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemCell" id="EvG-fk-o0g" customClass="ItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
-                                <rect key="frame" x="49" y="0.0" width="277" height="209"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="ItemCell" id="EvG-fk-o0g" customClass="ItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="277" height="209"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="r5A-3Z-DPE">
-                                            <rect key="frame" x="-1.5" y="11" width="280" height="228"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="r5A-3Z-DPE">
+                                            <rect key="frame" x="-2" y="11" width="280" height="228"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Item Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QkA-9f-gaz">
-                                                    <rect key="frame" x="0.0" y="0.0" width="90" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Item Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QkA-9f-gaz">
+                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="63.5"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9kj-ce-uV1">
-                                                    <rect key="frame" x="0.0" y="28.5" width="90" height="80"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="90" id="9M5-oK-PHb"/>
-                                                        <constraint firstAttribute="height" constant="80" id="u7f-Aj-3S0"/>
-                                                    </constraints>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9kj-ce-uV1">
+                                                    <rect key="frame" x="0.0" y="71.5" width="150" height="50"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="35u-9y-nh8">
-                                                    <rect key="frame" x="0.0" y="116.5" width="90" height="20.5"/>
+                                                    <rect key="frame" x="0.0" y="129.5" width="150" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -59,8 +55,10 @@
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="r5A-3Z-DPE" firstAttribute="centerX" secondItem="EvG-fk-o0g" secondAttribute="centerX" id="YCv-cF-VR2"/>
-                                    <constraint firstItem="r5A-3Z-DPE" firstAttribute="centerY" secondItem="EvG-fk-o0g" secondAttribute="centerY" id="tKe-yv-XvJ"/>
+                                    <constraint firstItem="r5A-3Z-DPE" firstAttribute="leading" secondItem="EvG-fk-o0g" secondAttribute="leading" id="GnR-c2-gx8"/>
+                                    <constraint firstItem="r5A-3Z-DPE" firstAttribute="top" secondItem="EvG-fk-o0g" secondAttribute="top" id="ltB-u6-DuL"/>
+                                    <constraint firstAttribute="bottom" secondItem="r5A-3Z-DPE" secondAttribute="bottom" id="vkR-fn-AtJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="r5A-3Z-DPE" secondAttribute="trailing" id="wZc-FD-Gmx"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="addedLabel" destination="QkA-9f-gaz" id="pVr-Tb-cmd"/>
@@ -81,6 +79,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="Gzi-dX-bfl" id="Lqi-46-Pdn"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jBL-rM-XeF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
