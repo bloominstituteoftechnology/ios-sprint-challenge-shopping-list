@@ -12,7 +12,9 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
 
 
     @IBOutlet var imageView: UIImageView!
-    
     @IBOutlet var itemLabel: UILabel!
-    
+
+   
+
+
 }

@@ -41,9 +41,13 @@ class ShoppingItemController {
     }
 
 
-    func toggleLikeButton(_ item: ShoppingItem) {
+    func toggleLikeButton(for item: ShoppingItem) {
+        guard let index = shoppingList.index(of: item) else { return }
+        shoppingList[index].isLiked = !shoppingList[index].isLiked
+        saveToPersistence()
 
     }
+
     var shoppingListURL: URL? {
         let fileManager = FileManager.default
         guard let documentDirectories = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }

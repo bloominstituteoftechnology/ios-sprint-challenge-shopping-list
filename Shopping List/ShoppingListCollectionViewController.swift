@@ -17,7 +17,10 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         
         return shoppingItemController.shoppingList
     }
-    
+
+    @IBAction func nextButton(_ sender: Any) {
+    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +40,10 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+        if segue.identifier == "ShopperSegue" {
+            guard let destinationVC = segue.destination as? ItemsPickedViewController else { return }
+            destinationVC.shoppListController = shoppingListController
+        }
     }
 
 
