@@ -13,7 +13,7 @@
         <!--Shopping List-->
         <scene sceneID="rnr-nA-QUy">
             <objects>
-                <collectionViewController id="NUT-cP-wm0" sceneMemberID="viewController">
+                <collectionViewController id="NUT-cP-wm0" customClass="ShoppingCollectionViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="4jQ-al-ZLL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,7 +25,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Msr-bm-yJn">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoppingCell" id="Msr-bm-yJn" customClass="ShoppingCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="138" height="161"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -52,6 +52,11 @@
                                         </label>
                                     </subviews>
                                 </view>
+                                <connections>
+                                    <outlet property="ImageFoodOutlet" destination="ykZ-Ln-cpa" id="aOy-4m-z8R"/>
+                                    <outlet property="addOrNotLabel" destination="Dp3-w0-7vg" id="rBC-7y-Bsj"/>
+                                    <outlet property="foodNameLabel" destination="VCu-kg-yCY" id="MeU-gc-8iD"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -71,10 +76,10 @@
             </objects>
             <point key="canvasLocation" x="1073" y="63"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail Shopping View Controller-->
         <scene sceneID="oSa-1P-odC">
             <objects>
-                <viewController id="zpj-Aa-7Kq" sceneMemberID="viewController">
+                <viewController id="zpj-Aa-7Kq" customClass="DetailShoppingViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ILf-Cj-EfN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -88,13 +93,13 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l3g-Ob-YnZ">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l3g-Ob-YnZ">
                                         <rect key="frame" x="0.0" y="41.5" width="359" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IBm-Wq-zom">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IBm-Wq-zom">
                                         <rect key="frame" x="0.0" y="79.5" width="359" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -103,6 +108,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTE-mz-kr8">
                                         <rect key="frame" x="0.0" y="117.5" width="359" height="30"/>
                                         <state key="normal" title="Does Nothing Button"/>
+                                        <connections>
+                                            <action selector="nothingButton:" destination="zpj-Aa-7Kq" eventType="touchUpInside" id="q9y-us-lSj"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -115,6 +123,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QnZ-pN-oT8"/>
                     </view>
+                    <connections>
+                        <outlet property="addressLabel" destination="IBm-Wq-zom" id="aA7-MZ-gKf"/>
+                        <outlet property="itemsInListLabel" destination="Xqm-eN-nyB" id="Jev-dQ-gUx"/>
+                        <outlet property="nameLabel" destination="l3g-Ob-YnZ" id="yyf-we-n0D"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FoF-mM-ad9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
