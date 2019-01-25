@@ -37,6 +37,13 @@ class ShoppingItemController {
         
     }
     
+    // updateIsAdded method
+    
+    func updateIsAdded(item: ShoppingItem) {
+        guard let index = shoppingList.index(of: item) else { return }
+        shoppingList[index].isAdded = !shoppingList[index].isAdded
+        
+    }
     
     
     
