@@ -9,6 +9,9 @@
 import UIKit
 
 class ShoppingItemController {
+    
+    private(set) var shoppingList: [ShoppingItem] = []
+    
     // properties
     // need to implement:
 
@@ -19,8 +22,7 @@ class ShoppingItemController {
     
     // properties
     
-    private(set) var shoppingList: [ShoppingItem] = []
-    
+   
     // create initial items and initialize
     // use provided snippet: let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
     
@@ -69,12 +71,38 @@ class ShoppingItemController {
         
         return path
         
+    }
+    
+
+    func saveToPersistence() {
+        
+        guard let url = shoppingListURL else { return }
+        
+        let encoder = PropertyListEncoder()
+        
+        do {
+            let listData = try encoder.encode(shoppingList)
+            try listData.write(to: url)
+            
+        } catch {
+            print(error)
+        }
         
         
     }
     
-    
-    
-    
+     func loadFromPersistence() {
+        
+        guard let url = shoppingListURL else { return }
+        
+        let decoder = PropertyListDecoder()
+        
+        do {
+            let decodedList = try Data(contentsOf: url)
+            shoppingList = try decoder.decode([ShoppingItem].self, from: decodedList)
+        } catch {
+            print(error)
+        }
+    }
     
 }
