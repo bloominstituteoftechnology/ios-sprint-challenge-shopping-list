@@ -12,6 +12,18 @@ class ShoppingCollectionViewController: UICollectionViewController, ShoppingColl
             //Reload the row
             collectionView?.reloadItems(at: [indexPath])
         }
+    
+    func likeButtonWasTapped(on cell: ShoppingCollectionViewCell) {
+        //Unwrap the cell's painting and the indexPath of the cell
+        guard let shopping = cell.shopping, let indexPath = collectionView?.indexPath(for: cell) else { return }
+        
+        //Update isLiked on the painting
+        shoppingController.toggleIsLiked(for: shopping)
+        
+        //Reload the row
+        collectionView?.reloadItems(at: [indexPath])
+     //   collectionView.reloadRows(at: [indexPath], with: .fade)
+    }
         
         
         
@@ -65,6 +77,11 @@ class ShoppingCollectionViewController: UICollectionViewController, ShoppingColl
 //        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 //        collectionView?.reloadData()
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        collectionView?.reloadData()
     }
 
     /*

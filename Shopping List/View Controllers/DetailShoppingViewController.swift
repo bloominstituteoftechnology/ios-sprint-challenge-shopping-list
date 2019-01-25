@@ -10,12 +10,15 @@ class DetailShoppingViewController: UIViewController {
         view.backgroundColor = .blue
     }
     
+    func updateViews() {
+     //   you have \(items) in cart
+    }
+    
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        updateViews()
     }
     
 
