@@ -23,7 +23,7 @@ class OrderViewController: UIViewController {
         guard let name = nameField.text else { return }
         guard let address = addressField.text else { return }
         
-        let printMessage = "\(name)'s order of \(addedItems) will  be delivered to \(address)"
+        let printMessage = "\(name)'s order of \(addedItems.count) items will  be delivered to \(address) within 45 minutes or your money back"
         
         print(printMessage)
   
@@ -35,7 +35,7 @@ class OrderViewController: UIViewController {
         
         guard let addedItems = addedItems else { return }
         
-        orderLabel.text = "You have \(addedItems) in your cart"
+        orderLabel.text = "You have \(addedItems.count) items in your cart"
     
         // Do any additional setup after loading the view.
     }
