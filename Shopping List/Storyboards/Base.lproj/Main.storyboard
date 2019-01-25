@@ -32,10 +32,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="138" height="161"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ykZ-Ln-cpa">
-                                            <rect key="frame" x="40" y="46" width="58" height="71"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Food Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VCu-kg-yCY">
                                             <rect key="frame" x="25" y="120" width="89" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -43,18 +39,23 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Added/Not Added" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dp3-w0-7vg">
-                                            <rect key="frame" x="12" y="20" width="114" height="18"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ykZ-Ln-cpa">
+                                            <rect key="frame" x="40" y="39" width="58" height="71"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jVS-qY-txP">
+                                            <rect key="frame" x="29" y="6" width="70" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="not added"/>
+                                            <connections>
+                                                <action selector="addOrNotAction:" destination="Msr-bm-yJn" eventType="touchUpInside" id="WuS-Yf-aZB"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </view>
                                 <connections>
                                     <outlet property="ImageFoodOutlet" destination="ykZ-Ln-cpa" id="aOy-4m-z8R"/>
-                                    <outlet property="addOrNotLabel" destination="Dp3-w0-7vg" id="rBC-7y-Bsj"/>
+                                    <outlet property="addOrNotButtonOutlet" destination="jVS-qY-txP" id="WCA-ye-oFu"/>
                                     <outlet property="foodNameLabel" destination="VCu-kg-yCY" id="MeU-gc-8iD"/>
                                 </connections>
                             </collectionViewCell>
@@ -74,7 +75,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9kJ-t6-EID" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1073" y="63"/>
+            <point key="canvasLocation" x="1072.8" y="62.518740629685162"/>
         </scene>
         <!--Detail Shopping View Controller-->
         <scene sceneID="oSa-1P-odC">
