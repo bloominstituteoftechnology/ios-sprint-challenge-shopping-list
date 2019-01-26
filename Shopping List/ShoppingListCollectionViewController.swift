@@ -42,7 +42,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         // Pass the selected object to the new view controller.
         if segue.identifier == "ShopperSegue" {
             guard let destinationVC = segue.destination as? ItemsPickedViewController else { return }
-            destinationVC.shoppingListController = shoppingItemController
+            destinationVC.amountOfItemsLabel.text = "You have \(shoppingItemController.shoppingList.count)" 
             
         }
         
