@@ -42,7 +42,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         // Pass the selected object to the new view controller.
         if segue.identifier == "ShopperSegue" {
             guard let destinationVC = segue.destination as? ItemsPickedViewController else { return }
-            destinationVC.shoppListController = shoppingListController
+            destinationVC.shoppingListController = shoppingItemController
         }
     }
 
@@ -59,7 +59,8 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ShoppingItemCollectionViewCell
         let item = shoppingItems[indexPath.item]
-        cell.imageView.image = item.image
+
+        cell.imageView.image = UIImage(named: item.name)
         cell.itemLabel.text = item.name
 
 

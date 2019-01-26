@@ -13,7 +13,7 @@ class ShoppingItemController {
     init () {
         loadFromPersistence()
     }
-    private(set)  var shoppingList = [ShoppingItem(name: "apple", image: "apple"), ShoppingItem(name: "grapes", image: "grapes"), ShoppingItem(name: "milk", image: "milk"), ShoppingItem(name: "muffin", image: "muffin"), ShoppingItem(name: "popcorn", image: "popcorn"), ShoppingItem(name: "strawberries", image: "strawberries")]
+    private(set)  var shoppingList: [ShoppingItem] = []
 
 
 
@@ -38,6 +38,14 @@ class ShoppingItemController {
             print(error)
         }
 
+    }
+    func createItems(withName name: String ) {
+        let foodNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
+        for food in foodNames {
+            let item = ShoppingItem(name: food)
+            shoppingList.append(item)
+            saveToPersistence()
+        }
     }
 
 

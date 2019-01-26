@@ -53,6 +53,9 @@
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qhv-uj-5xt">
                                                             <rect key="frame" x="60.5" y="145.5" width="30" height="63.5"/>
                                                             <state key="normal" title="Add"/>
+                                                            <connections>
+                                                                <action selector="likeButtonTapped:" destination="4g3-gC-TEu" eventType="touchUpInside" id="5Zd-EY-nW5"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </stackView>
@@ -67,6 +70,7 @@
                                         <connections>
                                             <outlet property="imageView" destination="Wik-0c-2Od" id="7Gb-Nv-KhG"/>
                                             <outlet property="itemLabel" destination="uEu-KL-5pX" id="DFo-ll-Q9T"/>
+                                            <outlet property="likeButton" destination="Qhv-uj-5xt" id="nNs-ie-KfF"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
