@@ -43,8 +43,11 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         if segue.identifier == "ShopperSegue" {
             guard let destinationVC = segue.destination as? ItemsPickedViewController else { return }
             destinationVC.shoppingListController = shoppingItemController
+            
         }
+        
     }
+
 
 
     // MARK: UICollectionViewDataSource
