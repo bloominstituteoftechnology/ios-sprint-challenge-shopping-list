@@ -9,7 +9,7 @@ struct Shopping:  Equatable, Codable {
     var foodName: String
     
     
-    init (name: String, foodName: String) {
+    init (name: String, foodName: String, addOrNot: Bool = false) {
 
         self.addOrNot = false
         self.foodName = foodName

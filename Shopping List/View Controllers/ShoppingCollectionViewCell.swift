@@ -6,55 +6,29 @@ class ShoppingCollectionViewCell: UICollectionViewCell {
     
     let shoppingController = ShoppingController()
     
-//    var shopping: Shopping? {
-//        didSet {
-//            updateViews()
-//        }
-//    }
-//
-//    func updateViews() {
-//        guard let shopping = shopping else { return }
-//
-//        ImageFoodOutlet.image = shopping.image
-//
-//
-//
-//
-//        var food = shopping.foodName
-//        foodNameLabel.text = food
-//
-//        if food == "image1" {
-//            foodNameLabel.text = "Apple"
-//
-//
-//        }
-//
-//
-//
-//
-//        print("updateViews on ShoppingCollectionViewCell")
-//
-//        if shopping.addOrNot {
-//            addOrNotButtonOutlet.setTitle("NotAdded", for: .normal)
-//            addOrNotButtonOutlet.setTitleColor(UIColor.black, for: .normal)
-//        } else {
-//            addOrNotButtonOutlet.setTitle("Added", for: .normal)
-//            addOrNotButtonOutlet.setTitleColor(UIColor.black, for: .normal)
-//        }
-//    }
-//
     
     
-//    func likeButtonWasTapped(on cell: ShoppingCollectionViewCell) {
-//        //Unwrap the cell's painting and the indexPath of the cell
-//        guard let shopping = cell.shopping, let indexPath = collectionView.indexPath(for: cell) else { return }
-//        
-//        //Update isLiked on the painting
-//        shoppingController.toggleIsLiked(for: shopping)
-//        
-//        //Reload the row
-//        collectionView.reloadRows(at: [indexPath], with: .fade)
-//    }
+    
+    var shopping: Shopping? {
+        didSet {
+            updateViews()
+        }
+    }
+
+    func updateViews() {
+        guard let shopping = shopping else { return }
+
+        print("updateViews on ShoppingCollectionViewCell")
+
+        if shopping.addOrNot == true {
+            addOrNotButtonOutlet.setTitle("NotAdded", for: .normal)
+  //          addOrNotButtonOutlet.setTitleColor(UIColor.black, for: .normal)
+        } else if shopping.addOrNot == false {
+            addOrNotButtonOutlet.setTitle("Added", for: .normal)
+   //         addOrNotButtonOutlet.setTitleColor(UIColor.black, for: .normal)
+        }
+    }
+
     
     weak var delegate: ShoppingCollectionViewCellDelegate?
     
@@ -66,5 +40,7 @@ class ShoppingCollectionViewCell: UICollectionViewCell {
         delegate?.addButtonWasTapped(on: self)
  //       shoppingCollectionViewController.addButtonWasTapped(on: self)
   //      ShoppingController.toggleIsLiked(on: self)
+        print("like button pressed")
+        
     }
 }
