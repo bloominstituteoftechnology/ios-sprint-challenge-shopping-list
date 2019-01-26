@@ -1,31 +1,37 @@
 import UIKit
 
-class ShoppingCollectionViewController: UICollectionViewController, ShoppingCollectionViewCellDelegate {
+class ShoppingCollectionViewController: UICollectionViewController {   // , ShoppingCollectionViewCellDelegate {
     
-    func addButtonWasTapped(on cell: ShoppingCollectionViewCell) {
     
-        guard let shopping = cell.shopping, let indexPath = collectionView?.indexPath(for: cell) else { return }
-            
-            //Update isLiked on the painting
-            shoppingController.toggleIsLiked(for: shopping)
-            
-            //Reload the row
-            collectionView?.reloadItems(at: [indexPath])
-        }
+//    func addButtonWasTapped(on cell: ShoppingCollectionViewCell) {
+//
+//        guard let shopping = cell.shopping, let indexPath = collectionView?.indexPath(for: cell) else { return }
+//
+//
+//        let shoppingItem = shoppingController.shopping[indexPath.row]
+//
+//
+//
+//            //Update isLiked on the painting
+//            shoppingController.toggleIsLiked(for: shoppingItem)
+//
+//            //Reload the row
+//            collectionView?.reloadItems(at: [indexPath])
+//        }
     
-    func likeButtonWasTapped(on cell: ShoppingCollectionViewCell) {
-        //Unwrap the cell's painting and the indexPath of the cell
-        guard let shopping = cell.shopping, let indexPath = collectionView?.indexPath(for: cell) else { return }
-        
-        //Update isLiked on the painting
-        shoppingController.toggleIsLiked(for: shopping)
-        
-        //Reload the row
-        collectionView?.reloadItems(at: [indexPath])
-     //   collectionView.reloadRows(at: [indexPath], with: .fade)
-    }
-        
-        
+//    func likeButtonWasTapped(on cell: ShoppingCollectionViewCell) {
+//        //Unwrap the cell's painting and the indexPath of the cell
+//        guard let shopping = cell.shopping, let indexPath = collectionView?.indexPath(for: cell) else { return }
+//
+//        //Update isLiked on the painting
+//        shoppingController.toggleIsLiked(for: shopping)
+//
+//        //Reload the row
+//        collectionView?.reloadItems(at: [indexPath])
+//     //   collectionView.reloadRows(at: [indexPath], with: .fade)
+//    }
+//
+    
         
 
     
@@ -107,7 +113,11 @@ class ShoppingCollectionViewController: UICollectionViewController, ShoppingColl
     
             let shopping = shoppingController.shopping[indexPath.row]
         
-        cell.ImageFoodOutlet.image = shopping.image
+        
+        let image = shopping.picture
+        
+        cell.ImageFoodOutlet.image = UIImage(named: shopping.foodName)
+        
         cell.foodNameLabel.text = shopping.foodName
        // cell.addOrNotLabel = shopping.addOrNot
     

@@ -1,15 +1,19 @@
 import UIKit
 
-struct Shopping:  Equatable {
+struct Shopping:  Equatable, Codable {
     
-    let image: UIImage
+    var name: String
+    var picture: Data?
+    //let image: UIImage
     var addOrNot: Bool
     var foodName: String
     
-    init (image: UIImage, addOrNot: Bool = false, foodName: String) {
-        self.image = image
-        self.addOrNot = addOrNot
+    
+    init (name: String, foodName: String) {
+
+        self.addOrNot = false
         self.foodName = foodName
+        self.name = name
     }
     
     
