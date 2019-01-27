@@ -19,12 +19,14 @@ class ShoppingCollectionViewController: UICollectionViewController , ShoppingCol
             shoppingController.toggleIsLiked(for: shoppingItem)
         
         cell.addOrNotButtonOutlet.alpha = shoppingController.shopping[indexPath.row].addOrNot ? 1.0 : 0.33
+        
+     //   cell.addOrNotButtonOutlet.currentTitle? = "shoppingController.shopping[indexPath.row].addOrNot"
 
             //Reload the row
             collectionView?.reloadItems(at: [indexPath])
             collectionView?.reloadData()
         
-        
+        print("addButtonWasTapped func")
         }
     
     
@@ -75,6 +77,10 @@ class ShoppingCollectionViewController: UICollectionViewController , ShoppingCol
         
      //   cell.addOrNotButtonOutlet?.setTitle(title, for: .normal)
         cell.addOrNotButtonOutlet.alpha = shoppingController.shopping[indexPath.row].addOrNot ? 1.0 : 0.33
+        
+        var shoppingCollectionViewCell = ShoppingCollectionViewCell()
+        
+        shoppingCollectionViewCell.updateViews()
     
         return cell
     }

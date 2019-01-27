@@ -14,7 +14,8 @@ class ShoppingCollectionViewCell: UICollectionViewCell {
             updateViews()
         }
     }
-
+    
+        
     func updateViews() {
         guard let shopping = shopping else { return }
 
@@ -28,7 +29,7 @@ class ShoppingCollectionViewCell: UICollectionViewCell {
    //         addOrNotButtonOutlet.setTitleColor(UIColor.black, for: .normal)
         }
     }
-
+    
     
     weak var delegate: ShoppingCollectionViewCellDelegate?
     
@@ -37,10 +38,12 @@ class ShoppingCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var addOrNotButtonOutlet: UIButton!
     
     @IBAction func addOrNotAction(_ sender: Any) {
+        updateViews()
         delegate?.addButtonWasTapped(on: self)
  //       shoppingCollectionViewController.addButtonWasTapped(on: self)
   //      ShoppingController.toggleIsLiked(on: self)
         print("like button pressed")
+       
         
     }
 }
