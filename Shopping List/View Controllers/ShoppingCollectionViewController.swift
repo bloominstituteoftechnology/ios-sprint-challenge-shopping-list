@@ -59,11 +59,14 @@ class ShoppingCollectionViewController: UICollectionViewController , ShoppingCol
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return shoppingController.shopping.count
+      // return shoppingController.shopping.count
+        return 7
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ShoppingCollectionViewCell
+        
+        cell.ImageFoodOutlet.image = nil ;
         
         cell.delegate = self
     
@@ -78,9 +81,9 @@ class ShoppingCollectionViewController: UICollectionViewController , ShoppingCol
      //   cell.addOrNotButtonOutlet?.setTitle(title, for: .normal)
         cell.addOrNotButtonOutlet.alpha = shoppingController.shopping[indexPath.row].addOrNot ? 1.0 : 0.33
         
-        var shoppingCollectionViewCell = ShoppingCollectionViewCell()
+      //  var shoppingCollectionViewCell = ShoppingCollectionViewCell()
         
-        shoppingCollectionViewCell.updateViews()
+       // shoppingCollectionViewCell.updateViews()
     
         return cell
     }

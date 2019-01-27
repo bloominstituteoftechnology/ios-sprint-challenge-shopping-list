@@ -2,8 +2,7 @@ import UIKit
 
 class ShoppingController {
     
-     var shopping: [Shopping] = []
-    
+    var shopping: [Shopping] = []
     
     let foodNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
 
@@ -11,29 +10,38 @@ class ShoppingController {
         for name in foodNames {
             let item = Shopping(name: name, foodName: name)
             shopping.append(item)
-            saveToPersitentStore()
+     //       saveToPersitentStore()
         }
     }
     
-    
     init() {
+//
+//        do {
+//            try loadToPersistentStore()
+//        } catch {
+//            createShopping()
+//        }
+//
+//
+//
+//        if saveToPersitentStore() == nil {
+//            createShopping()
+//
+//        } else {
         loadToPersistentStore()
         createShopping()
-        loadToPersistentStore()
-    }
+ //   }
+}
     
-    
-
         func toggleIsLiked(for painting: Shopping) {
             //Make sure you can get an index for the painting, then toggle the isLiked property
             guard let index = shopping.index(of: painting) else { return }
             
-            saveToPersitentStore()
+        //    saveToPersitentStore()
             
             shopping[index].addOrNot = !shopping[index].addOrNot
-        
-            saveToPersitentStore()
-        
+            
+             saveToPersitentStore()
     }
     
     func saveToPersitentStore() {
