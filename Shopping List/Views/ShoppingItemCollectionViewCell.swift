@@ -22,13 +22,15 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     func updateViews() {
         guard let shoppingItem = shoppingItem else { return }
         
-        imageView?.image = UIImage(named: shoppingItem.image)
+        imageView?.image = UIImage(data: shoppingItem.imageData)
         nameLabel?.text = shoppingItem.name
         
         if shoppingItem.isAdded == true {
-            addedNotAddedLabel.text = "Added"
+            addedNotAddedLabel.text = "Added!"
+            addedNotAddedLabel.textColor = .green
         } else {
             addedNotAddedLabel.text = "Not Added"
+            addedNotAddedLabel.textColor = .black
         }
     }
     

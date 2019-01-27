@@ -9,12 +9,11 @@
 import UIKit
 
 class ShoppingListCollectionViewController: UICollectionViewController {
-    var shoppingItemController = ShoppingItemController()
+    let shoppingItemController = ShoppingItemController()
 
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         collectionView?.reloadData()
     }
     
@@ -27,9 +26,17 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     }
  
     // MARK: UICollectionViewDataSource
+    
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return shoppingItemController.shoppingItems.count
+        if section == 0 {
+            return shoppingItemController.shoppingItemsOnList.count
+        } else {
+            return shoppingItemController.shoppingItemsNotOnList.count
+        }
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -42,11 +49,34 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind {
+        case UICollectionElementKindSectionHeader:
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CollectionViewSectionHeader", for: indexPath) as! HeaderCollectionReusableView
+            if indexPath.section == 0 {
+                headerView.headerLabel.text = "Shopping Cart"
+                headerView.headerLabel.isEnabled = !shoppingItemController.shoppingItemsOnList.isEmpty
+            } else {
+                headerView.headerLabel.text = "Items Not On List"
+                headerView.headerLabel.isEnabled = !shoppingItemController.shoppingItemsNotOnList.isEmpty
+            }
+            return headerView
+        default: break
+        }
+        return (UICollectionReusableView())
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let index = indexPath.item
-        let shoppingItem = shoppingItemController.shoppingItems[index]
-        shoppingItemController.updateIsAdded(for: shoppingItem)
-        
+        let shoppingItem = shoppingItemFor(indexPath)
+        shoppingItemController.toggleIsOnList(for: shoppingItem)
         collectionView.reloadData()
+    }
+    
+    private func shoppingItemFor(_ indexPath: IndexPath) -> ShoppingItem {
+        if indexPath.section == 0 {
+            return shoppingItemController.shoppingItemsOnList[indexPath.item]
+        } else {
+            return shoppingItemController.shoppingItemsNotOnList[indexPath.item]
+        }
     }
 }

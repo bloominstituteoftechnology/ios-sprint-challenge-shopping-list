@@ -10,6 +10,6 @@ import Foundation
 
 struct ShoppingItem: Equatable, Codable {
     var name: String
-    var image: String
+    var imageData: Data
     var isAdded: Bool
 }

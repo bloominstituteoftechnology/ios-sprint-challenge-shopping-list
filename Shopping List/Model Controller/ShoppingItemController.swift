@@ -6,118 +6,115 @@
 //  Copyright © 2019 Lambda School. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class ShoppingItemController {
     private(set) var shoppingItems: [ShoppingItem] = []
     
-    // MARK: - Initializers
-    
-    init() {
-        
-        // check if user defaults contains a key for LaunchedBefore
-        if UserDefaults.standard.bool(forKey: "LaunchedBefore") {
-            // if so, load from the file
-            loadFromPersistentStore()
-            
-            // otherwise, set the key to true for the next, and make all the necessary items
-        } else {
-            UserDefaults.standard.set(true, forKey: "LaunchedBefore")
-            
-            // create shopping items
-            self.createShoppingItem(withName: "Apple", image: "apple")
-            self.createShoppingItem(withName: "Grapes", image: "grapes")
-            self.createShoppingItem(withName: "Milk", image: "milk")
-            self.createShoppingItem(withName: "Muffin", image: "muffin")
-            self.createShoppingItem(withName: "Popcorn", image: "popcorn")
-            self.createShoppingItem(withName: "Soda", image: "soda")
-            self.createShoppingItem(withName: "Strawberries", image: "strawberries")
+    var shoppingItemsOnList: [ShoppingItem] {
+        return shoppingItems.filter { (shoppingItem) -> Bool in
+            return shoppingItem.isAdded
         }
     }
     
-    // MARK: - CRUD
+    var shoppingItemsNotOnList: [ShoppingItem] {
+        return shoppingItems.filter { (shoppingItem) -> Bool in
+            return !shoppingItem.isAdded
+        }
+    }
     
-    func createShoppingItem(withName name: String, image: String, isAdded: Bool = false) {
-        let shoppingItem = ShoppingItem(name: name, image: image, isAdded: isAdded)
+    // MARK: - Initializers
+    init() {
+        loadFromPersistentStore()
+    }
+    
+    // MARK: - CRUD Methods
+   
+    func createShoppingItem(name: String, imageData: Data, isOnShoppingList: Bool) {
+        let shoppingItem = ShoppingItem(name: name, imageData: imageData, isAdded: isOnShoppingList)
+        
         shoppingItems.append(shoppingItem)
-        
         saveToPersistentStore()
-        
     }
     
-    func update(shoppingItem: ShoppingItem, name: String, image: String, isAdded: Bool) {
+    func toggleIsOnList(for shoppingItem: ShoppingItem) {
         guard let index = shoppingItems.index(of: shoppingItem) else { return }
         
-        var shoppingItem = shoppingItem
-        shoppingItem.name = name
-        shoppingItem.image = image
-        shoppingItem.isAdded = isAdded
-        
-        shoppingItems.remove(at: index)
-        shoppingItems.insert(shoppingItem, at: index)
-        
+        shoppingItems[index].isAdded = !shoppingItems[index].isAdded
         saveToPersistentStore()
-        
     }
     
-    func delete(shoppingItem: ShoppingItem) {
+    func resetShoppingList() {
+        for index in 0 ..< shoppingItems.count {
+            shoppingItems[index].isAdded = false
+        }
+        saveToPersistentStore()
+    }
+    
+    func update(shoppingItem: ShoppingItem, name: String, imageData: Data) {
+        guard let index = shoppingItems.index(of: shoppingItem) else {
+            NSLog("Cannot find the shopping item in the shopping items array")
+            return
+        }
+        
+        shoppingItems[index].name = name
+        shoppingItems[index].imageData = imageData
+        saveToPersistentStore()
+    }
+    
+    func delete(_ shoppingItem: ShoppingItem) {
         guard let index = shoppingItems.index(of: shoppingItem) else { return }
         
         shoppingItems.remove(at: index)
-        
         saveToPersistentStore()
     }
-    
-    // MARK: - Methods
-    
-    func updateIsAdded(for shoppingItem: ShoppingItem) {
-        guard let index = shoppingItems.index(of: shoppingItem) else { return }
-        
-        var shoppingItem = shoppingItems[index]
-        shoppingItem.isAdded = !shoppingItem.isAdded
-        
-        shoppingItems.remove(at: index)
-        shoppingItems.insert(shoppingItem, at: index)
-        
-        saveToPersistentStore()
-        
-    }
-    
     // MARK: - Persistence
     
-    private var persistentFileURL: URL? {
-        let fm = FileManager.default
+    private var persistentStoreURL: URL? {
+        guard let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
+        let fileName = "shoppingItems.plist"
         
-        guard let documentDirectory = fm.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
-        
-        return documentDirectory.appendingPathComponent("ShoppingList.plist")
+        return documentsURL.appendingPathComponent(fileName)
     }
     
-    func saveToPersistentStore() {
-        guard let url = persistentFileURL else { return }
-        
-        let encoder = PropertyListEncoder()
+    private func saveToPersistentStore() {
+        guard let url = persistentStoreURL else { return }
+        let plistEncoder = PropertyListEncoder()
         
         do {
-            let data = try encoder.encode(shoppingItems)
-            try data.write(to: url)
+            let shoppingItemsData = try plistEncoder.encode(shoppingItems)
+            try shoppingItemsData.write(to: url)
         } catch {
-            NSLog("Error saving photos data \(error)")
+            NSLog("Error saving data to persistent store: \(error)")
         }
     }
     
-    func loadFromPersistentStore() {
-        let fm = FileManager.default
+    private func loadFromPersistentStore() {
+        loadSampleShoppingItems()
+        guard let url = persistentStoreURL,
+            FileManager.default.fileExists(atPath: url.path) else { return }
+        let plistDecoder = PropertyListDecoder()
         
         do {
-            guard let url = persistentFileURL, fm.fileExists(atPath: url.path) else { return }
-            
-            let data = try Data(contentsOf: url)
-            let decoder = PropertyListDecoder()
-            let decodedShoppingItems = try decoder.decode([ShoppingItem].self, from: data)
-            shoppingItems = decodedShoppingItems
+            let shoppingItemsData = try Data(contentsOf: url)
+            shoppingItems = try plistDecoder.decode([ShoppingItem].self, from: shoppingItemsData)
         } catch {
-            NSLog("Error saving photos data \(error)")
+            NSLog("Error reading data from persistent store: \(error)")
         }
+    }
+    
+    // MARK: - Private Utility Methods
+
+    private func loadSampleShoppingItems() {
+        let hasLoadedSamepleItems = UserDefaults.standard.bool(forKey: "HasLoadedSampleItems")
+        guard !hasLoadedSamepleItems else { return }
+        
+        let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
+        for item in itemNames {
+            if let image = UIImage(named: item), let imageData = UIImagePNGRepresentation(image) {
+                createShoppingItem(name: item, imageData: imageData, isOnShoppingList: false)
+            }
+        }
+        UserDefaults.standard.set(true, forKey: "HasLoadedSampleItems")
     }
 }
