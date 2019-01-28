@@ -8,12 +8,34 @@
 
 import UIKit
 
-class AddNewItemViewController: UIViewController {
-
+class AddNewItemViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    var shoppingItemController: ShoppingItemController?
+    
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var textField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func addImage(_ sender: Any) {
+        presentImagePickerController()
+    }
+    
+    func presentImagePickerController() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
+        
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        
+        guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
+        imageView.image = image
     }
     
 

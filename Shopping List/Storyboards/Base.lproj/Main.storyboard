@@ -103,36 +103,54 @@
         <!--Add Custom Item-->
         <scene sceneID="eJC-cV-OJg">
             <objects>
-                <viewController id="DQH-O5-2rn" sceneMemberID="viewController">
+                <viewController id="DQH-O5-2rn" customClass="AddNewItemViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yka-pI-874">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fLI-AR-ehs">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CSZ-Sq-Ihu">
                                 <rect key="frame" x="16" y="127" width="343" height="313"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T9K-YA-FSH">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="237"/>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4jP-J6-Cfx">
-                                        <rect key="frame" x="0.0" y="245" width="343" height="30"/>
-                                        <color key="backgroundColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                        <state key="normal" title="Add Image">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                    </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter name of item" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R4m-eC-CK7">
-                                        <rect key="frame" x="0.0" y="283" width="343" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fLI-AR-ehs">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="313"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T9K-YA-FSH">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="237"/>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4jP-J6-Cfx">
+                                                <rect key="frame" x="0.0" y="245" width="343" height="30"/>
+                                                <color key="backgroundColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                <state key="normal" title="Add Image">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="addImage:" destination="DQH-O5-2rn" eventType="touchUpInside" id="vMy-rB-Nxa"/>
+                                                </connections>
+                                            </button>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter name of item" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R4m-eC-CK7">
+                                                <rect key="frame" x="0.0" y="283" width="343" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="fLI-AR-ehs" firstAttribute="leading" secondItem="CSZ-Sq-Ihu" secondAttribute="leading" id="0bN-b5-DG5"/>
+                                    <constraint firstAttribute="trailing" secondItem="fLI-AR-ehs" secondAttribute="trailing" id="A5B-wG-oTn"/>
+                                    <constraint firstItem="fLI-AR-ehs" firstAttribute="top" secondItem="CSZ-Sq-Ihu" secondAttribute="top" id="xNX-Xb-qXv"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="uMA-qF-Zx7" firstAttribute="bottom" secondItem="CSZ-Sq-Ihu" secondAttribute="bottom" constant="227" id="3RH-cN-jpV"/>
+                            <constraint firstItem="CSZ-Sq-Ihu" firstAttribute="trailing" secondItem="yka-pI-874" secondAttribute="trailingMargin" id="EOP-4Q-QO2"/>
+                            <constraint firstItem="CSZ-Sq-Ihu" firstAttribute="leading" secondItem="yka-pI-874" secondAttribute="leadingMargin" id="bu2-D2-BTd"/>
+                            <constraint firstItem="CSZ-Sq-Ihu" firstAttribute="top" secondItem="uMA-qF-Zx7" secondAttribute="top" constant="11" id="zVK-El-7B6"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="uMA-qF-Zx7"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -143,6 +161,10 @@
                     <navigationItem key="navigationItem" title="Add Custom Item" id="Q28-oJ-gez">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="681-2l-uqL"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="T9K-YA-FSH" id="DDn-SO-YZQ"/>
+                        <outlet property="textField" destination="R4m-eC-CK7" id="1cR-fV-Bz2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Noh-FS-3G3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

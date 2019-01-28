@@ -11,6 +11,4 @@ import UIKit
 class HeaderCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var headerLabel: UILabel!
     
-    
-    
 }
