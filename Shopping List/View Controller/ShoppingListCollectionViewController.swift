@@ -7,9 +7,7 @@
 //
 
 import UIKit
-
-
-
+ 
 class ShoppingListCollectionViewController: UICollectionViewController {
     
     override func  viewWillAppear(_ animated: Bool) {
