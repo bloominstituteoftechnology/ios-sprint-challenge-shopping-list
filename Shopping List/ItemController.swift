@@ -10,13 +10,13 @@ import Foundation
 import UIKit
 
 class ItemController {
-    
+
     var groceryList: [ShoppingItem] = []
-    
+
     private let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
-    
+
     var initKey = "initKey"
-    
+
     // Initialisation
     init() {
         let initialisationCheck = UserDefaults.standard.bool(forKey: initKey)
@@ -26,7 +26,7 @@ class ItemController {
             createGroceries()
         }
     }
-    
+
     func createGroceries() {
         for item in itemNames {
             let singleItem = ShoppingItem(name: item, pictureName: item)
@@ -35,7 +35,7 @@ class ItemController {
             saveToPersistence()
         }
     }
-    
+
     func updateGroceries(singleItem: ShoppingItem) {
         guard let index = groceryList.index(of: singleItem) else { return }
         var tempItem = singleItem
@@ -44,7 +44,7 @@ class ItemController {
         groceryList.insert(tempItem, at: index)
         saveToPersistence()
     }
-    
+
     //Saving
     func saveToPersistence() {
         let plistEncoder = PropertyListEncoder()
@@ -55,9 +55,9 @@ class ItemController {
         } catch {
             NSLog("Something went wrong encoding the file: \(error)")
         }
-        
+
     }
-    
+
     //Retrieving
     func retrieveFromPersistence() {
         do {
@@ -70,14 +70,10 @@ class ItemController {
             NSLog("Something went wrong decoding the file: \(error)")
         }
     }
-    
+
     var groceryFileURL: URL? {
         let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
         let fileName = "groceryList.plist"
         return documentDirectory?.appendingPathComponent(fileName)
     }
 }
-
-
-
-    
