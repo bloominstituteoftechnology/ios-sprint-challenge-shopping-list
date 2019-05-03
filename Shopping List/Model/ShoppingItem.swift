@@ -11,7 +11,7 @@ import Foundation
 struct ShoppingItem: Codable, Equatable {
     var imageData: Data
     var title: String
-    var addedToShoppingList: Bool = false
+    var addedToShoppingList: Bool
     
     init(imageData: Data, title: String, addedToShoppingList: Bool) {
         self.imageData = imageData

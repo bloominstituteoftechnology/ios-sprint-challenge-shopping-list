@@ -10,6 +10,14 @@ import Foundation
 
 class ShoppingItemController {
     
+    let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
+    
+    func create(imageData: Data, title: String, addedToShoppingList: Bool) {
+        let shoppingItem = ShoppingItem(imageData: imageData, title: title, addedToShoppingList: addedToShoppingList)
+        shoppingItems.append(shoppingItem)
+    }
+    
+    
     
     func saveToPersistentStore() {
         guard let url = persistentURL else { return }
