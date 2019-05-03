@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+private let reuseIdentifier = "ItemCell"
 
 class ShoppingItemCollectionViewController: UICollectionViewController {
     
@@ -25,6 +25,18 @@ class ShoppingItemCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return shoppingItemController.shoppingItems.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Item", for: indexPath) as? ShoppingItemCollectionViewCell else { return UICollectionViewCell()}
+        
+        let item = shoppingItemController.shoppingItems[indexPath.item]
+        
+        cell.titleLabel.text = item.title
+        cell.fruitImageView.image = UIImage(named: item.image)
+        
+        return cell
     }
 
 
