@@ -52,6 +52,9 @@
                                                                 <constraint firstAttribute="height" constant="160" id="vUa-54-75A"/>
                                                             </constraints>
                                                             <state key="normal" title="Button" image="apple"/>
+                                                            <connections>
+                                                                <action selector="buttonImagePressed:" destination="9xr-EX-WT7" eventType="touchUpInside" id="GRx-1y-eM1"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </stackView>
@@ -70,6 +73,9 @@
                                     <constraint firstItem="667-Ye-gzN" firstAttribute="top" secondItem="9xr-EX-WT7" secondAttribute="top" id="AuS-G4-6ir"/>
                                     <constraint firstItem="667-Ye-gzN" firstAttribute="leading" secondItem="9xr-EX-WT7" secondAttribute="leading" id="xmK-0u-NSH"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="label" destination="Vnw-DF-ewl" id="UWE-2I-jen"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
