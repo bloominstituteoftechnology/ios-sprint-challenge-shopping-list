@@ -19,9 +19,7 @@ class ShoppingItemCollectionViewController: UICollectionViewController, Shopping
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if shoppingItemController.shoppingItems.count == 0 {
-            shoppingItemController.createItemsFromNames(itemNames: shoppingItemController.itemNames)
-        }
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

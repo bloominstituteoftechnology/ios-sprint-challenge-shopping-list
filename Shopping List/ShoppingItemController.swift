@@ -8,6 +8,10 @@
 
 import Foundation
 
+extension String {
+    static let hasBeenLoadedKey = "hasBeenLoadedKey"
+}
+
 class ShoppingItemController {
     var shoppingItems: [ShoppingItem] = []
     let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
@@ -24,7 +28,13 @@ class ShoppingItemController {
     
     init() {
         loadFromPersistentStore()
+        if shoppingItems.count < 1 {
+            createItemsFromNames(itemNames: itemNames)
+            saveToPersistentStore()
+        }
     }
+    
+    
     
     func saveToPersistentStore() {
         guard let url = shoppingListURL else { return }
@@ -60,7 +70,6 @@ class ShoppingItemController {
     
     func createShoppingItem(name: String, imageName: String) {
         let shoppingItem = ShoppingItem(name: name, imageName: imageName)
-        
         shoppingItems.append(shoppingItem)
     }
     
