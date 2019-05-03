@@ -9,14 +9,26 @@
 import Foundation
 import UIKit
 
-class ShoppingItem {
-    var image: UIImage
+final class ShoppingItem {
+    var imageData: Data
     var name: String
     var addedToList: Bool
     
-    init(image: UIImage, name: String, addedToList: Bool = false) {
-        self.image = image
+    init(imageData: Data, name: String, addedToList: Bool = false) {
+        self.imageData = imageData
         self.name = name
         self.addedToList = addedToList
     }
+}
+// MARK: - Codable
+extension ShoppingItem: Codable {
+    
+}
+// MARK: - Equatable
+extension ShoppingItem: Equatable {
+    static func == (lhs: ShoppingItem, rhs: ShoppingItem) -> Bool {
+        return lhs.imageData == rhs.imageData
+    }
+    
+    
 }
