@@ -10,22 +10,13 @@ import UIKit
 
 class ShoppingListCollectionViewCell: UICollectionViewCell {
     
-    var shoppingItem: ShoppingItem? {
-        didSet {
-            updateViews()
-        }
-    }
+ 
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var itemAddedLabel: UILabel!
     
-    func updateViews(){
-        guard let photo = photo else { return }
-        
-        photoImageView.image = UIImage(data: photo.imageData)
-        photoLabel.text = photo.title
-    }
+
     
     
     

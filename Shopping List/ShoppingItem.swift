@@ -6,13 +6,18 @@
 //  Copyright © 2019 Lambda School. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct ShoppingItem {
     
-    let image: Data
+    let image: UIImage
     let name: String
     let added: Bool = false
+    
+    init(name: String, imageName: String) {
+        self.name = name
+        self.image = UIImage(named: imageName)!
+    }
     
     
     
