@@ -18,20 +18,13 @@ class OrderDetailViewController: UIViewController, UNUserNotificationCenterDeleg
 	}
 	
 	@IBAction func ordeButtonPressed(_ sender: Any) {
-		guard let itemCount = itemsInCartCount else { return }
-		if itemCount == 0 {
-			zeroItemsAlert()
-		} else {
-			register()
-			schedualLocal()
-		}
+		register()
+		schedualLocal()
+		nameTextView.text = nil
+		adressTextView.text = nil
 	}
 	
 	func zeroItemsAlert() {
-//		guard let itemsInCartCount = itemsInCartCount else { return }
-//		guard let name = nameTextView.text,
-//			let adress = adressTextView.text else { return }
-		
 		let title = "0 Items in cart"
 		let message = "add Iterm To your Cart"
 		let alerController = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -40,7 +33,6 @@ class OrderDetailViewController: UIViewController, UNUserNotificationCenterDeleg
 		alerController.addAction(UIAlertAction(title: "canel", style: .destructive, handler: nil))
 		present(alerController, animated: true)
 	}
-	
 	
 	@IBOutlet var adressTextView: UITextField!
 	@IBOutlet var nameTextView: UITextField!
@@ -79,7 +71,6 @@ extension OrderDetailViewController {
 		
 		center.add(request)
 	}
-
 }
 
 
