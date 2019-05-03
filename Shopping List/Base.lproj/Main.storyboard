@@ -38,15 +38,29 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="182" height="228"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Added" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kwP-7Z-xUw">
-                                                            <rect key="frame" x="0.0" y="0.0" width="182" height="29"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="182" height="26.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SMv-ud-RnH">
-                                                            <rect key="frame" x="0.0" y="29" width="182" height="199"/>
+                                                            <rect key="frame" x="0.0" y="26.5" width="182" height="175"/>
                                                         </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="apple" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WPL-vx-96d">
+                                                            <rect key="frame" x="0.0" y="201.5" width="182" height="26.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="SMv-ud-RnH" firstAttribute="top" secondItem="kwP-7Z-xUw" secondAttribute="bottom" id="0CF-PT-4uh"/>
+                                                        <constraint firstAttribute="trailing" secondItem="WPL-vx-96d" secondAttribute="trailing" id="0T5-Se-pkp"/>
+                                                        <constraint firstAttribute="bottom" secondItem="WPL-vx-96d" secondAttribute="bottom" id="5lU-sM-RSX"/>
+                                                        <constraint firstItem="WPL-vx-96d" firstAttribute="top" secondItem="SMv-ud-RnH" secondAttribute="bottom" id="B8Z-3P-n3g"/>
+                                                        <constraint firstItem="WPL-vx-96d" firstAttribute="top" secondItem="SMv-ud-RnH" secondAttribute="bottom" id="Okf-a5-UeC"/>
+                                                        <constraint firstItem="WPL-vx-96d" firstAttribute="leading" secondItem="MDX-Kb-DjM" secondAttribute="leading" id="mBA-i5-70B"/>
+                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -67,6 +81,7 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="imageView" destination="SMv-ud-RnH" id="P25-uS-4mF"/>
+                                    <outlet property="itemNameLabel" destination="WPL-vx-96d" id="Kx1-m6-5uF"/>
                                     <outlet property="notAddedLabel" destination="kwP-7Z-xUw" id="eEZ-7E-Xn8"/>
                                 </connections>
                             </collectionViewCell>

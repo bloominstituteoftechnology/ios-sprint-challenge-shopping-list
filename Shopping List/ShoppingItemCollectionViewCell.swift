@@ -15,5 +15,6 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
 	@IBOutlet var imageView: UIImageView!
 	@IBOutlet var notAddedLabel: UILabel!
 
-
+	@IBOutlet var itemNameLabel: UILabel!
+	
 }
