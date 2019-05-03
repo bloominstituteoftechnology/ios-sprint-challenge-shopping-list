@@ -25,7 +25,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Th5-eW-xbz" customClass="ShoppingListCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Item" id="Th5-eW-xbz" customClass="ShoppingListCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="80.5" y="0.0" width="253" height="179"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -67,7 +67,7 @@
                     <navigationItem key="navigationItem" title="Shopping List" id="6GO-6Z-is0">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="nF8-AG-ts5">
                             <connections>
-                                <segue destination="7ai-fK-AG6" kind="show" identifier="AddItem" id="f60-9K-vXI"/>
+                                <segue destination="7ai-fK-AG6" kind="show" identifier="SendOrder" id="f60-9K-vXI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
