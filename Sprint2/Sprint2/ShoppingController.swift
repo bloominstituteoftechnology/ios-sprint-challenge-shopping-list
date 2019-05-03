@@ -7,10 +7,12 @@
 //
 
 import Foundation
+import UIKit
 
 class ShoppingController {
 
     init() {
+        userDefaultSetUp()
         loadFromPersistentStore()
     }
 
@@ -33,12 +35,13 @@ class ShoppingController {
         return document.appendingPathComponent("sprint2.plist")
     }
 
-    func create(name: String) {
+    func create() {
         let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
         for item in itemNames {
-        let newItem = ShoppingItem(name: item)
+            let newItem = ShoppingItem(name: item)
             shoppingItems.append(newItem)
         }
+        UserDefaults.standard.set(true, forKey: "user")
         saveToPersistenceStore()
     }
 
@@ -81,6 +84,19 @@ class ShoppingController {
         guard let index = shoppingItems.index(of: shoppingItem) else { return }
         shoppingItems[index].isliked.toggle()
         saveToPersistenceStore()
+
+    }
+
+    func userDefaultSetUp() {
+        let userDefault = UserDefaults.standard
+        let user = userDefault.bool(forKey: "User")
+
+        if user {
+            loadFromPersistentStore()
+        } else {
+            create()
+
+        }
 
     }
 

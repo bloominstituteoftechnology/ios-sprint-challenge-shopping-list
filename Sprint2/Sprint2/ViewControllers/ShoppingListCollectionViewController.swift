@@ -35,7 +35,7 @@ class ShoppingListCollectionViewController: UICollectionViewController, ItemColl
         if segue.identifier == "toDetailSegue" {
             guard let DetailVC = segue.destination as? DetailViewController else { return }
 
-            DetailVC.likeItemsLabel.text = "You currently have \(shoppingController.likedItems.count) in your shopping List."
+            DetailVC.shoppingController = shoppingController
         }
     }
 
@@ -55,9 +55,15 @@ class ShoppingListCollectionViewController: UICollectionViewController, ItemColl
         let item = shoppingController.shoppingItems[indexPath.item]
         itemCell.itemLabel.text = item.name
         itemCell.imageView.image = UIImage(named: item.name)
+        itemCell.delegate = self
 
+        if shoppingController.shoppingItems[indexPath.row].isliked == false {
+            itemCell.likeButton.setTitle("Not Added", for: .normal)
+        } else {
 
-
+                itemCell.likeButton.setTitle("Add", for: .normal)
+            }
+    
         return itemCell
     }
 

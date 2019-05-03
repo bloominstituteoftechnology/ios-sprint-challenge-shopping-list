@@ -16,6 +16,20 @@ class ItemCollectionViewCell: UICollectionViewCell {
     @IBAction func likeButtonTapped(_ sender: Any) {
         delegate?.toggleHasBeenLiked(on: self)
     }
+
+    private func updateViews() {
+        guard let shoppingItem = shoppingItem else { return }
+        itemLabel.text = shoppingItem.name
+        imageView.image = UIImage(named: shoppingItem.name)
+
+        
+    }
+
+    var shoppingItem: ShoppingItem? {
+        didSet {
+            updateViews()
+        }
+    }
     
 
 
