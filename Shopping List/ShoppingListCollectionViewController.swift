@@ -11,7 +11,10 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class ShoppingListCollectionViewController: UICollectionViewController {
-
+    
+    let shoppingListController = ShoppingListController()
+     let reuseIdentifier = "ItemCell"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,25 +39,30 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return shoppingListController.shoppingList.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        // Configure the cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ShoppingListCollectionViewCell
+        let shoppingItemSelected = shoppingListController.shoppingList[indexPath.item]
+        
+        cell.itemNameLbl.text = shoppingItemSelected.itemName
+        cell.addedNotAddedLbl.text = shoppingItemSelected.addedToList ? "Added" : "Not Added"
+        cell.imageView.image = UIImage(named: shoppingItemSelected.imageName)
+        
+        cell.itemSelection = shoppingItemSelected
     
         return cell
     }
 
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedItem = shoppingListController.shoppingList[indexPath.item]
+        shoppingListController.toggleAdd(shoppingListItem: selectedItem)
+        collectionView.reloadData()
+    }
+    
     // MARK: UICollectionViewDelegate
 
     /*

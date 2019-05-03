@@ -9,8 +9,14 @@
 import Foundation
 import UIKit
 
-struct Shopping {
-    var myImg: UIImage?
-    var itemName: String?
-    var addded: Bool?
+struct Shopping: Equatable, Codable {
+    var imageName: String
+    var itemName: String
+    var addedToList: Bool
+    
+    init(imageName: String, itemName: String, addedToList: Bool = false) {
+        self.imageName = imageName
+        self.itemName = itemName
+        self.addedToList = addedToList
+    }
 }

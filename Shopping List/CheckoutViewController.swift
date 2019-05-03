@@ -10,21 +10,44 @@ import UIKit
 
 class CheckoutViewController: UIViewController {
 
+    // MARK: Constants
+
+    let shoppingListController = ShoppingListController()
+    
+    // MARK: Outlets & Actions
+
     @IBOutlet var myLbl: UILabel!
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var addressTextField: UITextField!
     
     @IBAction func sendOrderBtnPressed(_ sender: UIButton) {
-        
-        
+        if nameTextField.text != nil && addressTextField.text != nil {
+            createAlert()
+        }
     }
-    
-    
+
+    // MARK: Overrides
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        myLbl.text = "You currently have \(shoppingListController.shoppingList.count) item(s) in your shopping list."
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    // MARK: Functions
+    
+    func createAlert() {
+        let alert = UIAlertController(title: "Hi \(nameTextField.text!)!", message: "Your order will be delivered to \(addressTextField.text!) in 15 minutes.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
 
