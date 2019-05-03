@@ -11,7 +11,57 @@ import Foundation
 class ShoppingItemController {
 	var shoppingItems = [ShoppingItem]()
 	
-	func addShoppingItem(withImageName imageName: String, inCart: Bool = false) {
+	private let defaults = UserDefaults.standard
+	init() {
+		if defaults.bool(forKey: .initializedDataKey) {
+			loadData()
+		} else {
+			let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
+			for name in itemNames {
+				addShoppingItem(withImageName: name, saveData: false)
+			}
+			saveData()
+			defaults.set(true, forKey: .initializedDataKey)
+		}
+	}
+	
+	func addShoppingItem(withImageName imageName: String, inCart: Bool = false, saveData: Bool = true) {
 		shoppingItems.append(ShoppingItem(imageName: imageName, inCart: inCart))
+	}
+	
+	func updateShoppingItem(_ item: ShoppingItem, inCart: Bool) {
+		guard let itemIndex = shoppingItems.firstIndex(of: item) else { return }
+		shoppingItems[itemIndex].inCart = inCart
+	}
+	
+	
+	private let fm = FileManager.default
+	private var savedFilePath: URL? {
+		guard let documents = fm.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
+		return documents.appendingPathComponent("shoppingListData.plist")
+	}
+	private func loadData() {
+		guard let path = savedFilePath, fm.fileExists(atPath: path.path) else {
+			print("File doesn't exist!")
+			return
+		}
+		let decoder = PropertyListDecoder()
+		do {
+			let data = try Data(contentsOf: path)
+			shoppingItems = try decoder.decode([ShoppingItem].self, from: data)
+		} catch {
+			fatalError("Error loading data: \(error)")
+		}
+	}
+	
+	private func saveData() {
+		guard let path = savedFilePath else { return }
+		let encoder = PropertyListEncoder()
+		do {
+			let data = try encoder.encode(shoppingItems)
+			try data.write(to: path)
+		} catch {
+			print("Error saving data!: \(error)")
+		}
 	}
 }

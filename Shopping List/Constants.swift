@@ -1,5 +1,5 @@
 //
-//  ShoppingItem.swift
+//  Constants.swift
 //  Shopping List
 //
 //  Created by Michael Redig on 5/3/19.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ShoppingItem: Equatable, Codable {
-	let imageName: String
-	var inCart: Bool
+
+extension String {
+	static let initializedDataKey = "initializedDataKey"
 }
