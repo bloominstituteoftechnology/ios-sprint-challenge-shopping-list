@@ -8,8 +8,16 @@
 
 import UIKit
 
-struct ShoppingItem {
-    var image: UIImage
+struct ShoppingItem: Codable {
+    
+    var image: String
     var title: String
     var added: Bool
+    
+    init(image: String, title: String, added: Bool = false) {
+        
+        self.image = image
+        self.title = title
+        self.added = added
+    }
 }
