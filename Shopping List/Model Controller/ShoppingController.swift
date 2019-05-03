@@ -13,7 +13,8 @@ class ShoppingController {
     var shoppingItems = [ShoppingItem]()
     
     init() {
-        createItems()
+//        createItems()
+        loadFromPersistentStore()
     }
     
     func createItems(){
@@ -62,5 +63,14 @@ class ShoppingController {
         } catch  {
             print("Error loading shopping items from the persistent store: \(error.localizedDescription)")
         }
+    }
+    
+    //create a computed property array that returns an array of items that have been added and that have not been added.
+    var hasBeenAddedArray: [ShoppingItem] {
+        return shoppingItems.filter { $0.hasBeenAdded == true }
+    }
+    
+    var hasNotAddedArray: [ShoppingItem] {
+        return shoppingItems.filter { $0.hasBeenAdded == false }
     }
 }
