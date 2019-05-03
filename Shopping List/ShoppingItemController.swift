@@ -14,6 +14,16 @@ class ShoppingItemController {
     var shoppingItems: [ShoppingItem] = []
      let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
     
+    init() {
+        let isInitiated = UserDefaults.standard.bool(forKey: "initiated")
+        if isInitiated {
+            loadFromPersistentStore()
+        } else {
+            create()
+        }
+    }
+    
+    
     
     func create() {
         for name in itemNames {
@@ -25,8 +35,14 @@ class ShoppingItemController {
     
     
     func update(shoppingItem: ShoppingItem) {
-       
+        guard let index = shoppingItems.index(of: shoppingItem) else { return }
+        var item = shoppingItem
+        item.isAddedToList = !shoppingItem.isAddedToList
+        shoppingItems.remove(at: index)
+        shoppingItems.insert(item, at: index)
+        saveToPersistentStore()
     }
+
     
     func saveToPersistentStore() {
         let plistEncoder = PropertyListEncoder()

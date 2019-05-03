@@ -15,19 +15,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        let shoppingItemController = ShoppingItemController()
-        let userDefaults = UserDefaults.standard
-        if userDefaults.bool(forKey: "hasRunBefore") == false {
-            print("The app is launching for the first time. Setting UserDefaults...")
-            shoppingItemController.create()
-
-            userDefaults.set(true, forKey: "hasRunBefore")
-            // Update the flag indicator
-            userDefaults.synchronize() // This forces the app to update userDefaults
-        } else {
-            shoppingItemController.loadFromPersistentStore()
-        }
+//        // Override point for customization after application launch.
+//        let shoppingItemController = ShoppingItemController()
+//        let userDefaults = UserDefaults.standard
+//        if userDefaults.bool(forKey: "hasRunBefore") == false {
+//            print("The app is launching for the first time. Setting UserDefaults...")
+//            shoppingItemController.create()
+//
+//            userDefaults.set(true, forKey: "hasRunBefore")
+//            // Update the flag indicator
+//            userDefaults.synchronize() // This forces the app to update userDefaults
+//        } else {
+//            shoppingItemController.loadFromPersistentStore()
+//        }
         
         return true
     }

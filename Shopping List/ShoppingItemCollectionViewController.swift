@@ -18,12 +18,15 @@ class ShoppingItemCollectionViewControlller: UICollectionViewController {
         collectionView?.reloadData()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        collectionView?.reloadData()
-    }
-    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return shoppingItemController.shoppingItems.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
+        
+        shoppingItemController.update(shoppingItem: shoppingItem)
+        collectionView.reloadData()
     }
     
     
@@ -38,6 +41,13 @@ class ShoppingItemCollectionViewControlller: UICollectionViewController {
         return cell
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "order" {
+            guard let destinationVC = segue.destination as? ViewController else {return}
+            
+            destinationVC.shoppingItemController = shoppingItemController
+        }
+    }
+
     
 }
