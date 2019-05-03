@@ -14,13 +14,13 @@ class ShoppingItemController {
     var shoppingItems: [ShoppingItem] = []
      let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
     
-    init() {
-        
-    }
     
-    
-    func createItem() {
-    
+    func create() {
+        for name in itemNames {
+            let shoppingItem = ShoppingItem(name: name, title: name)
+            shoppingItems.append(shoppingItem)
+            saveToPersistentStore()
+        }
     }
     
     
