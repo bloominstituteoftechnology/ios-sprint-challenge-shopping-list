@@ -9,11 +9,11 @@
 import Foundation
 
 class ShoppingController {
-
+    
     var shoppingItems = [ShoppingItem]()
     
     init() {
-//        createItems()
+        //        createItems()
         loadFromPersistentStore()
     }
     
@@ -44,7 +44,7 @@ class ShoppingController {
         guard let url = persistentURL else { return }
         
         do {
-           let data = try ecoder.encode(shoppingItems)
+            let data = try ecoder.encode(shoppingItems)
             try data.write(to: url)
         } catch {
             print("Error saving shopping item to persistent store: \(error.localizedDescription)")
@@ -68,9 +68,5 @@ class ShoppingController {
     //create a computed property array that returns an array of items that have been added and that have not been added.
     var hasBeenAddedArray: [ShoppingItem] {
         return shoppingItems.filter { $0.hasBeenAdded == true }
-    }
-    
-    var hasNotAddedArray: [ShoppingItem] {
-        return shoppingItems.filter { $0.hasBeenAdded == false }
     }
 }
