@@ -117,9 +117,44 @@
                     <view key="view" contentMode="scaleToFill" id="Ldk-Ne-t9u">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="BX3-E3-if4">
+                                <rect key="frame" x="16" y="120" width="382" height="122"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Customer Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bFW-Rl-gXC">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Customer Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d6o-LE-ji6">
+                                        <rect key="frame" x="0.0" y="46" width="382" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abn-d0-Plw">
+                                        <rect key="frame" x="0.0" y="92" width="382" height="30"/>
+                                        <state key="normal" title="Submit Order"/>
+                                        <connections>
+                                            <action selector="submitOrderPressed:" destination="m2j-zZ-7tV" eventType="touchUpInside" id="g5j-K1-6wB"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="m6Q-li-7KO" firstAttribute="trailing" secondItem="BX3-E3-if4" secondAttribute="trailing" constant="16" id="QFV-6D-FW9"/>
+                            <constraint firstItem="BX3-E3-if4" firstAttribute="top" secondItem="m6Q-li-7KO" secondAttribute="top" constant="32" id="RQG-rw-BMQ"/>
+                            <constraint firstItem="BX3-E3-if4" firstAttribute="leading" secondItem="m6Q-li-7KO" secondAttribute="leading" constant="16" id="mhb-sx-sl6"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="m6Q-li-7KO"/>
                     </view>
+                    <connections>
+                        <outlet property="customerAddressTextField" destination="d6o-LE-ji6" id="3lv-e9-JGe"/>
+                        <outlet property="customerNameTextField" destination="bFW-Rl-gXC" id="qlk-Bc-0qU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pxi-92-dM1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

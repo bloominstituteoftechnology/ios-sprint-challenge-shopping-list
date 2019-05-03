@@ -17,14 +17,27 @@ class UserInfoViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBOutlet weak var customerNameTextField: UITextField!
+    @IBOutlet weak var customerAddressTextField: UITextField!
+    
+    @IBAction func submitOrderPressed(_ sender: Any) {
+        guard let customerName = customerNameTextField.text,
+            let customerAddress = customerAddressTextField.text
+            else { return }
+        showAlert(customerName: customerName, customerAddress: customerAddress)
+        
+        
     }
-    */
+    
+    func showAlert(customerName: String, customerAddress: String) {
+        let alert = UIAlertController(title: "Delivery", message: "Your items will be delivered to \(customerName) at \(customerAddress) in 15 minutes. ", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    
+
 
 }

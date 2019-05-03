@@ -14,8 +14,9 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
     let shoppingListController = ShoppingListController()
     
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 //
 //        // Uncomment the following line to preserve selection between presentations
 //        // self.clearsSelectionOnViewWillAppear = false
@@ -53,6 +54,8 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingListCell", for: indexPath) as! ShoppingItemCollectionViewCell
         print("ToubleShooting")
+        
+        //Why is this not running?
         let item = shoppingListController.shoppingList[indexPath.item]
         print(item)
     
