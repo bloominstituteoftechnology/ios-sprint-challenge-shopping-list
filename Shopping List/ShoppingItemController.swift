@@ -11,10 +11,12 @@ import UIKit
 
 class ShoppingItemController {
     
+    //data structures
     var shoppingItems: [ShoppingItem] = []
      let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
     
     init() {
+        //checking user defaults to see if first time user
         let hasRunBefore = UserDefaults.standard.bool(forKey: "hasRunBefore")
         print(hasRunBefore)
         if hasRunBefore {
@@ -27,8 +29,7 @@ class ShoppingItemController {
         }
     }
     
-    
-    
+    //creates object and saves it
     func create() {
         for name in itemNames {
             let shoppingItem = ShoppingItem(name: name, title: name)
@@ -38,7 +39,7 @@ class ShoppingItemController {
         saveToPersistentStore()
     }
     
-    
+    //updates object in array and saves it
     func update(shoppingItem: ShoppingItem) {
         guard let index = shoppingItems.index(of: shoppingItem) else {
             print("no index")
@@ -49,7 +50,7 @@ class ShoppingItemController {
         saveToPersistentStore()
     }
 
-    
+    //saves data to url in document
     func saveToPersistentStore() {
         let plistEncoder = PropertyListEncoder()
         do {
@@ -62,6 +63,7 @@ class ShoppingItemController {
         
     }
     
+    //loads data from url 
     func loadFromPersistentStore() {
         do {
             guard let shoppingItemsFileURL = shoppingItemsFileURL,
@@ -74,8 +76,7 @@ class ShoppingItemController {
         }
     }
     
-    
-    
+    //gets url for the document direcory and adds a new file name
     var shoppingItemsFileURL: URL? {
         let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
         let fileName = "shoppingItems.plist"

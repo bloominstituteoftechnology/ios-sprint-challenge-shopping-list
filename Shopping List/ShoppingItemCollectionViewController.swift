@@ -11,18 +11,21 @@ import UIKit
 
 class ShoppingItemCollectionViewControlller: UICollectionViewController {
     
+    //checking for data
     let shoppingItemController = ShoppingItemController()
     
-    
+    //loads views
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         collectionView?.reloadData()
     }
     
+    //checking array item count
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return shoppingItemController.shoppingItems.count
     }
     
+    //update method when user taps on cell
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
         
@@ -30,7 +33,7 @@ class ShoppingItemCollectionViewControlller: UICollectionViewController {
         collectionView.reloadData()
     }
     
-    
+    //passes object to each cell
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ShoppingItemCollectionViewCell
         
@@ -42,12 +45,14 @@ class ShoppingItemCollectionViewControlller: UICollectionViewController {
         return cell
     }
     
+    //passes object to destination vc via segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "order" {
             guard let destinationVC = segue.destination as? ViewController else {return}
             
             destinationVC.shoppingItemController = shoppingItemController
         }
+        //updates ui
         let backItem = UIBarButtonItem()
         backItem.title = "Back"
         navigationItem.backBarButtonItem = backItem

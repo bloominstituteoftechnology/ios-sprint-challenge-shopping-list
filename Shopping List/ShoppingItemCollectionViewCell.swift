@@ -11,11 +11,12 @@ import UIKit
 
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
+    //properties
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var itemTitle: UILabel!
     @IBOutlet weak var itemIsAdded: UILabel!
     
-    
+    //updates views
     var shoppingItem: ShoppingItem? {
         didSet {
             updateViews()

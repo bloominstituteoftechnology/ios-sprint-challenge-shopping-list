@@ -8,8 +8,8 @@
 
 import Foundation
 
+//model
 struct ShoppingItem: Equatable, Codable {
-    
     var name: String
     var imageData: Data?
     var title: String

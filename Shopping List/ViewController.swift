@@ -10,25 +10,31 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    //check for data
     var shoppingItemController: ShoppingItemController?
     
-    @IBOutlet weak var placeOrderLabel: UILabel!
+    //properties
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //update button corners
         sendButton.layer.masksToBounds = true
         sendButton.layer.cornerRadius = 15
         updateViews()
     }
     
-    
+    //shows pop up for button presed
     @IBAction func sendButtonPressed(_ sender: Any) {
-        //pop alert
+        
+        //unwrapping data
         guard let shoppingItemController = shoppingItemController else {return}
+        //checking cart items
         let numberOfItems = shoppingItemController.shoppingItems.filter({$0.isAddedToList}).count
+        
+        //error handling
         guard let name = nameTextField.text, name != "", let address = addressTextField.text, address != "", numberOfItems > 0 else {
             
             let alert = UIAlertController(title: "Order Invalid", message: "Please make sure you have name, address, and have at least one item. Thank You", preferredStyle: .alert)
@@ -45,6 +51,7 @@ class ViewController: UIViewController {
         
     }
     
+    //updates title
     private func updateViews() {
         guard let shoppingItemController = shoppingItemController else { return }
         let numberOfItems = shoppingItemController.shoppingItems.filter({$0.isAddedToList})
