@@ -9,7 +9,7 @@
 import Foundation
 
 class ShoppingItemController {
-	var shoppingItems = [ShoppingItem]()
+	private(set) var shoppingItems = [ShoppingItem]()
 	
 	private let defaults = UserDefaults.standard
 	init() {

@@ -9,7 +9,11 @@
 import UIKit
 
 class ShoppingItemCollectionCell: UICollectionViewCell {
-	@IBOutlet var itemImageView: UIImageView!
+	@IBOutlet var itemImageView: UIImageView! {
+		didSet {
+			updateViews()
+		}
+	}
 	
 	@IBOutlet var itemLabel: UILabel!
 	
@@ -25,9 +29,5 @@ class ShoppingItemCollectionCell: UICollectionViewCell {
 		itemLabel.text = item.imageName.capitalized
 		itemImageView.image = UIImage(named: item.imageName)
 		itemImageView.alpha = item.inCart ? 1.0 : 0.2
-	}
-	
-	override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-		print("touched cell \(itemLabel.text as Any)")
 	}
 }
