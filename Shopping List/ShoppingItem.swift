@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ShoppingItem: Hashable, Codable {
+struct ShoppingItem: Codable {
 	let imageName: String
 	var inCart: Bool
 }

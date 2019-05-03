@@ -9,7 +9,7 @@
 import Foundation
 
 class ShoppingItemController {
-	var shoppingItems = QuickOrderedSet<ShoppingItem>()
+	var shoppingItems = [ShoppingItem]()
 	
 	func addShoppingItem(withImageName imageName: String, inCart: Bool = false) {
 		shoppingItems.append(ShoppingItem(imageName: imageName, inCart: inCart))
