@@ -29,6 +29,7 @@ class ShoppingItemController {
             return loadFromPersistentStore()
             
         } else {
+            print("else")
             result = [ShoppingItem(image: "apple", title: "Apple"),
                           ShoppingItem(image: "grapes", title: "Grapes"),
                           ShoppingItem(image: "milk", title: "Milk"),
@@ -46,6 +47,11 @@ class ShoppingItemController {
     
     lazy var shoppingItems: [ShoppingItem] = createShoppingItems
     
+    init() {
+        
+        UserDefaults.standard.set(true, forKey: "isSaved")
+    }
+    
     func updateAdded(item: ShoppingItem) {
         guard let index = shoppingItems.firstIndex(of: item) else { return }
         var updatedItem = item
@@ -55,6 +61,8 @@ class ShoppingItemController {
     }
     
     func loadFromPersistentStore() -> [ShoppingItem] {
+        
+        
         
         var loadedShoppingItem: [ShoppingItem] = []
         let fileManager = FileManager.default
@@ -72,6 +80,8 @@ class ShoppingItemController {
     }
     
     func saveToPersistentStore(savedShoppingItems: [ShoppingItem]) {
+        
+        
         
         guard let url = persistentURL else { return }
         

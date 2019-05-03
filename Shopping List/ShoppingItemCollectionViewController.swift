@@ -57,9 +57,11 @@ class ShoppingItemCollectionViewController: UICollectionViewController {
         if shoppingItemController.shoppingItems[indexPath.item].added {
             cell.addedLabel.text = "Not Added"
             shoppingItemController.shoppingItems[indexPath.item].added = !shoppingItemController.shoppingItems[indexPath.item].added
+            shoppingItemController.saveToPersistentStore(savedShoppingItems: shoppingItemController.shoppingItems)
         } else {
             cell.addedLabel.text = "Added"
             shoppingItemController.shoppingItems[indexPath.item].added = !shoppingItemController.shoppingItems[indexPath.item].added
+            shoppingItemController.saveToPersistentStore(savedShoppingItems: shoppingItemController.shoppingItems)
         }
         
         collectionView.reloadData()
