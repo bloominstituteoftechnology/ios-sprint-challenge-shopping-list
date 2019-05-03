@@ -16,7 +16,6 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,7 +29,7 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
         collectionView.reloadItems(at: [indexPath])
     }
     
-    // MARK: Navigation
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -40,7 +39,7 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
         }
     }
 
-    // MARK: UICollectionViewDataSource
+    // MARK: - UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return shoppingItemController.shoppingItems.count

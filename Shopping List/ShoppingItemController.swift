@@ -33,7 +33,6 @@ class ShoppingItemController {
     }
     
     // MARK: - CRUD methods
-    // TODO: make a better name for update method
     func update(shoppingItem: ShoppingItem) {
         
         guard let index = shoppingItems.firstIndex(of: shoppingItem) else {
