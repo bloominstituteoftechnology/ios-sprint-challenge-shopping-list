@@ -131,6 +131,9 @@
                                         <rect key="frame" x="152.5" y="196" width="109" height="39"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <state key="normal" title="Send Order"/>
+                                        <connections>
+                                            <action selector="ordeButtonPressed:" destination="QSZ-af-dDD" eventType="touchUpInside" id="RwF-pf-DTK"/>
+                                        </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qhf-0f-7LD">
                                         <rect key="frame" x="8" y="84" width="398" height="40"/>
@@ -168,7 +171,9 @@
                         <viewLayoutGuide key="safeArea" id="x4F-QU-Kqd"/>
                     </view>
                     <connections>
+                        <outlet property="adrresTextView" destination="BEd-WO-WRm" id="OqL-hd-EcK"/>
                         <outlet property="countLabel" destination="JKa-aD-gcb" id="EY0-dD-WFa"/>
+                        <outlet property="nameTextView" destination="Qhf-0f-7LD" id="2UZ-PL-z76"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="79V-nY-6cQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
