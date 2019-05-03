@@ -11,6 +11,29 @@ import Foundation
 class ShoppingItemController {
     
     
+    func saveToPersistentStore() {
+        guard let url = persistentURL else { return }
+        
+        do {
+            let encoder = PropertyListEncoder()
+            let data = try encoder.encode(shoppingItems)
+            try data.write(to: url)
+        } catch {
+            print("Error saving shopping list: \(error)")
+        }
+        }
+    
+    func loadFromPersistentStore() {
+        //Check to see if file exists
+        let fileManager = FileManager.default
+        guard let url = persistentURL, fileManager.fileExists(atPath: url.path) else {
+            print("cannot find a file")
+            return
+        }
+    }
+    
+    }
+    
     private var persistentURL: URL? {
         let fileManager = FileManager.default
         guard let documents = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
@@ -22,6 +45,5 @@ class ShoppingItemController {
     }
     
     //Encapsulation, protecting data
-    private(set) var 
-    
-}
+    private(set) var shoppingItems: [ShoppingItem] = []
+
