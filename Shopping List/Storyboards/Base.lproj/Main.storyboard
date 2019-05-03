@@ -51,10 +51,10 @@
             </objects>
             <point key="canvasLocation" x="1073.913043478261" y="143.97321428571428"/>
         </scene>
-        <!--View Controller-->
+        <!--Shopping List Detail View Controller-->
         <scene sceneID="Yex-lF-cJh">
             <objects>
-                <viewController id="7ai-fK-AG6" sceneMemberID="viewController">
+                <viewController id="7ai-fK-AG6" customClass="ShoppingListDetailViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LiK-ac-yMJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -83,6 +83,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0tp-gh-nHp">
                                         <rect key="frame" x="0.0" y="125" width="382" height="30"/>
                                         <state key="normal" title="Send Order"/>
+                                        <connections>
+                                            <action selector="sendOrderButtonPressed:" destination="7ai-fK-AG6" eventType="touchUpInside" id="nOF-x4-DMF"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -96,6 +99,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ber-ZU-Sej"/>
                     </view>
+                    <connections>
+                        <outlet property="addressTextField" destination="MWs-dA-RQ1" id="CMu-8c-L79"/>
+                        <outlet property="nameTextField" destination="MkL-8b-PGG" id="wWx-lv-XEj"/>
+                        <outlet property="numberOfItemsDescriptionLabel" destination="fXX-ab-hqh" id="St5-mW-NC8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PHX-52-Ded" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
