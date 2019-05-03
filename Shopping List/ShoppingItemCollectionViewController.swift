@@ -48,12 +48,21 @@ class ShoppingItemCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Item", for: indexPath) as? ShoppingItemCollectionViewCell else { return }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Item", for: indexPath) as? ShoppingItemCollectionViewCell else { return }
         
 //        print("\(shoppingItemController.shoppingItems[indexPath.item].added)")
 //        shoppingItemController.shoppingItems[indexPath.item].added = !shoppingItemController.shoppingItems[indexPath.item].added
 //        print("\(shoppingItemController.shoppingItems[indexPath.item].added)")
         
+        if shoppingItemController.shoppingItems[indexPath.item].added {
+            cell.addedLabel.text = "Not Added"
+            shoppingItemController.shoppingItems[indexPath.item].added = !shoppingItemController.shoppingItems[indexPath.item].added
+        } else {
+            cell.addedLabel.text = "Added"
+            shoppingItemController.shoppingItems[indexPath.item].added = !shoppingItemController.shoppingItems[indexPath.item].added
+        }
+        
+        collectionView.reloadData()
         
     }
     
