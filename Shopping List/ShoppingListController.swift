@@ -8,9 +8,9 @@
 
 import Foundation
 
-class ShoppingList {
+class ShoppingListController {
     
-    var shoppingItems: [ShoppingItem] = [ShoppingItem(itemName: "apple", imageName: "apple"),
+    var shoppingList: [ShoppingItem] = [ShoppingItem(itemName: "apple", imageName: "apple"),
                                          ShoppingItem(itemName: "grapes", imageName: "grapes"),
                                          ShoppingItem(itemName: "milk", imageName: "milk"),
                                          ShoppingItem(itemName: "muffin", imageName: "muffin"),
@@ -18,7 +18,6 @@ class ShoppingList {
                                          ShoppingItem(itemName: "soda", imageName: "soda"),
                                          ShoppingItem(itemName: "strawberries", imageName: "strawberries")]
     
-    var shoppingList: [ShoppingItem] = []
     
     
     
