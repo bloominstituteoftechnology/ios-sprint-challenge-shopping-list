@@ -8,6 +8,12 @@
 
 import UIKit
 
+/*
+to save : let data = uiimagepngpresentation(image)
+to load: let image = UIImge(data: data)
+
+*/
+
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
 	
 	
@@ -15,8 +21,10 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
 	private func setupViews() {
 		setBackGroundColors()
 		
-		guard let item = item else { return }
-//		imageView.image = item.image
+		guard let item = item,
+		 let image = UIImage(data: item.image) else { return }
+		
+		imageView.image = image
 		notAddedLabel.text = item.added ? "Added" : "Not Added"
 		itemNameLabel.text = item.name
 	}
