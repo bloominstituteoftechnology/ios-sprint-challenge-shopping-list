@@ -15,11 +15,15 @@ class ShoppingItemController {
      let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
     
     init() {
-        let isInitiated = UserDefaults.standard.bool(forKey: "initiated")
-        if isInitiated {
+        let hasRunBefore = UserDefaults.standard.bool(forKey: "hasRunBefore")
+        print(hasRunBefore)
+        if hasRunBefore {
+            print("loaded")
             loadFromPersistentStore()
+            print("Loaded")
         } else {
             create()
+            print("created")
         }
     }
     
@@ -29,17 +33,19 @@ class ShoppingItemController {
         for name in itemNames {
             let shoppingItem = ShoppingItem(name: name, title: name)
             shoppingItems.append(shoppingItem)
-            saveToPersistentStore()
         }
+        UserDefaults.standard.set(true, forKey: "hasRunBefore")
+        saveToPersistentStore()
     }
     
     
     func update(shoppingItem: ShoppingItem) {
-        guard let index = shoppingItems.index(of: shoppingItem) else { return }
+        guard let index = shoppingItems.index(of: shoppingItem) else {
+            print("no index")
+            return }
         var item = shoppingItem
         item.isAddedToList = !shoppingItem.isAddedToList
-        shoppingItems.remove(at: index)
-        shoppingItems.insert(item, at: index)
+        shoppingItems[index] = item
         saveToPersistentStore()
     }
 

@@ -44,7 +44,6 @@ class ViewController: UIViewController {
     
     private func updateViews() {
         guard let shoppingItemController = shoppingItemController else { return }
-        //let numberOfItems = shoppingItemController.shoppingItems.count
         let numberOfItems = shoppingItemController.shoppingItems.filter({$0.isAddedToList})
         placeOrderLabel.text = "You currently have \(numberOfItems.count) item(s) in your shopping list."
     }
