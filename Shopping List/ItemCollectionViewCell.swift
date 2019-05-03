@@ -9,7 +9,22 @@
 import UIKit
 
 class ItemCollectionViewCell: UICollectionViewCell {
-    
+	
+	
+	
+//	var item: Item? {
+//		didSet {
+//			updateViews()
+//		}
+//	}
+//
+//	func updateViews() {
+//		guard let item = item else { return }
+//		imageView.image = UIImage
+//		label.text = item.name
+//
+//	}
+	
 	@IBOutlet weak var imageView: UIImageView!
 	@IBOutlet weak var label: UILabel!
 }

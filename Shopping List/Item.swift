@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Item {
+struct Item: Equatable {
 	
 	init(name: String, imageName: String) {
 		self.name = name
