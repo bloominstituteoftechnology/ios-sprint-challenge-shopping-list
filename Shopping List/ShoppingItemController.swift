@@ -39,4 +39,14 @@ class ShoppingItemController {
 	
 	private (set) var itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
 	private(set) var shoppingItems: [ShoppingItem] = []
+	
+	var itemsInCartCount: Int {
+		var count = 0
+		for item in shoppingItems {
+			if item.added {
+				count += 1
+			}
+		}
+		return count
+	}
 }

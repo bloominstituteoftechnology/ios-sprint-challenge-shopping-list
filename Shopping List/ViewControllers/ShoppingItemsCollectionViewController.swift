@@ -34,6 +34,14 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
 		
 		return itemCell
     }
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "nextSegue" {
+			guard let viewController = segue.destination as? OrderDetailViewController else { return }
+			viewController.itemsInCartCount = shoppingItemController.itemsInCartCount
+		
+		}
+	}
 
 	
 	let shoppingItemController = ShoppingItemController()
