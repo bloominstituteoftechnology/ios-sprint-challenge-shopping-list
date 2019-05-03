@@ -106,6 +106,9 @@
                                     <constraint firstAttribute="height" constant="30" id="6wZ-Gg-Ku2"/>
                                 </constraints>
                                 <state key="normal" title="Send Order"/>
+                                <connections>
+                                    <action selector="sendOrderButtonPressed:" destination="LZF-Bv-A2F" eventType="touchUpInside" id="zGa-yY-qft"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -126,6 +129,11 @@
                         <viewLayoutGuide key="safeArea" id="zPF-K9-Zva"/>
                     </view>
                     <navigationItem key="navigationItem" id="O4r-NG-gRH"/>
+                    <connections>
+                        <outlet property="currentListLabel" destination="2Mw-dF-ay5" id="BU1-ww-6dU"/>
+                        <outlet property="shopperAddressTextField" destination="S4M-dA-7ZO" id="oi6-Va-NGv"/>
+                        <outlet property="shopperNameTextField" destination="TLF-MP-db0" id="qnL-da-L36"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0eh-3i-1bO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -10,6 +10,12 @@ import UIKit
 
 class ShoppingDetailViewController: UIViewController {
 
+    @IBOutlet weak var currentListLabel: UILabel!
+    @IBOutlet weak var shopperNameTextField: UITextField!
+    @IBOutlet weak var shopperAddressTextField: UITextField!
+    @IBAction func sendOrderButtonPressed(_ sender: Any) {
+        UIAlertAction
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
