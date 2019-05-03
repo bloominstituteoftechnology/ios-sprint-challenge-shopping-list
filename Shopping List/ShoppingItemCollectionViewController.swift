@@ -66,5 +66,25 @@ class ShoppingItemCollectionViewController: UICollectionViewController {
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "ShowCart" {
+            guard let destination = segue.destination as? CartViewController else { return }
+            destination.numberOfItemsInCart = getNumberOfAddedItems()
+        }
+    }
+    
+    func getNumberOfAddedItems() -> Int {
+        
+        var count = 0
+        
+        for item in shoppingItemController.shoppingItems {
+            if item.added == true {
+                count += 1
+            }
+        }
+        
+        return count
+    }
 
 }

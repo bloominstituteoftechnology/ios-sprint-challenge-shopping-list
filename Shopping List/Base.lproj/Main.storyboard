@@ -79,7 +79,7 @@
                     <navigationItem key="navigationItem" id="SHa-tt-wMe">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="t1k-vp-kEr">
                             <connections>
-                                <segue destination="hhN-Bu-nzA" kind="show" id="K1H-Ph-Drd"/>
+                                <segue destination="hhN-Bu-nzA" kind="show" identifier="ShowCart" id="K1H-Ph-Drd"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -88,10 +88,10 @@
             </objects>
             <point key="canvasLocation" x="947.82608695652186" y="125.89285714285714"/>
         </scene>
-        <!--View Controller-->
+        <!--Cart View Controller-->
         <scene sceneID="stJ-sf-OK5">
             <objects>
-                <viewController id="hhN-Bu-nzA" sceneMemberID="viewController">
+                <viewController id="hhN-Bu-nzA" customClass="CartViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OM0-Uf-yZw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -104,44 +104,52 @@ item(s) in your cart</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L8k-R1-fv6">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L8k-R1-fv6">
                                 <rect key="frame" x="20" y="311" width="374" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bYs-Ca-S0B">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bYs-Ca-S0B">
                                 <rect key="frame" x="20" y="349" width="374" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u47-gX-dpJ">
-                                <rect key="frame" x="184" y="387" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="165" y="387" width="85" height="30"/>
+                                <state key="normal" title="Add To Cart"/>
+                                <connections>
+                                    <action selector="addToCartButtonTapped:" destination="hhN-Bu-nzA" eventType="touchUpInside" id="bgd-Cv-4Ir"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="u47-gX-dpJ" firstAttribute="leading" secondItem="M0c-5y-Jc7" secondAttribute="leading" constant="184" id="6DC-4c-jSR"/>
-                            <constraint firstItem="bYs-Ca-S0B" firstAttribute="leading" secondItem="M0c-5y-Jc7" secondAttribute="leading" constant="20" id="JJC-6B-Gy4"/>
-                            <constraint firstItem="bYs-Ca-S0B" firstAttribute="top" secondItem="M0c-5y-Jc7" secondAttribute="top" constant="261" id="T1l-cu-omv"/>
-                            <constraint firstItem="7yo-t5-Von" firstAttribute="top" secondItem="M0c-5y-Jc7" secondAttribute="top" constant="76" id="Vha-k7-L8M"/>
-                            <constraint firstItem="L8k-R1-fv6" firstAttribute="leading" secondItem="M0c-5y-Jc7" secondAttribute="leading" constant="20" id="W6H-fU-saR"/>
-                            <constraint firstItem="u47-gX-dpJ" firstAttribute="top" secondItem="M0c-5y-Jc7" secondAttribute="top" constant="299" id="YqC-Zq-slJ"/>
-                            <constraint firstItem="M0c-5y-Jc7" firstAttribute="trailing" secondItem="L8k-R1-fv6" secondAttribute="trailing" constant="20" id="cgR-w0-SXZ"/>
-                            <constraint firstItem="L8k-R1-fv6" firstAttribute="top" secondItem="M0c-5y-Jc7" secondAttribute="top" constant="223" id="dZL-ce-hWW"/>
-                            <constraint firstItem="M0c-5y-Jc7" firstAttribute="bottom" secondItem="bYs-Ca-S0B" secondAttribute="bottom" constant="483" id="eWp-UO-7qF"/>
-                            <constraint firstItem="M0c-5y-Jc7" firstAttribute="bottom" secondItem="L8k-R1-fv6" secondAttribute="bottom" constant="521" id="gG7-2Y-VO2"/>
-                            <constraint firstItem="M0c-5y-Jc7" firstAttribute="bottom" secondItem="u47-gX-dpJ" secondAttribute="bottom" constant="445" id="hAg-A6-aCo"/>
-                            <constraint firstItem="L8k-R1-fv6" firstAttribute="centerX" secondItem="M0c-5y-Jc7" secondAttribute="centerX" id="lDE-iw-i3A"/>
-                            <constraint firstItem="M0c-5y-Jc7" firstAttribute="trailing" secondItem="bYs-Ca-S0B" secondAttribute="trailing" constant="20" id="qaf-rl-4NY"/>
-                            <constraint firstItem="7yo-t5-Von" firstAttribute="centerX" secondItem="M0c-5y-Jc7" secondAttribute="centerX" id="upL-MH-hms"/>
-                            <constraint firstItem="M0c-5y-Jc7" firstAttribute="bottom" secondItem="7yo-t5-Von" secondAttribute="bottom" constant="626" id="vFV-LJ-Mq4"/>
-                            <constraint firstItem="M0c-5y-Jc7" firstAttribute="trailing" secondItem="u47-gX-dpJ" secondAttribute="trailing" constant="184" id="vj3-1P-XPT"/>
+                            <constraint firstItem="L8k-R1-fv6" firstAttribute="leading" secondItem="M0c-5y-Jc7" secondAttribute="leading" constant="20" id="0Y4-9x-ZSg"/>
+                            <constraint firstItem="bYs-Ca-S0B" firstAttribute="leading" secondItem="M0c-5y-Jc7" secondAttribute="leading" constant="20" id="3Cl-SS-gLu"/>
+                            <constraint firstItem="bYs-Ca-S0B" firstAttribute="top" secondItem="M0c-5y-Jc7" secondAttribute="top" constant="261" id="9BM-qn-W2s"/>
+                            <constraint firstItem="7yo-t5-Von" firstAttribute="leading" secondItem="M0c-5y-Jc7" secondAttribute="leading" constant="75" id="Je0-hs-LqJ"/>
+                            <constraint firstItem="u47-gX-dpJ" firstAttribute="top" secondItem="M0c-5y-Jc7" secondAttribute="top" constant="299" id="Lfe-he-pn1"/>
+                            <constraint firstItem="L8k-R1-fv6" firstAttribute="top" secondItem="M0c-5y-Jc7" secondAttribute="top" constant="223" id="RBW-mK-VVH"/>
+                            <constraint firstItem="M0c-5y-Jc7" firstAttribute="trailing" secondItem="7yo-t5-Von" secondAttribute="trailing" constant="74.5" id="U7K-HG-8K3"/>
+                            <constraint firstItem="M0c-5y-Jc7" firstAttribute="bottom" secondItem="L8k-R1-fv6" secondAttribute="bottom" constant="521" id="aw6-de-SSO"/>
+                            <constraint firstItem="M0c-5y-Jc7" firstAttribute="bottom" secondItem="7yo-t5-Von" secondAttribute="bottom" constant="626" id="d4U-Mq-P26"/>
+                            <constraint firstItem="M0c-5y-Jc7" firstAttribute="trailing" secondItem="u47-gX-dpJ" secondAttribute="trailing" constant="164" id="ehd-un-nUn"/>
+                            <constraint firstItem="M0c-5y-Jc7" firstAttribute="bottom" secondItem="bYs-Ca-S0B" secondAttribute="bottom" constant="483" id="jFV-fE-uhA"/>
+                            <constraint firstItem="u47-gX-dpJ" firstAttribute="leading" secondItem="M0c-5y-Jc7" secondAttribute="leading" constant="165" id="lmz-63-ToZ"/>
+                            <constraint firstItem="M0c-5y-Jc7" firstAttribute="trailing" secondItem="bYs-Ca-S0B" secondAttribute="trailing" constant="20" id="mZQ-gp-wOx"/>
+                            <constraint firstItem="7yo-t5-Von" firstAttribute="top" secondItem="M0c-5y-Jc7" secondAttribute="top" constant="76" id="rsK-Jn-Jpy"/>
+                            <constraint firstItem="M0c-5y-Jc7" firstAttribute="trailing" secondItem="L8k-R1-fv6" secondAttribute="trailing" constant="20" id="uyR-PY-uyv"/>
+                            <constraint firstItem="M0c-5y-Jc7" firstAttribute="bottom" secondItem="u47-gX-dpJ" secondAttribute="bottom" constant="445" id="wzu-D9-1Nw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="M0c-5y-Jc7"/>
                     </view>
+                    <connections>
+                        <outlet property="adressTextField" destination="bYs-Ca-S0B" id="dyz-Nc-l8i"/>
+                        <outlet property="itemsInCartLabel" destination="7yo-t5-Von" id="rNO-af-pCz"/>
+                        <outlet property="nameTextField" destination="L8k-R1-fv6" id="gIa-N3-p3Q"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8E9-ex-NC7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
