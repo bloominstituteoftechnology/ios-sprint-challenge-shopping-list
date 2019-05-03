@@ -24,19 +24,12 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
 
     func updateViews() {
-        guard let shoppingItem = shoppingItem else {
-            return
-        }
-        if shoppingItem.isAddedToList {
-            itemIsAdded.text = "Added"
-        } else {
-            itemIsAdded.text = "Not Added"
-        }
-        itemTitle.text = shoppingItem.title
-        let image = UIImage(data: shoppingItem.imageData)
-        itemImageView.image = image
+        guard let shoppingItem = shoppingItem else {return}
+        itemTitle.text? = shoppingItem.name
+        itemIsAdded.text? = shoppingItem.isAddedToList ? "Added" : "Not Added"
+        let itemImage = UIImage(named: shoppingItem.title)
+        itemImageView.image = itemImage
     }
-    
     
     
     

@@ -14,24 +14,50 @@ class ShoppingItemController {
     var shoppingItems: [ShoppingItem] = []
      let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
     
-    
     init() {
-        let userDefaults = UserDefaults.standard
-        for item in itemNames {
-            let image = UIImage(named: item)
-            let data = UIImagePNGRepresentation(image!)
-            create(imageData: data!, title: item)
-            userDefaults.set(item, forKey: item)
+        
+    }
+    
+    
+    func createItem() {
+    
+    }
+    
+    
+    func update(shoppingItem: ShoppingItem) {
+       
+    }
+    
+    func saveToPersistentStore() {
+        let plistEncoder = PropertyListEncoder()
+        do {
+            let data = try plistEncoder.encode(shoppingItems)
+            guard let shoppingItemsFileURL = shoppingItemsFileURL else { return }
+            try data.write(to: shoppingItemsFileURL)
+        } catch {
+            NSLog("Error enconding shopping items: \(error)")
+        }
+        
+    }
+    
+    func loadFromPersistentStore() {
+        do {
+            guard let shoppingItemsFileURL = shoppingItemsFileURL,
+                FileManager.default.fileExists(atPath: shoppingItemsFileURL.path) else  { return }
+            let data = try Data(contentsOf: shoppingItemsFileURL)
+            let plistDecoder = PropertyListDecoder()
+            self.shoppingItems = try plistDecoder.decode([ShoppingItem].self, from: data)
+        } catch {
+            print(error)
         }
     }
     
     
-    func create(imageData: Data, title: String) {
-        let shoppingItem = ShoppingItem(imageData: imageData, title: title)
-        shoppingItems.append(shoppingItem)
+    
+    var shoppingItemsFileURL: URL? {
+        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+        let fileName = "shoppingItems.plist"
+        return documentDirectory?.appendingPathComponent(fileName)
     }
     
-    func update() {
-        
-    }
 }
