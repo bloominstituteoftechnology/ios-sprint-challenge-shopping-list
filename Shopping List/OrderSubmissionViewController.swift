@@ -32,6 +32,13 @@ class OrderSubmissionViewController: UIViewController {
 	}
 	
 	@IBAction func submitOrderButtonPressed(_ sender: UIButton) {
+		guard let name = nameTextField.text, !name.isEmpty, let address = addressTextField.text, !address.isEmpty else { return }
+		let ac = UIAlertController(title: "\(name), your order is on the way!", message: "Your order will be shipped out to\n\n\(address)\n\nand you are scheduled to get it yesterday. That's right. This app is time traveling. Now, if you've gotten your order yesterday and you neglect to create an order today for what you got, you will be creating a time paradox and destroy the universe. Don't be that guy. Make your order and keep the universe safe!", preferredStyle: .alert)
+		ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+		ac.addAction(UIAlertAction(title: "DESTROY THE UNIVERSE", style: .destructive, handler: { (action) in
+			fatalError("There was an error destroying the universe. Please try again.")
+		}))
+		present(ac, animated: true)
 	}
 	
 	
