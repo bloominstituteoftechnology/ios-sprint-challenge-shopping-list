@@ -12,11 +12,13 @@ import UIKit
 class ShoppingController {
 
     init() {
+        
         userDefaultSetUp()
-        loadFromPersistentStore()
+
     }
 
     private(set) var shoppingItems: [ShoppingItem] = []
+    let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
 
     var likedItems: [ShoppingItem] {
         return shoppingItems.filter { ( $0.isliked == true )}
@@ -36,9 +38,10 @@ class ShoppingController {
     }
 
     func create() {
-        let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
         for item in itemNames {
-            let newItem = ShoppingItem(name: item)
+            guard let image = UIImage(named: item),
+                let imageData = image.pngData() else { return }
+                let newItem = ShoppingItem(name: item, image: imageData)
             shoppingItems.append(newItem)
         }
         UserDefaults.standard.set(true, forKey: "user")
@@ -50,6 +53,7 @@ class ShoppingController {
 
         shoppingItems[index].name = name
         shoppingItems[index].isliked = isliked
+        
         saveToPersistenceStore()
     }
 

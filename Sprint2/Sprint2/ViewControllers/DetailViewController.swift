@@ -19,8 +19,21 @@ class DetailViewController: UIViewController {
 
     
     @IBAction func sendOrderButtonTapped(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
+
+        guard let nameText = nameTextField.text,
+            let addressText = addressTextField.text else { return }
+        alert(name: nameText, address: addressText)
         
+        
+    }
+
+    func alert(name: String, address: String){
+        let alert = UIAlertController(title: "Alert message", message: "\(name), your order was successful: \(address)", preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+            self.navigationController?.popToRootViewController(animated: true) }))
+
+        present(alert, animated: true, completion: nil)
     }
 
     func updateViews() {
@@ -34,5 +47,7 @@ class DetailViewController: UIViewController {
 
     @IBOutlet weak var likeItemsLabel: UILabel!
     var shoppingController: ShoppingController?
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var addressTextField: UITextField!
 
 }

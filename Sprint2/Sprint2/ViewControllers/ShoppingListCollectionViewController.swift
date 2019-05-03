@@ -24,6 +24,12 @@ class ShoppingListCollectionViewController: UICollectionViewController, ItemColl
 
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        collectionView.reloadData()
+    }
+
 
     // MARK: - Navigation
 
@@ -54,7 +60,7 @@ class ShoppingListCollectionViewController: UICollectionViewController, ItemColl
         guard let itemCell = cell as? ItemCollectionViewCell else { return cell }
         let item = shoppingController.shoppingItems[indexPath.item]
         itemCell.itemLabel.text = item.name
-        itemCell.imageView.image = UIImage(named: item.name)
+        //itemCell.imageView.image = UIImage(named: item.name)
         itemCell.delegate = self
 
         if shoppingController.shoppingItems[indexPath.row].isliked == false {
@@ -92,7 +98,7 @@ class ShoppingListCollectionViewController: UICollectionViewController, ItemColl
         guard let index = collectionView.indexPath(for: cell) else { return }
         let item = itemsFor(indexPath: index)
         shoppingController.toggleHasBeenLiked(shoppingItem: item)
-        collectionView.reloadData()
+        collectionView.reloadItems(at: [index])
 
     }
 

@@ -13,14 +13,15 @@ struct ShoppingItem: Equatable, Codable {
 
     var name: String
     var isliked: Bool
+    var image: Data
 
 
-    init(name: String, isliked: Bool = false) {
+    init(name: String, isliked: Bool = false, image: Data) {
         self.name = name
         self.isliked = isliked
-        var image: UIImage {
-            return UIImage(named: name)!
-        }
+        self.image = image
+
+
 
     }
 
