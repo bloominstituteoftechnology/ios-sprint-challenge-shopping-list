@@ -23,6 +23,16 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
         shoppingItemController.update(shoppingItem: shoppingItemController.shoppingItems[indexPath.item])
         collectionView.reloadItems(at: [indexPath])
     }
+    
+    // MARK: Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "FinishOrder" {
+            guard let destinationVC = segue.destination as? ShoppingCartViewController else { return }
+            destinationVC.shoppingItemController = shoppingItemController
+        }
+    }
 
     // MARK: UICollectionViewDataSource
 
