@@ -11,6 +11,7 @@
 		420B53C4227C955600721522 /* ShoppingItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420B53C3227C955600721522 /* ShoppingItemController.swift */; };
 		420B53C9227C9E3000721522 /* ShoppingItemCollectionCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420B53C8227C9E3000721522 /* ShoppingItemCollectionCollectionViewController.swift */; };
 		420B53CB227C9E6600721522 /* ShoppingItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420B53CA227C9E6600721522 /* ShoppingItemCollectionViewCell.swift */; };
+		420B53CD227CC17B00721522 /* SubmitOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420B53CC227CC17B00721522 /* SubmitOrderViewController.swift */; };
 		4613E91221143BFC00E7FF73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4613E91121143BFC00E7FF73 /* AppDelegate.swift */; };
 		4613E91721143BFC00E7FF73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91521143BFC00E7FF73 /* Main.storyboard */; };
 		4613E91921143BFD00E7FF73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91821143BFD00E7FF73 /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 		420B53C3227C955600721522 /* ShoppingItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemController.swift; sourceTree = "<group>"; };
 		420B53C8227C9E3000721522 /* ShoppingItemCollectionCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemCollectionCollectionViewController.swift; sourceTree = "<group>"; };
 		420B53CA227C9E6600721522 /* ShoppingItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		420B53CC227CC17B00721522 /* SubmitOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitOrderViewController.swift; sourceTree = "<group>"; };
 		4613E90E21143BFC00E7FF73 /* Shopping List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shopping List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4613E91121143BFC00E7FF73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4613E91621143BFC00E7FF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				4613E91121143BFC00E7FF73 /* AppDelegate.swift */,
 				420B53C8227C9E3000721522 /* ShoppingItemCollectionCollectionViewController.swift */,
 				420B53CA227C9E6600721522 /* ShoppingItemCollectionViewCell.swift */,
+				420B53CC227CC17B00721522 /* SubmitOrderViewController.swift */,
 				420B53C5227C9BC500721522 /* Model */,
 				420B53C6227C9BD200721522 /* Model Controller */,
 			);
@@ -121,6 +124,7 @@
 				TargetAttributes = {
 					4613E90D21143BFC00E7FF73 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -165,6 +169,7 @@
 				420B53C9227C9E3000721522 /* ShoppingItemCollectionCollectionViewController.swift in Sources */,
 				420B53C4227C955600721522 /* ShoppingItemController.swift in Sources */,
 				4613E91221143BFC00E7FF73 /* AppDelegate.swift in Sources */,
+				420B53CD227CC17B00721522 /* SubmitOrderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,7 +322,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LambdaSchool.Shopping-List";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -335,7 +340,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LambdaSchool.Shopping-List";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -14,7 +14,6 @@ struct ShoppingItem: Codable, Equatable {
     var addedToList: Bool
     
     init(image: Data, itemName: String, addedToList: Bool = false) {
-       
         self.image = image
         self.itemName = itemName
         self.addedToList = addedToList

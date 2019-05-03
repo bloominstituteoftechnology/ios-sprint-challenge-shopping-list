@@ -14,15 +14,16 @@ class ShoppingItemController {
         loadFromPersistentStore()
     }
     var shoppingList: [ShoppingItem] = []
-//
-//    func createShoppingItem(imageName: String, itemName: String) {
-//        guard let image = UIImage(named: imageName), let imageData = image.UIImagePNGRepresentation else { return }
-//
-//        let shoppingItem = ShoppingItem(image: image, imageName: imageName, itemName: itemName)
-//        shoppingList.append(shoppingItem)
-//
-//        saveToPersistentStore()
-//    }
+    
+    
+    func createShoppingItem(imageName: String, itemName: String) {
+        guard let image = UIImage(named: imageName), let imageData = image.pngData() else { return }
+
+        let shoppingItem = ShoppingItem(image: imageData, itemName: itemName)
+        shoppingList.append(shoppingItem)
+
+        saveToPersistentStore()
+    }
     
     func saveToPersistentStore() {
         guard let url = persistentURL else { return }
