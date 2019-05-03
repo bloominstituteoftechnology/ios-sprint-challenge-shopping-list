@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct ShoppingItem: Codable {
+struct ShoppingItem: Codable, Equatable {
     
     var image: String
     var title: String

@@ -8,8 +8,6 @@
 
 import UIKit
 
-let itemNames = ["muffin", "popcorn", "soda", "strawberries"]
-
 class ShoppingItemController {
     
     var persistentURL: URL? {
@@ -19,7 +17,7 @@ class ShoppingItemController {
         return documents.appendingPathComponent("items.plist")
     }
     
-    var shoppingItems: [ShoppingItem] {
+    var createShoppingItems: [ShoppingItem] {
         
         var result: [ShoppingItem] = []
         let isSaved = UserDefaults.standard.bool(forKey: "isSaved")
@@ -61,6 +59,16 @@ class ShoppingItemController {
         }
         
         return result
+    }
+    
+    lazy var shoppingItems: [ShoppingItem] = createShoppingItems
+    
+    func updateAdded(item: ShoppingItem) {
+        guard let index = shoppingItems.firstIndex(of: item) else { return }
+        var updatedItem = item
+        updatedItem.added = !updatedItem.added
+
+        shoppingItems[index].added = false
     }
     
 }

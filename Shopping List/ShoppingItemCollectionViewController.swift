@@ -31,14 +31,31 @@ class ShoppingItemCollectionViewController: UICollectionViewController {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Item", for: indexPath) as? ShoppingItemCollectionViewCell else { return UICollectionViewCell()}
         
-        let item = shoppingItemController.shoppingItems[indexPath.item]
+        var item = shoppingItemController.shoppingItems[indexPath.item]
         
         cell.titleLabel.text = item.title
         cell.fruitImageView.image = UIImage(named: item.image)
         
+        if item.added {
+            cell.addedLabel.text = "Added"
+            item.added = !item.added
+        } else {
+            cell.addedLabel.text = "Not Added"
+            item.added = !item.added
+        }
+        
         return cell
     }
-
-
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Item", for: indexPath) as? ShoppingItemCollectionViewCell else { return }
+        
+//        print("\(shoppingItemController.shoppingItems[indexPath.item].added)")
+//        shoppingItemController.shoppingItems[indexPath.item].added = !shoppingItemController.shoppingItems[indexPath.item].added
+//        print("\(shoppingItemController.shoppingItems[indexPath.item].added)")
+        
+        
+    }
+    
 
 }

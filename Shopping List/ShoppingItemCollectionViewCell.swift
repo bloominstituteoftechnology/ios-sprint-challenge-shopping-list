@@ -10,6 +10,11 @@ import UIKit
 
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
+    override var isSelected: Bool{
+        didSet{
+        }
+    }
+    
     @IBOutlet weak var addedLabel: UILabel!
     @IBOutlet weak var fruitImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
