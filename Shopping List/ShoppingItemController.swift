@@ -27,13 +27,21 @@ class ShoppingItemController {
 	
 	func addShoppingItem(withImageName imageName: String, inCart: Bool = false, saveData: Bool = true) {
 		shoppingItems.append(ShoppingItem(imageName: imageName, inCart: inCart))
+		if saveData {
+			self.saveData()
+		}
 	}
 	
-	func updateShoppingItem(_ item: ShoppingItem, inCart: Bool) {
+	func updateShoppingItem(_ item: ShoppingItem, inCart: Bool, saveData: Bool = true) {
 		guard let itemIndex = shoppingItems.firstIndex(of: item) else { return }
 		shoppingItems[itemIndex].inCart = inCart
+		if saveData {
+			self.saveData()
+		}
 	}
 	
+	
+	// MARK:- load/save management
 	
 	private let fm = FileManager.default
 	private var savedFilePath: URL? {
