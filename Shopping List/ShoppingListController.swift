@@ -22,7 +22,8 @@ class ShoppingListController {
 			Item(name: "Strawberries", imageName: "strawberries"),
 		]
 		
-		
+		return array
+	
 	}
 	
 }

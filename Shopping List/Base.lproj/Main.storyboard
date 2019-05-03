@@ -6,13 +6,14 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--ShoppingList-->
         <scene sceneID="kQj-cW-voD">
             <objects>
-                <collectionViewController title="ShoppingList" id="yC9-Jw-Pri" customClass="PhotosCollectionViewController" customModule="ios_photo_collection" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController title="ShoppingList" id="yC9-Jw-Pri" customClass="ItemsCollectionViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="5X0-Nb-RIA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,7 +25,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="yG8-BK-zRp" customClass="PhotosCollectionViewCell" customModule="ios_photo_collection" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="yG8-BK-zRp" customClass="ItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="8" y="8" width="120" height="140"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -66,8 +67,8 @@
                                     <constraint firstAttribute="trailing" secondItem="vrR-h3-g5a" secondAttribute="trailing" id="vcB-hw-552"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="imageView" destination="2ba-oh-XRu" id="Ezt-Nm-HcZ"/>
-                                    <outlet property="label" destination="sJX-aP-ix2" id="2NQ-ZF-95H"/>
+                                    <outlet property="imageView" destination="2ba-oh-XRu" id="G8p-V5-1id"/>
+                                    <outlet property="label" destination="sJX-aP-ix2" id="bJS-rr-bkU"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -77,13 +78,27 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="c7H-Lb-E9b">
-                        <barButtonItem key="leftBarButtonItem" title="Select Theme" id="fBa-kS-82D"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="e6m-an-w5B"/>
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="8ma-iO-65P"/>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6FQ-u9-Cqw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1661" y="179"/>
+        </scene>
+        <!--Item View Controller-->
+        <scene sceneID="Bmf-id-nXy">
+            <objects>
+                <viewController id="jWd-re-PUi" customClass="ItemViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Y1N-ay-txl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="hcc-Fa-Rel"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rtr-Fh-lBT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2514" y="179"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nDA-7I-lOa">
