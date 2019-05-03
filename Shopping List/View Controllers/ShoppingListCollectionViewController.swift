@@ -22,15 +22,34 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         
         collectionView?.reloadData()
     }
+    
+    // MARK: - Added/Not Added Methods
+    
+    func itemFor(indexPath: IndexPath) -> ShoppingItem {
+        if indexPath.section == 0 {
+            return shoppingController.addedItem[indexPath.item]
+        } else {
+            return shoppingController.notAddedItem[indexPath.item]
+        }
+    }
 
     // MARK: UICollectionViewDataSource
+    
+    
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
+//        return 2
         return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+//        if section == 0 {
+//            return shoppingController.addedItem.count
+//        } else {
+//            return shoppingController.notAddedItem.count
+//        }
         return shoppingController.shoppingItems.count
     }
 
@@ -38,6 +57,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ShoppingItemCollectionViewCell else { return UICollectionViewCell() }
     
         let shoppingItem = shoppingController.shoppingItems[indexPath.item]
+//        let shoppingItem = itemFor(indexPath: indexPath)
         cell.shoppingItem = shoppingItem
     
         return cell

@@ -27,6 +27,14 @@ class ShoppingItemController {
     // MARK: - Properties
     var shoppingItems: [ShoppingItem] = []
     
+    var addedItem: [ShoppingItem] {
+        return shoppingItems.filter({$0.isAdded})
+    }
+    
+    var notAddedItem: [ShoppingItem] {
+        return shoppingItems.filter({$0.isAdded == false})
+    }
+    
     // MARK: - CRUD
     
     func create(image: String, item: String) {
