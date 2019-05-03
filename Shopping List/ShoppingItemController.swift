@@ -9,21 +9,26 @@
 import Foundation
 import UIKit
 
+private let isSubsiquentLaunchKey = "isSubsiquentLaunchKey"
+
 class ShoppingItemController {
     
     var shoppingItems: [ShoppingItem] = []
-    private let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
+    
+    private var shoppingListURL: URL? {
+        let fileManager = FileManager.default
+        guard let documents = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
+        return documents.appendingPathComponent("shoppingList.plist")
+    }
     
     init() {
         
-        // TODO: Only fun this for loop on the first run of the application.
-        for item in itemNames {
-            guard let imageData = UIImage(named: item)?.pngData() else {
-                print("Error getting image data: could not find image named \(item)")
-                return
-            }
-            let newShoppingItem = ShoppingItem(name: item, image: imageData)
-            shoppingItems.append(newShoppingItem)
+        if UserDefaults.standard.bool(forKey: isSubsiquentLaunchKey) {
+            loadFromPersistentStore()
+        } else {
+            let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
+            createItemArray(from: itemNames)
+            UserDefaults.standard.set(true, forKey: isSubsiquentLaunchKey)
         }
     }
     
@@ -37,14 +42,45 @@ class ShoppingItemController {
         }
         
         shoppingItems[index].isInCart = !shoppingItems[index].isInCart
+        saveToPersistentStore()
     }
     
-    // TODO: - Read/Write Methods
-    func loadFromPersistentStore() {
-        
+    private func createItemArray(from itemNames: [String]) {
+        for item in itemNames {
+            guard let imageData = UIImage(named: item)?.pngData() else {
+                print("Error getting image data: could not find image named \(item)")
+                return
+            }
+            let newShoppingItem = ShoppingItem(name: item, image: imageData)
+            shoppingItems.append(newShoppingItem)
+            saveToPersistentStore()
+        }
     }
     
+    // MARK: - Persistent Storage Methods
     func saveToPersistentStore() {
         
+        let encoder = PropertyListEncoder()
+        
+        do {
+            guard let url = shoppingListURL else { return }
+            let itemData = try encoder.encode(shoppingItems)
+            try itemData.write(to: url)
+        } catch { print("Error saving to disk: \(error.localizedDescription)")}
+    }
+    
+    func loadFromPersistentStore() {
+        
+        let fileManager = FileManager.default
+        
+        guard let url = shoppingListURL,
+        fileManager.fileExists(atPath: url.path)
+        else { return }
+        
+        do {
+            let data = try Data(contentsOf: url)
+            let decoder = PropertyListDecoder()
+            shoppingItems = try decoder.decode([ShoppingItem].self, from: data)
+        } catch { print("(Error reading from disk: \(error.localizedDescription)")}
     }
 }
