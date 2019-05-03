@@ -35,6 +35,7 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
 	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		let item = shoppingItemController.shoppingItems[indexPath.item]
 		shoppingItemController.updateAddedToCart(item: item)
+		shoppingItemController.saveToPersistentStore()
 		collectionView.reloadData()
 	}
 
