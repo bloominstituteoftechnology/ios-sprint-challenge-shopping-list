@@ -14,6 +14,8 @@ class OrderingViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     
+    var shoppingController: ShoppingItemController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
