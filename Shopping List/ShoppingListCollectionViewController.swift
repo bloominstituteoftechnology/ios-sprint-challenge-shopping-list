@@ -47,7 +47,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ShoppingListCollectionViewCell
         let shoppingItemSelected = shoppingListController.shoppingList[indexPath.item]
-        
+                
         cell.itemNameLbl.text = shoppingItemSelected.itemName
         cell.addedNotAddedLbl.text = shoppingItemSelected.addedToList ? "Added" : "Not Added"
         cell.imageView.image = UIImage(named: shoppingItemSelected.imageName)
