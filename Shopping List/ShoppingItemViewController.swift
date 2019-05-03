@@ -20,6 +20,16 @@ class ShoppingItemViewController: UICollectionViewController {
         return shoppingItemController.itemNames.count
     }
     
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingItemCell", for: indexPath) as! ShoppingItemCollectionViewCell
+        let shoppingItem = shoppingItemController.itemNames[indexPath.row]
+        cell.textLabel.text = shoppingItem.text
+        cell.imageView.image = shoppingItem.image
+        
+        return cell
+        
+    }
     let shoppingItemController = ShoppingItemController() 
 
 }

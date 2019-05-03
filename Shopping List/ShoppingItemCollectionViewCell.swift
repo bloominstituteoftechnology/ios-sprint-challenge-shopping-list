@@ -8,8 +8,10 @@
 
 import UIKit
 
-class ShoppingItemCollectionViewCell: UICollectionViewCell {
+class ShoppingItemCollectionViewCell: UICollectionViewController {
     
-    //image and text outlets here 
+    //image and text outlets here
+    @IBOutlet var imageView: UIImageView!
+    @IBOutlet var textLabel: UILabel!
     
 }
