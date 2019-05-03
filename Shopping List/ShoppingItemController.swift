@@ -40,7 +40,6 @@ class ShoppingItemController {
 		return index
 	}
 	
-	
 	private (set) var itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
 	private(set) var shoppingItems: [ShoppingItem] = []
 	
@@ -69,7 +68,7 @@ extension ShoppingItemController {
 		
 		do {
 			let encoder = PropertyListEncoder()
-			let data = try encoder.encode(itemNames)
+			let data = try encoder.encode(shoppingItems)
 			try data.write(to: url)
 		} catch {
 			NSLog("Error saving book data: \(error)")
@@ -85,15 +84,14 @@ extension ShoppingItemController {
 				return
 		}
 		
-		// load and decoode data
-//		do {
-//		let data = try Data(contentsOf: url)
-//		let decoder = PropertyListDecoder()
-//		let decodedBooks = try decoder.decode([itemNames], from: data)
-//			itemNames = decodedBooks
-//		}catch {
-//			NSLog("Error loading book data: \(error)")
-//			}
+		do {
+			let data = try Data(contentsOf: url)
+			let decoder = PropertyListDecoder()
+			let decodedBooks = try decoder.decode([ShoppingItem].self, from: data)
+			shoppingItems = decodedBooks
+		}catch {
+			NSLog("Error loading book data: \(error)")
+			}
 		}
 	
 }
