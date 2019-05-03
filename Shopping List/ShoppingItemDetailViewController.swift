@@ -10,6 +10,8 @@ import UIKit
 
 class ShoppingItemDetailViewController: UIViewController {
     @IBOutlet var listCountLabel: UILabel!
+    @IBOutlet var nameTextField: UITextField!
+    @IBOutlet var addressTextField: UITextField!
     
     var shoppingItemController: ShoppingItemController?
     var itemCount: Int {
@@ -36,7 +38,12 @@ class ShoppingItemDetailViewController: UIViewController {
     }
     
     @IBAction func sendOrderButtonTapped(_ sender: Any) {
+        guard let name = nameTextField.text, let address = addressTextField.text else { return }
+        let alert = UIAlertController(title: "Delivery for \(name)!", message: "Your shopping items will be delivered to \(address) in 15 minutes!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        present(alert, animated: true)
     }
+    
     
     /*
     // MARK: - Navigation
