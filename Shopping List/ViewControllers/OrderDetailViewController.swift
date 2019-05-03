@@ -20,15 +20,19 @@ class OrderDetailViewController: UIViewController {
 	
 	@IBAction func ordeButtonPressed(_ sender: Any) {
 		guard let itemsInCartCount = itemsInCartCount else { return }
-		let title = "\(itemsInCartCount) item(s) in cart"
-		let alerController = UIAlertController(title: title, message: "Place Order", preferredStyle: .alert)
+		guard let name = nameTextView.text,
+		let adress = adressTextView.text else { return }
+		
+		let title = "\(itemsInCartCount) item(s) in cart for \(name)"
+		let message = "Sent to: \(adress)"
+		let alerController = UIAlertController(title: title, message: message, preferredStyle: .alert)
 		
 		alerController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
 		alerController.addAction(UIAlertAction(title: "canel", style: .destructive, handler: nil))
 		present(alerController, animated: true)
 	}
 	
-	@IBOutlet var adrresTextView: UITextField!
+	@IBOutlet var adressTextView: UITextField!
 	@IBOutlet var nameTextView: UITextField!
 	@IBOutlet var countLabel: UILabel!
 	var itemsInCartCount: Int?
