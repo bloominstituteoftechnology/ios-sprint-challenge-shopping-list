@@ -14,9 +14,7 @@ class OrderDetailViewController: UIViewController {
         super.viewDidLoad()
 		guard let itemsInCartCount = itemsInCartCount else { return }
 		countLabel.text = "You Curently have \(itemsInCartCount) item(s) in your shopping list."
-		
 	}
-	
 	
 	@IBAction func ordeButtonPressed(_ sender: Any) {
 		guard let itemsInCartCount = itemsInCartCount else { return }

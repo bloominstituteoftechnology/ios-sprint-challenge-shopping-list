@@ -12,7 +12,6 @@ private let reuseIdentifier = "Cell"
 
 class ShoppingItemsCollectionViewController: UICollectionViewController {
 
-	
     override func viewDidLoad() {
         super.viewDidLoad()
 		navControllerSetup()
@@ -25,8 +24,8 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingItem", for: indexPath) 
 		guard let itemCell = cell as? ShoppingItemCollectionViewCell else { return cell }
-		let item = shoppingItemController.shoppingItems[indexPath.item]
 		
+		let item = shoppingItemController.shoppingItems[indexPath.item]
 		itemCell.item = item
 		
 		return itemCell
@@ -39,7 +38,6 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
 		collectionView.reloadData()
 	}
 
-	
 	let shoppingItemController = ShoppingItemController()
 }
 

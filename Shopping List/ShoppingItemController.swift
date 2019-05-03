@@ -13,9 +13,6 @@ to load: let image = UIImge(data: data)
 
 */
 class ShoppingItemController {
-	
-	
-	
 	func updateAddedToCart(item: ShoppingItem){
 		if let index = indexFromItem(item: item) {
 			shoppingItems[index].added.toggle()
@@ -29,31 +26,26 @@ class ShoppingItemController {
 		}
 	}
 	
+	private func indexFromItem(item: ShoppingItem) -> Int?{
+		guard let index = shoppingItems.firstIndex(of: item) else { return nil}
+		return index
+	}
+	
 	init() {
-		
 		guard let check = checkForFirsrLoad() else {
 			let defaults = UserDefaults.standard
 			for item in itemNames {
 				createShoppingItem(name: item)
 			}
+			
 			saveToPersistentStore()
 			defaults.set(false, forKey: "DidRun")
 			return
 		}
-		print(check)
 		
 		if !check {
 			loadFromPersistentStore()
-//			defaults.set(true, forKey: "DidRun")
 		}
-		
-		
-		
-	}
-	
-	private func indexFromItem(item: ShoppingItem) -> Int?{
-		guard let index = shoppingItems.firstIndex(of: item) else { return nil}
-		return index
 	}
 	
 	private (set) var itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
@@ -76,14 +68,10 @@ class ShoppingItemController {
 		let document = documents.appendingPathComponent(fileName)
 		return document
 	}
-	
-	
-	
 }
 
 extension ShoppingItemController {
-	
-	///return check for defult valuue
+	///will return for defult valuue
 	func checkForFirsrLoad() -> Bool? {
 		let defaults = UserDefaults.standard
 		if let didRun = (defaults.object(forKey: "DidRun") as? Bool) {
@@ -91,8 +79,6 @@ extension ShoppingItemController {
 		}
 		return nil
 	}
-	
-	
 	
 	func saveToPersistentStore() {
 		guard let url = readingListURL else { return }
@@ -124,5 +110,4 @@ extension ShoppingItemController {
 			NSLog("Error loading book data: \(error)")
 			}
 		}
-	
 }

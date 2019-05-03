@@ -15,14 +15,13 @@ to load: let image = UIImge(data: data)
 */
 
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
-	
-	
-	
 	private func setupViews() {
 		setBackGroundColors()
-		
-		guard let item = item,
-		 let image = UIImage(data: item.image) else { return }
+		setImagesAndText()
+	}
+	
+	func setImagesAndText() {
+		guard let item = item, let image = UIImage(data: item.image) else { return }
 		
 		imageView.image = image
 		notAddedLabel.text = item.added ? "Added" : "Not Added"
@@ -44,5 +43,4 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
 			setupViews()
 		}
 	}
-	
 }
