@@ -13,14 +13,25 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
 	
 	
 	private func setupViews() {
+		setBackGroundColors()
 		
+		guard let item = item else { return }
+		imageView.image = item.image
+		notAddedLabel.text = item.added ? "Added" : "Not Added"
+		itemNameLabel.text = item.name
 	}
 	
-
+	private func setBackGroundColors() {
+		imageView.backgroundColor = .lightGray
+		notAddedLabel.backgroundColor = .lightGray
+		itemNameLabel.backgroundColor = .lightGray
+	}
+	
 
 	@IBOutlet var imageView: UIImageView!
 	@IBOutlet var notAddedLabel: UILabel!
 	@IBOutlet var itemNameLabel: UILabel!
+	
 	var item: ShoppingItem? {
 		didSet {
 			setupViews()
