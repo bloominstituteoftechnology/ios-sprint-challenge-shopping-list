@@ -14,11 +14,22 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var itemImage: UIImageView!
     @IBOutlet weak var itemSelectedLabel: UILabel!
     
-        
     
-
-
-
-
-    let shoppingItemController = ShoppingItemController()
+    var shoppingItem: ShoppingItem? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    func updateViews() {
+        
+        guard let shoppingItem = shoppingItem else { return }
+        
+        itemLable.text = shoppingItem.name
+        itemImage.image = shoppingItem.image
+        
+        itemSelectedLabel.text = shoppingItem.hasBeenAdded ? "Added" : "Not Added"
+    }
+    
 }
+

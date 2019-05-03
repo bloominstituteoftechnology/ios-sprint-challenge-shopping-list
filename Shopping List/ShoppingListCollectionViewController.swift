@@ -15,8 +15,6 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-     
-        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -37,13 +35,18 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         var itemSelected = shoppingItemController.shoppingItems[indexPath.item]
         
+
+        
         switch itemSelected.hasBeenAdded == false {
         case true:
             itemSelected.hasBeenAdded = true
         case false:
             itemSelected.hasBeenAdded = false
-    
+
     }
+        
+            
+        
         
         print(itemSelected.hasBeenAdded)
     }
@@ -61,12 +64,14 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         let item = shoppingItemController.shoppingItems[indexPath.item]
         cell.itemLable.text = item.name
         cell.itemImage.image = item.image
+        
+        
         if item.hasBeenAdded == true {
             cell.itemSelectedLabel.text = "Selected"
         } else {
             cell.itemSelectedLabel.text = "Not Selected"
         }
-    
+
         
         
         return cell

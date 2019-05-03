@@ -31,9 +31,15 @@ class DeliveryViewController: UIViewController {
     
     
     @IBAction func sendOrderButtonPressed(_ sender: Any) {
-        
-        //dismiss and create Alert
+        let address = addressText.text
+        let name = nameText.text
+        //dismiss
+        let alert = UIAlertController(title: "Order for \(name)", message: "Your items will be delivered to \(address) in 15 minutes.", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
     }
     
-}
+
 
