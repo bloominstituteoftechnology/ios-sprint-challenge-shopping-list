@@ -39,6 +39,9 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
 		guard let itemCell = cell as? ShoppingItemCollectionViewCell else { return cell}
 		itemCell.notAddedLabel.text = "Not Added"
 		itemCell.imageView.image = UIImage(named: itemNames[indexPath.item])
+		itemCell.imageView.backgroundColor = .lightGray
+		itemCell.notAddedLabel.backgroundColor = .lightGray
+		itemCell.itemNameLabel.backgroundColor = .lightGray
 		itemCell.itemNameLabel.text = itemNames[indexPath.row]
 		itemCell.backgroundColor = .lightGray
 		return itemCell
