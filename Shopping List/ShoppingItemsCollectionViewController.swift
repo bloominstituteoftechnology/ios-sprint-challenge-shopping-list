@@ -16,7 +16,7 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
 		title = "Shopping List"
 		
-		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: nil)
+//		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: nil)
 		collectionView?.backgroundColor = .lightGray
 		navigationController?.navigationBar.prefersLargeTitles = true
 		
