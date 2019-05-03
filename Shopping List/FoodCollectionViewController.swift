@@ -20,6 +20,11 @@ class FoodCollectionViewController: UICollectionViewController {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FoodCell", for: indexPath) as! FoodCollectionViewCell
         
+        let FoodItem = ShoppingListController.shoppingList[indexPath.item]
+        
+        cell.itemNameLabel.text = FoodItem.name
+        cell.imageView.image = FoodItem.image
+        
         return cell
     }
     
