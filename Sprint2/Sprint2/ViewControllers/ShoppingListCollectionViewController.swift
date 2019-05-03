@@ -10,7 +10,9 @@ import UIKit
 
 private let reuseIdentifier = "ItemCell"
 
-class ShoppingListCollectionViewController: UICollectionViewController {
+class ShoppingListCollectionViewController: UICollectionViewController, ItemCollectionCellDelegate {
+
+    let shoppingController = ShoppingController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +31,12 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+
+        if segue.identifier == "toDetailSegue" {
+            guard let DetailVC = segue.destination as? DetailViewController else { return }
+
+            DetailVC.likeItemsLabel.text = "You currently have \(shoppingController.likedItems.count) in your shopping List."
+        }
     }
 
 
@@ -37,46 +45,50 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return shoppingController.shoppingItems.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        // Configure the cell
-    
-        return cell
+
+        guard let itemCell = cell as? ItemCollectionViewCell else { return cell }
+        let item = shoppingController.shoppingItems[indexPath.item]
+        itemCell.itemLabel.text = item.name
+        itemCell.imageView.image = UIImage(named: item.name)
+
+
+
+        return itemCell
     }
 
+
+// DUPLICATE FUNCTION FOR CELL DELEGATE
+/*
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = itemsFor(indexPath: indexPath)
+        shoppingController.toggleHasBeenLiked(shoppingItem: item)
+        collectionView.reloadData()
+    }
+*/
     // MARK: UICollectionViewDelegate
 
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
 
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
 
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
+    func itemsFor(indexPath: IndexPath) -> ShoppingItem {
+        if indexPath.section == 0 {
+          return  shoppingController.likedItems[indexPath.item]
+        } else {
+          return  shoppingController.notLikedItems[indexPath.item]
+        }
     }
 
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
+    func toggleHasBeenLiked(on cell: ItemCollectionViewCell) {
+        guard let index = collectionView.indexPath(for: cell) else { return }
+        let item = itemsFor(indexPath: index)
+        shoppingController.toggleHasBeenLiked(shoppingItem: item)
+        collectionView.reloadData()
+
     }
 
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
 
 }

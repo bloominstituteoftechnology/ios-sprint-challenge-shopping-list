@@ -15,6 +15,17 @@ class ShoppingController {
     }
 
     private(set) var shoppingItems: [ShoppingItem] = []
+
+    var likedItems: [ShoppingItem] {
+        return shoppingItems.filter { ( $0.isliked == true )}
+    }
+
+    var notLikedItems: [ShoppingItem] {
+        return shoppingItems.filter {($0.isliked == false)}
+    }
+
+
+
     var shoppingListURL: URL? {
         let fileManager = FileManager.default
         guard let document = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }

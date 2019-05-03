@@ -41,6 +41,9 @@
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MyZ-HZ-HUJ">
                                                             <rect key="frame" x="0.0" y="0.0" width="132" height="30"/>
                                                             <state key="normal" title="Add"/>
+                                                            <connections>
+                                                                <action selector="likeButtonTapped:" destination="AdO-Uq-PCm" eventType="touchUpInside" id="iwL-Df-bdM"/>
+                                                            </connections>
                                                         </button>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="l0i-7G-wfh">
                                                             <rect key="frame" x="0.0" y="38" width="132" height="80.5"/>
@@ -73,7 +76,7 @@
                                 <connections>
                                     <outlet property="imageView" destination="l0i-7G-wfh" id="RnK-LS-d1R"/>
                                     <outlet property="itemLabel" destination="Nt4-Hu-WWa" id="2Af-tD-v5k"/>
-                                    <outlet property="likeButtonTapped" destination="MyZ-HZ-HUJ" id="wZr-Ei-Yfb"/>
+                                    <outlet property="likeButton" destination="MyZ-HZ-HUJ" id="kHP-VJ-Q7n"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -85,7 +88,7 @@
                     <navigationItem key="navigationItem" id="utT-Ib-yvT">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="lQc-Jv-FB3">
                             <connections>
-                                <segue destination="iA2-dZ-4Ok" kind="show" id="c7Y-a0-cSX"/>
+                                <segue destination="iA2-dZ-4Ok" kind="show" identifier="toDetailSegue" id="c7Y-a0-cSX"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

@@ -9,11 +9,17 @@
 import UIKit
 
 class ItemCollectionViewCell: UICollectionViewCell {
+    var delegate: ItemCollectionCellDelegate?
 
-
-    @IBOutlet weak var likeButtonTapped: UIButton!
+  
+    
+    @IBAction func likeButtonTapped(_ sender: Any) {
+        delegate?.toggleHasBeenLiked(on: self)
+    }
     
 
+
+    @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var itemLabel: UILabel!
     
