@@ -20,7 +20,7 @@ class ShoppingListController {
     }
     
     init() {
-        create()
+        create() // not creating values - being called in wrong place?
         loadFromPersistentStore()
     }
 
@@ -33,7 +33,6 @@ class ShoppingListController {
     }
     
     func toggleAdd(shoppingListItem: Shopping) {
-        
         guard let index = shoppingList.index(of: shoppingListItem) else { return }
         shoppingList[index].addedToList.toggle()
         

@@ -25,8 +25,8 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
         guard let shoppingSelection = itemSelection else {return}
         
         imageView.image = UIImage(named: shoppingSelection.imageName)
+        addedNotAddedLbl.text = shoppingSelection.addedToList ? "Added" : "Not Added"
         itemNameLbl.text = shoppingSelection.itemName
-        
     }
     
 }
