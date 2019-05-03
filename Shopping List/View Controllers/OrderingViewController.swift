@@ -10,30 +10,46 @@ import UIKit
 
 class OrderingViewController: UIViewController {
     
+    // MARK: - Properties and Outlets
     @IBOutlet weak var orderLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     
     var shoppingController: ShoppingItemController?
     
+    // MARK: - View Loading Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        updateViews()
     }
+    
+    func updateViews() {
+        guard let shoppingItems = shoppingController?.shoppingItems else { return }
+        var numOfItems = 0
+        
+        for item in shoppingItems {
+            if item.isAdded {
+                numOfItems += 1
+            }
+        }
+        
+        orderLabel.text = "You have \(numOfItems) item(s) in your shopping cart."
+    }
+    
+    // MARK: - Action Methods
     
     @IBAction func sendOrderButtonTapped(_ sender: Any) {
+        guard let name = nameTextField.text,
+            let address = addressTextField.text else { return }
         
+        let alert = UIAlertController(title: "\(name)", message: "\(address)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        
+        present(alert, animated: true, completion: nil)
+        
+        navigationController?.popViewController(animated: true)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
