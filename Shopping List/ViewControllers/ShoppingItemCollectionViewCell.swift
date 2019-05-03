@@ -9,12 +9,18 @@
 import UIKit
 
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
-    
+	
+	
+	
+	private func setupView() {
+		
+	}
+	
 
 
 	@IBOutlet var imageView: UIImageView!
 	@IBOutlet var notAddedLabel: UILabel!
-
 	@IBOutlet var itemNameLabel: UILabel!
+	
 	
 }

@@ -19,34 +19,26 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
 //		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: nil)
 		collectionView?.backgroundColor = .lightGray
 		navigationController?.navigationBar.prefersLargeTitles = true
-		
-	
-		
-		
     }
 
-
-	
-
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return itemNames.count
+        return shoppingItemController.shoppingList.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingItem", for: indexPath)
 		
-		guard let itemCell = cell as? ShoppingItemCollectionViewCell else { return cell}
-		itemCell.notAddedLabel.text = "Not Added"
-		itemCell.imageView.image = UIImage(named: itemNames[indexPath.item])
-		itemCell.imageView.backgroundColor = .lightGray
-		itemCell.notAddedLabel.backgroundColor = .lightGray
-		itemCell.itemNameLabel.backgroundColor = .lightGray
-		itemCell.itemNameLabel.text = itemNames[indexPath.row]
-		itemCell.backgroundColor = .lightGray
+		guard let itemCell = cell as? ShoppingItemCollectionViewCell else { return cell }
+//		itemCell.notAddedLabel.text = "Not Added"
+//		itemCell.imageView.image = UIImage(named: itemNames[indexPath.item])
+//		itemCell.imageView.backgroundColor = .lightGray
+//		itemCell.notAddedLabel.backgroundColor = .lightGray
+//		itemCell.itemNameLabel.backgroundColor = .lightGray
+//		itemCell.itemNameLabel.text = itemNames[indexPath.row]
+//		itemCell.backgroundColor = .lightGray
 		return itemCell
     }
 
-	let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
-
+	
+	let shoppingItemController = ShoppingItemController()
 }
