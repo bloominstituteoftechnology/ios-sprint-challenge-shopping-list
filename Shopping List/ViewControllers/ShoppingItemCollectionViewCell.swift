@@ -16,7 +16,7 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
 		setBackGroundColors()
 		
 		guard let item = item else { return }
-		imageView.image = item.image
+//		imageView.image = item.image
 		notAddedLabel.text = item.added ? "Added" : "Not Added"
 		itemNameLabel.text = item.name
 	}

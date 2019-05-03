@@ -21,7 +21,8 @@ class ShoppingItemController {
 	
 	func createShoppingItem(name: String) {
 		if let image = UIImage(named: name) {
-			shoppingItems.append(ShoppingItem(image: image, name: name))
+			
+//			shoppingItems.append(ShoppingItem(image: image, name: name))
 		}
 	}
 	
