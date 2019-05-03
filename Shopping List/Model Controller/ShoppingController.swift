@@ -13,8 +13,9 @@ class ShoppingController {
     var shoppingItems = [ShoppingItem]()
     
     init() {
-        //        createItems()
+        createItems()
         loadFromPersistentStore()
+       
     }
     
     func createItems(){
@@ -69,4 +70,6 @@ class ShoppingController {
     var hasBeenAddedArray: [ShoppingItem] {
         return shoppingItems.filter { $0.hasBeenAdded == true }
     }
+    
+    //if array of images.count == 8
 }
