@@ -34,6 +34,8 @@ class ShoppingCartViewController: UIViewController {
         let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
+        
+        shoppingItemController?.clearCart()
     }
     
     private func updateViews() {

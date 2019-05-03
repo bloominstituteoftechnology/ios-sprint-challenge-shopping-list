@@ -45,6 +45,13 @@ class ShoppingItemController {
         saveToPersistentStore()
     }
     
+    func clearCart() {
+        for index in 0..<shoppingItems.count {
+            shoppingItems[index].isInCart = false
+        }
+        saveToPersistentStore()
+    }
+    
     private func createItemArray(from itemNames: [String]) {
         for item in itemNames {
             guard let imageData = UIImage(named: item)?.pngData() else {
