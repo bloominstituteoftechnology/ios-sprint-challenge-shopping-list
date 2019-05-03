@@ -11,18 +11,26 @@ import UIKit
 class ShoppingItemController {
     
     init() {
+        createShoppingItem()
         loadFromPersistentStore()
     }
     var shoppingList: [ShoppingItem] = []
     
+    let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
     
-    func createShoppingItem(imageName: String, itemName: String) {
-        guard let image = UIImage(named: imageName), let imageData = image.pngData() else { return }
+   
 
-        let shoppingItem = ShoppingItem(image: imageData, itemName: itemName)
+    
+    func createShoppingItem() {
+        for name in itemNames {
+        
+        guard let image = UIImage(named: name), let imageData = image.pngData() else { return }
+
+        let shoppingItem = ShoppingItem(image: imageData, itemName: name)
         shoppingList.append(shoppingItem)
 
         saveToPersistentStore()
+        }
     }
     
     func saveToPersistentStore() {

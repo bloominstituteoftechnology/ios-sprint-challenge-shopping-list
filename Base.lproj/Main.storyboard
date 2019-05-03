@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Shopping Item Collection Collection View Controller-->
+        <!--Shopping Item Collection View Controller-->
         <scene sceneID="K6f-KK-4Uv">
             <objects>
-                <collectionViewController id="Igq-C0-1ha" customClass="ShoppingItemCollectionCollectionViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="Igq-C0-1ha" customClass="ShoppingItemCollectionViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Db5-i1-76B">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -35,24 +35,20 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b8u-95-Vih">
                                             <rect key="frame" x="0.0" y="0.0" width="172" height="178"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="a2p-Bf-Qip">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="a2p-Bf-Qip">
                                                     <rect key="frame" x="0.0" y="0.0" width="172" height="178"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gkb-bU-yzI">
-                                                            <rect key="frame" x="0.0" y="0.0" width="172" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="172" height="59.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="wLA-mp-7o5">
-                                                            <rect key="frame" x="0.0" y="20.5" width="172" height="107"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="249" image="apple" translatesAutoresizingMaskIntoConstraints="NO" id="wLA-mp-7o5">
+                                                            <rect key="frame" x="0.0" y="59.5" width="172" height="59"/>
                                                         </imageView>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EeX-Nd-CJl">
-                                                            <rect key="frame" x="0.0" y="127.5" width="172" height="30"/>
-                                                            <state key="normal" title="Button"/>
-                                                        </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LLB-ss-hpo">
-                                                            <rect key="frame" x="0.0" y="157.5" width="172" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="118.5" width="172" height="59.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -171,4 +167,7 @@
             <point key="canvasLocation" x="252.17391304347828" y="288.61607142857139"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="apple" width="229" height="300"/>
+    </resources>
 </document>
