@@ -12,19 +12,16 @@ private let reuseIdentifier = "Cell"
 
 class ShoppingItemsCollectionViewController: UICollectionViewController {
 
+	
     override func viewDidLoad() {
         super.viewDidLoad()
-		title = "Shopping List"
-		
-//		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: nil)
-		collectionView?.backgroundColor = .lightGray
-		navigationController?.navigationBar.prefersLargeTitles = true
+		navControllerSetup()
     }
-
+	
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return shoppingItemController.shoppingItems.count
     }
-
+	
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingItem", for: indexPath) 
 		guard let itemCell = cell as? ShoppingItemCollectionViewCell else { return cell }
@@ -35,14 +32,30 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
 		return itemCell
     }
 	
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if segue.identifier == "nextSegue" {
-			guard let viewController = segue.destination as? OrderDetailViewController else { return }
-			viewController.itemsInCartCount = shoppingItemController.itemsInCartCount
-		
-		}
+	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		let item = shoppingItemController.shoppingItems[indexPath.item]
+		shoppingItemController.updateAddedToCart(item: item)
+		collectionView.reloadData()
 	}
 
 	
 	let shoppingItemController = ShoppingItemController()
+}
+
+extension ShoppingItemsCollectionViewController {
+	
+	private func navControllerSetup(){
+		title = "Shopping List"
+		collectionView?.backgroundColor = .lightGray
+		navigationController?.navigationBar.prefersLargeTitles = true
+		collectionView?.reloadData()
+	}
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "nextSegue" {
+			guard let viewController = segue.destination as? OrderDetailViewController else { return }
+			viewController.itemsInCartCount = shoppingItemController.itemsInCartCount
+		}
+	}
+	
 }

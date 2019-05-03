@@ -12,13 +12,14 @@ class OrderDetailViewController: UIViewController {
 
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
-		guard let itemsInCartCount = itemsInCartCount else { return }
-		countLabel.text = "You Curently have \(itemsInCartCount) items in your shopping cart."
 		
 	}
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		guard let itemsInCartCount = itemsInCartCount else { return }
+		countLabel.text = "You Curently have \(itemsInCartCount) items in your shopping cart."
+		
 	}
 	
 	
