@@ -38,13 +38,12 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ovE-YR-eII">
                                                     <rect key="frame" x="0.0" y="0.0" width="176" height="210"/>
                                                     <subviews>
-                                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IES-va-ofr">
-                                                            <rect key="frame" x="0.0" y="0.0" width="176" height="29"/>
-                                                            <segments>
-                                                                <segment title="Not Added"/>
-                                                                <segment title="Added"/>
-                                                            </segments>
-                                                        </segmentedControl>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Mx-QV-aXe">
+                                                            <rect key="frame" x="0.0" y="0.0" width="176" height="28"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2ba-oh-XRu">
                                                             <rect key="frame" x="0.0" y="28" width="176" height="161.5"/>
                                                         </imageView>
@@ -74,6 +73,7 @@
                                     <constraint firstAttribute="trailing" secondItem="vrR-h3-g5a" secondAttribute="trailing" id="vcB-hw-552"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="addedLabel" destination="9Mx-QV-aXe" id="WJJ-Rp-yho"/>
                                     <outlet property="imageView" destination="2ba-oh-XRu" id="G8p-V5-1id"/>
                                     <outlet property="label" destination="sJX-aP-ix2" id="bJS-rr-bkU"/>
                                 </connections>
@@ -87,7 +87,7 @@
                     <navigationItem key="navigationItem" title="Shopping List" id="c7H-Lb-E9b">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="8ma-iO-65P">
                             <connections>
-                                <segue destination="jWd-re-PUi" kind="show" id="WkV-4G-1qd"/>
+                                <segue destination="jWd-re-PUi" kind="show" identifier="Cart" id="WkV-4G-1qd"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -149,6 +149,12 @@
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="address" destination="RI5-Np-jTh" id="f7M-Ek-K2A"/>
+                        <outlet property="itemsadded" destination="cNb-Xm-kuP" id="kbe-2X-Myr"/>
+                        <outlet property="label" destination="cNb-Xm-kuP" id="Shs-lH-sFD"/>
+                        <outlet property="name" destination="SSF-lM-0fo" id="qWW-PR-r5V"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rtr-Fh-lBT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -174,7 +180,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="WkV-4G-1qd"/>
         <segue reference="Gll-VE-Z1g"/>
     </inferredMetricsTieBreakers>
 </document>

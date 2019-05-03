@@ -10,16 +10,32 @@ import UIKit
 
 class ItemViewController: UIViewController {
 	
-	var shoppingListController: ShoppingListController?
+	var itemCollectionViewCell : ItemCollectionViewCell?
+	var shoppingListController =  ShoppingListController()
 	var item: Item?
+	var numberOfItemsInCart: Int?
 	
-    override func viewDidLoad() {
+	@IBOutlet weak var itemsadded: UILabel!
+	@IBOutlet weak var name: UITextField!
+	@IBOutlet weak var address: UITextField!
+	
+	
+	override func viewDidLoad() {
         super.viewDidLoad()
-
 		
     }
-    
+
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		guard let numberOfItems = numberOfItemsInCart else { return }
+		
+		if numberOfItems == 1 {
+			itemsadded.text = "You currently have \(numberOfItems) item in your cart"
+		} else {
+			itemsadded.text = "You currently have \(numberOfItems) items in your cart"
+		}
+	}
 
 	
-
 }

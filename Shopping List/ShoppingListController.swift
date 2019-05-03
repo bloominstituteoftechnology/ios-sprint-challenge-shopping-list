@@ -11,7 +11,7 @@ import Foundation
 class ShoppingListController {
 	
 	
-	private var item1 = [Item]()
+
 	var items: [Item] {
 		
 		var array = [
@@ -21,11 +21,13 @@ class ShoppingListController {
 			Item(name: "Muffin", imageName: "muffin"),
 			Item(name: "Popcorn", imageName: "popcorn"),
 			Item(name: "Soda", imageName: "soda"),
-			Item(name: "Strawberries", imageName: "strawberries"),
+			Item(name: "Strawberries", imageName: "strawberries")
 		]
 		return array
 	
 	}
+	
+	
 	
 	
 }

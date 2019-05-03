@@ -10,6 +10,18 @@ import UIKit
 
 class ItemCollectionViewCell: UICollectionViewCell {
 	
+	var shoppingListController : ShoppingListController?
+	
+	override var isSelected: Bool{
+		didSet{
+		}
+	}
+	
+//	override var isSelected: Bool{
+//		didSet{
+//		}
+//	}
+	
 	
 	
 //	var item: Item? {
@@ -24,7 +36,9 @@ class ItemCollectionViewCell: UICollectionViewCell {
 //		label.text = item.name
 //
 //	}
+
 	
+	@IBOutlet weak var addedLabel: UILabel!
 	@IBOutlet weak var imageView: UIImageView!
 	@IBOutlet weak var label: UILabel!
 }

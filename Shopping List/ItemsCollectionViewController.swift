@@ -11,6 +11,9 @@ import UIKit
 
 
 class ItemsCollectionViewController: UICollectionViewController {
+	
+	let shoppingListController = ShoppingListController()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,15 +35,49 @@ class ItemsCollectionViewController: UICollectionViewController {
 		
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as! ItemCollectionViewCell
 		
-		let item = shoppingListController.items[indexPath.item]
+		var item = shoppingListController.items[indexPath.item]
     
 		cell.label.text = item.name
 		cell.imageView.image = item.image
+		
+		if item.added {
+			cell.addedLabel.text = "Added"
+			item.added = !item.added
+		} else {
+			cell.addedLabel.text = "Not Added"
+			item.added = !item.added
+		}
     
         return cell
     }
 	
-	let shoppingListController = ShoppingListController()
+	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Item", for: indexPath) as? ItemCollectionViewCell else { return }
+	
+
+
+		
+		func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+			
+			if segue.identifier == "Cart" {
+				guard let destination = segue.destination as? ItemViewController else { return }
+				destination.numberOfItemsInCart = getNumberOfAddedItems()
+			}
+		}
+	
+		func getNumberOfAddedItems() -> Int {
+			
+			var count = 0
+			
+			for item in shoppingListController.items {
+				if item.added == true {
+					count += 1
+				}
+			}
+			
+			return count
+		}
 
 	
+}
 }

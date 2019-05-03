@@ -10,12 +10,13 @@ import UIKit
 
 struct Item: Equatable {
 	
-	init(name: String, imageName: String) {
+	init(name: String, imageName: String, added: Bool = false) {
 		self.name = name
 		self.image = UIImage(named: imageName)!
+		self.added = added
 	}
 	
 	var name: String
 	var image: UIImage
-	
+	var added: Bool
 }
