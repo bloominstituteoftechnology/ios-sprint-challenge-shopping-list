@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cio-WF-H7Z">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -34,26 +34,29 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Os4-wO-xeY">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="300"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RNi-2m-jhG">
-                                                    <rect key="frame" x="8" y="41.5" width="184" height="250.5"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Added" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t5B-Ue-mKR">
-                                                    <rect key="frame" x="8" y="8" width="184" height="25.5"/>
-                                                    <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="22"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="c9A-8s-ZCW">
+                                                    <rect key="frame" x="8" y="8" width="184" height="284.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Added" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t5B-Ue-mKR">
+                                                            <rect key="frame" x="0.0" y="0.0" width="184" height="25.5"/>
+                                                            <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="22"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RNi-2m-jhG">
+                                                            <rect key="frame" x="0.0" y="33.5" width="184" height="251"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="251" id="oFq-kx-oY3"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="t5B-Ue-mKR" secondAttribute="trailing" constant="8" id="494-9c-nXm"/>
-                                                <constraint firstItem="t5B-Ue-mKR" firstAttribute="leading" secondItem="Os4-wO-xeY" secondAttribute="leading" constant="8" id="CbM-fE-GoM"/>
-                                                <constraint firstItem="RNi-2m-jhG" firstAttribute="top" secondItem="t5B-Ue-mKR" secondAttribute="bottom" constant="8" id="Cet-oD-ux0"/>
-                                                <constraint firstItem="t5B-Ue-mKR" firstAttribute="top" secondItem="Os4-wO-xeY" secondAttribute="top" constant="8" id="KJ7-YH-9eR"/>
-                                                <constraint firstAttribute="bottom" secondItem="RNi-2m-jhG" secondAttribute="bottom" constant="8" id="Pm3-22-9pJ"/>
-                                                <constraint firstItem="RNi-2m-jhG" firstAttribute="top" secondItem="t5B-Ue-mKR" secondAttribute="bottom" constant="8" id="VGU-zz-PH0"/>
-                                                <constraint firstAttribute="trailing" secondItem="RNi-2m-jhG" secondAttribute="trailing" constant="8" id="ZvV-Vp-y0J"/>
-                                                <constraint firstItem="RNi-2m-jhG" firstAttribute="leading" secondItem="Os4-wO-xeY" secondAttribute="leading" constant="8" id="bte-sQ-hUn"/>
+                                                <constraint firstAttribute="height" constant="300" id="Oyu-7K-d9Q"/>
+                                                <constraint firstAttribute="width" constant="200" id="V7e-Ko-hLo"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -76,8 +79,27 @@
                             <outlet property="delegate" destination="eFA-Mz-YhC" id="xZr-0U-r6o"/>
                         </connections>
                     </collectionView>
+                    <navigationItem key="navigationItem" id="iQH-kv-GSk"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e1C-5e-qeS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="982.60869565217399" y="138.61607142857142"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hIH-tx-Qhw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cio-WF-H7Z" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OqJ-au-dW3">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="eFA-Mz-YhC" kind="relationship" relationship="rootViewController" id="VGU-l7-0UT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MaC-zw-jzj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="72.463768115942031" y="138.61607142857142"/>
         </scene>
