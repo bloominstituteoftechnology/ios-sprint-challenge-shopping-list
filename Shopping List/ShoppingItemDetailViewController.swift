@@ -17,6 +17,7 @@ class ShoppingItemDetailViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
     }
     
     @IBAction func sendOrderButtonTapped(_ sender: Any) {

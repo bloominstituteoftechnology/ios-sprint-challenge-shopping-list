@@ -11,10 +11,10 @@ import UIKit
 //private let reuseIdentifier = "ItemCell"
 
 class ShoppingItemCollectionViewController: UICollectionViewController, ShoppingItemCollectionViewCellDelegate {
-    
-    
-    
+
     let shoppingItemController = ShoppingItemController()
+    
+    
     
 
     override func viewDidLoad() {
@@ -82,6 +82,7 @@ class ShoppingItemCollectionViewController: UICollectionViewController, Shopping
         return true
     }
     */
+    
 
     /*
     // Uncomment this method to specify if the specified item should be selected

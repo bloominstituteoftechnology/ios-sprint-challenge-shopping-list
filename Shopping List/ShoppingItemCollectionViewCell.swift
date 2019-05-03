@@ -16,22 +16,27 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     weak var delegate: ShoppingItemCollectionViewCellDelegate?
     var shoppingItem: ShoppingItem? {
         didSet {
-            delegate?.toggleHasBeenAdded(for: self)
             updateViews()
         }
     }
+    
+    @IBAction func cellButtonTapped(_ sender: UIButton) {
+        delegate?.toggleHasBeenAdded(for: self)
+        updateViews()
+    }
+    
+    
     
     func updateViews() {
         guard let shoppingItem = shoppingItem else { return }
         
         nameLabel.text = shoppingItem.name
-        imageView.image = UIImage(named: shoppingItem.imageName)
         switch shoppingItem.hasBeenAdded {
         case true: selectedLabel.text = "Added"
         case false: selectedLabel.text = "Not Added"
         }
+        imageView.image = UIImage(named: shoppingItem.imageName)
         
     }
-    
     
 }
