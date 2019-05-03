@@ -8,15 +8,16 @@
 
 import UIKit
 
-struct ShoppingItem {
+struct ShoppingItem: Equatable{
     
     let image: UIImage
     let name: String
-    let added: Bool = false
+    var added: Bool = false
     
-    init(name: String, imageName: String) {
+    init(name: String, imageName: String, added: Bool) {
         self.name = name
         self.image = UIImage(named: imageName)!
+        self.added = added
     }
     
     

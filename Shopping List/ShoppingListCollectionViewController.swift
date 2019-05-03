@@ -44,16 +44,24 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return shoppingItemController.shopingList.count
+        return shoppingItemController.shoppingList.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as! ShoppingListCollectionViewCell
         
-        let shoppingItem = shoppingItemController.shopingList[indexPath.item]
+        let shoppingItem = shoppingItemController.shoppingList[indexPath.item]
         
         cell.imageView.image = shoppingItem.image
         cell.nameLabel.text = shoppingItem.name
+        
+        if shoppingItem.added == true {
+            cell.itemAddedLabel.setTitle("Added", for: .normal)
+            cell.itemAddedLabel.setTitleColor(.green, for: .normal)
+        } else {
+            cell.itemAddedLabel.setTitle("Not Added", for: .normal)
+            cell.itemAddedLabel.setTitleColor(.red, for: .normal)
+        }
         
         
         
@@ -61,5 +69,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         
         return cell
     }
+    
+    
 
 }
