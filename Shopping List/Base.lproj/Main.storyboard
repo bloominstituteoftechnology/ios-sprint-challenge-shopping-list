@@ -114,7 +114,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iVz-QC-EsL"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Shooping for Shoopers" id="0VD-mH-vyQ"/>
+                    <navigationItem key="navigationItem" title="Shooping for Shoopers" id="0VD-mH-vyQ">
+                        <barButtonItem key="rightBarButtonItem" title="Order" id="uYN-dc-Lfj">
+                            <connections>
+                                <segue destination="j9o-Ug-vOb" kind="show" id="0ah-3q-aa4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="activityLabel" destination="v3o-69-HGh" id="thE-5G-TIJ"/>
                     </connections>
@@ -122,6 +128,79 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sUD-Mc-NHX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1075" y="129"/>
+        </scene>
+        <!--Order Submission View Controller-->
+        <scene sceneID="fCQ-9w-TmE">
+            <objects>
+                <viewController id="j9o-Ug-vOb" customClass="OrderSubmissionViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="etu-OI-HSs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="754" verticalCompressionResistancePriority="753" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="EAF-gA-gY0">
+                                <rect key="frame" x="16" y="156" width="382" height="168.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7K-5Q-Y5L">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="swl-ZX-MQA">
+                                        <rect key="frame" x="0.0" y="36.5" width="382" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="it0-aW-DgA">
+                                        <rect key="frame" x="0.0" y="82.5" width="382" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="z8F-Oo-49v">
+                                        <rect key="frame" x="0.0" y="128.5" width="382" height="40"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q5e-b9-qZ5">
+                                                <rect key="frame" x="95.5" y="0.0" width="191" height="40"/>
+                                                <color key="backgroundColor" red="0.0" green="0.37992407569999997" blue="0.16470744749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="GE3-By-Pk9"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                <state key="normal" title="Submit Order">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="submitOrderButtonPressed:" destination="j9o-Ug-vOb" eventType="touchUpInside" id="0Xo-HD-7UD"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="q5e-b9-qZ5" firstAttribute="width" secondItem="EAF-gA-gY0" secondAttribute="width" multiplier="0.5" id="41X-Q6-dtj"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.61696056249999998" green="0.86162159969999996" blue="0.71867128790000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="EAF-gA-gY0" firstAttribute="top" secondItem="4KI-h0-AQk" secondAttribute="top" constant="16" id="1wP-H0-q9s"/>
+                            <constraint firstItem="EAF-gA-gY0" firstAttribute="leading" secondItem="4KI-h0-AQk" secondAttribute="leading" constant="16" id="Jzl-sW-8t3"/>
+                            <constraint firstItem="4KI-h0-AQk" firstAttribute="trailing" secondItem="EAF-gA-gY0" secondAttribute="trailing" constant="16" id="Ywu-fP-pKK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4KI-h0-AQk"/>
+                    </view>
+                    <connections>
+                        <outlet property="addressTextField" destination="it0-aW-DgA" id="JeM-0R-RSd"/>
+                        <outlet property="nameTextField" destination="swl-ZX-MQA" id="E9h-0b-TIU"/>
+                        <outlet property="orderInfoLabel" destination="b7K-5Q-Y5L" id="Hmu-2W-djA"/>
+                        <outlet property="submitOrderButton" destination="q5e-b9-qZ5" id="Iah-VR-zO2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QKm-Rw-XtD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2007" y="129"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eRI-3t-lbV">
