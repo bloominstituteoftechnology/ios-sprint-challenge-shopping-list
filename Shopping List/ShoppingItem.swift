@@ -9,7 +9,6 @@
 import UIKit
 
 struct ShoppingItem: Codable, Equatable {
-	
 	init(image: Data , name: String, added: Bool = false) {
 		self.image = image
 		self.name = name

@@ -7,8 +7,11 @@
 //
 
 import UIKit
+/*
+to save : let data = uiimagepngpresentation(image)
+to load: let image = UIImge(data: data)
 
-
+*/
 class ShoppingItemController {
 	
 	
@@ -21,8 +24,8 @@ class ShoppingItemController {
 	
 	func createShoppingItem(name: String) {
 		if let image = UIImage(named: name) {
-			
-//			shoppingItems.append(ShoppingItem(image: image, name: name))
+			guard let data = UIImagePNGRepresentation(image) else { return }
+			shoppingItems.append(ShoppingItem(image: data, name: name))
 		}
 	}
 	

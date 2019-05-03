@@ -26,7 +26,6 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
 		notAddedLabel.backgroundColor = .lightGray
 		itemNameLabel.backgroundColor = .lightGray
 	}
-	
 
 	@IBOutlet var imageView: UIImageView!
 	@IBOutlet var notAddedLabel: UILabel!
