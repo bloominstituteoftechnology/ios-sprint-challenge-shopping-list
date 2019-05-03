@@ -7,3 +7,16 @@
 //
 
 import Foundation
+import UIKit
+
+class ShoppingItem {
+    var image: UIImage
+    var name: String
+    var addedToList: Bool
+    
+    init(image: UIImage, name: String, addedToList: Bool = false) {
+        self.image = image
+        self.name = name
+        self.addedToList = addedToList
+    }
+}
