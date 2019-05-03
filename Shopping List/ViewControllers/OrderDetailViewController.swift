@@ -9,7 +9,7 @@
 import UIKit
 import UserNotifications
 
-class OrderDetailViewController: UIViewController {
+class OrderDetailViewController: UIViewController, UNUserNotificationCenterDelegate {
 
 	override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,9 +18,13 @@ class OrderDetailViewController: UIViewController {
 	}
 	
 	@IBAction func ordeButtonPressed(_ sender: Any) {
+		register()
+	}
+	
+	func zeroItemsAlert() {
 		guard let itemsInCartCount = itemsInCartCount else { return }
 		guard let name = nameTextView.text,
-		let adress = adressTextView.text else { return }
+			let adress = adressTextView.text else { return }
 		
 		let title = "\(itemsInCartCount) item(s) in cart for \(name)"
 		let message = "to: \(adress)"
@@ -31,11 +35,20 @@ class OrderDetailViewController: UIViewController {
 		present(alerController, animated: true)
 	}
 	
+	
 	@IBOutlet var adressTextView: UITextField!
 	@IBOutlet var nameTextView: UITextField!
 	@IBOutlet var countLabel: UILabel!
 	var itemsInCartCount: Int?
 }
 
-
+extension OrderDetailViewController {
+	func register() {
+		let center = UNUserNotificationCenter.current()
+		center.requestAuthorization(options: [.alert, .sound]) {
+			(granted, error) in
+			
+		}
+	}
+}
 
