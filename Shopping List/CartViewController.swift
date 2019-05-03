@@ -47,5 +47,11 @@ class CartViewController: UIViewController {
     */
 
     @IBAction func addToCartButtonTapped(_ sender: Any) {
+        guard let name = nameTextField.text else { return }
+        guard let address = adressTextField.text else { return }
+        
+        let alert = UIAlertController(title: "Grocery", message: "Hi \(name)! Your groceries will be delivered to \(address) in 15 minutes", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
