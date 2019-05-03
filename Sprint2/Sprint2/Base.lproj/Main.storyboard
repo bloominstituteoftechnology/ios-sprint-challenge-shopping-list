@@ -19,37 +19,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Gy3-BJ-wUC">
-                            <size key="itemSize" width="132" height="147"/>
+                            <size key="itemSize" width="152" height="213"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemCell" id="AdO-Uq-PCm" customClass="ItemCollectionViewCell" customModule="Sprint2" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="132" height="147"/>
+                                <rect key="frame" x="0.0" y="0.0" width="152" height="213"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="132" height="147"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="152" height="213"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gop-eQ-P4e">
-                                            <rect key="frame" x="0.0" y="0.0" width="132" height="147"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="152" height="213"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xca-Qa-uZw">
-                                                    <rect key="frame" x="0.0" y="0.0" width="132" height="147"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="152" height="213"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MyZ-HZ-HUJ">
-                                                            <rect key="frame" x="0.0" y="0.0" width="132" height="30"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="152" height="30"/>
                                                             <state key="normal" title="Add"/>
                                                             <connections>
                                                                 <action selector="likeButtonTapped:" destination="AdO-Uq-PCm" eventType="touchUpInside" id="iwL-Df-bdM"/>
                                                             </connections>
                                                         </button>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="l0i-7G-wfh">
-                                                            <rect key="frame" x="0.0" y="38" width="132" height="80.5"/>
+                                                            <rect key="frame" x="0.0" y="38" width="152" height="146.5"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nt4-Hu-WWa">
-                                                            <rect key="frame" x="0.0" y="126.5" width="132" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="192.5" width="152" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -73,6 +73,7 @@
                                     <constraint firstItem="gop-eQ-P4e" firstAttribute="leading" secondItem="AdO-Uq-PCm" secondAttribute="leading" id="leJ-h2-aSJ"/>
                                     <constraint firstAttribute="trailing" secondItem="gop-eQ-P4e" secondAttribute="trailing" id="rqw-DT-ut6"/>
                                 </constraints>
+                                <size key="customSize" width="152" height="213"/>
                                 <connections>
                                     <outlet property="imageView" destination="l0i-7G-wfh" id="RnK-LS-d1R"/>
                                     <outlet property="itemLabel" destination="Nt4-Hu-WWa" id="2Af-tD-v5k"/>
@@ -128,9 +129,6 @@
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WE9-p9-07H">
                                                 <rect key="frame" x="0.0" y="38" width="314" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="314" id="eJA-0g-Xv9"/>
-                                                </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
