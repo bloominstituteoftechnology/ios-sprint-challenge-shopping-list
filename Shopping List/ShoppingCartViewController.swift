@@ -30,12 +30,14 @@ class ShoppingCartViewController: UIViewController {
         !name.isEmpty
         else { return }
         
+        view.endEditing(true)
+        shoppingItemController?.clearCart()
+        updateViews()
+        
         let alert = UIAlertController(title: "Order for \(name)", message: "Your items will be delivered to \(address) in 15 minutes.", preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
-        
-        shoppingItemController?.clearCart()
     }
     
     private func updateViews() {
@@ -44,5 +46,7 @@ class ShoppingCartViewController: UIViewController {
         
         let numberOfItemsInCart = shoppingItemController.shoppingItems.filter({ $0.isInCart }).count
         shoppingListLabel.text = "You have \(numberOfItemsInCart) item(s) in your shopping list."
+        nameTextField.text = ""
+        addressTextField.text = ""
     }
 }
