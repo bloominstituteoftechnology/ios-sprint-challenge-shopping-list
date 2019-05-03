@@ -44,12 +44,14 @@ class OrderingViewController: UIViewController {
         guard let name = nameTextField.text,
             let address = addressTextField.text else { return }
         
-        let alert = UIAlertController(title: "\(name)", message: "\(address)", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        
+        
+        let alert = UIAlertController(title: "\(name)", message: "Your order will be delivered to \(address) in 15 minutes.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {action in
+            self.navigationController?.popViewController(animated: true)
+        }))
         
         present(alert, animated: true, completion: nil)
-        
-        navigationController?.popViewController(animated: true)
     }
 
 }
