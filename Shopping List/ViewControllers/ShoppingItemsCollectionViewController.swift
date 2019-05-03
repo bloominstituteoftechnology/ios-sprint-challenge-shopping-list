@@ -26,16 +26,12 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingItem", for: indexPath)
-		
+		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingItem", for: indexPath) 
 		guard let itemCell = cell as? ShoppingItemCollectionViewCell else { return cell }
-//		itemCell.notAddedLabel.text = "Not Added"
-//		itemCell.imageView.image = UIImage(named: itemNames[indexPath.item])
-//		itemCell.imageView.backgroundColor = .lightGray
-//		itemCell.notAddedLabel.backgroundColor = .lightGray
-//		itemCell.itemNameLabel.backgroundColor = .lightGray
-//		itemCell.itemNameLabel.text = itemNames[indexPath.row]
-//		itemCell.backgroundColor = .lightGray
+		let item = shoppingItemController.shoppingList[indexPath.item]
+		
+		itemCell.item = item
+		
 		return itemCell
     }
 

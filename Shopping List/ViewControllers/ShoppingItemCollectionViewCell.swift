@@ -12,7 +12,7 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
 	
 	
 	
-	private func setupView() {
+	private func setupViews() {
 		
 	}
 	
@@ -21,6 +21,10 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
 	@IBOutlet var imageView: UIImageView!
 	@IBOutlet var notAddedLabel: UILabel!
 	@IBOutlet var itemNameLabel: UILabel!
-	
+	var item: ShoppingItem? {
+		didSet {
+			setupViews()
+		}
+	}
 	
 }
