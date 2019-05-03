@@ -15,9 +15,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var placeOrderLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
+    @IBOutlet weak var sendButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        sendButton.layer.masksToBounds = true
+        sendButton.layer.cornerRadius = 15
         updateViews()
     }
     
@@ -45,7 +48,7 @@ class ViewController: UIViewController {
     private func updateViews() {
         guard let shoppingItemController = shoppingItemController else { return }
         let numberOfItems = shoppingItemController.shoppingItems.filter({$0.isAddedToList})
-        placeOrderLabel.text = "You currently have \(numberOfItems.count) item(s) in your shopping list."
+        self.navigationItem.title = "\(numberOfItems.count) item(s) in cart"
     }
 
 }

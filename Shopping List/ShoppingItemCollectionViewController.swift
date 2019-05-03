@@ -48,6 +48,10 @@ class ShoppingItemCollectionViewControlller: UICollectionViewController {
             
             destinationVC.shoppingItemController = shoppingItemController
         }
+        let backItem = UIBarButtonItem()
+        backItem.title = "Back"
+        navigationItem.backBarButtonItem = backItem
+        navigationItem.backBarButtonItem?.tintColor = UIColor.white
     }
 
     

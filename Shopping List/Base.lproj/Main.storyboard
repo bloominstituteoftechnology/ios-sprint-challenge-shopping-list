@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Cart-->
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -19,27 +19,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="aisle-cart-commerce-1005638" translatesAutoresizingMaskIntoConstraints="NO" id="fiB-FT-IdR">
+                                <rect key="frame" x="0.0" y="140" width="414" height="756"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Your Name:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j0t-x4-VOh">
-                                <rect key="frame" x="40" y="252" width="335" height="30"/>
+                                <rect key="frame" x="40" y="229" width="335" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Your Address:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2yv-YG-R8c">
-                                <rect key="frame" x="40" y="290" width="335" height="30"/>
+                                <rect key="frame" x="40" y="267" width="335" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You currently have 0 Item(s) in your shopping list." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N5Q-j1-fTf">
-                                <rect key="frame" x="40" y="156" width="335" height="51"/>
-                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="22"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Le-nw-2U4">
-                                <rect key="frame" x="167.5" y="340" width="79" height="30"/>
-                                <state key="normal" title="Send Order"/>
+                                <rect key="frame" x="152" y="317" width="110" height="30"/>
+                                <color key="backgroundColor" red="0.46666666670000001" green="0.77647058820000003" blue="0.64313725489999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="igf-aw-ixr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Checkout!">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="sendButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="weU-6P-mXF"/>
                                 </connections>
@@ -47,25 +52,22 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="N5Q-j1-fTf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="0ML-ZZ-u8W"/>
                             <constraint firstItem="j0t-x4-VOh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="1nW-Y7-sYS"/>
+                            <constraint firstItem="j0t-x4-VOh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="89" id="38i-ed-dN9"/>
                             <constraint firstItem="2yv-YG-R8c" firstAttribute="top" secondItem="j0t-x4-VOh" secondAttribute="bottom" constant="8" id="7Cl-gQ-tSP"/>
                             <constraint firstItem="3Le-nw-2U4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CVs-te-rfm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="j0t-x4-VOh" secondAttribute="trailing" constant="39" id="Pnt-Q5-98Y"/>
                             <constraint firstItem="3Le-nw-2U4" firstAttribute="top" secondItem="2yv-YG-R8c" secondAttribute="bottom" constant="20" id="Qzq-8e-Ds5"/>
                             <constraint firstItem="2yv-YG-R8c" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="SLz-dN-srh"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="N5Q-j1-fTf" secondAttribute="trailing" constant="39" id="feH-op-SIW"/>
-                            <constraint firstItem="j0t-x4-VOh" firstAttribute="top" secondItem="N5Q-j1-fTf" secondAttribute="bottom" constant="45" id="lFy-57-MBs"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2yv-YG-R8c" secondAttribute="trailing" constant="39" id="pKd-Iy-YZt"/>
-                            <constraint firstItem="N5Q-j1-fTf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="vPy-LW-Jou"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Cart" id="TJD-j6-sjv"/>
+                    <navigationItem key="navigationItem" id="TJD-j6-sjv"/>
                     <connections>
                         <outlet property="addressTextField" destination="2yv-YG-R8c" id="zs9-Q8-Ogg"/>
                         <outlet property="nameTextField" destination="j0t-x4-VOh" id="g1X-w4-XsK"/>
-                        <outlet property="placeOrderLabel" destination="N5Q-j1-fTf" id="M7f-Xo-T0y"/>
+                        <outlet property="sendButton" destination="3Le-nw-2U4" id="OlX-ea-oNt"/>
                     </connections>
                 </viewController>
             </objects>
@@ -100,19 +102,20 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shopping item" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3n-nr-hFx">
-                                            <rect key="frame" x="94.5" y="287" width="111" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <rect key="frame" x="91" y="287" width="118.5" height="21"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R1I-ZK-aRW">
                                             <rect key="frame" x="41" y="20" width="219" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </view>
+                                <color key="backgroundColor" red="0.46666666670000001" green="0.77647058820000003" blue="0.64313725489999995" alpha="0.42335937499999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="R1I-ZK-aRW" firstAttribute="leading" secondItem="kFo-kw-gIh" secondAttribute="leading" constant="41" id="6JE-hi-tDW"/>
                                     <constraint firstItem="Zc4-L8-8cA" firstAttribute="top" secondItem="R1I-ZK-aRW" secondAttribute="bottom" constant="12" id="6Mc-ge-v4f"/>
@@ -138,7 +141,8 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Shopping List" id="hGn-lL-Fxo">
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="9F9-Xj-ioR">
+                        <barButtonItem key="rightBarButtonItem" image="shopping-cart (1)" id="9F9-Xj-ioR">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="BYZ-38-t0r" kind="show" identifier="order" id="5Ch-kJ-181"/>
                             </connections>
@@ -157,6 +161,13 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="FPv-J0-gXo">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.46666666670000001" green="0.77647058820000003" blue="0.64313725489999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -168,4 +179,8 @@
             <point key="canvasLocation" x="769.56521739130437" y="112.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="aisle-cart-commerce-1005638" width="3024" height="4032"/>
+        <image name="shopping-cart (1)" width="64" height="64"/>
+    </resources>
 </document>
