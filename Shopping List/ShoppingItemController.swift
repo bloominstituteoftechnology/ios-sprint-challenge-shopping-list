@@ -20,6 +20,8 @@ class ShoppingItemController {
         return location
     }
     
+    
+    
     init() {
         loadFromPersistentStore()
     }

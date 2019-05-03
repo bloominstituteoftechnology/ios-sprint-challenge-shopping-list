@@ -13,19 +13,19 @@
         <!--Shopping List-->
         <scene sceneID="EkX-WB-Mrz">
             <objects>
-                <collectionViewController id="KSX-6L-7Jc" sceneMemberID="viewController">
+                <collectionViewController id="KSX-6L-7Jc" customClass="ShoppingItemCollectionViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" id="PW9-N6-gUV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="safeArea" id="vsj-jm-Z47">
-                            <size key="itemSize" width="50" height="50"/>
+                            <size key="itemSize" width="150" height="220"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="32" minY="32" maxX="32" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemCell" id="aC7-EJ-Skm">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemCell" id="aC7-EJ-Skm" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="32" y="32" width="150" height="220"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -76,6 +76,11 @@
                                     <constraint firstAttribute="bottom" secondItem="kNo-cW-hzk" secondAttribute="bottom" id="uc8-nt-deE"/>
                                 </constraints>
                                 <size key="customSize" width="150" height="220"/>
+                                <connections>
+                                    <outlet property="imageView" destination="aBk-XE-PxA" id="bMu-LF-gcV"/>
+                                    <outlet property="nameLabel" destination="M3T-y7-3P0" id="gcE-OS-vfi"/>
+                                    <outlet property="selectedLabel" destination="J8T-RQ-qn8" id="7GU-Tb-6SA"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -95,16 +100,16 @@
             </objects>
             <point key="canvasLocation" x="598.55072463768124" y="145.98214285714286"/>
         </scene>
-        <!--View Controller-->
+        <!--Shopping Item Detail View Controller-->
         <scene sceneID="C2H-j4-ulB">
             <objects>
-                <viewController id="3zI-Q4-XOo" sceneMemberID="viewController">
+                <viewController id="3zI-Q4-XOo" customClass="ShoppingItemDetailViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jc2-Gz-6oI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="HJR-dt-ggj">
-                                <rect key="frame" x="39" y="120" width="336.5" height="197"/>
+                                <rect key="frame" x="39" y="172" width="336.5" height="197"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yr5-c6-hve">
                                         <rect key="frame" x="0.0" y="0.0" width="336.5" height="53"/>
@@ -128,7 +133,10 @@ shopping list.</string>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKe-PQ-7o0">
                                         <rect key="frame" x="0.0" y="167" width="336.5" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" title="Send Order"/>
+                                        <connections>
+                                            <action selector="sendOrderButtonTapped:" destination="3zI-Q4-XOo" eventType="touchUpInside" id="xgE-bJ-9xN"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -143,6 +151,9 @@ shopping list.</string>
                     <navigationItem key="navigationItem" id="vNj-wm-kaw">
                         <barButtonItem key="backBarButtonItem" title="Change Shopping List" id="StS-Z5-5ok"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="listCountLabel" destination="Yr5-c6-hve" id="FBF-1m-wOc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v3s-Ly-ghE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -153,8 +164,8 @@ shopping list.</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Q4l-t7-mWy" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vbb-If-zUs">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="vbb-If-zUs">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
