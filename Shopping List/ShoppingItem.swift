@@ -8,14 +8,15 @@
 
 import Foundation
 
-struct ShoppingItem: Equatable {
+struct ShoppingItem: Equatable, Codable {
     
-    var image: Data
+    var name: String
+    var imageData: Data?
     var title: String
     var isAddedToList: Bool
     
-    init(image: Data, title: String) {
-        self.image = image
+    init(name: String, title: String) {
+        self.name = name
         self.title = title
         self.isAddedToList = false
     }
