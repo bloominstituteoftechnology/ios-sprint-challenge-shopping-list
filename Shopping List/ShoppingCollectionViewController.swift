@@ -12,6 +12,18 @@ private let reuseIdentifier = "Cell"
 
 class ShoppingCollectionViewController: UICollectionViewController {
 
+    let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
+    
+    let itemImage: [UIImage] = [
+        UIImage(named: "apple")!,
+        UIImage(named: "grapes")!,
+        UIImage(named: "milk")!,
+        UIImage(named: "muffin")!,
+        UIImage(named: "popcorn")!,
+        UIImage(named: "soda")!,
+        UIImage(named: "strawberries")!
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -43,14 +55,15 @@ class ShoppingCollectionViewController: UICollectionViewController {
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+      
+        return itemNames.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! ShoppingCollectionViewCell
     
-        // Configure the cell
+        cell.itemImageView.image = itemImage[indexPath.item]
+        cell.itemLabel.text = itemNames[indexPath.item]
     
         return cell
     }
