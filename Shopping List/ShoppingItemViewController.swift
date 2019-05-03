@@ -8,12 +8,16 @@
 
 import UIKit
 
-class ShoppingItemViewController: UIViewController {
+class ShoppingItemViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return shoppingItemController.itemNames.count
     }
     
     let shoppingItemController = ShoppingItemController() 

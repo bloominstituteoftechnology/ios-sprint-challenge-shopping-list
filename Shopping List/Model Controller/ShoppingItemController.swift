@@ -10,6 +10,7 @@ import Foundation
 
 class ShoppingItemController {
     
+    
     let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
     
     func create(imageData: Data, title: String, addedToShoppingList: Bool) {
@@ -49,7 +50,7 @@ class ShoppingItemController {
                 return nil
         }
         print("Documents: \(documents.path)")
-        return documents.appendingPathComponent("ReadingList.plist")
+        return documents.appendingPathComponent("ShoppingList.plist")
     }
     
     //Encapsulation, protecting data
