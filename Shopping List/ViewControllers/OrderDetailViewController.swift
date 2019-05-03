@@ -24,10 +24,10 @@ class OrderDetailViewController: UIViewController {
 		let adress = adressTextView.text else { return }
 		
 		let title = "\(itemsInCartCount) item(s) in cart for \(name)"
-		let message = "Sent to: \(adress)"
+		let message = "to: \(adress)"
 		let alerController = UIAlertController(title: title, message: message, preferredStyle: .alert)
 		
-		alerController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+		alerController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
 		alerController.addAction(UIAlertAction(title: "canel", style: .destructive, handler: nil))
 		present(alerController, animated: true)
 	}

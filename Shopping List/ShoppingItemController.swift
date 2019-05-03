@@ -49,4 +49,47 @@ class ShoppingItemController {
 		}
 		return count
 	}
+	
+	private var readingListURL: URL? {
+		let fileManager = FileManager.default
+		guard let documents = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
+		let fileName = "ShoppingList.plist"
+		let document = documents.appendingPathComponent(fileName)
+		return document
+	}
+}
+
+extension ShoppingItemController {
+	func saveToPersistentStore() {
+		guard let url = readingListURL else { return }
+		
+		do {
+			let encoder = PropertyListEncoder()
+			let data = try encoder.encode(itemNames)
+			try data.write(to: url)
+		} catch {
+			NSLog("Error saving book data: \(error)")
+		}
+	}
+	
+	func loadFromPersistentStore() {
+		let fileManager = FileManager.default
+		
+		guard let url = readingListURL,
+			fileManager.fileExists(atPath: url.path) else {
+				print("error: loadFromPersistentStore()")
+				return
+		}
+		
+		// load and decoode data
+		do {
+		let data = try Data(contentsOf: url)
+		let decoder = PropertyListDecoder()
+//		let decodedBooks = try decoder.decode([itemNames], from: data)
+//			itemNames = decodedBooks
+//		}catch {
+//			NSLog("Error loading book data: \(error)")
+//			}
+//		}
+	
 }
