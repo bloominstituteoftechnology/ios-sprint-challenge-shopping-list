@@ -13,7 +13,7 @@ class ShoppingController {
     var shoppingItems = [ShoppingItem]()
     
     init() {
-
+        createItems()
     }
     
     func createItems(){

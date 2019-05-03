@@ -14,6 +14,11 @@ class ItemCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView?.reloadData()
+    }
 
     /*
     // MARK: - Navigation
@@ -35,41 +40,29 @@ class ItemCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ItemsCollectionViewCell
-    
-        // Configure the cell
-    
+        let itemToPass = sC.shoppingItems[indexPath.item]
+        cell.shoppingItem = itemToPass
+        cell.delegate = self
         return cell
     }
 
-    // MARK: UICollectionViewDelegate
+}
 
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
+extension ItemCollectionViewController: ItemsCollectionViewCellDelegate {
+    func buttonImageWasPressed(on Cell: UICollectionViewCell) {
+        //grab the item in the cell via index
+        guard let index = collectionView?.indexPath(for: Cell) else { return }
+        
+        //now that we have the index we can subscript the array
+        let item = sC.shoppingItems[index.item]
+        
+        //now that we have the item we can toggle it's boolean property
+        sC.toggleHasBeenChanged(shoppingItem: item)
+        
+        //now that we have toggled the item we can reload the collection view
+        collectionView?.reloadItems(at: [index])
+        
     }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
-    }
-    */
-
+    
 }
