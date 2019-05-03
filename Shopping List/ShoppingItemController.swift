@@ -12,7 +12,7 @@ import UIKit
 class ShoppingItemController {
     
     var shoppingItems: [ShoppingItem] = []
-    let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
+    private let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
     
     init() {
         
@@ -39,7 +39,7 @@ class ShoppingItemController {
         shoppingItems[index].isInCart = !shoppingItems[index].isInCart
     }
     
-    // MARK: - Read/Write Methods
+    // TODO: - Read/Write Methods
     func loadFromPersistentStore() {
         
     }

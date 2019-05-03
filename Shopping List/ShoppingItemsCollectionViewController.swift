@@ -17,6 +17,12 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        shoppingItemController.update(shoppingItem: shoppingItemController.shoppingItems[indexPath.item])
+        collectionView.reloadItems(at: [indexPath])
+    }
 
     // MARK: UICollectionViewDataSource
 
