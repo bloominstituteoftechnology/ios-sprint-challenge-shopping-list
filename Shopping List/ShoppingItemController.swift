@@ -30,9 +30,25 @@ class ShoppingItemController {
 	}
 	
 	init() {
-		for item in itemNames {
-			createShoppingItem(name: item)
+		
+		guard let check = checkForFirsrLoad() else {
+			let defaults = UserDefaults.standard
+			for item in itemNames {
+				createShoppingItem(name: item)
+			}
+			saveToPersistentStore()
+			defaults.set(false, forKey: "DidRun")
+			return
 		}
+		print(check)
+		
+		if !check {
+			
+//			defaults.set(true, forKey: "DidRun")
+		}
+		
+		
+		
 	}
 	
 	private func indexFromItem(item: ShoppingItem) -> Int?{
@@ -66,6 +82,18 @@ class ShoppingItemController {
 }
 
 extension ShoppingItemController {
+	
+	///return check for defult valuue
+	func checkForFirsrLoad() -> Bool? {
+		let defaults = UserDefaults.standard
+		if let didRun = (defaults.object(forKey: "DidRun") as? Bool) {
+			return didRun
+		}
+		return nil
+	}
+	
+	
+	
 	func saveToPersistentStore() {
 		guard let url = readingListURL else { return }
 		
