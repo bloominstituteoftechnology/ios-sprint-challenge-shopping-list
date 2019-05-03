@@ -25,8 +25,6 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         updateViews()
     }
     
-    
-    
     func updateViews() {
         guard let shoppingItem = shoppingItem else { return }
         
@@ -36,7 +34,5 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         case false: selectedLabel.text = "Not Added"
         }
         imageView.image = UIImage(named: shoppingItem.imageName)
-        
     }
-    
 }

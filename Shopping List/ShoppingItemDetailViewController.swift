@@ -25,10 +25,8 @@ class ShoppingItemDetailViewController: UIViewController {
         return count
     }
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         if itemCount == 1 {
             listCountLabel.text = "You currently have 1 item in your\nshopping list"
@@ -43,16 +41,4 @@ class ShoppingItemDetailViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         present(alert, animated: true)
     }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

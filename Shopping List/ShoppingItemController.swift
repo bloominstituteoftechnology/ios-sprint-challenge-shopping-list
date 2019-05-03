@@ -24,17 +24,16 @@ class ShoppingItemController {
         return location
     }
     
-    
-    
     init() {
-        loadFromPersistentStore()
-        if shoppingItems.count < 1 {
+        let didCreateItems = UserDefaults.standard.bool(forKey: .hasBeenLoadedKey)
+        if !didCreateItems {
             createItemsFromNames(itemNames: itemNames)
+            UserDefaults.standard.set(true, forKey: .hasBeenLoadedKey)
             saveToPersistentStore()
+        } else {
+            loadFromPersistentStore()
         }
     }
-    
-    
     
     func saveToPersistentStore() {
         guard let url = shoppingListURL else { return }
@@ -61,11 +60,11 @@ class ShoppingItemController {
         }
     }
     
-    
     func createItemsFromNames(itemNames: [String]) {
         for item in itemNames {
             createShoppingItem(name: item, imageName: item)
         }
+        print("Created Items!!!!!")
     }
     
     func createShoppingItem(name: String, imageName: String) {
