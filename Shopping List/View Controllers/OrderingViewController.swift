@@ -16,6 +16,7 @@ class OrderingViewController: UIViewController {
     @IBOutlet weak var addressTextField: UITextField!
     
     var shoppingController: ShoppingItemController?
+    let localNotificationHelper = LocalNotificationHelper()
     
     // MARK: - View Loading Methods
     
@@ -44,9 +45,14 @@ class OrderingViewController: UIViewController {
         guard let name = nameTextField.text,
             let address = addressTextField.text else { return }
         
+        localNotificationHelper.requestAuthorizationStatus { (success) in
+            
+            if success == true {
+                self.localNotificationHelper.scheduleDailyReminderNotification(name: name, address: address)
+            }
+        }
         
-        
-        let alert = UIAlertController(title: "\(name)", message: "Your order will be delivered to \(address) in 15 minutes.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Delivery for \(name)", message: "Your order will be delivered to \(address) in 15 minutes.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {action in
             self.navigationController?.popViewController(animated: true)
         }))
