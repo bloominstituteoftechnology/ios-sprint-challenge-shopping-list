@@ -29,12 +29,15 @@ Please view the screen recording so you will know what your finished project sho
 ## Requirements
 
 1. A `ShoppingItem` model object with properties: 
-    1. An image
-    2. A name of the item
+    1. An image name ("apple")
+    2. A name of the item ("Apple")
     3. A `Bool` indicating whether the item has been added to the shopping list
-2. On the first launch of the application, use the given shopping item names and images to create instances of the `ShoppingItem` model, and save them to a file. **These shopping items should be persisted between launches of the application.** Use `UserDefaults` to make sure that new shopping items are initialized only once. 
-
-    1. This snippet has the names of the images in the assets folder. Use it to create the instances of `ShoppingList`:
+2. On the first launch of the application, use the given shopping *item names* and *image names* to create instances of the `ShoppingItem` model, and save them to a file. **These shopping items should be persisted between launches of the application.** 
+    1. On first launch, make a shopping list of `ShoppingItem` from the list of *item names* and *image names*.
+    2. Save the shopping list to `UserDefaults` as the user makes changes.
+    3. If the shopping list exists in the `UserDefaults`, load the saved data.
+    4. Test and verify that your app saves changes to the shopping list (quit the app and relaunch).
+    5. This snippet has the names of the images in the assets folder. Use it to create the instances of `ShoppingList`:
     
             let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
     
