@@ -12,6 +12,7 @@ private let reuseIdentifier = "Cell"
 
 class ShoppingItemCollectionCollectionViewController: UICollectionViewController {
 
+//    let shoppingItemController = ShoppingItemController()
     override func viewDidLoad() {
         super.viewDidLoad()
 
