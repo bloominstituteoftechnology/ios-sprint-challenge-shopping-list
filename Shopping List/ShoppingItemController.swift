@@ -11,6 +11,10 @@ import Foundation
 class ShoppingItemController {
 	private(set) var shoppingItems = [ShoppingItem]()
 	
+	var numberOfItemsOrdered: Int {
+		return shoppingItems.reduce(0) { $0 + ($1.inCart ? 1 : 0) }
+	}
+	
 	private let defaults = UserDefaults.standard
 	init() {
 		if defaults.bool(forKey: .initializedDataKey) {

@@ -29,6 +29,14 @@ class ShoppingCollectionViewController: UIViewController {
 			self.activityLabel.alpha = 0
 		}
 	}
+	
+	//MARK:- Nav
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if let dest = segue.destination as? OrderSubmissionViewController {
+			dest.shoppingItemController = shoppingItemController
+		}
+	}
 }
 
 
