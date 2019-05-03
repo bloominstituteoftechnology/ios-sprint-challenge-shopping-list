@@ -9,13 +9,13 @@
 import Foundation
 import UIKit
 
-struct ShoppingItem {
-    var image: UIImage
+class ShoppingItem: Codable {
+    var imageName: String
     var name: String
     var hasBeenAdded: Bool
     
     init(imageName: String, name: String, hasBeenAdded: Bool = false) {
-        self.image = UIImage(named: imageName)!
+        self.imageName = imageName
         self.name = name
         self.hasBeenAdded = hasBeenAdded
     }
