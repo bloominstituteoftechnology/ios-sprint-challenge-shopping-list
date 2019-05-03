@@ -43,7 +43,7 @@ class ShoppingItemController {
 		print(check)
 		
 		if !check {
-			
+			loadFromPersistentStore()
 //			defaults.set(true, forKey: "DidRun")
 		}
 		
