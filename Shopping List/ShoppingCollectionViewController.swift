@@ -37,6 +37,8 @@ extension ShoppingCollectionViewController {
 	}
 	
 	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-		print("selected cell: \(indexPath)")
+		let item = shoppingItemController.shoppingItems[indexPath.item]
+		shoppingItemController.updateShoppingItem(item, inCart: !item.inCart)
+		collectionView.reloadItems(at: [indexPath])
 	}
 }
