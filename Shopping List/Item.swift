@@ -17,4 +17,5 @@ struct Item: Equatable {
 	
 	var name: String
 	var image: UIImage
+	
 }

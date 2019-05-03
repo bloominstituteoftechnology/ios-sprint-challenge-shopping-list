@@ -10,6 +10,8 @@ import Foundation
 
 class ShoppingListController {
 	
+	
+	private var item1 = [Item]()
 	var items: [Item] {
 		
 		var array = [
@@ -24,5 +26,6 @@ class ShoppingListController {
 		return array
 	
 	}
+	
 	
 }
