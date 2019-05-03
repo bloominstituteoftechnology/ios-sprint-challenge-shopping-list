@@ -82,14 +82,14 @@ extension ShoppingItemController {
 		}
 		
 		// load and decoode data
-		do {
-		let data = try Data(contentsOf: url)
-		let decoder = PropertyListDecoder()
+//		do {
+//		let data = try Data(contentsOf: url)
+//		let decoder = PropertyListDecoder()
 //		let decodedBooks = try decoder.decode([itemNames], from: data)
 //			itemNames = decodedBooks
 //		}catch {
 //			NSLog("Error loading book data: \(error)")
 //			}
-//		}
+		}
 	
 }
