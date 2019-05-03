@@ -8,11 +8,7 @@
 
 import UIKit
 
-/*
-to save : let data = uiimagepngpresentation(image)
-to load: let image = UIImge(data: data)
 
-*/
 
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
 	private func setupViews() {

@@ -18,16 +18,22 @@ class OrderDetailViewController: UIViewController, UNUserNotificationCenterDeleg
 	}
 	
 	@IBAction func ordeButtonPressed(_ sender: Any) {
-		register()
+		guard let itemCount = itemsInCartCount else { return }
+		if itemCount == 0 {
+			zeroItemsAlert()
+		} else {
+			register()
+			schedualLocal()
+		}
 	}
 	
 	func zeroItemsAlert() {
-		guard let itemsInCartCount = itemsInCartCount else { return }
-		guard let name = nameTextView.text,
-			let adress = adressTextView.text else { return }
+//		guard let itemsInCartCount = itemsInCartCount else { return }
+//		guard let name = nameTextView.text,
+//			let adress = adressTextView.text else { return }
 		
-		let title = "\(itemsInCartCount) item(s) in cart for \(name)"
-		let message = "to: \(adress)"
+		let title = "0 Items in cart"
+		let message = "add Iterm To your Cart"
 		let alerController = UIAlertController(title: title, message: message, preferredStyle: .alert)
 		
 		alerController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -43,12 +49,37 @@ class OrderDetailViewController: UIViewController, UNUserNotificationCenterDeleg
 }
 
 extension OrderDetailViewController {
-	func register() {
+	@objc func register() {
 		let center = UNUserNotificationCenter.current()
-		center.requestAuthorization(options: [.alert, .sound]) {
+		center.requestAuthorization(options: [.alert, .sound, .badge]) {
 			(granted, error) in
-			
+			if granted {
+				print("Granted")
+			}else {
+				print("error!")
+			}
 		}
 	}
+
+	func schedualLocal() {
+		let center = UNUserNotificationCenter.current()
+		center.removeAllPendingNotificationRequests()
+		
+		let contet = UNMutableNotificationContent()
+		guard let name = nameTextView.text,
+			let adress = adressTextView.text else { return }
+		contet.title = "Order for \(name)"
+		contet.body = "item(s) in cart for \(name),\(adress)"
+		contet.categoryIdentifier = "alarm"
+		contet.userInfo = ["customData": "itemsInCart2"]
+		contet.sound = .default()
+		
+		let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+		let request = UNNotificationRequest(identifier: UUID().uuidString, content: contet, trigger: trigger)
+		
+		center.add(request)
+	}
+
 }
+
 
