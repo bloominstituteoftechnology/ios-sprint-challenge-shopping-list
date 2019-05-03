@@ -32,15 +32,19 @@ class ShoppingItemCollectionViewController: UICollectionViewController, Shopping
         // Do any additional setup after loading the view.
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "DetailSegue" {
+            guard let detailVC = segue.destination as? ShoppingItemDetailViewController else { return }
+            detailVC.shoppingItemController = shoppingItemController
+        }
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
     }
-    */
+ 
     
     func toggleHasBeenAdded(for cell: ShoppingItemCollectionViewCell) {
         guard let indexPath = collectionView.indexPath(for: cell) else { return }

@@ -9,15 +9,30 @@
 import UIKit
 
 class ShoppingItemDetailViewController: UIViewController {
-    
     @IBOutlet var listCountLabel: UILabel!
+    
+    var shoppingItemController: ShoppingItemController?
+    var itemCount: Int {
+        guard let items = shoppingItemController?.shoppingItems else { return 0 }
+        var count = 0
+        for i in 0..<items.count {
+            if items[i].hasBeenAdded == true {
+                count += 1
+            }
+        }
+        return count
+    }
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
+        
+        if itemCount == 1 {
+            listCountLabel.text = "You currently have 1 item in your\nshopping list"
+        } else {
+            listCountLabel.text = "You currently have \(itemCount) items in your\nshopping list"
+        }
     }
     
     @IBAction func sendOrderButtonTapped(_ sender: Any) {
