@@ -25,26 +25,23 @@ class ShoppingItemController {
         
     }
 
-    
-    func updateHasBeenSelected(for ShoppingItem: ShoppingItem) {
-        guard let itemIndex = shoppingItems.firstIndex(of: ShoppingItem) else { return }
+    func hasBeenSelected(for shoppingItem: ShoppingItem) {
+        guard let itemIndex = shoppingItems.firstIndex(of: shoppingItem) else { return }
         
         var updatedShoppingItem = shoppingItems[itemIndex]
         
         switch updatedShoppingItem.hasBeenAdded == false {
         case true:
-            updatedShoppingItem.hasBeenAdded = true
+           updatedShoppingItem.hasBeenAdded = true
         case false:
             updatedShoppingItem.hasBeenAdded = false
-            
+        }
     }
-}
-
-
-
+        
     var selectedItems: [ShoppingItem] {
         return shoppingItems.filter({ $0.hasBeenAdded == true})
     }
+
 
 
 

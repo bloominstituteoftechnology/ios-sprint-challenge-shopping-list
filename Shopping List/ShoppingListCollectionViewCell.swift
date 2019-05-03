@@ -8,23 +8,17 @@
 
 import UIKit
 
+
 class ShoppingListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var itemLable: UILabel!
     @IBOutlet weak var itemImage: UIImageView!
-
-
-
-
-
-
-
-
-
-
-    @IBAction func isSelectedButtonPressed(_ sender: Any) {
-        
-        
-}
+    @IBOutlet weak var itemSelectedLabel: UILabel!
     
+        
+    
+
+
+
+
     let shoppingItemController = ShoppingItemController()
 }

@@ -15,12 +15,16 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        collectionView?.reloadData()
-       
-
+     
         
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(true)
+        
+        collectionView?.reloadData()
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -30,8 +34,19 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
-
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        var itemSelected = shoppingItemController.shoppingItems[indexPath.item]
+        
+        switch itemSelected.hasBeenAdded == false {
+        case true:
+            itemSelected.hasBeenAdded = true
+        case false:
+            itemSelected.hasBeenAdded = false
+    
+    }
+        
+        print(itemSelected.hasBeenAdded)
+    }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
@@ -46,9 +61,19 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         let item = shoppingItemController.shoppingItems[indexPath.item]
         cell.itemLable.text = item.name
         cell.itemImage.image = item.image
+        if item.hasBeenAdded == true {
+            cell.itemSelectedLabel.text = "Selected"
+        } else {
+            cell.itemSelectedLabel.text = "Not Selected"
+        }
+    
+        
         
         return cell
+        
     }
+    
+   
 
   let shoppingItemController = ShoppingItemController()
 

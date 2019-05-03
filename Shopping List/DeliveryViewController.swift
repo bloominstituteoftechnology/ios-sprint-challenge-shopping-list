@@ -19,11 +19,16 @@ class DeliveryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        cartNumberLabel.text = "You have \(shoppingItemController.selectedItems.count) of items in your shopping list."
+        
+        
     }
     
    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        cartNumberLabel.text = "You have \(shoppingItemController.selectedItems.count) of items in your shopping list."
+    }
+    
     
     @IBAction func sendOrderButtonPressed(_ sender: Any) {
         
