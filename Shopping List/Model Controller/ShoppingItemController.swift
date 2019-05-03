@@ -9,7 +9,7 @@
 import Foundation
 
 class ShoppingItemController {
-//    var shoppingItems: [ShoppingItem] {
+//    var shoppingList: [ShoppingItem] {
 //        let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
 //    }
 //
