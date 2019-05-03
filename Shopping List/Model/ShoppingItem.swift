@@ -1,5 +1,5 @@
 //
-//  ShippingItem.swift
+//  ShoppingItem.swift
 //  Shopping List
 //
 //  Created by Sameera Roussi on 5/3/19.
@@ -9,13 +9,14 @@
 import UIKit
 
 struct ShoppingItem {
-    let itemImage: UIImage
-    let itemName: String
-    let itemOrdered: Bool
+    var itemImage: UIImage
+    var itemName: String
+    var itemOrdered: Bool
     
-    init(itemImage: UIImage, itemName: String, itemOrdered: Bool) {
-        self.itemImage = itemImage
+    init(imageName: String, itemName: String, itemOrdered: Bool) {
+        self.itemImage = UIImage(named: imageName)!
         self.itemName = itemName
         self.itemOrdered = false
     }
 }
+
