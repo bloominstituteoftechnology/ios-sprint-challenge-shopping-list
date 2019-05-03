@@ -13,19 +13,7 @@ class ShoppingController {
     var shoppingItems = [ShoppingItem]()
     
     init() {
-        createItems()
-        loadFromPersistentStore()
-       
-    }
-    
-    func createItems(){
-        let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
-        for item in itemNames {
-            shoppingItems.append(ShoppingItem(imageName: item , name: item))
-            
-            //save to persistence
-            saveToPersistentStore()
-        }
+        hasBeenCalled()
     }
     
     func toggleHasBeenChanged(shoppingItem: ShoppingItem){
@@ -66,10 +54,35 @@ class ShoppingController {
         }
     }
     
+    func createItems(){
+        let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
+        for item in itemNames {
+            shoppingItems.append(ShoppingItem(imageName: item , name: item))
+            
+            //save to persistence
+            saveToPersistentStore()
+        }
+        
+        //Because we wll call this function in our conditional statement, we have to change/switch the value of the boolean to true.
+        UserDefaults.standard.set(true, forKey: "HasCalledCreateFunction")
+    }
+    
     //create a computed property array that returns an array of items that have been added and that have not been added.
     var hasBeenAddedArray: [ShoppingItem] {
         return shoppingItems.filter { $0.hasBeenAdded == true }
     }
     
-    //if array of images.count == 8
+    func hasBeenCalled(){
+        
+        //create an instance of userDefault
+        let userDefaults = UserDefaults.standard
+        
+        //check userDefault boolean value. If it == false then the createdFunction has NOT been called, so we need to call it. If it has, then we just call the loadFromPersistentstore function
+        if userDefaults.bool(forKey: "HasCalledCreateFunction" ) == false {
+            //in the create function we will set the value for the key to true so that, in the future, it will always be true and always load from persstent.
+            createItems()
+        } else {
+            loadFromPersistentStore()
+        }
+    }
 }
