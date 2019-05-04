@@ -20,63 +20,50 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
     // MARK: - Navigation
 
- 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+            
+            
+        if segue.identifier == "ShoppingListDetail" {
+            guard let shoppingListDetailVC = segue.destination as? ShoppingListDetailViewController,
+                let indexPath = collectionView?.indexPathsForSelectedItems?.first else { return }
+            let shoppingList = shoppingListController.shoppingLists[indexPath.item]
+            
+            shoppingListDetailVC.shoppingListController = shoppingListController
+           
+            
+        }
     
-        if segue.identifier == "
-    }
-    
-
     // MARK: UICollectionViewDataSource
-
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
     
-        // Configure the cell
+        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return shoppingListController.shoppingLists.count
+    }
     
+    let reuseIdentifier = "ShoppingListCell"
+    
+        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ShoppingListCollectionViewCell
+        
+        let shoppingList = shoppingListController.shoppingLists[indexPath.item]
+        cell.shoppingList = shoppingList
+        
+        
+            
         return cell
     }
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
-    }
-    */
-
+        func toggleHasBeenAdded(for cell: ShoppingListCollectionViewCell) {
+            guard let indexPath = CollectionView.indexPath(for: cell) else { return }
+            let shoppingList = shoppingListFor(indexPath: indexPath)
+            shoppingListController.updateHasBeenAdded(shoppinglist: shoppingList)
+            collectionView.reloadData()
+        }
+    //MARK: - Properties
+    
+    
+    
 }
+    let shoppingListController = ShoppingListController()
+}
+
