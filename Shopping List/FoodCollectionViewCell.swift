@@ -12,5 +12,8 @@ class FoodCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var itemNameLabel: UILabel!
-    @IBOutlet weak var notAddedButton: UIButton!
+    @IBOutlet weak var notAddedLabel: UILabel!
+    
 }
+
+

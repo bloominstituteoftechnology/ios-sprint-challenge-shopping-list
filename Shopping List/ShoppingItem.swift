@@ -8,16 +8,14 @@
 
 import UIKit
 
-struct FoodItem {
+class ShoppingItem: NSObject, Codable {
+    var name: String
+    var imageName: String
+    var added: Bool
     
     init (name: String, imageName: String, added: Bool) {
         self.name = name
-        self.image = UIImage(named: imageName)!
+        self.imageName = imageName
         self.added = added
-        
     }
-    
-    var name: String
-    var image: UIImage
-    var added: Bool
 }
