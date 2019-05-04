@@ -41,12 +41,11 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxE-Re-LqM">
-                                            <rect key="frame" x="0.0" y="149" width="120" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxE-Re-LqM">
+                                            <rect key="frame" x="0.0" y="149" width="120" height="30"/>
                                             <state key="normal" title="Button"/>
                                             <connections>
-                                                <action selector="addButtonPressed:" destination="NJY-oB-1UE" eventType="touchUpInside" id="7d8-va-wok"/>
+                                                <action selector="addItemButtonPressed:" destination="NJY-oB-1UE" eventType="touchUpInside" id="0y7-bW-feu"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -54,10 +53,14 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="0sX-dg-LOB" secondAttribute="bottom" constant="25" id="0OR-pP-sp7"/>
                                     <constraint firstItem="pFd-t0-dS4" firstAttribute="top" secondItem="NJY-oB-1UE" secondAttribute="top" id="C3G-sf-nji"/>
+                                    <constraint firstItem="lxE-Re-LqM" firstAttribute="leading" secondItem="NJY-oB-1UE" secondAttribute="leading" id="GFz-uO-iBy"/>
                                     <constraint firstAttribute="trailing" secondItem="0sX-dg-LOB" secondAttribute="trailing" id="QVC-w2-yEJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="lxE-Re-LqM" secondAttribute="bottom" constant="-9" id="lrL-ZR-I0o"/>
                                     <constraint firstItem="0sX-dg-LOB" firstAttribute="leading" secondItem="NJY-oB-1UE" secondAttribute="leading" id="rId-bP-GYI"/>
                                     <constraint firstItem="0sX-dg-LOB" firstAttribute="trailing" secondItem="pFd-t0-dS4" secondAttribute="trailing" id="tnG-1X-cbt"/>
+                                    <constraint firstItem="lxE-Re-LqM" firstAttribute="top" secondItem="NJY-oB-1UE" secondAttribute="top" constant="149" id="uTH-2m-BEh"/>
                                     <constraint firstItem="0sX-dg-LOB" firstAttribute="top" secondItem="pFd-t0-dS4" secondAttribute="bottom" constant="4" id="v0G-EF-wZ0"/>
+                                    <constraint firstAttribute="trailing" secondItem="lxE-Re-LqM" secondAttribute="trailing" id="v2g-3Y-Jee"/>
                                     <constraint firstItem="0sX-dg-LOB" firstAttribute="leading" secondItem="pFd-t0-dS4" secondAttribute="leading" id="wOP-zA-6EK"/>
                                 </constraints>
                                 <connections>

@@ -10,9 +10,19 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class ShoppingListCollectionViewController: UICollectionViewController {
+class ShoppingListCollectionViewController: UICollectionViewController, ShoppingListCollectionViewCellDelegate {
+    func toggleHasBeenAdded(for cell: ShoppingListCollectionViewCell) {
+        //guard let shoppingItem = shoppingItem else { return }
+        guard let indexPath = collectionView.indexPath(for: cell) else { return }
+        shoppingItemController.updateItemHasBeenAdded(shoppingItem: shoppingItemController.shoppingList[indexPath.item])
+        collectionView.reloadItems(at: [indexPath])
+    }
+    
     
     let shoppingItemController = ShoppingItemController()
+    
+    var shoppingItem: ShoppingItem?
+    
     
     
 
@@ -24,7 +34,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
+        
         // Do any additional setup after loading the view.
     }
 
@@ -50,26 +60,15 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as! ShoppingListCollectionViewCell
         
+        cell.delegate = self
+        
         let shoppingItem = shoppingItemController.shoppingList[indexPath.item]
-        
-        cell.imageView.image = shoppingItem.image
-        cell.nameLabel.text = shoppingItem.name
-        
-        if shoppingItem.added == true {
-            cell.itemAddedLabel.setTitle("Added", for: .normal)
-            cell.itemAddedLabel.setTitleColor(.green, for: .normal)
-        } else {
-            cell.itemAddedLabel.setTitle("Not Added", for: .normal)
-            cell.itemAddedLabel.setTitleColor(.red, for: .normal)
-        }
-        
-        
-        
-        
-        
+        print("\(shoppingItem.name) is \(shoppingItem.added)")
+       
+        cell.shoppingItem = shoppingItem
         return cell
     }
     
-    
 
+    
 }

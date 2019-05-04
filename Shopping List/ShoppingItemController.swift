@@ -8,33 +8,34 @@
 
 import Foundation
 
-class ShoppingItemController {
-    var shoppingList: [ShoppingItem] {
-        let items = [
+class ShoppingItemController{
+    
+        
+    
+    
+    var shoppingList: [ShoppingItem] = [
             ShoppingItem(name: "Apple", imageName: "apple", added: false),
-            ShoppingItem(name: "Grapes", imageName: "grapes", added: false),
+            ShoppingItem(name: "Grapes", imageName: "grapes", added: true),
             ShoppingItem(name: "Milk", imageName: "milk", added: false),
             ShoppingItem(name: "Muffin", imageName: "muffin", added: false),
             ShoppingItem(name: "Popcorn", imageName: "popcorn", added: false),
             ShoppingItem(name: "Soda", imageName: "soda", added: false),
             ShoppingItem(name: "Strawberries", imageName: "strawberries", added: false)
-            
-            
+        
             ]
-            return items
-    }
     
     func updateItemHasBeenAdded(shoppingItem: ShoppingItem) {
-        print("Item Has Been Updated")
+        print("\(shoppingItem) Has Been Updated")
+
         guard let itemIndex = shoppingList.firstIndex(of: shoppingItem) else { return }
-        var updatedItem = shoppingList[itemIndex]
-        if updatedItem.added == false {
-            updatedItem.added = true
+        if shoppingList[itemIndex].added == false {
+            shoppingList[itemIndex].added = true
         } else {
-            updatedItem.added = false
+            shoppingList[itemIndex].added = false
         }
         
-        
+        print("\(shoppingList[itemIndex]) Has Been Updated")
+
     }
     
 }
