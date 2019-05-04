@@ -12,19 +12,27 @@ class SubmitOrderViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        submitOrderLabel.text = "You have X number of items in the cart."
         // Do any additional setup after loading the view.
     }
+   
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func submitOrderButtonTapped(_ sender: Any) {
+//        guard let username = nameTextField.text, let address = addressTextField.text else { return }
+//        let alert = UIAlertController(title: "(\(username)", message: <#T##String?#>, preferredStyle: <#T##UIAlertController.Style#>)
+//        self.present(alert, aniumated: true)
     }
-    */
-
+    
+    
+    
+    
+    @IBOutlet weak var submitOrderLabel: UILabel!
+    
+    @IBOutlet weak var nameTextField: UITextField!
+    
+    @IBOutlet weak var addressTextField: UITextField!
+    
+    var shoppingItemController = ShoppingItemController()
+    
 }

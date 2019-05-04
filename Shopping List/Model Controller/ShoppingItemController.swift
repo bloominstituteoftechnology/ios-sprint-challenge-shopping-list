@@ -22,6 +22,7 @@ class ShoppingItemController {
 
     
     func createShoppingItem() {
+        
         for name in itemNames {
         
         guard let image = UIImage(named: name), let imageData = image.pngData() else { return }
@@ -31,6 +32,13 @@ class ShoppingItemController {
 
         saveToPersistentStore()
         }
+    }
+    
+    func updateHasBeenAdded(shoppingItem: ShoppingItem) {
+        guard let index = shoppingList.index(of: shoppingItem) else { return }
+        shoppingList[index].addedToList.toggle()
+        
+        saveToPersistentStore()
     }
     
     func saveToPersistentStore() {

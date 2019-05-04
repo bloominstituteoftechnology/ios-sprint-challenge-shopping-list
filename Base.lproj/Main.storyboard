@@ -98,10 +98,10 @@
             </objects>
             <point key="canvasLocation" x="1032" y="288"/>
         </scene>
-        <!--View Controller-->
+        <!--Submit Order View Controller-->
         <scene sceneID="mjI-sc-SQf">
             <objects>
-                <viewController id="LIK-4l-VKQ" sceneMemberID="viewController">
+                <viewController id="LIK-4l-VKQ" customClass="SubmitOrderViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mRi-wq-6Dg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -130,6 +130,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zrB-86-kkf">
                                         <rect key="frame" x="0.0" y="164.5" width="382" height="30"/>
                                         <state key="normal" title="Submit Order"/>
+                                        <connections>
+                                            <action selector="submitOrderButtonTapped:" destination="LIK-4l-VKQ" eventType="touchUpInside" id="FO7-D8-rif"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -143,6 +146,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Cv6-A7-5rc"/>
                     </view>
+                    <connections>
+                        <outlet property="addressTextField" destination="SwL-rC-fbv" id="Tku-6x-MMe"/>
+                        <outlet property="nameTextField" destination="1QI-BM-vLf" id="cDp-gh-QIO"/>
+                        <outlet property="submitOrderLabel" destination="FLx-bZ-RUt" id="T41-ro-QB5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hZg-tF-cwU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

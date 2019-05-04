@@ -12,7 +12,7 @@ private let reuseIdentifier = "ShoppingItemCell"
 
 class ShoppingItemCollectionViewController: UICollectionViewController {
 
-//    let shoppingItemController = ShoppingItemController()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,12 +29,26 @@ class ShoppingItemCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ShoppingItemCollectionViewCell
     
-        let cellImage = shoppingItemController.shoppingList[indexPath.item]
-        cell.shoppingItem = cellImage
+        let shoppingItem = shoppingItemController.shoppingList[indexPath.item]
+        cell.shoppingItem = shoppingItem
     
         return cell
     }
-
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let shoppingItem = shoppingItemController.shoppingList[indexPath.item]
+        shoppingItemController.updateHasBeenAdded(shoppingItem: shoppingItem)
+        print("cell clicked")
+        collectionView.reloadData()
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let shoppingItem = shoppingItemController.shoppingList[indexPath.item]
+        shoppingItemController.updateHasBeenAdded(shoppingItem: shoppingItem)
+        print("cell unclicked")
+        collectionView.reloadData()
+    }
+    
     let shoppingItemController = ShoppingItemController()
-
+    let shoppingItemViewControllerCell = ShoppingItemCollectionViewCell()
 }
