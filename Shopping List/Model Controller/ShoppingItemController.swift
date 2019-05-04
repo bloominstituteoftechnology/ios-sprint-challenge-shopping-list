@@ -11,6 +11,7 @@ import UIKit
 class ShoppingItemController {
     
     init() {
+        
         createShoppingItem()
         loadFromPersistentStore()
     }
@@ -30,7 +31,7 @@ class ShoppingItemController {
         let shoppingItem = ShoppingItem(image: imageData, itemName: name)
         shoppingList.append(shoppingItem)
 
-        saveToPersistentStore()
+//        saveToPersistentStore()
         }
     }
     

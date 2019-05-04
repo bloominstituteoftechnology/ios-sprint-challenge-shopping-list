@@ -13,10 +13,22 @@ class SubmitOrderViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        submitOrderLabel.text = "You have X number of items in the cart."
+        updateOrderLabel()
         // Do any additional setup after loading the view.
     }
    
+    func updateOrderLabel() {
+        for shoppingItem in shoppingItemController.shoppingList {
+        var itemsInCart = 0
+        if shoppingItem.addedToList == true {
+        itemsInCart += 1
+    } else {
+    continue
+    }
+    submitOrderLabel.text = "You have \(itemsInCart) in your cart."
+        }
+        
+    }
     
     @IBAction func submitOrderButtonTapped(_ sender: Any) {
 //        guard let username = nameTextField.text, let address = addressTextField.text else { return }
