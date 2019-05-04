@@ -38,6 +38,7 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
         if shoppingItem.added == true {
             itemAddedLabel.setTitle("Added", for: .normal)
             itemAddedLabel.setTitleColor(.green, for: .normal)
+            
         } else {
             itemAddedLabel.setTitle("Not Added", for: .normal)
             itemAddedLabel.setTitleColor(.red, for: .normal)

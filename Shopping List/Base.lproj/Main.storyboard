@@ -78,7 +78,7 @@
                     <navigationItem key="navigationItem" id="Fzu-TT-yYo">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="QIO-hj-yiK">
                             <connections>
-                                <segue destination="Nyf-uP-CNc" kind="show" id="pAs-QA-fFK"/>
+                                <segue destination="Nyf-uP-CNc" kind="show" identifier="PlaceOrder" id="pAs-QA-fFK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -147,6 +147,7 @@
                     </view>
                     <connections>
                         <outlet property="addressLabel" destination="cQc-L5-wNg" id="w44-RR-f5n"/>
+                        <outlet property="nameLabel" destination="Q1z-Ui-Hsd" id="IBK-Bu-OSK"/>
                         <outlet property="orderLabel" destination="E4D-DX-PBN" id="kOw-Jw-La2"/>
                     </connections>
                 </viewController>

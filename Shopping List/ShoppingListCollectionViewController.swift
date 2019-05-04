@@ -38,15 +38,17 @@ class ShoppingListCollectionViewController: UICollectionViewController, Shopping
         // Do any additional setup after loading the view.
     }
 
-    /*
-    // MARK: - Navigation
+    
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "PlaceOrder" {
+            guard let destinationVC = segue.destination as? PlaceOrderViewController else { return }
+            destinationVC.orderTotal = shoppingItemController.orderTotal
+        }
+
     }
-    */
+
 
     // MARK: UICollectionViewDataSource
 
@@ -61,10 +63,7 @@ class ShoppingListCollectionViewController: UICollectionViewController, Shopping
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as! ShoppingListCollectionViewCell
         
         cell.delegate = self
-        
         let shoppingItem = shoppingItemController.shoppingList[indexPath.item]
-        print("\(shoppingItem.name) is \(shoppingItem.added)")
-       
         cell.shoppingItem = shoppingItem
         return cell
     }

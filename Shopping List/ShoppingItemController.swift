@@ -23,18 +23,24 @@ class ShoppingItemController{
             ShoppingItem(name: "Strawberries", imageName: "strawberries", added: false)
         
     ]
+    
+    var orderTotal: Int = 0
+    
     //updates the added propery of ShoppingItem
+    
+ 
+    
     func updateItemHasBeenAdded(shoppingItem: ShoppingItem) {
-        print("\(shoppingItem) Has Been Updated")
-
         guard let itemIndex = shoppingList.firstIndex(of: shoppingItem) else { return }
-        if shoppingList[itemIndex].added == false {
+        if shoppingList[itemIndex].added == false  {
             shoppingList[itemIndex].added = true
-        } else {
+            orderTotal += 1
+            } else {
             shoppingList[itemIndex].added = false
-        }
-        
-        print("\(shoppingList[itemIndex]) Has Been Updated")
+            orderTotal -= 1
+            }
+        print("order total is \(orderTotal)")
+
         saveToPersitentStore()
 
     }
