@@ -11,11 +11,15 @@ import UIKit
 class ShoppingItemController {
     
     init() {
-        
-        createShoppingItem()
-        loadFromPersistentStore()
+        if userDefaults.bool(forKey: "CreatedList") == true {
+            loadFromPersistentStore()
+        } else {
+           createShoppingItem()
+        }
     }
     var shoppingList: [ShoppingItem] = []
+    
+    let userDefaults = UserDefaults.standard
     
     let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
     
@@ -30,8 +34,10 @@ class ShoppingItemController {
 
         let shoppingItem = ShoppingItem(image: imageData, itemName: name)
         shoppingList.append(shoppingItem)
+            
+            userDefaults.set(true, forKey: "CreatedList")
 
-//        saveToPersistentStore()
+        saveToPersistentStore()
         }
     }
     
