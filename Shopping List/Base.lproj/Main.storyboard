@@ -87,10 +87,10 @@
             </objects>
             <point key="canvasLocation" x="960.86956521739137" y="131.91964285714286"/>
         </scene>
-        <!--View Controller-->
+        <!--Place Order View Controller-->
         <scene sceneID="bpP-fG-gE6">
             <objects>
-                <viewController id="Nyf-uP-CNc" sceneMemberID="viewController">
+                <viewController id="Nyf-uP-CNc" customClass="PlaceOrderViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NNL-Vr-fVc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -109,6 +109,9 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="nameLabel:" destination="Nyf-uP-CNc" eventType="editingDidEnd" id="bPF-Yx-XuH"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cQc-L5-wNg">
                                         <rect key="frame" x="8" y="66.5" width="366" height="30"/>
@@ -119,6 +122,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IaL-Rg-tWF">
                                         <rect key="frame" x="150.5" y="104.5" width="81" height="30"/>
                                         <state key="normal" title="Place Order"/>
+                                        <connections>
+                                            <action selector="placeOrderButtonPressed:" destination="Nyf-uP-CNc" eventType="touchUpInside" id="Bo1-DC-avP"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -139,6 +145,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="v8j-e4-dZJ"/>
                     </view>
+                    <connections>
+                        <outlet property="addressLabel" destination="cQc-L5-wNg" id="w44-RR-f5n"/>
+                        <outlet property="orderLabel" destination="E4D-DX-PBN" id="kOw-Jw-La2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ddy-Hm-ehu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

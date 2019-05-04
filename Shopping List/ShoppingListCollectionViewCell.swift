@@ -29,7 +29,6 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
     @IBAction func addItemButtonPressed(_ sender: UIButton) {
         delegate?.toggleHasBeenAdded(for: self)
         
-        
     }
     func updateViews() {
         guard let shoppingItem = shoppingItem else { return }

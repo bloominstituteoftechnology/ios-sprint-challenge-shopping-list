@@ -9,14 +9,20 @@
 import UIKit
 
 class PlaceOrderViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
+    @IBOutlet weak var orderLabel: UILabel!
+    @IBAction func nameLabel(_ sender: Any) {
+    }
+    @IBOutlet weak var addressLabel: UITextField!
+    
+    @IBAction func placeOrderButtonPressed(_ sender: Any) {
+    }
     /*
     // MARK: - Navigation
 
