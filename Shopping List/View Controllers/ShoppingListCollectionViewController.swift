@@ -22,6 +22,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.shoppinglistController.loadFromPersistantStorage()
     }
     
     override func viewWillAppear(_ animated: Bool) {

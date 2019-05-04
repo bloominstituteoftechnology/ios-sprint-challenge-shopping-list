@@ -20,32 +20,53 @@ class ShoppingListController {
             return self.shoppingList.filter { $0.addedToList == true }
         }
     }
+    
     let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
-    
-    private var persistentURL: URL? {
-        let fileManager = FileManager.default
-        guard let documents = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
-            return nil
-        }
-        print("Documents: \(documents.path)")
-        return documents.appendingPathComponent("shoppingList.plist")
-    }
-    
-    // MARK: - UserDefaults
-    let userDefaults = UserDefaults.standard
 
     // MARK: - Methods
     
     // Items should only load once
     init() {
+        print("Documents folder is \(documentsDirectory())")
+        print("Data file path is \(dataFilePath())")
         // At first should be 0
         print(shoppingList.count)
         
-        let user = userDefaults.bool(forKey: "CheckUser")
-        // If bool is nil then it means it's the first time installing this app.
-        if user
+        self.loadFromPersistantStorage()
+        self.registerDefaults()
+        self.handleFirstTime()
+
+        // Then should be 7
+        print(shoppingList.count)
+
+    }
+
+    func createShoppingItem(imageData: Data, name: String) {
+        self.shoppingList.append(ShoppingItem(imageData: imageData, name: name))
+    }
+
+    func updateShoppingItem(item: ShoppingItem) {
+        guard let i = self.shoppingList.index(of: item) else { return }
+        self.shoppingList[i].addedToList.toggle()
+        self.saveToPersistentStorage()
+    }
+}
+// MARK: - UserDefaults
+// First time a user installs the app
+extension ShoppingListController {
+    func registerDefaults() {
+        let dictionary = ["FirstTime": true] as [String: Any]
+        UserDefaults.standard.register(defaults: dictionary)
+    }
+    
+    //Create array of shopping items
+    func handleFirstTime() {
+        let userDefaults = UserDefaults.standard
+        let firstTime = userDefaults.bool(forKey: "FirstTime")
+        
+        if firstTime
         {
-            for item in itemNames
+            for item in self.itemNames
             {
                 guard let image = UIImage(named: item),
                     let imageData = UIImagePNGRepresentation(image) else { return }
@@ -53,58 +74,59 @@ class ShoppingListController {
                 self.createShoppingItem(imageData: imageData, name: item)
             }
             
-            self.saveToPersistentStore()
-            
-            // Set key
-            userDefaults.set(true, forKey: "CheckUser")
-            
+            // Save just in case person quits app after installing without updating anything.
+            self.saveToPersistentStorage()
         }
-        else
+        
+        userDefaults.set(false,forKey: "FirstTime")
+        userDefaults.synchronize()
+    }
+}
+
+// MARK: - Data Persistance
+extension ShoppingListController {
+    
+    // Get Documents Directory URL
+    func documentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
+    // Get Data File Path URL
+    func dataFilePath() -> URL {
+        return self.documentsDirectory().appendingPathComponent("ShoppingListItems.plist")
+    }
+    
+    // Saving
+    func saveToPersistentStorage() {
+        let encoder = PropertyListEncoder()
+        do
         {
-            self.loadFromPersistentStore()
-        }
-        
-        // Then should be 7
-        print(shoppingList.count)
-        
-    }
-    
-    func saveToPersistentStore() {
-        guard let url = persistentURL else { return }
-        
-        do {
-            let encoder = PropertyListEncoder()
             let data = try encoder.encode(self.shoppingList)
-            try data.write(to: url)
-        } catch {
-            print("Error saving items: \(error)")
+            
+            try data.write(to: self.dataFilePath(), options: Data.WritingOptions.atomic)
+        }
+        catch
+        {
+            print("Error encoding item array: \(error.localizedDescription)")
         }
     }
     
-    func loadFromPersistentStore() {
-        // Make sure file exists
-        let fileManager = FileManager.default
-        guard let url = persistentURL, fileManager.fileExists(atPath: url.path) else {
-            print("load failed to find file")
-            return }
+    // Loading
+    func loadFromPersistantStorage() {
+        let path = dataFilePath()
         
-        // Load and decode
-        do {
-            let data = try Data(contentsOf: url)
+        if let data = try? Data(contentsOf: path)
+        {
             let decoder = PropertyListDecoder()
-            self.shoppingList = try decoder.decode([ShoppingItem].self, from: data)
-        } catch {
-            print("Error loading data from disk: \(error)")
+            do
+            {
+                self.shoppingList = try decoder.decode([ShoppingItem].self,from: data)
+            }
+            catch
+            {
+                print("Error decoding item array: \(error.localizedDescription)")
+            }
         }
-    }
-    
-    func createShoppingItem(imageData: Data, name: String) {
-        self.shoppingList.append(ShoppingItem(imageData: imageData, name: name))
-    }
-    
-    func updateShoppingItem(item: ShoppingItem) {
-        guard let i = self.shoppingList.index(of: item) else { return }
-        self.shoppingList[i].addedToList.toggle()
-        self.saveToPersistentStore()
     }
 }
