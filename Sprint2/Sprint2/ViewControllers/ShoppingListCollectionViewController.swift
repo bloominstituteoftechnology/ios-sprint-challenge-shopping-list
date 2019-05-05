@@ -17,11 +17,6 @@ class ShoppingListCollectionViewController: UICollectionViewController, ItemColl
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -85,7 +80,7 @@ class ShoppingListCollectionViewController: UICollectionViewController, ItemColl
     // MARK: UICollectionViewDelegate
 
 
-
+/*
     func itemsFor(indexPath: IndexPath) -> ShoppingItem {
         if indexPath.section == 0 {
           return  shoppingController.likedItems[indexPath.item]
@@ -93,10 +88,11 @@ class ShoppingListCollectionViewController: UICollectionViewController, ItemColl
           return  shoppingController.notLikedItems[indexPath.item]
         }
     }
+ */
 
     func toggleHasBeenLiked(on cell: ItemCollectionViewCell) {
         guard let index = collectionView.indexPath(for: cell) else { return }
-        let item = itemsFor(indexPath: index)
+        let item = shoppingController.shoppingItems[index.item]
         shoppingController.toggleHasBeenLiked(shoppingItem: item)
         collectionView.reloadItems(at: [index])
 

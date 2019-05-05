@@ -93,7 +93,7 @@ class ShoppingController {
 
     func userDefaultSetUp() {
         let userDefault = UserDefaults.standard
-        let user = userDefault.bool(forKey: "User")
+        let user = userDefault.bool(forKey: "user")
 
         if user {
             loadFromPersistentStore()
