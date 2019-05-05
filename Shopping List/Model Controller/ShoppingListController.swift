@@ -14,27 +14,44 @@ class ShoppingListController {
     
     static let defaults = UserDefaults.standard
     
-    var groceries = [
-        ShoppingItem(itemImage: "apple", itemName: <#T##String#>, itemOrdered: <#T##Bool#>)
+   // private var pickedItem: [ShoppingItem] = []
     
-    
-    ]
-//    var apples: UIImage = UIImage(named: "apple")!
-//    var grapes: UIImage = UIImage(named: "grapes")!
-//    var milk: UIImage = UIImage(named: "milk")!
-//    var muffin: UIImage = UIImage(named: "muffin")!
-//    var popcorn: UIImage = UIImage(named: "popcorn")!
-//    var soda: UIImage = UIImage(named: "soda")!
-//    var strawberries: UIImage = UIImage(named: "strawberries")!
-    
+    var pickedItems: [String] = []
 
-    var groceryItem: [String] {
-        let groceryItem = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
-        return groceryItem
-    }
+    var shoppingItems = [
+        ShoppingItem(imageName: "apple", itemName: "apple"),
+        ShoppingItem(imageName: "grapes", itemName: "grapes"),
+        ShoppingItem(imageName: "milk", itemName: "milk"),
+        ShoppingItem(imageName: "muffin", itemName: "muffin"),
+        ShoppingItem(imageName: "popcorn", itemName: "popcorn"),
+        ShoppingItem(imageName: "soda", itemName: "soda"),
+        ShoppingItem(imageName: "strawberries", itemName: "strawberries"),
+        ]
     
-    private func saveListOfItems() {
-       ShoppingListController.defaults.set(groceries, forKey: "groceryList")
-    }
+/*
+ 
+*/
    
+//    func updateOrdedStatus(itemIndex: Int) {
+//        shoppingItems[itemIndex].itemOrdered = !shoppingItems[itemIndex].itemOrdered
+//        print("This is the updateOrdedStatus function.  Will update shoppingitems[\(itemIndex)]")
+//        print("Item name is \(shoppingItems[itemIndex].itemName)")
+//        print("Item current order status is \(shoppingItems[itemIndex].itemOrdered)")
+//        // Update the ordered status
+//        shoppingItems[itemIndex].itemOrdered = !shoppingItems[itemIndex].itemOrdered
+//    }
+    
+//    let itemOrderedKey = "ItemOrderedKey"
+//    func saveOrdered(_ itemOrdered: String) {
+//        // itemOrdered = true
+//        for itemName in shoppingItems {
+//            print(itemName, itemOrdered)
+//        }
+        
+        
+        
+        
+//        if let itemOrderedKey = UserDefaults.standard.string
+//        UserDefaults.standard.set(pickedItems, forKey: itemOrderedKey)
+    
 }

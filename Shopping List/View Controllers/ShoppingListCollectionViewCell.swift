@@ -8,15 +8,14 @@
 
 import UIKit
 
-extension String {
-    static let groceryCell = "GroceryCell"
-}
-
 class ShoppingListCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Outlets and Properties
-    
+
+    @IBOutlet weak var orderedStatusLabel: UILabel!
     @IBOutlet weak var itemView: UIImageView!
     @IBOutlet weak var itemLabel: UILabel!
+    
+     
     
 }

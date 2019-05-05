@@ -8,15 +8,14 @@
 
 import UIKit
 
-struct ShoppingItem {
+struct ShoppingItem: Equatable {
     var itemImage: UIImage
     var itemName: String
-    var itemOrdered: Bool
+    var itemOrdered: Bool = false
     
-    init(imageName: String, itemName: String, itemOrdered: Bool) {
+    init(imageName: String, itemName: String) {
         self.itemImage = UIImage(named: imageName)!
         self.itemName = itemName
-        self.itemOrdered = false
     }
 }
 
