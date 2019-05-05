@@ -2,23 +2,20 @@
 //  ShoppingItem.swift
 //  Shopping List
 //
-//  Created by Mitchell Budge on 5/3/19.
+//  Created by Mitchell Budge on 5/5/19.
 //  Copyright © 2019 Lambda School. All rights reserved.
 //
 
 import Foundation
-import UIKit
+/*A ShoppingItem model object with properties:
+
+An image name ("apple")
+A name of the item ("Apple")
+A Bool indicating whether the item has been added to the shopping list
+*/
 
 struct ShoppingItem {
-    var name: String
-    var image: UIImage
+    var imageName: String
+    var itemName: String
     var hasBeenAdded: Bool
-    
-    init(name: String, imageName: String, hasBeenAdded: Bool = false) {
-        self.name = name
-        self.image = UIImage(named: imageName)!
-        self.hasBeenAdded = hasBeenAdded
-    }
-    
-    
 }
