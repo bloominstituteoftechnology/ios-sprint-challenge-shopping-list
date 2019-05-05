@@ -11,11 +11,12 @@ import UIKit
 struct ShoppingItem: Equatable {
     var itemImage: UIImage
     var itemName: String
-    var itemOrdered: Bool = false
+    var itemOrdered: Bool
     
-    init(imageName: String, itemName: String) {
+    init(imageName: String, itemName: String, itemOrdered: Bool) {
         self.itemImage = UIImage(named: imageName)!
         self.itemName = itemName
+        self.itemOrdered = itemOrdered
     }
 }
 

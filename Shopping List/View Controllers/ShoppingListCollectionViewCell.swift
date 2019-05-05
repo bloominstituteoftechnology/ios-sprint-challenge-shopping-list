@@ -15,7 +15,4 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var orderedStatusLabel: UILabel!
     @IBOutlet weak var itemView: UIImageView!
     @IBOutlet weak var itemLabel: UILabel!
-    
-     
-    
 }

@@ -9,11 +9,28 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-
+    
+    var countOfPickedItems: Int = 0
+    
+    @IBOutlet weak var orderSummaryLabel: UILabel!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var phoneNumberTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        super.navigationController?.navigationBar.topItem?.title = "Change Shopping List"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        orderSummaryLabel.sizeToFit()
+        orderSummaryLabel.text = "You currently have \(countOfPickedItems) item(s) in your shopping list."
+    }
+    
+    
+    @IBAction func sendOrderButtonTapped(_ sender: Any) {
+  //      super.navigationController?.navigationBar.topItem?.title = "Shopping List"
     }
     
 

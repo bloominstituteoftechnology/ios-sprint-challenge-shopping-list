@@ -15,11 +15,13 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     // MARK: - Properties
 
     let shoppingListController = ShoppingListController()
-    var indexOfClickedItem: Int? = -1
+    var countOfPickedItems: Int = 0
     
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+       // navigationController?.navigationBar.topItem?.title = "Shopping List"
+    }
     
 
     // MARK: - View state updates
@@ -42,13 +44,12 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         
         let food = shoppingListController.shoppingItems[indexPath.item]
         
+        // Poplulate the cell views
         
         cell.orderedStatusLabel.text = food.itemOrdered ? "Added" : "Not Added"
         cell.itemView.image = food.itemImage
         cell.itemLabel.text = food.itemName
-        
-       // shoppingListController.saveOrdered(food.itemName)
-        
+
         return cell
     }
     
@@ -61,37 +62,29 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         
         // Get the items in the cell and update the orderedStatus
         var clickedItem = shoppingListController.shoppingItems[indexPath.item]
-        
-        
-        indexOfClickedItem = shoppingListController.shoppingItems.index(of: clickedItem)
-        
-       
-
+        guard let indexOfClickedItem = shoppingListController.shoppingItems.index(of: clickedItem) else { return }
         clickedItem.itemOrdered = !clickedItem.itemOrdered
+        // Now update the status in the model
+        shoppingListController.shoppingItems[indexOfClickedItem].itemOrdered = clickedItem.itemOrdered
         
         // Update the ordered item label in the view
         clickedCell.orderedStatusLabel.text = clickedItem.itemOrdered ? "Added" : "Not Added"
         
-        
-        // Now update the status in the model
-        shoppingListController.shoppingItems.insert(clickedItem, at: indexOfClickedItem ?? -1)
-        
-
+        countOfPickedItems = shoppingListController.shoppingItems.filter { $0.itemOrdered == true }.count
     }
     
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // Get the new view controller using segue.destination.
+        guard let detailVC = segue.destination as? DetailViewController else { return }
+        
+        // Pass the selected object to the new view controller.
+        detailVC.countOfPickedItems = countOfPickedItems
+     }
+    
 }
-
-
-/*
- 
- var photo: Photo? {
- didSet {
- updateViews()
- }
- 
- print("The index item to update is: \(itemToUpdate)")
- print("The item to update is: \(clickedItem)")
-
- */
  
  

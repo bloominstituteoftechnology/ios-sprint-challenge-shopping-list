@@ -14,18 +14,16 @@ class ShoppingListController {
     
     static let defaults = UserDefaults.standard
     
-   // private var pickedItem: [ShoppingItem] = []
-    
-    var pickedItems: [String] = []
+   var pickedItems: [String] = []
 
     var shoppingItems = [
-        ShoppingItem(imageName: "apple", itemName: "apple"),
-        ShoppingItem(imageName: "grapes", itemName: "grapes"),
-        ShoppingItem(imageName: "milk", itemName: "milk"),
-        ShoppingItem(imageName: "muffin", itemName: "muffin"),
-        ShoppingItem(imageName: "popcorn", itemName: "popcorn"),
-        ShoppingItem(imageName: "soda", itemName: "soda"),
-        ShoppingItem(imageName: "strawberries", itemName: "strawberries"),
+        ShoppingItem(imageName: "apple", itemName: "apple", itemOrdered: false),
+        ShoppingItem(imageName: "grapes", itemName: "grapes", itemOrdered: false),
+        ShoppingItem(imageName: "milk", itemName: "milk", itemOrdered: false),
+        ShoppingItem(imageName: "muffin", itemName: "muffin", itemOrdered: false),
+        ShoppingItem(imageName: "popcorn", itemName: "popcorn", itemOrdered: false),
+        ShoppingItem(imageName: "soda", itemName: "soda", itemOrdered: false),
+        ShoppingItem(imageName: "strawberries", itemName: "strawberries", itemOrdered: false),
         ]
     
 /*
