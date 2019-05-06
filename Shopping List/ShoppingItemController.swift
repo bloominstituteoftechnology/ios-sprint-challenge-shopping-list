@@ -7,6 +7,9 @@
 //
 
 import Foundation
+protocol ShoppingItemControllerDelegate {
+    func grabTheTotal(for total: ShoppingItemController)
+}
 
 class ShoppingItemController{
     init() {
@@ -24,22 +27,28 @@ class ShoppingItemController{
         
     ]
     
-    var orderTotal: Int = 0
     
     //updates the added propery of ShoppingItem
     
- 
+    func updateTotal() -> Int{
+        var orderTotal = 0
+        for item in shoppingList {
+            if item.added == true{
+                orderTotal += 1
+            }
+        }
+        return orderTotal
+    }
     
     func updateItemHasBeenAdded(shoppingItem: ShoppingItem) {
         guard let itemIndex = shoppingList.firstIndex(of: shoppingItem) else { return }
         if shoppingList[itemIndex].added == false  {
             shoppingList[itemIndex].added = true
-            orderTotal += 1
             } else {
             shoppingList[itemIndex].added = false
-            orderTotal -= 1
+            
             }
-        print("order total is \(orderTotal)")
+       
 
         saveToPersitentStore()
 

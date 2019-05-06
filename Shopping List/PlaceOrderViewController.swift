@@ -16,14 +16,19 @@ class PlaceOrderViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     var orderTotal: Int = 0
-   
-    @IBOutlet weak var nameLabel: UITextField!
+
+    
     @IBOutlet weak var orderLabel: UILabel!
+    
+
+    @IBOutlet weak var nameLabel: UITextField!
+    
     @IBOutlet weak var addressLabel: UITextField!
     
     @IBAction func placeOrderButtonPressed(_ sender: Any) {
+        
     }
-    
+
     /*
     // MARK: - Navigation
 

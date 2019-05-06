@@ -109,9 +109,6 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <action selector="nameLabel:" destination="Nyf-uP-CNc" eventType="editingDidEnd" id="bPF-Yx-XuH"/>
-                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cQc-L5-wNg">
                                         <rect key="frame" x="8" y="66.5" width="366" height="30"/>
@@ -123,7 +120,7 @@
                                         <rect key="frame" x="150.5" y="104.5" width="81" height="30"/>
                                         <state key="normal" title="Place Order"/>
                                         <connections>
-                                            <action selector="placeOrderButtonPressed:" destination="Nyf-uP-CNc" eventType="touchUpInside" id="Bo1-DC-avP"/>
+                                            <action selector="placeOrderButtonPressed:" destination="Nyf-uP-CNc" eventType="touchUpInside" id="IMU-ki-v4J"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -146,9 +143,9 @@
                         <viewLayoutGuide key="safeArea" id="v8j-e4-dZJ"/>
                     </view>
                     <connections>
-                        <outlet property="addressLabel" destination="cQc-L5-wNg" id="w44-RR-f5n"/>
-                        <outlet property="nameLabel" destination="Q1z-Ui-Hsd" id="IBK-Bu-OSK"/>
-                        <outlet property="orderLabel" destination="E4D-DX-PBN" id="kOw-Jw-La2"/>
+                        <outlet property="addressLabel" destination="cQc-L5-wNg" id="Lzv-IW-iBx"/>
+                        <outlet property="nameLabel" destination="Q1z-Ui-Hsd" id="iaw-ds-X5a"/>
+                        <outlet property="orderLabel" destination="E4D-DX-PBN" id="H6p-6G-WQo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ddy-Hm-ehu" userLabel="First Responder" sceneMemberID="firstResponder"/>

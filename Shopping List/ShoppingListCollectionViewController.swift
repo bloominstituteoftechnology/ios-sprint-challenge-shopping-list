@@ -24,7 +24,6 @@ class ShoppingListCollectionViewController: UICollectionViewController, Shopping
     var shoppingItem: ShoppingItem?
     
     
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,11 +39,13 @@ class ShoppingListCollectionViewController: UICollectionViewController, Shopping
 
     
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+//     In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PlaceOrder" {
             guard let destinationVC = segue.destination as? PlaceOrderViewController else { return }
-            destinationVC.orderTotal = shoppingItemController.orderTotal
+            destinationVC.orderTotal = shoppingItemController.updateTotal()
+            
+            
         }
 
     }
