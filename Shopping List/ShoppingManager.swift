@@ -21,7 +21,7 @@ class ShoppingManager {
     
     init() {
         initCheck = UserDefaults.standard.bool(forKey: initKey)
-        if initCheck == false {
+        //if initCheck == false{
             for item in itemNames {
                 if let image = UIImage(named: item) {
                     let x = ShoppingItem(imageName: item, itemName: item, hasBeenAdded: false, itemImage: image)
@@ -29,6 +29,6 @@ class ShoppingManager {
                 }
             } //End of for loop
            UserDefaults.standard.set(true, forKey: initKey)
-        } //End of if statement
+       // } //End of if statement
     }
 }

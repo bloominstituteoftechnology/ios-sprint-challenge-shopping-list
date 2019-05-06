@@ -16,7 +16,7 @@ class ShoppingCollectionViewController: UICollectionViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         shoppingManager = ShoppingManager()
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "FoodCell")
+       // self.collectionView!.register(ShoppingCell.self, forCellWithReuseIdentifier: "FoodCell")
         collectionView?.reloadData()
         
     }
@@ -28,9 +28,6 @@ class ShoppingCollectionViewController: UICollectionViewController {
         collectionView?.reloadData()
     }
     // MARK: UICollectionViewDataSource
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return shoppingManager?.shoppingList.count ?? 0
@@ -41,7 +38,7 @@ class ShoppingCollectionViewController: UICollectionViewController {
         cell.statusLabel.text = String(describing: shoppingManager?.shoppingList[indexPath.row].hasBeenAdded)
         cell.shoppingItemLabel.text = shoppingManager?.shoppingList[indexPath.row].itemName
         cell.shoppingImageView.image = shoppingManager?.shoppingList[indexPath.row].itemImage
-    
+        
         return cell
     }
 
