@@ -10,11 +10,16 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
-    var countOfPickedItems: Int = 0
+    // MARK: - Properties
     
     @IBOutlet weak var orderSummaryLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var phoneNumberTextField: UITextField!
+    @IBOutlet weak var addressTextField: UITextField!
+    
+    var countOfPickedItems: Int = 0
+    
+    
+    // MARK: - View states
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,19 +34,21 @@ class DetailViewController: UIViewController {
     }
     
     
-    @IBAction func sendOrderButtonTapped(_ sender: Any) {
-  //      super.navigationController?.navigationBar.topItem?.title = "Shopping List"
+    @IBAction func sendOrderButtonTapped(_ sender: UIButton) {
+        let alertMessageTitle = "Delivery for \(nameTextField.text ?? "Our Customer")"
+        let alertMessage =
+                """
+                Your shopping items will be
+                delivered to \(addressTextField.text ?? "the address on file")
+                in 15 minutes.
+                """
+        
+        // Set up the alert
+        let alert = UIAlertController(title: alertMessageTitle, message: alertMessage, preferredStyle: .alert )
+        
+        // Select the action and present the alert
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

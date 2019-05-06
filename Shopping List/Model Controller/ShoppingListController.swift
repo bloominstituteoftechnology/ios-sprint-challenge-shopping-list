@@ -12,9 +12,9 @@ class ShoppingListController {
     
     // MARK: - Properties
     
-    static let defaults = UserDefaults.standard
+    let pickedItemsKey: String = "PickedItemsKey"
     
-   var pickedItems: [String] = []
+    var pickedItems: [Bool] = []
 
     var shoppingItems = [
         ShoppingItem(imageName: "apple", itemName: "apple", itemOrdered: false),
@@ -26,30 +26,28 @@ class ShoppingListController {
         ShoppingItem(imageName: "strawberries", itemName: "strawberries", itemOrdered: false),
         ]
     
-/*
- 
-*/
-   
-//    func updateOrdedStatus(itemIndex: Int) {
-//        shoppingItems[itemIndex].itemOrdered = !shoppingItems[itemIndex].itemOrdered
-//        print("This is the updateOrdedStatus function.  Will update shoppingitems[\(itemIndex)]")
-//        print("Item name is \(shoppingItems[itemIndex].itemName)")
-//        print("Item current order status is \(shoppingItems[itemIndex].itemOrdered)")
-//        // Update the ordered status
-//        shoppingItems[itemIndex].itemOrdered = !shoppingItems[itemIndex].itemOrdered
-//    }
+    func saveItemOrdered() {
+        // Clear the UserDefaults for the pickedItemsKey
+        UserDefaults.standard.set(nil, forKey: pickedItemsKey)
+        pickedItems = []
+        
+        // Get the items ordered
+        for items in shoppingItems {
+            pickedItems.append(items.itemOrdered)
+        }
+        
+        //Now saved the shopping items
+        UserDefaults.standard.set(pickedItems, forKey: pickedItemsKey)
+    }
     
-//    let itemOrderedKey = "ItemOrderedKey"
-//    func saveOrdered(_ itemOrdered: String) {
-//        // itemOrdered = true
-//        for itemName in shoppingItems {
-//            print(itemName, itemOrdered)
-//        }
-        
-        
-        
-        
-//        if let itemOrderedKey = UserDefaults.standard.string
-//        UserDefaults.standard.set(pickedItems, forKey: itemOrderedKey)
-    
+    func restoreItemOrdered() {
+        if let savedItems = UserDefaults.standard.array(forKey: pickedItemsKey) {
+            for index in 0 ..< shoppingItems.count {
+                shoppingItems[index].itemOrdered = savedItems[index] as! Bool
+            }
+        } else {
+            return
+        }
+    }
+
 }

@@ -8,23 +8,21 @@
 
 import UIKit
 
-private let groceryCell = "GroceryCell"
-
 class ShoppingListCollectionViewController: UICollectionViewController {
     
     // MARK: - Properties
-
+    
     let shoppingListController = ShoppingListController()
+    private let groceryCell = "GroceryCell"
     var countOfPickedItems: Int = 0
+
+    // MARK: - View states
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       // navigationController?.navigationBar.topItem?.title = "Shopping List"
+         shoppingListController.restoreItemOrdered()
     }
-    
-
-    // MARK: - View state updates
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -32,7 +30,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         collectionView?.reloadData()
     }
     
-    // MARK: - View implementation
+    // MARK: - Collection view configuration
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return shoppingListController.shoppingItems.count
@@ -53,7 +51,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         return cell
     }
     
-    // Capture a cell click
+    // MARK: - Respond to clicked cell
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
@@ -69,8 +67,6 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         
         // Update the ordered item label in the view
         clickedCell.orderedStatusLabel.text = clickedItem.itemOrdered ? "Added" : "Not Added"
-        
-        countOfPickedItems = shoppingListController.shoppingItems.filter { $0.itemOrdered == true }.count
     }
     
      // MARK: - Navigation
@@ -81,6 +77,13 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         // Get the new view controller using segue.destination.
         guard let detailVC = segue.destination as? DetailViewController else { return }
         
+        // Get the count of items selected
+        countOfPickedItems = shoppingListController.shoppingItems.filter { $0.itemOrdered == true }.count
+        
+        
+        // Save the itemOrdered data
+        shoppingListController.saveItemOrdered()
+
         // Pass the selected object to the new view controller.
         detailVC.countOfPickedItems = countOfPickedItems
      }
