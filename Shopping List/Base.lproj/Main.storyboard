@@ -25,7 +25,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoppingCell" id="Ng4-Yt-kXh" customClass="ShoppingCell" customModule="Shopping_List" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FoodCell" id="Ng4-Yt-kXh" customClass="ShoppingCell" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -66,6 +66,11 @@
                                     <constraint firstAttribute="bottom" secondItem="fG9-gV-eVK" secondAttribute="bottom" id="e3X-Ma-hTl"/>
                                     <constraint firstItem="fG9-gV-eVK" firstAttribute="top" secondItem="Ng4-Yt-kXh" secondAttribute="top" id="jYS-vi-N2d"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="shoppingImageView" destination="6az-y1-gjJ" id="aRV-gT-PUx"/>
+                                    <outlet property="shoppingItemLabel" destination="DEC-bg-5EA" id="cGl-aY-2UL"/>
+                                    <outlet property="statusLabel" destination="leA-fe-WMa" id="Y70-eS-3AK"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -76,7 +81,7 @@
                     <navigationItem key="navigationItem" id="OWf-Y3-JRD">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="fK6-VO-Qjp">
                             <connections>
-                                <segue destination="21K-SC-yNV" kind="show" id="AFC-87-1NV"/>
+                                <segue destination="21K-SC-yNV" kind="show" identifier="DetailSegue" id="AFC-87-1NV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -120,8 +125,11 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5V5-wL-PER">
-                                        <rect key="frame" x="154" y="130.5" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                        <rect key="frame" x="131" y="130.5" width="92" height="30"/>
+                                        <state key="normal" title="Submit Order"/>
+                                        <connections>
+                                            <action selector="submitOrderButtonPressed:" destination="21K-SC-yNV" eventType="touchUpInside" id="Per-uu-voH"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -139,6 +147,12 @@
                         <viewLayoutGuide key="safeArea" id="WKH-wZ-z4O"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="zL3-o5-LQb"/>
+                    <connections>
+                        <outlet property="addressTextField" destination="oll-yL-ivG" id="d7X-dD-8fl"/>
+                        <outlet property="messageLabel" destination="HQD-5S-GZZ" id="gbT-YM-28C"/>
+                        <outlet property="nameTextField" destination="7N7-Sw-m2m" id="laG-3S-yft"/>
+                        <outlet property="submitButton" destination="5V5-wL-PER" id="bAk-N7-wCv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AeW-Pq-Pla" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

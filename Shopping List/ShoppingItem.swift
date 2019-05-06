@@ -6,7 +6,7 @@
 //  Copyright © 2019 Lambda School. All rights reserved.
 //
 
-import Foundation
+import UIKit
 /*A ShoppingItem model object with properties:
 
 An image name ("apple")
@@ -18,4 +18,5 @@ struct ShoppingItem {
     var imageName: String
     var itemName: String
     var hasBeenAdded: Bool
+    var itemImage: UIImage
 }
