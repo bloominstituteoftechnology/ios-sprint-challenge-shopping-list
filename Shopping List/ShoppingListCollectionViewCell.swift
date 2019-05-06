@@ -18,10 +18,10 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
         didSet{
             print("item was recieved")
             updateViews()
+
         }
     }
     var delegate: ShoppingListCollectionViewCellDelegate?
-        
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var itemAddedLabel: UIButton!

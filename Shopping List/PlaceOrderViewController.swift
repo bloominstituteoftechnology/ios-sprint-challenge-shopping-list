@@ -12,6 +12,7 @@ class PlaceOrderViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateViews()
 
         // Do any additional setup after loading the view.
     }
@@ -26,9 +27,19 @@ class PlaceOrderViewController: UIViewController {
     @IBOutlet weak var addressLabel: UITextField!
     
     @IBAction func placeOrderButtonPressed(_ sender: Any) {
-        
+        presentOrderPlaced()
     }
 
+    func presentOrderPlaced() {
+
+        let alert = UIAlertController(title: "Order placed for \(nameLabel!.text ?? "something")", message: "Your order for \(orderTotal) item('s) will be delievered to \(addressLabel!.text ?? "your home address").", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    func updateViews() {
+        orderLabel.text = "You have \(orderTotal) item('s) in your shopping List"
+
+    }
     /*
     // MARK: - Navigation
 
@@ -40,3 +51,4 @@ class PlaceOrderViewController: UIViewController {
     */
 
 }
+
