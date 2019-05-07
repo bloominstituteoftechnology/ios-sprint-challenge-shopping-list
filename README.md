@@ -39,7 +39,7 @@ Please view the screen recording so you will know what your finished project sho
     4. Test and verify that your app saves changes to the shopping list (quit the app and relaunch).
     5. This snippet has the names of the images in the assets folder. Use it to create the instances of `ShoppingList`:
     
-            let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
+            let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     
 3. A custom Collection View Controller that shows a list of shopping items. 
     1. The Collection View Controller should be embedded in a navigation controller.
