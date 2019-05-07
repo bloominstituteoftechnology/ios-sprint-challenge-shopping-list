@@ -16,7 +16,7 @@ class ShoppingCollectionViewController: UICollectionViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         shoppingManager = ShoppingManager()
-       // self.collectionView!.register(ShoppingCell.self, forCellWithReuseIdentifier: "FoodCell")
+       //self.collectionView!.register(ShoppingCell.self, forCellWithReuseIdentifier: "FoodCell")
         collectionView?.reloadData()
         
     }
