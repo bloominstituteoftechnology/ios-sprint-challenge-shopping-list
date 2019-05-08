@@ -14,7 +14,7 @@ A name of the item ("Apple")
 A Bool indicating whether the item has been added to the shopping list
 */
 
-struct ShoppingItem {
+struct ShoppingItem: Equatable {
     var imageName: String
     var itemName: String
     var hasBeenAdded: Bool

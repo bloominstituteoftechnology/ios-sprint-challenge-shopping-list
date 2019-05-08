@@ -31,4 +31,9 @@ class ShoppingManager {
            UserDefaults.standard.set(true, forKey: initKey)
        // } //End of if statement
     }
+    //
+    func updateStatus(item: ShoppingItem) {
+        guard let index = shoppingList.firstIndex(of: item) else { return }
+        shoppingList[index].hasBeenAdded = !shoppingList[index].hasBeenAdded
+    }
 }
