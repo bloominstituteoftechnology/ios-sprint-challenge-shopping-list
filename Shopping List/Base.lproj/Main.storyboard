@@ -113,16 +113,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3hv-ls-fI7">
-                                <rect key="frame" x="151" y="269" width="112" height="39"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Place Order">
-                                    <color key="titleColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="placeOrderButtonPressed:" destination="gua-4E-nL0" eventType="touchUpInside" id="2ml-O2-z0J"/>
-                                </connections>
-                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="gw0-mf-tUf">
                                 <rect key="frame" x="16" y="187" width="382" height="68"/>
                                 <subviews>
@@ -140,16 +130,26 @@
                                     </textField>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3hv-ls-fI7">
+                                <rect key="frame" x="18" y="263" width="378" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Place Order">
+                                    <color key="titleColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="placeOrderButtonPressed:" destination="gua-4E-nL0" eventType="touchUpInside" id="2ml-O2-z0J"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="gw0-mf-tUf" firstAttribute="leading" secondItem="S7J-Sw-uVr" secondAttribute="leading" constant="16" id="1Y4-YK-RU2"/>
+                            <constraint firstItem="3hv-ls-fI7" firstAttribute="leading" secondItem="S7J-Sw-uVr" secondAttribute="leading" constant="18" id="9mb-tq-MfB"/>
+                            <constraint firstItem="3hv-ls-fI7" firstAttribute="top" secondItem="S7J-Sw-uVr" secondAttribute="top" constant="175" id="Bur-Lx-34W"/>
                             <constraint firstItem="S7J-Sw-uVr" firstAttribute="trailing" secondItem="gw0-mf-tUf" secondAttribute="trailing" constant="16" id="CcG-8G-VIa"/>
-                            <constraint firstItem="3hv-ls-fI7" firstAttribute="leading" secondItem="S7J-Sw-uVr" secondAttribute="leading" constant="151" id="M51-zb-vPE"/>
+                            <constraint firstItem="S7J-Sw-uVr" firstAttribute="trailing" secondItem="3hv-ls-fI7" secondAttribute="trailing" constant="18" id="KTc-ze-bMR"/>
                             <constraint firstItem="eW7-65-7Cq" firstAttribute="top" secondItem="S7J-Sw-uVr" secondAttribute="top" constant="137" id="VV8-52-8H0"/>
-                            <constraint firstItem="3hv-ls-fI7" firstAttribute="top" secondItem="S7J-Sw-uVr" secondAttribute="top" constant="181" id="bSo-wr-QRv"/>
                             <constraint firstItem="xLm-SQ-HbC" firstAttribute="leading" secondItem="S7J-Sw-uVr" secondAttribute="leading" constant="20" id="kzj-WK-Zqk"/>
-                            <constraint firstItem="S7J-Sw-uVr" firstAttribute="trailing" secondItem="3hv-ls-fI7" secondAttribute="trailing" constant="151" id="qj4-Ya-Rqm"/>
                             <constraint firstItem="xLm-SQ-HbC" firstAttribute="top" secondItem="S7J-Sw-uVr" secondAttribute="top" id="woj-LL-XN1"/>
                             <constraint firstItem="S7J-Sw-uVr" firstAttribute="trailing" secondItem="xLm-SQ-HbC" secondAttribute="trailing" constant="20" id="xGq-b4-7Dh"/>
                         </constraints>
