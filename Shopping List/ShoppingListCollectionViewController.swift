@@ -12,37 +12,17 @@ private let reuseIdentifier = "Cell"
 
 class ShoppingListCollectionViewController: UICollectionViewController{
 
-
-
-    let shoppingItemController = ShoppingItemController()
-
-    var shoppingItem: ShoppingItem?
-
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
     }
-
-
 
     //     In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PlaceOrder" {
             guard let destinationVC = segue.destination as? PlaceOrderViewController else { return }
             destinationVC.orderTotal = shoppingItemController.updateTotal()
-
-
         }
-
     }
 
 
@@ -60,13 +40,13 @@ class ShoppingListCollectionViewController: UICollectionViewController{
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as! ShoppingListCollectionViewCell
-
-        
         let shoppingItem = shoppingItemController.shoppingList[indexPath.item]
         cell.shoppingItem = shoppingItem
         return cell
     }
 
 
-
+    //Mark: - Properties
+    let shoppingItemController = ShoppingItemController()
+    var shoppingItem: ShoppingItem?
 }

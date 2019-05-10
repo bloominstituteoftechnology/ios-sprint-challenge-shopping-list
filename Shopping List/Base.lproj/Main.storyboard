@@ -10,14 +10,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Shopping List Collection View Controller-->
+        <!--Shopping List-->
         <scene sceneID="4dd-hv-nTg">
             <objects>
                 <collectionViewController id="dy7-1R-tYT" customClass="ShoppingListCollectionViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="wHk-q5-hZM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hrS-Ei-uIB">
                             <size key="itemSize" width="130" height="170"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -68,6 +68,7 @@
                                         </view>
                                     </subviews>
                                 </view>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="8V9-IG-AmE" secondAttribute="trailing" id="3tS-ro-BTf"/>
                                     <constraint firstItem="8V9-IG-AmE" firstAttribute="top" secondItem="gTX-A9-YyQ" secondAttribute="top" id="BEx-dw-2nf"/>
@@ -86,7 +87,7 @@
                             <outlet property="delegate" destination="dy7-1R-tYT" id="jFq-Y0-rCL"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="yX0-VD-x49">
+                    <navigationItem key="navigationItem" title="Shopping List" id="yX0-VD-x49">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="Nqi-fy-Si6">
                             <connections>
                                 <segue destination="gua-4E-nL0" kind="show" identifier="PlaceOrder" id="y2r-P8-GtA"/>
@@ -115,7 +116,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3hv-ls-fI7">
                                 <rect key="frame" x="151" y="269" width="112" height="39"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Place Order"/>
+                                <state key="normal" title="Place Order">
+                                    <color key="titleColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="placeOrderButtonPressed:" destination="gua-4E-nL0" eventType="touchUpInside" id="2ml-O2-z0J"/>
                                 </connections>
@@ -138,7 +141,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="gw0-mf-tUf" firstAttribute="leading" secondItem="S7J-Sw-uVr" secondAttribute="leading" constant="16" id="1Y4-YK-RU2"/>
                             <constraint firstItem="S7J-Sw-uVr" firstAttribute="trailing" secondItem="gw0-mf-tUf" secondAttribute="trailing" constant="16" id="CcG-8G-VIa"/>

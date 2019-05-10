@@ -11,17 +11,17 @@ import UIKit
 
 class ShoppingListCollectionViewCell: UICollectionViewCell {
 
-
     func updateViews() {
         guard let shoppingItem = shoppingItem else { return }
         imageView.image = UIImage(named: shoppingItem.imageName)  
         nameLabel.text = shoppingItem.name
         if shoppingItem.added == true {
             itemAddedLabel.text = "Added"
+            itemAddedLabel.textColor = .green
         } else {
             itemAddedLabel.text = "Not Added"
+            itemAddedLabel.textColor = .red
         }
-
     }
 
     @IBOutlet weak var imageView: UIImageView!

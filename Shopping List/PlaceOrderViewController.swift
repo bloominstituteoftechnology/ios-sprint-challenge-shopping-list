@@ -17,19 +17,6 @@ class PlaceOrderViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    var orderTotal: Int = 0
-
-
-    @IBOutlet weak var orderLabel: UILabel!
-
-
-    @IBOutlet weak var nameTextField: UITextField!
-
-    @IBOutlet weak var addressLabel: UITextField!
-
-    @IBAction func placeOrderButtonPressed(_ sender: Any) {
-        presentOrderPlaced()
-    }
 
     func presentOrderPlaced() {
         let center = UNUserNotificationCenter.current()
@@ -41,15 +28,10 @@ class PlaceOrderViewController: UIViewController {
 
         let date = Date().addingTimeInterval(10)
         let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
-
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
-
         let uuidString = UUID().uuidString
-
         let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
-
         center.add(request) { (error) in
-            //
         }
 
        // let alert = UIAlertController(title: "Order placed for \(nameTextField!.text ?? "something")", message: "Your order for \(orderTotal) item('s) will be delievered to \(addressLabel!.text ?? "your home address").", preferredStyle: .alert)
@@ -58,17 +40,15 @@ class PlaceOrderViewController: UIViewController {
     }
     func updateViews() {
         orderLabel.text = "You have \(orderTotal) item('s) in your shopping List"
-
     }
-    /*
-     // MARK: - Navigation
-
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    //Mark: - Properties
+    var orderTotal: Int = 0
+    @IBOutlet weak var orderLabel: UILabel!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var addressLabel: UITextField!
+    @IBAction func placeOrderButtonPressed(_ sender: Any) {
+        presentOrderPlaced()
+    }
 
 }
 

@@ -7,17 +7,15 @@
 //
 
 import Foundation
-protocol ShoppingItemControllerDelegate {
-    func grabTheTotal(for total: ShoppingItemController)
-}
+
 
 class ShoppingItemController {
     
-    //Mark: - Functions
     init() {
         loadFromPersistentStore()
     }
-
+    
+    //Mark: - Functions
     func updateTotal() -> Int{
         var orderTotal = 0
         for item in shoppingList {
