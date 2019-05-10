@@ -1,9 +1,9 @@
 //
 //  ShoppingItem.swift
-//  Shopping List
+//  ChallengeTry
 //
 //  Created by Ryan Murphy on 5/10/19.
-//  Copyright © 2019 Lambda School. All rights reserved.
+//  Copyright © 2019 Ryan Murphy. All rights reserved.
 //
 
 import Foundation
@@ -11,10 +11,10 @@ import Foundation
 
 struct ShoppingItem: Codable, Equatable {
     var name: String
-    var imageData: String
+    var imageData: Data
     var isOnList: Bool
     
-    init(name: String, image: String, isOnList: Bool = false) {
+    init(name: String, image: Data, isOnList: Bool = false) {
         self.name = name
         self.imageData = image
         self.isOnList = isOnList

@@ -1,9 +1,9 @@
 //
 //  ShoppingItemController.swift
-//  Shopping List
+//  ChallengeTry
 //
 //  Created by Ryan Murphy on 5/10/19.
-//  Copyright © 2019 Lambda School. All rights reserved.
+//  Copyright © 2019 Ryan Murphy. All rights reserved.
 //
 
 import Foundation
@@ -21,26 +21,15 @@ class ShoppingItemController {
         if UserDefaults.standard.bool(forKey: myKey) {
             loadFromPersistentStore()
         } else {
-            let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
-            createShoppingItems(itemNames: itemNames)
-            UserDefaults.standard.set(true, forKey: myKey)
-        }
+       let itemNames = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
+        createShoppingItems(itemNames: itemNames)
+        UserDefaults.standard.set(true, forKey: myKey)
     }
-//    init() {
-//        var shoppingList: [ShoppingItem] = [
-//            ShoppingItem(name: "Apples", image: "apples"),
-//            ShoppingItem(name: "Grapes", image: "grapes"),
-//            ShoppingItem(name: "Milk", image: "milk"),
-//            ShoppingItem(name: "Muffin", image: "muffin"),
-//            ShoppingItem(name: "Popcorn", image: "popcorn"),
-//            ShoppingItem(name: "Soda", image: "soda"),
-//            ShoppingItem(name: "Strawberries", image: "strawberries")
-//        ]
-//    }
-//
+}
     
+   
     
-    // Persistence
+   // Persistence
     
     private var shoppingURL: URL? {
         let fileManager = FileManager.default
@@ -66,7 +55,7 @@ class ShoppingItemController {
         let fileManager = FileManager.default
         
         guard let url = shoppingURL,
-            fileManager.fileExists(atPath: url.path)
+        fileManager.fileExists(atPath: url.path)
             else { return }
         do {
             let data = try Data(contentsOf: url)
@@ -79,35 +68,30 @@ class ShoppingItemController {
     
     
     // Crud
-//    func createShoppingItem(itemNames: [String]) {
-//        let shoppingItem = ShoppingItem(itemNames: name)
-//        shoppingItems.append(shoppingItem)
-//    }
-    private func createShoppingItems(itemNames: String) {
+    
+    private func createShoppingItems(itemNames: [String]) {
         for name in itemNames {
-            guard let imageData = UIImage(named: itemNames) else {
-                print("Error in createShoppingItems")
+             guard let imageData = UIImage(named: name)?.pngData() else {
+                print("Error loading Image")
                 return }
-            let newItem = ShoppingItem(name: itemNames, image: imageData)
+            let newItem = ShoppingItem(name: name, image: imageData)
             shoppingItems.append(newItem)
             saveToPersistentStore()
         }
     }
-
     
     func update(shoppingItem: ShoppingItem) {
-        guard let index = shoppingItems.firstIndex(of: shoppingItem) else {
-            return
+            guard let index = shoppingItems.firstIndex(of: shoppingItem) else {
+                return
+            }
+            shoppingItems[index].isOnList = !shoppingItems[index].isOnList
+            saveToPersistentStore()
         }
-        shoppingItems[index].isOnList = !shoppingItems[index].isOnList
-        saveToPersistentStore()
-    }
-    
+
     func clearCart() {
         for index in 0..<shoppingItems.count {
             shoppingItems[index].isOnList = false
         }
         saveToPersistentStore()
-    
     }
 }

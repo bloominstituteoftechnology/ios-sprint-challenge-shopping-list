@@ -1,9 +1,9 @@
 //
 //  ShoppingCartViewController.swift
-//  Shopping List
+//  ChallengeTry
 //
 //  Created by Ryan Murphy on 5/10/19.
-//  Copyright © 2019 Lambda School. All rights reserved.
+//  Copyright © 2019 Ryan Murphy. All rights reserved.
 //
 
 import UIKit
@@ -20,6 +20,8 @@ class ShoppingCartViewController: UIViewController {
         
     }
     
+ 
+    
     @IBAction func submitOrderButtonPressed(_ sender: UIButton) {
         
         guard let address = addressTextField.text,
@@ -29,6 +31,7 @@ class ShoppingCartViewController: UIViewController {
             else { return }
         
         updateViews()
+        
         
         let alert = UIAlertController(title: "Order for \(name)", message: "Your items will be delivered to \(address) in 15 minutes.", preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
@@ -46,5 +49,5 @@ class ShoppingCartViewController: UIViewController {
         nameTextField.text = ""
         addressTextField.text = ""
     }
-    
+   
 }
