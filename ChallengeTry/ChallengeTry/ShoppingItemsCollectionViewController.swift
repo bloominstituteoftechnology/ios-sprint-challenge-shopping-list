@@ -65,4 +65,6 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
         shoppingItemCollectionCell.shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
         return cell
 }
+    
+    //for push
 }
