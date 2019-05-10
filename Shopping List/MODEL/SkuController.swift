@@ -18,17 +18,15 @@ class SkuController {
     }
     
     func updateSkuInCart(for sku: Sku) {
-        print("update ADDED func called in skuController")
         
         if let index = skus.firstIndex(of: sku) {
             
             print("\(skus[index].skuName)")
             
-            // or skus[index].skuInCart = !sku.skuInCart
-            skus[index].skuInCart.toggle()
+            skus[index].skuInCart.toggle()   // or skus[index].skuInCart = !sku.skuInCart
+            
         } else { return }
 
-        
         saveToPersistentStore()
     }
     

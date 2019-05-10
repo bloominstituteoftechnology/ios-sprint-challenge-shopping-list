@@ -28,16 +28,14 @@ class SkuCollectionViewCELL: UICollectionViewCell {
         
         if sku.skuInCart == true {
             booleanButtonLabel.setTitle("Added", for: .normal)                  // .text is for TEXTFIELDS not LABLES .titleLabel?.text = "Added"
-            print("ADDED!!!!!")
         } else {
             booleanButtonLabel.setTitle("not added", for: .normal)                     //.titleLabel?.text = "not added"
-            print("NOT")
         }
     }
     
 // PROPERTIES
     @IBOutlet weak var booleanButtonLabel: UIButton!
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet var imageView: UIImageView!
     @IBOutlet weak var skuLabel: UILabel!
     
     var sku: Sku? {
