@@ -12,32 +12,30 @@ private let reuseIdentifier = "ShoppingItemCell"
 
 class ShoppingListCollectionViewController: UICollectionViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
-
 
     // MARK: UICollectionViewDataSource
-
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return shoppingListController.shoppingList.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ShoppingListCollectionViewCell
     
-        // Configure the cell
-    
+        let shoppingItem = shoppingListController.shoppingList[indexPath.item]
+        cell.shoppingItem = shoppingItem
+        
         return cell
     }
-
     
+    override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let shoppingItem = shoppingListController.shoppingList[indexPath.item]
+        shoppingListController.updateHasBeenAdded(shoppingItem: shoppingItem)
+        collectionView.reloadData()
+    }
+
+    var shoppingListController = ShoppingListController()
+    var shoppingListCollectionViewCell = ShoppingListCollectionViewCell()
 }
