@@ -29,19 +29,18 @@ class CartVC: UIViewController {
 
     @IBAction func sendOrderButtonPressed(_ sender: Any) {
     
-        let alert = UIAlertController(title: "ShoppingList would like to send you Notifications", message: "in order to help process your order", preferredStyle: .alert)
+        // write optional if let for nameTextField.text to remove forced unwrap !
         
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Allow", comment: "Default action"), style: .default, handler: { _ in
-            NSLog("The \"OK\" alert occured.")
-        }))
-        //alert.addAction(<#T##action: UIAlertAction##UIAlertAction#>)    must add another action for the "Don't Allow" button
+        let alert = UIAlertController(title: "ShoppingList would like to send you Notifications", message: "in order to help process your order \(nameTextField.text!)", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Allow", style: .default, handler: /* this syntax just not working and documentation says it should work... { _ in navigationController?.popViewController(animated: true) } */ nil ))
+        alert.addAction(UIAlertAction(title: "Don't Allow", style: .destructive, handler: nil))
         
         self.present(alert, animated: true, completion: nil)
         
-        let alert2 = UIAlertController(title: "ShoppingList would like to send you Notifications", message: "Notifications may include...", preferredStyle: .alert)
-        /*
-         alert2.addAction(UIAlertAction(title: "DIS-Allow", style: <#T##UIAlertActionStyle#>, handler: <#T##((UIAlertAction) -> Void)?##((UIAlertAction) -> Void)?##(UIAlertAction) -> Void#>))
-         */
+       
+        
+        // need to now show an .actionsheet alert with name and address, similar to above, but this time make it run after user shuts down the app like in the gif.
         
     }
     

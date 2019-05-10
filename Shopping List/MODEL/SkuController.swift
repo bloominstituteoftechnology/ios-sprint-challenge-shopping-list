@@ -27,8 +27,7 @@ class SkuController {
             // or skus[index].skuInCart = !sku.skuInCart
             skus[index].skuInCart.toggle()
         } else { return }
-        
-        print("saving  added to persistent store")
+
         
         saveToPersistentStore()
     }
@@ -46,14 +45,19 @@ class SkuController {
     
     // Persistent Store funcs
     func saveToPersistentStore() {
-        guard let url = shoppingListURL else { return }
         
-        let encoder = PropertyListEncoder()
-        do {
-            let skusData = try encoder.encode(skus)
-            try skusData.write(to: url)
-        } catch {
-            print(error)
+        guard UserDefaults.standard.bool(forKey: "persistenceStoreInitialized") == false else { return }
+            guard let url = shoppingListURL else { return }
+        
+            let encoder = PropertyListEncoder()
+            do {
+                let skusData = try encoder.encode(skus)
+                try skusData.write(to: url)
+            
+            UserDefaults.standard.set(true, forKey: "persistenceStoreInitialized")
+            
+            } catch {
+                print(error)
         }
     }
     
