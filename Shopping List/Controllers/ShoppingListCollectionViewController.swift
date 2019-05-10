@@ -50,8 +50,9 @@ class ShoppingListCollectionViewController: UICollectionViewController {
             let shoppingList = shoppingListController.shoppingLists[indexPath.item]
             cell.shoppingListNameLabel.text = shoppingList.title
             cell.shoppingListImageView.image = shoppingList.imageData
-           
             
+            
+        
             return cell
             
         }

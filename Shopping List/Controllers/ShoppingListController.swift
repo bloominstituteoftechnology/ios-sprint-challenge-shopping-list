@@ -21,7 +21,7 @@ class ShoppingListController {
         saveToPersistantStore()
     }
     func createShoppingList(imageData: Data, title: String) {
-        let shoppingList = ShoppingList(imageData: imageData, title: title)
+        let shoppingList = ShoppingList(imagedata: imageData, title: title)
         shoppingLists.append(shoppingList)
     }
     func updateShoppingList(shoppingList: ShoppingList, imageData: Data, title: String) {

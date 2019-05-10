@@ -15,8 +15,8 @@ struct ShoppingList: Equatable, Codable {
     var hasBeenAdded: Bool
     
     
-    init(dataVar: Data, title: String, hasBeenAdded: Bool = false) {
-    self.imageData = UIImage(data: dataVar)
+    init(imagedata: Data, title: String, hasBeenAdded: Bool = false) {
+    self.imageData = imagedata
     self.title = title
     self.hasBeenAdded = hasBeenAdded
     
