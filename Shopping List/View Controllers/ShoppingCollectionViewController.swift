@@ -43,7 +43,6 @@ class ShoppingCollectionViewController: UICollectionViewController {
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(shoppingController.items.count)
         
         return shoppingController.items.count
     }
@@ -64,4 +63,13 @@ class ShoppingCollectionViewController: UICollectionViewController {
         shoppingController.updateItem(item: shoppingItem)
         collectionView.reloadData()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDetail" {
+            let addedItemsCount = shoppingController.addedItemsCount()
+            guard let detailVC = segue.destination as? ShoppingListDetailViewController else { return }
+            detailVC.addedItemsCount = addedItemsCount
+        }
+    }
 }
+

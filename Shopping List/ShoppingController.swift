@@ -55,6 +55,16 @@ class ShoppingController {
         }
     }
     
+    func addedItemsCount() -> Int {
+        var count = 0
+        for item in items {
+            if item.addedToList {
+                count += 1
+            }
+        }
+        return count
+    }
+    
     // MARK: - Persistence
     
     private var persistentFileURL: URL? {
