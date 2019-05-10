@@ -19,6 +19,11 @@ class ShoppingListDetailViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+         UNUserNotificationCenter.current().delegate = self
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -53,7 +58,7 @@ class ShoppingListDetailViewController: UIViewController {
         content.body = "Your shopping items will be delivered to \(addressTextField.text!) in 15 minutes!"
         content.sound = UNNotificationSound.default()
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
         
         let request = UNNotificationRequest(identifier: "ShoppingDelivery", content: content, trigger: trigger)
         
@@ -67,5 +72,12 @@ class ShoppingListDetailViewController: UIViewController {
             }
             
         }
+    }
+}
+
+extension ShoppingListDetailViewController: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        completionHandler([.alert, .sound])
     }
 }
