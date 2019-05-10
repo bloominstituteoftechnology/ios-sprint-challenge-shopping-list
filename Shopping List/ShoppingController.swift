@@ -17,13 +17,13 @@ class ShoppingController {
         
     }
     
-    private func createItem(withName name: String) {
+     func createItem(withName name: String) {
         let item = ShoppingItem(name: name)
         items.append(item)
         saveToPersistentStore()
     }
     
-    private func updateItem(item: ShoppingItem, withName name: String, adddedToList: Bool) {
+    func updateItem(item: ShoppingItem) {
         guard let index = items.index(of: item) else { return }
         
         var tempItem = item
@@ -51,7 +51,7 @@ class ShoppingController {
         let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
         for item in itemNames {
             createItem(withName: item)
-            print(items)
+            
         }
     }
     
@@ -83,8 +83,8 @@ class ShoppingController {
             guard let url = persistentFileURL, fm.fileExists(atPath: url.path) else { return }
             let data = try Data(contentsOf: url)
             let decoder = PropertyListDecoder()
-            let decodedShoppingList = try decoder.decode([ShoppingItem].self, from: data)
-            items = decodedShoppingList
+            let decodedShoppingItems = try decoder.decode([ShoppingItem].self, from: data)
+            items = decodedShoppingItems
         } catch {
             NSLog("Couldn't load shopping list data: \(error)")
         }

@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Shopping Collection View Controller-->
+        <!--Shopping List-->
         <scene sceneID="vm0-Cw-zb7">
             <objects>
                 <collectionViewController id="AtJ-Pf-J6d" customClass="ShoppingCollectionViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
@@ -83,7 +83,7 @@
                             <outlet property="delegate" destination="AtJ-Pf-J6d" id="hJR-9I-2oB"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="Rru-oY-HsW"/>
+                    <navigationItem key="navigationItem" title="Shopping List" id="Rru-oY-HsW"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TdY-NC-U5f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -94,8 +94,8 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fch-gZ-zHf" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ATg-9e-vf7">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="ATg-9e-vf7">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
