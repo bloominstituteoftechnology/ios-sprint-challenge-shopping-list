@@ -6,16 +6,23 @@
 //  Copyright © 2019 Lambda School. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct ShoppingItem: Codable, Equatable {
     var name: String
-    var imageData: Data
+    var image: String
     var isOnList: Bool
     
-    init(name: String, imageData: Data, isOnList: Bool) {
+    init(name: String, imageName: String, isOnList: Bool) {
         self.name = name
-        self.imageData = imageData
+        self.image = imageName
         self.isOnList = isOnList
+    }
+}
+
+extension UIImage {
+    func toString() -> String? {
+        let data: Data? = UIImagePNGRepresentation(self)
+        return data?.base64EncodedString(options: .endLineWithLineFeed)
     }
 }

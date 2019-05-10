@@ -18,20 +18,21 @@ class ShoppingItemController {
             loadFromPersistentStore()
         } else {
             let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
-            createShoppingItems(itemNames: itemNames)
+            for itemName in itemNames {
+                let item = ShoppingItem(name: itemName, imageName: itemName, isOnList: true)
+                shoppingItems.append(item)
+            }
+    
             UserDefaults.standard.set(true, forKey: myKey)
         }
     }
     
     //MARK: -Functions
     
-    private func createShoppingItems(itemNames: [String]) {
-        for name in itemNames {
-            guard let imageData = UIImage(named: name)?.pngData() else { return }
-            let newItem = ShoppingItem(name: name, imageData: imageData)
-            shoppingItems.append(newItem)
-            saveToPersistentStore()
-        }
+    func createShoppingItem(name: String, imageName: String) {
+        let shoppingItem = ShoppingItem(name: name, imageName: imageName, isOnList: true)
+        shoppingItems.append(shoppingItem)
+        saveToPersistentStore()
     }
     
     func update(shoppingItem: ShoppingItem) {
@@ -80,4 +81,11 @@ class ShoppingItemController {
     }
     
     var shoppingItems: [ShoppingItem] = []
+}
+
+extension UIImage {
+    func imageName() -> String? {
+        let data: Data? = UIImagePNGRepresentation(self)
+        return data?.base64EncodedString(options: .endLineWithLineFeed)
+    }
 }

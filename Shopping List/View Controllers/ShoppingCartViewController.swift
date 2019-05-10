@@ -36,7 +36,7 @@ class ShoppingCartViewController: UIViewController {
         
         updateViews()
         
-        let alert = UIAlertController(title: "Order for \(name)", message: "Your items will be delivered in 20 minutes.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Order for \(name)", message: "Your items will be delivered in 15 minutes.", preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
         alert.addAction(action)
         present(alert, animated: true, completion: nil)

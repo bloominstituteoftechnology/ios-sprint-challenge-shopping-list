@@ -13,7 +13,7 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     func updateViews() {
         guard let shoppingItem = shoppingItem else { return }
             itemNameLabel.text = shoppingItem.name
-            imageView.image = UIImage(data: shoppingItem.imageData)
+            imageView.image = UIImage.init()
         
         if shoppingItem.isOnList == true {
             addedLabel.text = "Added"
@@ -35,4 +35,11 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         }
     }
     
+}
+
+extension UIImage {
+    func imageView() -> String? {
+        let data: Data? = UIImagePNGRepresentation(self)
+        return data?.base64EncodedString(options: .endLineWithLineFeed)
+    }
 }
