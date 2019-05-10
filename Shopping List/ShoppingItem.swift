@@ -7,16 +7,11 @@
 //
 
 import UIKit
-/*A ShoppingItem model object with properties:
 
-An image name ("apple")
-A name of the item ("Apple")
-A Bool indicating whether the item has been added to the shopping list
-*/
-
-struct ShoppingItem: Equatable {
+struct ShoppingItem: Equatable, Codable {
     var imageName: String
     var itemName: String
     var hasBeenAdded: Bool
     var itemImage: UIImage
+    
 }

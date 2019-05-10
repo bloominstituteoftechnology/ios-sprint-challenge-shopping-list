@@ -20,7 +20,6 @@ class ShoppingCell: UICollectionViewCell {
         }
     }
     
-    //
     func updateViews() {
         guard let shoppingItem = shoppingItem else { return }
         shoppingImageView.image = UIImage(named: shoppingItem.itemName)

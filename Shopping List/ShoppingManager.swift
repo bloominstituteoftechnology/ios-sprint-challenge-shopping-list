@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ShoppingManager {
+class ShoppingManager: Codable {
     var shoppingList: [ShoppingItem] = []
     
     var selectedItems: [ShoppingItem] {
@@ -21,19 +21,50 @@ class ShoppingManager {
     
     init() {
         initCheck = UserDefaults.standard.bool(forKey: initKey)
-        //if initCheck == false{
             for item in itemNames {
                 if let image = UIImage(named: item) {
                     let x = ShoppingItem(imageName: item, itemName: item, hasBeenAdded: false, itemImage: image)
                     shoppingList.append(x)
                 }
-            } //End of for loop
+            }
            UserDefaults.standard.set(true, forKey: initKey)
-       // } //End of if statement
     }
-    //
+    
+    private var persistentURL: URL? {
+        let fileManager = FileManager.default
+        guard let documents = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
+        
+        print("Documents: \(documents.path)")
+        return documents.appendingPathComponent("shopping.plist")
+    }
+    
+    func saveToPersistentStore() {
+        guard let url = persistentURL else { return }
+        do {
+            let encoder = PropertyListEncoder()
+            let data = try encoder.encode(shoppingList)
+            try data.write(to: url)
+        }   catch {
+            print("Error saving shopping list: \(error)")
+        }
+    }
+    
+    func loadFromPersistentStore() {
+        let fileManager = FileManager.default
+        guard let url = persistentURL, fileManager.fileExists(atPath: url.path) else { return }
+        do {
+            let data = try Data(contentsOf: url)
+            let decoder = PropertyListDecoder()
+            shoppingList = try decoder.decode([ShoppingItem].self, from: data)
+        }   catch {
+            print("Error loading data from disk: \(error)")
+        }
+    }
+    
+    
     func updateStatus(item: ShoppingItem) {
         guard let index = shoppingList.firstIndex(of: item) else { return }
         shoppingList[index].hasBeenAdded = !shoppingList[index].hasBeenAdded
+        saveToPersistentStore()
     }
 }

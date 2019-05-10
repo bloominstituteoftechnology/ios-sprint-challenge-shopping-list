@@ -10,20 +10,16 @@ import UIKit
 
 
 class ShoppingCollectionViewController: UICollectionViewController {
-
-    //var shoppingManager: ShoppingManager?
     var shoppingManager = ShoppingManager()
   
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         shoppingManager = ShoppingManager()
-       //self.collectionView!.register(ShoppingCell.self, forCellWithReuseIdentifier: "FoodCell")   caused the initial error for casting the cell
         collectionView?.reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //collectionView?.reloadData()
     }
     // MARK: UICollectionViewDataSource
     
@@ -33,10 +29,6 @@ class ShoppingCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FoodCell", for: indexPath) as! ShoppingCell
-        //cell.statusLabel.text = String(describing: shoppingManager.shoppingList[indexPath.row].hasBeenAdded)
-        //cell.shoppingItemLabel.text = shoppingManager.shoppingList[indexPath.row].itemName
-        //cell.shoppingImageView.image = shoppingManager.shoppingList[indexPath.row].itemImage
-        
         let shoppingItem = shoppingManager.shoppingList[indexPath.item]
         cell.shoppingItem = shoppingItem
         
