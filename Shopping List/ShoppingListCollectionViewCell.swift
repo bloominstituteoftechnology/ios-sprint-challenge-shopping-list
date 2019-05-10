@@ -10,4 +10,12 @@ import UIKit
 
 class ShoppingListCollectionViewCell: UICollectionViewCell {
     
+    
+    
+    
+    @IBOutlet weak var addedLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var itemNameLabel: UILabel!
+    
+    
 }
