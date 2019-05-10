@@ -49,8 +49,7 @@ class SkuCollectionViewCELL: UICollectionViewCell {
      }
      */
     
-    // PROPERTIES
-    
+// PROPERTIES
     @IBOutlet weak var booleanButtonLabel: UIButton!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var skuLabel: UILabel!

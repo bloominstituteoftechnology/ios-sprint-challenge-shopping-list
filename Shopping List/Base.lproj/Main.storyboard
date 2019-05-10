@@ -41,6 +41,9 @@
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lrS-Jr-H0r">
                                                             <rect key="frame" x="51" y="0.0" width="46" height="30"/>
                                                             <state key="normal" title="Button"/>
+                                                            <connections>
+                                                                <action selector="booleanButtonTapped:" destination="62S-cZ-LDA" eventType="touchUpInside" id="cmU-X6-mem"/>
+                                                            </connections>
                                                         </button>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="200" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="FEm-rj-6hb">
                                                             <rect key="frame" x="10" y="38" width="128" height="81.5"/>
@@ -72,6 +75,11 @@
                                     <constraint firstAttribute="trailing" secondItem="lFX-W3-3LK" secondAttribute="trailing" constant="8" id="qQL-E0-VYC"/>
                                 </constraints>
                                 <size key="customSize" width="180" height="180"/>
+                                <connections>
+                                    <outlet property="booleanButtonLabel" destination="lrS-Jr-H0r" id="1pm-nU-cSq"/>
+                                    <outlet property="imageView" destination="FEm-rj-6hb" id="rXW-dX-mDo"/>
+                                    <outlet property="skuLabel" destination="4d3-cy-5uo" id="ids-Xm-67V"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -82,6 +90,7 @@
                     <navigationItem key="navigationItem" title="Shopping List" id="ais-Ch-Tj2">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="6py-j2-DKs">
                             <connections>
+                                <action selector="nextButtonPressed:" destination="Ln8-nT-3Tm" id="Sye-DA-dyD"/>
                                 <segue destination="cLI-mD-KoH" kind="show" identifier="ToCart" id="enq-C7-elX"/>
                             </connections>
                         </barButtonItem>
@@ -129,6 +138,9 @@
                                         <rect key="frame" x="149" y="197" width="84" height="32"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <state key="normal" title="Send Order"/>
+                                        <connections>
+                                            <action selector="sendOrderButtonPressed:" destination="cLI-mD-KoH" eventType="touchUpInside" id="4yE-fA-jYd"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -141,6 +153,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="45n-Jv-6Ba"/>
                     </view>
+                    <connections>
+                        <outlet property="addressTextField" destination="MwW-LH-yhm" id="YKi-H7-Tue"/>
+                        <outlet property="nameTextField" destination="3pB-HZ-mw5" id="7Gg-U8-JNq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TKG-0D-Gkw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
