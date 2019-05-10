@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+protocol SkuCollectionViewCELLDelegate: class {
+    
+    func toggleSkuInCart(for cell: SkuCollectionViewCELL)
+}
+
