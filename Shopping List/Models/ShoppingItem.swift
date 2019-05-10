@@ -13,7 +13,7 @@ struct ShoppingItem: Codable, Equatable {
     var image: String
     var isOnList: Bool
     
-    init(name: String, imageName: String, isOnList: Bool) {
+    init(name: String, imageName: String, isOnList: Bool = false) {
         self.name = name
         self.image = imageName
         self.isOnList = isOnList
