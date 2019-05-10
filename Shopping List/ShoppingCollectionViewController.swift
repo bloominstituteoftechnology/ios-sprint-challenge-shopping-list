@@ -15,6 +15,7 @@ class ShoppingCollectionViewController: UICollectionViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         shoppingManager = ShoppingManager()
+        shoppingManager.loadFromPersistentStore()
         collectionView?.reloadData()
     }
     

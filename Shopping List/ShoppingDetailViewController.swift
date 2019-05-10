@@ -15,7 +15,6 @@ class ShoppingDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         displayInfo()
-        shoppingMgr?.loadFromPersistentStore()
     }
     
     @IBOutlet weak var messageLabel: UILabel!

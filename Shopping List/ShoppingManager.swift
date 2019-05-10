@@ -23,7 +23,7 @@ class ShoppingManager: Codable {
         initCheck = UserDefaults.standard.bool(forKey: initKey)
             for item in itemNames {
                 if let image = UIImage(named: item) {
-                    let x = ShoppingItem(imageName: item, itemName: item, hasBeenAdded: false, itemImage: image)
+                    let x = ShoppingItem(imageName: item, itemName: item, hasBeenAdded: false)
                     shoppingList.append(x)
                 }
             }

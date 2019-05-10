@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Shopping Collection View Controller-->
+        <!--Shopping List-->
         <scene sceneID="f22-pK-74I">
             <objects>
                 <collectionViewController id="zvf-ul-SE2" customClass="ShoppingCollectionViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
@@ -78,8 +78,8 @@
                             <outlet property="delegate" destination="zvf-ul-SE2" id="qA8-JX-ozg"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="OWf-Y3-JRD">
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="fK6-VO-Qjp">
+                    <navigationItem key="navigationItem" title="Shopping List" id="OWf-Y3-JRD">
+                        <barButtonItem key="rightBarButtonItem" title="Checkout" id="fK6-VO-Qjp">
                             <connections>
                                 <segue destination="21K-SC-yNV" kind="show" identifier="DetailSegue" id="AFC-87-1NV"/>
                             </connections>
