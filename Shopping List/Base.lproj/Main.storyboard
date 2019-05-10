@@ -13,7 +13,7 @@
         <!--Shopping List-->
         <scene sceneID="oiB-fr-D5R">
             <objects>
-                <collectionViewController id="Ln8-nT-3Tm" sceneMemberID="viewController">
+                <collectionViewController id="Ln8-nT-3Tm" customClass="SkuCollectionVC" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="U1K-BK-c1l">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,7 +25,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProtoCell" id="62S-cZ-LDA">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProtoCell" id="62S-cZ-LDA" customClass="SkuCollectionViewCELL" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -96,10 +96,10 @@
             </objects>
             <point key="canvasLocation" x="939.13043478260875" y="-112.5"/>
         </scene>
-        <!--View Controller-->
+        <!--CartVC-->
         <scene sceneID="sOh-aD-fD9">
             <objects>
-                <viewController id="cLI-mD-KoH" sceneMemberID="viewController">
+                <viewController id="cLI-mD-KoH" customClass="CartVC" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="v1s-MJ-NdQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -162,7 +162,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R8D-60-1Xo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="28.985507246376812" y="-112.5"/>
+            <point key="canvasLocation" x="151" y="-115"/>
         </scene>
     </scenes>
 </document>
