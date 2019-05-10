@@ -10,13 +10,8 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class ShoppingListCollectionViewController: UICollectionViewController, ShoppingListCollectionViewCellDelegate {
-    func toggleHasBeenAdded(for cell: ShoppingListCollectionViewCell) {
-        //guard let shoppingItem = shoppingItem else { return }
-        guard let indexPath = collectionView.indexPath(for: cell) else { return }
-        shoppingItemController.updateItemHasBeenAdded(shoppingItem: shoppingItemController.shoppingList[indexPath.item])
-        collectionView.reloadItems(at: [indexPath])
-    }
+class ShoppingListCollectionViewController: UICollectionViewController{
+
 
 
     let shoppingItemController = ShoppingItemController()
@@ -66,7 +61,7 @@ class ShoppingListCollectionViewController: UICollectionViewController, Shopping
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as! ShoppingListCollectionViewCell
 
-        cell.delegate = self
+        
         let shoppingItem = shoppingItemController.shoppingList[indexPath.item]
         cell.shoppingItem = shoppingItem
         return cell

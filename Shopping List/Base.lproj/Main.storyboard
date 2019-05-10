@@ -32,33 +32,48 @@
                                     <rect key="frame" x="0.0" y="0.0" width="130" height="170"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8V9-IG-AmE">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8V9-IG-AmE">
                                             <rect key="frame" x="0.0" y="0.0" width="130" height="170"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iey-lL-Foy">
-                                                    <rect key="frame" x="0.0" y="0.0" width="130" height="120"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhf-eq-tgj">
-                                                    <rect key="frame" x="44" y="149" width="42.5" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="added" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E7o-Bb-Lns">
-                                                    <rect key="frame" x="41" y="128" width="48.5" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="BOn-YF-15a">
+                                                    <rect key="frame" x="0.0" y="0.0" width="130" height="169.5"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Iey-lL-Foy">
+                                                            <rect key="frame" x="0.0" y="0.0" width="130" height="120.5"/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="added" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E7o-Bb-Lns">
+                                                            <rect key="frame" x="0.0" y="124.5" width="130" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhf-eq-tgj">
+                                                            <rect key="frame" x="0.0" y="149" width="130" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="nhf-eq-tgj" firstAttribute="top" secondItem="BOn-YF-15a" secondAttribute="top" constant="149" id="hu7-FC-U9m"/>
+                                                    </constraints>
+                                                </stackView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="BOn-YF-15a" firstAttribute="top" secondItem="8V9-IG-AmE" secondAttribute="top" id="GhP-z1-0CL"/>
+                                                <constraint firstItem="BOn-YF-15a" firstAttribute="leading" secondItem="8V9-IG-AmE" secondAttribute="leading" id="hdK-vB-1G2"/>
+                                                <constraint firstAttribute="trailing" secondItem="BOn-YF-15a" secondAttribute="trailing" id="wXa-Kk-CCb"/>
+                                            </constraints>
                                         </view>
                                     </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="8V9-IG-AmE" secondAttribute="trailing" id="3tS-ro-BTf"/>
+                                    <constraint firstItem="8V9-IG-AmE" firstAttribute="top" secondItem="gTX-A9-YyQ" secondAttribute="top" id="BEx-dw-2nf"/>
+                                    <constraint firstItem="8V9-IG-AmE" firstAttribute="leading" secondItem="gTX-A9-YyQ" secondAttribute="leading" id="TS2-va-KOL"/>
+                                    <constraint firstAttribute="bottom" secondItem="8V9-IG-AmE" secondAttribute="bottom" id="q0a-ne-cac"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="imageView" destination="Iey-lL-Foy" id="Uaf-R6-AP2"/>
                                     <outlet property="itemAddedLabel" destination="nhf-eq-tgj" id="2nG-PH-FVQ"/>

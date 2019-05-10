@@ -8,9 +8,6 @@
 
 import UIKit
 
-protocol ShoppingListCollectionViewCellDelegate {
-    func toggleHasBeenAdded(for cell: ShoppingListCollectionViewCell)
-}
 
 class ShoppingListCollectionViewCell: UICollectionViewCell {
 
@@ -19,14 +16,10 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
         guard let shoppingItem = shoppingItem else { return }
         imageView.image = UIImage(named: shoppingItem.imageName)  
         nameLabel.text = shoppingItem.name
-
         if shoppingItem.added == true {
             itemAddedLabel.text = "Added"
-
-
         } else {
             itemAddedLabel.text = "Not Added"
-
         }
 
     }
@@ -38,9 +31,7 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
         didSet{
             print("item was recieved")
             updateViews()
-
         }
     }
-    var delegate: ShoppingListCollectionViewCellDelegate?
     
 }
