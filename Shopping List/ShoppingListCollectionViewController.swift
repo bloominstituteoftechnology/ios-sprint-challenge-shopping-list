@@ -22,7 +22,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ShoppingListCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ShoppingListCollectionViewCell else { fatalError() }
     
         let shoppingItem = shoppingListController.shoppingList[indexPath.item]
         cell.shoppingItem = shoppingItem
@@ -37,5 +37,5 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     }
 
     var shoppingListController = ShoppingListController()
-    var shoppingListCollectionViewCell = ShoppingListCollectionViewCell()
+   
 }
