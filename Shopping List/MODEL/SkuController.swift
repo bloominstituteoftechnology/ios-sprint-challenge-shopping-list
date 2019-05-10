@@ -11,6 +11,9 @@ import Foundation
 class SkuController {
     
     init() {
+        
+        //TO DO: if statement will go here to make sure we only load from persistent store once in the beginning.  Will use a boolean check stored in a user default.   
+        
         loadFromPersistentStore()
     }
     
@@ -67,7 +70,8 @@ class SkuController {
             print(error)
         }
     }
-    /*  whoops, we didn't need ability to create new skus in this project, that was wasted time!
+    
+    /*  this is here just in case I want to do the extra credit later...
      
      func createSku(skuName: String, skuImageName: String) {
      let sku = Sku(skuName: skuName, skuImageName: skuImageName)
