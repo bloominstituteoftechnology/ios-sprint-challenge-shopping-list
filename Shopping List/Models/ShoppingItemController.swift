@@ -85,7 +85,7 @@ class ShoppingItemController {
 
 extension UIImage {
     func imageName() -> String? {
-        let data: Data? = UIImagePNGRepresentation(self)
+        let data: Data? = self.pngData()
         return data?.base64EncodedString(options: .endLineWithLineFeed)
     }
 }

@@ -39,7 +39,7 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
 
 extension UIImage {
     func imageView() -> String? {
-        let data: Data? = UIImagePNGRepresentation(self)
+        let data: Data? = self.pngData()
         return data?.base64EncodedString(options: .endLineWithLineFeed)
     }
 }
