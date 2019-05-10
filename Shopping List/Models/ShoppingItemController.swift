@@ -30,7 +30,7 @@ class ShoppingItemController {
     //MARK: -Functions
     
     func createShoppingItem(name: String, imageName: String) {
-        let shoppingItem = ShoppingItem(name: name, imageName: imageName, isOnList: true)
+        let shoppingItem = ShoppingItem(name: name, imageName: imageName, isOnList: false)
         shoppingItems.append(shoppingItem)
         saveToPersistentStore()
     }
