@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import UserNotifications
 
 class ShoppingListDetailViewController: UIViewController {
+    
     // MARK: - Properties
     var addedItemsCount: Int?
+    let localNotificationHelper = LocalNotificationHelper()
     
     @IBOutlet weak var summaryLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
@@ -36,16 +39,33 @@ class ShoppingListDetailViewController: UIViewController {
     @IBAction func submitOrderTapped(_ sender: Any) {
         guard let name = nameTextField.text, !name.isEmpty,
             let address = addressTextField.text, !address.isEmpty else { return }
-        let titleString = "\(name), your order will be delivered in 15 minutes to:"
         
-        presentAlert(withTitle: titleString, andMessage: address)
+        localNotificationHelper.requestAuthorization { (success) in
+            if success {
+                self.createNotification()
+            }
+        }
     }
     
-    func presentAlert(withTitle title: String, andMessage message: String) {
-        let alertController = UIAlertController(title: title , message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alertController.addAction(action)
-        present(alertController, animated: true, completion: nil)
+    private func createNotification() {
+        let content = UNMutableNotificationContent()
+        content.title = "Delivery for \(nameTextField.text!)"
+        content.body = "Your shopping items will be delivered to \(addressTextField.text!) in 15 minutes!"
+        content.sound = UNNotificationSound.default()
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: "ShoppingDelivery", content: content, trigger: trigger)
+        
+        // Schedule the request with the system.
+        let notificationCenter = UNUserNotificationCenter.current()
+        
+        notificationCenter.add(request) { (error) in
+            if let error = error  {
+                NSLog("Error scheduling notification \(error)")
+                return
+            }
+            
+        }
     }
-    
 }
