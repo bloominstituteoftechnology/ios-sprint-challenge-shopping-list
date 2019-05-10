@@ -12,10 +12,31 @@ import Foundation
 class ShoppingItemController {
     
     init() {
-        loadFromPersistentStore()
+        let userDefaults = UserDefaults.standard
+        if userDefaults.bool(forKey: "listIsMade") == true {
+            loadFromPersistentStore()
+        } else  {
+            makeList()
+            saveToPersitentStore()
+        }
     }
     
     //Mark: - Functions
+    func makeList() {
+        shoppingList = [ ShoppingItem(name: "Apple", imageName: "Apple", added: false),
+        ShoppingItem(name: "Grapes", imageName: "Grapes", added: false),
+        ShoppingItem(name: "Milk", imageName: "Milk", added: false),
+        ShoppingItem(name: "Muffin", imageName: "Muffin", added: false),
+        ShoppingItem(name: "Popcorn", imageName: "Popcorn", added: false),
+        ShoppingItem(name: "Soda", imageName: "Soda", added: false),
+        ShoppingItem(name: "Strawberries", imageName: "Strawberries", added: false)
+        ]
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(true, forKey: "listIsMade")
+
+    }
+
+
     func updateTotal() -> Int{
         var orderTotal = 0
         for item in shoppingList {
@@ -25,7 +46,7 @@ class ShoppingItemController {
         }
         return orderTotal
     }
-
+    
     func updateItemHasBeenAdded(shoppingItem: ShoppingItem) {
         guard let itemIndex = shoppingList.firstIndex(of: shoppingItem) else { return }
         if shoppingList[itemIndex].added == false  {
@@ -76,14 +97,13 @@ class ShoppingItemController {
         return documents.appendingPathComponent("shoppingList.plist")
     }
 
-    var shoppingList: [ShoppingItem] = [
-        ShoppingItem(name: "Apple", imageName: "Apple", added: false),
-        ShoppingItem(name: "Grapes", imageName: "Grapes", added: false),
-        ShoppingItem(name: "Milk", imageName: "Milk", added: false),
-        ShoppingItem(name: "Muffin", imageName: "Muffin", added: false),
-        ShoppingItem(name: "Popcorn", imageName: "Popcorn", added: false),
-        ShoppingItem(name: "Soda", imageName: "Soda", added: false),
-        ShoppingItem(name: "Strawberries", imageName: "Strawberries", added: false)
+    var shoppingList: [ShoppingItem] = []
 
-    ]
+
+
+
 }
+
+
+//let userDefaults = UserDefaults.standard
+//userDefaults.set(true, forKey: "itemsCreated")
