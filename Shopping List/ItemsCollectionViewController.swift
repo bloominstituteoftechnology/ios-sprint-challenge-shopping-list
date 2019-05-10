@@ -11,35 +11,64 @@ import UIKit
 
 
 class ItemsCollectionViewController: UICollectionViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+	
+	let shoppingListController = ShoppingListController()
+	
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
 		
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
+		collectionView?.reloadData()
+	}
+	
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		collectionView?.reloadData()
+	}
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		
-    }
-
- 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+		if segue.identifier == "nextSegue"{
+			let destinationVC = segue.destination as! ItemViewController
+			destinationVC.shoppingListController = shoppingListController
+		}
+	}
+	
+	
+	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		
-        return 0
-    }
-
-
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+		return shoppingListController.items.count
+	}
+	
+	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		
-        return 0
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
 		
-    
-        return cell
-    }
+		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ItemCollectionViewCell
+		
+		let NewItem = shoppingListController.items[indexPath.item]
+		
+		cell.shoppingItem = NewItem
+		cell.delegate = self
+		
+		return cell
+	}
+	
+}
 
-  
+extension ItemsCollectionViewController: ItemCollectionViewCellDelegate {
+	
+	func buttonImageWasPressed(on cell: UICollectionViewCell) {
+		
+		guard let index = collectionView?.indexPath(for: cell) else { return }
+		
+		let item = shoppingListController.items[index.item]
+		
+		shoppingListController.toggleHasBeenChanged(shoppingItem: item)
+		
+		collectionView?.reloadItems(at: [index])
+		
+	}
+	
+	
 }
