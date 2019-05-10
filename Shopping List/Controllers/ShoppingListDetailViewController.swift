@@ -12,11 +12,20 @@ class ShoppingListDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
-      
+        
+    }
+  
+    @IBAction func sendOrder(_ sender: Any) {
+        
     }
     
-
+    var shoppingListController: ShoppingListController?
+    
+    @IBOutlet var nameText: UIView!
+    @IBOutlet var addressText: UIView!
+    @IBOutlet weak var ordersLabel: UILabel!
     
 
 }

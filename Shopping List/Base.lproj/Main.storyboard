@@ -44,6 +44,9 @@
                                                             <state key="normal" title="Button">
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="AddedButtonPressed:" destination="ThR-TA-6km" eventType="touchUpInside" id="gCb-YH-nYz"/>
+                                                            </connections>
                                                         </button>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vha-RN-UKR">
                                                             <rect key="frame" x="0.0" y="44" width="186" height="154"/>
@@ -76,6 +79,10 @@
                                     <constraint firstItem="dLW-0Y-KfP" firstAttribute="leading" secondItem="ThR-TA-6km" secondAttribute="leading" id="gu4-8y-gJd"/>
                                     <constraint firstItem="dLW-0Y-KfP" firstAttribute="top" secondItem="ThR-TA-6km" secondAttribute="top" id="iw7-MY-hfq"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="shoppingListImageView" destination="vha-RN-UKR" id="Xbr-HK-clE"/>
+                                    <outlet property="shoppingListNameLabel" destination="Ltr-R1-46A" id="oUz-LQ-tEa"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -119,6 +126,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2A3-9u-5ur">
                                 <rect key="frame" x="168" y="332" width="79" height="30"/>
                                 <state key="normal" title="Send Order"/>
+                                <connections>
+                                    <action selector="sendOrder:" destination="zIG-jh-Yig" eventType="touchUpInside" id="BSW-QT-DfZ"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="01K-0L-stb">
                                 <rect key="frame" x="20" y="161" width="42" height="21"/>
@@ -148,6 +158,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="g58-DO-3i3"/>
                     </view>
+                    <connections>
+                        <outlet property="addressText" destination="hko-vT-d1n" id="cLx-A3-48p"/>
+                        <outlet property="nameText" destination="hko-vT-d1n" id="nXL-Us-fXW"/>
+                        <outlet property="ordersLabel" destination="01K-0L-stb" id="XlX-uP-C3e"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KX3-YM-VZM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -159,7 +174,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1L3-mT-Ihw" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="aw2-tG-Y6Z">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="98"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="largeTitleTextAttributes">
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
