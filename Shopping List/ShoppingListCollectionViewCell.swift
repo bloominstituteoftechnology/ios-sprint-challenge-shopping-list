@@ -17,7 +17,7 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
 
     func updateViews() {
         guard let shoppingItem = shoppingItem else { return }
-        imageView.image = shoppingItem.image
+        imageView.image = UIImage(named: shoppingItem.imageName)  
         nameLabel.text = shoppingItem.name
 
         if shoppingItem.added == true {

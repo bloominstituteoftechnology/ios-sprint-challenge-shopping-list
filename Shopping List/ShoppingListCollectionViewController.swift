@@ -53,7 +53,10 @@ class ShoppingListCollectionViewController: UICollectionViewController, Shopping
 
     // MARK: UICollectionViewDataSource
 
-
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        shoppingItemController.updateItemHasBeenAdded(shoppingItem: shoppingItemController.shoppingList[indexPath.item])
+        collectionView.reloadItems(at: [indexPath])
+    }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items

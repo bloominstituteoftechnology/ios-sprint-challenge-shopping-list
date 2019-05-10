@@ -10,13 +10,10 @@ import UIKit
 
 struct ShoppingItem: Equatable, Codable{
 
-    var image: UIImage {
-        return UIImage(named: imageName)!
-    }
     let name: String
-    var added: Bool = false
+    var added: Bool
     let imageName: String
-    init(name: String, imageName: String, added: Bool) {
+    init(name: String, imageName: String, added: Bool = false) {
         self.name = name
         self.imageName = imageName
         self.added = added
