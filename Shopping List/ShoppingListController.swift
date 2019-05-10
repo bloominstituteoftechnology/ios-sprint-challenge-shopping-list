@@ -24,7 +24,10 @@ class ShoppingListController {
     
     let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     
-    
+    var itemWasAdded: [ShoppingItem] {
+        let addedItem = shoppingList.filter { $0.addedToList == true }
+        return addedItem
+    }
     
     
     func createShoppingItem() {
@@ -43,7 +46,7 @@ class ShoppingListController {
     
     func updateHasBeenAdded(shoppingItem: ShoppingItem) {
         guard let index = shoppingList.index(of: shoppingItem) else { return }
-        shoppingList[index].hasBeenAdded.toggle()
+        shoppingList[index].addedToList.toggle()
         
         saveToPersistentStore()
     }

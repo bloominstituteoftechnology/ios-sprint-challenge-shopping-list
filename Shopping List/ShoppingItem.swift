@@ -11,12 +11,12 @@ import  UIKit
 struct  ShoppingItem: Codable, Equatable {
     var image: Data
     var itemName: String
-    var hasBeenAdded: Bool
+    var addedToList: Bool
     
-    init(image: Data, itemName: String, hasBeenAdded: Bool = false) {
+    init(image: Data, itemName: String, addedToList: Bool = false) {
         self.image = image
         self.itemName = itemName
-        self.hasBeenAdded = hasBeenAdded
+        self.addedToList = addedToList
     }
 }
 
