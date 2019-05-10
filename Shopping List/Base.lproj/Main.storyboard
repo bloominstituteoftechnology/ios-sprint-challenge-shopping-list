@@ -25,7 +25,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProtoCell" id="62S-cZ-LDA" customClass="SkuCollectionViewCELL" customModule="Shopping_List" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="TopLeft" reuseIdentifier="ProtoCell" id="62S-cZ-LDA" customClass="SkuCollectionViewCELL" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -35,7 +35,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lFX-W3-3LK">
                                             <rect key="frame" x="8" y="8" width="164" height="164"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="C4U-8o-R1E">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="C4U-8o-R1E">
                                                     <rect key="frame" x="8" y="8" width="148" height="148"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lrS-Jr-H0r">
@@ -45,7 +45,7 @@
                                                                 <action selector="booleanButtonTapped:" destination="62S-cZ-LDA" eventType="touchUpInside" id="cmU-X6-mem"/>
                                                             </connections>
                                                         </button>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="200" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="FEm-rj-6hb">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="200" translatesAutoresizingMaskIntoConstraints="NO" id="FEm-rj-6hb">
                                                             <rect key="frame" x="10" y="38" width="128" height="81.5"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4d3-cy-5uo">
@@ -155,6 +155,7 @@
                     </view>
                     <connections>
                         <outlet property="addressTextField" destination="MwW-LH-yhm" id="YKi-H7-Tue"/>
+                        <outlet property="cartMessageLabel" destination="aQn-5T-053" id="oCg-2X-Sdk"/>
                         <outlet property="nameTextField" destination="3pB-HZ-mw5" id="7Gg-U8-JNq"/>
                     </connections>
                 </viewController>
