@@ -8,13 +8,15 @@
 
 import UIKit
 
-struct ShoppingList: Equatable {
+struct ShoppingList: Equatable, Codable {
+    
     var imageData: Data
     var title: String
     var hasBeenAdded: Bool
     
-    init(imageData: Data, title: String, hasBeenAdded: Bool = false) {
-    self.imageData = imageData
+    
+    init(dataVar: Data, title: String, hasBeenAdded: Bool = false) {
+    self.imageData = UIImage(data: dataVar)
     self.title = title
     self.hasBeenAdded = hasBeenAdded
     

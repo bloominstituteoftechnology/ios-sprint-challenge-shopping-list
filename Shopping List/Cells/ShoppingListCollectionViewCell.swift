@@ -15,8 +15,18 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
         shoppingListImageView.image = UIImage(data: shoppingListData)
         shoppingListNameLabel.text = shoppingList?.title
         if shoppingList?.hasBeenAdded == true {
+            print("added")
+        } else {
+            print("not added")
             
-            
+            func showAlert() {
+                let alert = UIAlertController(title: "Delivery for Joe!" , message: "Your shopping Item will be delivered in 15 minutes", preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                present(alert, animated: true, completion: nil)
+                
+                showAlert()
+            }
         }
     }
     var shoppingList: ShoppingList? {

@@ -22,6 +22,7 @@ class ShoppingListDetailViewController: UIViewController {
     }
     
     var shoppingListController: ShoppingListController?
+    var shoppingList: ShoppingList?
     
     @IBOutlet var nameText: UIView!
     @IBOutlet var addressText: UIView!

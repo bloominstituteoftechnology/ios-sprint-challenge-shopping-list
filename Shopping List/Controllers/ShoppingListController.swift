@@ -10,6 +10,7 @@ import UIKit
 
 class ShoppingListController {
     
+    
     init() {
     loadFromPersistantStore()
     }
@@ -28,6 +29,18 @@ class ShoppingListController {
         shoppingLists[index].imageData = imageData
         shoppingLists[index].title = title
     }
+   
+    func saveToPersistantStore() {
+        guard let url = shoppingListURL else { return }
+        
+        let encoder = PropertyListEncoder()
+        do {
+            let shoppingListData = try encoder.encode(shoppingLists)
+            try shoppingListData.write(to: url)
+        } catch {
+            print(error)
+        }
+    }
     
     func loadFromPersistantStore() {
         guard let url = shoppingListURL,
@@ -37,7 +50,7 @@ class ShoppingListController {
         do {
             let data = try Data(contentsOf: url)
             let decodedshoppingLists = try decoder.decode([ShoppingList].self, from: data)
-            shoppingLists = decodedShoppingLists
+            shoppingLists = decodedshoppingLists
         } catch {
             print(error)
         }
@@ -57,8 +70,11 @@ class ShoppingListController {
     }
     
     var notAddedShoppingItem: [ShoppingList] {
-        let notAdded = shoppingLists.filter { $0.hasBeenadded == false }
+        let notAdded = shoppingLists.filter { $0.hasBeenAdded == false }
         return notAdded
     }
-    var shoppingLists: [ShoppingList] = []
-}
+    var shoppingLists: [ShoppingList] = [] 
+        
+        
+    }
+

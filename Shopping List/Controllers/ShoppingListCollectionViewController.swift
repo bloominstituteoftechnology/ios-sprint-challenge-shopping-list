@@ -10,6 +10,7 @@ import UIKit
 
 
 class ShoppingListCollectionViewController: UICollectionViewController {
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +20,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
     
     // MARK: - Navigation
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -46,19 +48,23 @@ class ShoppingListCollectionViewController: UICollectionViewController {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ShoppingListCollectionViewCell
             
             let shoppingList = shoppingListController.shoppingLists[indexPath.item]
-            cell.shoppingList = shoppingList
-            
-            
+            cell.shoppingListNameLabel.text = shoppingList.title
+            cell.shoppingListImageView.image = shoppingList.imageData
+           
             
             return cell
+            
         }
-        func toggleHasBeenAdded(for cell: ShoppingListCollectionViewCell) {
-                guard let indexPath = collectionView.indexPath(for: cell) else { return }
-                let shoppingList = ShoppingList(indexPath: indexPath)
-                shoppingListController.updateHasBeenAdded(shoppinglist: shoppingList)
-                collectionView.reloadData()
-            }
-}
+ 
+    
+    }
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let shoppingItem = shoppingListController.notAddedShoppingItem[indexPath.item]
+        
+        
+        shoppingListController
+        .updateHasBeenAdded(shoppingList: shoppingItem)
+    }
     
 let shoppingListController = ShoppingListController()
     
