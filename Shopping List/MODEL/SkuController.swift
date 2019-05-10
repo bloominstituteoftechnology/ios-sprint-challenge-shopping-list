@@ -12,7 +12,7 @@ class SkuController {
     
     init() {
         
-        //TO DO: if statement will go here to make sure we only load from persistent store once in the beginning.  Will use a boolean check stored in a user default.   
+        //TEMPORARILY COMMENTED OUT the DEFAULT STORAGE LOGIC BELOW TO DEBUG
         
         loadFromPersistentStore()
     }
@@ -46,7 +46,7 @@ class SkuController {
     // Persistent Store funcs
     func saveToPersistentStore() {
         
-        guard UserDefaults.standard.bool(forKey: "persistenceStoreInitialized") == false else { return }
+//        guard UserDefaults.standard.bool(forKey: "persistenceStoreInitialized") == false else { return }
             guard let url = shoppingListURL else { return }
         
             let encoder = PropertyListEncoder()
@@ -54,7 +54,7 @@ class SkuController {
                 let skusData = try encoder.encode(skus)
                 try skusData.write(to: url)
             
-            UserDefaults.standard.set(true, forKey: "persistenceStoreInitialized")
+//            UserDefaults.standard.set(true, forKey: "persistenceStoreInitialized")
             
             } catch {
                 print(error)

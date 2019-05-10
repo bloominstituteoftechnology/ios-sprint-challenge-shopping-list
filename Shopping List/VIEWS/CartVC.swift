@@ -13,12 +13,7 @@ class CartVC: UIViewController {
     
     //collectionView?.delegate = self  // SUNDAY/MONDAY edit
     
-    
-/*   experimenting to get rid of latency issue with toggled add/not-add button
-     override func viewererDidLoad() {
-     super.viewDidLoad()
-     }
-*/
+
     
     override func viewWillAppear(_ animated: Bool) {
         

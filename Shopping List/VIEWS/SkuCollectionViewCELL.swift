@@ -30,9 +30,9 @@ class SkuCollectionViewCELL: UICollectionViewCell {
             booleanButtonLabel.setTitle("Added", for: .normal)                  // .text is for TEXTFIELDS not LABLES .titleLabel?.text = "Added"
             print("ADDED!!!!!")
         } else {
-            booleanButtonLabel.setTitle("not added", for: .normal)                                                  //.titleLabel?.text = "not added"
-            print("NOT") }
-       
+            booleanButtonLabel.setTitle("not added", for: .normal)                     //.titleLabel?.text = "not added"
+            print("NOT")
+        }
     }
     
 // PROPERTIES
