@@ -18,6 +18,8 @@ class ShoppingItemController {
             loadFromPersistentStore()
         } else {
             let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+            createShoppingItems(itemNames: itemNames)
+            UserDefaults.standard.set(true, forKey: myKey)
         }
     }
     
@@ -26,13 +28,13 @@ class ShoppingItemController {
     private func createShoppingItems(itemNames: [String]) {
         for name in itemNames {
             guard let imageData = UIImage(named: name)?.pngData() else { return }
-            let newItem = ShoppingItem(name: name, imageData: data)
+            let newItem = ShoppingItem(name: name, imageData: imageData)
             shoppingItems.append(newItem)
             saveToPersistentStore()
         }
     }
     
-    private func update(shoppingItem: ShoppingItem) {
+    func update(shoppingItem: ShoppingItem) {
         guard let index = shoppingItems.firstIndex(of: shoppingItem) else { return }
         shoppingItems[index].isOnList = !shoppingItems[index].isOnList
         saveToPersistentStore()

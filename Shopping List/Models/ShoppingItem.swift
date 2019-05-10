@@ -15,7 +15,7 @@ struct ShoppingItem: Codable, Equatable {
     
     init(name: String, imageData: Data, isOnList: Bool) {
         self.name = name
-        self.imageData = image
+        self.imageData = imageData
         self.isOnList = isOnList
     }
 }
