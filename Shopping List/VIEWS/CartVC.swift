@@ -27,7 +27,7 @@ class CartVC: UIViewController {
     
         // write optional if let for nameTextField.text to remove forced unwrap !
         
-        let alert = UIAlertController(title: "ShoppingList would like to send you Notifications", message: "in order to help process your order \(nameTextField.text!)", preferredStyle: .alert)
+        let alert = UIAlertController(title: "ShoppingList would like to send you Notifications", message: "in order to help process your order \(nameTextField.text!) to \(addressTextField.text!)", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Allow", style: .default, handler: /* this syntax just not working and documentation says it should work... { _ in navigationController?.popViewController(animated: true) } */ nil ))
         alert.addAction(UIAlertAction(title: "Don't Allow", style: .destructive, handler: nil))

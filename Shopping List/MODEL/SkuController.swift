@@ -44,7 +44,7 @@ class SkuController {
     // Persistent Store funcs
     func saveToPersistentStore() {
         
-//        guard UserDefaults.standard.bool(forKey: "persistenceStoreInitialized") == false else { return }
+            //guard UserDefaults.standard.bool(forKey: "persistenceStoreInitialized") == false else { return }
             guard let url = shoppingListURL else { return }
         
             let encoder = PropertyListEncoder()
@@ -52,7 +52,7 @@ class SkuController {
                 let skusData = try encoder.encode(skus)
                 try skusData.write(to: url)
             
-//            UserDefaults.standard.set(true, forKey: "persistenceStoreInitialized")
+            //UserDefaults.standard.set(true, forKey: "persistenceStoreInitialized")
             
             } catch {
                 print(error)
