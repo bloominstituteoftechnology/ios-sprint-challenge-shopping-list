@@ -22,7 +22,8 @@ class CartVC: UIViewController {
     
     
 
-    @IBAction func sendOrderButtonPressed(_ sender: Any) {
+
+    @IBAction func sendOrderButtonTapped(_ sender: Any) {
     
         // write optional if let for nameTextField.text to remove forced unwrap !
         
@@ -40,9 +41,10 @@ class CartVC: UIViewController {
     }
     
    // PROPERTIES
-    @IBOutlet weak var cartMessageLabel: UILabel!
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var addressTextField: UITextField!
+
+    @IBOutlet var cartMessageLabel: UILabel!
+    @IBOutlet var nameTextField: UITextField!
+    @IBOutlet var addressTextField: UITextField!
     
     var addedCount: Int?
     

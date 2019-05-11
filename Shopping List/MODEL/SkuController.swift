@@ -94,12 +94,12 @@ class SkuController {
     }
     
     var skus: [Sku] = [
-        Sku(skuName: "apple", skuImageName: "apple"),
-        Sku(skuName: "grapes", skuImageName: "grapes"),
-        Sku(skuName: "milk", skuImageName: "milk"),
-        Sku(skuName: "muffin", skuImageName: "muffin"),
-        Sku(skuName: "popcorn", skuImageName: "popcorn"),
-        Sku(skuName: "soda", skuImageName: "soda"),
-        Sku(skuName: "strawberries", skuImageName: "strawberries"),
+        Sku(skuName: "apple", skuImageName: "Apple"),
+        Sku(skuName: "grapes", skuImageName: "Grapes"),
+        Sku(skuName: "milk", skuImageName: "Milk"),
+        Sku(skuName: "muffin", skuImageName: "Muffin"),
+        Sku(skuName: "popcorn", skuImageName: "Popcorn"),
+        Sku(skuName: "soda", skuImageName: "Soda"),
+        Sku(skuName: "strawberries", skuImageName: "Strawberries"),
     ]
 }

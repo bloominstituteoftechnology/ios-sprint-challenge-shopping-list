@@ -12,8 +12,9 @@ import UIKit
 class SkuCollectionViewCELL: UICollectionViewCell {
     
     
+
     @IBAction func booleanButtonTapped(_ sender: Any) {
-        
+    
         delegate?.toggleSkuInCart(for: self)
     }
     
@@ -23,7 +24,8 @@ class SkuCollectionViewCELL: UICollectionViewCell {
         
             skuLabel.text = sku.skuName
             print("we got to the image load statement which clearly isn't working")
-            imageView.image = UIImage(named: "apple" /*sku.skuImageName*/)
+            imageView.image = UIImage(named: sku.skuImageName)
+        print(sku.skuImageName)
         
         
         if sku.skuInCart == true {
@@ -34,9 +36,14 @@ class SkuCollectionViewCELL: UICollectionViewCell {
     }
     
 // PROPERTIES
-    @IBOutlet weak var booleanButtonLabel: UIButton!
+
+
+
+
+
+    @IBOutlet var booleanButtonLabel: UIButton!
     @IBOutlet var imageView: UIImageView!
-    @IBOutlet weak var skuLabel: UILabel!
+    @IBOutlet var skuLabel: UILabel!
     
     var sku: Sku? {
         didSet {

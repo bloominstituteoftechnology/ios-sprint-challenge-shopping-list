@@ -42,7 +42,7 @@ class SkuCollectionVC: UICollectionViewController, SkuCollectionViewCELLDelegate
     
 
     @IBAction func nextButtonPressed(_ sender: Any) {
-
+    
         // prepare for segue to viewcontroller and pass count, by perhaps calling collectionView to update/reload forcing a prepare for segue
         
         guard let cartVC = self.storyboard?.instantiateViewController(withIdentifier: "ToCart") as? CartVC else { return }
