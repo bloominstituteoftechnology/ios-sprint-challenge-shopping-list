@@ -47,9 +47,19 @@ class ShoppingItemController {
     }
     
     
+    func addedItemsTotalCount() -> Int {
+        var total = 0
+        for item in itemNamesArray {
+            if item.beenAdded {
+                total += 1
+            }
+        }
+        return total
+    }
+    
+    
     func updateItem(item: ShoppingItem) {
         guard let index = itemNamesArray.index(of: item) else { return }
-        
         var newItem = item
         newItem.beenAdded.toggle()
         itemNamesArray.remove(at: index)

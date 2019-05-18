@@ -11,6 +11,7 @@ import UIKit
 class OrderViewController: UIViewController {
     
     var shoppingItemController: ShoppingItemController?
+    var addedItemsTotalCount: Int?
     
     @IBOutlet weak var shoppingListLbl: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
@@ -21,21 +22,22 @@ class OrderViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         sendOrderBtn.layer.cornerRadius = sendOrderBtn.frame.height / 3
+        updateShoppingListLbl(addedItemsTotalCount: addedItemsTotalCount)
         
 
         // Do any additional setup after loading the view.
     }
     
-    func updateShoppingListLbl() {
-        guard let itemCount = shoppingItemController?.addedItems.count, isViewLoaded else { return }
+    func updateShoppingListLbl(addedItemsTotalCount: Int?) {
+        guard let itemCount = addedItemsTotalCount else { return }
         var text = ""
         switch itemCount {
         case 0:
-            text = "You currently have: \(itemCount) items/n in your shopping list"
+            text = "You currently have: \(itemCount) items\n in your shopping list"
         case 1:
-            text = "You currently have: \(itemCount) item/n in your shopping list"
+            text = "You currently have: \(itemCount) item\n in your shopping list"
         case 2...7:
-            text = "You currently have: \(itemCount) items/n in your shopping list"
+            text = "You currently have: \(itemCount) items\n in your shopping list"
         default:
             text = "Something is wrong with your/n shopping list"
         }
@@ -43,6 +45,8 @@ class OrderViewController: UIViewController {
     }
     
     @IBAction func sendOrderBtnPressed(_ sender: UIButton) {
+        guard let name = nameTextField.text, !name.isEmpty,
+            let address = addressTextField.text, !address.isEmpty else { return }
         orderAlert()
         clearTextFields()
     }
@@ -57,7 +61,7 @@ class OrderViewController: UIViewController {
         let address = addressTextField.text
         else { return }
         
-        let alert = UIAlertController(title: name, message: address, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Thanks for your order \(name)!", message: "Your order will be delivered in 15 minutes to \(address)", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true)
     }
