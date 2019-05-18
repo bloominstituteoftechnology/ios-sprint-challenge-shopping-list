@@ -47,8 +47,14 @@ class OrderViewController: UIViewController {
     @IBAction func sendOrderBtnPressed(_ sender: UIButton) {
         guard let name = nameTextField.text, !name.isEmpty,
             let address = addressTextField.text, !address.isEmpty else { return }
-        orderAlert()
-        clearTextFields()
+        
+        if addedItemsTotalCount == 0 {
+            noItemsInListAlert()
+        } else {
+            orderAlert()
+            clearTextFields()
+        }
+        
     }
     
     func clearTextFields() {
@@ -65,5 +71,12 @@ class OrderViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true)
     }
+    
+    func noItemsInListAlert() {
+        let alert = UIAlertController(title: "Your list is empty!", message: "Please select some items to add to your list", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Select Items", style: .default, handler: { action in self.navigationController?.popToRootViewController(animated: true)}))
+        present(alert, animated: true)
+    }
+    
     
 }
