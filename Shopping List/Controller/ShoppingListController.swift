@@ -30,7 +30,7 @@ class ShoppingItemController {
     func createItemNamesArray() {
         let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
         for item in itemNames {
-            itemNamesArray.append(ShoppingItem(name: item, imageName: item))
+            itemNamesArray.append(ShoppingItem(name: item))
             saveToPersistentStore()
         }
         UserDefaults.standard.set(true, forKey: .shoppingItemsKey)
@@ -47,12 +47,21 @@ class ShoppingItemController {
     }
     
     
-    // Toggle the beenAdded Bool
-    func beenAddedToggled(shoppingItem: ShoppingItem) {
-        var shoppingItem = shoppingItem
-        shoppingItem.beenAdded.toggle()
+    func updateItem(item: ShoppingItem) {
+        guard let index = itemNamesArray.index(of: item) else { return }
+        
+        var tempItem = item
+        tempItem.beenAdded.toggle()
+        itemNamesArray.remove(at: index)
+        itemNamesArray.insert(tempItem, at: index)
         saveToPersistentStore()
     }
+    
+    // Toggle the beenAdded Bool
+//    func beenAddedToggled(shoppingItem: ShoppingItem) {
+//        shoppingItem.beenAdded != shoppingItem.beenAdded
+//        saveToPersistentStore()
+//    }
     
     // Saving to Disk
     func saveToPersistentStore() {

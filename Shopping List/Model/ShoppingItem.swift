@@ -10,12 +10,10 @@ import Foundation
 
 struct ShoppingItem: Codable, Equatable {
     var name:       String
-    var imageName:  String
     var beenAdded:  Bool
     
-    init(name: String, imageName: String, beenAdded: Bool = false) {
+    init(name: String, beenAdded: Bool = false) {
         self.name       = name
-        self.imageName  = imageName
         self.beenAdded  = beenAdded
     }
 }

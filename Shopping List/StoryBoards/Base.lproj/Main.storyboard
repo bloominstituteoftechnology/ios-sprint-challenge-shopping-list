@@ -35,16 +35,6 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wzJ-tM-Xzi">
                                             <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OAV-8e-3I8">
-                                                    <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                    <state key="normal" title="ADDED">
-                                                        <color key="titleColor" red="1" green="0.20188535560000001" blue="0.18832859360000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="addedBtnPressed:" destination="Wq8-0Y-frQ" eventType="touchUpInside" id="7fE-Io-Ocg"/>
-                                                    </connections>
-                                                </button>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Qnt-dC-fHg">
                                                     <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
                                                     <subviews>
@@ -66,15 +56,22 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="Qnt-dC-fHg" firstAttribute="top" secondItem="wzJ-tM-Xzi" secondAttribute="top" id="Bgo-wR-k2f"/>
-                                                <constraint firstItem="OAV-8e-3I8" firstAttribute="top" secondItem="wzJ-tM-Xzi" secondAttribute="top" id="D8h-op-Wgt"/>
                                                 <constraint firstItem="Qnt-dC-fHg" firstAttribute="leading" secondItem="wzJ-tM-Xzi" secondAttribute="leading" id="Y1J-k9-CbN"/>
                                                 <constraint firstAttribute="trailing" secondItem="Qnt-dC-fHg" secondAttribute="trailing" id="bjh-Sy-Wnf"/>
-                                                <constraint firstAttribute="bottom" secondItem="OAV-8e-3I8" secondAttribute="bottom" id="lIQ-XS-3ES"/>
                                                 <constraint firstAttribute="bottom" secondItem="Qnt-dC-fHg" secondAttribute="bottom" id="o1c-wX-HSZ"/>
-                                                <constraint firstAttribute="trailing" secondItem="OAV-8e-3I8" secondAttribute="trailing" id="ofW-5s-1vm"/>
-                                                <constraint firstItem="OAV-8e-3I8" firstAttribute="leading" secondItem="wzJ-tM-Xzi" secondAttribute="leading" id="wtZ-Na-F0S"/>
                                             </constraints>
                                         </view>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OAV-8e-3I8">
+                                            <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                            <state key="normal" title="ADDED">
+                                                <color key="titleColor" red="1" green="0.20188535560000001" blue="0.18832859360000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="addedBtnPressed:" destination="Wq8-0Y-frQ" eventType="touchUpInside" id="7fE-Io-Ocg"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </view>
                                 <constraints>
@@ -116,30 +113,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ie4-kF-5Rg">
-                                <rect key="frame" x="35" y="156" width="344" height="173"/>
+                                <rect key="frame" x="35" y="156" width="344" height="120"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yTi-pP-u82">
-                                        <rect key="frame" x="29" y="0.0" width="286" height="53"/>
-                                        <string key="text">You currently have: 10 item(s) 
-in your shopping list</string>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yTi-pP-u82">
+                                        <rect key="frame" x="172" y="0.0" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U0Z-MX-qzu">
-                                        <rect key="frame" x="20" y="61" width="304" height="30"/>
+                                        <rect key="frame" x="20" y="8" width="304" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xMf-bB-UGg">
-                                        <rect key="frame" x="20" y="99" width="304" height="30"/>
+                                        <rect key="frame" x="20" y="46" width="304" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7gk-qi-Aho">
-                                        <rect key="frame" x="84.5" y="137" width="175" height="36"/>
+                                        <rect key="frame" x="84.5" y="84" width="175" height="36"/>
                                         <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="175" id="dpm-aj-N5h"/>

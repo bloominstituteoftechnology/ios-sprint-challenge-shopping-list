@@ -28,6 +28,7 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
     @IBAction func addedBtnPressed(_ sender: UIButton) {
         shoppingCellDelegate?.addedBtntoggled(on: self)
+        print("Btn Toggled")
     }
     
     func updateViews() {
@@ -35,11 +36,13 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         if newItem.beenAdded {
             addedBtn.setTitle("ADDED", for: .normal)
         } else {
-            addedBtn.setTitle("", for: .normal) // Maybe set to "" instead of nil?
+            addedBtn.setTitle(nil, for: .normal) // Maybe set to "" instead of nil?
         }
         shoppingListItemLbl.text = newItem.name
-        guard let image = UIImage(named: newItem.imageName) else { return }
+        print(shoppingListItemLbl.text)
+        guard let image = UIImage(named: newItem.name) else { return }
         shoppingListImageView.image = image
+        
     }
     
 }

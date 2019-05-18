@@ -31,15 +31,6 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         collectionView.reloadData()
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     // MARK: UICollectionViewDataSource
 
@@ -65,6 +56,12 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let shoppingItem = shoppingItemController.itemNamesArray[indexPath.item]
+        shoppingItemController.updateItem(item: shoppingItem)
+        collectionView.reloadData()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ToOrderVC" {
             let destinationVC = segue.destination as! OrderViewController
@@ -79,8 +76,9 @@ extension ShoppingListCollectionViewController: ShoppingItemCollectionViewCellDe
     func addedBtntoggled(on cell: UICollectionViewCell) {
         guard let index = collectionView.indexPath(for: cell) else { return }
         let item = shoppingItemController.itemNamesArray[index.item]
-        shoppingItemController.beenAddedToggled(shoppingItem: item)
-        collectionView.reloadItems(at: [index])
+        shoppingItemController.updateItem(item: item)
+        print("Toggled Button")
+        collectionView?.reloadItems(at: [index])
         
     }
     
