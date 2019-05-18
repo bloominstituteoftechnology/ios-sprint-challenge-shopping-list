@@ -50,10 +50,10 @@ class ShoppingItemController {
     func updateItem(item: ShoppingItem) {
         guard let index = itemNamesArray.index(of: item) else { return }
         
-        var tempItem = item
-        tempItem.beenAdded.toggle()
+        var newItem = item
+        newItem.beenAdded.toggle()
         itemNamesArray.remove(at: index)
-        itemNamesArray.insert(tempItem, at: index)
+        itemNamesArray.insert(newItem, at: index)
         saveToPersistentStore()
     }
     

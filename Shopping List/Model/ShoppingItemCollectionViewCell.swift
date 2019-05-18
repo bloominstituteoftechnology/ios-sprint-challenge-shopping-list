@@ -38,10 +38,9 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         } else {
             addedBtn.setTitle(nil, for: .normal) // Maybe set to "" instead of nil?
         }
-        shoppingListItemLbl.text = newItem.name
-        print(shoppingListItemLbl.text)
         guard let image = UIImage(named: newItem.name) else { return }
         shoppingListImageView.image = image
+        shoppingListItemLbl.text = newItem.name
         
     }
     

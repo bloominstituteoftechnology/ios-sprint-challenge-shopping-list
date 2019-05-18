@@ -35,43 +35,43 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wzJ-tM-Xzi">
                                             <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Qnt-dC-fHg">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="EBb-PM-umf">
                                                     <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DzW-fH-YNI">
-                                                            <rect key="frame" x="0.0" y="0.0" width="140" height="99"/>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5cT-vQ-DgF">
-                                                            <rect key="frame" x="0.0" y="99" width="140" height="41"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="center" text="Test" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5cT-vQ-DgF">
+                                                            <rect key="frame" x="0.0" y="0.0" width="140" height="50"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DzW-fH-YNI">
+                                                            <rect key="frame" x="0.0" y="50" width="140" height="90"/>
+                                                        </imageView>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="5cT-vQ-DgF" firstAttribute="width" secondItem="DzW-fH-YNI" secondAttribute="width" id="gZc-rP-STM"/>
-                                                    </constraints>
                                                 </stackView>
+                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OAV-8e-3I8">
+                                                    <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
+                                                    <state key="normal" title="ADDED">
+                                                        <color key="titleColor" red="1" green="0.20188535560000001" blue="0.18832859360000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="addedBtnPressed:" destination="Wq8-0Y-frQ" eventType="touchUpInside" id="7fE-Io-Ocg"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="Qnt-dC-fHg" firstAttribute="top" secondItem="wzJ-tM-Xzi" secondAttribute="top" id="Bgo-wR-k2f"/>
-                                                <constraint firstItem="Qnt-dC-fHg" firstAttribute="leading" secondItem="wzJ-tM-Xzi" secondAttribute="leading" id="Y1J-k9-CbN"/>
-                                                <constraint firstAttribute="trailing" secondItem="Qnt-dC-fHg" secondAttribute="trailing" id="bjh-Sy-Wnf"/>
-                                                <constraint firstAttribute="bottom" secondItem="Qnt-dC-fHg" secondAttribute="bottom" id="o1c-wX-HSZ"/>
+                                                <constraint firstAttribute="bottom" secondItem="EBb-PM-umf" secondAttribute="bottom" id="2yq-wh-vTp"/>
+                                                <constraint firstItem="OAV-8e-3I8" firstAttribute="top" secondItem="wzJ-tM-Xzi" secondAttribute="top" id="IPK-9l-Cr4"/>
+                                                <constraint firstItem="EBb-PM-umf" firstAttribute="top" secondItem="wzJ-tM-Xzi" secondAttribute="top" id="Jb0-0h-Gam"/>
+                                                <constraint firstAttribute="bottom" secondItem="OAV-8e-3I8" secondAttribute="bottom" id="MnO-Oh-o9u"/>
+                                                <constraint firstAttribute="trailing" secondItem="OAV-8e-3I8" secondAttribute="trailing" id="NeJ-bd-ZaC"/>
+                                                <constraint firstItem="EBb-PM-umf" firstAttribute="leading" secondItem="wzJ-tM-Xzi" secondAttribute="leading" id="jT2-R4-BGn"/>
+                                                <constraint firstItem="OAV-8e-3I8" firstAttribute="leading" secondItem="wzJ-tM-Xzi" secondAttribute="leading" id="k4g-bx-mAv"/>
+                                                <constraint firstAttribute="trailing" secondItem="EBb-PM-umf" secondAttribute="trailing" id="zUj-xU-FnA"/>
                                             </constraints>
                                         </view>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OAV-8e-3I8">
-                                            <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                            <state key="normal" title="ADDED">
-                                                <color key="titleColor" red="1" green="0.20188535560000001" blue="0.18832859360000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="addedBtnPressed:" destination="Wq8-0Y-frQ" eventType="touchUpInside" id="7fE-Io-Ocg"/>
-                                            </connections>
-                                        </button>
                                     </subviews>
                                 </view>
                                 <constraints>
