@@ -35,7 +35,7 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         if newItem.beenAdded {
             addedBtn.setTitle("ADDED", for: .normal)
         } else {
-            addedBtn.setTitle(nil, for: .normal) // Maybe set to "" instead of nil?
+            addedBtn.setTitle("", for: .normal) // Maybe set to "" instead of nil?
         }
         shoppingListItemLbl.text = newItem.name
         guard let image = UIImage(named: newItem.imageName) else { return }

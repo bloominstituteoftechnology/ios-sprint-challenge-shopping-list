@@ -10,7 +10,15 @@ import Foundation
 
 class ShoppingItemController {
     
+    init() {
+        loadingCheck()
+    }
+    
     var itemNamesArray = [ShoppingItem]()
+    
+    var addedItems: [ShoppingItem] {
+        return itemNamesArray.filter { $0.beenAdded == true }
+    }
     
     private var persistentURL: URL? {
         let fileManager = FileManager.default
@@ -18,6 +26,7 @@ class ShoppingItemController {
         return documents.appendingPathComponent("Items.plist")
     }
     
+    // Create an array
     func createItemNamesArray() {
         let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
         for item in itemNames {
@@ -27,6 +36,25 @@ class ShoppingItemController {
         UserDefaults.standard.set(true, forKey: .shoppingItemsKey)
     }
     
+    // Check to see if the array has been created already
+    func loadingCheck() {
+        let userDefaults = UserDefaults.standard
+        if userDefaults.bool(forKey: .shoppingItemsKey) {
+            loadFromPersistanceStore()
+        } else {
+            createItemNamesArray()
+        }
+    }
+    
+    
+    // Toggle the beenAdded Bool
+    func beenAddedToggled(shoppingItem: ShoppingItem) {
+        var shoppingItem = shoppingItem
+        shoppingItem.beenAdded.toggle()
+        saveToPersistentStore()
+    }
+    
+    // Saving to Disk
     func saveToPersistentStore() {
         guard let url = persistentURL else { return }
         do {
@@ -38,6 +66,7 @@ class ShoppingItemController {
         }
     }
     
+    // Loading from Disk
     func loadFromPersistanceStore() {
         let fileManager = FileManager.default
         guard let url = persistentURL, fileManager.fileExists(atPath: url.path) else { return }

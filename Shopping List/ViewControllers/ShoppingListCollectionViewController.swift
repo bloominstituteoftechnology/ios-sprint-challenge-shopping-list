@@ -21,9 +21,14 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView.reloadData()
     }
 
     /*
@@ -54,13 +59,17 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         
         let items = shoppingItemController.itemNamesArray[indexPath.item]
         
-        
-        //cell.shoppingItem = items
-        
-        
+        cell.shoppingItem = items
         cell.shoppingCellDelegate = self
         
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ToOrderVC" {
+            let destinationVC = segue.destination as! OrderViewController
+            destinationVC.shoppingItemController = shoppingItemController
+        }
     }
 
     
@@ -70,6 +79,8 @@ extension ShoppingListCollectionViewController: ShoppingItemCollectionViewCellDe
     func addedBtntoggled(on cell: UICollectionViewCell) {
         guard let index = collectionView.indexPath(for: cell) else { return }
         let item = shoppingItemController.itemNamesArray[index.item]
+        shoppingItemController.beenAddedToggled(shoppingItem: item)
+        collectionView.reloadItems(at: [index])
         
     }
     
