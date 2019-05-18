@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  Shopping List
 //
-//  Created by Spencer Curtis on 8/3/18.
-//  Copyright © 2018 Lambda School. All rights reserved.
+//  Created by Seschwan on 5/17/19.
+//  Copyright © 2019 Seschwan. All rights reserved.
 //
 
 import UIKit
@@ -13,11 +13,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 
