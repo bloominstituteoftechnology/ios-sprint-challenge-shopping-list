@@ -34,11 +34,35 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         
         let item = self.shoppingItemController.shoppingItems[indexPath.row]
 //        cell.toggleLabel.text
-        cell.imageView.image = item.image 
+        cell.imageView.image = item.image
+        cell.toggleLabel.text = item.hasBeenAdded ? "Added" : "Not Added"
         // Configure the cell
-    
+        
+        cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap(_:))))
+       
         return cell
     }
+    
+    @objc func tap(_ sender: UITapGestureRecognizer) {
+        
+        let location = sender.location(in: self.collectionView)
+        let indexPath = self.collectionView.indexPathForItem(at: location)
+        
+        if let index = indexPath {
+            
+            print("Got clicked on index: \(index)!")
+            
+        }
+        
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            let shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
+        shoppingItemController.toggleAdd(shoppingItems: shoppingItem)
+            collectionView.reloadData()
+        }
+      
+    }
+    
+    
 
     // MARK: UICollectionViewDelegate
 
@@ -48,20 +72,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         return true
     }
     */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
-    }
-    */
+    
 
 }

@@ -17,7 +17,7 @@ class ShoppingItemController {
     }
     
     private(set) var shoppingItems : [ShoppingItem] = []
-//     private(set) var shoppingItems = [ShoppingItem]()
+//     private(set) var shoppingItems = [ShoppingItem]() what's the difference between the two?
     
 //    private var persistentFileURL: URL? {
 //        let fileManager = FileManager.default
@@ -41,8 +41,33 @@ class ShoppingItemController {
         
     }
     
+//    func toggleAdd(for shoppingItem: ShoppingItem) {
+    func toggleAdd(shoppingItem: ShoppingItem){
+//        guard let index = shoppingItems.index(of: shoppingItem) else { return }
+//        shoppingItems[index].hasBeenAdded.toggle()
+        
+//        saveToPersistentStore()
+//        shoppingItems.hasBeenAdded.toggle()
+
+        guard let index = shoppingItems.index(of: shoppingItem) else { return }
+            shoppingItems[index].hasBeenAdded = !shoppingItems[index].hasBeenAdded
+//            saveToPersistentStore()
+        }
     
-    //use do try catch with anything that uses "throw"
+    
+    func addingCount() -> Int {
+        var count = 0
+        for items in shoppingItems {
+            if items.hasBeenAdded == true {
+                count += 1
+            }
+        }
+        
+        return count
+    }
+    
+    
+   
 //    func saveToPersistenceStore() {
 //        guard let url = self.persistentFileURL else {return}
 //
