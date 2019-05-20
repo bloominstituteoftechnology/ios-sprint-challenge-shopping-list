@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ShoppingItem  {
+class ShoppingItem {
 
 //    var name: String
     var image: UIImage
