@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import UIKit
 
-struct ShoppingItem: Equatable, Codable {
+class ShoppingItem  {
 
 //    var name: String
     var image: UIImage

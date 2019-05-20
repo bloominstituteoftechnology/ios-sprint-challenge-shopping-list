@@ -16,7 +16,7 @@ class ShoppingItemController {
         createShoppingItem()
     }
     
-    private(set) var shoppingItems = [ShoppingItem] = []
+    private(set) var shoppingItems : [ShoppingItem] = []
 //     private(set) var shoppingItems = [ShoppingItem]()
     
     private var persistentFileURL: URL? {
@@ -62,7 +62,7 @@ class ShoppingItemController {
         do {
             let data = try Data(contentsOf: url)
             let decoder = PropertyListDecoder()
-            self.stars = try decoder.decode([ShoppingItem].self, from: data)
+            self.shoppingItems = try decoder.decode([ShoppingItem].self, from: data)
             
         } catch {
             NSLog("Error loading shopping data: \(error)")
