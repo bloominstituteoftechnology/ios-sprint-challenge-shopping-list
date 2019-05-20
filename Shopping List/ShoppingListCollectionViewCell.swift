@@ -9,5 +9,9 @@
 import UIKit
 
 class ShoppingListCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var toggleLabel: UILabel!
+    
+    @IBOutlet weak var imageView: UIImageView!
+    
     
 }
