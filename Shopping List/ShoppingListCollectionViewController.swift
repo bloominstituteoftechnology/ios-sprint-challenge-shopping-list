@@ -36,43 +36,30 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 //        cell.toggleLabel.text
         cell.imageView.image = UIImage(named: item.itemName)
         cell.toggleLabel.text = item.hasBeenAdded ? "Added" : "Not Added"
+        
         // Configure the cell
         
-        cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap(_:))))
+//        cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap(_:))))
        
         return cell
     }
     
-    @objc func tap(_ sender: UITapGestureRecognizer) {
-        
-        let location = sender.location(in: self.collectionView)
-        let indexPath = self.collectionView.indexPathForItem(at: location)
-        
-        if let index = indexPath {
-            
-            print("Got clicked on index: \(index)!")
-            
-        }
-        
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//    @objc func tap(_ sender: UITapGestureRecognizer) {
+//
+//        let location = sender.location(in: self.collectionView)
+//        let indexPath = self.collectionView.indexPathForItem(at: location)
+//
+//        if let index = indexPath {
+//
+//            print("Got clicked on index: \(index)!")
+//
+//        }
+    
+//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //            let shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
-//        shoppingItemController.toggleAdd(shoppingItems: shoppingItem)
+//        shoppingItemController.toggleAdd(shoppingItem: shoppingItem)
 //            collectionView.reloadData()
 //        }
-      
-    }
-    
-    
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-    
-    
-
+//
 }
+

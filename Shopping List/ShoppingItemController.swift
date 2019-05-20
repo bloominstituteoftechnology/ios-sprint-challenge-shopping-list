@@ -45,10 +45,10 @@ class ShoppingItemController {
     func toggleAdd(shoppingItem: ShoppingItem){
 //        guard let index = shoppingItems.index(of: shoppingItem) else { return }
 //        shoppingItems[index].hasBeenAdded.toggle()
+//
+//        saveToPersistenceStore()
+//
         
-//        saveToPersistentStore()
-//        shoppingItems.hasBeenAdded.toggle()
-
         guard let index = shoppingItems.index(of: shoppingItem) else { return }
             shoppingItems[index].hasBeenAdded = !shoppingItems[index].hasBeenAdded
         saveToPersistenceStore()
