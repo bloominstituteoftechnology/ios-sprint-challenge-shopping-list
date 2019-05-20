@@ -34,7 +34,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         
         let item = self.shoppingItemController.shoppingItems[indexPath.row]
 //        cell.toggleLabel.text
-        cell.imageView.image = item.image
+        cell.imageView.image = UIImage(named: item.itemName)
         cell.toggleLabel.text = item.hasBeenAdded ? "Added" : "Not Added"
         // Configure the cell
         
@@ -54,11 +54,11 @@ class ShoppingListCollectionViewController: UICollectionViewController {
             
         }
         
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            let shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
-        shoppingItemController.toggleAdd(shoppingItems: shoppingItem)
-            collectionView.reloadData()
-        }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//            let shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
+//        shoppingItemController.toggleAdd(shoppingItems: shoppingItem)
+//            collectionView.reloadData()
+//        }
       
     }
     
