@@ -13,7 +13,7 @@ class ShoppingItemController {
     
     init() {
         loadFromPersistenceStore()
-        createShoppingItem()
+        gotCalled()
     }
     
     private(set) var shoppingItems : [ShoppingItem] = []
@@ -96,6 +96,17 @@ class ShoppingItemController {
         }
     }
     
+    
+    
+    func gotCalled() {
+        let userDefaults = UserDefaults.standard
+        
+        if userDefaults.bool(forKey: "WasCalled") == false {
+            createShoppingItem()
+        } else {
+            loadFromPersistenceStore()
+        }
+    }
 //    var addedItems: [ShoppingItem] {
 //        return shoppingItems.filter { $0.hasBeenAdded }
 //    }
