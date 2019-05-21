@@ -34,7 +34,8 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         
         let item = self.shoppingItemController.shoppingItems[indexPath.row]
 //        cell.toggleLabel.text
-        cell.imageView.image = UIImage(named: item.itemName)
+        cell.shoppingItem = item
+//        cell.imageView.image = UIImage(named: item.itemName)
         cell.delegate = self
 //         cell.toggleLabel.text = item.hasBeenAdded ? "Added" : "Not Added"
         // Configure the cell
