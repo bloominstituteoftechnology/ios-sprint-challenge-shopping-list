@@ -101,10 +101,10 @@
             </objects>
             <point key="canvasLocation" x="824.79999999999995" y="131.78410794602701"/>
         </scene>
-        <!--View Controller-->
+        <!--Send Order View Controller-->
         <scene sceneID="D3s-7f-JoC">
             <objects>
-                <viewController id="trw-3b-gzc" sceneMemberID="viewController">
+                <viewController id="trw-3b-gzc" customClass="SendOrderViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4pa-J1-4PP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -135,6 +135,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bp6-Tx-hwj">
                                 <rect key="frame" x="148" y="247" width="79" height="30"/>
                                 <state key="normal" title="Send Order"/>
+                                <connections>
+                                    <action selector="sendOrderButton:" destination="trw-3b-gzc" eventType="touchUpInside" id="tol-ks-Ygh"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -148,6 +151,11 @@
                         <viewLayoutGuide key="safeArea" id="fMC-yw-6Ig"/>
                     </view>
                     <navigationItem key="navigationItem" id="rJ1-c7-ePs"/>
+                    <connections>
+                        <outlet property="addressField" destination="EBY-do-H15" id="CZc-Hk-EkM"/>
+                        <outlet property="nameField" destination="ulE-pd-Sc4" id="mlH-uv-4iM"/>
+                        <outlet property="orderLabel" destination="Ezc-H5-Ltr" id="924-kv-iOI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wJb-kO-9YZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

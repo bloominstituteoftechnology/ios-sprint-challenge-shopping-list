@@ -45,7 +45,7 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
     }
     
     
-    @IBAction func buttonTapped(_ sender: Any) {
+    @IBAction func buttonTapped(_ sender: ShoppingListCollectionViewCell) {
         delegate?.buttonWasPressed(on: self)
         
     }

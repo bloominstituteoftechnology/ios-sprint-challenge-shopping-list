@@ -37,21 +37,22 @@ class ShoppingItemController {
             
         }
         saveToPersistenceStore()
+        UserDefaults.standard.set(true, forKey: "didCreateItemsKey")
         
         
     }
     
 
     func toggleAdd(shoppingItem: ShoppingItem){
-        guard let index = shoppingItems.index(of: shoppingItem) else { return }
-        shoppingItems[index].hasBeenAdded.toggle()
-
-        saveToPersistenceStore()
+//        guard let index = shoppingItems.index(of: shoppingItem) else { return }
+//        shoppingItems[index].hasBeenAdded.toggle()
+//
+//        saveToPersistenceStore()
 
 //
-//        guard let index = shoppingItems.index(of: shoppingItem) else { return }
-//            shoppingItems[index].hasBeenAdded = !shoppingItems[index].hasBeenAdded
-//        saveToPersistenceStore()
+        guard let index = shoppingItems.index(of: shoppingItem) else { return }
+            shoppingItems[index].hasBeenAdded = !shoppingItems[index].hasBeenAdded
+        saveToPersistenceStore()
         }
     
     
