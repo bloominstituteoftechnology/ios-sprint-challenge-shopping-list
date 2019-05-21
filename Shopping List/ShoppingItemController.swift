@@ -37,7 +37,7 @@ class ShoppingItemController {
             
         }
         saveToPersistenceStore()
-        UserDefaults.standard.set(true, forKey: "didCreateItemsKey")
+        UserDefaults.standard.set(true, forKey: "WasCalled")
         
         
     }
