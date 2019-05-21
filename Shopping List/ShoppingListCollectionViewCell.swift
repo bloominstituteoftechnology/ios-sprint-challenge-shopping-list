@@ -28,15 +28,19 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
     }
     
     func updateViews() {
-        guard let newItem = shoppingItem else { return }
-        let text = newItem.hasBeenAdded ? "Added" : "Not Added"
+        guard let item = shoppingItem else { return }
+        
+        
+        imageView.image = UIImage(named: item.itemName)
+        
+        let text = item.hasBeenAdded ? "Added" : "Not Added"
         toggleLabel.text = text
         
        
         
-        let imageName = newItem.itemName
-        guard let image = UIImage(named: imageName) else { return }
-         buttonImage.setImage(image, for: .normal)
+//        let imageName = newItem.itemName
+//        guard let image = UIImage(named: imageName) else { return }
+//         buttonImage.setImage(image, for: .normal)
 //        imageView.image = UIImage(named: newItem.itemName)
     }
     
