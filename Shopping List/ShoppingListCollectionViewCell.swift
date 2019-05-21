@@ -8,10 +8,42 @@
 
 import UIKit
 
+protocol ShoppingListCollectionViewCellDelegate: AnyObject {
+    func buttonWasPressed(on Cell: UICollectionViewCell)
+}
+
 class ShoppingListCollectionViewCell: UICollectionViewCell {
+    
+    weak var delegate: ShoppingListCollectionViewCellDelegate?
     @IBOutlet weak var toggleLabel: UILabel!
     
     @IBOutlet weak var imageView: UIImageView!
     
     
+    @IBOutlet weak var buttonImage: UIButton!
+    var shoppingItem: ShoppingItem? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    func updateViews() {
+        guard let newItem = shoppingItem else { return }
+        let text = newItem.hasBeenAdded ? "Added" : "Not Added"
+        toggleLabel.text = text
+        
+       
+        
+        let imageName = newItem.itemName
+        guard let image = UIImage(named: imageName) else { return }
+         buttonImage.setImage(image, for: .normal)
+//        imageView.image = UIImage(named: newItem.itemName)
+    }
+    
+    
+    @IBAction func buttonTapped(_ sender: Any) {
+        delegate?.buttonWasPressed(on: self)
+        
+    }
+     
 }

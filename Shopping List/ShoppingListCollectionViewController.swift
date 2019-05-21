@@ -35,8 +35,8 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         let item = self.shoppingItemController.shoppingItems[indexPath.row]
 //        cell.toggleLabel.text
         cell.imageView.image = UIImage(named: item.itemName)
-        cell.toggleLabel.text = item.hasBeenAdded ? "Added" : "Not Added"
-        
+        cell.delegate = self
+//         cell.toggleLabel.text = item.hasBeenAdded ? "Added" : "Not Added"
         // Configure the cell
         
 //        cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap(_:))))
@@ -61,5 +61,24 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 //            collectionView.reloadData()
 //        }
 //
+    }
+
+    
+
+extension ShoppingListCollectionViewController: ShoppingListCollectionViewCellDelegate {
+    func buttonWasPressed(on cell: UICollectionViewCell) {
+        
+        guard let index = collectionView?.indexPath(for: cell) else { return }
+        
+        let item = shoppingItemController.shoppingItems[index.item]
+        
+        shoppingItemController.toggleAdd(shoppingItem: item)
+        
+        collectionView?.reloadItems(at: [index])
+    }
 }
+
+    
+    
+
 

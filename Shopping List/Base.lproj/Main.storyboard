@@ -35,6 +35,12 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y0q-7k-MmF">
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="140"/>
                                             <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2b-SK-rpI">
+                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="140"/>
+                                                    <connections>
+                                                        <action selector="buttonTapped:" destination="kyP-Pm-Hcf" eventType="touchUpInside" id="goz-aI-b28"/>
+                                                    </connections>
+                                                </button>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1Pj-v9-r1l">
                                                     <rect key="frame" x="0.0" y="0.0" width="150" height="140"/>
                                                     <subviews>
@@ -52,10 +58,14 @@
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
+                                                <constraint firstItem="K2b-SK-rpI" firstAttribute="leading" secondItem="Y0q-7k-MmF" secondAttribute="leading" id="05G-1l-Nts"/>
                                                 <constraint firstAttribute="trailing" secondItem="1Pj-v9-r1l" secondAttribute="trailing" id="4kP-7m-EMS"/>
+                                                <constraint firstAttribute="bottom" secondItem="K2b-SK-rpI" secondAttribute="bottom" id="KmX-Ja-tJX"/>
                                                 <constraint firstItem="1Pj-v9-r1l" firstAttribute="top" secondItem="Y0q-7k-MmF" secondAttribute="top" id="bvp-4s-raW"/>
                                                 <constraint firstItem="1Pj-v9-r1l" firstAttribute="leading" secondItem="Y0q-7k-MmF" secondAttribute="leading" id="cYL-Qr-VMr"/>
+                                                <constraint firstAttribute="trailing" secondItem="K2b-SK-rpI" secondAttribute="trailing" id="feC-Uq-mh4"/>
                                                 <constraint firstAttribute="bottom" secondItem="1Pj-v9-r1l" secondAttribute="bottom" id="vJs-wa-QPb"/>
+                                                <constraint firstItem="K2b-SK-rpI" firstAttribute="top" secondItem="Y0q-7k-MmF" secondAttribute="top" id="wBK-ld-aTV"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -67,6 +77,7 @@
                                     <constraint firstItem="Y0q-7k-MmF" firstAttribute="leading" secondItem="kyP-Pm-Hcf" secondAttribute="leading" id="wI9-8V-BkY"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="buttonImage" destination="K2b-SK-rpI" id="5RH-lU-BJp"/>
                                     <outlet property="imageView" destination="7Yd-GD-mhd" id="veU-tI-cgx"/>
                                     <outlet property="toggleLabel" destination="S45-v8-j72" id="YN8-Qg-apV"/>
                                 </connections>

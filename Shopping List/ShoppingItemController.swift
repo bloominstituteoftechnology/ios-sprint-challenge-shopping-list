@@ -41,17 +41,17 @@ class ShoppingItemController {
         
     }
     
-//    func toggleAdd(for shoppingItem: ShoppingItem) {
+
     func toggleAdd(shoppingItem: ShoppingItem){
-//        guard let index = shoppingItems.index(of: shoppingItem) else { return }
-//        shoppingItems[index].hasBeenAdded.toggle()
-//
-//        saveToPersistenceStore()
-//
-        
         guard let index = shoppingItems.index(of: shoppingItem) else { return }
-            shoppingItems[index].hasBeenAdded = !shoppingItems[index].hasBeenAdded
+        shoppingItems[index].hasBeenAdded.toggle()
+
         saveToPersistenceStore()
+
+//
+//        guard let index = shoppingItems.index(of: shoppingItem) else { return }
+//            shoppingItems[index].hasBeenAdded = !shoppingItems[index].hasBeenAdded
+//        saveToPersistenceStore()
         }
     
     
@@ -94,6 +94,14 @@ class ShoppingItemController {
 
         }
     }
+    
+//    var addedItems: [ShoppingItem] {
+//        return shoppingItems.filter { $0.hasBeenAdded }
+//    }
+//    
+//    var notAddedItems: [ShoppingItem] {
+//        return shoppingItems.filter { !$0.hasBeenAdded }
+//    }
     
     
 }
