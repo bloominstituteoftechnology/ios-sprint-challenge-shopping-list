@@ -39,21 +39,20 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="120" height="140"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Not Added" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wPt-SK-Ozd">
-                                                            <rect key="frame" x="0.0" y="0.0" width="120" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="120" height="27.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hFK-uP-vBR">
-                                                            <rect key="frame" x="0.0" y="26.5" width="120" height="51"/>
+                                                            <rect key="frame" x="0.0" y="33.5" width="120" height="80"/>
                                                         </imageView>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhs-Sa-DXa">
-                                                            <rect key="frame" x="0.0" y="83.5" width="120" height="56.5"/>
-                                                            <state key="normal" title="Label"/>
-                                                            <connections>
-                                                                <action selector="shoppingItemTapped:" destination="5jC-nZ-IH3" eventType="touchUpInside" id="mxE-Rw-9zY"/>
-                                                            </connections>
-                                                        </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8hi-3Q-4Z3">
+                                                            <rect key="frame" x="0.0" y="119.5" width="120" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
@@ -76,6 +75,7 @@
                                 <connections>
                                     <outlet property="hasBeenAddedLabel" destination="wPt-SK-Ozd" id="y6Z-uB-W2l"/>
                                     <outlet property="imageView" destination="hFK-uP-vBR" id="4tI-3n-FfX"/>
+                                    <outlet property="nameLabel" destination="8hi-3Q-4Z3" id="S7L-1o-fTM"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>

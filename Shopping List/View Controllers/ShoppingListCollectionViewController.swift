@@ -38,12 +38,17 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingItemCell", for: indexPath) as? ShoppingItemCollectionViewCell else { return UICollectionViewCell() }
         
         let shoppingItem = self.shoppingListController.shoppingItems[indexPath.row]
-        cell.nameLabel.text = shoppingItem.name
-        cell.imageView.image = UIImage(named: shoppingItem.name)
-        cell.hasBeenAddedLabel.text = shoppingItem.hasBeenAdded ? "Added" : "Not Added"
+        cell.shoppingItem = shoppingItem
+//        cell.nameLabel.text = shoppingItem.name
+//        cell.imageView.image = UIImage(named: shoppingItem.name)
+//        cell.hasBeenAddedLabel.text = shoppingItem.hasBeenAdded ? "Added" : "Not Added"
         cell.delegate = self
     
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        <#code#>
     }
 }
 
