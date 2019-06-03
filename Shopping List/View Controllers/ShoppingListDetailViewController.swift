@@ -10,11 +10,11 @@ import UIKit
 
 class ShoppingListDetailViewController: UIViewController {
     
-    @IBOutlet var listCountLabel: UILabel!
-    @IBOutlet var nameTextField: UITextField!
-    @IBOutlet var addressTextField: UITextField!
     
-    var shoppingListController = ShoppingListController?
+    @IBOutlet weak var listCountLabel: UILabel!
+    @IBOutlet var nameTextField: UITextField!
+    @IBOutlet weak var addressTextField: UITextField!
+    var shoppingListController: ShoppingListController?
 
     override func viewDidLoad() {
         super.viewDidLoad()

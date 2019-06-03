@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let reuseIdentifier = "ShoppingItemCell"
+// private let reuseIdentifier = "ShoppingItemCell"
 
 class ShoppingListCollectionViewController: UICollectionViewController {
     
@@ -18,14 +18,14 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         collectionView?.reloadData()
 
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "ShoppingItemCell")
 
     }
 
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShoppingOrder" {
+        if segue.identifier == "ToSendOrder" {
             guard let shoppingListDetailVC = segue.destination as? ShoppingListDetailViewController else { return }
             shoppingListDetailVC.shoppingListController = self.shoppingListController
         }
@@ -38,12 +38,13 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ShoppingItem
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingItemCell", for: indexPath) as? ShoppingItemCollectionViewCell else { return UICollectionViewCell() }
+        
         let shoppingItem = self.shoppingListController.shoppingItems[indexPath.row]
         cell.nameLabel.text = shoppingItem.name
         cell.imageView.image = UIImage(named: shoppingItem.name)
         cell.hasBeenAddedLabel.text = shoppingItem.hasBeenAdded ? "Added" : "Not Added"
-        cell.delegate.self
+        cell.delegate = self
     
         return cell
     }
