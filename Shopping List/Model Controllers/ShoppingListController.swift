@@ -14,7 +14,7 @@ class ShoppingListController {
         if self.shoppingItemsPreference == false {
             self.setShoppingItems()
         } else {
-            self.loadFromPersistanceStore()
+            self.loadFromPersistentStore()
         }
     }
 
@@ -80,7 +80,7 @@ func saveToPersistentStore() {
     }
 }
 
-func loadFromPersistanceStore() {
+func loadFromPersistentStore() {
     let fileManager = FileManager.default
     guard let url = self.shoppingFileURL,
         fileManager.fileExists(atPath: url.path) else { return }

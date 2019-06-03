@@ -14,12 +14,9 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
     var shoppingListController = ShoppingListController()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         collectionView?.reloadData()
-
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "ShoppingItemCell")
-
     }
 
     // MARK: - Navigation
@@ -51,14 +48,14 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 }
 
     // MARK: UICollectionViewDelegate
-    extension ShoppingListCollectionViewController: ShoppingItemCollectionViewCellDelegate {
-        func toggleHasBeenAdded(for cell: ShoppingItemCollectionViewCell) {
-            guard let indexPath = self.collectionView?.indexPath(for: cell) else { return }
+extension ShoppingListCollectionViewController: ShoppingItemCollectionViewCellDelegate {
+    func toggleHasBeenAdded(for cell: ShoppingItemCollectionViewCell) {
+        guard let indexPath = self.collectionView?.indexPath(for: cell) else { return }
             
         let shoppingItem = self.shoppingListController.shoppingItems[indexPath.row]
         self.shoppingListController.updateHasBeenAdded(for: shoppingItem)
             
-            collectionView?.reloadData()
-        }
+        collectionView?.reloadData()
     }
+}
 
