@@ -8,27 +8,44 @@
 
 import Foundation
 class ShoppingListController {
+    var shoppingList: [ShoppingItem] = []
+    
     
     init() {
         
         loadFromPersistentStore()
-        
+        checkList()
+            
     }
     
-    //Data Arrays
-    private var shoppingList: [ShoppingItem] = []
-    
-    let itemNames = [
-        ShoppingItem(itemName: "Apple"),
-        ShoppingItem(itemName: "Grapes"),
-        ShoppingItem(itemName: "Milk"),
-        ShoppingItem(itemName: "Muffins"),
-        ShoppingItem(itemName: "Popcorn"),
-        ShoppingItem(itemName: "Soda"),
-        ShoppingItem(itemName: "Strawberries")
+
+  
         
-    ]
+
+    func checkList() {
+        
+        if shoppingList == [] as! [ShoppingItem] {
+            
+            let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+            
+            var newArray: [ShoppingItem] = []
+            
+            for x in itemNames {
+                
+                let item = ShoppingItem(itemName: x)
+                
+                newArray.append(item)
+             
+             shoppingList = newArray
+            }
     
+        }
+        else {
+                return
+        }
+    }
+        
+
     
     //MARK: SAVING FILES
     private var persistentFileURL : URL?{
@@ -40,13 +57,6 @@ class ShoppingListController {
     
     }
     
-    
-    
-    
-    
-        
-
-    
     func saveToPersistentStore(){
         guard let url = persistentFileURL else {return}
         
@@ -54,10 +64,7 @@ class ShoppingListController {
         do{
             let encoder = PropertyListEncoder()
             let data = try encoder.encode(shoppingList)
-            let itemNameData = try encoder.encode(itemNames)
-            
             try data.write(to: url)
-            try itemNameData.write(to: url)
             
         } catch {
             
@@ -82,23 +89,16 @@ class ShoppingListController {
         }
         
     }
-    //SAVING ENDS
     
-    //MARK: RemoveFromCart is where I stopped!!!!!!!!!
-    func addToCart(itemToAdd: ShoppingItem) {
-    
-        shoppingList.append(itemToAdd)
-            
-        saveToPersistentStore()
+    func toggleAddedToCart(item: ShoppingItem) {
+        
+        guard let index = shoppingList.firstIndex(of: item) else {return}
+        
+        shoppingList[index].addedToCart = !shoppingList[index].addedToCart
         
     }
     
-    func removeFromCart(itemToRemove: ShoppingItem) {
-        
-        //I have a feeling that this is wrong
-        shoppingList.remove(at: itemNames.count)
-        
-        saveToPersistentStore()
-        
-    }
+    
+
+    
 }

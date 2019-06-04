@@ -25,7 +25,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="pnh-OA-2Nz" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="pnh-OA-2Nz" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="8" y="8" width="175" height="225"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -77,6 +77,11 @@
                                     <constraint firstAttribute="trailing" secondItem="Q6w-1c-y3U" secondAttribute="trailing" id="mpB-lu-4fL"/>
                                 </constraints>
                                 <size key="customSize" width="175" height="225"/>
+                                <connections>
+                                    <outlet property="itemAddedLabel" destination="anK-x6-gEV" id="Dtc-Ag-Bce"/>
+                                    <outlet property="itemImage" destination="ok6-cd-EtP" id="jQs-Th-xJM"/>
+                                    <outlet property="itemName" destination="D6Q-Su-TZ5" id="yZ1-un-CIb"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -130,6 +135,9 @@ shopping list</string>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ab3-fG-GUg">
                                         <rect key="frame" x="0.0" y="151" width="369.5" height="30"/>
                                         <state key="normal" title="Send Order"/>
+                                        <connections>
+                                            <action selector="sendOrderButton:" destination="KGE-Ue-Lzf" eventType="touchUpInside" id="cpC-tp-Yjq"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -141,6 +149,11 @@ shopping list</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hNn-4v-B52"/>
                     </view>
+                    <connections>
+                        <outlet property="enterAddressTextField" destination="rNx-Qi-43n" id="bhH-uu-db0"/>
+                        <outlet property="enterNameTextField" destination="FTJ-3u-L1U" id="k5H-1M-s45"/>
+                        <outlet property="nameInCartLabel" destination="Cl4-jn-UeI" id="9ev-gA-Ppp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D0J-BJ-F6K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
