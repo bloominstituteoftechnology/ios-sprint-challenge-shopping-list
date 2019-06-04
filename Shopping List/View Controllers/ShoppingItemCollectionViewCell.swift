@@ -47,10 +47,11 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         if shoppingItem.addedToCart == true {
             itemAddedLabel.text = "Added To Cart"
         } else {
-            itemAddedLabel.text = "Add To Cart"
+            itemAddedLabel.text = "Add"
             
         }
         
+        delegate?.isAddedToCart(on: self)
         
         
     }

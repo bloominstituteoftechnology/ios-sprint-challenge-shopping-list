@@ -8,6 +8,7 @@
 
 import Foundation
 class ShoppingListController {
+    
     var shoppingList: [ShoppingItem] = []
     
     
@@ -95,6 +96,8 @@ class ShoppingListController {
         guard let index = shoppingList.firstIndex(of: item) else {return}
 
         shoppingList[index].addedToCart = !shoppingList[index].addedToCart
+        
+        saveToPersistentStore()
         
         
         

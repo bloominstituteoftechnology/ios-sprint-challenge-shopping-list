@@ -10,7 +10,7 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-let shoppingListController = ShoppingListController()
+
 
 class ShoppingListCollectionViewController: UICollectionViewController {
     
@@ -23,8 +23,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         
     }
 
-    
-    let shopping = ShoppingListController()
+    let shoppingListController = ShoppingListController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,24 +47,28 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDataSource
     
+    
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let item = shoppingListController.shoppingList[indexPath.item]
         shoppingListController.toggleAddedToCart(item: item)
         
-        (print("\(item.itemName) is added to cart? Answer: (\((item.addedToCart))"))
+        collectionView.reloadData()
+        
+        //(print("\(item.itemName) is added to cart? Answer: (\(!item.addedToCart)"))
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return shopping.shoppingList.count
+        return shoppingListController.shoppingList.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ShoppingItemCollectionViewCell else {fatalError("Cell for Item At Failed")}
         
-        let thisCell = shopping.shoppingList[indexPath.row]
+        let thisCell = shoppingListController.shoppingList[indexPath.row]
         
         cell.shoppingItem = thisCell
     

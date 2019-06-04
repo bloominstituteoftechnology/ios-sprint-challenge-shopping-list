@@ -11,7 +11,7 @@ import UIKit
 
 struct ShoppingItem: Codable, Equatable {
     
-    init(itemName: String, addedToCart: Bool = true) {
+    init(itemName: String, addedToCart: Bool = false) {
         
         self.itemName = itemName
         self.addedToCart = addedToCart
