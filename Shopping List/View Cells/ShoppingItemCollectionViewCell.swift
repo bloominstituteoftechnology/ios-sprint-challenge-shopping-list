@@ -21,11 +21,11 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet var nameLabel: UILabel!
     
     weak var delegate: ShoppingItemCollectionViewCellDelegate?
+   
+    @IBAction func shoppingItemTapped(_ sender: UIButton) {
+        delegate?.toggleHasBeenAdded(for: self)
+    }
     
-//    @IBAction func shoppingItemTapped(_ sender: UIButton) {
-//        delegate?.toggleHasBeenAdded(for: self)
-//    }
-       
     private func updateViews() {
         guard  let shoppingItem = self.shoppingItem else { return }
         

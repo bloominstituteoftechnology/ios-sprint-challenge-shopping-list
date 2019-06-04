@@ -14,6 +14,7 @@ class ShoppingListDetailViewController: UIViewController {
     @IBOutlet weak var listCountLabel: UILabel!
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
+    
     var shoppingListController: ShoppingListController?
 
     override func viewDidLoad() {

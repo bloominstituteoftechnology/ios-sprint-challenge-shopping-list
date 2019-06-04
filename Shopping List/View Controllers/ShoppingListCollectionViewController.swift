@@ -16,7 +16,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        collectionView?.reloadData()
+        collectionView.reloadData()
     }
 
     // MARK: - Navigation
@@ -37,30 +37,25 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingItemCell", for: indexPath) as? ShoppingItemCollectionViewCell else { return UICollectionViewCell() }
         
-        let shoppingItem = self.shoppingListController.shoppingItems[indexPath.row]
-        cell.shoppingItem = shoppingItem
-//        cell.nameLabel.text = shoppingItem.name
-//        cell.imageView.image = UIImage(named: shoppingItem.name)
-//        cell.hasBeenAddedLabel.text = shoppingItem.hasBeenAdded ? "Added" : "Not Added"
+        let shoppingItem = self.shoppingListController.shoppingItems[indexPath.item]
+        cell.nameLabel.text = shoppingItem.name
+        cell.imageView.image = UIImage(named: shoppingItem.name)
+        cell.hasBeenAddedLabel.text = shoppingItem.hasBeenAdded ? "Added" : "Not Added"
         cell.delegate = self
     
         return cell
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        <#code#>
     }
 }
 
     // MARK: UICollectionViewDelegate
 extension ShoppingListCollectionViewController: ShoppingItemCollectionViewCellDelegate {
     func toggleHasBeenAdded(for cell: ShoppingItemCollectionViewCell) {
-        guard let indexPath = self.collectionView?.indexPath(for: cell) else { return }
+        guard let indexPath = self.collectionView.indexPath(for: cell) else { return }
             
-        let shoppingItem = self.shoppingListController.shoppingItems[indexPath.row]
+        let shoppingItem = self.shoppingListController.shoppingItems[indexPath.item]
         self.shoppingListController.updateHasBeenAdded(for: shoppingItem)
             
-        collectionView?.reloadData()
+        collectionView.reloadData()
     }
 }
 
