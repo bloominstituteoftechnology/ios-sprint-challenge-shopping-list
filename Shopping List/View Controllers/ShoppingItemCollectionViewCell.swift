@@ -9,7 +9,9 @@
 import UIKit
 
 protocol ShoppingItemCollectionViewCellDelegate: class {
-    func addedToCartTapped(on cell: ShoppingItemCollectionViewCell)
+    
+    func isAddedToCart(on cell: ShoppingItemCollectionViewCell)
+    
 }
 
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
@@ -24,7 +26,10 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         
     }
     
+    
+    
     weak var delegate: ShoppingItemCollectionViewCellDelegate?
+    
     
     @IBOutlet weak var itemImage: UIImageView!
     @IBOutlet weak var itemName: UILabel!
@@ -32,11 +37,12 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
     func updateViews(){
         
-        itemName.self.text = shoppingItem.self?.itemName
-        
-        itemImage.self.image = UIImage(named: itemName.text!)
-        
         guard let shoppingItem = shoppingItem else {return}
+        
+        itemImage.image = shoppingItem.image
+        
+        itemName.text = shoppingItem.itemName
+        
         
         if shoppingItem.addedToCart == true {
             itemAddedLabel.text = "Added To Cart"

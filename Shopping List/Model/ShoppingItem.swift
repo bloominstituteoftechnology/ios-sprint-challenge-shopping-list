@@ -11,7 +11,7 @@ import UIKit
 
 struct ShoppingItem: Codable, Equatable {
     
-    init(itemName: String, addedToCart: Bool = false) {
+    init(itemName: String, addedToCart: Bool = true) {
         
         self.itemName = itemName
         self.addedToCart = addedToCart
@@ -21,5 +21,11 @@ struct ShoppingItem: Codable, Equatable {
     var itemName   : String
     var addedToCart: Bool
     
+    var image: UIImage {
+        
+        return UIImage(named: itemName)!
+     
+        
+    }
     
 }

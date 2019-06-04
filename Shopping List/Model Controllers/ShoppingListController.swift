@@ -93,8 +93,10 @@ class ShoppingListController {
     func toggleAddedToCart(item: ShoppingItem) {
         
         guard let index = shoppingList.firstIndex(of: item) else {return}
-        
+
         shoppingList[index].addedToCart = !shoppingList[index].addedToCart
+        
+        
         
     }
     

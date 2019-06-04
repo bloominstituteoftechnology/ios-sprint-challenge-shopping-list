@@ -10,7 +10,18 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
+let shoppingListController = ShoppingListController()
+
 class ShoppingListCollectionViewController: UICollectionViewController {
+    
+    func isAddedToCart(on cell: ShoppingItemCollectionViewCell) {
+        
+        guard let indexPath = collectionView.indexPath(for: cell) else {return}
+        let item = shoppingListController.shoppingList[indexPath.row]
+        shoppingListController.toggleAddedToCart(item: item)
+        collectionView.reloadItems(at: [indexPath])
+        
+    }
 
     
     let shopping = ShoppingListController()
@@ -21,10 +32,8 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+        
+       
     }
 
     /*
@@ -38,6 +47,14 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     */
 
     // MARK: UICollectionViewDataSource
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let item = shoppingListController.shoppingList[indexPath.item]
+        shoppingListController.toggleAddedToCart(item: item)
+        
+        (print("\(item.itemName) is added to cart? Answer: (\((item.addedToCart))"))
+    }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -46,13 +63,11 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ShoppingItemCollectionViewCell else {return UICollectionViewCell()}
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ShoppingItemCollectionViewCell else {fatalError("Cell for Item At Failed")}
         
         let thisCell = shopping.shoppingList[indexPath.row]
         
-        cell.itemName.text = thisCell.itemName
-        cell.itemImage.image = UIImage(named: thisCell.itemName)
-        // Configure the cell
+        cell.shoppingItem = thisCell
     
         return cell
     }
