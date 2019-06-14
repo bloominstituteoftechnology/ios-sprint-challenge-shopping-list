@@ -10,4 +10,8 @@ import UIKit
 
 class GroceryCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var addedButton: UIButton!
+    @IBOutlet weak var itemImageView: UIImageView!
+    @IBOutlet weak var itemNameLabel: UILabel!
+    
 }
