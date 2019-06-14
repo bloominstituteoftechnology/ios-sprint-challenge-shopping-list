@@ -10,6 +10,12 @@ import UIKit
 
 class OrderDetailViewController: UIViewController {
 
+	
+	
+	@IBOutlet var orderSummaryLabel: UILabel!
+	@IBOutlet var nameTextField: UITextField!
+	@IBOutlet var addressTextField: UITextField!
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,7 +23,20 @@ class OrderDetailViewController: UIViewController {
     }
     
 
-    /*
+	@IBAction func orderButtonTapped(_ sender: UIButton) {
+		showAlert()
+		nameTextField.text = nil
+		addressTextField.text = nil
+	}
+	
+	func showAlert() {
+		guard let name = nameTextField.text else { return }
+		guard let address = addressTextField.text else { return }
+		let alert = UIAlertController(title: "Delivery for \(name)!", message: "Your shopping items will be delivered to \(address) in 15 minutes!", preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+		present(alert, animated: true, completion: nil)
+	}
+	/*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
