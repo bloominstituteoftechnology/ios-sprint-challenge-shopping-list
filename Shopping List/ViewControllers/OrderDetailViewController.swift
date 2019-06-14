@@ -10,14 +10,20 @@ import UIKit
 
 class OrderDetailViewController: UIViewController {
 
+	let shoppingCell = ShoppingItemCollectionViewCell()
+	
+	
 	
 	
 	@IBOutlet var orderSummaryLabel: UILabel!
 	@IBOutlet var nameTextField: UITextField!
 	@IBOutlet var addressTextField: UITextField!
 	
+	var numberOfItemsSelected = 0
+	
     override func viewDidLoad() {
         super.viewDidLoad()
+		orderSummaryLabel.text = "You have \(numberOfItemsSelected) item(s) in your order"
 
         // Do any additional setup after loading the view.
     }

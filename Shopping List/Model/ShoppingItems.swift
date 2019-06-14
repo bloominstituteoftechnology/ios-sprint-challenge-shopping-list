@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct ShoppingItem: Codable {
+class ShoppingItem: Codable {
 	
 	init(itemName: String, hasBeenAdded: Bool, imageName: String) {
 		self.itemName = itemName
