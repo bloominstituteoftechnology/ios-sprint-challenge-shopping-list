@@ -14,7 +14,18 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
     let shoppingItemController = ShoppingItemController()
     
+    var itemsInCart: [ShoppingItem] = []
+    
+    
+    override func viewDidLoad() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
+        
         super.viewWillAppear(animated)
         collectionView!.reloadData()
     }
@@ -43,45 +54,92 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
         let item = shoppingItemController.shoppingCart[indexPath.item]
         cell.shoppingItemName.text = item.name
-        cell.isAddedButton.setImage(UIImage(named: item.name), for: .normal)
+        cell.cartStatus.text = "Not in cart"
+        cell.itemImage.image = UIImage(named: item.name)
         if item.isOnList == true {
-            cell.isAddedButton.titleLabel?.text = "Added"
+            cell.cartStatus.text = "Added"
         } else {
-            cell.isAddedButton.titleLabel?.text = "Not in cart"
+            cell.cartStatus.text = "Not in cart"
         }
-    
+
         return cell
     }
 
     // MARK: UICollectionViewDelegate
 
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
+   
 
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
 
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
 
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
+//    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
+//        return false
+//    }
 
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
+//    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
+//
+//    }
+//
     
+    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
+        let addedItem = itemFor(indexPath: indexPath)
+        shoppingItemController.addToCart(add: addedItem)
+        toggleIfInShoppingCart(for: collectionView.cellForItem(at: indexPath) as! ShoppingItemCollectionViewCell)
+        print(shoppingItemController.shoppingList)
+        collectionView.reloadData()
     }
-    */
+    
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
+    
+    private func itemFor(indexPath: IndexPath) -> ShoppingItem {
+        if indexPath.section == 0 {
+            return shoppingItemController.shoppingCart[indexPath.item]
+        } else {
+            return shoppingItemController.shoppingCart[indexPath.item]
+        }
+    }
+    
+    private func selectedItem(item: ShoppingItem) -> UICollectionViewCell {
+        if itemFor(indexPath: shoppingItemController.shoppingCart.index(of: item)) {
+            
+        }
+    }
+    
+    @IBAction func toggleCartStatus(_ sender: UIButton) {
+        toggleIfInShoppingCart(for: collectionView(UICollectionView, cellForItemAt: index))
+        
+    }
+    
+    @IBAction func unwindToShoppingListCollectionViewController(_ sender: UIStoryboardSegue) {
+        
+    }
+    
+//    @IBAction func updateCart(_ sender: Any) {
+//        let userDefaults = UserDefaults.standard
+//        userDefaults.set(sender.isSelected, forKey: .shouldBeOnListKey)
+//    }
+    
+//    private func updateViews() {
+//        let userDefaults = UserDefaults.standard
+//    }
 
+}
+
+extension ShoppingListCollectionViewController: ShoppingListCellDelegate {
+    func toggleIfInShoppingCart(for cell: ShoppingItemCollectionViewCell) {
+        cell.shoppingItem?.isOnList.toggle()
+        if cell.shoppingItem?.isOnList == true {
+            itemsInCart.append(cell.shoppingItem!)
+        } else if cell.shoppingItem?.isOnList == false {
+            if itemsInCart.contains(cell.shoppingItem!) {
+                itemsInCart.remove(at: itemsInCart.index(of: cell.shoppingItem!)!)
+            } else {
+                return
+            }
+        }
+    }
+    
+    
 }

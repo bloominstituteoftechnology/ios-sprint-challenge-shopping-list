@@ -10,7 +10,33 @@ import UIKit
 
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet var shoppingItemName: UILabel!
-    @IBOutlet var isAddedButton: UIButton!
+    @IBOutlet var itemImage: UIImageView!
+    @IBOutlet var cartStatus: UILabel!
     
+   
+    
+    var shoppingItem: ShoppingItem? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    
+    
+    weak var delegate: ShoppingListCellDelegate?
+    
+    func updateViews() {
+        guard let itemCartStatus = shoppingItem?.isOnList else { return }
+        if itemCartStatus == false {
+            cartStatus.text = "Not Added"
+        } else if itemCartStatus == true {
+                cartStatus.text = "Added"
+            }
+        
+    }
+    
+
+    
+   
     
 }
