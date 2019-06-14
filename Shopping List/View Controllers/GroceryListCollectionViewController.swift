@@ -18,15 +18,16 @@ class GroceryListCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+                let detailVC = segue.destination as! DetailViewController
+        let collectionViewList = groceryItemController.addedListCount
+       detailVC.groceryItemController.addedListCount = collectionViewList
     }
-    */
+ 
 
     // MARK: UICollectionViewDataSource
 
@@ -43,10 +44,7 @@ class GroceryListCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! GroceryCollectionViewCell
-    
         let shoppingItem = groceryItemController.groceryList[indexPath.item]
-        //cell.itemImageView.image = shoppingItem.itemImage
-        //cell.itemNameLabel.text = shoppingItem.itemName
         cell.groceryItem = shoppingItem
         cell.delegate = self
         return cell
@@ -56,10 +54,19 @@ class GroceryListCollectionViewController: UICollectionViewController {
 
 extension GroceryListCollectionViewController: GroceryCollectionViewCellDelegate {
     func addedButtonWasTapped(on cell: GroceryCollectionViewCell) {
+        let userDefaults = UserDefaults.standard
         guard let item = cell.groceryItem,
               let indexPath = collectionView?.indexPath(for: cell) else { return }
         groceryItemController.toggleAdded(item: item)
+        
+        if item.hasBeenAdded == true {
+            userDefaults.set(true, forKey: .added)
+        }else {
+            userDefaults.set(false, forKey: .added)
+        }
+        
         collectionView?.reloadItems(at: [indexPath])
+
 
     }
     

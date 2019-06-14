@@ -13,6 +13,7 @@ class GroceryItemController {
     
     var itemList: [String] = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     var groceryList: [GroceryItem] = []
+    var addedListCount = 0
     
     func loadgroceryList() {
         for item in itemList {
@@ -23,6 +24,16 @@ class GroceryItemController {
     
     func toggleAdded(item: GroceryItem) {
         item.hasBeenAdded.toggle()
+    }
+    
+    func groceryAddedCount() -> Int {
+        for item in groceryList {
+            if item.hasBeenAdded == true {
+                addedListCount += 1
+                
+            }
+        }
+        return addedListCount
     }
     
     init() {

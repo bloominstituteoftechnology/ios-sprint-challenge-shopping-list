@@ -31,18 +31,10 @@ class GroceryCollectionViewCell: UICollectionViewCell {
         guard let item = groceryItem else {return}
         let userDefaults = UserDefaults.standard
         if item.hasBeenAdded == true {
-            userDefaults.set("Added", forKey: .added)
+            userDefaults.set(true, forKey: .added)
         }else {
-            userDefaults.set("Not Added", forKey: .added)
+            userDefaults.set(false, forKey: .added)
         }
-        let addedChoice = userDefaults.bool(forKey: .added)
-        
-        if addedChoice == true {
-            addedButton.setTitle("Added", for: .normal)
-        }else {
-            addedButton.setTitle("Not Added", for: .normal)
-        }
-
     }
     
     func updateViews() {
@@ -51,11 +43,11 @@ class GroceryCollectionViewCell: UICollectionViewCell {
         itemImageView.image = item.itemImage
         itemNameLabel.text = item.itemName
         
-        if item.hasBeenAdded == true {
-            userDefaults.set(true, forKey: .added)
+        let addedChoice = userDefaults.bool(forKey: .added)
+        
+        if addedChoice == true {
             addedButton.setTitle("Added", for: .normal)
-        } else {
-            userDefaults.set(false, forKey: .added)
+        }else {
             addedButton.setTitle("Not Added", for: .normal)
         }
     }

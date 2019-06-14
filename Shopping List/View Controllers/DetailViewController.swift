@@ -10,13 +10,18 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
+    let groceryItemController = GroceryItemController ()
+    
+    @IBOutlet weak var itemCountLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        itemCountLabel.text = "You have \(groceryItemController.addedListCount) item(s) in your cart."
     }
     
 
+    
+    
     /*
     // MARK: - Navigation
 
