@@ -28,7 +28,7 @@ You are not allowed to collaborate during the Sprint Challenge. However, you are
 
 Please view the screen recording so you will know what your finished project should look like:
 
-![](https://user-images.githubusercontent.com/16965587/43629692-37015176-96bb-11e8-851b-dba8f56f06e0.gif)
+![]()
 
 (The gif is fairly large in size. It may take a few seconds for it to appear)
 
