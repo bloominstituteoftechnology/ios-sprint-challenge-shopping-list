@@ -6,10 +6,11 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Shopping List Collection View Controller-->
+        <!--Shopping List-->
         <scene sceneID="SXV-Ex-WDr">
             <objects>
                 <collectionViewController id="298-fj-CeH" customClass="ShoppingListCollectionViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
@@ -24,7 +25,7 @@
                             <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoppingItemCell" id="PTN-CL-9cF">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoppingItemCell" id="PTN-CL-9cF" customClass="SHoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="10" y="10" width="120" height="140"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -66,6 +67,10 @@
                                     <constraint firstItem="avw-YH-yMf" firstAttribute="leading" secondItem="PTN-CL-9cF" secondAttribute="leading" id="on7-Hr-RHK"/>
                                 </constraints>
                                 <size key="customSize" width="120" height="140"/>
+                                <connections>
+                                    <outlet property="imageView" destination="AV5-Jd-RTN" id="7eP-Ld-RNX"/>
+                                    <outlet property="itemNameLabel" destination="xTP-BK-IbG" id="VgC-ha-5AP"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -73,11 +78,32 @@
                             <outlet property="delegate" destination="298-fj-CeH" id="huc-Mq-8c3"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="lqi-BB-XWJ"/>
+                    <navigationItem key="navigationItem" title="Shopping List" id="lqi-BB-XWJ">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="gPM-a1-RRE">
+                            <connections>
+                                <segue destination="sd7-p5-Lqn" kind="show" identifier="OrderSegue" id="7Te-sF-Tta"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Qc-V0-g54" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1521.7391304347827" y="132.58928571428572"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="l63-Mh-sHL">
+            <objects>
+                <viewController id="sd7-p5-Lqn" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tlc-Gd-NOZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="b4z-DG-PUj"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g7g-2B-pyp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2259" y="133"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XX8-Wo-sc6">

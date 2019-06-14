@@ -13,13 +13,13 @@ class ShoppingController {
 	private(set) var items: [ShoppingItem] = []
 	
 	var showInitialShoppingItems = [
-	ShoppingItem(itemName: "Apple", hasBeenAdded: false),
-	ShoppingItem(itemName: "Grapes", hasBeenAdded: false),
-	ShoppingItem(itemName: "Milk", hasBeenAdded: false),
-	ShoppingItem(itemName: "Muffins", hasBeenAdded: false),
-	ShoppingItem(itemName: "Popcorn", hasBeenAdded: false),
-	ShoppingItem(itemName: "Soda", hasBeenAdded: false),
-	ShoppingItem(itemName: "Strawberries", hasBeenAdded: false)
+	ShoppingItem(itemName: "Apple", hasBeenAdded: false, imageName: "Apple"),
+	ShoppingItem(itemName: "Grapes", hasBeenAdded: false, imageName: "Grapes"),
+	ShoppingItem(itemName: "Milk", hasBeenAdded: false, imageName: "Milk"),
+	ShoppingItem(itemName: "Muffins", hasBeenAdded: false, imageName: "Muffin"),
+	ShoppingItem(itemName: "Popcorn", hasBeenAdded: false, imageName: "Popcorn"),
+	ShoppingItem(itemName: "Soda", hasBeenAdded: false, imageName: "Soda"),
+	ShoppingItem(itemName: "Strawberries", hasBeenAdded: false, imageName: "Strawberries")
 	]
 	
 	let shouldShowShoppingItems = UserDefaults.standard.bool(forKey: .shouldShowSoppingItems)
@@ -33,6 +33,7 @@ class ShoppingController {
 	}
 	
 	init() {
+		items = showInitialShoppingItems
 		loadFromPersistentStore()
 	}
 	
