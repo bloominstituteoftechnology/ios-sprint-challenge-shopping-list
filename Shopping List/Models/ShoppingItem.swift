@@ -7,8 +7,16 @@
 //
 
 import Foundation
+import UIKit
 
-class ShoppingItem {
+struct ShoppingItem/*: Encodable, Decodable*/ {
     var name: String
+    var image: UIImage
     var hasBeenAdded: Bool
+    
+    init(name: String, imageName: String, hasBeenAdded: Bool = false) {
+        self.name = name
+        self.image = UIImage(named: imageName)!
+        self.hasBeenAdded = hasBeenAdded
+    }
 }

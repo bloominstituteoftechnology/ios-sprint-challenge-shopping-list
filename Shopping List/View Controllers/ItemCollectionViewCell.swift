@@ -7,7 +7,21 @@
 //
 
 import UIKit
+protocol AddedDelegate {
+    func hasBeenAddedValueChanged()
+}
+
 
 class ItemCollectionViewCell: UICollectionViewCell {
+    
+    var delegate = AddedDelegate?.self
+    
+    var shoppingList = ShoppingList()
+    
+    @IBOutlet weak var isAddedLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    
     
 }
