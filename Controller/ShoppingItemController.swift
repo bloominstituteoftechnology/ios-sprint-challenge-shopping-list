@@ -15,7 +15,7 @@ class ShoppingItemController {
     var shoppingCart: [ShoppingItem] {
         let itemNames = [
             ShoppingItem(name: "Apple"),
-            ShoppingItem(name: "Grape"),
+            ShoppingItem(name: "Grapes"),
             ShoppingItem(name: "Milk"),
             ShoppingItem(name: "Muffin"),
             ShoppingItem(name: "Popcorn"),
@@ -23,22 +23,23 @@ class ShoppingItemController {
             ShoppingItem(name: "Strawberries")
             ]
         
-    
+        
         let shouldBeOnList = UserDefaults.standard.bool(forKey: .shouldBeOnListKey)
         if shouldBeOnList {
             for item in itemNames {
-                let groceryItem = ShoppingItem(name: item.name, isOnList: false)
-                shoppingList.append(groceryItem)
+                if let index = itemNames.index(of: item) {
+                    addToCart(add: itemNames[index])
+                }
             }
         }
-        return shoppingList
+        return itemNames
     }
     
     private var shoppingListURL: URL? {
         let fileManager = FileManager.default
         guard let documents = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
         print("Documents: \(documents.path)")
-        return documents.appendingPathComponent("ShoppingItem.plist")
+        return documents.appendingPathComponent("shoppingItem.plist")
     }
 
     init() {
@@ -94,6 +95,10 @@ class ShoppingItemController {
     
     
     func loadFromPersistentStore() {
+        let fileManager = FileManager.default
+        guard let url = shoppingListURL,
+            fileManager.fileExists(atPath: url.path) else { return }
+        
         do {
             guard let url = shoppingListURL else { return }
             let data = try Data(contentsOf: url)

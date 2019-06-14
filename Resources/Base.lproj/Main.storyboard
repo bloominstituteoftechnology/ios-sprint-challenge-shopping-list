@@ -38,24 +38,25 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="C0y-rL-Wr8">
                                                     <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uJM-i0-cwC">
-                                                            <rect key="frame" x="0.0" y="0.0" width="150" height="129.5"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                        <button opaque="NO" contentMode="center" contentHorizontalAlignment="trailing" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uJM-i0-cwC">
+                                                            <rect key="frame" x="0.0" y="0.0" width="150" height="120"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="120" id="A8H-BO-MHl"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                             <state key="normal" title="Button">
                                                                 <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             </state>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s4E-CL-T2n">
-                                                            <rect key="frame" x="0.0" y="129.5" width="150" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                            <rect key="frame" x="0.0" y="120" width="150" height="30"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.83015155770000004" green="0.85751592060000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </stackView>
                                             </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="C0y-rL-Wr8" firstAttribute="top" secondItem="mLr-7M-SBx" secondAttribute="top" id="1d4-9H-qR9"/>
                                                 <constraint firstAttribute="bottom" secondItem="C0y-rL-Wr8" secondAttribute="bottom" id="7qO-mZ-DWu"/>

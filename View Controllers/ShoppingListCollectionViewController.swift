@@ -16,7 +16,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        collectionView?.reloadData()
+        collectionView!.reloadData()
     }
     /*
     // MARK: - Navigation
@@ -30,21 +30,25 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
+   
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return shoppingItemController.shoppingCart.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ShoppingItemCollectionViewCell
     
-        // Configure the cell
+        let item = shoppingItemController.shoppingCart[indexPath.item]
+        cell.shoppingItemName.text = item.name
+        cell.isAddedButton.setImage(UIImage(named: item.name), for: .normal)
+        if item.isOnList == true {
+            cell.isAddedButton.titleLabel?.text = "Added"
+        } else {
+            cell.isAddedButton.titleLabel?.text = "Not in cart"
+        }
     
         return cell
     }
