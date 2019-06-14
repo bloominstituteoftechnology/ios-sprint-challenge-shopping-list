@@ -9,19 +9,20 @@
 import Foundation
 import UIKit
 
-struct ShoppingItem {
+struct ShoppingItem: Codable, Equatable {
+    var name: String
+    var isOnList : Bool
     
-    init(name: String, imageName: String, isOnList: Bool = false) {
+    
+    init(name: String, isOnList: Bool = false) {
         self.name = name
-        self.image = UIImage(named: imageName)!
         self.isOnList = isOnList
     }
     
-    var name: String
-    var isOnList : Bool
-    var image: UIImage
+    
     
     
 }
+
 
 

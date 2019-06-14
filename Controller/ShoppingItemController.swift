@@ -9,28 +9,102 @@
 import Foundation
 
 class ShoppingItemController {
-//    var shoppingItems: [ShoppingItem] {
-//        var itemNames = [
-//            ShoppingItem(name: "Apple", imageName: "Apple"),
-//            ShoppingItem(name: "Grape", imageName: "Grape"),
-//            ShoppingItem(name: "Milk", imageName: "Milk"),
-//            ShoppingItem(name: "Muffin", imageName: "Muffin"),
-//            ShoppingItem(name: "Popcorn", imageName: "Popcorn"),
-//            ShoppingItem(name: "Soda", imageName: "Soda"),
-//            ShoppingItem(name: "Strawberries", imageName: "Strawberries")
-//            ]
-//        
-//        let shouldBeOnList = UserDefaults.standard.bool(forKey: .shouldBeOnListKey)
-//        
-//        
-//    }
+    private(set) var shoppingList: [ShoppingItem] = []
+    
+    
+    var shoppingCart: [ShoppingItem] {
+        let itemNames = [
+            ShoppingItem(name: "Apple"),
+            ShoppingItem(name: "Grape"),
+            ShoppingItem(name: "Milk"),
+            ShoppingItem(name: "Muffin"),
+            ShoppingItem(name: "Popcorn"),
+            ShoppingItem(name: "Soda"),
+            ShoppingItem(name: "Strawberries")
+            ]
+        
+    
+        let shouldBeOnList = UserDefaults.standard.bool(forKey: .shouldBeOnListKey)
+        if shouldBeOnList {
+            for item in itemNames {
+                let groceryItem = ShoppingItem(name: item.name, isOnList: false)
+                shoppingList.append(groceryItem)
+            }
+        }
+        return shoppingList
+    }
     
     private var shoppingListURL: URL? {
         let fileManager = FileManager.default
         guard let documents = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
         print("Documents: \(documents.path)")
-        return documents.appendingPathComponent("ShoppingItems.plist")
+        return documents.appendingPathComponent("ShoppingItem.plist")
     }
+
+    init() {
+        loadFromPersistentStore()
+    }
+    
+    
+    var addedItems: [ShoppingItem] {
+        get {
+            return ShoppingItemController().shoppingList.filter() {
+                $0.isOnList == true
+            }
+    }
+    }
+    
+    var unaddedItems: [ShoppingItem] {
+        get {
+            return ShoppingItemController().shoppingList.filter() {
+                $0.isOnList == false
+            }
+        }
+    }
+    
+    func addToCart(add item: ShoppingItem) {
+        if let index = shoppingList.index(of: item) {
+            shoppingList[index].isOnList = true
+            saveToPersistentStore()
+        }
+        
+    }
+    
+    func removeFromCart(remove item: ShoppingItem) {
+        if let index = shoppingList.index(of: item) {
+            shoppingList[index].isOnList = false
+            saveToPersistentStore()
+        }
+    }
+    
+    
+    func saveToPersistentStore() {
+        guard let url = shoppingListURL else { return }
+        do {
+            let encoder = PropertyListEncoder()
+            let data = try encoder.encode(shoppingList)
+            try data.write(to: url)
+           
+        } catch {
+            print("Error saving to disk: \(error)")
+        }
+    }
+    
+    
+    
+    
+    func loadFromPersistentStore() {
+        do {
+            guard let url = shoppingListURL else { return }
+            let data = try Data(contentsOf: url)
+            let decoder = PropertyListDecoder()
+            let shoppingItems = try decoder.decode([ShoppingItem].self, from: data)
+            shoppingList = shoppingItems
+        } catch {
+            print("Error loading from disk \(error)")
+        }
+    }
+    
     
     
 }
