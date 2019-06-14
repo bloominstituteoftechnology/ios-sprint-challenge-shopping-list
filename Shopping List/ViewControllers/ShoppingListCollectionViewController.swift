@@ -13,6 +13,12 @@ private let reuseIdentifier = "ShoppingItemCell"
 class ShoppingListCollectionViewController: UICollectionViewController {
 	
 	let shoppingController = ShoppingController()
+	
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		collectionView?.reloadData()
+	}
 
     override func viewDidLoad() {
         super.viewDidLoad()
