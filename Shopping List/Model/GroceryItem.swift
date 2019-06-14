@@ -9,13 +9,13 @@
 import Foundation
 import UIKit
 
-struct GroceryItem {
+class GroceryItem {
     var itemName: String
     var itemImage: UIImage
-    var hasBeenAdded: Bool
+    var hasBeenAdded: Bool = false
     
-    init(itemName: String, itemImage: UIImage, hasBeenAdded: Bool = false) {
-        self.itemImage = itemName
+    init(itemName: String, itemImage: UIImage) {
+        self.itemName = itemName
         self.itemImage = itemImage
     }
 }

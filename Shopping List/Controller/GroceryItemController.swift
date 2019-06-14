@@ -11,8 +11,7 @@ import UIKit
 
 class GroceryItemController {
     
-    let itemList: [String] = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
-    
+    var itemList: [String] = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     var groceryList: [GroceryItem] = []
     
     func loadgroceryList() {
@@ -22,6 +21,13 @@ class GroceryItemController {
         }
     }
     
+    func toggleAdded(item: GroceryItem) {
+        item.hasBeenAdded.toggle()
+    }
+    
+    init() {
+        loadgroceryList()
+    }
 }
 
 

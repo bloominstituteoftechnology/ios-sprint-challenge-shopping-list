@@ -1,5 +1,5 @@
 //
-//  ItemHelper.swift
+//  GroceryKey.swift
 //  Shopping List
 //
 //  Created by Jake Connerly on 6/14/19.
@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+extension String {
+    static var added = "addedKey"
+}
