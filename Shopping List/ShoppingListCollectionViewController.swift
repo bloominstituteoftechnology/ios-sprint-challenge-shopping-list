@@ -31,16 +31,17 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return shoppingListController.itemNames.count
+        return shoppingListController.shoppingList.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ShoppingListCollectionViewCell
     
         // Configure the cell
-        let item = shoppingListController.itemNames[indexPath.item]
+        let item = shoppingListController.shoppingList[indexPath.item]
         cell.imageView.image = item.image
         cell.itemNameLabel.text = item.itemName
+//        cell.isAddedLabel.text = 
     
         return cell
     }

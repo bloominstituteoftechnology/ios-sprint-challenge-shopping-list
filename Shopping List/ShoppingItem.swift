@@ -17,6 +17,6 @@ struct ShoppingItem {
     init(itemName: String, imageName: String, itemAdded: Bool = false) {
         self.itemName = itemName
         self.itemAdded = itemAdded
-        self.image = UIImage(named: imageName)!
+        self.image = UIImage( named: imageName)!
     }
 }
