@@ -32,13 +32,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oqZ-MN-GzF">
-                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
-                                            <connections>
-                                                <action selector="toggleCartStatus:" destination="OWG-iN-9QU" eventType="touchUpInside" id="7T6-6Z-gz0"/>
-                                                <action selector="toggleCartStatus:" destination="ptR-JZ-6VB" eventType="touchUpInside" id="cjx-CM-0Ro"/>
-                                            </connections>
-                                        </button>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mLr-7M-SBx">
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                             <subviews>
@@ -79,14 +72,10 @@
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="oqZ-MN-GzF" secondAttribute="trailing" id="Dkd-dW-j0Z"/>
-                                    <constraint firstAttribute="bottom" secondItem="oqZ-MN-GzF" secondAttribute="bottom" id="I21-Yb-kqB"/>
                                     <constraint firstAttribute="trailing" secondItem="mLr-7M-SBx" secondAttribute="trailing" id="MTN-Ji-4b9"/>
                                     <constraint firstItem="mLr-7M-SBx" firstAttribute="top" secondItem="ptR-JZ-6VB" secondAttribute="top" id="Phl-Mh-LzU"/>
                                     <constraint firstItem="mLr-7M-SBx" firstAttribute="leading" secondItem="ptR-JZ-6VB" secondAttribute="leading" id="TB0-Dp-yvU"/>
                                     <constraint firstAttribute="bottom" secondItem="mLr-7M-SBx" secondAttribute="bottom" id="d9s-xC-7t5"/>
-                                    <constraint firstItem="oqZ-MN-GzF" firstAttribute="top" secondItem="ptR-JZ-6VB" secondAttribute="top" id="dsO-rI-PXF"/>
-                                    <constraint firstItem="oqZ-MN-GzF" firstAttribute="leading" secondItem="ptR-JZ-6VB" secondAttribute="leading" id="nua-N5-aoV"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="cartStatus" destination="Lq2-AC-OzZ" id="KIN-Sf-Vhb"/>

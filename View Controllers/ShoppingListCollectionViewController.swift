@@ -10,14 +10,17 @@ import UIKit
 
 private let reuseIdentifier = "shoppingItemCell"
 
-class ShoppingListCollectionViewController: UICollectionViewController {
+class ShoppingListCollectionViewController: UICollectionViewController, ShoppingListCellDelegate {
 
     let shoppingItemController = ShoppingItemController()
     
     var itemsInCart: [ShoppingItem] = []
     
     
+    
+    
     override func viewDidLoad() {
+        collectionView?.delegate = self
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
@@ -29,15 +32,12 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         super.viewWillAppear(animated)
         collectionView!.reloadData()
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+  
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        guard let checkoutVC = segue.destination as? CheckoutViewController else { return }
+        checkoutVC.items = itemsInCart
     }
-    */
+   
 
     // MARK: UICollectionViewDataSource
 
@@ -56,6 +56,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         cell.shoppingItemName.text = item.name
         cell.cartStatus.text = "Not in cart"
         cell.itemImage.image = UIImage(named: item.name)
+        cell.delegate = self
         if item.isOnList == true {
             cell.cartStatus.text = "Added"
         } else {
@@ -67,31 +68,43 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDelegate
 
-   
-
-
-
-//    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-//        return false
-//    }
-
-//    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-//
-//    }
-//
-    
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-        let addedItem = itemFor(indexPath: indexPath)
-        shoppingItemController.addToCart(add: addedItem)
-        toggleIfInShoppingCart(for: collectionView.cellForItem(at: indexPath) as! ShoppingItemCollectionViewCell)
-        print(shoppingItemController.shoppingList)
-        collectionView.reloadData()
-    }
-    
+ 
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        
+        let cell: ShoppingItemCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ShoppingItemCollectionViewCell
+            toggleIfInShoppingCart(for: cell)
+//        if cell.isSelected {
+//        cell.shoppingItem?.isOnList.toggle()
+//        print("Selected")
+//        if cell.shoppingItem?.isOnList == true {
+//            cell.cartStatus.text = "Added"
+//            itemsInCart.append(cell.shoppingItem!)
+//        } else {
+//            cell.cartStatus.text = "Not in cart"
+//        }
+//        print(itemsInCart)
+//            collectionView.reloadItems(at: [indexPath])
+//        }
+//        else {
+//            return
+//        }
+        
     }
+    
+//    override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+//        let cell: ShoppingItemCollectionViewCell = collectionView.cellForItem(at: indexPath) as! ShoppingItemCollectionViewCell
+//        cell.delegate?.toggleIfInShoppingCart(for: cell)
+//        if cell.shoppingItem?.isOnList == false {
+//            cell.cartStatus.text = "Not in cart"
+//            numberOfItemsInCart -= 1
+//        } else {
+//            cell.cartStatus.text = "Added"
+//        }
+//        collectionView.reloadData()
+//        print(numberOfItemsInCart)
+//    }
     
     private func itemFor(indexPath: IndexPath) -> ShoppingItem {
         if indexPath.section == 0 {
@@ -101,45 +114,45 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         }
     }
     
-    private func selectedItem(item: ShoppingItem) -> UICollectionViewCell {
-        if itemFor(indexPath: shoppingItemController.shoppingCart.index(of: item)) {
-            
-        }
-    }
-    
-    @IBAction func toggleCartStatus(_ sender: UIButton) {
-        toggleIfInShoppingCart(for: collectionView(UICollectionView, cellForItemAt: index))
-        
-    }
+
+   
     
     @IBAction func unwindToShoppingListCollectionViewController(_ sender: UIStoryboardSegue) {
         
     }
     
-//    @IBAction func updateCart(_ sender: Any) {
-//        let userDefaults = UserDefaults.standard
-//        userDefaults.set(sender.isSelected, forKey: .shouldBeOnListKey)
-//    }
+
     
-//    private func updateViews() {
-//        let userDefaults = UserDefaults.standard
-//    }
-
-}
-
-extension ShoppingListCollectionViewController: ShoppingListCellDelegate {
-    func toggleIfInShoppingCart(for cell: ShoppingItemCollectionViewCell) {
-        cell.shoppingItem?.isOnList.toggle()
-        if cell.shoppingItem?.isOnList == true {
-            itemsInCart.append(cell.shoppingItem!)
-        } else if cell.shoppingItem?.isOnList == false {
-            if itemsInCart.contains(cell.shoppingItem!) {
-                itemsInCart.remove(at: itemsInCart.index(of: cell.shoppingItem!)!)
-            } else {
-                return
-            }
-        }
+    func updateCart() {
+//        if isInCart {
+//            numberOfItemsInCart += 1
+//        } else {
+//            return
+//        }
     }
     
+   
     
-}
+    func toggleIfInShoppingCart(for cell: ShoppingItemCollectionViewCell) {
+        guard let index = collectionView?.indexPath(for: cell) else { return }
+        let item = shoppingItemController.shoppingCart[index.item]
+        shoppingItemController.addToCart(add: item)
+        collectionView?.reloadItems(at: [index])
+        
+        
+//
+//        cell.shoppingItem?.isOnList.toggle()
+//        if cell.shoppingItem?.isOnList == true {
+//            itemsInCart.append(cell.shoppingItem!)
+//            numberOfItemsInCart = itemsInCart.count
+//        } else if cell.shoppingItem?.isOnList == false {
+//            if itemsInCart.contains(cell.shoppingItem!) {
+//                itemsInCart.remove(at: itemsInCart.index(of: cell.shoppingItem!)!)
+//                numberOfItemsInCart = itemsInCart.count
+//            } else {
+//                return
+//            }
+        }
+    }
+
+

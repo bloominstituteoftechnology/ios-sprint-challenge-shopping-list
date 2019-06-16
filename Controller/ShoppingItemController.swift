@@ -65,7 +65,7 @@ class ShoppingItemController {
     
     func addToCart(add item: ShoppingItem) {
         if let index = shoppingList.index(of: item) {
-            shoppingList[index].isOnList = true
+            shoppingList[index].isOnList.toggle()
             saveToPersistentStore()
         }
         

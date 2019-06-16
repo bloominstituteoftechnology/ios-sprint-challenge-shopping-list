@@ -14,9 +14,16 @@ class CheckoutViewController: UIViewController {
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var addressTextField: UITextField!
     
+    var items: [ShoppingItem] = []
+    
+    var itemsInCart: Int {
+        return items.count
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        numberOfItemsInCart.text = "You have \(itemsInCart) item(s) in your order."
 
         // Do any additional setup after loading the view.
     }
@@ -24,15 +31,14 @@ class CheckoutViewController: UIViewController {
     
     @IBAction func sendOrderPressed(_ sender: UIButton) {
         showAlert()
-        
-        
+        nameTextField.text = nil
+        addressTextField.text = nil
         
     }
     
     
 
     func showAlert() {
-       
         if nameTextField.text != nil && addressTextField.text != nil {
             let alert = UIAlertController(title: "Delivery for \(String(describing: nameTextField.text))", message: "Your order will be delivered to \(String(describing: addressTextField.text)) in 15 minutes.", preferredStyle: .alert)
             

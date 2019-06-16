@@ -13,7 +13,6 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet var itemImage: UIImageView!
     @IBOutlet var cartStatus: UILabel!
     
-   
     
     var shoppingItem: ShoppingItem? {
         didSet {
@@ -32,6 +31,12 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         } else if itemCartStatus == true {
                 cartStatus.text = "Added"
             }
+        
+    }
+    
+    
+    @IBAction func toggleCartStatus(_ sender: Any) {
+        delegate?.toggleIfInShoppingCart(for: self)
         
     }
     
