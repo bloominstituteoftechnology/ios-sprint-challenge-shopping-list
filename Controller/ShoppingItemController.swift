@@ -11,29 +11,8 @@ import Foundation
 class ShoppingItemController {
     private(set) var shoppingList: [ShoppingItem] = []
     
-    
-    var shoppingCart: [ShoppingItem] {
-        let itemNames = [
-            ShoppingItem(name: "Apple"),
-            ShoppingItem(name: "Grapes"),
-            ShoppingItem(name: "Milk"),
-            ShoppingItem(name: "Muffin"),
-            ShoppingItem(name: "Popcorn"),
-            ShoppingItem(name: "Soda"),
-            ShoppingItem(name: "Strawberries")
-            ]
-        
-        
-        let shouldBeOnList = UserDefaults.standard.bool(forKey: .shouldBeOnListKey)
-        if shouldBeOnList {
-            for item in itemNames {
-                if let index = itemNames.index(of: item) {
-                    addToCart(add: itemNames[index])
-                }
-            }
-        }
-        return itemNames
-    }
+    var itemsInCart: Int = UserDefaults.standard.integer(forKey: .shouldBeOnListKey)
+    var loaded = UserDefaults.standard.bool(forKey: .isLoaded)
     
     private var shoppingListURL: URL? {
         let fileManager = FileManager.default
@@ -43,32 +22,43 @@ class ShoppingItemController {
     }
 
     init() {
+        checkLaunchStatus()
+    }
+
+
+func checkLaunchStatus() {
+    if !loaded {
+        let itemNames = [
+                    ShoppingItem(name: "Apple"),
+                    ShoppingItem(name: "Grapes"),
+                    ShoppingItem(name: "Milk"),
+                    ShoppingItem(name: "Muffin"),
+                    ShoppingItem(name: "Popcorn"),
+                    ShoppingItem(name: "Soda"),
+                    ShoppingItem(name: "Strawberries")
+                    ]
+        for item in itemNames {
+            let addedItem = ShoppingItem(name: item.name, isOnList: false)
+            shoppingList.append(addedItem)
+        }
+        UserDefaults.standard.set(true, forKey: .isLoaded)
+        saveToPersistentStore()
+    } else {
         loadFromPersistentStore()
     }
-    
-    
-    var addedItems: [ShoppingItem] {
-        get {
-            return ShoppingItemController().shoppingList.filter() {
-                $0.isOnList == true
-            }
-    }
-    }
-    
-    var unaddedItems: [ShoppingItem] {
-        get {
-            return ShoppingItemController().shoppingList.filter() {
-                $0.isOnList == false
-            }
-        }
-    }
+}
+
     
     func addToCart(add item: ShoppingItem) {
-        if let index = shoppingList.index(of: item) {
-            shoppingList[index].isOnList.toggle()
-            saveToPersistentStore()
+        guard let index = shoppingList.index(of: item) else { return }
+        shoppingList[index].isOnList = !shoppingList[index].isOnList
+        if shoppingList[index].isOnList == true {
+            itemsInCart += 1
+        } else {
+            itemsInCart -= 1
         }
-        
+
+        saveToPersistentStore()
     }
     
     func removeFromCart(remove item: ShoppingItem) {

@@ -25,13 +25,10 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     weak var delegate: ShoppingListCellDelegate?
     
     func updateViews() {
-        guard let itemCartStatus = shoppingItem?.isOnList else { return }
-        if itemCartStatus == false {
-            cartStatus.text = "Not Added"
-        } else if itemCartStatus == true {
-                cartStatus.text = "Added"
-            }
-        
+        shoppingItemName.text = shoppingItem?.name
+        let status = shoppingItem!.isOnList ? "Added" : "Not Added"
+        cartStatus.text = status
+       
     }
     
     

@@ -10,4 +10,5 @@ import Foundation
 
 extension String {
     static var shouldBeOnListKey = "ShouldBeOnList"
+    static var isLoaded = "Loaded"
 }
