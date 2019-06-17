@@ -24,6 +24,7 @@ class CheckoutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.barTintColor = UIColor.clear
         
         
         guard let items = shoppingItemController?.itemsInCart else { return }

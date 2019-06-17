@@ -31,6 +31,21 @@ class ShoppingListCollectionViewController: UICollectionViewController, Shopping
         
         super.viewWillAppear(animated)
         collectionView!.reloadData()
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.barTintColor = UIColor.clear
+        self.navigationController?.navigationBar.backgroundColor = UIColor.clear
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        self.navigationController?.navigationBar.shadowImage = nil
+        self.navigationController?.navigationBar.isTranslucent = true
+        
+        
     }
   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

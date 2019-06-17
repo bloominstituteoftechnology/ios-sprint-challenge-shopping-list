@@ -11,7 +11,7 @@ import Foundation
 class ShoppingItemController {
     private(set) var shoppingList: [ShoppingItem] = []
     
-    var itemsInCart: Int = UserDefaults.standard.integer(forKey: .shouldBeOnListKey)
+    var itemsInCart: Int = UserDefaults.standard.integer(forKey: .shouldBeOnList)
     var loaded = UserDefaults.standard.bool(forKey: .isLoaded)
     
     private var shoppingListURL: URL? {
