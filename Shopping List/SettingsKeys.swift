@@ -10,5 +10,5 @@ import Foundation
 
 
 extension String {
-	static var shouldShowSoppingItems = "ShouldShowShoppingItems"
+	static var shouldShowSoppingItems = "ShouldShowSelectedItems"
 }

@@ -24,5 +24,4 @@ class ShoppingItem: Codable {
 	var image: UIImage {
 		return UIImage(named: imageName)!
 	}
-
 }
