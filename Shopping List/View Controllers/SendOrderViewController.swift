@@ -20,7 +20,7 @@ class SendOrderViewController: UIViewController {
         super.viewDidLoad()
         guard let addedItems = addedItems else { return }
         
-        if addedItems.count > 1 {
+        if addedItems.count > 1 || addedItems.count < 1 {
             itemNumberLabel?.text = "There are \(addedItems.count) items in your shopping list."
         } else {
             itemNumberLabel?.text = "There is \(addedItems.count) item in your shopping list."
