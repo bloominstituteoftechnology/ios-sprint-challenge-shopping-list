@@ -17,7 +17,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        shoppingItemController.loadFromPersistentStore()
     }
 
     
@@ -59,6 +59,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDelegate
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         shoppingItemController.shoppingList[indexPath.item].isAdded.toggle()
+        shoppingItemController.saveToPersistentStore()
         collectionView.reloadData()
     }
     
