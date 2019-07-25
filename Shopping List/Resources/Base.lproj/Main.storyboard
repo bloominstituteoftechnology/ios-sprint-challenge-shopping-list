@@ -25,7 +25,7 @@
                             <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="20"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="mO0-41-x2i" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemCell" id="mO0-41-x2i" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="20" y="20" width="180" height="240"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -78,7 +78,6 @@
                                     <outlet property="addedLabel" destination="4WX-bj-r6M" id="ufI-dd-n8O"/>
                                     <outlet property="itemImageView" destination="yPa-zJ-qew" id="JrB-GH-CPu"/>
                                     <outlet property="shoppingItemLabel" destination="8w3-iE-TxP" id="jaj-Sc-HE5"/>
-                                    <segue destination="mAf-Yq-TOj" kind="show" id="0ak-bL-vEX"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -88,7 +87,11 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Shopping List" id="AcE-hA-Eqn">
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="UhH-UK-Ix6"/>
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="UhH-UK-Ix6">
+                            <connections>
+                                <segue destination="mAf-Yq-TOj" kind="show" id="HLE-ya-EtF"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bP2-Np-Rqc" userLabel="First Responder" sceneMemberID="firstResponder"/>

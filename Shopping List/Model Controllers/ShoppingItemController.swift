@@ -11,6 +11,7 @@ import Foundation
 class ShoppingItemController {
     
     let itemNames = ["Apples", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+    var shoppingList: [ShoppingItem] = []
     private var persistenFileURL: URL? {
         let fileManager = FileManager.default
         
@@ -20,31 +21,29 @@ class ShoppingItemController {
                 return nil
         }
         
-        // Creates "/Users/shillwil/Documents/stars.plist" - full file path
         return documents.appendingPathComponent("shoppingList.plist")
     }
-    var shoppingList: [ShoppingItem] {
-        var result: [ShoppingItem] = []
+    
+    init() {
         for index in 0..<itemNames.count {
             let item = ShoppingItem(name: itemNames[index])
-            result.append(item)
+            shoppingList.append(item)
         }
-        
-        return result
     }
     
+    // MARK: - Persistence
     func loadFromPersistentStore() { //// TODO: - Finish this function
-//        let fileManager = FileManager.default
-//        guard let url = persistenFileURL,
-//            fileManager.fileExists(atPath: url.path) else { return }
-//
-//        do {
-//            let data = try Data(contentsOf: url)
-//            let decoder = PropertyListDecoder()
-//            shoppingList = try decoder.decode([ShoppingItem].self, from: data)
-//        } catch {
-//            print("Error loading shopping list data: \(error)")
-//        }
+        let fileManager = FileManager.default
+        guard let url = persistenFileURL,
+            fileManager.fileExists(atPath: url.path) else { return }
+
+        do {
+            let data = try Data(contentsOf: url)
+            let decoder = PropertyListDecoder()
+            shoppingList = try decoder.decode([ShoppingItem].self, from: data)
+        } catch {
+            print("Error loading shopping list data: \(error)")
+        }
     }
     
     func saveToPersistentStore() {
@@ -58,6 +57,4 @@ class ShoppingItemController {
             print("Error saving shopping list data: \(error)")
         }
     }
-    
-    
 }

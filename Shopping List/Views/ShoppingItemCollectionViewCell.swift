@@ -8,10 +8,16 @@
 
 import UIKit
 
+protocol ShoppingItemCellDelegate {
+    func cellWasTapped()
+}
+
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var addedLabel: UILabel!
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var shoppingItemLabel: UILabel!
+    
+    var delegate: ShoppingItemCellDelegate?
     
 }
