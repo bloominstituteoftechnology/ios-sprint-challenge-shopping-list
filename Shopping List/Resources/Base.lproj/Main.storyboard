@@ -89,7 +89,7 @@
                     <navigationItem key="navigationItem" title="Shopping List" id="AcE-hA-Eqn">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="UhH-UK-Ix6">
                             <connections>
-                                <segue destination="mAf-Yq-TOj" kind="show" id="HLE-ya-EtF"/>
+                                <segue destination="mAf-Yq-TOj" kind="show" identifier="NewOrderSegue" id="HLE-ya-EtF"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -152,6 +152,7 @@
                     <navigationItem key="navigationItem" title="New Order" id="z9I-eG-2oD"/>
                     <connections>
                         <outlet property="addressTextField" destination="yVj-9a-wxo" id="WF8-QW-cdp"/>
+                        <outlet property="itemNumberLabel" destination="Bvm-w4-ytN" id="tmI-ch-ykW"/>
                         <outlet property="nameTextField" destination="igg-Yp-yL5" id="q92-UG-CjW"/>
                     </connections>
                 </viewController>
