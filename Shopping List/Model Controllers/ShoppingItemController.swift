@@ -11,6 +11,7 @@ import Foundation
 class ShoppingItemController {
     
     let itemNames = ["Apples", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+    let shoppingListInitialized = UserDefaults.standard.bool(forKey: .initShoppingListKey)
     var shoppingList: [ShoppingItem] = []
     private var persistenFileURL: URL? {
         let fileManager = FileManager.default

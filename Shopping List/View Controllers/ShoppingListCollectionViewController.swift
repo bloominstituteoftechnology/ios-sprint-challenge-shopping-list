@@ -14,6 +14,11 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
     var shoppingItemController = ShoppingItemController()
     
+    override func viewWillAppear(_ animated: Bool) {
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(true, forKey: .initShoppingListKey)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
