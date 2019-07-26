@@ -12,7 +12,7 @@ class ShoppingItemController {
     
     let shoppingItem = ShoppingItem(name: "")
     
-    var showItems: [ShoppingItem] = [] 
+    var showItems: [ShoppingItem] = []
     let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     
     #warning("Ask andrew if there is a more simple way to write this, without the func")
@@ -22,9 +22,10 @@ class ShoppingItemController {
         UserDefaults.standard.bool(forKey: key)
     }
     init() {
-        for index in 0...itemNames.count {
-            let item = ShoppingItem(name: itemNames[index])
-            showItems.append(item)
+        for itemName in itemNames {
+            let individualItme = ShoppingItem(name: itemName)
+            showItems.append(individualItme)
+            
         }
     }
     

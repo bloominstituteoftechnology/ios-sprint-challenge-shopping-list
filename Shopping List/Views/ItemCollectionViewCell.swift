@@ -11,5 +11,20 @@ import UIKit
 class ItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var addedLabel: UILabel!
     @IBOutlet weak var itemImage: UIImageView!
+    @IBOutlet weak var itemName: UILabel!
+    
+    var item: ShoppingItem? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    
+    private func updateViews() {
+        guard let item = item else {return}
+        itemName.text = item.name
+        
+    }
+    
     
 }
