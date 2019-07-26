@@ -9,12 +9,24 @@
 import UIKit
 
 class DetailViewController: UIViewController {
+    
+    @IBOutlet weak var itemsInShoppingListLabel: UILabel!
+    @IBOutlet weak var userNameTextField: UITextField!
+    @IBOutlet weak var userAdressTextField: UITextField!
+    
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    
+    
+    @IBAction func sendOrderButton(_ sender: UIButton) {
+    }
+    
     
 
     /*
