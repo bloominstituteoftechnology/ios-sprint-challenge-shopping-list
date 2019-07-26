@@ -55,6 +55,9 @@ class ShoppingListCollectionVC: UICollectionViewController {
         return cell
     }
 	
-	
+	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		shoppingListController.updateItemStatus(at: indexPath.item)
+		collectionView.reloadData()
+	}
 
 }

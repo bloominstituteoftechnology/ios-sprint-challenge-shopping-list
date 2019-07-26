@@ -17,9 +17,8 @@ class ShoppingListController {
 		checkFirstTime()
 	}
 	
-	func update(item: Item) {
-		guard let index = list.index(of: item) else { return }
-		list[index] = item
+	func updateItemStatus(at index: Int) {
+		list[index].isInCart.toggle()
 		saveToPersistentStore()
 	}
 	
