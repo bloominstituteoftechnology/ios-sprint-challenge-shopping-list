@@ -28,7 +28,7 @@ class ShoppingListController {
 	func createItems() {
 		let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
 		for item in itemNames {
-			items.append(ShoppingItem(item: item, hasBeenAdded: true))
+			items.append(ShoppingItem(item: item, hasBeenAdded: true, imageName: item))
 			
 			saveToPersistentStore()
 		}

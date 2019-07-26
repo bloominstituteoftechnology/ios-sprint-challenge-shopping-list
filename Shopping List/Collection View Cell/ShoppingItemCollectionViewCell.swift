@@ -30,6 +30,15 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
 		delegate?.buttonImageWasPressed(on: self)
 	}
 	
-	
+	func updateViews() {
+		guard let newItem = shoppingItem else { return }
+		let text = newItem.hasBeenAdded ? "Added" : "Not Added"
+		wasAddedLabel.text = text
+		itemNameLabel.text = newItem.item
+		
+		let imageName = newItem.imageName
+		guard let image = UIImage(named: imageName) else { return }
+		itemButtonImage.setImage(image, for: .normal)
+	}
 	
 }

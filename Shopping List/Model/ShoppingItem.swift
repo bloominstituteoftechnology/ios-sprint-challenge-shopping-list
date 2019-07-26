@@ -12,5 +12,12 @@ struct ShoppingItem: Codable {
 	
 	var item: String = "Apple"
 	var hasBeenAdded: Bool
+	var imageName: String
+	
+	init(item: String, hasBeenAdded: Bool = false, imageName: String) {
+		self.item = item
+		self.hasBeenAdded = hasBeenAdded
+		self.imageName = imageName
+	}
 	
 }
