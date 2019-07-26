@@ -40,5 +40,4 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
 		guard let image = UIImage(named: imageName) else { return }
 		itemButtonImage.setImage(image, for: .normal)
 	}
-	
 }

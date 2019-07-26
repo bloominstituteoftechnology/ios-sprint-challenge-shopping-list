@@ -25,6 +25,7 @@ class ShoppingItemViewController: UIViewController {
 		guard let name = usersName.text, !name.isEmpty,
 		let address = usersAddress.text, !address.isEmpty
 		else { return }
+		alert(userName: name, userAddress: address)
 	}
 	
 	func updateLabel() {

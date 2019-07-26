@@ -26,8 +26,8 @@ class ShoppingItemController {
 		return items.filter { $0.hasBeenAdded == true}
 	}
 	
-	func toggleHasBeenChanged(shoppingItem: ShoppingItem) {
-		shoppingItem.hasBeenAdded = !shoppingItem.hasBeenAdded
+	func toggleHasBeenChanged(itemToggled: ShoppingItem) {
+		itemToggled.hasBeenAdded == !itemToggled.hasBeenAdded
 		saveToPersistentStore()
 	}
 	
@@ -79,6 +79,4 @@ class ShoppingItemController {
 			loadFromPersistentStore()
 		}
 	}
-
-	
 }

@@ -62,8 +62,8 @@ extension ShoppingItemCollectionViewController: ItemCollectionViewCellDelegate {
 		
 		let item = shoppingItemController.items[index.item]
 		
-		shoppingItemController.toggleHasBeenChanged(shoppingItem: item)
+		shoppingItemController.toggleHasBeenChanged(itemToggled: item)
 		
-		collectionView?.reloadData(at: [index])
+		collectionView?.reloadItems(at: [index])
 	}
 }
