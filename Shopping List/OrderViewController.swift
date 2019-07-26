@@ -15,7 +15,9 @@ class OrderViewController: UIViewController {
     @IBOutlet weak var nameTextfield: UITextField!
     @IBOutlet weak var addressTextfield: UITextField!
     
-    var numberOfItems = 0 
+    var numberOfItems = 0
+    var name = ""
+    var address = ""
     
     
     override func viewDidLoad() {
@@ -27,8 +29,10 @@ class OrderViewController: UIViewController {
     }
     
     @IBAction func submitOrderTapped(_ sender: UIButton) {
-        
         guard let name = nameTextfield.text, !name.isEmpty, let address = addressTextfield.text, !address.isEmpty else { return }
+        self.name = name
+        self.address = address
+        
         checkAuth()
         
     }
@@ -43,11 +47,12 @@ class OrderViewController: UIViewController {
         }
     }
     func setupNotif(){
+        
         // Configure the notification's payload.
         let content = UNMutableNotificationContent()
-        content.title = NSString.localizedUserNotificationString(forKey: "Hello!", arguments: nil)
-        content.body = NSString.localizedUserNotificationString(forKey: "Hello_message_body", arguments: nil)
-        content.sound = UNNotificationSound.default()
+        content.title = "Delivery for \(name)"
+        content.body = "Your shopping list items will be deliver to \(address) in 15 minutes"
+        //content.sound = UNNotificationSound.default()
         
         // Deliver the notification in five seconds.
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
