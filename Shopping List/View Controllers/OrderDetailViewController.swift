@@ -10,21 +10,61 @@ import UIKit
 
 class OrderDetailViewController: UIViewController {
 
-    override func viewDidLoad() {
+	var shoppingController: ShoppingItemController?
+
+	@IBOutlet weak var orderSummaryLabel: UILabel!
+	@IBOutlet weak var nameTextField: UITextField!
+	@IBOutlet weak var addressTextField: UITextField!
+	@IBOutlet weak var submitOrderButton: UIButton!
+
+
+	override func viewDidLoad() {
         super.viewDidLoad()
+		orderSummaryLabel.text = summaryStatement(count)
 
-        // Do any additional setup after loading the view.
     }
+
+	func summaryStatement(_ count: Int) -> String {
+		if count == 1 {
+			return "You have \(count) item in your shopping list"
+		} else {
+			return "You have \(count) items in your shopping list"
+		}
+	}
+
+	var count: Int {
+		var count = 0
+		if let shoppingController = shoppingController {
+			for item in shoppingController.shoppingItems {
+				if item.isAdded == true {
+					count += 1
+					}
+				}
+			}
+		return count
+	}
     
+	@IBAction func submitOrderTapped(_ sender: UIButton) {
+		guard let name = nameTextField.text,
+			let address = addressTextField.text,
+			!name.isEmpty,
+			!address.isEmpty else { return }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+		let alert = UIAlertController(title: "Thank you, \(name)!", message: "Your order will be delivered to \(address) in 15 minutes!", preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (dismiss) in
+			self.navigationController?.popToRootViewController(animated: true)
+		}))
+		present(alert, animated: true, completion: nil)
+	}
 }
+
+//extension OrderDetailViewController: UITextFieldDelegate {
+//	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//		switch textField {
+//		case <#pattern#>:
+//			<#code#>
+//		default:
+//			<#code#>
+//		}
+//	}
+//}
