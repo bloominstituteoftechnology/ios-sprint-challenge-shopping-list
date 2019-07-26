@@ -9,5 +9,12 @@
 import UIKit
 
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
-    
+	
+	@IBOutlet weak var wasAddedLabel: UILabel!
+	@IBOutlet weak var itemButtonImage: UIButton!
+	@IBOutlet weak var itemNameLabel: UILabel!
+	
+	@IBAction func itemButtonPressed(_ sender: UIButton) {
+	}
+	
 }

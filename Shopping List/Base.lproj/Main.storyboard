@@ -44,9 +44,13 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Milk" translatesAutoresizingMaskIntoConstraints="NO" id="tu9-Q4-l2z">
-                                                            <rect key="frame" x="0.0" y="20.5" width="120" height="99.000000000000455"/>
-                                                        </imageView>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O58-ZQ-th3">
+                                                            <rect key="frame" x="0.0" y="20.5" width="120" height="99"/>
+                                                            <state key="normal" title="Button" image="Milk"/>
+                                                            <connections>
+                                                                <action selector="itemButtonPressed:" destination="fLx-ln-oo1" eventType="touchUpInside" id="BZ7-Ta-aIF"/>
+                                                            </connections>
+                                                        </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tPU-rc-8dS">
                                                             <rect key="frame" x="39" y="119.5" width="42" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -54,6 +58,12 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="tPU-rc-8dS" firstAttribute="top" secondItem="O58-ZQ-th3" secondAttribute="bottom" id="24J-Gd-q96"/>
+                                                        <constraint firstItem="O58-ZQ-th3" firstAttribute="top" secondItem="hHo-5h-DyI" secondAttribute="bottom" id="8FN-Nr-Q0g"/>
+                                                        <constraint firstItem="O58-ZQ-th3" firstAttribute="leading" secondItem="dqQ-yg-Fr8" secondAttribute="leading" id="SZf-wf-cqa"/>
+                                                        <constraint firstAttribute="trailing" secondItem="O58-ZQ-th3" secondAttribute="trailing" id="yFw-fW-hpe"/>
+                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -72,6 +82,11 @@
                                     <constraint firstAttribute="bottom" secondItem="Zpy-pN-66J" secondAttribute="bottom" id="TD3-lu-CrW"/>
                                     <constraint firstAttribute="trailing" secondItem="Zpy-pN-66J" secondAttribute="trailing" id="yrT-PQ-r1e"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="itemButtonImage" destination="O58-ZQ-th3" id="CV8-dE-n0K"/>
+                                    <outlet property="itemNameLabel" destination="tPU-rc-8dS" id="O3H-b3-dbK"/>
+                                    <outlet property="wasAddedLabel" destination="hHo-5h-DyI" id="GgI-zS-o9n"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
