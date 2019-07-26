@@ -8,12 +8,11 @@
 
 import UIKit
 
-struct Item {
+struct Item: Equatable, Codable {
 	let name: String
-	let imageString: String
 	var isInCart: Bool
 	
 	func getImage() -> UIImage? {
-		return UIImage(named: imageString)
+		return UIImage(named: name)
 	}
 }
