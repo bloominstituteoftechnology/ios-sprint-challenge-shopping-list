@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  ShoppingItemCollectionViewCell.swift
 //  Shopping List
 //
 //  Created by Taylor Lyles on 7/26/19.
@@ -8,9 +8,6 @@
 
 import UIKit
 
-struct ShoppingItem: Codable {
-	
-	var item: String = "Apple"
-	var hasBeenAdded: Bool
-	
+class ShoppingItemCollectionViewCell: UICollectionViewCell {
+    
 }
