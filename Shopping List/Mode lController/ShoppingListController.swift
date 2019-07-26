@@ -12,13 +12,10 @@ class ShoppingListController {
 	
 	var items = [ShoppingItem]()
 	
-
-	
-	//TODO: - Check if this is right
-	init(hasBeenAdded: Bool = true, userDefaults: UserDefaults) {
+	init() {
 		
 	}
-	
+
 	var persistentURL: URL? {
 		let fileManager = FileManager.default
 		guard let documents = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
