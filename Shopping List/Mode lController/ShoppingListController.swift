@@ -10,7 +10,9 @@ import Foundation
 
 class ShoppingListController {
 	
-	var items = [Item]()
+	var items = [ShoppingItem]()
+	
+
 	
 	//TODO: - Check if this is right
 	init(hasBeenAdded: Bool = true, userDefaults: UserDefaults) {
@@ -21,6 +23,18 @@ class ShoppingListController {
 		let fileManager = FileManager.default
 		guard let documents = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
 		return documents.appendingPathComponent("items.plist")
+	}
+	
+	func createItems() {
+		let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+		for item in itemNames {
+			items.append(ShoppingItem(item: item, hasBeenAdded: true))
+			
+			saveToPersistentStore()
+		}
+		
+		UserDefaults.standard.set(true, forKey: "WasCalled")
+
 	}
 	
 	func saveToPersistentStore() {
@@ -43,11 +57,12 @@ class ShoppingListController {
 		
 		do {
 			let data = try Data(contentsOf: url)
-			items = try decoder.decode([Item].self, from: data)
+			items = try decoder.decode([ShoppingItem].self, from: data)
 		} catch {
 			print("Error loading shopping items from the persistent store: \(error.localizedDescription)")
 		}
 	}
+	
 
 	
 }
