@@ -10,6 +10,12 @@ import UIKit
 
 class ShoppingItemViewController: UIViewController {
 
+	@IBOutlet weak var numberOfItemsAdded: UILabel!
+	@IBOutlet weak var usersName: UITextField!
+	@IBOutlet weak var usersAddress: UITextField!
+	
  
-
+	@IBAction func sendOrder(_ sender: Any) {
+	}
+	
 }
