@@ -9,11 +9,47 @@
 import Foundation
 
 class ShoppingItemController {
-    var items: [ShoppingItem] {
-        
-        let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
-        
-        let showItems = UserDefaults.standard.bool(forKey: .showItemsKey)
+    var  items = [ShoppingItem]()
+    
+    init() {
+        loadFromPersistenceStore()
+        saveToPersistenceStore()
     }
-    return itemNames
+    
+    
+    
+    let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+    
+ //   let showItems = UserDefaults.standard.bool(forKey: .showItemsKey)
+    
+    func saveToPersistenceStore() {
+        guard let url = shoppingListURL else { return }
+        do {
+            let encoder = PropertyListEncoder()
+            let itemData = try encoder.encode(items)
+            try itemData.write(to: url)
+        } catch {
+            print("Error loading items data: \(error)")
+        }
+    }
+    
+    func loadFromPersistenceStore() {
+        do {
+            guard let url = shoppingListURL else { return }
+            let data = try Data(contentsOf: url)
+            let decodeItems = PropertyListDecoder()
+            items = try decodeItems.decode([ShoppingItem].self, from: data)
+        } catch {
+            print("Error loading items data: \(error)")
+        }
+    }
+    
+    
+    
+    private var shoppingListURL: URL? {
+        let fm = FileManager.default
+        guard let dir = fm.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
+        return dir.appendingPathComponent("ShoppingList.plist")
+    }
+
 }
