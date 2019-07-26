@@ -19,35 +19,35 @@ class ShoppingListCollectionVC: UICollectionViewController {
 
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if let orderVC = segue.destination as? OrderVC {
 			orderVC.shoppingListController = shoppingListController
 		}
     }
-	
-	//MARK: - Methods
-	
-	private func loadItems() {
-		
-	}
 
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return shoppingListController.filteredList.count
     }
 
+	override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+		guard let sectionHeaderView =  collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CategoryHeader", for: indexPath) as? CollectionHeaderView else { return UICollectionReusableView() }
+		let categoryName = shoppingListController.filteredList[indexPath.section].cartStatus
+		sectionHeaderView.categoryLbl.text = categoryName
+		
+		return sectionHeaderView
+	}
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return shoppingListController.list.count
+        return shoppingListController.filteredList[section].list.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as? ItemCell else { return UICollectionViewCell() }
-		let item = shoppingListController.list[indexPath.item]
+		let item = shoppingListController.filteredList[indexPath.section].list[indexPath.item]
 		
 		cell.item = item
     
@@ -55,7 +55,8 @@ class ShoppingListCollectionVC: UICollectionViewController {
     }
 	
 	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-		shoppingListController.updateItemStatus(at: indexPath.item)
+		let selectedItem = shoppingListController.filteredList[indexPath.section].list[indexPath.item]
+		shoppingListController.updateItemStatus(item: selectedItem)
 		collectionView.reloadData()
 	}
 

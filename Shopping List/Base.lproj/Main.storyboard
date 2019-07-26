@@ -20,13 +20,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="10" id="GYC-g7-XTd">
                             <size key="itemSize" width="152" height="176"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="headerReferenceSize" width="50" height="50"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemCell" id="m3z-sB-zMH" customClass="ItemCell" customModule="Shopping_List" customModuleProvider="target">
-                                <rect key="frame" x="10" y="0.0" width="152" height="176"/>
+                                <rect key="frame" x="10" y="50" width="152" height="176"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="152" height="176"/>
@@ -80,6 +80,26 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="CategoryHeader" id="cch-x6-Nbq" customClass="CollectionHeaderView" customModule="Shopping_List" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h0z-jP-Mqi">
+                                    <rect key="frame" x="8" y="9.5" width="61.5" height="31.5"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="h0z-jP-Mqi" firstAttribute="centerY" secondItem="cch-x6-Nbq" secondAttribute="centerY" id="mlh-oC-eQk"/>
+                                <constraint firstItem="h0z-jP-Mqi" firstAttribute="leading" secondItem="cch-x6-Nbq" secondAttribute="leadingMargin" id="px8-jz-1lH"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="categoryLbl" destination="h0z-jP-Mqi" id="yIg-Vl-9YH"/>
+                            </connections>
+                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="W5F-li-gbw" id="Gl5-ht-kAo"/>
                             <outlet property="delegate" destination="W5F-li-gbw" id="PQS-Qh-zmO"/>

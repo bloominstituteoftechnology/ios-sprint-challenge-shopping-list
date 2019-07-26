@@ -10,14 +10,30 @@ import Foundation
 
 class ShoppingListController {
 	
-	private(set) var list = [Item]()
 	private let notFirstTimeKey = "notFirstTime"
+	private(set) var list = [Item]()
+	
+	var filteredList: [(cartStatus: String, list: [Item])] {
+		var newList = [(cartStatus: String, list: [Item])]()
+		let added = list.filter({$0.isInCart})
+		let notAdded = list.filter({!$0.isInCart})
+		
+		if !added.isEmpty {
+			newList.append((cartStatus: "Added", list: added))
+		}
+		if !notAdded.isEmpty {
+			newList.append((cartStatus: "Not Added", list: notAdded))
+		}
+		
+		return newList
+	}
 	
 	init() {
 		checkFirstTime()
 	}
 	
-	func updateItemStatus(at index: Int) {
+	func updateItemStatus(item: Item) {
+		guard let index = list.index(of: item) else { return }
 		list[index].isInCart.toggle()
 		saveToPersistentStore()
 	}
