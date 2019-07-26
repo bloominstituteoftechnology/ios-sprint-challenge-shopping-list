@@ -21,8 +21,9 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        guard UserDefaults.standard.bool(forKey: "ShoppingItemsCreated") != true else { return }
         shoppingItemController.loadFromPersistentStore()
+        UserDefaults.standard.set(true, forKey: "ShoppingItemsCreated")
     }
 
     
