@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct ShoppingItem: Codable {
+class ShoppingItem: Codable {
 	
 	var item: String = "Apple"
 	var hasBeenAdded: Bool

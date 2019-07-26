@@ -18,7 +18,7 @@ class ShoppingItemViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+		updateLabel()
 	}
 	
 	@IBAction func sendOrder(_ sender: UIButton) {

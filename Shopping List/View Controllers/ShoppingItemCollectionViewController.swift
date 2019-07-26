@@ -8,15 +8,12 @@
 
 import UIKit
 
-
-
 class ShoppingItemCollectionViewController: UICollectionViewController {
 	
 	let shoppingItemController = ShoppingItemController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-		
 		collectionView?.reloadData()
 	}
 	

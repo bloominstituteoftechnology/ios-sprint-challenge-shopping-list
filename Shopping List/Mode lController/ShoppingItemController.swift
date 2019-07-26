@@ -27,7 +27,7 @@ class ShoppingItemController {
 	}
 	
 	func toggleHasBeenChanged(itemToggled: ShoppingItem) {
-		itemToggled.hasBeenAdded == !itemToggled.hasBeenAdded
+		itemToggled.hasBeenAdded = !itemToggled.hasBeenAdded
 		saveToPersistentStore()
 	}
 	
@@ -38,9 +38,7 @@ class ShoppingItemController {
 			
 			saveToPersistentStore()
 		}
-		
 		UserDefaults.standard.set(true, forKey: "WasCalled")
-
 	}
 	
 	func saveToPersistentStore() {
