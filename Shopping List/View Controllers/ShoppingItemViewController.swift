@@ -22,8 +22,10 @@ class ShoppingItemViewController: UIViewController {
 	}
 	
  
-	@IBAction func sendOrder(_ sender: Any) {
-		
+	@IBAction func sendOrder(_ sender: UIButton) {
+		guard let name = usersName.text, !name.isEmpty,
+		let address = usersAddress.text, !address.isEmpty
+		else { return }
 	}
 	
 }
