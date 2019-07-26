@@ -10,9 +10,9 @@ import Foundation
 
 class ShoppingListController {
     
-    let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+    // let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     
-    let foo = [
+    let itemNames = [
         ShoppingItem(shoppingItem: "Apple", itemAdded: false, imageName: "Apple"),
         ShoppingItem(shoppingItem: "Grapes", itemAdded: false, imageName: "Grapes"),
         ShoppingItem(shoppingItem: "Milk", itemAdded: false, imageName: "Milk"),

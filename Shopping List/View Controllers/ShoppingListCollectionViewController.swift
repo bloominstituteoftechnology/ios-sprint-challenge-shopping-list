@@ -28,9 +28,11 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         // Configure the cell
         let shoppingItems = shoppingListController.itemNames[indexPath.item]
         
+        cell.imageView.image = shoppingItems.imageName
         
-        // cell.imageView.image = shoppingItem
-        // cell.textLabel1.text = shoppingItem.name
+        #warning("Not sure if I should change to Bool to String in ShoppingItem.swift or here")
+        cell.addedStatus.text = String(shoppingItems.itemAdded)
+        cell.shoppingItemName.text = shoppingItems.shoppingItem
         // cell.textLabel2.text = shoppingItem.name
     
         return cell
