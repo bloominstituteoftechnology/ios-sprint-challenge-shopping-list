@@ -22,16 +22,9 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
     
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return shoppingItemsController.showItems.count
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier = "ShowCustomerDetails" {
-            if let destinationVC = segue.destination as? CustomerDetailViewController else {return}
-        }
-    }
-
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as? ItemCollectionViewCell else {return UICollectionViewCell()}
     

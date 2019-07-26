@@ -87,7 +87,6 @@
                     <navigationItem key="navigationItem" title="Shopping List" id="9oE-bT-SNH">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="CFP-KA-aax">
                             <connections>
-                                <action selector="NextButtonTapped:" destination="8ul-vq-51J" id="yoe-aN-i6h"/>
                                 <segue destination="lqW-Zg-z8X" kind="show" identifier="ShowCustomerDetails" id="JK4-D6-7gL"/>
                             </connections>
                         </barButtonItem>
@@ -149,9 +148,7 @@
                         <viewLayoutGuide key="safeArea" id="hMr-Md-EOp"/>
                     </view>
                     <connections>
-                        <outlet property="addressLabel" destination="uEn-vQ-v1g" id="PtK-zL-6en"/>
                         <outlet property="itemsInCartLabel" destination="2q8-YU-IbO" id="Tv1-EM-7GV"/>
-                        <outlet property="nameLabel" destination="k6k-hn-AAu" id="G24-be-DGf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O4g-hN-pb9" userLabel="First Responder" sceneMemberID="firstResponder"/>
