@@ -46,6 +46,10 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Cu1-aj-p4T">
+                                                    <rect key="frame" x="46" y="147" width="94" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </stepper>
                                             </subviews>
                                         </view>
                                     </collectionViewCell>
@@ -67,6 +71,10 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="p31-Kx-SbT">
+                                                    <rect key="frame" x="46" y="147" width="94" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </stepper>
                                             </subviews>
                                         </view>
                                     </collectionViewCell>
@@ -81,6 +89,10 @@
                                                     <rect key="frame" x="-12" y="28" width="198" height="128"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="qqz-gb-pyC">
+                                                    <rect key="frame" x="46" y="147" width="94" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </stepper>
                                             </subviews>
                                         </view>
                                     </collectionViewCell>
@@ -95,6 +107,10 @@
                                                     <rect key="frame" x="0.0" y="33" width="185" height="112"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="1Dx-II-Xzu">
+                                                    <rect key="frame" x="46" y="147" width="94" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </stepper>
                                             </subviews>
                                         </view>
                                     </collectionViewCell>
@@ -109,6 +125,10 @@
                                                     <rect key="frame" x="0.0" y="35" width="186" height="103"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Cml-3G-utJ">
+                                                    <rect key="frame" x="46" y="147" width="94" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </stepper>
                                             </subviews>
                                         </view>
                                     </collectionViewCell>
@@ -123,6 +143,10 @@
                                                     <rect key="frame" x="0.0" y="35" width="186" height="105"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="ZWJ-2t-pTU">
+                                                    <rect key="frame" x="58" y="147" width="94" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </stepper>
                                             </subviews>
                                         </view>
                                     </collectionViewCell>
@@ -150,10 +174,10 @@
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="137.94642857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--Order Info View Controller-->
         <scene sceneID="NIc-yi-Yna">
             <objects>
-                <viewController id="VvN-WI-sas" sceneMemberID="viewController">
+                <viewController id="VvN-WI-sas" customClass="OrderInfoViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Rj-2U-6fa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -190,6 +214,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="cJL-5s-SH7"/>
                     </view>
+                    <connections>
+                        <outlet property="addressTextField" destination="wbB-wi-7yS" id="t8d-uz-Wso"/>
+                        <outlet property="nameTextField" destination="L53-AL-RKa" id="GhE-aB-kOU"/>
+                        <outlet property="submitButton" destination="Me0-jj-a2G" id="JOH-4w-7GQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GfP-Ss-i7y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
