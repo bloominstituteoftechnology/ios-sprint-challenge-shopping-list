@@ -33,6 +33,14 @@ class ShoppingItemController {
         }
     }
     
+    func createItem(withName item: String, added: Bool ) -> ShoppingItem {
+        let item = ShoppingItem(item: item, added: added)
+        items.append(item)
+        saveToPersistenceStore()
+        
+        return item
+    }
+    
     func loadFromPersistenceStore() {
         do {
             guard let url = shoppingListURL else { return }
