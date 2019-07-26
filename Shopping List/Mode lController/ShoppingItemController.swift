@@ -8,18 +8,27 @@
 
 import Foundation
 
-class ShoppingListController {
+class ShoppingItemController {
 	
 	var items = [ShoppingItem]()
 	
 	init() {
-		
+		called()
 	}
 
 	var persistentURL: URL? {
 		let fileManager = FileManager.default
 		guard let documents = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
 		return documents.appendingPathComponent("items.plist")
+	}
+	
+	var wasAdded: [ShoppingItem] {
+		return items.filter { $0.hasBeenAdded == true}
+	}
+	
+	func toggleHasBeenChanged(shoppingItem: ShoppingItem) {
+		shoppingItem.hasBeenAdded = !shoppingItem.hasBeenAdded
+		saveToPersistentStore()
 	}
 	
 	func createItems() {
@@ -60,6 +69,16 @@ class ShoppingListController {
 		}
 	}
 	
+	
+	func called() {
+		let userDefaults = UserDefaults.standard
+		
+		if userDefaults.bool(forKey: "WasCalled") == false {
+			createItems()
+		} else {
+			loadFromPersistentStore()
+		}
+	}
 
 	
 }

@@ -10,7 +10,7 @@ import UIKit
 
 class ShoppingItemViewController: UIViewController {
 	
-	var shoppingListController: ShoppingListController?
+	var shoppingItemController: ShoppingItemController?
 
 	@IBOutlet weak var numberOfItemsAdded: UILabel!
 	@IBOutlet weak var usersName: UITextField!
