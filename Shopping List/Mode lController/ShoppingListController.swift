@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ShoppingListController: Codable {
+class ShoppingListController {
 	
 	let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
 	
@@ -21,6 +21,18 @@ class ShoppingListController: Codable {
 		let fileManager = FileManager.default
 		guard let documents = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
 		return documents.appendingPathComponent("items.plist")
+	}
+	
+	func saveToPersistentStore() {
+		let encoder = PropertyListEncoder()
+		guard let url = persistentURL else { return }
+		
+		do {
+			let data = try encoder.encode(itemNames)
+			try data.write(to: url)
+		} catch {
+			print("Error saving shopping item to persistent store: \(error.localizedDescription)")
+		}
 	}
 
 	
