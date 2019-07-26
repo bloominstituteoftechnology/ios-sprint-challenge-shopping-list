@@ -10,6 +10,18 @@ import UIKit
 
 class FoodItemCollectionViewCell: UICollectionViewCell {
     
+    var shoppingItem: ShoppingItem? { didSet { updateViews()}}
     
-    @IBOutlet weak var foodItemLabel: UILabel!
+    @IBOutlet weak var addedToCartLabel: UILabel!
+    @IBOutlet weak var foodItemNameLabel: UILabel!
+    @IBOutlet weak var foodItemImage: UIImageView!
+    
+    func updateViews() {
+        guard let shoppingItem = shoppingItem else { return }
+        addedToCartLabel.text = shoppingItem.isAdded
+        
+        
+        
+    }
+    
 }
