@@ -14,8 +14,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var userAdressTextField: UITextField!
     
-    
-    
+    let itemDetailVC = ShoppingItemController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
