@@ -13,8 +13,6 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
     let shoppingItemsController = ShoppingItemController()
     
     var item: ShoppingItem?
-    
-   
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -23,6 +21,12 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDataSource
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowCustomerDetails" {
+            guard let destinationVC = segue.destination as? CustomerDetailViewController else {return}
+            destinationVC.shoppingItemController = shoppingItemsController
+        }
+    }
     
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

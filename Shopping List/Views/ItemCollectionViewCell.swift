@@ -25,24 +25,24 @@ class ItemCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate {
         guard let item = item else {return}
         itemNameLabel.text = item.name
         
-//        cell.itemName.text = item.name
-//        
-//        if cell.itemName.text == String.apple {
-//            cell.itemImage.image = UIImage(named: String.apple)
-//        } else if cell.itemName.text == String.grapes {
-//            cell.itemImage.image = UIImage(named: String.grapes)
-//        } else if cell.itemName.text == String.milk {
-//            cell.itemImage.image = UIImage(named: String.milk)
-//        } else if cell.itemName.text == String.muffin {
-//            cell.itemImage.image = UIImage(named: String.muffin)
-//        } else if cell.itemName.text == String.popcorn {
-//            cell.itemImage.image = UIImage(named: String.popcorn)
-//        } else if cell.itemName.text == String.soda {
-//            cell.itemImage.image = UIImage(named: String.soda)
-//        } else if cell.itemName.text == String.strawberreis {
-//            cell.itemImage.image = UIImage(named: String.strawberreis)
-//        }
-//        
+        itemNameLabel.text = item.name
+        
+        if itemNameLabel.text == String.apple {
+            itemImageView.image = UIImage(named: String.apple)
+        } else if itemNameLabel.text == String.grapes {
+            itemImageView.image = UIImage(named: String.grapes)
+        } else if itemNameLabel.text == String.milk {
+            itemImageView.image = UIImage(named: String.milk)
+        } else if itemNameLabel.text == String.muffin {
+            itemImageView.image = UIImage(named: String.muffin)
+        } else if itemNameLabel.text == String.popcorn {
+            itemImageView.image = UIImage(named: String.popcorn)
+        } else if itemNameLabel.text == String.soda {
+           itemImageView.image = UIImage(named: String.soda)
+        } else if itemNameLabel.text == String.strawberreis {
+            itemImageView.image = UIImage(named: String.strawberreis)
+        }
+        
         
         guard let itemName = itemNameLabel.text else {return}
         if item.hasBeenAdded == false {

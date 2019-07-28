@@ -15,7 +15,7 @@ class CustomerDetailViewController: UIViewController {
     @IBOutlet weak var itemsInCartLabel: UILabel!
     
     
-    var shoppingItemArrayAccess = ShoppingItemController()
+    var shoppingItemController: ShoppingItemController?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -25,7 +25,8 @@ class CustomerDetailViewController: UIViewController {
     
     func updateViews() {
         
-        let arrayOfItems = shoppingItemArrayAccess.showItems 
+        guard let shoppingController = shoppingItemController else {return}
+        let arrayOfItems = shoppingController.showItems
         var count = 0
         for item in arrayOfItems {
             if item.hasBeenAdded == true { count += 1 }

@@ -14,9 +14,7 @@ class ShoppingItemController {
     
     var showItems: [ShoppingItem] = []
     let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
-    
-    
-    #warning("Ask andrew if there is a more simple way to write this, without the func")
+
 
     func initializeItems() {
         let key = String(shoppingItem.hasBeenAdded)
