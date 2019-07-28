@@ -8,9 +8,9 @@
 
 import UIKit
 
-struct ShoppingItem: Codable {
+class ShoppingItem: Codable {
     let name: String
-    let hasBeenAdded: Bool
+    var hasBeenAdded: Bool
     
     init(name: String, hasBeenAdded: Bool = false){
         self.name = name

@@ -11,14 +11,18 @@ import UIKit
 class ShoppingItemsCollectionViewController: UICollectionViewController {
     
     let shoppingItemsController = ShoppingItemController()
+    
+    var item: ShoppingItem?
+    
+   
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
         collectionView?.reloadData()
     }
 
     // MARK: UICollectionViewDataSource
+    
     
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -28,25 +32,17 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as? ItemCollectionViewCell else {return UICollectionViewCell()}
     
-        let item = shoppingItemsController.showItems[indexPath.row]
-        cell.itemName.text = item.name
-        
-        if cell.itemName.text == String.apple {
-            cell.itemImage.image = UIImage(named: String.apple)
-        } else if cell.itemName.text == String.grapes {
-            cell.itemImage.image = UIImage(named: String.grapes)
-        } else if cell.itemName.text == String.milk {
-             cell.itemImage.image = UIImage(named: String.milk)
-        } else if cell.itemName.text == String.muffin {
-            cell.itemImage.image = UIImage(named: String.muffin)
-        } else if cell.itemName.text == String.popcorn {
-            cell.itemImage.image = UIImage(named: String.popcorn)
-        } else if cell.itemName.text == String.soda {
-            cell.itemImage.image = UIImage(named: String.soda)
-        } else if cell.itemName.text == String.strawberreis {
-            cell.itemImage.image = UIImage(named: String.strawberreis)
-        }
-        
+        let newItem = shoppingItemsController.showItems[indexPath.row]
+        cell.item = newItem
+     
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let shoppingItem = shoppingItemsController.showItems[indexPath.row]
+        shoppingItem.hasBeenAdded.toggle()
+        
+        collectionView.reloadItems(at: [indexPath])
+        
     }
 }

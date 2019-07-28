@@ -74,8 +74,8 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="addedLabel" destination="jTO-JV-TXO" id="Pxt-ku-HNi"/>
-                                    <outlet property="itemImage" destination="P4I-P8-Mz6" id="rLc-TD-RjR"/>
-                                    <outlet property="itemName" destination="m08-RR-h1O" id="b2P-40-1mR"/>
+                                    <outlet property="itemImageView" destination="P4I-P8-Mz6" id="rLc-TD-RjR"/>
+                                    <outlet property="itemNameLabel" destination="m08-RR-h1O" id="b2P-40-1mR"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -148,7 +148,9 @@
                         <viewLayoutGuide key="safeArea" id="hMr-Md-EOp"/>
                     </view>
                     <connections>
+                        <outlet property="addressTextField" destination="uEn-vQ-v1g" id="AHF-Zf-lOt"/>
                         <outlet property="itemsInCartLabel" destination="2q8-YU-IbO" id="Tv1-EM-7GV"/>
+                        <outlet property="nameTextField" destination="k6k-hn-AAu" id="P6N-hF-s1x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O4g-hN-pb9" userLabel="First Responder" sceneMemberID="firstResponder"/>
