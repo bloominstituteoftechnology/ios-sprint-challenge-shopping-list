@@ -25,13 +25,13 @@ class ShoppingItemController {
 	}
 
 	var shoppingItems: [ShoppingItem] = [
-										ShoppingItem(name: "Apples", imageName: "Apple"),
-										ShoppingItem(name: "Grapes", imageName: "Grapes"),
-										ShoppingItem(name: "Milk", imageName: "Milk"),
-										ShoppingItem(name: "Muffin", imageName: "Muffin"),
-										ShoppingItem(name: "Popcorn", imageName: "Popcorn"),
-										ShoppingItem(name: "Soda", imageName: "Soda"),
-										ShoppingItem(name: "Strawberries", imageName: "Strawberries")
+										ShoppingItem(name: "Apples", imageName: "apple 2"),
+										ShoppingItem(name: "Grapes", imageName: "grapes 2"),
+										ShoppingItem(name: "Milk", imageName: "milk 2"),
+										ShoppingItem(name: "Muffin", imageName: "muffin 2"),
+										ShoppingItem(name: "Popcorn", imageName: "popcorn 2"),
+										ShoppingItem(name: "Soda", imageName: "soda 2"),
+										ShoppingItem(name: "Strawberries", imageName: "strawberries 2")
 										]
 
 

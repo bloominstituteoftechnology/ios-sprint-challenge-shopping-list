@@ -23,7 +23,8 @@ class ItemCollectionViewCell: UICollectionViewCell {
 
 	override func awakeFromNib() {
 		super.awakeFromNib()
-		isAddedImageView.isHidden = true
+		isAddedImageView.image = isAddedImageView.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+		isAddedImageView.tintColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
 	}
 
 	func updateViews() {
@@ -38,8 +39,8 @@ class ItemCollectionViewCell: UICollectionViewCell {
 	}
 
 	private func animateView(view: UIView, toHidden isHidden: Bool) {
-		UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 10.0, options:[], animations: {
-			view.isHidden = isHidden
+		UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.0, options:[], animations: {
+			view.transform = isHidden ? CGAffineTransform(scaleX: 0, y: 0) : CGAffineTransform(scaleX: 1, y: 1)
 		}, completion: nil)
 	}
 }

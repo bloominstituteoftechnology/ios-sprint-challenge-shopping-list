@@ -48,6 +48,12 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		let item = shoppingItemController.shoppingItems[indexPath.item]
 		shoppingItemController.toggleItemsAdded(item: item)
-		collectionView.reloadItems(at: [indexPath])
+
+//		collectionView.reloadItems(at: [indexPath])
+
+		guard let cell = collectionView.cellForItem(at: indexPath) as? ItemCollectionViewCell else { return }
+		cell.item = shoppingItemController.shoppingItems[indexPath.item]
+//		animateView(view: cell, toHidden: true)
+
 	}
 }
