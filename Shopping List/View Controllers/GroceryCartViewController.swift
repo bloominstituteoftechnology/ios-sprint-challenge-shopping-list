@@ -23,6 +23,15 @@ class GroceryCartViewController: UIViewController {
     
 
     @IBAction func sendOrderTapped(_ sender: Any) {
+        if let address = addressTextField.text, let name = nameTextField.text, !name.isEmpty, !address.isEmpty {
+            let alert = UIAlertController(title: "Order Placed!", message: "Your grocery items will be delivered to \(address)", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in self.navigationController?.popViewController(animated: true)}))
+            self.present(alert, animated: true)
+        } else {
+            let alert = UIAlertController(title: "Enter Information", message: "Please enter a name and address before proceeding.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
     }
     
     private func updateViews() {
