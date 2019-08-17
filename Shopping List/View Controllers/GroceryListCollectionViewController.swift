@@ -69,7 +69,11 @@ class GroceryListCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let selectedItem = collectionView.indexPathsForSelectedItems?.first?.item else { return }
-        shoppingItemController.updateHasBeenAdded(for: shoppingItemController.shoppingItems[selectedItem])
+        if indexPath.section == 0 {
+             shoppingItemController.updateHasBeenAdded(for: shoppingItemController.addedShoppingItems[selectedItem])
+        } else {
+             shoppingItemController.updateHasBeenAdded(for: shoppingItemController.notAddedShoppingItems[selectedItem])
+        }
         collectionView.reloadData()
     }
     

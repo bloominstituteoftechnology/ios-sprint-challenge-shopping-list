@@ -72,4 +72,10 @@ class ShoppingItemController {
         saveToPersistentStore()
     }
     
+    func delete(shoppingItem: ShoppingItem) {
+        guard let index = shoppingItems.firstIndex(of: shoppingItem) else { return }
+        shoppingItems.remove(at: index)
+        saveToPersistentStore()
+    }
+    
 }
