@@ -19,13 +19,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="V6S-Qw-GIO">
                             <size key="itemSize" width="150" height="170"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="headerReferenceSize" width="50" height="50"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="8" minY="8" maxX="8" maxY="8"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoppingItemCell" id="gR2-yY-1R3" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
-                                <rect key="frame" x="8" y="8" width="150" height="170"/>
+                                <rect key="frame" x="8" y="58" width="150" height="170"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="170"/>
@@ -75,6 +75,28 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="ShoppingListSectionHeader" id="b4u-nP-QuL" customClass="ShoppingListCollectionReusableView" customModule="Shopping_List" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Section Header" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nGf-ZG-wkb">
+                                    <rect key="frame" x="8" y="13" width="398" height="24"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="0.32154323630136988" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="trailingMargin" secondItem="nGf-ZG-wkb" secondAttribute="trailing" id="Joa-7e-js6"/>
+                                <constraint firstItem="nGf-ZG-wkb" firstAttribute="centerY" secondItem="b4u-nP-QuL" secondAttribute="centerY" id="SJC-qs-bjT"/>
+                                <constraint firstItem="nGf-ZG-wkb" firstAttribute="leading" secondItem="b4u-nP-QuL" secondAttribute="leadingMargin" id="UGP-Hc-3CV"/>
+                                <constraint firstItem="nGf-ZG-wkb" firstAttribute="centerX" secondItem="b4u-nP-QuL" secondAttribute="centerX" id="g6R-IS-iKF"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="lblHeader" destination="nGf-ZG-wkb" id="iel-qI-GOb"/>
+                            </connections>
+                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="6ga-FE-BEL" id="KNZ-6I-4NK"/>
                             <outlet property="delegate" destination="6ga-FE-BEL" id="2CD-68-WQQ"/>
