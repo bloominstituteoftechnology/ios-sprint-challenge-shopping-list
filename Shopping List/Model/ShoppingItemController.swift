@@ -19,6 +19,7 @@ class ShoppingItemController {
     }
     
     init() {
+        
         loadFromPersistentStore()
     }
     
@@ -54,5 +55,10 @@ class ShoppingItemController {
         } catch {
             print("Error loading items data: \(error)")
         }
+    }
+    
+    func userDefaults() {
+//        let userDefaults = UserDefaults.standard
+//        userDefaults.set(UIImage, forKey: <#T##String#>)
     }
 }

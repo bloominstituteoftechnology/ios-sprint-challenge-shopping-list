@@ -45,14 +45,10 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as? ShoppingItemCollectionViewCell else { return UICollectionViewCell() }
     
         let item = shoppingItemController.items[indexPath.item]
-//        cell.itemImage.image = item.image
-//        cell.itemNameLabel.text = item.itemName
+        cell.itemImageView.image = UIImage(data: item.itemImage)
+        cell.itemNameLabel.text = item.itemName
     
         return cell
-    }
-    
-    @IBAction func unwindToShoppingItemsCollectionViewController(_ sender: UIStoryboardSegue) {
-        
     }
 
     // MARK: UICollectionViewDelegate
