@@ -14,16 +14,21 @@ class GroceryCartViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     
-    var groceryController = GroceryController()
+    var groceryController: GroceryController?
+    var numberOfItems: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateViews()
+    }
+    
     
     @IBAction func sendOrderTapped(_ sender: Any) {
-        let numberOfItems = groceryController.itemsInCart.count
         if numberOfItems == 0 {
             let alert = UIAlertController(title: "No Items Selected", message: "Please add some items to your cart before placing an order!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in self.navigationController?.popViewController(animated: true)}))
@@ -42,7 +47,6 @@ class GroceryCartViewController: UIViewController {
     }
     
     private func updateViews() {
-        let numberOfItems = groceryController.itemsInCart.count
         numberOfItemsLabel.text = "You currently have \(numberOfItems) item(s) in your cart."
     }
 

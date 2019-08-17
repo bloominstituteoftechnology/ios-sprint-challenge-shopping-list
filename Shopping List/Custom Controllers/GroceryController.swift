@@ -11,10 +11,8 @@ import Foundation
 class GroceryController {
     
     var groceries: [GroceryItem] = []
+    var itemsInCart: [GroceryItem] = []
     
-    var itemsInCart: [GroceryItem] {
-        return groceries.filter { $0.inCart == true }
-    }
     
     private var groceryListURL: URL? {
         let fileManager = FileManager.default
@@ -70,6 +68,7 @@ class GroceryController {
     func toggleCartStatus(for groceryItem: GroceryItem) {
         guard let index = groceries.firstIndex(of: groceryItem) else { return }
         groceries[index].inCart = !groceries[index].inCart
+        itemsInCart = groceries.filter { $0.inCart == true }
         saveToPersistentStore()
     }
     

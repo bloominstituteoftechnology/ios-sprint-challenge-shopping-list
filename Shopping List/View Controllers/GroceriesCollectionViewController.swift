@@ -17,6 +17,17 @@ class GroceriesCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         groceryController.updateGroceries()
     }
+    
+    
+    // MARK: Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowCartSegue" {
+            guard let groceryCartVC = segue.destination as? GroceryCartViewController else { return }
+            groceryCartVC.groceryController = groceryController
+            groceryCartVC.numberOfItems = groceryController.itemsInCart.count
+        }
+    }
 
 
     // MARK: UICollectionViewDataSource
@@ -37,7 +48,7 @@ class GroceriesCollectionViewController: UICollectionViewController {
         } else if groceryItem.inCart == false {
             cell.inCartStatusButton.setTitle("Not Added", for: .normal)
         }
-    
+        cell.buttonDelegate = self
         return cell
     }
 
@@ -57,6 +68,7 @@ extension GroceriesCollectionViewController: GroceryItemCellDelegate {
             guard let indexPath = collectionView?.indexPath(for: cell) else { return }
             let item = groceryItemFor(indexPath: indexPath)
             groceryController.toggleCartStatus(for: item)
+        collectionView?.reloadData()
     }
 
 

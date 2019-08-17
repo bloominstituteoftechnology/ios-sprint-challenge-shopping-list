@@ -22,14 +22,7 @@ class GroceryItemCollectionViewCell: UICollectionViewCell {
     
     
     @IBAction func toggleCartStatus(_ sender: UIButton) {
-        guard let groceryItem = groceryItem else { return }
-        if groceryItem.inCart == true {
-            inCartStatusButton.setTitle("Not Added", for: .normal)
-            buttonDelegate?.toggleCartStatus(for: self)
-        } else if groceryItem.inCart == false {
-            inCartStatusButton.setTitle("Added", for: .normal)
-            buttonDelegate?.toggleCartStatus(for: self)
-        }
+        buttonDelegate?.toggleCartStatus(for: self)
     }
     
 }
