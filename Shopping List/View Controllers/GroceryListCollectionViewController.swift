@@ -48,7 +48,7 @@ class GroceryListCollectionViewController: UICollectionViewController {
             cell.groceryAddedLabel.text = "Not Added"
         }
         
-        cell.groceryImageView.image = shoppingItem.image
+        cell.groceryImageView.image = UIImage(named: shoppingItem.image)
         cell.groceryNameLabel.text = shoppingItem.name
     
         return cell

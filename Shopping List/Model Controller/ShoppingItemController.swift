@@ -10,8 +10,7 @@ import Foundation
 
 class ShoppingItemController {
     
-    var shoppingItems: [ShoppingItem] {
-        var temp = [
+    var shoppingItems: [ShoppingItem] = [
             ShoppingItem(name: "Apple", imageName: "Apple"),
             ShoppingItem(name: "Grapes", imageName: "Grapes"),
             ShoppingItem(name: "Milk", imageName: "Milk"),
@@ -20,8 +19,47 @@ class ShoppingItemController {
             ShoppingItem(name: "Soda", imageName: "Soda"),
             ShoppingItem(name: "Strawberries", imageName: "Strawberries")
         ]
+    
+    init() {
+        loadFromPersistentStore()
+    }
+    
+    private var persistentFileURL: URL? {
+        let fileManager = FileManager.default
+        guard let documents = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
         
-        return temp
+        return documents.appendingPathComponent("shopping.plist")
+    }
+    
+    private func saveToPersistentStore() {
+        guard let url = persistentFileURL else { return }
+        
+        do {
+            let encoder = PropertyListEncoder()
+            let data = try encoder.encode(shoppingItems)
+            try data.write(to: url)
+        } catch {
+            print("Error saving stars data: \(error)")
+        }
+    }
+    
+    private func loadFromPersistentStore() {
+        let fileManager = FileManager.default
+        guard let url = persistentFileURL, fileManager.fileExists(atPath: url.path) else { return }
+        
+        do {
+            let data = try Data(contentsOf: url)
+            let decoder = PropertyListDecoder()
+            shoppingItems = try decoder.decode([ShoppingItem].self, from: data)
+        } catch {
+            print("Error loading stars data: \(error)")
+        }
+    }
+    
+    func updateHasBeenAdded(for item: ShoppingItem) {
+        guard let index = shoppingItems.firstIndex(of: item) else { return }
+        shoppingItems[index].hasBeenAdded = !shoppingItems[index].hasBeenAdded
+        saveToPersistentStore()
     }
     
 }
