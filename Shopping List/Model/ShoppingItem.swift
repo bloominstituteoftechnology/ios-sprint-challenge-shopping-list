@@ -13,7 +13,7 @@ struct ShoppingItem {
     var hasBeenAdded: Bool
     var image: UIImage
     
-    init(name: String, hasBeenAdded: Bool, imageName: String) {
+    init(name: String, hasBeenAdded: Bool = false, imageName: String) {
         self.name = name
         self.hasBeenAdded = hasBeenAdded
         self.image = UIImage(named: imageName)!
