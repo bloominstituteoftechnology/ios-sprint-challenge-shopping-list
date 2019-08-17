@@ -15,17 +15,9 @@ class GroceriesCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        groceryController.updateGroceries()
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     // MARK: UICollectionViewDataSource
 
@@ -45,49 +37,20 @@ class GroceriesCollectionViewController: UICollectionViewController {
         } else if groceryItem.inCart == false {
             cell.inCartStatusButton.setTitle("Not Added", for: .normal)
         }
-        cell.buttonDelegate = self
     
         return cell
     }
 
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
     
     private func groceryItemFor(indexPath: IndexPath) -> GroceryItem {
         return groceryController.groceries[indexPath.item]
     }
     
-    
-
 }
+
+
+
+
 
 extension GroceriesCollectionViewController: GroceryItemCellDelegate {
     func toggleCartStatus(for cell: GroceryItemCollectionViewCell) {
@@ -95,6 +58,6 @@ extension GroceriesCollectionViewController: GroceryItemCellDelegate {
             let item = groceryItemFor(indexPath: indexPath)
             groceryController.toggleCartStatus(for: item)
     }
-    
-    
+
+
 }

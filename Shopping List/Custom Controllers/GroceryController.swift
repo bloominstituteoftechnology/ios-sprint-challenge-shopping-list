@@ -10,16 +10,7 @@ import Foundation
 
 class GroceryController {
     
-    var groceries: [GroceryItem] {
-        
-        let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
-        var temp: [GroceryItem] = []
-        for item in itemNames {
-            let newGrocery = GroceryItem(name: item, inCart: true)
-            temp.append(newGrocery)
-        }
-        return temp
-    }
+    var groceries: [GroceryItem] = []
     
     var itemsInCart: [GroceryItem] {
         return groceries.filter { $0.inCart == true }
@@ -45,15 +36,41 @@ class GroceryController {
     }
     
     private func loadFromPersistentStore() {
+        let fileManager = FileManager.default
+        guard let groceryListURL = groceryListURL, fileManager.fileExists(atPath: groceryListURL.path) else { return }
         
+        do {
+            let groceryData = try Data(contentsOf: groceryListURL)
+            let decoder = PropertyListDecoder()
+            let decodedGroceries = try decoder.decode([GroceryItem].self, from: groceryData)
+            groceries = decodedGroceries
+        } catch {
+            print("Error loading grocery list data: \(error)")
+        }
     }
     
-    func toggleCartStatus(for item: GroceryItem) {
-        var tempItem = item
-        if let index = groceries.firstIndex(of: item) {
-            tempItem.inCart = !tempItem.inCart
+    
+    func updateGroceries() {
+        
+        let userDefaults = UserDefaults.standard
+        let defaultValues = userDefaults.bool(forKey: String.groceriesListKey)
+        if defaultValues == true {
+            loadFromPersistentStore()
+        } else if defaultValues == false {
+            let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+            for item in itemNames {
+                let newGrocery = GroceryItem(name: item, inCart: false)
+                groceries.append(newGrocery)
             }
+            saveToPersistentStore()
+            userDefaults.set(true, forKey: String.groceriesListKey)
         }
-  
+    }
+    
+    func toggleCartStatus(for groceryItem: GroceryItem) {
+        guard let index = groceries.firstIndex(of: groceryItem) else { return }
+        groceries[index].inCart = !groceries[index].inCart
+        saveToPersistentStore()
+    }
     
 }
