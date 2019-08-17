@@ -9,7 +9,23 @@
 import UIKit
 
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
-    var item: ShoppingItem?
     
+    @IBOutlet weak var imgItem: UIImageView!
+    @IBOutlet weak var lblItemName: UILabel!
     
+    var item: ShoppingItem? {
+        didSet {
+            updateView()
+        }
+    }
+    
+    func updateView() {
+        guard let item = item else { return }
+        if item.inShoppingList {
+            imgItem.image = UIImage(named: item.selectedImage)
+        } else {
+            imgItem.image = UIImage(named: item.image)
+        }
+        lblItemName.text = item.name
+    }
 }
