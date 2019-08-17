@@ -13,9 +13,4 @@ struct ShoppingItem: Codable {
     var itemName: String
     var wasAddedToList: Bool?
     var itemImage: Data
-
-    init(itemName: String, itemImage: Data) {
-        self.itemName = itemName
-        self.itemImage = itemImage
-    }
 }

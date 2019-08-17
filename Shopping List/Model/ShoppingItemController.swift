@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class ShoppingItemController {
     private(set) var items: [ShoppingItem] = []
@@ -23,9 +24,9 @@ class ShoppingItemController {
         loadFromPersistentStore()
     }
     
-    func createShoppingItem(named itemName: String, imageNamed itemImage: Data) -> ShoppingItem {
+    func createShoppingItem(named itemName: String, imageNamed itemImage: Data, wasAdded wasAddedToList: Bool) -> ShoppingItem {
         
-        let item = ShoppingItem(itemName: itemName, itemImage: itemImage )
+        let item = ShoppingItem(itemName: itemName, wasAddedToList: wasAddedToList, itemImage: itemImage)
         items.append(item)
         saveToPersistentStore()
         return item
@@ -45,6 +46,7 @@ class ShoppingItemController {
     }
     
     func loadFromPersistentStore() {
+        loadDefaults()
         let fileManager = FileManager.default
         guard let url = persistentFileURL, fileManager.fileExists(atPath: url.path) else { return }
         
@@ -57,8 +59,16 @@ class ShoppingItemController {
         }
     }
     
-    func userDefaults() {
-//        let userDefaults = UserDefaults.standard
-//        userDefaults.set(UIImage, forKey: <#T##String#>)
+    func loadDefaults() {
+        let loadItems = UserDefaults.standard.bool(forKey: .loadItems)
+        guard !loadItems else { return }
+        
+        let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+        for item in itemNames {
+            if let itemImage = UIImage(named: item), let imageData = UIImagePNGRepresentation(itemImage) {
+                createShoppingItem(named: item, imageNamed: imageData, wasAdded: false)
+            }
+        }
+        UserDefaults.standard.set(true, forKey: .loadItems)
     }
 }
