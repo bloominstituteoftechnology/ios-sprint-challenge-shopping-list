@@ -39,9 +39,9 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
         // Configure the cell
         let item = shoppingListController.shoppingList[indexPath.item]
-        cell.imageView.image = item.image
+        cell.imageView.image = UIImage(named: imageName)
         cell.itemNameLabel.text = item.itemName
-//        cell.isAddedLabel.text = 
+//        cell.isAddedLabel.text =
     
         return cell
     }

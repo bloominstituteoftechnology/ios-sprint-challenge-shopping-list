@@ -62,11 +62,9 @@
 		4613E91021143BFC00E7FF73 /* Shopping List */ = {
 			isa = PBXGroup;
 			children = (
-				9D5075AF22B3FC0B00907C74 /* ShoppingItem.swift */,
-				9D5075AD22B3FB6B00907C74 /* ShoppingListCollectionViewController.swift */,
-				9D5075B122B4003D00907C74 /* ShoppingListCollectionViewCell.swift */,
-				9D5075B322B40B9C00907C74 /* ShoppingListController.swift */,
-				9D5075B522B5856100907C74 /* ShoppingListDetailViewController.swift */,
+				9D64F85F23087D0B00DE592E /* Model */,
+				9D64F85E23087CF300DE592E /* Controllers */,
+				9D64F86023087D1600DE592E /* Custom View */,
 				4613E91521143BFC00E7FF73 /* Main.storyboard */,
 				4613E91121143BFC00E7FF73 /* AppDelegate.swift */,
 				4613E91821143BFD00E7FF73 /* Assets.xcassets */,
@@ -74,6 +72,32 @@
 				4613E91D21143BFD00E7FF73 /* Info.plist */,
 			);
 			path = "Shopping List";
+			sourceTree = "<group>";
+		};
+		9D64F85E23087CF300DE592E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9D5075AD22B3FB6B00907C74 /* ShoppingListCollectionViewController.swift */,
+				9D5075B322B40B9C00907C74 /* ShoppingListController.swift */,
+				9D5075B522B5856100907C74 /* ShoppingListDetailViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		9D64F85F23087D0B00DE592E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9D5075AF22B3FC0B00907C74 /* ShoppingItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9D64F86023087D1600DE592E /* Custom View */ = {
+			isa = PBXGroup;
+			children = (
+				9D5075B122B4003D00907C74 /* ShoppingListCollectionViewCell.swift */,
+			);
+			path = "Custom View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
