@@ -37,7 +37,15 @@ class GroceriesCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GroceryItemCell", for: indexPath) as?
             GroceryItemCollectionViewCell else { return UICollectionViewCell() }
-        
+        let groceryItem = groceryController.groceries[indexPath.item]
+        cell.groceryItemName.text = groceryItem.name
+        cell.groceryItemImage.image = UIImage(named: groceryItem.name)
+        if groceryItem.inCart == true {
+            cell.inCartStatusButton.setTitle("Added", for: .normal)
+        } else if groceryItem.inCart == false {
+            cell.inCartStatusButton.setTitle("Not Added", for: .normal)
+        }
+        cell.buttonDelegate = self
     
         return cell
     }
@@ -72,5 +80,21 @@ class GroceriesCollectionViewController: UICollectionViewController {
     
     }
     */
+    
+    private func groceryItemFor(indexPath: IndexPath) -> GroceryItem {
+        return groceryController.groceries[indexPath.item]
+    }
+    
+    
 
+}
+
+extension GroceriesCollectionViewController: GroceryItemCellDelegate {
+    func toggleCartStatus(for cell: GroceryItemCollectionViewCell) {
+            guard let indexPath = collectionView?.indexPath(for: cell) else { return }
+            let item = groceryItemFor(indexPath: indexPath)
+            groceryController.toggleCartStatus(for: item)
+    }
+    
+    
 }

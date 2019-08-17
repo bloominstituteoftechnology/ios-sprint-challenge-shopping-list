@@ -11,13 +11,18 @@ import Foundation
 class GroceryController {
     
     var groceries: [GroceryItem] {
+        
         let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
         var temp: [GroceryItem] = []
         for item in itemNames {
-            let newGrocery = GroceryItem(name: item, inCart: false)
+            let newGrocery = GroceryItem(name: item, inCart: true)
             temp.append(newGrocery)
         }
         return temp
+    }
+    
+    var itemsInCart: [GroceryItem] {
+        return groceries.filter { $0.inCart == true }
     }
     
     private var groceryListURL: URL? {
@@ -42,6 +47,13 @@ class GroceryController {
     private func loadFromPersistentStore() {
         
     }
+    
+    func toggleCartStatus(for item: GroceryItem) {
+        var tempItem = item
+        if let index = groceries.firstIndex(of: item) {
+            tempItem.inCart = !tempItem.inCart
+            }
+        }
   
     
 }

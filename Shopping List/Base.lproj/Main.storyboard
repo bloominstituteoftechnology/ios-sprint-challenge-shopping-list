@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rV4-kl-cqR">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Groceries Collection View Controller-->
+        <!--Select Grocery Items-->
         <scene sceneID="eA9-hr-TE6">
             <objects>
                 <collectionViewController id="gJT-3Q-cbW" customClass="GroceriesCollectionViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
@@ -35,23 +36,26 @@
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="200"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T3j-Li-bUu">
-                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="10"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0V3-pp-Xa9">
+                                                    <rect key="frame" x="0.0" y="0.0" width="74" height="16"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="10" id="iMd-XG-ZkQ"/>
+                                                        <constraint firstAttribute="height" constant="16" id="xRr-l6-teD"/>
                                                     </constraints>
-                                                    <state key="normal" title="Button"/>
+                                                    <state key="normal" title="Not Added"/>
+                                                    <connections>
+                                                        <action selector="toggleCartStatus:" destination="iZF-rU-QCV" eventType="touchUpInside" id="dk1-ig-OKK"/>
+                                                    </connections>
                                                 </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wj2-aq-WSv">
-                                                    <rect key="frame" x="0.0" y="36" width="150" height="120"/>
+                                                    <rect key="frame" x="0.0" y="42" width="74" height="100"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="120" id="VEi-rH-OM6"/>
+                                                        <constraint firstAttribute="height" constant="100" id="VEi-rH-OM6"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qwx-d5-rIv">
-                                                    <rect key="frame" x="0.0" y="182" width="150" height="20"/>
+                                                    <rect key="frame" x="0.0" y="168" width="74" height="16"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="20" id="eLr-Zd-USS"/>
+                                                        <constraint firstAttribute="height" constant="16" id="eLr-Zd-USS"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -64,7 +68,7 @@
                                 <connections>
                                     <outlet property="groceryItemImage" destination="Wj2-aq-WSv" id="8lW-F3-E6j"/>
                                     <outlet property="groceryItemName" destination="Qwx-d5-rIv" id="Ukn-T8-xgN"/>
-                                    <outlet property="inCartButton" destination="T3j-Li-bUu" id="hpK-FF-aLR"/>
+                                    <outlet property="inCartStatusButton" destination="0V3-pp-Xa9" id="GiP-Uj-8BJ"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -73,11 +77,75 @@
                             <outlet property="delegate" destination="gJT-3Q-cbW" id="vur-kW-Ndb"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="m4x-pW-dyu"/>
+                    <navigationItem key="navigationItem" title="Select Grocery Items" id="m4x-pW-dyu">
+                        <barButtonItem key="rightBarButtonItem" title="View Cart" id="eft-bm-lJN">
+                            <connections>
+                                <segue destination="Fe1-h9-Qe4" kind="show" identifier="ShowCartSegue" id="J19-cb-d8t"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VnL-Lc-rbi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="895.6521739130435" y="167.41071428571428"/>
+        </scene>
+        <!--Checkout-->
+        <scene sceneID="zbt-ML-nCv">
+            <objects>
+                <viewController id="Fe1-h9-Qe4" customClass="GroceryCartViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="V22-Xx-DFf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="33Z-pR-2Fl">
+                                <rect key="frame" x="8" y="96" width="398" height="134.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAT-Q9-fsv">
+                                        <rect key="frame" x="0.0" y="0.0" width="398" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Inx-MF-sOl">
+                                        <rect key="frame" x="0.0" y="28.5" width="398" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7kG-a7-fkr">
+                                        <rect key="frame" x="0.0" y="66.5" width="398" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qKn-yH-jWp">
+                                        <rect key="frame" x="0.0" y="104.5" width="398" height="30"/>
+                                        <state key="normal" title="Send Order"/>
+                                        <connections>
+                                            <action selector="sendOrderTapped:" destination="Fe1-h9-Qe4" eventType="touchUpInside" id="oJt-xL-5A4"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="33Z-pR-2Fl" firstAttribute="top" secondItem="oZa-Xv-xHV" secondAttribute="top" constant="8" id="Kg7-bb-M2i"/>
+                            <constraint firstItem="33Z-pR-2Fl" firstAttribute="leading" secondItem="oZa-Xv-xHV" secondAttribute="leading" constant="8" id="axj-dL-jrO"/>
+                            <constraint firstItem="oZa-Xv-xHV" firstAttribute="trailing" secondItem="33Z-pR-2Fl" secondAttribute="trailing" constant="8" id="eMq-4p-mUJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="oZa-Xv-xHV"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Checkout" id="Plf-KA-zQb"/>
+                    <connections>
+                        <outlet property="addressTextField" destination="7kG-a7-fkr" id="K5V-Ix-Wao"/>
+                        <outlet property="nameTextField" destination="Inx-MF-sOl" id="OLU-oy-bJK"/>
+                        <outlet property="numberOfItemsLabel" destination="bAT-Q9-fsv" id="N5v-ca-NJv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N9l-ZH-HJZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1686" y="167"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BHf-1E-PPF">
