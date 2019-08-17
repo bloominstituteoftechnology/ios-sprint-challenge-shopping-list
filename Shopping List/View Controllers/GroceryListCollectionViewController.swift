@@ -63,6 +63,7 @@ class GroceryListCollectionViewController: UICollectionViewController {
             
             shoppingItemController.updateHasBeenAdded(for: shoppingItemController.shoppingItems[selectedItem])
         }
+        collectionView.reloadData()
     }
 
 }

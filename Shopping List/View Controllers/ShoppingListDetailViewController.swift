@@ -21,6 +21,13 @@ class ShoppingListDetailViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard let itemCount = shoppingItems?.count else { return }
+        groceryItemCountLabel.text = "You currently have \(itemCount) item(s) in your shopping list."
+    }
+    
     @IBAction func sendOrderButtonTapped(_ sender: UIButton) {
         guard let name = nameTextField.text,
             let address = addressTextField.text,
