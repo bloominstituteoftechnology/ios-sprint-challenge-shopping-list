@@ -13,7 +13,6 @@ class ShoppingItemController {
     var shoppingItems: [ShoppingItem] = [
             ShoppingItem(name: "Apple", imageName: "Apple"),
             ShoppingItem(name: "Grapes", imageName: "Grapes"),
-            ShoppingItem(name: "Grapes", hasBeenAdded: true, imageName: "Grapes"),
             ShoppingItem(name: "Milk", imageName: "Milk"),
             ShoppingItem(name: "Muffin", imageName: "Muffin"),
             ShoppingItem(name: "Popcorn", imageName: "Popcorn"),
