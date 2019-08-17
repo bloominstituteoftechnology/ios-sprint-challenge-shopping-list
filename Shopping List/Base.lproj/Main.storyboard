@@ -127,18 +127,12 @@
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1AA-0Z-zgR">
                                                 <rect key="frame" x="0.0" y="0.0" width="312" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="312" id="OKN-aQ-Upg"/>
-                                                </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="obE-aU-3Fr">
                                                 <rect key="frame" x="0.0" y="38" width="312" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="312" id="VE1-qD-Mfa"/>
-                                                </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -153,6 +147,10 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="gy4-q6-erK" secondAttribute="trailing" id="HIO-5g-VXm"/>
+                                    <constraint firstItem="gy4-q6-erK" firstAttribute="leading" secondItem="ec3-DE-LUN" secondAttribute="leading" id="tCd-BO-S64"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

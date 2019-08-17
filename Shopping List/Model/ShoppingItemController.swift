@@ -22,9 +22,9 @@ class ShoppingItemController {
         loadFromPersistentStore()
     }
     
-    func createShoppingItem(named itemName: String, AddedToList wasAddedToList: Bool) -> ShoppingItem {
+    func createShoppingItem(named itemName: String, imageNamed itemImage: Data) -> ShoppingItem {
         
-        let item = ShoppingItem(itemName: itemName, wasAddedToList: wasAddedToList)
+        let item = ShoppingItem(itemName: itemName, itemImage: itemImage )
         items.append(item)
         saveToPersistentStore()
         return item

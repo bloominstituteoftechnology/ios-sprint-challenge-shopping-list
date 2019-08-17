@@ -8,7 +8,14 @@
 
 import Foundation
 
+
 struct ShoppingItem: Codable {
     var itemName: String
-    var wasAddedToList: Bool
+    var wasAddedToList: Bool?
+    var itemImage: Data
+
+    init(itemName: String, itemImage: Data) {
+        self.itemName = itemName
+        self.itemImage = itemImage
+    }
 }
