@@ -24,6 +24,16 @@ class ShoppingItemController {
         loadFromPersistentStore()
     }
     
+    var addedShoppingItems: [ShoppingItem] {
+        let addedShoppingItems = shoppingItems.filter { $0.hasBeenAdded == true }
+        return addedShoppingItems
+    }
+    
+    var notAddedShoppingItems: [ShoppingItem] {
+        let addedShoppingItems = shoppingItems.filter { $0.hasBeenAdded == false }
+        return addedShoppingItems
+    }
+    
     private var persistentFileURL: URL? {
         let fileManager = FileManager.default
         guard let documents = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }

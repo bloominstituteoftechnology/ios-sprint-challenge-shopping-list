@@ -57,7 +57,11 @@ class GroceryListCollectionViewController: UICollectionViewController {
     // MARK: - UICollectionViewDelegate
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        <#code#>
+        func toggleHasBeenAdded(for item: GroceryItemCollectionViewCell) {
+            guard let selectedItem = collectionView.indexPathsForSelectedItems?.first?.item else { return }
+            
+            shoppingItemController.updateHasBeenAdded(for: shoppingItemController.shoppingItems[selectedItem])
+        }
     }
 
 }
