@@ -9,6 +9,7 @@
 import Foundation
 
 class ShoppingListController {
+    
     let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     
     // create shopping list array
@@ -17,11 +18,47 @@ class ShoppingListController {
     
     var shoppingList: [ShoppingItem] = []
     
+    private var persistentFileURL: URL? {
+        let fileManager = FileManager.default
+        guard let documents = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            return nil
+        }
+        return documents.appendingPathComponent("shoppingList.pist")
+    }
+    
     init() {
         for item in itemNames {
             let shoppingItem = ShoppingItem(itemName: item, imageName: item)
             shoppingList.append(shoppingItem)
+            
+            loadFromPersistenceStore()
+        }
+        
+    }
+    
+    func saveToPersistenceStore() {
+        guard let url = persistentFileURL else { return }
+        
+        do {
+            let encoder = PropertyListEncoder()
+            let data = try encoder.encode(shoppingList)
+            try data.write(to: url)
+        } catch {
+            print("Error saving shopping list data: \(error)")
         }
     }
     
+    func loadFromPersistenceStore() {
+        let fileManager = FileManager.default
+        guard let url = persistentFileURL,
+            fileManager.fileExists(atPath: url.path) else { return }
+        
+        do {
+            let data = try Data(contentsOf: url)
+            let decoder = PropertyListDecoder()
+            shoppingList = try decoder.decode([ShoppingItem].self, from: data)
+        } catch {
+            print("Error loading shopping list data: \(error)")
+        }
+    }
 }
