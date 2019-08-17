@@ -102,10 +102,10 @@
             </objects>
             <point key="canvasLocation" x="960.86956521739137" y="57.589285714285708"/>
         </scene>
-        <!--View Controller-->
+        <!--Shopping Item Detail View Controller-->
         <scene sceneID="pDg-Ai-YZ5">
             <objects>
-                <viewController id="kbN-Xt-9E5" sceneMemberID="viewController">
+                <viewController id="kbN-Xt-9E5" customClass="ShoppingItemDetailViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bAD-LI-twO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -148,6 +148,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GZq-Xa-dl3">
                                         <rect key="frame" x="116.5" y="162" width="79" height="30"/>
                                         <state key="normal" title="Send Order"/>
+                                        <connections>
+                                            <action selector="sendOrderPressed:" destination="kbN-Xt-9E5" eventType="touchUpInside" id="Bom-N7-uMq"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -164,6 +167,11 @@
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="F73-ay-wJP">
                         <barButtonItem key="backBarButtonItem" title="Change Shopping List" id="oBD-k1-r6f"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addressTextField" destination="obE-aU-3Fr" id="SRC-Rz-0cW"/>
+                        <outlet property="nameTextField" destination="1AA-0Z-zgR" id="dlg-Vv-WiC"/>
+                        <outlet property="shoppingItemCountLabel" destination="g0F-eS-CXC" id="o53-Su-y29"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bXF-T8-9ma" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
