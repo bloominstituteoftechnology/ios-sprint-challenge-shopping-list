@@ -13,6 +13,9 @@ class ShoppingListDetailViewController: UIViewController {
     @IBOutlet weak var groceryItemCountLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
+    
+    var shoppingItemController: ShoppingItemController?
+    var shoppingItems: [ShoppingItem]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
