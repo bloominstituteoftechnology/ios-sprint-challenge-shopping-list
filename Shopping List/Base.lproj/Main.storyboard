@@ -106,7 +106,7 @@
                     <navigationItem key="navigationItem" title="Shopping List" id="cZc-F5-vds">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="fBv-ri-dXN">
                             <connections>
-                                <segue destination="HP0-x7-gQJ" kind="show" id="AR0-UV-DTM"/>
+                                <segue destination="HP0-x7-gQJ" kind="show" identifier="segueShowPlaceOrder" id="AR0-UV-DTM"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -173,9 +173,12 @@
                                             </textField>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oQM-OA-ZCs">
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oQM-OA-ZCs">
                                         <rect key="frame" x="0.0" y="231" width="374" height="30"/>
                                         <state key="normal" title="Send Order"/>
+                                        <connections>
+                                            <action selector="sendOrderTapped:" destination="HP0-x7-gQJ" eventType="touchUpInside" id="3Xf-SQ-l5N"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jGt-Iy-l0g">
                                         <rect key="frame" x="0.0" y="271" width="374" height="24"/>
@@ -191,7 +194,7 @@
                                     </textView>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have # items in your shopping list." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzu-xJ-GrF">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have # items in your shopping list." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bzu-xJ-GrF">
                                 <rect key="frame" x="20" y="160" width="374" height="64"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <nil key="textColor"/>
@@ -211,6 +214,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AT9-Zu-tdo"/>
                     </view>
+                    <connections>
+                        <outlet property="btnSendOrder" destination="oQM-OA-ZCs" id="psa-dE-0OA"/>
+                        <outlet property="lblYouHaveItems" destination="bzu-xJ-GrF" id="vKh-eF-b7d"/>
+                        <outlet property="txtAddr1" destination="Yy7-Ho-Wde" id="2wX-pK-dEE"/>
+                        <outlet property="txtAddr2" destination="JdV-10-HkP" id="1KF-6z-c3L"/>
+                        <outlet property="txtCity" destination="1XI-Bb-yOi" id="mhP-Qb-UVi"/>
+                        <outlet property="txtName" destination="c0g-Qp-wUQ" id="IGG-Tx-S2R"/>
+                        <outlet property="txtState" destination="bKz-4M-Z0L" id="E4A-bF-8Ow"/>
+                        <outlet property="txtZip" destination="G2e-SA-tKE" id="Ug9-DS-BZp"/>
+                        <outlet property="txtvListOfItems" destination="bCw-eA-fJo" id="FQG-qG-TpZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yW4-dM-7Em" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
