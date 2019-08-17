@@ -23,8 +23,24 @@ class ShoppingItemDetailViewController: UIViewController {
     }
     
     @IBAction func sendOrderPressed(_ sender: UIButton) {
+        showAlert()
     }
     
+    func showAlert() {
+        guard let name = nameTextField.text,
+            let address = addressTextField.text,
+        !name.isEmpty,
+        !address.isEmpty else { return }
+        
+        let alert = UIAlertController(title: "Delivery for \(name)", message: "Your shopping items will be delivered to \(address) in 15 minutes!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.destructive, handler: {
+            action in
+            self.navigationController?.popViewController(animated: true)
+        }))
+        
+        self.present(alert, animated: true)
+        
+    }
     
 
     /*
