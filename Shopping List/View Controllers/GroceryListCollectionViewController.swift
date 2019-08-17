@@ -18,7 +18,7 @@ class GroceryListCollectionViewController: UICollectionViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        shoppingItemController.loadFromPersistentStore()
         collectionView?.reloadData()
     }
     
@@ -51,8 +51,6 @@ class GroceryListCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GroceryItem", for: indexPath) as? GroceryItemCollectionViewCell else { return UICollectionViewCell() }
         
-//        let shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
-        
         cell.delegate = self
         cell.shoppingItem = shoppingItemFor(indexPath: indexPath)
     
@@ -73,6 +71,19 @@ class GroceryListCollectionViewController: UICollectionViewController {
         guard let selectedItem = collectionView.indexPathsForSelectedItems?.first?.item else { return }
         shoppingItemController.updateHasBeenAdded(for: shoppingItemController.shoppingItems[selectedItem])
         collectionView.reloadData()
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeader", for: indexPath) as? HeaderCollectionReusableView {
+            if indexPath.section == 0 {
+                sectionHeader.sectionHeaderLabel.text = "Added"
+            } else {
+                sectionHeader.sectionHeaderLabel.text = "Not Added"
+            }
+            
+            return sectionHeader
+        }
+        return UICollectionReusableView()
     }
 
 }

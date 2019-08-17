@@ -41,7 +41,7 @@ class ShoppingItemController {
         return documents.appendingPathComponent("shopping.plist")
     }
     
-    private func saveToPersistentStore() {
+    func saveToPersistentStore() {
         guard let url = persistentFileURL else { return }
         
         do {
@@ -53,7 +53,7 @@ class ShoppingItemController {
         }
     }
     
-    private func loadFromPersistentStore() {
+    func loadFromPersistentStore() {
         let fileManager = FileManager.default
         guard let url = persistentFileURL, fileManager.fileExists(atPath: url.path) else { return }
         
