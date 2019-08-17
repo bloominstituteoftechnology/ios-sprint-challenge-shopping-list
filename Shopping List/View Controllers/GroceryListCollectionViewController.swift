@@ -32,7 +32,7 @@ class GroceryListCollectionViewController: UICollectionViewController {
     }
     */
 
-    // MARK: UICollectionViewDataSource
+    // MARK: - UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return shoppingItemController.shoppingItems.count
@@ -52,6 +52,12 @@ class GroceryListCollectionViewController: UICollectionViewController {
         cell.groceryNameLabel.text = shoppingItem.name
     
         return cell
+    }
+    
+    // MARK: - UICollectionViewDelegate
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        <#code#>
     }
 
 }
