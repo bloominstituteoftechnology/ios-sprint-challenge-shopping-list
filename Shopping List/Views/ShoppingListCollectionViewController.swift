@@ -39,21 +39,29 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return shoppingList.items.count
+        if section == 0 {
+            return shoppingList.notInList.count
+        } else if section == 1 {
+            return shoppingList.inList.count
+        } else {
+            return 0
+        }
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingItemCell", for: indexPath) as? ShoppingItemCollectionViewCell else { return UICollectionViewCell() }
     
         // Configure the cell
-        cell.item = shoppingList.items[indexPath.item]
+        if indexPath.section == 0 {
+            cell.item = shoppingList.notInList[indexPath.item]
+        } else {
+            cell.item = shoppingList.inList[indexPath.item]
+        }
         
         return cell
     }
@@ -67,12 +75,22 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     }
     */
 
-    /*
+
     // Uncomment this method to specify if the specified item should be selected
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
+        var item: ShoppingItem
+        if indexPath.section == 0 {
+            item = shoppingList.notInList[indexPath.item]
+        } else {
+            item = shoppingList.inList[indexPath.item]
+        }
+        
+        shoppingList.toggleListed(item: item)
+        collectionView.reloadData()
+        
+        return false
     }
-    */
+
 
     /*
     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item

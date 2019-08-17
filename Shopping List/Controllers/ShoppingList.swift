@@ -41,6 +41,10 @@ class ShoppingList {
         }
     }
     
+    func toggleListed(item: ShoppingItem) {
+        guard let itemNumber = items.firstIndex(of: item) else { return }
+        items[itemNumber].inShoppingList.toggle()
+    }
     
     
     // MARK: - File I/O
