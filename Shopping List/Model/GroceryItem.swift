@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct GroceryItem {
+struct GroceryItem: Encodable {
     var itemName: String
-    var wasAdded: Bool
+    var wasAdded: Bool = false
 }

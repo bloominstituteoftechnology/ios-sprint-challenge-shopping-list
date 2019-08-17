@@ -10,5 +10,9 @@ import Foundation
 
 class ShoppingList {
     
+    var item: [GroceryItem] = []
+    
     let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+    
+    
 }

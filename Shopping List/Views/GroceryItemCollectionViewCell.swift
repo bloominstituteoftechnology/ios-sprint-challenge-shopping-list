@@ -10,4 +10,19 @@ import UIKit
 
 class GroceryItemCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var itemImageView: UIImageView!
+    @IBOutlet weak var itemLabel: UILabel!
+    @IBOutlet weak var notAddedButton: UIButton!
+    
+    
+    
+    
+    
+    @IBAction func notAddedTapped(_ sender: Any) {
+    }
+    
+    
+    
+    
+    
 }
