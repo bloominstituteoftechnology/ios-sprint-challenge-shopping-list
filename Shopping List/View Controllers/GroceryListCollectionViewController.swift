@@ -34,25 +34,37 @@ class GroceryListCollectionViewController: UICollectionViewController {
     }
 
     // MARK: - UICollectionViewDataSource
+    
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return shoppingItemController.shoppingItems.count
+        if section == 0 {
+            return shoppingItemController.addedShoppingItems.count
+        } else {
+            return shoppingItemController.notAddedShoppingItems.count
+        }
+        
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GroceryItem", for: indexPath) as? GroceryItemCollectionViewCell else { return UICollectionViewCell() }
         
-        let shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
-        if shoppingItem.hasBeenAdded {
-            cell.groceryAddedLabel.text = "Added"
-        } else {
-            cell.groceryAddedLabel.text = "Not Added"
-        }
+//        let shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
         
-        cell.groceryImageView.image = UIImage(named: shoppingItem.image)
-        cell.groceryNameLabel.text = shoppingItem.name
+        cell.delegate = self
+        cell.shoppingItem = shoppingItemFor(indexPath: indexPath)
     
         return cell
+    }
+    
+    func shoppingItemFor(indexPath: IndexPath) -> ShoppingItem {
+        if indexPath.section == 0 {
+            return shoppingItemController.addedShoppingItems[indexPath.item]
+        } else {
+            return shoppingItemController.notAddedShoppingItems[indexPath.item]
+        }
     }
     
     // MARK: - UICollectionViewDelegate
@@ -63,4 +75,15 @@ class GroceryListCollectionViewController: UICollectionViewController {
         collectionView.reloadData()
     }
 
+}
+
+extension GroceryListCollectionViewController: ShoppingItemCollectionViewCellDelegate {
+    func toggleHasBeenAdded(for cell: GroceryItemCollectionViewCell) {
+        guard let indexPath = collectionView?.indexPathsForSelectedItems?.first else { return }
+        
+        let shoppingItem = shoppingItemFor(indexPath: indexPath)
+        shoppingItemController.updateHasBeenAdded(for: shoppingItem)
+        
+        collectionView?.reloadData()
+    }
 }
