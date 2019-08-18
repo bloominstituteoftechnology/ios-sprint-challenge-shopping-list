@@ -8,7 +8,11 @@
 
 import Foundation
 
-struct GroceryItem: Encodable {
+struct GroceryItem: Codable, Equatable {
     var itemName: String
     var wasAdded: Bool = false
+    
+    init (_ itemName: String) {
+        self.itemName = itemName
+    }
 }
