@@ -35,14 +35,20 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="XzX-9I-pq2">
                                             <rect key="frame" x="0.0" y="0.0" width="110" height="102"/>
                                             <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gG6-GO-OEL">
+                                                    <rect key="frame" x="0.0" y="0.0" width="123" height="24"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hSo-xi-2qe">
-                                                    <rect key="frame" x="0.0" y="0.0" width="123" height="79.5"/>
+                                                    <rect key="frame" x="0.0" y="24" width="123" height="57.5"/>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bo5-Bs-e6v">
-                                                    <rect key="frame" x="0.0" y="79.5" width="123" height="27.5"/>
+                                                    <rect key="frame" x="0.0" y="81.5" width="123" height="25.5"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6R0-Ci-Icp">
-                                                            <rect key="frame" x="0.0" y="0.0" width="39.5" height="27.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="39.5" height="25.5"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                             <state key="normal" title="Not">
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -52,7 +58,7 @@
                                                             </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4QB-Hf-4Zw">
-                                                            <rect key="frame" x="39.5" y="0.0" width="83.5" height="27.5"/>
+                                                            <rect key="frame" x="39.5" y="0.0" width="83.5" height="25.5"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -71,6 +77,7 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="itemImage" destination="hSo-xi-2qe" id="l2c-2U-YiR"/>
+                                    <outlet property="name" destination="gG6-GO-OEL" id="5he-hF-JXK"/>
                                     <outlet property="notButton" destination="6R0-Ci-Icp" id="b7f-sT-5Fk"/>
                                     <outlet property="selectedLabel" destination="4QB-Hf-4Zw" id="Lye-8F-qP2"/>
                                 </connections>
@@ -82,8 +89,9 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Shopping List" id="Puy-sr-Pfg">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="0sa-cL-67p">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="0sa-cL-67p">
                             <connections>
+                                <action selector="nextButtonTapped:" destination="mV9-NW-edu" id="JxI-P8-UO9"/>
                                 <segue destination="alL-Uv-aTR" kind="show" identifier="sendItemsToNewView" id="7to-IO-eyf"/>
                             </connections>
                         </barButtonItem>
@@ -93,10 +101,10 @@
             </objects>
             <point key="canvasLocation" x="1963.7681159420292" y="117.85714285714285"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Detail View Controller-->
         <scene sceneID="6nV-9J-zYi">
             <objects>
-                <viewController id="alL-Uv-aTR" sceneMemberID="viewController">
+                <viewController id="alL-Uv-aTR" customClass="AddDetailViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dqG-1n-rYx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -128,6 +136,9 @@
                                 <state key="normal" title="Send Order">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="sendOrderButtonTapped:" destination="alL-Uv-aTR" eventType="touchUpInside" id="CGA-YZ-lua"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -145,6 +156,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GLb-HP-fv5"/>
                     </view>
+                    <connections>
+                        <outlet property="itemInfo" destination="Q60-Bh-4YI" id="hCl-8i-fSl"/>
+                        <outlet property="sendToAddress" destination="IW9-gi-XzK" id="lJA-LY-iZz"/>
+                        <outlet property="sentToName" destination="IW9-gi-XzK" id="tTk-hY-pxg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lhi-oV-Yxy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

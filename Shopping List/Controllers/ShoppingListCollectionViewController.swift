@@ -8,16 +8,20 @@
 
 import UIKit
 
-
+protocol sendListToNextView {
+    func listWasSent(_: [ShoppingItem])
+}
 
 class ShoppingListCollectionViewController: UICollectionViewController {
   
     let itemController = ItemController()
     
-    
+    var delegate: sendListToNextView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+    
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -57,10 +61,16 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
         let item = itemController.shoppingItems[indexPath.item]
         cell.itemImage.image = item.image
-        cell.selectedLabel.text = item.name
+        cell.name.text = item.name
     
         return cell
     }
+    
+    @IBAction func nextButtonTapped(_ sender: Any) {
+        let list = itemController.shoppingItems
+        delegate?.listWasSent(list)
+    }
+    
 
     // MARK: UICollectionViewDelegate
 
