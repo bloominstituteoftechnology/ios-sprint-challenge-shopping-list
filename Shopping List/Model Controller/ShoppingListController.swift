@@ -25,6 +25,15 @@ class ShoppingListController {
         loadFromPersistentStore()
     }
     
+    func updateIsAdded(item: Int) {
+        var item = shoppingItems[item]
+        if !item.added {
+            item.added = true
+        } else {
+            item.added = false
+        }
+    }
+    
     private func createShoppingList() {
         for item in itemNames {
             let newItem = ShoppingItem(name: item)

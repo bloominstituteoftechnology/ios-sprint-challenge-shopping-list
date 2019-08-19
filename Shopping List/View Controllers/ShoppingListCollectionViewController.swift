@@ -23,7 +23,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showNameAddressSegue" {
             if let orderItemsVC = segue.destination as? OrderItemsViewController {
-                orderItemsVC.titleLabel.text = "You currently have \(shoppingListController.shoppingItems.count) item(s) in your shopping list."
+                
             }
         }
     }
@@ -37,14 +37,43 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as? ShoppingItemCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as?
+            ShoppingItemCollectionViewCell else { return UICollectionViewCell() }
         
         let item = shoppingListController.shoppingItems[indexPath.item]
         cell.imageView.image = UIImage(named: item.name)
-        cell.textLabel.text = item.name
+        if item.added == false {
+            cell.textLabel.text = "Not Added"
+        } else {
+            cell.textLabel.text = "Added"
+        }
         return cell
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ShoppingItemCollectionViewCell else { return }
+        
+        //let item = shoppingListController.shoppingItems[indexPath.item]
+        
+        if cell.isSelected {
+            shoppingListController.updateIsAdded(item: indexPath.item)
+        //    cell.textLabel.text = "Added"
+        } //else {
+//            shoppingListController.updateIsAdded(item: indexPath.item)
+//            cell.textLabel.text = "Not Added"
+//        }
+        
+       // return cell
+    }
 
+    func updateViews(item: ShoppingItem) {
+        if item.added == false {
+            cell.textLabel.text = "Not Added"
+        } else {
+            cell.textLabel.text = "Added"
+        }
+    }
     // MARK: UICollectionViewDelegate
 
     /*
@@ -54,12 +83,10 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     }
     */
 
-    /*
     // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
+//    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+//        return true
+//    }
 
     /*
     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item

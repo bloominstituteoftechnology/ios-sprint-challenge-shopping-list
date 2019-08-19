@@ -17,6 +17,7 @@ class OrderItemsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateViews()
 
         // Do any additional setup after loading the view.
     }
@@ -24,6 +25,10 @@ class OrderItemsViewController: UIViewController {
 
     @IBAction func sendOrderButtonPressed(_ sender: UIButton) {
         
+    }
+    
+    func updateViews() {
+        titleLabel.text = "You currently have 3 item(s) in your shopping list."
     }
     /*
     // MARK: - Navigation
