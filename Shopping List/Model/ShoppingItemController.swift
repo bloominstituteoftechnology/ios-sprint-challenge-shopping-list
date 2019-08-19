@@ -24,13 +24,39 @@ class ShoppingItemController {
         loadFromPersistentStore()
     }
     
-    func createShoppingItem(named itemName: String, imageNamed itemImage: Data, wasAdded wasAddedToList: Bool) -> ShoppingItem {
+    var wasAddedToList: [ShoppingItem] {
+        
+        return items.filter { (item) -> Bool in
+            return item.wasAddedToList
+        }
+    }
+    
+    var notAddedToList: [ShoppingItem] {
+        return items.filter { (shoppingItem) -> Bool in
+            return !shoppingItem.wasAddedToList
+        }
+    }
+    
+    func createShoppingItem(named itemName: String, imageNamed itemImage: Data, wasAdded wasAddedToList: Bool) {
         
         let item = ShoppingItem(itemName: itemName, wasAddedToList: wasAddedToList, itemImage: itemImage)
         items.append(item)
         saveToPersistentStore()
-        return item
+    }
+    
+    func addToList(for item: ShoppingItem) {
+        guard let index = items.index(of: item) else { return }
         
+        items[index].wasAddedToList = !items[index].wasAddedToList
+        saveToPersistentStore()
+    }
+    
+    func updateList(item: ShoppingItem, name: String, imageData: Data) {
+        guard let index = items.index(of: item) else { return }
+        
+        items[index].itemName = name
+        items[index].itemImage = imageData
+        saveToPersistentStore()
     }
     
     func saveToPersistentStore() {

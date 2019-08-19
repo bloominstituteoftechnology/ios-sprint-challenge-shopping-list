@@ -10,6 +10,8 @@ import UIKit
 
 class ShoppingItemDetailViewController: UIViewController {
     
+    var shoppingItemController: ShoppingItemController?
+    
     
     @IBOutlet weak var shoppingItemCountLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
@@ -18,6 +20,7 @@ class ShoppingItemDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateViews()
     }
     
     @IBAction func sendOrderPressed(_ sender: UIButton) {
@@ -38,6 +41,12 @@ class ShoppingItemDetailViewController: UIViewController {
         
         self.present(alert, animated: true)
         
+    }
+    
+    func updateViews() {
+        guard let shoppingItemController = shoppingItemController else { return }
+        let totalItems = shoppingItemController.wasAddedToList.count
+        shoppingItemCountLabel.text = "You currently have \(totalItems) item(s) in your shopping list."
     }
     
 

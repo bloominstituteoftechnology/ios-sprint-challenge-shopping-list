@@ -9,8 +9,8 @@
 import Foundation
 
 
-struct ShoppingItem: Codable {
+struct ShoppingItem: Codable, Equatable {
     var itemName: String
-    var wasAddedToList: Bool?
+    var wasAddedToList: Bool
     var itemImage: Data
 }

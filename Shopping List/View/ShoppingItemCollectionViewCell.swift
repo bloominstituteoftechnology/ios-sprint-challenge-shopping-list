@@ -12,7 +12,8 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var itemNameLabel: UILabel!
-    @IBOutlet weak var addedButton: UIButton!
+    @IBOutlet weak var addedLabel: UILabel!
+    
     
     var item: ShoppingItem? {
         didSet {
@@ -25,13 +26,10 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         
         itemImageView.image = UIImage(data: item.itemImage)
         itemNameLabel.text = item.itemName
+        addedLabel.text = item.wasAddedToList ? "Added" : "Not Added"
     }
     
-    @IBAction func addedButton(_ sender: UIButton) {
-        if sender.titleLabel?.text == "Not Added" {
-            sender.titleLabel?.text = "Added"
-        }
-    }
+
     
     
     
