@@ -14,6 +14,7 @@ class OrderItemsViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addressTextFiel: UITextField!
     
+    var shoppingListController: ShoppingListController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,10 @@ class OrderItemsViewController: UIViewController {
     }
     
     func updateViews() {
-        titleLabel.text = "You currently have 3 item(s) in your shopping list."
+        if let itemsCount = shoppingListController?.addedItems.count {
+            titleLabel.text = "You currently have \(itemsCount) item(s) in your shopping list."
+        }
+        
     }
     /*
     // MARK: - Navigation

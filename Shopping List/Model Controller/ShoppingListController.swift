@@ -20,6 +20,10 @@ class ShoppingListController {
         return documents.appendingPathComponent("ShoppingList.plist")
     }
     
+    var addedItems: [ShoppingItem] {
+        return shoppingItems.filter { $0.added == true }
+    }
+    
     init() {
         createShoppingList()
         loadFromPersistentStore()
@@ -32,6 +36,7 @@ class ShoppingListController {
         } else {
             item.added = false
         }
+        saveToPersistentStore()
     }
     
     private func createShoppingList() {
@@ -39,6 +44,7 @@ class ShoppingListController {
             let newItem = ShoppingItem(name: item)
             shoppingItems.append(newItem)
         }
+        saveToPersistentStore()
     }
     
     private func saveToPersistentStore() {
