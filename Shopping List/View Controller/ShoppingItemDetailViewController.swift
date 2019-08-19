@@ -48,7 +48,6 @@ class ShoppingItemDetailViewController: UIViewController {
         let totalItems = shoppingItemController.wasAddedToList.count
         shoppingItemCountLabel.text = "You currently have \(totalItems) item(s) in your shopping list."
     }
-    
 
     /*
     // MARK: - Navigation

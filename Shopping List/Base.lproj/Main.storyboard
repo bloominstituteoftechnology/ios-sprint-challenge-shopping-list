@@ -33,14 +33,13 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rcu-j7-KyI">
-                                            <rect key="frame" x="0.0" y="0.0" width="170" height="190"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="150"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="XBO-wE-Xat">
-                                                    <rect key="frame" x="0.0" y="0.0" width="170" height="190"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="150"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z0h-sd-NQP">
-                                                            <rect key="frame" x="0.0" y="0.0" width="170" height="40"/>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="120" height="40"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="40" id="2e3-Fa-bUY"/>
                                                             </constraints>
@@ -48,14 +47,21 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YM4-cS-bX3">
-                                                            <rect key="frame" x="0.0" y="40" width="170" height="120"/>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Vs-fA-oKn">
+                                                            <rect key="frame" x="0.0" y="40" width="120" height="5"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="120" id="WEl-6I-nym"/>
+                                                                <constraint firstAttribute="height" constant="5" id="uuy-ig-lJf"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YM4-cS-bX3">
+                                                            <rect key="frame" x="0.0" y="45" width="120" height="75"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="75" id="WEl-6I-nym"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ld7-ei-qv6">
-                                                            <rect key="frame" x="0.0" y="160" width="170" height="30"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ld7-ei-qv6">
+                                                            <rect key="frame" x="0.0" y="120" width="120" height="30"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="UJM-Rm-4An"/>
                                                             </constraints>
@@ -64,9 +70,12 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="Ld7-ei-qv6" firstAttribute="leading" secondItem="XBO-wE-Xat" secondAttribute="leading" id="7jh-PS-vOu"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Ld7-ei-qv6" secondAttribute="trailing" id="TCy-Si-pm3"/>
+                                                    </constraints>
                                                 </stackView>
                                             </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="XBO-wE-Xat" firstAttribute="leading" secondItem="Rcu-j7-KyI" secondAttribute="leading" id="9Ur-vZ-2UX"/>
                                                 <constraint firstAttribute="bottom" secondItem="XBO-wE-Xat" secondAttribute="bottom" id="Yma-rW-UdU"/>
@@ -143,9 +152,15 @@
                                             </textField>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GZq-Xa-dl3">
-                                        <rect key="frame" x="116.5" y="162" width="79" height="30"/>
-                                        <state key="normal" title="Send Order"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GZq-Xa-dl3" customClass="ButtonShadow" customModule="Shopping_List" customModuleProvider="target">
+                                        <rect key="frame" x="111" y="162" width="90" height="30"/>
+                                        <color key="backgroundColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="90" id="Lop-k5-0V0"/>
+                                        </constraints>
+                                        <state key="normal" title="Send Order">
+                                            <color key="titleColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="sendOrderPressed:" destination="kbN-Xt-9E5" eventType="touchUpInside" id="Bom-N7-uMq"/>
                                         </connections>
