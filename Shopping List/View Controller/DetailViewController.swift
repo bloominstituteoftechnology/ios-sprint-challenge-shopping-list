@@ -11,6 +11,8 @@ import UIKit
 class DetailViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var addressTextField: UITextField!
     
     var items: [ShoppingItem] = []
     
@@ -18,6 +20,11 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        numberOfItems()
+
+    }
+
+    func numberOfItems() {
         let addedItems = self.items.filter { (item) -> Bool in
             return item.hasBeenAdded }
         
@@ -28,12 +35,29 @@ class DetailViewController: UIViewController {
         } else {
             titleLabel.text = "You currently have \(addedItems.count) item(s) in your shopping list."
         }
+    }
+    
+    func showAlert() {
+        guard let name = nameTextField.text,
+            !name.isEmpty,
+            let address = addressTextField.text,
+            !address.isEmpty else { return }
         
+        let alert = UIAlertController(title: "Delivery for \(name)", message: "Your shopping items will be delivered to \(address) in 15 minutes!", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
 
     
     @IBAction func submitButton(_ sender: Any) {
+        guard let name = nameTextField.text,
+              !name.isEmpty,
+              let address = addressTextField.text,
+            !address.isEmpty else { return }
+
+       self.showAlert()
     }
     
     /*
