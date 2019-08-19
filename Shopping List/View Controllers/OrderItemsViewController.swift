@@ -8,8 +8,13 @@
 
 import UIKit
 
-class ShoppingListDetailViewController: UIViewController {
-
+class OrderItemsViewController: UIViewController {
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var addressTextFiel: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,6 +22,9 @@ class ShoppingListDetailViewController: UIViewController {
     }
     
 
+    @IBAction func sendOrderButtonPressed(_ sender: UIButton) {
+        
+    }
     /*
     // MARK: - Navigation
 

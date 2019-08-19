@@ -89,10 +89,10 @@
             </objects>
             <point key="canvasLocation" x="957.97101449275374" y="127.90178571428571"/>
         </scene>
-        <!--Shopping List Detail View Controller-->
+        <!--Order Items View Controller-->
         <scene sceneID="uow-Ji-Tyn">
             <objects>
-                <viewController id="4XV-gJ-W8k" customClass="ShoppingListDetailViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="4XV-gJ-W8k" customClass="OrderItemsViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g0b-Dr-u1i">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -121,6 +121,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TJd-EO-SpS">
                                         <rect key="frame" x="0.0" y="120" width="374" height="30"/>
                                         <state key="normal" title="Send Order"/>
+                                        <connections>
+                                            <action selector="sendOrderButtonPressed:" destination="4XV-gJ-W8k" eventType="touchUpInside" id="ASw-4U-h0K"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -139,6 +142,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="opz-gO-65R"/>
                     </view>
+                    <connections>
+                        <outlet property="addressTextFiel" destination="165-Jk-Pck" id="cAm-ZT-BY6"/>
+                        <outlet property="nameTextField" destination="hfC-rr-9Bg" id="Q8x-Cy-slD"/>
+                        <outlet property="titleLabel" destination="lgo-VX-WFK" id="V6R-ye-V9T"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Es-23-mvk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
