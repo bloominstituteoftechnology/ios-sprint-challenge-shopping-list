@@ -22,7 +22,7 @@ class ShoppingList {
     var shoppingListURL: URL? = {
         let fileManager = FileManager()
         guard let documents = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil}
-        return documents.appendingPathComponent("ShoppingList.plist")
+        return documents.appendingPathComponent("shoppinglist.plist")
     }()
     
     //Check if data is present in UserDefaults local storage, and if not, initialise ShoppingItem Objects one by one based on their names in the array. Items will be loaded with a default isListed value of false, allowing users to have an empty shopping list if none already exists.
@@ -36,6 +36,7 @@ class ShoppingList {
                 shoppingList.append(ShoppingItem(name: shoppingItem))
             }
             saveToPersistentStore()
+            userDefaults.set(true, forKey: String.shoppingListKey)
         }
     }
     
