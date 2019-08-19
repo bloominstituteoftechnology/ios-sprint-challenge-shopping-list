@@ -9,13 +9,13 @@
 import Foundation
 import UIKit
 
-class ShoppingListViewController: UIViewController {
+class ShoppingListViewController: UICollectionViewController {
     var shoppingItems: [ShoppingItem] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // 
+        // initialize the new shopping items once
         let didInitialize = UserDefaults.standard.bool(forKey: String.didInitializeKey)
         if !didInitialize {
             initializeOnce()
