@@ -13,6 +13,17 @@ class ShoppingList {
     //Create blank array to hold ShoppingItem Objects either loaded from local storage or created during runtime.
     private(set) var shoppingList: [ShoppingItem] = []
     
+    //Create Individual Arrays for items available and items in basket
+    var notInBasket: [ShoppingItem] {
+        let notInBasket = shoppingList.filter { $0.isListed == false }
+        return notInBasket
+    }
+    
+    var inBasket: [ShoppingItem] {
+        let inBasket = shoppingList.filter { $0.isListed == true }
+        return inBasket
+    }
+    
     //loadDataOnLaunch called when an instance of ShoppingList is created.
     init() {
         loadDataOnLaunch()

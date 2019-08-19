@@ -34,48 +34,61 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return shoppingListController.shoppingList.count
+        if section == 0 {
+            return shoppingListController.inBasket.count
+        } else if section == 1 {
+            return shoppingListController.notInBasket.count
+        } else {
+            return 0
+        }
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingCell", for: indexPath) as? ShoppingItemCollectionViewCell else { return UICollectionViewCell() }
     
-        cell.shoppingItem = shoppingListController.shoppingList[indexPath.item]
+        if indexPath.section == 0 {
+            cell.shoppingItem = shoppingListController.inBasket[indexPath.item]
+        } else {
+            cell.shoppingItem = shoppingListController.notInBasket[indexPath.item]
+        }
         return cell
+    }
+    
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard let sectionTitle = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ShoppingItemsSection", for: indexPath) as? ShoppingItemsCollectionReusableView else { return UICollectionReusableView() }
+        
+        if indexPath.section == 0 {
+            sectionTitle.sectionTitleLabel.text = "Basket: \(shoppingListController.inBasket.count) items."
+        } else if indexPath.section == 1{
+            sectionTitle.sectionTitleLabel.text = "Available Items"
+        }
+        
+        return sectionTitle
     }
 
     // MARK: UICollectionViewDelegate
-
     /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    
-    // Uncomment this method to specify if the specified item should be selected
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         let tappedItem = shoppingListController.shoppingList[indexPath.item]
         shoppingListController.shoppingItemToggle(for: tappedItem)
         collectionView.reloadData()
         return false
     }
-    
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
+ */
+    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        let selectedItem: ShoppingItem = {
+            if indexPath.section == 0 {
+                return shoppingListController.inBasket[indexPath.item]
+            } else {
+                return shoppingListController.notInBasket[indexPath.item]
+            }
+        }()
+        shoppingListController.shoppingItemToggle(for: selectedItem)
+        collectionView.reloadData()
         return false
     }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
-
 }

@@ -20,13 +20,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="10" id="W1T-0R-mQf">
                             <size key="itemSize" width="150" height="200"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="headerReferenceSize" width="50" height="50"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="12" minY="12" maxX="12" maxY="12"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoppingCell" id="AfN-yV-JQL" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
-                                <rect key="frame" x="12" y="12" width="150" height="200"/>
+                                <rect key="frame" x="12" y="62" width="150" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="200"/>
@@ -69,6 +69,27 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoppingItemsSection" id="zGE-q7-Poe" customClass="ShoppingItemsCollectionReusableView" customModule="Shopping_List" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Items Label Section Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kjU-UJ-cEw">
+                                    <rect key="frame" x="8" y="14.5" width="398" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="kjU-UJ-cEw" firstAttribute="centerX" secondItem="zGE-q7-Poe" secondAttribute="centerX" id="GEv-MF-6yY"/>
+                                <constraint firstItem="kjU-UJ-cEw" firstAttribute="leading" secondItem="zGE-q7-Poe" secondAttribute="leadingMargin" id="MSD-ez-f8N"/>
+                                <constraint firstItem="kjU-UJ-cEw" firstAttribute="centerY" secondItem="zGE-q7-Poe" secondAttribute="centerY" id="Uzv-Bf-qnv"/>
+                                <constraint firstItem="kjU-UJ-cEw" firstAttribute="trailing" secondItem="zGE-q7-Poe" secondAttribute="trailingMargin" id="qYn-gb-wdG"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="sectionTitleLabel" destination="kjU-UJ-cEw" id="NRM-Yr-8mv"/>
+                            </connections>
+                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="2oo-87-uVK" id="k5E-ss-c5p"/>
                             <outlet property="delegate" destination="2oo-87-uVK" id="8wc-QF-GBo"/>
