@@ -16,12 +16,11 @@ class DetailViewController: UIViewController {
     
     var items: [ShoppingItem] = []
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         numberOfItems()
-
+        self.navigationItem.backBarButtonItem?.title = "Change Shopping List"
     }
 
     func numberOfItems() {
@@ -48,8 +47,6 @@ class DetailViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-    
-
     
     @IBAction func submitButton(_ sender: Any) {
         guard let name = nameTextField.text,
