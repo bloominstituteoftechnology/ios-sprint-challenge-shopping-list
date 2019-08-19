@@ -8,15 +8,12 @@
 
 import UIKit
 
-
-
 class ShoppingItemsCollectionViewController: UICollectionViewController {
     
     let shoppingItemController = ShoppingItemController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -24,10 +21,8 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
         collectionView?.reloadData()
     }
 
-    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "NextStepSegue" {
             guard let shoppingItemDetailVC = segue.destination as? ShoppingItemDetailViewController else { return }
@@ -35,7 +30,6 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
         }
     }
   
-
     // MARK: UICollectionViewDataSource
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -54,7 +48,6 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as? ShoppingItemCollectionViewCell else { return UICollectionViewCell() }
     
         cell.item = shoppingListItem(indexPath)
-    
         return cell
     }
 
