@@ -25,7 +25,7 @@
                             <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="dPY-2T-Gqu">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemCell" id="dPY-2T-Gqu" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="10" y="10" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -69,6 +69,10 @@
                                     <constraint firstAttribute="trailing" secondItem="Xn6-da-C9w" secondAttribute="trailing" id="EMr-VZ-k3y"/>
                                     <constraint firstAttribute="bottom" secondItem="Xn6-da-C9w" secondAttribute="bottom" id="huf-00-vFV"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="imageView" destination="cGA-L7-YM6" id="C1E-Cq-iGQ"/>
+                                    <outlet property="textLabel" destination="WZz-Cc-yTP" id="ON7-UJ-TqG"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -79,7 +83,7 @@
                     <navigationItem key="navigationItem" title="Shopping List" id="PSb-N0-83l">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="3Vi-PU-fGo">
                             <connections>
-                                <segue destination="xG1-CI-5gK" kind="show" id="WsU-1b-awy"/>
+                                <segue destination="xG1-CI-5gK" kind="show" identifier="DetailSegue" id="WsU-1b-awy"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -88,10 +92,10 @@
             </objects>
             <point key="canvasLocation" x="1242.0289855072465" y="144.64285714285714"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="7o3-SC-FuN">
             <objects>
-                <viewController id="xG1-CI-5gK" sceneMemberID="viewController">
+                <viewController id="xG1-CI-5gK" customClass="DetailViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="96b-w3-WQp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -120,6 +124,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="icL-A2-a6p">
                                         <rect key="frame" x="0.0" y="173" width="374" height="30"/>
                                         <state key="normal" title="Send Order"/>
+                                        <connections>
+                                            <action selector="submitButton:" destination="xG1-CI-5gK" eventType="touchUpInside" id="SdG-hI-mKH"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -132,10 +139,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XFM-d5-fwU"/>
                     </view>
+                    <connections>
+                        <outlet property="titleLabel" destination="TvU-KO-BQW" id="7sM-tX-nus"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W2j-pb-gV0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2020" y="145"/>
+            <point key="canvasLocation" x="2149" y="145"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0Sr-iP-317">
