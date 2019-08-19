@@ -27,6 +27,7 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         itemImageView.image = UIImage(data: item.itemImage)
         itemNameLabel.text = item.itemName
         addedLabel.text = item.wasAddedToList ? "Added" : "Not Added"
+        addedLabel.textColor = item.wasAddedToList ? .green : .red
     }
     
 
