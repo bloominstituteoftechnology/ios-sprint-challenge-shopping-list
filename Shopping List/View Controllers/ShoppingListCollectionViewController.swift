@@ -10,22 +10,26 @@ import UIKit
 
 class ShoppingListCollectionViewController: UICollectionViewController {
 
-    
     var shoppingListController = ShoppingList()
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "PlaceOrderShowSegue" {
+            guard let placeOrderVC = segue.destination as? PlaceOrderViewController else { return }
+            
+            for item in shoppingListController.shoppingList {
+                if item.isListed == true {
+                    placeOrderVC.basket.append(item)
+                }
+            }
+        }
     }
-    */
 
     // MARK: UICollectionViewDataSource
     
