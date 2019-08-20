@@ -10,6 +10,8 @@ import UIKit
 
 class ShoppingListCollectionViewController: UICollectionViewController {
 
+    @IBOutlet weak var customCellView: UIView!
+    
     let shoppingListController = ShoppingListController()
     
     override func viewDidLoad() {
@@ -42,35 +44,19 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         
         let item = shoppingListController.shoppingItems[indexPath.item]
         cell.imageView.image = UIImage(named: item.name)
-        if cell.isSelected {
-            shoppingListController.updateIsAdded(item: indexPath.item)
-        }
-//        if item.added == false {
-//            cell.textLabel.text = "Not Added"
-//        } else {
-//            cell.textLabel.text = "Added"
-//        }
+        cell.delegate = self
+        
         return cell
+    }
+}
+
+extension ShoppingListCollectionViewController: AddToShoppingListDelegate {
+    func itemWasAdded(_ item: ShoppingItem) {
+        
+        guard let index = shoppingListController.shoppingItems.firstIndex(of: item)
+            else { return }
+        shoppingListController.updateIsAdded(item: index)
     }
     
     
-    // MARK: UICollectionViewDelegate
-
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-       return true
-   }
-//
-//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//
-//        //guard let cell = collectionView.cellForItem(at: indexPath) as? ShoppingItemCollectionViewCell else { return }
-//
-//        //let item = shoppingListController.shoppingItems[indexPath.item]
-//
-//        //if cell.isSelected {
-//            shoppingListController.updateIsAdded(item: indexPath.item)
-//       // } //else if !cell.isSelected {
-//        //  shoppingListController.updateIsAdded(item: indexPath.item)
-//        // }
-//    }
-//
 }

@@ -8,9 +8,13 @@
 
 import UIKit
 
+protocol AddToShoppingListDelegate {
+    func itemWasAdded(_ item: ShoppingItem)
+}
+
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var textLabel: UILabel!
+    @IBOutlet weak var isAddedButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
     
     var item: ShoppingItem? {
@@ -19,13 +23,19 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    var delegate: AddToShoppingListDelegate?
+    
     func updateViews() {
         guard let item = item else { return }
         
         if item.added {
-            textLabel.text = "Added"
+            isAddedButton.setTitle("Added", for: .normal)
         } else {
-            textLabel.text = "Not Added"
+            isAddedButton.setTitle("Not Added", for: .normal)
         }
+    }
+    @IBAction func addedButtonPressed(_ sender: Any) {
+        guard let item = item else { return }
+        delegate?.itemWasAdded(item)
     }
 }

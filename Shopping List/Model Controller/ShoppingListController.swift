@@ -8,11 +8,16 @@
 
 import Foundation
 
+let shoppingListKey = "shoppingListKey"
+
 class ShoppingListController {
     
     private(set) var shoppingItems: [ShoppingItem] = []
     
     let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+    
+    let userDefaults = UserDefaults.standard
+    
     
     private var shoppingListURL: URL? {
         let fileManager = FileManager.default
@@ -23,10 +28,15 @@ class ShoppingListController {
     var addedItems: [ShoppingItem] {
         return shoppingItems.filter { $0.added == true }
     }
-    
+
     init() {
-        createShoppingList()
-        loadFromPersistentStore()
+        let userDefault = UserDefaults.standard.bool(forKey: shoppingListKey)
+        // if it's true it means the app has been run before
+        if userDefault {
+            loadFromPersistentStore() // populates array from saved data
+        } else {
+            createShoppingList() // creates array
+        }
     }
     
     func updateIsAdded(item: Int) {
@@ -40,11 +50,13 @@ class ShoppingListController {
     }
     
     private func createShoppingList() {
+        
         for item in itemNames {
             let newItem = ShoppingItem(name: item)
             shoppingItems.append(newItem)
         }
         saveToPersistentStore()
+        userDefaults.set(true, forKey: shoppingListKey) // this saves the "key" info that this function has already been run once
     }
     
     private func saveToPersistentStore() {
