@@ -34,8 +34,9 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
             isAddedButton.setTitle("Not Added", for: .normal)
         }
     }
-    @IBAction func addedButtonPressed(_ sender: Any) {
+    @IBAction func addedButtonPressed(_ sender: UIButton) {
         guard let item = item else { return }
         delegate?.itemWasAdded(item)
+        //updateViews()
     }
 }

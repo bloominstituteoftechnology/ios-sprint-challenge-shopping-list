@@ -18,6 +18,11 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
 
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView?.reloadData()
+    }
 
     // MARK: - Navigation
 
@@ -52,10 +57,10 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
 extension ShoppingListCollectionViewController: AddToShoppingListDelegate {
     func itemWasAdded(_ item: ShoppingItem) {
-        
         guard let index = shoppingListController.shoppingItems.firstIndex(of: item)
             else { return }
         shoppingListController.updateIsAdded(item: index)
+        collectionView?.reloadData()
     }
     
     

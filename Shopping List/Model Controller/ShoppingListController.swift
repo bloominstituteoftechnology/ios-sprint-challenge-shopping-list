@@ -17,8 +17,7 @@ class ShoppingListController {
     let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     
     let userDefaults = UserDefaults.standard
-    
-    
+        
     private var shoppingListURL: URL? {
         let fileManager = FileManager.default
         guard let documents = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
@@ -40,11 +39,11 @@ class ShoppingListController {
     }
     
     func updateIsAdded(item: Int) {
-        var item = shoppingItems[item]
-        if !item.added {
-            item.added = true
+        var changedItem = shoppingItems[item]
+        if !changedItem.added {
+            changedItem.added = true
         } else {
-            item.added = false
+            changedItem.added = false
         }
         saveToPersistentStore()
     }
