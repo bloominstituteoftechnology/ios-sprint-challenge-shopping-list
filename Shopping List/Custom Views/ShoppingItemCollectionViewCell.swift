@@ -8,9 +8,9 @@
 
 import UIKit
 
-protocol AddToShoppingListDelegate {
-    func itemWasAdded(_ item: ShoppingItem)
-}
+//protocol AddToShoppingListDelegate {
+//    func itemWasAdded(_ item: ShoppingItem)
+//}
 
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
@@ -18,22 +18,24 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var isAddedLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     
-    var item: ShoppingItem? {
-        didSet{
-            updateViews()
-        }
-    }
+    var item: ShoppingItem? //{
+//        didSet{
+//            updateViews()
+//        }
+    //}
     
-    var delegate: AddToShoppingListDelegate?
+    //var delegate: AddToShoppingListDelegate?
     
-    func updateViews() {
-        guard let item = item else { return }
-        nameLabel.text = item.name
-        if item.added {
-            isAddedLabel.text = "Added"
-        } else {
-            isAddedLabel.text = "Not Added"
-        }
+    func updateViews(_ item: ShoppingItem) {
+        //if let item = item {
+            if item.added {
+                isAddedLabel.text = "Added"
+            } else {
+                isAddedLabel.text = "Not Added"
+            }
+        //}
+        //nameLabel.text = item.name
+        
     }
 //    @IBAction func addedButtonPressed(_ sender: UIButton) {
 //        guard let item = item else { return }

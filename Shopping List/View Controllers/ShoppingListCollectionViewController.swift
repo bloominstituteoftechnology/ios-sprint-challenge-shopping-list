@@ -46,7 +46,6 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return shoppingListController.shoppingItems.count
     }
 
@@ -58,6 +57,8 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         let item = shoppingListController.shoppingItems[indexPath.item]
         cell.imageView.image = UIImage(named: item.name)
         //cell.delegate = self
+        cell.nameLabel.text = item.name
+        cell.updateViews(item)
         
         return cell
     }
