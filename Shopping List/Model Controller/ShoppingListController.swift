@@ -38,13 +38,17 @@ class ShoppingListController {
         }
     }
     
-    func updateIsAdded(item: Int) {
-        var changedItem = shoppingItems[item]
-        if !changedItem.added {
-            changedItem.added = true
-        } else {
-            changedItem.added = false
-        }
+    func updateIsAdded(item: ShoppingItem) {
+        
+        guard let index = shoppingItems.firstIndex(of: item) else { return }
+        var changedItem = shoppingItems[index]
+//        if !changedItem.added {
+//            changedItem.added = true
+//        } else {
+//            changedItem.added = false
+//        }
+        changedItem.added = !changedItem.added
+        shoppingItems[index] = changedItem
         saveToPersistentStore()
     }
     

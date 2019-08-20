@@ -14,7 +14,8 @@ protocol AddToShoppingListDelegate {
 
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var isAddedButton: UIButton!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var isAddedLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     
     var item: ShoppingItem? {
@@ -27,16 +28,16 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
     func updateViews() {
         guard let item = item else { return }
-        
+        nameLabel.text = item.name
         if item.added {
-            isAddedButton.setTitle("Added", for: .normal)
+            isAddedLabel.text = "Added"
         } else {
-            isAddedButton.setTitle("Not Added", for: .normal)
+            isAddedLabel.text = "Not Added"
         }
     }
-    @IBAction func addedButtonPressed(_ sender: UIButton) {
-        guard let item = item else { return }
-        delegate?.itemWasAdded(item)
-        //updateViews()
-    }
+//    @IBAction func addedButtonPressed(_ sender: UIButton) {
+//        guard let item = item else { return }
+//        delegate?.itemWasAdded(item)
+//        updateViews()
+//    }
 }

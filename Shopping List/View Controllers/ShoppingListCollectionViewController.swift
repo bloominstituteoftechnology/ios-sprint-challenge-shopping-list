@@ -35,6 +35,14 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         }
     }
 
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let item = shoppingListController.shoppingItems[indexPath.item]
+        shoppingListController.updateIsAdded(item: item)
+        collectionView.reloadData()
+    }
+    
     // MARK: UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -49,19 +57,19 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         
         let item = shoppingListController.shoppingItems[indexPath.item]
         cell.imageView.image = UIImage(named: item.name)
-        cell.delegate = self
+        //cell.delegate = self
         
         return cell
     }
-}
 
-extension ShoppingListCollectionViewController: AddToShoppingListDelegate {
-    func itemWasAdded(_ item: ShoppingItem) {
-        guard let index = shoppingListController.shoppingItems.firstIndex(of: item)
-            else { return }
-        shoppingListController.updateIsAdded(item: index)
-        collectionView?.reloadData()
-    }
+
+//extension ShoppingListCollectionViewController: AddToShoppingListDelegate {
+//    func itemWasAdded(_ item: ShoppingItem) {
+//        guard let index = shoppingListController.shoppingItems.firstIndex(of: item)
+//            else { return }
+//        shoppingListController.updateIsAdded(item: index)
+//        collectionView?.reloadData()
+//    }
     
     
 }
