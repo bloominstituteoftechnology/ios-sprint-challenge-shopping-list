@@ -9,7 +9,7 @@
 import UIKit
 
 private let reuseIdentifier = "Cell"
-
+private(set) var groceryList: [ShoppingList] = []
 class ItemListViewController: UICollectionViewController {
     
     let shoppingList = ShoppingList()
@@ -20,7 +20,6 @@ class ItemListViewController: UICollectionViewController {
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
     }
-
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PlaceOrderSegue" {
@@ -51,7 +50,7 @@ class ItemListViewController: UICollectionViewController {
         } else {
             item = shoppingList.availableItems[indexPath.item]
         }
-        shoppingList.moveItem(item: item)
+        shoppingList.shoppingItemToggle(for: item)
         collectionView.reloadData()
         
         return false
