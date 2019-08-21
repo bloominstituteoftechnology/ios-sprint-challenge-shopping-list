@@ -19,10 +19,7 @@ class OrderItemsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
-
-        // Do any additional setup after loading the view.
     }
-    
 
     @IBAction func sendOrderButtonPressed(_ sender: UIButton) {
         guard let orderName = nameTextField.text, let orderAddress = addressTextField.text,
@@ -40,17 +37,5 @@ class OrderItemsViewController: UIViewController {
         if let itemsCount = shoppingListController?.addedItems.count {
             titleLabel.text = "You currently have \(itemsCount) item(s) in your shopping list."
         }
-        
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
