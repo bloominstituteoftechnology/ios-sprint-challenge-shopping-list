@@ -7,26 +7,52 @@
 //
 
 import UIKit
+import UserNotifications
 
+//struct MyOrder {
+//
+//    var name: String
+//    var items: Int
+//    var address: String
+//
+//    init(name: String, items: Int, address: String) {
+//        self.name = name
+//        self.items = items
+//        self.address = address
+//    }
+//}
 
 class ShoppingItemsCollectionViewController: UICollectionViewController {
+    
+    @IBAction func sendOrder(_ sender: Any)
+    {
 
+
+            let content = UNMutableNotificationContent()
+            content.title = "Delivery for "
+            content.subtitle = "Your order is on it's way."
+            content.body = "Your will be delivered to"
+            content.badge = 1
+            
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        
+            let request = UNNotificationRequest(identifier: "timerDone", content: content, trigger: trigger)
+            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        }
+    
     let shoppingController = ShoppingController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
+        
+setupNavBar()
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+    func setupNavBar() {
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
-    */
 
     // MARK: UICollectionViewDataSource
 
@@ -46,6 +72,7 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
         return cell
     }
 
+}
     // MARK: UICollectionViewDelegate
 
     /*
@@ -77,4 +104,5 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
     }
     */
 
-}
+
+
