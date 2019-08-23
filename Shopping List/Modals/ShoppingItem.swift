@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct shoppingItem:Encodable {
+struct shoppingItem:Codable {
     var nameOfShoppingItems: [String] = ["Apples", "Grapes", "Milk", "Popcorn", "Soda",  "Strawberries"]
     var addedShoppingItems: Bool
 
@@ -16,16 +16,18 @@ struct shoppingItem:Encodable {
     
 }
 // MARK: - Private Functions
-    private func loadFromPersistentStore() {
-        
-        do {
-            guard let fileURL = shoppingListURL else { return }
-            let shoppingListData = try Data(contentsOf: fileURL)
-            let plistDecoder = PropertyListDecoder()
-            shoppinglistItems = try plistDecoder.decode(shoppingItem.init(nameOfShoppingItems: [String], addedShoppingItems: true), from: Data)
-        } catch {
-            NSLog("Error decoding items from property list: \(error)")
-        }
+func loadFromPersistentStore() {
+    let fm = FileManager.default
+    guard let url = shoppingListURL else {return}
+    fm.fileExists(atPath: url.path)
+    
+    do {
+        let decoder = PropertyListDecoder()
+        let data = try Data(contentsOf: url)
+        shoppinglistItems = try decoder.decode([shoppingItem].self, from: data)
+    } catch {
+        print("Error loading List data: \(error)")
+    }
 }
 
             private func saveToPersistentStore() {
