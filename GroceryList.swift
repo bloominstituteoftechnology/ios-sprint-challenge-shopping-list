@@ -7,13 +7,23 @@
 //
 
 import Foundation
+import UIKit
 
-struct Item {
-    var name: String
-    var image: UIImage
+class Item: Codable {
     
-    init(name: String, imageName: String) {
+    let name: String
+    let imageName: String
+    
+    var image: UIImage {
+        return UIImage(named: imageName)!
+    }
+    
+    var isAddedToList: Bool
+    
+    
+    init(name: String, isAddedToList: Bool = false) {
         self.name = name
-        self.image = UIImage(named: imageName)!
+        self.imageName = name.lowercased()
+        self.isAddedToList = isAddedToList
     }
 }

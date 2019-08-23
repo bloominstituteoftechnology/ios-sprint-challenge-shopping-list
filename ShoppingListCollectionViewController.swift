@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+//private let reuseIdentifier = "Cell"
 
 class ShoppingListCollectionViewController: UICollectionViewController {
 
@@ -20,17 +20,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         collectionView?.reloadData()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
-    }
+  
 
     /*
     // MARK: - Navigation
@@ -60,7 +50,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
         // Configure the cell
         let item = listController.items[indexPath.item]
-        
+        cell.item = item
         return cell
     }
 

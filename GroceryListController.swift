@@ -9,17 +9,25 @@
 import Foundation
 
 class ListController {
-    var items: [Item] {
-        var result =  [
-            Item(name: "Apple", imageName: "Apple"),
-            Item(name: "Grapes", imageName: "Grape"),
-            Item(name: "Milk", imageName: "Milk"),
-            Item(name: "Muffin", imageName: "Muffin"),
-            Item(name: "Popcorn", imageName: "Popcorn"),
-            Item(name: "Soda", imageName: "Soda"),
-            Item(name: "Strawberries", imageName: "Strawberries")
-            
+    var items: [Item] = []
+    
+    
+    func createItem(name: String, imageName: String){
         
-        ]
     }
-}
+    
+//        var result = [
+//            Item(name: "Apple", imageName: "Apple"),
+//            Item(name: "Grapes", imageName: "Grape"),
+//            Item(name: "Milk", imageName: "Milk"),
+//            Item(name: "Muffin", imageName: "Muffin"),
+//            Item(name: "Popcorn", imageName: "Popcorn"),
+//            Item(name: "Soda", imageName: "Soda"),
+//            Item(name: "Strawberries", imageName: "Strawberries"),
+//        ]
+//
+//
+//
+//       return result
+    }
+
