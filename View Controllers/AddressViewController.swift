@@ -9,7 +9,9 @@
 import UIKit
 
 class AddressViewController: UIViewController {
-   
+    var shoppingController: ShoppingController?
+    var  shoppingItem: ShoppingItem?
+    
     @IBOutlet weak var noticeLabel: UILabel!
     
     @IBOutlet weak var nameText: UITextField!
@@ -21,6 +23,17 @@ class AddressViewController: UIViewController {
     }
     
     @IBAction func sendOrderButtonPressed(_ sender: UIButton) {
+        showAlert()
+      
+    }
+    
+    private func showAlert() {
+        guard let nameText = nameText else {return}
+        guard let addressText = addressText else {return}
+        
+        let alert = UIAlertController(title: "Dear \(nameText)", message: "Your order  is arriving at \(addressText)", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "OK", style: .destructive, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
     /*

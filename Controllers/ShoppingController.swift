@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ShoppingController{
+class ShoppingController {
     var shoppingItems: [ShoppingItem] = []
     func createShoppingItems(shoppingItem: ShoppingItem){
         let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
