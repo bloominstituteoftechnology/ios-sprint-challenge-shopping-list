@@ -7,16 +7,9 @@
 //
 
 import Foundation
-import UIKit
 
-class ShoppingItem {
+struct ShoppingItem: Equatable {
     let item: String
     var isAdded: Bool
     var imageData: Data
-    
-    init(item: String, isAdded: Bool = false, imageData: Data) {
-        self.item = item
-        self.isAdded = false
-        self.imageData = imageData
-    }
 }

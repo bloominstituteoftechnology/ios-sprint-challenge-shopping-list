@@ -10,15 +10,5 @@ import Foundation
 import UIKit
 
 class ShoppingList {
-    var itemNames = ["Apples", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
-    var isAdded: Bool
-    
-    init(itemNames: String, isAdded: Bool = false) {
-        self.itemNames = [itemNames]
-        self.isAdded = isAdded
-    }
-    
-    struct PropertyListEncoder {
-        
-    }
+    var shoppingItems: 
 }

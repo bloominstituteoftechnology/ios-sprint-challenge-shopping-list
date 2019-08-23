@@ -18,10 +18,9 @@ class FoodItemCollectionViewCell: UICollectionViewCell {
     
     func updateViews() {
         guard let shoppingItem = shoppingItem else { return }
-        addedToCartLabel.text = shoppingItem.isAdded
-        
-        
+        addedToCartLabel.text = "\(shoppingItem.isAdded)"
+        foodItemImage.image = UIImage(data: shoppingItem.imageData)
+        foodItemNameLabel.text = shoppingItem.item
         
     }
-    
 }

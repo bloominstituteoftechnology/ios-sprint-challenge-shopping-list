@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Collection View Controller-->
+        <!--Food Items Collection View Controller-->
         <scene sceneID="7CW-DX-0ER">
             <objects>
-                <collectionViewController id="TzY-QB-n7w" sceneMemberID="viewController">
+                <collectionViewController id="TzY-QB-n7w" customClass="FoodItemsCollectionViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="eeJ-fB-xSZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -39,13 +39,13 @@
                                                     <rect key="frame" x="22" y="0.0" width="106" height="150"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VO1-vc-8kR">
-                                                            <rect key="frame" x="32" y="0.0" width="42" height="21.5"/>
+                                                            <rect key="frame" x="32" y="0.0" width="42" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="r1x-mu-z7J">
-                                                            <rect key="frame" x="0.0" y="22.5" width="106" height="106"/>
+                                                            <rect key="frame" x="0.0" y="21.5" width="106" height="107"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QzY-DP-vaX">
                                                             <rect key="frame" x="32" y="129.5" width="42" height="20.5"/>
@@ -89,7 +89,7 @@
                     <navigationItem key="navigationItem" id="pnW-ff-ndm">
                         <barButtonItem key="rightBarButtonItem" title="Add Items" id="Kkb-eG-ucv">
                             <connections>
-                                <segue destination="Gv2-Ue-cI1" kind="show" id="hHy-Vf-cU5"/>
+                                <segue destination="Gv2-Ue-cI1" kind="show" identifier="AddItemsSegue" id="hHy-Vf-cU5"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
