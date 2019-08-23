@@ -10,9 +10,20 @@ import UIKit
 
 class OrderDetailViewController: UIViewController {
     
-    @IBOutlet var itemsInCartLabel: UIView!
-    @IBOutlet var nameTextField: UIView!
-    @IBOutlet var addressTextField: UIView!
+    @IBOutlet var itemsInCartLabel: UILabel!
+    @IBOutlet var nameTextField: UITextField!
+    @IBOutlet var addressTextField: UITextField!
+    
+    var numberOfItems: String? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    func updateViews() {
+        guard let num = numberOfItems else { return }
+//        itemsInCartLabel.text = "You currently have \(num) item(s) in your shopping cart" //Currently causes error
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +32,11 @@ class OrderDetailViewController: UIViewController {
     }
     
     @IBAction func placeOrderTapped(_ sender: Any) {
+        guard let name = nameTextField.text, let addr = addressTextField.text else { return }
+        
+            let alert = UIAlertController(title: "Delivery for \(name)", message: "Your shopping items will be delivered to \(addr)", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
         
     }
     

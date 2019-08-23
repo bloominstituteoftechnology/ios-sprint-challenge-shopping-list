@@ -11,6 +11,10 @@ import Foundation
 class ShoppingItemsController {
     private(set) var shoppingList: [ShoppingItem] = []
     let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+    var addedItems: [ShoppingItem] {
+        let added = shoppingList.filter { $0.isSelected == true }
+        return added
+    }
     
     let userDefaults = UserDefaults.standard
     

@@ -20,17 +20,18 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    override var isSelected: Bool {
+        didSet {
+            guard let item = shoppingItem else { return }
+            shoppingItem?.isSelected = !item.isSelected
+            updateViews()
+        }
+    }
     func updateViews() {
         guard let shoppingItem = shoppingItem else { return }
         
         itemImage.image = UIImage(named: shoppingItem.name)
         nameLabel.text = shoppingItem.name
-        
-        if (shoppingItem.isSelected) {
-            isSelectedLabel.text = "Not Added"
-        } else {
-            isSelectedLabel.text = "Added"
-        }
+        isSelectedLabel.text = shoppingItem.isSelected ? "Added" : "Not Added"
     }
-    
 }
