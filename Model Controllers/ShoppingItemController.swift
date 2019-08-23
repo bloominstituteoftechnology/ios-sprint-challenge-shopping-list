@@ -13,28 +13,30 @@ class ShoppingItemController {
 	private(set) var items: [ShoppingItem] = []
 
 	var showInitialShoppingItems = [
-		ShoppingItem(itemName: "Apple", hasBeenAdded: true, imageName: "Apple"),
-		ShoppingItem(itemName: "Grapes", hasBeenAdded: true, imageName: "Grapes"),
-		ShoppingItem(itemName: "Milk", hasBeenAdded: true, imageName: "Milk"),
-		ShoppingItem(itemName: "Muffins", hasBeenAdded: true, imageName: "Muffins"),
-		ShoppingItem(itemName: "Popcorn", hasBeenAdded: true, imageName: "Popcorn"),
-		ShoppingItem(itemName: "Soda", hasBeenAdded: true, imageName: "Soda"),
-		ShoppingItem(itemName: "Strawberries", hasBeenAdded: true, imageName: "Strawberries")
+		ShoppingItem(itemName: "Apple", hasBeenAdded: false, imageName: "Apple"),
+		ShoppingItem(itemName: "Grapes", hasBeenAdded: false, imageName: "Grapes"),
+		ShoppingItem(itemName: "Milk", hasBeenAdded: false, imageName: "Milk"),
+		ShoppingItem(itemName: "Muffins", hasBeenAdded: false, imageName: "Muffins"),
+		ShoppingItem(itemName: "Popcorn", hasBeenAdded: false, imageName: "Popcorn"),
+		ShoppingItem(itemName: "Soda", hasBeenAdded: false, imageName: "Soda"),
+		ShoppingItem(itemName: "Strawberries", hasBeenAdded: false, imageName: "Strawberries")
 	]
 
-	let shouldShowShoppingItems = UserDefaults.standard.bool(forKey: .shouldShowSoppingItems)
 
 	private var persistentFileURL: URL? {
 		let fileManager = FileManager.default
-
 		guard let documents = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
-
 		return documents.appendingPathComponent("items.plist")
 	}
 
 	init() {
 		items = showInitialShoppingItems
 		loadFromPersistentStore()
+	}
+
+	func toggleHasBeenAdded(item: ShoppingItem) {
+		item.hasBeenAdded = !item.hasBeenAdded
+		saveToPersistentStore()
 	}
 
 	func saveToPersistentStore() {

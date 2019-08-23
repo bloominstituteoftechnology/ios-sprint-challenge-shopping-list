@@ -26,7 +26,8 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
 
 	func updateViews() {
 		if let selectedItem = shoppingItem {
-			selectedItem.hasBeenAdded = !selectedItem.hasBeenAdded
+			itemNameLabel.text = selectedItem.itemName
+			imageView.image = selectedItem.image
 			switch selectedItem.hasBeenAdded {
 			case true:
 				addedLabel.text = "Added"

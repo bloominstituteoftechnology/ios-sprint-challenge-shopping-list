@@ -22,6 +22,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
 
 	func selectedItemsCount() {
+		numberOfItemsSelected = 0
 		for item in shoppingItemController.items {
 			if item.hasBeenAdded == true {
 				numberOfItemsSelected += 1
@@ -59,8 +60,8 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         // Configure the cell
     		let shoppingItem = shoppingItemController.items[indexPath.item]
 			cell.shoppingItem = shoppingItem
-			cell.imageView.image = shoppingItem.image
-			cell.itemNameLabel.text = shoppingItem.itemName
+
+		shoppingItemController.saveToPersistentStore()
 		
         return cell
     }
@@ -69,31 +70,8 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-		let shoppingItem = shoppingItemController.items[indexPath.row]
-	
+		let shoppingItem = shoppingItemController.items[indexPath.item]
+		shoppingItemController.toggleHasBeenAdded(item: shoppingItem)
+		collectionView.reloadItems(at: [indexPath])
     }
-
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
-
 }
