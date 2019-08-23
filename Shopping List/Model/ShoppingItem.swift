@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct ShoppingItem {
+struct ShoppingItem: Codable {
     var itemName: String
     var image: UIImage
     var added: Bool

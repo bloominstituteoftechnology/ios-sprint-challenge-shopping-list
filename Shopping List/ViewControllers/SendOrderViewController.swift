@@ -31,7 +31,7 @@ class SendOrderViewController: UIViewController {
     }
     
     private func showAlert() {
-        let alert = UIAlertController(title: "Delivery for \(String(describing: nameTextField.text))", message: "Your shopping items will be delivered to \(String(describing: addressTextField.text))", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Delivery for \(String(describing: nameTextField.text))", message: "Your shopping items will be delivered to \(String(describing: addressTextField.text)) in 15 minutes.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
