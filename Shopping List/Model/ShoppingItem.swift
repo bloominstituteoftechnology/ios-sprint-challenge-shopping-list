@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+
 struct ShoppingItem: Codable {
     var itemName: String
     var image: UIImage

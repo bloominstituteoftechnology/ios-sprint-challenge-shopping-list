@@ -22,10 +22,17 @@ class ShoppingItemController {
             ShoppingItem(itemName: "Strawberries", imageName: "Strawberries", added: false)
         ]
         
+//        let selectItem = UserDefaults.standard.bool(forKey: .addItem)
+//        if addItem {
+//            result.
+        }
+        
         return result
     }
     
-    var shoppingList: [ShoppingItem] = []
+    var shoppingList: [ShoppingItem] = [] {
+        
+    }
     
     private var persistentFileURL: URL? {
         let fileManager = FileManager.default
