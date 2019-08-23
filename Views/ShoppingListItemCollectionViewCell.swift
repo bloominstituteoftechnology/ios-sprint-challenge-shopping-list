@@ -9,7 +9,19 @@
 import UIKit
 
 class ShoppingListItemCollectionViewCell: UICollectionViewCell {
-    
-
-    
 }
+//    @IBOutlet weak var imageOutlet: UIImageView!
+//    @IBOutlet weak var imageLabel: UILabel!
+//}
+//
+//var shopList = shoppingItem.self {
+//    didSet{
+//        updateViews()
+//    }
+//}
+
+//private func updateViews(){
+//    guard let shopList = shopList = shopList else { return }
+//
+//    imageOutlet.image = UIImage(data: )
+//}
