@@ -96,10 +96,10 @@
             </objects>
             <point key="canvasLocation" x="1334.7826086956522" y="127.90178571428571"/>
         </scene>
-        <!--View Controller-->
+        <!--Order Selected Items-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Order Selected Items" id="BYZ-38-t0r" customClass="OrderDetailViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -128,6 +128,9 @@
                                     <constraint firstAttribute="width" constant="150" id="vbC-0C-OFa"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="orderButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Fh-uI-IlX"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -146,6 +149,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="addressTextField" destination="fyx-sd-u3e" id="spC-eQ-I3w"/>
+                        <outlet property="nameTextField" destination="VKO-YG-SHk" id="AyD-O0-btV"/>
+                        <outlet property="orderSummaryLabel" destination="KfH-h7-2Fy" id="kpH-dN-AEx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
