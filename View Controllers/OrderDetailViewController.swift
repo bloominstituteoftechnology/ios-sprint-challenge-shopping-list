@@ -10,6 +10,8 @@ import UIKit
 
 class OrderDetailViewController: UIViewController {
 
+	let shoppingCell = ShoppingItemCollectionViewCell()
+	var numberOfItemsSelected = 0
 
 	@IBOutlet weak var orderSummaryLabel: UILabel!
 	@IBOutlet weak var nameTextField: UITextField!
@@ -19,10 +21,9 @@ class OrderDetailViewController: UIViewController {
 	override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
+		orderSummaryLabel.text = "You have \(numberOfItemsSelected) items in your order"
+	}
     
-
 
 	@IBAction func orderButtonTapped(_ sender: UIButton) {
 		showAlert()

@@ -16,42 +16,37 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 	// : - PROPERTIES
 
 	let shoppingItemController = ShoppingItemController()
+	var orderDetailViewController: OrderDetailViewController?
+	let itemCell = ShoppingItemCollectionViewCell()
+	var numberOfItemsSelected = 0
 
 
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
-		collectionView?.reloadData()
+	func selectedItemsCount() {
+		for item in shoppingItemController.items {
+			if item.hasBeenAdded == true {
+				numberOfItemsSelected += 1
+			}
+			continue
+		}
+		print(numberOfItemsSelected)
 	}
 
 	override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-
-
-        // Do any additional setup after loading the view.
     }
 
-    /*
+
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+		guard let orderDetailVC = segue.destination as? OrderDetailViewController else { return }
+		selectedItemsCount()
+		orderDetailVC.numberOfItemsSelected = numberOfItemsSelected
     }
-    */
 
-    // MARK: UICollectionViewDataSource
 
-//    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
-
+	// MARK: - UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
@@ -63,6 +58,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
         // Configure the cell
     		let shoppingItem = shoppingItemController.items[indexPath.item]
+			cell.shoppingItem = shoppingItem
 			cell.imageView.image = shoppingItem.image
 			cell.itemNameLabel.text = shoppingItem.itemName
 		
@@ -71,12 +67,12 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDelegate
 
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
+
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		let shoppingItem = shoppingItemController.items[indexPath.row]
+	
     }
-    */
+
 
     /*
     // Uncomment this method to specify if the specified item should be selected

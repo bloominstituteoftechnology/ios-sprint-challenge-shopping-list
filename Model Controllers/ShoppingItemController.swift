@@ -13,13 +13,13 @@ class ShoppingItemController {
 	private(set) var items: [ShoppingItem] = []
 
 	var showInitialShoppingItems = [
-		ShoppingItem(itemName: "Apple", hasBeenAdded: false, imageName: "Apple"),
-		ShoppingItem(itemName: "Grapes", hasBeenAdded: false, imageName: "Grapes"),
-		ShoppingItem(itemName: "Milk", hasBeenAdded: false, imageName: "Milk"),
-		ShoppingItem(itemName: "Muffins", hasBeenAdded: false, imageName: "Muffins"),
-		ShoppingItem(itemName: "Popcorn", hasBeenAdded: false, imageName: "Popcorn"),
-		ShoppingItem(itemName: "Soda", hasBeenAdded: false, imageName: "Soda"),
-		ShoppingItem(itemName: "Strawberries", hasBeenAdded: false, imageName: "Strawberries")
+		ShoppingItem(itemName: "Apple", hasBeenAdded: true, imageName: "Apple"),
+		ShoppingItem(itemName: "Grapes", hasBeenAdded: true, imageName: "Grapes"),
+		ShoppingItem(itemName: "Milk", hasBeenAdded: true, imageName: "Milk"),
+		ShoppingItem(itemName: "Muffins", hasBeenAdded: true, imageName: "Muffins"),
+		ShoppingItem(itemName: "Popcorn", hasBeenAdded: true, imageName: "Popcorn"),
+		ShoppingItem(itemName: "Soda", hasBeenAdded: true, imageName: "Soda"),
+		ShoppingItem(itemName: "Strawberries", hasBeenAdded: true, imageName: "Strawberries")
 	]
 
 	let shouldShowShoppingItems = UserDefaults.standard.bool(forKey: .shouldShowSoppingItems)

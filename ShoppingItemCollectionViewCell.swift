@@ -15,13 +15,40 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
 	@IBOutlet weak var addedLabel: UILabel!
 
 
-	override var isSelected: Bool {
+	var selectedItems = 0
+
+	var shoppingItem: ShoppingItem? {
 		didSet {
-			if self.isSelected {
-				addedLabel.text = "Added"
-			} else {
-				addedLabel.text = "Not Yet Added"
-			}
+			updateViews()
 		}
 	}
+
+
+	func updateViews() {
+		if let selectedItem = shoppingItem {
+			selectedItem.hasBeenAdded = !selectedItem.hasBeenAdded
+			switch selectedItem.hasBeenAdded {
+			case true:
+				addedLabel.text = "Added"
+			case false:
+				addedLabel.text = "Not yet added"
+			}
+		} else {
+			return
+		}
+
+
+	}
+
+//	override var isSelected: Bool {
+//		didSet {
+//			if self.isSelected {
+//				addedLabel.text = "Added"
+//			} else {
+//				addedLabel.text = "Not Yet Added"
+//			}
+//		}
+//	}
+
+
 }
