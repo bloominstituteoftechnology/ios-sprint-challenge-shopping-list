@@ -16,6 +16,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        collectionView?.dataSource = self
         collectionView?.reloadData()
     }
 
@@ -52,6 +53,13 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         cell.shoppingItem = shoppingItem
         return cell
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let item = collectionView.cellForItem(at: indexPath) as? ShoppingListCollectionViewCell else {return}
+        item.shoppingItem?.toggleSelected()
+        collectionView.reloadData()
+    }
+
 
     // MARK: UICollectionViewDelegate
 
@@ -83,9 +91,4 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
     }
     */
-    override func collectionView(_ collectionView: UICollectionView, didHighlightItemAt: IndexPath) {
-        guard let item = collectionView.cellForItem(at: didHighlightItemAt) as? ShoppingListCollectionViewCell else {return}
-        item.shoppingItem?.toggleSelected()
-        collectionView.reloadData()
-    }
 }

@@ -19,14 +19,26 @@ class ShoppingListDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        topLabel.text = "You currently have \(shoppingListController?.shoppingList.count ?? 0) items in your shopping list."
+        let count = shoppingListController?.shoppingList.filter({$0.selected == true}).count
+        if let count = count {
+                topLabel.text = "You currently have \(count) items in your shopping list."
+        }
         // Do any additional setup after loading the view.
     }
     
     @IBAction func shipTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "Delivery", message: "Your order will be delivered in 15 minutes to: \(String(addressTextView.text))", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(alert, animated: true)
+        let count = shoppingListController?.shoppingList.filter({$0.selected == true}).count
+        if let count = count {
+            if count > 0 {
+                let alert = UIAlertController(title: "Delivery", message: "Your order will be delivered in 15 minutes to: \n\(String(nameTextField.text ?? "") + " @\n" + String(addressTextView.text ?? ""))", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                present(alert, animated: true)
+            } else {
+                let alert = UIAlertController(title: "Delivery", message: "You need to select some items, please.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                present(alert, animated: true)
+            }
+        }
         navigationController?.popViewController(animated: true)
     }
 }
