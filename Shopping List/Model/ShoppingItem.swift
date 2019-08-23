@@ -12,12 +12,13 @@ import UIKit
 
 struct ShoppingItem: Codable {
     var itemName: String
-    var image: UIImage
     var added: Bool
     
-    init(itemName: String, imageName: String, added: Bool) {
+    let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+
+    
+    init(itemName: String, added: Bool) {
         self.itemName = itemName
-        self.image = UIImage(named: imageName)!
         self.added = added
     }
 }

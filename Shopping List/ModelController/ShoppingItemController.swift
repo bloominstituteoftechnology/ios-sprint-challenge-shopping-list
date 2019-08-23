@@ -13,26 +13,25 @@ class ShoppingItemController {
     var shoppingItems: [ShoppingItem] {
         
         var result = [
-            ShoppingItem(itemName: "Apple", imageName: "Apple", added: false),
-            ShoppingItem(itemName: "Grapes", imageName: "Grapes", added: false),
-            ShoppingItem(itemName: "Milk", imageName: "Milk", added: false),
-            ShoppingItem(itemName: "Muffin", imageName: "Muffin", added: false),
-            ShoppingItem(itemName: "Popcorn", imageName: "Popcorn", added: false),
-            ShoppingItem(itemName: "Soda", imageName: "Soda", added: false),
-            ShoppingItem(itemName: "Strawberries", imageName: "Strawberries", added: false)
+            ShoppingItem(itemName: "Apple",  added: false),
+            ShoppingItem(itemName: "Grapes", added: false),
+            ShoppingItem(itemName: "Milk", added: false),
+            ShoppingItem(itemName: "Muffin", added: false),
+            ShoppingItem(itemName: "Popcorn", added: false),
+            ShoppingItem(itemName: "Soda", added: false),
+            ShoppingItem(itemName: "Strawberries", added: false)
         ]
-        
+//        let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
 //        let selectItem = UserDefaults.standard.bool(forKey: .addItem)
 //        if addItem {
 //            result.
+         return result
         }
-        
-        return result
-    }
     
     var shoppingList: [ShoppingItem] = [] {
         
     }
+    
     
     private var persistentFileURL: URL? {
         let fileManager = FileManager.default
@@ -43,11 +42,16 @@ class ShoppingItemController {
     
     init() {
         loadFromPersistentStore()
+        saveToPersistentStore()
+        
     }
     
-    @discardableResult func createShoppingList(named itemName: String, withImage imageName: String, withAdded added: Bool ) -> ShoppingItem {
+    
+    
+    
+    @discardableResult func createShoppingList(named itemName: String, withAdded added: Bool ) -> ShoppingItem {
         
-        let shoppingItem = ShoppingItem(itemName: itemName, imageName: imageName, added: added)
+        let shoppingItem = ShoppingItem(itemName: itemName, added: added)
         shoppingList.append(shoppingItem)
         saveToPersistentStore()
         return shoppingItem

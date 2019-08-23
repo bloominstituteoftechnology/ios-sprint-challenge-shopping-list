@@ -25,7 +25,7 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         guard let shoppingItem = shoppingItem else { return }
         
         shoppingItemNameLabel.text = shoppingItem.itemName
-        shoppingItemImageView.image = shoppingItem.image
+        shoppingItemImageView.image = itemName
         
         if shoppingItem.added == false {
             addedLabel.text = "Not Added"
