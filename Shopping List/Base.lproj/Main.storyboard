@@ -38,7 +38,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9qr-zY-Zam">
                                                     <rect key="frame" x="0.0" y="0.0" width="120" height="140"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Added" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="otB-wU-XZp">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Added" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="otB-wU-XZp">
                                                             <rect key="frame" x="0.0" y="0.0" width="120" height="36.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -73,6 +73,7 @@
                                     <constraint firstItem="OPb-ih-GId" firstAttribute="top" secondItem="hfu-nE-3qx" secondAttribute="top" id="R4z-Nh-Pa8"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="addedLabel" destination="otB-wU-XZp" id="lRn-Eh-kWI"/>
                                     <outlet property="imageView" destination="WdQ-l9-QlJ" id="6IC-Bt-ed4"/>
                                     <outlet property="itemnameLabel" destination="9Ie-tD-dyJ" id="jW4-xS-u0g"/>
                                 </connections>

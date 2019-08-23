@@ -18,6 +18,11 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 	let shoppingItemController = ShoppingItemController()
 
 
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		collectionView?.reloadData()
+	}
+
 	override func viewDidLoad() {
         super.viewDidLoad()
 
