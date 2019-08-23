@@ -14,19 +14,14 @@ class OrderDetailViewController: UIViewController {
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var addressTextField: UITextField!
     
-    var numberOfItems: String? {
-        didSet {
-            updateViews()
-        }
-    }
-    
-    func updateViews() {
-        guard let num = numberOfItems else { return }
-//        itemsInCartLabel.text = "You currently have \(num) item(s) in your shopping cart" //Currently causes error
-    }
+    var numberOfItems: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let num = numberOfItems else { return }
+        print(num)
+        itemsInCartLabel.text = "You currently have \(num) item(s) in your shopping cart" //Currently causes error
 
         // Do any additional setup after loading the view.
     }
@@ -39,15 +34,4 @@ class OrderDetailViewController: UIViewController {
             present(alert, animated: true, completion: nil)
         
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

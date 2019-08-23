@@ -32,6 +32,11 @@ class ShoppingItemsController {
         }
     }
     
+    func notIsSelected(for shoppingItem: ShoppingItem, isSelected: Bool) {
+        guard let index = shoppingList.firstIndex(of: shoppingItem) else { return }
+        shoppingList[index].isSelected = isSelected
+    }
+    
     private var persistentFileURL: URL? {
         let fileManager = FileManager.default
         guard let documents = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }

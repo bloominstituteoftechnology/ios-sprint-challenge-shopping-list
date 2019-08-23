@@ -14,6 +14,8 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var itemImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
+    var shoppingItemsController: ShoppingItemsController?
+    
     var shoppingItem: ShoppingItem? {
         didSet {
             updateViews()
@@ -22,7 +24,8 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
     override var isSelected: Bool {
         didSet {
-            guard let item = shoppingItem else { return }
+            guard let shoppingItemsController = shoppingItemsController, let item = shoppingItem else { return }
+            shoppingItemsController.notIsSelected(for: item, isSelected: !item.isSelected)
             shoppingItem?.isSelected = !item.isSelected
             updateViews()
         }
