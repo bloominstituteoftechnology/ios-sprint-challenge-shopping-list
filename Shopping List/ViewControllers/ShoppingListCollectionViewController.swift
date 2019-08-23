@@ -44,13 +44,13 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return shoppingItemController.shoppingItems.count
+        return shoppingItemController.items.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingItemCollectionViewCell", for: indexPath) as? ShoppingItemCollectionViewCell else { return UICollectionViewCell() }
         
-        let shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
+        let shoppingItem = shoppingItemController.items[indexPath.item]
         cell.shoppingItem = shoppingItem
     
     
