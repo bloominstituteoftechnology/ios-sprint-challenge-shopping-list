@@ -25,7 +25,7 @@
                             <inset key="sectionInset" minX="4" minY="10" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="5Ms-ed-o02" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoppingItemCollectionViewCell" id="5Ms-ed-o02" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="4" y="10" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -125,6 +125,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fFA-1J-2GW">
                                 <rect key="frame" x="167.5" y="433" width="79" height="30"/>
                                 <state key="normal" title="Send Order"/>
+                                <connections>
+                                    <action selector="sendOrderButton:" destination="PjK-mJ-QpI" eventType="touchUpInside" id="0uT-zK-HWK"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -140,6 +143,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zVV-LI-qYV"/>
                     </view>
+                    <connections>
+                        <outlet property="addressTextField" destination="4iS-r6-JeW" id="ALS-Uw-rZO"/>
+                        <outlet property="nameTextField" destination="srh-wD-BPy" id="cAv-fR-eAt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aZu-UP-fKp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

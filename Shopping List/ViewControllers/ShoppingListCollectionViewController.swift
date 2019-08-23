@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+private let reuseIdentifier = "ShoppingItemCollectionViewCell"
 
 class ShoppingListCollectionViewController: UICollectionViewController {
     
@@ -17,6 +17,11 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         collectionView?.reloadData()
+        setViews()
+    }
+    
+    func setViews() {
+        
     }
 
     /*
