@@ -73,9 +73,9 @@
                                     <constraint firstItem="Ofn-Ls-6gN" firstAttribute="top" secondItem="kkq-oQ-Vub" secondAttribute="top" id="Zte-WL-PFZ"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="isSelectedLabel" destination="zKX-OJ-akY" id="8eZ-WR-Kz5"/>
-                                    <outlet property="itemImage" destination="5Vq-Iq-WMH" id="ZGB-Ei-Xvh"/>
-                                    <outlet property="nameLabel" destination="XZD-9o-wXx" id="LG2-3F-4GI"/>
+                                    <outlet property="isSelectedLabel" destination="zKX-OJ-akY" id="mjj-rA-6Nd"/>
+                                    <outlet property="itemImage" destination="5Vq-Iq-WMH" id="Bvv-fx-2W4"/>
+                                    <outlet property="nameLabel" destination="XZD-9o-wXx" id="jzb-3v-nWH"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -128,6 +128,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZxO-KZ-iyD">
                                         <rect key="frame" x="0.0" y="138" width="374" height="30"/>
                                         <state key="normal" title="Place Order"/>
+                                        <connections>
+                                            <action selector="placeOrderTapped:" destination="27I-NU-cyf" eventType="touchUpInside" id="HHs-Zb-IYH"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -142,9 +145,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Submit Order" id="NFP-Pa-9tr"/>
                     <connections>
-                        <outlet property="addressTextField" destination="AuT-W1-kmH" id="e4F-sK-Pgt"/>
-                        <outlet property="itemsInCartLabel" destination="AuT-W1-kmH" id="GRa-e1-ZRZ"/>
-                        <outlet property="nameTextField" destination="AuT-W1-kmH" id="SDL-EY-BEc"/>
+                        <outlet property="addressTextField" destination="ZMu-D3-QX1" id="y46-dz-IlA"/>
+                        <outlet property="itemsInCartLabel" destination="k3M-z3-rmY" id="jwU-8j-Dg5"/>
+                        <outlet property="nameTextField" destination="pwG-D9-hkh" id="dAT-iM-jSb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4wG-a2-ULm" userLabel="First Responder" sceneMemberID="firstResponder"/>

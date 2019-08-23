@@ -22,7 +22,15 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
     func updateViews() {
         guard let shoppingItem = shoppingItem else { return }
-        //TODO: update view
+        
+        itemImage.image = UIImage(named: shoppingItem.name)
+        nameLabel.text = shoppingItem.name
+        
+        if (shoppingItem.isSelected) {
+            isSelectedLabel.text = "Not Added"
+        } else {
+            isSelectedLabel.text = "Added"
+        }
     }
     
 }
