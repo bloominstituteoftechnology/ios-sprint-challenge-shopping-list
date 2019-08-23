@@ -24,10 +24,6 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         // Do any additional setup after loading the view.
     }
 
-     override func collectionView(_ collectionView: UICollectionView,
-                                  shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return shoppinglistItems.isEmpty
-    }
     
     
     
@@ -45,13 +41,13 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return shoppinglistItems.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -71,12 +67,10 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     }
     */
 
-    /*
-    // Uncomment this method to specify if the specified item should be selected
+
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return true
     }
-    */
 
     /*
     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
