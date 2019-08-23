@@ -9,6 +9,6 @@
 import Foundation
 
 struct ShoppingItem {
-    var item: String 
+    var name: String 
     var hasBeenAdded: Bool = false
 }

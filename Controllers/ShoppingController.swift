@@ -9,11 +9,16 @@
 import Foundation
 
 class ShoppingController{
-    var shoppingItem: [ShoppingItem]{
-        let itemNames = ["Apple", "Grapes", "Milk", "Popcorn", "Soda", "Straberries"]
+    var shoppingItems: [ShoppingItem] = []
+    func createShoppingItems(shoppingItem: ShoppingItem){
+        let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
         
-        for item in itemNames{
-            ShoppingItem.init(item: item, hasBeenAdded: false)
+        for itemName in itemNames{
+            let item = ShoppingItem(name: itemName, hasBeenAdded: false)
+            shoppingItems.append(item)
         }
+        
+        
+        
     }
 }
