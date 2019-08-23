@@ -10,6 +10,10 @@ import UIKit
 
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var isSelectedLabel: UILabel!
+    @IBOutlet weak var itemImage: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    
     var shoppingItem: ShoppingItem? {
         didSet {
             updateViews()

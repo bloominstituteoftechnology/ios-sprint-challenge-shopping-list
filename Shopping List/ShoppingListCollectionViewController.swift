@@ -17,7 +17,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "reuseIdentifier")
+        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "ShopCell")
 
         // Do any additional setup after loading the view.
     }
@@ -46,7 +46,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseIdentifier", for: indexPath) as? ShoppingItemCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShopCell", for: indexPath) as? ShoppingItemCollectionViewCell else { return UICollectionViewCell() }
     
         // Configure the cell
     
