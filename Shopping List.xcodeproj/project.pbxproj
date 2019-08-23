@@ -64,19 +64,51 @@
 		4613E91021143BFC00E7FF73 /* Shopping List */ = {
 			isa = PBXGroup;
 			children = (
+				8439214323103F7400FF8BCB /* Cell */,
+				8439214223103F6000FF8BCB /* ModelController */,
+				8439214123103F4900FF8BCB /* Model */,
+				8439214023103F2700FF8BCB /* ViewControllers */,
 				4613E91121143BFC00E7FF73 /* AppDelegate.swift */,
 				4613E91321143BFC00E7FF73 /* ViewController.swift */,
 				4613E91521143BFC00E7FF73 /* Main.storyboard */,
 				4613E91821143BFD00E7FF73 /* Assets.xcassets */,
 				4613E91A21143BFD00E7FF73 /* LaunchScreen.storyboard */,
 				4613E91D21143BFD00E7FF73 /* Info.plist */,
-				8439213623103D5D00FF8BCB /* ShoppingListCollectionViewController.swift */,
-				8439213823103D8A00FF8BCB /* SendOrderViewController.swift */,
-				8439213A23103DB500FF8BCB /* ShoppingItemCollectionViewCell.swift */,
-				8439213C23103DD500FF8BCB /* ShoppingItem.swift */,
-				8439213E23103DE600FF8BCB /* ShoppingItemController.swift */,
 			);
 			path = "Shopping List";
+			sourceTree = "<group>";
+		};
+		8439214023103F2700FF8BCB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8439213623103D5D00FF8BCB /* ShoppingListCollectionViewController.swift */,
+				8439213823103D8A00FF8BCB /* SendOrderViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		8439214123103F4900FF8BCB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8439213C23103DD500FF8BCB /* ShoppingItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8439214223103F6000FF8BCB /* ModelController */ = {
+			isa = PBXGroup;
+			children = (
+				8439213E23103DE600FF8BCB /* ShoppingItemController.swift */,
+			);
+			path = ModelController;
+			sourceTree = "<group>";
+		};
+		8439214323103F7400FF8BCB /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8439213A23103DB500FF8BCB /* ShoppingItemCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
