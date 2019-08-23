@@ -1,5 +1,5 @@
 //
-//  ShoppingItem.swift
+//  SettingsKeys.swift
 //  Shopping List
 //
 //  Created by Percy Ngan on 8/23/19.
@@ -8,8 +8,7 @@
 
 import Foundation
 
-struct ShoppingItem {
-	var itemName: String
-	var hasBeenAdded: Bool
 
+extension String {
+	static var shouldShowSoppingItems = "ShouldShowShoppingItems"
 }
