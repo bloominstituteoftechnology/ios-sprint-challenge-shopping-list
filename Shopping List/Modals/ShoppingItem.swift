@@ -22,7 +22,7 @@ struct shoppingItem:Encodable {
             guard let fileURL = shoppingListURL else { return }
             let shoppingListData = try Data(contentsOf: fileURL)
             let plistDecoder = PropertyListDecoder()
-            shoppinglistItems = try plistDecoder.decode([shoppinglistItems].self, from: shoppinglistItems.Data)
+            shoppinglistItems = try plistDecoder.decode([shoppinglistItems].self, from: shoppingListData.data)
         } catch {
             NSLog("Error decoding items from property list: \(error)")
         }
