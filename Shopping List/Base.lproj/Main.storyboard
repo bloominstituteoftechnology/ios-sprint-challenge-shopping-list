@@ -13,7 +13,7 @@
         <!--Shopping List-->
         <scene sceneID="z2C-ww-22I">
             <objects>
-                <collectionViewController id="FM8-Fo-NES" sceneMemberID="viewController">
+                <collectionViewController id="FM8-Fo-NES" customClass="ShoppingCollectionViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="i2O-zz-OBx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,7 +25,7 @@
                             <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="bcE-NJ-fGl">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="bcE-NJ-fGl" customClass="CollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="10" y="10" width="120" height="140"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -67,6 +67,11 @@
                                     <constraint firstItem="WGf-ar-pUw" firstAttribute="leading" secondItem="bcE-NJ-fGl" secondAttribute="leading" id="z7y-We-p6H"/>
                                 </constraints>
                                 <size key="customSize" width="120" height="140"/>
+                                <connections>
+                                    <outlet property="imageView" destination="bEC-8e-EPA" id="Hmj-XP-ujs"/>
+                                    <outlet property="textLabel" destination="pR3-Dp-mJh" id="aee-1h-REB"/>
+                                    <segue destination="AO7-mh-x4b" kind="show" identifier="itemSegue" id="9Gi-7z-YhR"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -75,21 +80,17 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Shopping List" id="aGH-r7-UDn">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="aKk-2o-3lR">
-                            <connections>
-                                <segue destination="AO7-mh-x4b" kind="show" identifier="showDeliverySegue" id="0IL-mF-TnS"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="aKk-2o-3lR"/>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aox-bE-hzt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="984.05797101449286" y="29.464285714285712"/>
         </scene>
-        <!--View Controller-->
+        <!--Address View Controller-->
         <scene sceneID="FqQ-NP-Czk">
             <objects>
-                <viewController id="AO7-mh-x4b" sceneMemberID="viewController">
+                <viewController id="AO7-mh-x4b" customClass="AddressViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XvZ-4c-aQX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -112,6 +113,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ul8-4d-po8">
+                                <rect key="frame" x="167.5" y="310" width="79" height="30"/>
+                                <state key="normal" title="Send Order"/>
+                                <connections>
+                                    <action selector="sendOrderButtonPressed:" destination="AO7-mh-x4b" eventType="touchUpInside" id="FSN-UA-AVm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -121,12 +129,19 @@
                             <constraint firstItem="Hes-o1-YKY" firstAttribute="top" secondItem="LIL-B2-n7f" secondAttribute="top" constant="20" id="9dp-oJ-dWR"/>
                             <constraint firstItem="LIL-B2-n7f" firstAttribute="trailing" secondItem="e8h-Bh-g1v" secondAttribute="trailing" constant="20" id="T9u-ZY-f5a"/>
                             <constraint firstItem="LIL-B2-n7f" firstAttribute="trailing" secondItem="Hes-o1-YKY" secondAttribute="trailing" constant="20" id="b7j-j4-EiR"/>
+                            <constraint firstItem="Ul8-4d-po8" firstAttribute="top" secondItem="e8h-Bh-g1v" secondAttribute="bottom" constant="28" id="eAg-bU-AO9"/>
                             <constraint firstItem="e8h-Bh-g1v" firstAttribute="leading" secondItem="LIL-B2-n7f" secondAttribute="leading" constant="20" id="ewN-Yp-bHt"/>
                             <constraint firstItem="e8h-Bh-g1v" firstAttribute="top" secondItem="E12-MM-ytR" secondAttribute="bottom" constant="20" id="gdX-Fh-Pax"/>
                             <constraint firstItem="E12-MM-ytR" firstAttribute="leading" secondItem="LIL-B2-n7f" secondAttribute="leading" constant="20" id="jnN-y4-AE4"/>
+                            <constraint firstItem="Ul8-4d-po8" firstAttribute="centerX" secondItem="XvZ-4c-aQX" secondAttribute="centerX" id="sQM-3E-d8W"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LIL-B2-n7f"/>
                     </view>
+                    <connections>
+                        <outlet property="addressText" destination="e8h-Bh-g1v" id="Xht-mj-Ckd"/>
+                        <outlet property="nameText" destination="E12-MM-ytR" id="aRT-4W-f7X"/>
+                        <outlet property="noticeLabel" destination="Hes-o1-YKY" id="DOs-LD-e5X"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bt9-K6-feT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
