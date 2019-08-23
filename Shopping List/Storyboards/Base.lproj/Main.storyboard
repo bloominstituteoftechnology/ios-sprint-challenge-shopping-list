@@ -19,45 +19,48 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cjK-Zn-DCI">
-                            <size key="itemSize" width="50" height="50"/>
+                            <size key="itemSize" width="140" height="200"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="ShopingItem" id="wuQ-H1-KxJ" customClass="ShoppingListCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="140" height="200"/>
+                                <rect key="frame" x="10" y="10" width="140" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="140" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nlz-kH-15r">
-                                            <rect key="frame" x="8" y="52" width="124" height="140"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XZL-Ea-UmZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="140" height="180"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Dqr-Yh-bkX">
-                                                    <rect key="frame" x="8" y="8" width="108" height="124"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="0xh-om-ebz">
+                                                    <rect key="frame" x="0.0" y="0.0" width="140" height="180"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GoE-eg-TIj">
-                                                            <rect key="frame" x="0.0" y="0.0" width="108" height="77"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fyP-YW-KbA">
+                                                            <rect key="frame" x="0.0" y="0.0" width="140" height="93"/>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="center" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="PRa-H1-Ecp">
-                                                            <rect key="frame" x="33" y="80" width="42" height="20.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cN7-Xm-6l7">
+                                                            <rect key="frame" x="49" y="116" width="42" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UVE-HP-pSj">
-                                                            <rect key="frame" x="0.5" y="103.5" width="107.5" height="20.5"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C6B-sZ-A0f">
+                                                            <rect key="frame" x="16.5" y="159.5" width="107.5" height="20.5"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Added?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="shc-S8-UAP">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Added?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GWC-se-JHQ">
                                                                     <rect key="frame" x="0.0" y="0.0" width="58.5" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3DA-17-x9e">
+                                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1wY-x2-nq2">
                                                                     <rect key="frame" x="58.5" y="0.0" width="51" height="20.5"/>
+                                                                    <connections>
+                                                                        <action selector="uiSwitchTapped:" destination="wuQ-H1-KxJ" eventType="valueChanged" id="33y-qf-Gg2"/>
+                                                                    </connections>
                                                                 </switch>
                                                             </subviews>
                                                         </stackView>
@@ -66,25 +69,24 @@
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="Dqr-Yh-bkX" firstAttribute="leading" secondItem="nlz-kH-15r" secondAttribute="leadingMargin" id="bUL-4Z-2lX"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Dqr-Yh-bkX" secondAttribute="bottom" id="bbg-s8-sKo"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Dqr-Yh-bkX" secondAttribute="trailing" id="j9B-gR-6L0"/>
-                                                <constraint firstItem="Dqr-Yh-bkX" firstAttribute="top" secondItem="nlz-kH-15r" secondAttribute="topMargin" id="z73-oS-Rai"/>
+                                                <constraint firstAttribute="trailing" secondItem="0xh-om-ebz" secondAttribute="trailing" id="NVj-rk-56e"/>
+                                                <constraint firstItem="0xh-om-ebz" firstAttribute="top" secondItem="XZL-Ea-UmZ" secondAttribute="top" id="NXV-QW-gT0"/>
+                                                <constraint firstItem="0xh-om-ebz" firstAttribute="leading" secondItem="XZL-Ea-UmZ" secondAttribute="leading" id="ixT-Y5-jMI"/>
+                                                <constraint firstAttribute="bottom" secondItem="0xh-om-ebz" secondAttribute="bottom" id="zIc-xH-LFr"/>
                                             </constraints>
                                         </view>
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstAttribute="trailingMargin" secondItem="nlz-kH-15r" secondAttribute="trailing" id="4B2-Pl-ycI"/>
-                                    <constraint firstItem="nlz-kH-15r" firstAttribute="top" secondItem="wuQ-H1-KxJ" secondAttribute="topMargin" id="DcY-ya-OiP"/>
-                                    <constraint firstItem="nlz-kH-15r" firstAttribute="leading" secondItem="wuQ-H1-KxJ" secondAttribute="leadingMargin" id="dTH-AU-psw"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="nlz-kH-15r" secondAttribute="bottom" id="k2c-uF-9T9"/>
+                                    <constraint firstItem="XZL-Ea-UmZ" firstAttribute="leading" secondItem="wuQ-H1-KxJ" secondAttribute="leading" id="0i9-GW-0nh"/>
+                                    <constraint firstAttribute="bottom" secondItem="XZL-Ea-UmZ" secondAttribute="bottom" id="A9B-6W-tWx"/>
+                                    <constraint firstItem="XZL-Ea-UmZ" firstAttribute="top" secondItem="wuQ-H1-KxJ" secondAttribute="top" id="Anv-XQ-nXY"/>
+                                    <constraint firstAttribute="trailing" secondItem="XZL-Ea-UmZ" secondAttribute="trailing" id="GhA-U5-j7g"/>
                                 </constraints>
-                                <size key="customSize" width="140" height="200"/>
                                 <connections>
-                                    <outlet property="imageView" destination="GoE-eg-TIj" id="s9N-yP-sUc"/>
-                                    <outlet property="label" destination="PRa-H1-Ecp" id="a5y-pR-B21"/>
-                                    <outlet property="uiSwitch" destination="3DA-17-x9e" id="7G0-I3-gBJ"/>
+                                    <outlet property="imageView" destination="fyP-YW-KbA" id="whz-8X-Jlj"/>
+                                    <outlet property="label" destination="cN7-Xm-6l7" id="Mtt-mR-e1z"/>
+                                    <outlet property="uiSwitch" destination="1wY-x2-nq2" id="lSJ-IZ-eez"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -103,7 +105,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lgb-Ki-s2p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="509" y="-15"/>
+            <point key="canvasLocation" x="508.69565217391306" y="-15.401785714285714"/>
         </scene>
         <!--Shopping List Detail View Controller-->
         <scene sceneID="yip-lh-xhR">

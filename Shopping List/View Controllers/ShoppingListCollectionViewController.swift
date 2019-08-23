@@ -56,7 +56,8 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let item = collectionView.cellForItem(at: indexPath) as? ShoppingListCollectionViewCell else {return}
-        item.shoppingItem?.toggleSelected()
+        //item.shoppingItem?.toggleSelected()
+        shoppingListController.toggleHasBeenSelected(item.shoppingItem!)
         collectionView.reloadData()
     }
 

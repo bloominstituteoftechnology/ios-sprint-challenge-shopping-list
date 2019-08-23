@@ -19,6 +19,10 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var uiSwitch: UISwitch!
     
+    @IBAction func uiSwitchTapped(_ sender: Any) {
+        shoppingItem?.toggleSelected()
+    }
+    
     private func updateViews() {
         guard let shoppingItem = shoppingItem else { return }
         imageView.image = UIImage(named: shoppingItem.name)
