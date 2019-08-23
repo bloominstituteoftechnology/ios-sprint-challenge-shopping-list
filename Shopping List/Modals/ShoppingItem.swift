@@ -8,24 +8,35 @@
 
 import Foundation
 
-struct shoppingItem: Codable {
+struct shoppingItem:Encodable {
     var nameOfShoppingItems: [String] = ["Apples", "Grapes", "Milk", "Popcorn", "Soda",  "Strawberries"]
     var addedShoppingItems: Bool
 
     let userDefaults = UserDefaults.standard.bool(forKey: "addedShoppingItems")
     
 }
-
-private func saveToPersistentStore() {
-    let plistEncoder = PropertyListEncoder()
-    
-    do {
-        let shoppingListData = try plistEncoder.encode(shoppingItems)
-        guard let fileURL = shoppingListURL else { return }
+// MARK: - Private Functions
+    private func loadFromPersistentStore() {
         
-        try shoppingListData.write(to: fileURL)
-    } catch {
-        NSLog("Error encoding items to property list: \(error)")
+        do {
+            guard let fileURL = shoppingListURL else { return }
+            let shoppingListData = try Data(contentsOf: fileURL)
+            let plistDecoder = PropertyListDecoder()
+            shoppinglistItems = try plistDecoder.decode([shoppinglistItems].self, from: shoppinglistItems.Data)
+        } catch {
+            NSLog("Error decoding items from property list: \(error)")
+        }
+}
+
+            private func saveToPersistentStore() {
+                let plistEncoder = PropertyListEncoder()
+                do {
+                let shoppingListData = try plistEncoder.encode(shoppingItem.init(nameOfShoppingItems: ["Apples", "Grapes", "Milk", "Popcorn", "Soda",  "Strawberries"], addedShoppingItems: false))
+                guard let fileURL = shoppingListURL else { return }
+        
+                    try shoppingListData.write(to: fileURL)
+                } catch {
+                    NSLog("Error encoding items to property list: \(error)")
     }
 }
 //  MARK: - Properties
@@ -38,4 +49,12 @@ private var shoppingListURL: URL? {
     return documentDirectory?.appendingPathComponent(fileName)
 }
 
-private(set) var shoppingItems: [shoppingItem] = nameOfShoppingItems
+    private(set) var shoppinglistItems: [shoppingItem] = []
+
+var unaddedItems: [shoppingItem] {
+    return shoppinglistItems.filter({ $0.addedShoppingItems == false })
+}
+
+var addedItems: [shoppingItem] {
+    return shoppinglistItems.filter({$0.addedShoppingItems})
+}
