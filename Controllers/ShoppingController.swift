@@ -18,7 +18,11 @@ class ShoppingController{
             shoppingItems.append(item)
         }
         
+        var itemAdded = UserDefaults.standard.bool(forKey: "hasBeenRead")
         
+        if itemAdded == false{
+            itemAdded = true
+        }
         
     }
 }
