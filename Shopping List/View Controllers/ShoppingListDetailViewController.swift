@@ -27,5 +27,6 @@ class ShoppingListDetailViewController: UIViewController {
         let alert = UIAlertController(title: "Delivery", message: "Your order will be delivered in 15 minutes to: \(String(addressTextView.text))", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true)
+        navigationController?.popViewController(animated: true)
     }
 }
