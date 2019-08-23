@@ -14,19 +14,20 @@ class GroceryController {
     private let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     
     var checkoutCart: [GroceryItem] {
-        let cart = groceryItems.filter({$0.hasBeenAdded == true })
-        return cart
+       return groceryItems.filter({$0.hasBeenAdded == true })
+     
     }
     
     init() {
+        
+        loadFromPersistentStore()
         for item in itemNames {
             if let image = UIImage(named: item) {
-                if let ImageData = UIImagePNGRepresentation(image) {
+                if let ImageData = image.pngData() {
                     addGroceryItem(withName: item, ImageData)
                 }
             }
         }
-        loadFromPersistentStore()
     }
     
     func addGroceryItem(withName name:String, _ image: Data) {
@@ -36,20 +37,17 @@ class GroceryController {
     }
     
     func scheduleDelivery(for person:String, to address: String) -> UIAlertController {
-        let alert = UIAlertController(title: "Order Sent", message: "\(person) your items are being delivered to \(address)", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Order Recieved", message:"\(person) your \(checkoutCart.count) items are being delivered to the address \(address)", preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(action)
        return alert
     }
     func updateHasBeenAdded(for groceryItem: GroceryItem) {
-        guard let groceryItemIndex = groceryItems.firstIndex(of: groceryItem) else {return}
-        groceryItems[groceryItemIndex].hasBeenAdded = !groceryItems[groceryItemIndex].hasBeenAdded
-        saveToPersistentStore()
+        guard let index = groceryItems.firstIndex(of: groceryItem) else {return}
+        groceryItems[index].hasBeenAdded = !groceryItems[index].hasBeenAdded
+       saveToPersistentStore()
     }
     
-    func toggleCell() {
-        
-    }
 }
 extension GroceryController {
     var groceryItemURL: URL? {
@@ -76,7 +74,7 @@ extension GroceryController {
         do {
             let data = try Data(contentsOf: url)
             let decoder = PropertyListDecoder()
-            groceryItems = try decoder.decode([GroceryItem].self, from: data)
+           self.groceryItems = try decoder.decode([GroceryItem].self, from: data)
         } catch {
             print("Error loading books data: \(error)")
         }

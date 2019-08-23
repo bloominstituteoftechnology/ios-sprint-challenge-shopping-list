@@ -20,7 +20,6 @@ class GrocerysCollectionViewController: UICollectionViewController {
         collectionView?.reloadData()
     }
 var groceryController = GroceryController()
-var groceryItem:GroceryItem?
     
     // MARK: - Navigation
 
@@ -62,7 +61,7 @@ var groceryItem:GroceryItem?
 
 extension GrocerysCollectionViewController: GroceryItemCellDelegate {
     func togglehasBeenAdded(for cell: GroceryItemCollectionViewCell) {
-        guard let groceryItem = groceryItem else {return}
+        guard let groceryItem = cell.groceryItem else {return}
         groceryController.updateHasBeenAdded(for: groceryItem)
         collectionView?.reloadData()
     }

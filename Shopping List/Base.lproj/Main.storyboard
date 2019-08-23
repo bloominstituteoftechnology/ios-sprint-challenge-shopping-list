@@ -39,7 +39,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="162" height="230"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ed7-GA-kcb">
-                                                            <rect key="frame" x="53" y="0.0" width="56" height="48"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="162" height="47.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                             <state key="normal" title="added">
                                                                 <color key="titleColor" red="0.1554502532" green="0.1554502532" blue="0.1554502532" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -49,21 +49,23 @@
                                                             </connections>
                                                         </button>
                                                         <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9ey-Gn-rDF">
-                                                            <rect key="frame" x="3" y="65" width="156" height="128"/>
+                                                            <rect key="frame" x="3" y="64.5" width="156" height="128"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="128" id="2Lq-07-il1"/>
+                                                                <constraint firstAttribute="height" constant="128" id="LfP-Hi-9ic"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jUu-yu-gnR">
-                                                            <rect key="frame" x="60" y="210" width="42" height="20"/>
+                                                            <rect key="frame" x="60" y="209.5" width="42" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="9ey-Gn-rDF" firstAttribute="leading" secondItem="0vV-f8-GPw" secondAttribute="leading" constant="3" id="Xps-Kf-h4S"/>
-                                                        <constraint firstItem="9ey-Gn-rDF" firstAttribute="top" secondItem="0vV-f8-GPw" secondAttribute="top" constant="65" id="ebO-ap-BMh"/>
+                                                        <constraint firstItem="Ed7-GA-kcb" firstAttribute="leading" secondItem="0vV-f8-GPw" secondAttribute="leadingMargin" id="D1y-5d-VzN"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="Ed7-GA-kcb" secondAttribute="trailing" id="VaG-jh-CFo"/>
+                                                        <constraint firstItem="9ey-Gn-rDF" firstAttribute="leading" secondItem="0vV-f8-GPw" secondAttribute="leading" constant="3" id="pJH-HF-smr"/>
+                                                        <constraint firstItem="Ed7-GA-kcb" firstAttribute="top" secondItem="0vV-f8-GPw" secondAttribute="topMargin" id="yVe-YB-h2U"/>
                                                     </constraints>
                                                 </stackView>
                                             </subviews>

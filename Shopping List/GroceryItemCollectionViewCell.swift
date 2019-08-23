@@ -26,10 +26,11 @@ class GroceryItemCollectionViewCell: UICollectionViewCell {
     }
     
     private func updateViews() {
+        
       guard let groceryItem = groceryItem else {return}
         groceryItemImage.image = UIImage(data: groceryItem.groceryItemImage)
         groceryItemNameLAbel.text = groceryItem.GroceryItem
-            let added = groceryItem.hasBeenAdded ? "Added": "not Added"
+            let added = groceryItem.hasBeenAdded ? "Added" : "not Added"
             hasBeenAddedButton.setTitle(added, for: .normal)
     }
   
