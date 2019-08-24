@@ -13,14 +13,15 @@ class OrderDetailViewController: UIViewController {
 	let shoppingCell = ShoppingItemCollectionViewCell()
 	var numberOfItemsSelected = 0
 
+
 	@IBOutlet weak var orderSummaryLabel: UILabel!
 	@IBOutlet weak var nameTextField: UITextField!
 	@IBOutlet weak var addressTextField: UITextField!
 
 
+
 	override func viewDidLoad() {
         super.viewDidLoad()
-
 		orderSummaryLabel.text = "You have \(numberOfItemsSelected) items in your order"
 	}
     
@@ -30,7 +31,8 @@ class OrderDetailViewController: UIViewController {
 		nameTextField.text = nil
 		addressTextField.text = nil
 	}
-	
+
+
 	
 	// MARK: - METHODS
 
@@ -45,11 +47,8 @@ class OrderDetailViewController: UIViewController {
 
 	// MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+    }
 }

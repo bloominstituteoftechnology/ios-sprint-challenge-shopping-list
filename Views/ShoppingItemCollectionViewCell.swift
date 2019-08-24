@@ -15,8 +15,6 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
 	@IBOutlet weak var addedLabel: UILabel!
 
 
-	//var selectedItems = 0
-
 	var shoppingItem: ShoppingItem? {
 		didSet {
 			updateViews()
@@ -37,7 +35,5 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
 		} else {
 			return
 		}
-
-
 	}
 }

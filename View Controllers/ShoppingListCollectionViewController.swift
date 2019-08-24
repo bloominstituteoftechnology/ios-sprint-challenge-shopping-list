@@ -13,11 +13,9 @@ private let reuseIdentifier = "ShoppingItemCell"
 class ShoppingListCollectionViewController: UICollectionViewController {
 
 
-	// : - PROPERTIES
+	// MARK: - PROPERTIES
 
 	let shoppingItemController = ShoppingItemController()
-	//var orderDetailViewController: OrderDetailViewController?
-	//let itemCell = ShoppingItemCollectionViewCell()
 	var numberOfItemsSelected = 0
 
 
@@ -39,10 +37,6 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 		collectionView?.reloadData()
 	}
 
-//	override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//    }
 
 
     // MARK: - Navigation
@@ -52,6 +46,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 		selectedItemsCount()
 		orderDetailVC.numberOfItemsSelected = numberOfItemsSelected
     }
+
 
 
 	// MARK: - UICollectionViewDataSource
@@ -68,15 +63,11 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 			cell.shoppingItem = shoppingItem
 			cell.imageView.image = shoppingItem.image
 			cell.itemNameLabel.text = shoppingItem.itemName
-	
 
 		shoppingItemController.saveToPersistentStore()
 		
         return cell
     }
-
-    // MARK: UICollectionViewDelegate
-
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		let shoppingItem = shoppingItemController.items[indexPath.item]

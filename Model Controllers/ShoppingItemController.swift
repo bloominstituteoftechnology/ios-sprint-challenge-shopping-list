@@ -11,22 +11,6 @@ import Foundation
 class ShoppingItemController {
 
 	var items: [ShoppingItem] = []
-	//var items: [ShoppingItem] {
-	//var showInitialShoppingItems = [
-//	var shoppingItems: [ShoppingItem] = [
-//		ShoppingItem(itemName: "Apple", hasBeenAdded: false, imageName: "Apple" ),
-//		ShoppingItem(itemName: "Grapes", hasBeenAdded: false, imageName: "Grapes"),
-//		ShoppingItem(itemName: "Milk", hasBeenAdded: false, imageName: "Milk"),
-//		ShoppingItem(itemName: "Muffins", hasBeenAdded: false, imageName: "Muffins"),
-//		ShoppingItem(itemName: "Popcorn", hasBeenAdded: false, imageName: "Popcorn"),
-//		ShoppingItem(itemName: "Soda", hasBeenAdded: false, imageName: "Soda"),
-//		ShoppingItem(itemName: "Strawberries", hasBeenAdded: false, imageName: "Strawberries")
-//	]
-
-
-
-
-	//let shouldShowShoppingItems = UserDefaults.standard.bool(forKey: .shouldShowSoppingItems)
 
 
 	private var shoppingListURL: URL? {
@@ -35,14 +19,14 @@ class ShoppingItemController {
 		return directory.appendingPathComponent("shoppingList.plist")
 	}
 
+
 	init() {
-		//items = showInitialShoppingItems
 		createItemList()
 		loadFromPersistentStore()
-
 		print(items)
 		print(UserDefaults.standard.bool(forKey: "hasLaunch"))
 	}
+
 
 	func toggleHasBeenAdded(item: ShoppingItem) {
 		item.hasBeenAdded = !item.hasBeenAdded
@@ -51,7 +35,6 @@ class ShoppingItemController {
 
 
 	// Create the shopping list
-
 	func createItemList() {
 		let userDefault = UserDefaults.standard
 		if !userDefault.bool(forKey: "hasLaunch") {
@@ -65,6 +48,7 @@ class ShoppingItemController {
 			saveToPersistentStore()
 		}
 	}
+
 
 	func saveToPersistentStore() {
 
@@ -81,7 +65,7 @@ class ShoppingItemController {
 
 
 	func loadFromPersistentStore() {
-		//let fileManager = FileManager.default
+		
 		do {
 			guard let url = shoppingListURL else { return }
 			let data = try Data(contentsOf: url)
