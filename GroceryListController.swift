@@ -7,27 +7,16 @@
 //
 
 import Foundation
+import UIKit
 
 class ListController {
-    var items: [Item] = []
+    var items: [ShoppingItem] = [ShoppingItem(name: "Apples", image: #imageLiteral(resourceName: "Apple")),
+                                 ShoppingItem(name: "Grapes", image: #imageLiteral(resourceName: "Grapes")),
+                                 ShoppingItem(name: "Milk", image: #imageLiteral(resourceName: "Milk")),
+                                 ShoppingItem(name: "Muffin", image: #imageLiteral(resourceName: "Muffin")),
+                                 ShoppingItem(name: "Popcorn", image: #imageLiteral(resourceName: "Popcorn")),
+                                 ShoppingItem(name: "Pop", image: #imageLiteral(resourceName: "Soda"))
     
-    
-    func createItem(name: String, imageName: String){
-        
-    }
-    
-//        var result = [
-//            Item(name: "Apple", imageName: "Apple"),
-//            Item(name: "Grapes", imageName: "Grape"),
-//            Item(name: "Milk", imageName: "Milk"),
-//            Item(name: "Muffin", imageName: "Muffin"),
-//            Item(name: "Popcorn", imageName: "Popcorn"),
-//            Item(name: "Soda", imageName: "Soda"),
-//            Item(name: "Strawberries", imageName: "Strawberries"),
-//        ]
-//
-//
-//
-//       return result
+    ]
     }
 

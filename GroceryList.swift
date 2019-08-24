@@ -9,21 +9,14 @@
 import Foundation
 import UIKit
 
-class Item: Codable {
+struct ShoppingItem {
+    var name: String
+    var image: UIImage
     
-    let name: String
-    let imageName: String
-    
-    var image: UIImage {
-        return UIImage(named: imageName)!
-    }
-    
-    var isAddedToList: Bool
-    
-    
-    init(name: String, isAddedToList: Bool = false) {
+    var hasBeenAdded: Bool
+    init(name: String, image: UIImage, hasBeenAdded: Bool = false) {
         self.name = name
-        self.imageName = name.lowercased()
-        self.isAddedToList = isAddedToList
+        self.image = image
+        self.hasBeenAdded = hasBeenAdded
     }
 }
