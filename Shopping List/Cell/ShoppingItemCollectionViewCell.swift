@@ -25,13 +25,8 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         guard let shoppingItem = shoppingItem else { return }
         
         shoppingItemNameLabel.text = shoppingItem.itemName
-        shoppingItemImageView.image?.accessibilityIdentifier = shoppingItem.itemName
-        
-        if shoppingItem.added == false {
-            addedLabel.text = "Not Added"
-        } else {
-            addedLabel.text = "Added"
-        }
+        addedLabel.text = shoppingItem.added ? "Added" : "Not Added"
+        shoppingItemImageView.image = shoppingItem.image
     }
     
 }
