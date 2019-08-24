@@ -13,7 +13,7 @@
         <!--Shopping List-->
         <scene sceneID="ITa-6y-dJD">
             <objects>
-                <collectionViewController id="N4E-rD-Wy8" sceneMemberID="viewController">
+                <collectionViewController id="N4E-rD-Wy8" customClass="ShoppingListCollectionViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Dso-Ru-GYQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,7 +25,7 @@
                             <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoppingItem" id="hfu-nE-3qx" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoppingItemCell" id="hfu-nE-3qx" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="10" y="10" width="120" height="140"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -75,7 +75,7 @@
                                 <connections>
                                     <outlet property="addedLabel" destination="otB-wU-XZp" id="lRn-Eh-kWI"/>
                                     <outlet property="imageView" destination="WdQ-l9-QlJ" id="6IC-Bt-ed4"/>
-                                    <outlet property="itemnameLabel" destination="9Ie-tD-dyJ" id="jW4-xS-u0g"/>
+                                    <outlet property="itemNameLabel" destination="9Ie-tD-dyJ" id="pm1-AS-Jag"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -87,7 +87,7 @@
                     <navigationItem key="navigationItem" title="Shopping List" id="nAa-kI-p7D">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="YId-Ky-Bd1">
                             <connections>
-                                <segue destination="BYZ-38-t0r" kind="show" id="A5P-iV-lIG"/>
+                                <segue destination="BYZ-38-t0r" kind="show" identifier="OrderSegue" id="A5P-iV-lIG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

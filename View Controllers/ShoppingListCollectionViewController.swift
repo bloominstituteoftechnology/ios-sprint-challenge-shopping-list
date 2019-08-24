@@ -16,14 +16,14 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 	// : - PROPERTIES
 
 	let shoppingItemController = ShoppingItemController()
-	var orderDetailViewController: OrderDetailViewController?
-	let itemCell = ShoppingItemCollectionViewCell()
+	//var orderDetailViewController: OrderDetailViewController?
+	//let itemCell = ShoppingItemCollectionViewCell()
 	var numberOfItemsSelected = 0
 
 
 	func selectedItemsCount() {
 		numberOfItemsSelected = 0
-		for item in shoppingItemController.items {
+		for item in shoppingItemController.items{
 			if item.hasBeenAdded == true {
 				numberOfItemsSelected += 1
 			}
@@ -32,10 +32,17 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 		print(numberOfItemsSelected)
 	}
 
-	override func viewDidLoad() {
-        super.viewDidLoad()
 
-    }
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+
+		collectionView?.reloadData()
+	}
+
+//	override func viewDidLoad() {
+//        super.viewDidLoad()
+//
+//    }
 
 
     // MARK: - Navigation
@@ -50,7 +57,6 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 	// MARK: - UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return shoppingItemController.items.count
     }
 
@@ -60,6 +66,9 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         // Configure the cell
     		let shoppingItem = shoppingItemController.items[indexPath.item]
 			cell.shoppingItem = shoppingItem
+			cell.imageView.image = shoppingItem.image
+			cell.itemNameLabel.text = shoppingItem.itemName
+	
 
 		shoppingItemController.saveToPersistentStore()
 		

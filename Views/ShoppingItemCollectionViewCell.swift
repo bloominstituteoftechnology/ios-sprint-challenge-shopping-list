@@ -15,7 +15,7 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
 	@IBOutlet weak var addedLabel: UILabel!
 
 
-	var selectedItems = 0
+	//var selectedItems = 0
 
 	var shoppingItem: ShoppingItem? {
 		didSet {
@@ -25,10 +25,10 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
 
 
 	func updateViews() {
-		if let selectedItem = shoppingItem {
-			itemNameLabel.text = selectedItem.itemName
-			imageView.image = selectedItem.image
-			switch selectedItem.hasBeenAdded {
+		if let shoppingItem = shoppingItem {
+			itemNameLabel.text = shoppingItem.itemName
+			imageView.image = shoppingItem.image
+			switch shoppingItem.hasBeenAdded {
 			case true:
 				addedLabel.text = "Added"
 			case false:
@@ -40,16 +40,4 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
 
 
 	}
-
-//	override var isSelected: Bool {
-//		didSet {
-//			if self.isSelected {
-//				addedLabel.text = "Added"
-//			} else {
-//				addedLabel.text = "Not Yet Added"
-//			}
-//		}
-//	}
-
-
 }

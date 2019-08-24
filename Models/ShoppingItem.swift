@@ -11,14 +11,14 @@ import UIKit
 
 class ShoppingItem: Codable {
 	
-	var itemName: String
+	let itemName: String
 	var hasBeenAdded: Bool
-	var imageName: String
+	let imageName: String
 
-	init(itemName: String, hasBeenAdded: Bool, imageName: String) {
-		self.itemName = itemName
+	init(name: String, hasBeenAdded: Bool = false){
+		self.itemName = name
 		self.hasBeenAdded = hasBeenAdded
-		self.imageName = imageName
+		self.imageName = name
 	}
 
 	var image: UIImage {
