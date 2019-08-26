@@ -8,13 +8,6 @@
 
 import Foundation
 
-struct shoppingItem:Codable {
-    var nameOfShoppingItems: [String] = ["Apples", "Grapes", "Milk", "Popcorn", "Soda",  "Strawberries"]
-    var addedShoppingItems: Bool
-
-    let userDefaults = UserDefaults.standard.bool(forKey: "addedShoppingItems")
-    
-}
 // MARK: - Private Functions
 func loadFromPersistentStore() {
     let fm = FileManager.default
@@ -33,7 +26,7 @@ func loadFromPersistentStore() {
             private func saveToPersistentStore() {
                 let plistEncoder = PropertyListEncoder()
                 do {
-                let shoppingListData = try plistEncoder.encode(shoppingItem.init(nameOfShoppingItems: ["Apples", "Grapes", "Milk", "Popcorn", "Soda",  "Strawberries"], addedShoppingItems: false))
+                let shoppingListData = try plistEncoder.encode(shoppingItem.init(nameOfShoppingItems: ["Apples", "Grapes", "Milk", "Muffin", "Popcorn", "Soda",  "Strawberries"], addedShoppingItems: false))
                 guard let fileURL = shoppingListURL else { return }
         
                     try shoppingListData.write(to: fileURL)

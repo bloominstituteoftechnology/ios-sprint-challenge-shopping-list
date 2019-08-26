@@ -9,8 +9,9 @@
 import UIKit
 
 class ShoppingListItemCollectionViewCell: UICollectionViewCell {
+    
 }
-//    @IBOutlet weak var imageOutlet: UIImageView!
+
 //    @IBOutlet weak var imageLabel: UILabel!
 //}
 //
