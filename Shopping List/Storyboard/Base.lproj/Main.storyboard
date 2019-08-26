@@ -122,6 +122,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dtY-c6-XzB">
                                         <rect key="frame" x="0.0" y="167.5" width="374" height="30"/>
                                         <state key="normal" title="Send Order"/>
+                                        <connections>
+                                            <action selector="sendOrderButtonTapped:" destination="gmT-08-NfN" eventType="touchUpInside" id="U5p-BB-G9U"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -134,6 +137,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tO3-zW-R2q"/>
                     </view>
+                    <connections>
+                        <outlet property="addressTextField" destination="9sO-Oe-gcg" id="fQF-Bb-zDI"/>
+                        <outlet property="cartItemsLabel" destination="jGY-Rl-iOo" id="RCV-GX-Tt5"/>
+                        <outlet property="nameTextField" destination="dtA-2E-nhH" id="qDU-z3-usJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Qb-dI-rcD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
