@@ -9,24 +9,36 @@
 import UIKit
 
 class ShoppingListCollectionViewCell: UICollectionViewCell {
-//    let itemController = ItemController()
+
     
     @IBOutlet weak var itemImage: UIImageView!
-    @IBOutlet weak var selectedLabel: UILabel!
-    @IBOutlet weak var notButton: UIButton!
-    
+    @IBOutlet weak var selectedToggle: UIButton!
+    @IBOutlet weak var notLabel: UILabel!
     @IBOutlet weak var name: UILabel!
     
-    
-    @IBAction func notButtonPressed(_ sender: Any) {
-        if notButton.isHidden {
-        notButton.isHidden = false
-        
-            
-        } else if !notButton.isHidden {
-            notButton.isHidden = true
-            ItemController.init().removeShoppingItem()
+    var item : ShoppingItem? {
+        didSet {
+            updateValues()
         }
     }
+    
+    @IBAction func selectionToggled(_ sender: Any) {
+        if notLabel.isHidden {
+            notLabel.isHidden = false
+          updateValues()
+        } else if !notLabel.isHidden {
+            notLabel.isHidden = true
+            updateValues()
+        }
+    }
+    
+    func updateValues() {
+        guard let item = item else {return}
+        name.text = item.name
+        let image = UIImage(named: item.name)
+        itemImage.image = image
+    }
+    
+   
     
 }

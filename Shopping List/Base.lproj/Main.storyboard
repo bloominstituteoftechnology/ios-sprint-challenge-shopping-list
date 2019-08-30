@@ -42,27 +42,27 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hSo-xi-2qe">
-                                                    <rect key="frame" x="0.0" y="24" width="123" height="57.5"/>
+                                                    <rect key="frame" x="0.0" y="24" width="123" height="50"/>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bo5-Bs-e6v">
-                                                    <rect key="frame" x="0.0" y="81.5" width="123" height="25.5"/>
+                                                    <rect key="frame" x="0.0" y="74" width="123" height="33"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6R0-Ci-Icp">
-                                                            <rect key="frame" x="0.0" y="0.0" width="39.5" height="25.5"/>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                            <state key="normal" title="Not">
-                                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            </state>
-                                                            <connections>
-                                                                <action selector="notButtonPressed:" destination="dRh-mN-leV" eventType="touchUpInside" id="SrK-0U-1ph"/>
-                                                            </connections>
-                                                        </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4QB-Hf-4Zw">
-                                                            <rect key="frame" x="39.5" y="0.0" width="83.5" height="25.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HIZ-pZ-ne0">
+                                                            <rect key="frame" x="0.0" y="0.0" width="34" height="33"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7a-dV-Hi4">
+                                                            <rect key="frame" x="34" y="0.0" width="89" height="33"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                            <state key="normal" title="Selected">
+                                                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="selectionToggled:" destination="dRh-mN-leV" eventType="touchUpInside" id="CC7-Po-Huo"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
@@ -78,8 +78,8 @@
                                 <connections>
                                     <outlet property="itemImage" destination="hSo-xi-2qe" id="l2c-2U-YiR"/>
                                     <outlet property="name" destination="gG6-GO-OEL" id="5he-hF-JXK"/>
-                                    <outlet property="notButton" destination="6R0-Ci-Icp" id="b7f-sT-5Fk"/>
-                                    <outlet property="selectedLabel" destination="4QB-Hf-4Zw" id="Lye-8F-qP2"/>
+                                    <outlet property="notLabel" destination="HIZ-pZ-ne0" id="3e7-Xr-bB9"/>
+                                    <outlet property="selectedToggle" destination="E7a-dV-Hi4" id="qWp-As-CQI"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>

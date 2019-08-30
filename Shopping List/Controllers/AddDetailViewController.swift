@@ -14,6 +14,7 @@ class AddDetailViewController: UIViewController {
     @IBOutlet weak var itemInfo: UILabel!
     @IBOutlet weak var sendToAddress: UITextField!
     
+    var delegate: sendListToNextView
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,25 +28,11 @@ class AddDetailViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "sendItemsToNewView" {
-            if let vc = segue.destination as? ShoppingListCollectionViewController {
-                vc.delegate = self
-            }
-        }
-    }
+
  
     @IBAction func sendOrderButtonTapped(_ sender: Any) {
     }
     
 }
 
-extension AddDetailViewController: sendListToNextView {
-    func listWasSent(_ list: [ShoppingItem]) {
-        let count = list.count
-        itemInfo.text = "You currently Have \(count) item(s) in your shopping list."
-        
-    }
 
-    
-}
