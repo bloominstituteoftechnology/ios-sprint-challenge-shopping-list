@@ -13,6 +13,14 @@ class ItemController {
     let cell = ShoppingListCollectionViewCell()
     var names = ["Apple", "Grapes", "Milk", "Muffin", "Strawberries", "Popcorn", "Soda"]
     var shoppingItems: [ShoppingItem] = []
+    var shoppingListURL: URL?  {
+        
+        let userDoc = FileManager.default
+        guard let list = userDoc.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
+        return list.appendingPathComponent("ShoppingList.plist")
+        
+    }
+    
     var addedItems: [ShoppingItem] {
 
         return shoppingItems.filter {$0.addedToList}
@@ -27,38 +35,28 @@ class ItemController {
         }
     }
     
-
-    func createItems() {
-        for name in names {
-          shoppingItems.append(ShoppingItem(name: name))
-            
+    
+    func addShoppingItem(item: ShoppingItem) {
+        shoppingItems.append(item)
+        createItems()
+    }
+        func removeShoppingItem() {
+            shoppingItems.removeFirst()
+            saveToPersistentStore()
         }
+    
+    func createItems() {
         let userDefaults = UserDefaults.standard
         userDefaults.set(true, forKey: "didCreateItems")
         saveToPersistentStore()
     }
     
-    func removeShoppingItem() {
-        shoppingItems.removeFirst()
-    }
-    
-    func addShoppingItem(item: ShoppingItem) {
-            shoppingItems.append(item)
-        }
-
-    var shoppingListURL: URL?  {
-        
-        let userDoc = FileManager.default
-        guard let list = userDoc.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
-        return list.appendingPathComponent("ShoppingList.plist")
-        
-    }
     
     func saveToPersistentStore() {
         guard let url = shoppingListURL else { return }
         do {
             let encoder = PropertyListEncoder()
-            let itemData = try encoder.encode(shoppingItems)
+            let itemData = try encoder.encode(shoppingItems.last)
             try itemData.write(to: url)
         } catch {
             print("error saving: \(error)")
@@ -79,6 +77,17 @@ class ItemController {
         }
     }
     
+    func removeFromPersistentStore() {
+        guard let url = shoppingListURL else { return }
+        do {
+            let encoder = PropertyListEncoder()
+            var itemData = try encoder.encode(shoppingItems.last)
+            try itemData.write(to: url)
+        } catch {
+            print("error saving: \(error)")
+        }
+        
+    }
     
 }
 

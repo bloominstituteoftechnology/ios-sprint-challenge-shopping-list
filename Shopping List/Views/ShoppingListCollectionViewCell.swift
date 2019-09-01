@@ -12,23 +12,14 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
 
     
     @IBOutlet weak var itemImage: UIImageView!
-    @IBOutlet weak var selectedToggle: UIButton!
-    @IBOutlet weak var notLabel: UILabel!
     @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var button: UIButton!
+    
     
     var item : ShoppingItem? {
         didSet {
             updateValues()
-        }
-    }
-    
-    @IBAction func selectionToggled(_ sender: Any) {
-        if notLabel.isHidden {
-            notLabel.isHidden = false
-          updateValues()
-        } else if !notLabel.isHidden {
-            notLabel.isHidden = true
-            updateValues()
+            
         }
     }
     

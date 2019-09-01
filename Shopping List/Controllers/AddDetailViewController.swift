@@ -14,23 +14,35 @@ class AddDetailViewController: UIViewController {
     @IBOutlet weak var itemInfo: UILabel!
     @IBOutlet weak var sendToAddress: UITextField!
     
-    var delegate: sendListToNextView
+    // MARK - Send Note when View Disappears.
+    override func viewDidDisappear(_ animated: Bool) {
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        updateValues()
+     
     }
     
-
+    var delegate: [ShoppingItem]?{
+        didSet {
+            
+        }
+    }
+    
+    func updateValues() {
+        guard let count = delegate?.count else {return}
+        self.itemInfo.text = "You Have \(count) item(s) in your shopping list."
+        
+    }
     
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-
-
  
     @IBAction func sendOrderButtonTapped(_ sender: Any) {
+        
     }
     
 }

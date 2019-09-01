@@ -17,10 +17,11 @@ protocol addItemDelegate {
 }
 
 class ShoppingListCollectionViewController: UICollectionViewController {
-  
-    let itemController = ItemController()
     
-    let cell = ShoppingListCollectionViewCell()
+    
+    
+
+    let itemController = ItemController()
     
     var delegate: sendListToNextView?
 
@@ -28,7 +29,9 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         
     }
-
+    
+ 
+        
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
@@ -40,8 +43,22 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
         let item = itemController.shoppingItems[indexPath.item]
         cell.item = item
+        
         return cell
     }
+    
+    @IBAction func selectionToggled(_ sender: UIButton) {
+        if  sender.titleLabel?.text == "Selected" {
+            sender.setTitle("Not Selected", for: .normal)
+            itemController.removeShoppingItem()
+            
+        } else if sender.titleLabel?.text == "Not Selected" {
+            sender.setTitle("Selected", for: .normal)
+            itemController.addShoppingItem(item: ShoppingItem(name: "Strawberries"))
+            
+        }
+    }
+    
     
     @IBAction func nextButtonTapped(_ sender: Any) {
         performSegue(withIdentifier: "sendItemsToNewView", sender: self)
@@ -57,7 +74,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "sendItemsToNewView" {
             if let vc = segue.destination as? AddDetailViewController {
-                vc.delegate = self as? sendListToNextView
+                vc.delegate = itemController.addedItems
             }
         }
     }
@@ -66,8 +83,8 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
 extension AddDetailViewController: sendListToNextView {
     func listWasSent(_ list: [ShoppingItem]) {
-        let count = list.count
-        itemInfo.text = "You currently Have \(count) item(s) in your shopping list."
+
+
         
     }
     
