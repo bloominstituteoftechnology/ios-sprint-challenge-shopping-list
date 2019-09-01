@@ -51,10 +51,10 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         if  sender.titleLabel?.text == "Selected" {
             sender.setTitle("Not Selected", for: .normal)
             itemController.removeShoppingItem()
-            
         } else if sender.titleLabel?.text == "Not Selected" {
+            let name =
             sender.setTitle("Selected", for: .normal)
-            itemController.addShoppingItem(item: ShoppingItem(name: "Strawberries"))
+            itemController.addShoppingItem()
             
         }
     }
@@ -67,7 +67,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     }
     
     func sendToItemList(item: ShoppingItem) {
-        itemController.addShoppingItem(item: item)
+        itemController.addShoppingItem(newItem: ShoppingItem(name: "Milk", addedToList: true))
     }
     
 
