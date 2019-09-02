@@ -37,19 +37,12 @@ class ItemController {
     }
     
     
-    func addShoppingItem() {
-        var myItem = shoppingItems.first(where: {$0.addedToList})
-        myItem?.addedToList = true
-        guard let newItem = myItem else {return}
-        for item in shoppingItems {
-            guard let index = shoppingItems.index(of: item) else {return}
-            if newItem.name == item.name {
-                shoppingItems.remove(at: index)
-                shoppingItems.append(newItem)
-                
-            }
-        }
-      
+    func update(item: ShoppingItem) {
+        guard let index = shoppingItems.index(of: item) else {return}
+        var newItem = shoppingItems[index]
+        newItem.addedToList = !newItem.addedToList
+        shoppingItems[index] = newItem
+        saveToPersistentStore()
     }
     
         func removeShoppingItem() {
@@ -61,7 +54,8 @@ class ItemController {
                     addToPersistentStore(index: index)
                 }
             }
-    
+        }
+            
     func createItems() {
         for name in names {
             shoppingItems.append(ShoppingItem(name: name, addedToList: false))

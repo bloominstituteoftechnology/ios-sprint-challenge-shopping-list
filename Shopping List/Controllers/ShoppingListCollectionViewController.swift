@@ -47,16 +47,10 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         return cell
     }
     
-    @IBAction func selectionToggled(_ sender: UIButton) {
-        if  sender.titleLabel?.text == "Selected" {
-            sender.setTitle("Not Selected", for: .normal)
-            itemController.removeShoppingItem()
-        } else if sender.titleLabel?.text == "Not Selected" {
-            let name =
-            sender.setTitle("Selected", for: .normal)
-            itemController.addShoppingItem()
-            
-        }
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = itemController.shoppingItems[indexPath.item]
+        itemController.update(item: item)
+        collectionView.reloadData()
     }
     
     
@@ -66,9 +60,9 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         delegate?.listWasSent(list)
     }
     
-    func sendToItemList(item: ShoppingItem) {
-        itemController.addShoppingItem(newItem: ShoppingItem(name: "Milk", addedToList: true))
-    }
+//    func sendToItemList(item: ShoppingItem) {
+//        itemController.addShoppingItem(newItem: ShoppingItem(name: "Milk", addedToList: true))
+//    }
     
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

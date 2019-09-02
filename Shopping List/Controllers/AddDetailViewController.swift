@@ -42,7 +42,12 @@ class AddDetailViewController: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
  
     @IBAction func sendOrderButtonTapped(_ sender: Any) {
+        guard let name = sentToName.text, let address = sendToAddress.text, let count = delegate?.count else {return}
+        let alert = UIAlertController(title: "Thank you, \(name) for ordering with us!", message: "You will have \(count) item(s) that will be sent to \(address).", preferredStyle: .alert)
         
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        present(alert, animated: true, completion: nil)
     }
     
 }
