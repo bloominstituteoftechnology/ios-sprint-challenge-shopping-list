@@ -8,31 +8,19 @@
 
 import UIKit
 
-protocol ShoppingItemCollectionViewCellDelegate: class{
-    func itemAddedWasTapped(on cell: ShoppingItemCollectionViewCell)
-}
-
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var itemAddedLabel: UILabel!
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var itemNameLabel: UILabel!
-    
-    @IBOutlet weak var itemAddedButton: UIButton!
-    
-    @IBAction func itemAddedToggle(_ sender: Any) {
-        
-        delegate?.itemAddedWasTapped(on: self)
-    }
-    
-    func updateViews () {
+
+    func updateViews() {
         
         guard let shoppingItem = shoppingItem else { return }
-        let itemAddedTitle = shoppingItem.wasAdded ? "Added" : "Add"
-        itemAddedButton.setTitle(itemAddedTitle, for: .normal)
         
-        // Add items to shopping items array
-        
+        itemNameLabel.text = shoppingItem.itemName
+        itemAddedLabel.text = shoppingItem.wasAdded ? "Remove" : "Add"
+        itemImageView.image = shoppingItem.image
     }
     
     var shoppingItem: ShoppingItem? {
@@ -40,15 +28,6 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
             updateViews()
         }
     }
-    
-    weak var delegate: ShoppingItemCollectionViewCellDelegate?
- 
-    
 }
 
-//    @IBOutlet weak var shouldShowPlutoSwitch: UISwitch!
-//
-//    @IBAction func changeShouldShowPluto(_ sender: UISwitch) {
-//        let userDefaults = UserDefaults.standard
-//        userDefaults.set(sender.isOn, forKey: .shouldShowPlutoKey)
-//    }
+

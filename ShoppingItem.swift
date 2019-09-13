@@ -9,19 +9,21 @@
 import Foundation
 import UIKit
 
-struct ShoppingItem: Equatable { //, Codable - Add When ready
+struct ShoppingItem: Codable, Equatable {
     
-    init(itemImage: String, itemName: String, wasAdded: Bool  = false) {
-        self.image = UIImage(named: itemImage)!
+    var imageName: String
+    var itemName: String
+    var wasAdded: Bool
+    
+    init(itemName: String, wasAdded: Bool  = false) {
+        self.imageName = itemName.lowercased()
         self.itemName = itemName
         self.wasAdded = wasAdded
     }
     
-    var image: UIImage
-    var itemName: String
-    var wasAdded: Bool
-    
-    
+    var image: UIImage {
+        return UIImage(named: imageName)!
+    }
 }
 
 //A ShoppingItem model object with properties for an image, name of the item, and Bool indicating whether the item has been added to the shopping list.
