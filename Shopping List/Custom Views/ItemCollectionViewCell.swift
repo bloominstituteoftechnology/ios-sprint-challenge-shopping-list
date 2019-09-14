@@ -10,4 +10,6 @@ import UIKit
 
 class ItemCollectionViewCell: UICollectionViewCell {
     
+    var item: ShoppingItem?
+    
 }
