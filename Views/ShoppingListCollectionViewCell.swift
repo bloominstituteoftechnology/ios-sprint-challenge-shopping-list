@@ -29,6 +29,16 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
         
         guard let shoppingItem = shoppingItem else { return }
         nameLabel.text = shoppingItem.name
+        imageView.image = UIImage(named: shoppingItem.name)
+        
+        
+        if shoppingItem.isAdded == true {
+            isAddedLabel.text = "Added"
+        } else {
+            isAddedLabel.text = "Not Added"
+        }
+        
+ 
         //imageView.image = shoppingItem.
         
 //        imageView.image = planet.image
