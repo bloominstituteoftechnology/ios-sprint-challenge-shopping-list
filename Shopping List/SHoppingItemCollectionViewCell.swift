@@ -14,7 +14,11 @@ class SHoppingItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var shoppingItemImageView: UIImageView!
     @IBOutlet weak var shoppingItemNameLabel: UILabel!
     
-    
+    var shoppingItem: ShoppingItem? {
+        didSet {
+            updateViews()
+        }
+    }
     
     private func updateViews() {
         
