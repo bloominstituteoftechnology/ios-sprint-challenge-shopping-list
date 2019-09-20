@@ -12,7 +12,7 @@ private let reuseIdentifier = "ShoppingListCell"
 
 class ShoppingListCollectionViewController: UICollectionViewController {
     
-    
+    let ShoppingListItemController = ShoppingListController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,22 +22,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
     }
-
-    
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     // MARK: UICollectionViewDataSource
 
@@ -45,18 +30,17 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return shoppinglistItems.count
+        return ShoppingListItemController.shoppingListItem.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        // Configure the cell
-    
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingListCell", for: indexPath) as? ShoppingListItemCollectionViewCell else { return UICollectionViewCell()}
+
+        let item = ShoppingListItemController.shoppingListItem[indexPath.item]
+        cell.self = item
         return cell
     }
 

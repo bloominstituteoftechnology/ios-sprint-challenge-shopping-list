@@ -15,14 +15,23 @@ class ShoppingListController {
     
      var nameOfShoppingItems: [String] = ["Apples", "Grapes", "Milk", "muffin", "Popcorn", "Soda",  "Strawberries"]
     
-    var shoppingListItem: [ShoppingListItems] = []
+     var shoppingListItem: [ShoppingListItem] = []
+    
+    private var shoppingListURL: URL? {
+        let fileManager = FileManager.default
+        guard let documents = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil}
+        return documents.appendingPathComponent("Info.plist")
+    }
     
     init() {
-        loadFromPersistentStore()
-        for name in nameOfShoppingItems {
-            let item = ShoppingListItems(name: name)
-            shoppingListItem.append(item)
+        let hasAppBeenOpened = UserDefaults.standard.bool(forKey: "hasAppBeenOpened")
+        if hasAppBeenOpened {
+            loadFromPersistentStore()
+        } else {
+            UserDefaults.standard.set(true, forKey: "hasAppBeenOpened")
         }
+        
+        saveToPersistentStore()
     }
     
     
@@ -34,7 +43,7 @@ class ShoppingListController {
         do {
             let decoder = PropertyListDecoder()
             let data = try Data(contentsOf: url)
-            shoppinglistItems = try decoder.decode([shoppingItem].self, from: data)
+            shoppingListItem = try decoder.decode([ShoppingListItem].self, from: data)
         } catch {
             print("Error loading List data: \(error)")
         }
@@ -43,25 +52,11 @@ class ShoppingListController {
         guard let url = shoppingListURL else { return }
         do {
             let encoder = PropertyListEncoder()
-            let data = try encoder.encode(shoppinglistItems)
+            let data = try encoder.encode(shoppingListItem)
             try data.write(to: url)
         } catch {
             NSLog("Error saving Shopping List Data: \(error)")
         }
     }
     
-    private var shoppingListURL: URL? {
-        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-        let fileName = "ShoppingList.plist"
-        return documentDirectory?.appendingPathComponent(fileName)
-    }
-        var shoppinglistItems: [shoppingItem] = []
-    var unaddedItems: [shoppingItem] {
-        return shoppinglistItems.filter({ $0.addedShoppingItems == false })
-    }
-    var addedItems: [shoppingItem] {
-        return shoppinglistItems.filter({$0.addedShoppingItems == true})
-    }
-    
-
 }

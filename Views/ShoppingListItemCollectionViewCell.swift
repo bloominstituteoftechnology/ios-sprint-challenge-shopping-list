@@ -12,17 +12,20 @@ class ShoppingListItemCollectionViewCell: UICollectionViewCell {
     
 }
 
-//    @IBOutlet weak var imageLabel: UILabel!
-//}
-//
-//var shopList = shoppingItem.self {
-//    didSet{
-//        updateViews()
-//    }
-//}
 
-//private func updateViews(){
-//    guard let shopList = shopList = shopList else { return }
-//
-//    imageOutlet.image = UIImage(data: )
-//}
+
+var shopList: ShoppingListItem? {
+    
+    didSet{
+        
+        updateViews()
+    }
+}
+
+
+
+func updateViews() {
+    guard let item = shopList else { return }
+    
+    imageOutlet.image = UIImage(data: )
+}
