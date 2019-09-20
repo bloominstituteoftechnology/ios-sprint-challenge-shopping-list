@@ -13,7 +13,7 @@ class ShoppingItem {
     var name: String
     var isAdded: Bool = false
     
-    init(name: String, isAdded: Bool = false) {
+    init(name: String, isAdded: Bool) {
         self.name = name
         self.isAdded = isAdded
     }

@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+
+extension String {
+    static let itemsHaveBeenCreated = "ItemsHaveBeenCreatd"
+    static let completeOrderSegue = "CompleteOrderSegue"
+}

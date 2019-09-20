@@ -7,3 +7,14 @@
 //
 
 import Foundation
+
+class PropertyListEncoder {
+    
+    var shoppingItemsController = ShoppingItemsController()
+    //var shoppingItems: [ShoppingItem] = ShoppingItemsController.shoppingItems
+    
+    
+    
+}
+
+
