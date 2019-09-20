@@ -13,7 +13,7 @@
         <!--Shopping List-->
         <scene sceneID="Whg-Bz-77d">
             <objects>
-                <collectionViewController id="Rex-Tv-IMs" sceneMemberID="viewController">
+                <collectionViewController id="Rex-Tv-IMs" customClass="ShoppingLIstCollectionViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="h7n-7p-w8C">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,7 +25,7 @@
                             <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="V4t-BM-w6e">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="V4t-BM-w6e" customClass="SHoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="10" y="10" width="150" height="170"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -61,6 +61,11 @@
                                     <constraint firstItem="VK9-no-9v2" firstAttribute="leading" secondItem="V4t-BM-w6e" secondAttribute="leading" id="fsa-HF-qiK"/>
                                     <constraint firstAttribute="bottom" secondItem="VK9-no-9v2" secondAttribute="bottom" id="kWk-Y6-gTz"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="addedLabel" destination="ESP-jL-d9v" id="k60-Np-VLr"/>
+                                    <outlet property="shoppingItemImageView" destination="fCd-Rt-gGM" id="4f1-5g-w2V"/>
+                                    <outlet property="shoppingItemNameLabel" destination="VK9-no-9v2" id="Myt-R2-q1T"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -80,10 +85,10 @@
             </objects>
             <point key="canvasLocation" x="1046.376811594203" y="55.580357142857139"/>
         </scene>
-        <!--View Controller-->
+        <!--Send Order View Controller-->
         <scene sceneID="wfx-GB-Me9">
             <objects>
-                <viewController id="DQW-3P-BI9" sceneMemberID="viewController">
+                <viewController id="DQW-3P-BI9" customClass="SendOrderViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y9p-Ql-j6Q">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -115,6 +120,9 @@
                                 <rect key="frame" x="157" y="430" width="100" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Send Order"/>
+                                <connections>
+                                    <action selector="sendOrderButton:" destination="DQW-3P-BI9" eventType="touchUpInside" id="lAo-w7-Ttm"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -129,6 +137,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5ZE-oj-J89"/>
                     </view>
+                    <connections>
+                        <outlet property="addressTextField" destination="qN8-Ph-MPl" id="ADg-eE-S0G"/>
+                        <outlet property="nameTextField" destination="xxW-7L-vfF" id="v9l-ZC-ggE"/>
+                        <outlet property="sendOrderLabel" destination="Ims-ma-6kD" id="gYI-sI-J0L"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SpD-od-VwS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
