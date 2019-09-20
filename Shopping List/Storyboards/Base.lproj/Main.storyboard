@@ -25,7 +25,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="lsb-cU-6RU" customClass="ShoppingListCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoppingListCell" id="lsb-cU-6RU" customClass="ShoppingListCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="200" height="265"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -38,7 +38,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FCs-Yc-FAn">
                                                     <rect key="frame" x="0.0" y="0.0" width="200" height="265"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Not Added" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RJ8-Jj-AxT">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Not Added" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RJ8-Jj-AxT">
                                                             <rect key="frame" x="0.0" y="0.0" width="200" height="36"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
                                                             <nil key="textColor"/>
@@ -46,11 +46,15 @@
                                                         </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D5G-W7-4Fs">
                                                             <rect key="frame" x="0.0" y="36" width="200" height="200"/>
+                                                            <gestureRecognizers/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="D5G-W7-4Fs" secondAttribute="height" multiplier="1:1" id="8le-Iz-qkX"/>
                                                             </constraints>
+                                                            <connections>
+                                                                <outletCollection property="gestureRecognizers" destination="QE7-72-qNr" appends="YES" id="KAA-7g-17s"/>
+                                                            </connections>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" verticalCompressionResistancePriority="751" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ixx-U9-jNk">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ixx-U9-jNk">
                                                             <rect key="frame" x="0.0" y="236" width="200" height="29"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="24"/>
                                                             <nil key="textColor"/>
@@ -74,6 +78,11 @@
                                     <constraint firstAttribute="bottom" secondItem="hXr-rv-Jyp" secondAttribute="bottom" id="YsJ-e6-dBt"/>
                                     <constraint firstItem="hXr-rv-Jyp" firstAttribute="top" secondItem="lsb-cU-6RU" secondAttribute="top" id="mp3-uT-O28"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="isAddedLabel" destination="RJ8-Jj-AxT" id="tgM-vy-Odz"/>
+                                    <outlet property="itemImageView" destination="D5G-W7-4Fs" id="rZy-yC-9bH"/>
+                                    <outlet property="itemNameLabel" destination="Ixx-U9-jNk" id="Mru-Hx-9nS"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -90,6 +99,7 @@
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5wO-Xh-ufb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="QE7-72-qNr"/>
             </objects>
             <point key="canvasLocation" x="607" y="42"/>
         </scene>
@@ -124,6 +134,9 @@ in your shopping list</string>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SzV-kf-ERo">
                                 <rect key="frame" x="167.5" y="327" width="79" height="30"/>
                                 <state key="normal" title="Send Order"/>
+                                <connections>
+                                    <action selector="sendOrderTabbed:" destination="U0Q-bJ-lXb" eventType="touchUpInside" id="rdo-NS-7eh"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -142,6 +155,11 @@ in your shopping list</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JNX-2A-z42"/>
                     </view>
+                    <connections>
+                        <outlet property="addressTextField" destination="ZKw-CC-gzd" id="Fv4-Qt-WsG"/>
+                        <outlet property="howManyItemLabel" destination="KB1-Wl-c5m" id="pH5-dc-9mk"/>
+                        <outlet property="nameTextField" destination="gZV-mM-IHM" id="eoi-sG-C34"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MZy-8p-otR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -9,5 +9,28 @@
 import UIKit
 
 class ShoppingListCollectionViewCell: UICollectionViewCell {
+    // MARK: Properties
+    @IBOutlet weak var isAddedLabel: UILabel!
+    @IBOutlet weak var itemImageView: UIImageView!
+    @IBOutlet weak var itemNameLabel: UILabel!
     
+    var shoppingItem: ShoppingItem? {
+        didSet{
+            updateViews()
+        }
+    }
+    
+    private func updateViews() {
+        guard let shoppingItem = shoppingItem else { return }
+        
+        switch shoppingItem.isAdded {
+        case true:
+            isAddedLabel.text = "Added"
+        case false:
+            isAddedLabel.text = "Not Added"
+        }
+        
+        itemImageView.image = UIImage(named: shoppingItem.name)
+        itemNameLabel.text = shoppingItem.name
+    }
 }
