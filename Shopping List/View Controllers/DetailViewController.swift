@@ -17,7 +17,7 @@ class DetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        addItems(items: <#Int#>)
+        addItems(items: 0)
     }
     
     // MARK: - Methods

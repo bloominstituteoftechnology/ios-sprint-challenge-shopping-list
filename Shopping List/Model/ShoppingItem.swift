@@ -6,16 +6,21 @@
 //  Copyright © 2019 Lambda School. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
-struct ShoppingItem {
+struct ShoppingItem: Codable {
     var name: String
-    var image: UIImage
+    var imageName: String
     var hasBeenAdded: Bool
     
     init(name: String, imageName: String, hasBeenAdded: Bool = false) {
         self.name = name
-        self.image = UIImage(named: imageName)!
+        self.imageName = imageName
         self.hasBeenAdded = false
+    }
+    
+    var image: UIImage {
+        return UIImage(named: imageName)!
     }
 }
