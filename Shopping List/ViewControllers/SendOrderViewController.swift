@@ -32,12 +32,16 @@ class SendOrderViewController: UIViewController {
     @IBAction func sendOrderButton(_ sender: UIButton) {
         guard let name = nameTextField.text,
             let address = addressTextField.text else { return }
-        
+
         localNotificationHelper.getAuthorizationStatus { (status ) in
             switch status {
             case .authorized:
                 
                 self.localNotificationHelper.scheduleOrderDeliveryNotification(withName: name, andAddress: address)
+                let alert = UIAlertController(title: "Shopping Item Delivery", message: "A delivery for \(name) will be sent to \(address)", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
             case .denied:
                 
                 NSLog("User has denied authorization to receive local notifications")
@@ -56,17 +60,5 @@ class SendOrderViewController: UIViewController {
             }
         }
     }
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import UserNotifications
+import UIKit
 
 class LocalNotificationHelper {
     func getAuthorizationStatus(completion: @escaping (UNAuthorizationStatus) -> Void) {
