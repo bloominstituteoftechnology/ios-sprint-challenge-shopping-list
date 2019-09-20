@@ -27,14 +27,19 @@ class ShoppingItemCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return shoppingItemController.shoppingItems.count
+        let number: Int
+        if section == 0 {
+            number = shoppingItemController.shoppingItemsOnList.count
+        } else {
+            number = shoppingItemController.shoppingItemsNotOnList.count
+        }
+        
+        return number
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -42,16 +47,47 @@ class ShoppingItemCollectionViewController: UICollectionViewController {
             return UICollectionViewCell()
         }
     
-        let shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
+        let shoppingItem: ShoppingItem
+        if indexPath.section == 0 {
+            shoppingItem = shoppingItemController.shoppingItemsOnList[indexPath.item]
+        } else {
+            shoppingItem = shoppingItemController.shoppingItemsNotOnList[indexPath.item]
+        }
+        
         cell.shoppingItem = shoppingItem
         
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        shoppingItemController.shoppingItems[indexPath.item].onList.toggle()
-        shoppingItemController.saveToPersistentStore()
+        let shoppingItem: ShoppingItem
+        if indexPath.section == 0 {
+            shoppingItem = shoppingItemController.shoppingItemsOnList[indexPath.item]
+        } else {
+            shoppingItem = shoppingItemController.shoppingItemsNotOnList[indexPath.item]
+        }
+        
+        if let index = shoppingItemController.shoppingItems.firstIndex(of: shoppingItem) {
+            shoppingItemController.shoppingItems[index].onList.toggle()
+            shoppingItemController.saveToPersistentStore()
+        }
+        
         collectionView.reloadData()
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeader", for: indexPath) as? SectionHeader else {
+            return UICollectionReusableView()
+        }
+        let text: String
+        if indexPath.section == 0 {
+            text = "Items in list"
+        } else {
+            text = "Available items"
+        }
+        
+        sectionHeader.sectionHeaderLabel.text = text
+        return sectionHeader
     }
 
 }

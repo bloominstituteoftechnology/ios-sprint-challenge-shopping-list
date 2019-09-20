@@ -25,6 +25,14 @@ class ShoppingItemController {
     
     var shoppingItems: [ShoppingItem] = []
     
+    var shoppingItemsOnList: [ShoppingItem] {
+        return shoppingItems.filter {$0.onList}
+    }
+    
+    var shoppingItemsNotOnList: [ShoppingItem] {
+        return shoppingItems.filter {!$0.onList}
+    }
+    
     var shoppingItemsURL: URL? {
         let fileManager = FileManager.default
         guard let documents = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
