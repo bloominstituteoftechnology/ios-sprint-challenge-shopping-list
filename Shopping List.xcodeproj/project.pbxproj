@@ -12,6 +12,10 @@
 		4613E91721143BFC00E7FF73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91521143BFC00E7FF73 /* Main.storyboard */; };
 		4613E91921143BFD00E7FF73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91821143BFD00E7FF73 /* Assets.xcassets */; };
 		4613E91C21143BFD00E7FF73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91A21143BFD00E7FF73 /* LaunchScreen.storyboard */; };
+		FA126762233523B6008C31C0 /* ShoppingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA126761233523B6008C31C0 /* ShoppingItem.swift */; };
+		FA126764233524BA008C31C0 /* ShoppingItemsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA126763233524BA008C31C0 /* ShoppingItemsController.swift */; };
+		FA126766233525C4008C31C0 /* SettingsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA126765233525C4008C31C0 /* SettingsKeys.swift */; };
+		FA126769233526CD008C31C0 /* PropertyListEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA126768233526CD008C31C0 /* PropertyListEncoder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		4613E91821143BFD00E7FF73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4613E91B21143BFD00E7FF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4613E91D21143BFD00E7FF73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA126761233523B6008C31C0 /* ShoppingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItem.swift; sourceTree = "<group>"; };
+		FA126763233524BA008C31C0 /* ShoppingItemsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemsController.swift; sourceTree = "<group>"; };
+		FA126765233525C4008C31C0 /* SettingsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsKeys.swift; sourceTree = "<group>"; };
+		FA126768233526CD008C31C0 /* PropertyListEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListEncoder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,10 +46,10 @@
 		4613E90521143BFC00E7FF73 = {
 			isa = PBXGroup;
 			children = (
-				FA12675D233522FC008C31C0 /* Views */,
-				FA12675E23352308008C31C0 /* Model */,
 				FA12675F23352311008C31C0 /* View Controllers */,
+				FA12675D233522FC008C31C0 /* Views */,
 				FA1267602335231D008C31C0 /* Model Controllers */,
+				FA12675E23352308008C31C0 /* Model */,
 				4613E91021143BFC00E7FF73 /* Shopping List */,
 				4613E90F21143BFC00E7FF73 /* Products */,
 			);
@@ -59,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				4613E91521143BFC00E7FF73 /* Main.storyboard */,
+				FA126765233525C4008C31C0 /* SettingsKeys.swift */,
 				4613E91121143BFC00E7FF73 /* AppDelegate.swift */,
 				4613E91821143BFD00E7FF73 /* Assets.xcassets */,
 				4613E91A21143BFD00E7FF73 /* LaunchScreen.storyboard */,
@@ -77,6 +86,7 @@
 		FA12675E23352308008C31C0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FA126761233523B6008C31C0 /* ShoppingItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -92,6 +102,8 @@
 		FA1267602335231D008C31C0 /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FA126763233524BA008C31C0 /* ShoppingItemsController.swift */,
+				FA126768233526CD008C31C0 /* PropertyListEncoder.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -167,7 +179,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA126762233523B6008C31C0 /* ShoppingItem.swift in Sources */,
+				FA126766233525C4008C31C0 /* SettingsKeys.swift in Sources */,
 				4613E91421143BFC00E7FF73 /* ViewController.swift in Sources */,
+				FA126769233526CD008C31C0 /* PropertyListEncoder.swift in Sources */,
+				FA126764233524BA008C31C0 /* ShoppingItemsController.swift in Sources */,
 				4613E91221143BFC00E7FF73 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
