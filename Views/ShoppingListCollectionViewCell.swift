@@ -28,7 +28,8 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
     private func updateViews() {
         
         guard let shoppingItem = shoppingItem else { return }
-        
+        nameLabel.text = shoppingItem.name
+        //imageView.image = shoppingItem.
         
 //        imageView.image = planet.image
 //        textLabel.text = planet.name

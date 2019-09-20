@@ -8,14 +8,15 @@
 
 import Foundation
 
-
 class ShoppingItem {
     var name: String
     var isAdded: Bool = false
+    //var imageData: Data
     
     init(name: String, isAdded: Bool) {
         self.name = name
         self.isAdded = isAdded
+        //self.imageData = imageData
     }
 }
 

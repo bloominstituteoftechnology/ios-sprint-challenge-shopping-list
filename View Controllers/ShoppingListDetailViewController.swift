@@ -10,6 +10,7 @@ import UIKit
 
 class ShoppingListDetailViewController: UIViewController {
     
+    var numberOfAddedItems: Int?
     
     // MARK : - IBOutlets
     @IBOutlet weak var textView: UITextView!
@@ -29,6 +30,9 @@ class ShoppingListDetailViewController: UIViewController {
     
     // MARK: - IBAction Submit Button
     @IBAction func submitOrderButton(_ sender: UIButton) {
+        let alert = UIAlertController(title: "You currently have \(numberOfAddedItems) Item(s) in your shopping list.", message: "Your order will be sent to \(addressTextField.text) in 15 mins!", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
     
