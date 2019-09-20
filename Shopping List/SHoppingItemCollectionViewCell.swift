@@ -21,7 +21,11 @@ class SHoppingItemCollectionViewCell: UICollectionViewCell {
     }
     
     private func updateViews() {
+        guard let shoppingItem = shoppingItem else { return }
         
+        shoppingItemNameLabel.text = shoppingItem.itemName
+        addedLabel.text = shoppingItem.added ? "Added" : "Not Added"
+        shoppingItemImageView.image = shoppingItem.image
     }
     
 }
