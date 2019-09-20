@@ -11,6 +11,8 @@ import UIKit
 private let reuseIdentifier = "ShoppingListCell"
 
 class ShoppingListCollectionViewController: UICollectionViewController {
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
