@@ -6,10 +6,11 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Shopping Item Collection View Controller-->
+        <!--Shopping List-->
         <scene sceneID="uYY-RL-yu0">
             <objects>
                 <collectionViewController id="cfQ-Hl-5F5" customClass="ShoppingItemCollectionViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
@@ -86,11 +87,74 @@
                             <outlet property="delegate" destination="cfQ-Hl-5F5" id="E6j-KW-Rsf"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="eEK-M2-R2F"/>
+                    <navigationItem key="navigationItem" title="Shopping List" id="eEK-M2-R2F">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="q8r-aN-Vbn">
+                            <connections>
+                                <segue destination="s0L-8X-xEa" kind="show" identifier="OrderShowSegue" id="tuJ-Pf-UO4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LWM-8A-SII" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1089.8550724637682" y="93.75"/>
+        </scene>
+        <!--Order View Controller-->
+        <scene sceneID="Jsu-dO-ITj">
+            <objects>
+                <viewController id="s0L-8X-xEa" customClass="OrderViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ukn-hH-bcv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Yix-a6-Sr4">
+                                <rect key="frame" x="20" y="108" width="374" height="156.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You currently have n item(s) in your shopping list." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zYo-pe-bWx">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="42.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X6u-Rn-2iI">
+                                        <rect key="frame" x="0.0" y="50.5" width="374" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xct-5r-viY">
+                                        <rect key="frame" x="0.0" y="88.5" width="374" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZz-eo-nkx">
+                                        <rect key="frame" x="0.0" y="126.5" width="374" height="30"/>
+                                        <state key="normal" title="Send Order"/>
+                                        <connections>
+                                            <action selector="sendOrderTapped:" destination="s0L-8X-xEa" eventType="touchUpInside" id="cFt-8A-Rjr"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Yix-a6-Sr4" firstAttribute="top" secondItem="WLA-7P-tpj" secondAttribute="top" constant="20" id="I5K-7r-6ve"/>
+                            <constraint firstItem="WLA-7P-tpj" firstAttribute="trailing" secondItem="Yix-a6-Sr4" secondAttribute="trailing" constant="20" id="XWg-Db-uTf"/>
+                            <constraint firstItem="Yix-a6-Sr4" firstAttribute="leading" secondItem="WLA-7P-tpj" secondAttribute="leading" constant="20" id="zUy-d9-Sws"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="WLA-7P-tpj"/>
+                    </view>
+                    <connections>
+                        <outlet property="addressTextField" destination="xct-5r-viY" id="gfz-hn-g8n"/>
+                        <outlet property="nameTextField" destination="X6u-Rn-2iI" id="Ugk-9H-a6R"/>
+                        <outlet property="shoppingListCountLabel" destination="zYo-pe-bWx" id="UJB-W8-dj6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="llL-kz-dmu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1894" y="94"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cHs-KP-xtg">

@@ -14,15 +14,15 @@ class ShoppingItemCollectionViewController: UICollectionViewController {
     
     let shoppingItemController = ShoppingItemController()
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "OrderShowSegue" {
+            guard let OrderVC = segue.destination as? OrderViewController else { return }
+            let orderedItems = shoppingItemController.shoppingItems.filter {$0.onList}
+            OrderVC.count = orderedItems.count
+        }
     }
-    */
 
     // MARK: UICollectionViewDataSource
 

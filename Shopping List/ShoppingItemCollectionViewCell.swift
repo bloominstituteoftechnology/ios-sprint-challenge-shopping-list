@@ -20,7 +20,7 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func updateViews() {
+    private func updateViews() {
         guard let shoppingItem = shoppingItem else { return }
         
         addedLabel.text = "\(shoppingItem.onList ? "" : "Not ")Added"
