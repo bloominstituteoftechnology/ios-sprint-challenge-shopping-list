@@ -9,7 +9,9 @@
 import Foundation
 
 // MARK: - Private Functions
-func loadFromPersistentStore() {
+
+
+    func loadFromPersistentStore() {
     let fm = FileManager.default
     guard let url = shoppingListURL else {return}
     fm.fileExists(atPath: url.path)
@@ -22,17 +24,25 @@ func loadFromPersistentStore() {
         print("Error loading List data: \(error)")
     }
 }
-
-            private func saveToPersistentStore() {
-                let plistEncoder = PropertyListEncoder()
-                do {
-                let shoppingListData = try plistEncoder.encode(shoppingItem.init(nameOfShoppingItems: ["Apples", "Grapes", "Milk", "Muffin", "Popcorn", "Soda",  "Strawberries"], addedShoppingItems: false))
-                guard let fileURL = shoppingListURL else { return }
-        
-                    try shoppingListData.write(to: fileURL)
-                } catch {
-                    NSLog("Error encoding items to property list: \(error)")
+private func saveToPersistentStore() {
+    guard let url = shoppingListURL else { return }
+    do {
+        let encoder = PropertyListEncoder()
+        let data = try encoder.encode(shoppinglistItems)
+        try data.write(to: url)
+    } catch {
+        NSLog("Error saving Shopping List Data: \(error)")
     }
+//            private func saveToPersistentStore() {
+//                let plistEncoder = PropertyListEncoder()
+//                do {
+//                let shoppingListData = try plistEncoder.encode(shoppingItem.init(nameOfShoppingItems: ["Apples", "Grapes", "Milk", "Muffin", "Popcorn", "Soda",  "Strawberries"], addedShoppingItems: false))
+//                guard let fileURL = shoppingListURL else { return }
+//
+//                    try shoppingListData.write(to: fileURL)
+//                } catch {
+//                    NSLog("Error encoding items to property list: \(error)")
+//    }
 }
 //  MARK: - Properties
 
@@ -44,7 +54,7 @@ private var shoppingListURL: URL? {
     return documentDirectory?.appendingPathComponent(fileName)
 }
 
-    private(set) var shoppinglistItems: [shoppingItem] = []
+    var shoppinglistItems: [shoppingItem] = []
 
 var unaddedItems: [shoppingItem] {
     return shoppinglistItems.filter({ $0.addedShoppingItems == false })
@@ -53,3 +63,4 @@ var unaddedItems: [shoppingItem] {
 var addedItems: [shoppingItem] {
     return shoppinglistItems.filter({$0.addedShoppingItems})
 }
+
