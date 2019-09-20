@@ -6,34 +6,53 @@
 //  Copyright © 2019 Lambda School. All rights reserved.
 //
 
-import Foundation
+
 import UIKit
 
 
-class ShoppingListController {
+class ShoppingListController: Codable {
     
+    var shoppingListItem: [ShoppingListItem] = []
     
-     var nameOfShoppingItems: [String] = ["Apples", "Grapes", "Milk", "muffin", "Popcorn", "Soda",  "Strawberries"]
+    var addedItems: [ShoppingListItem] {
+        return shoppingListItem.filter{ $0.hasBeenAdded == true }
+    }
     
-     var shoppingListItem: [ShoppingListItem] = []
+    var nameOfShoppingItems = ["Apples", "Grapes", "Milk", "muffin", "Popcorn", "Soda",  "Strawberries"]
+    
+    let initKey = "initalizeKey"
+    private(set) var initalizeChecker: Bool?
+     
+    init(){
+        initalizeChecker = UserDefaults.standard.bool(forKey: initKey)
+        for item in nameOfShoppingItems {
+            if UIImage(named: item) != nil {
+                let pictureData = ShoppingListItem(imageName: item, itemName: item, hasBeenAdded: false)
+                shoppingListItem.append(pictureData)
+            }
+            
+            UserDefaults.standard.set(true, forKey: initKey)
+            
+        }
+    }
     
     private var shoppingListURL: URL? {
         let fileManager = FileManager.default
         guard let documents = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil}
-        return documents.appendingPathComponent("Info.plist")
+        print("Documents: \(documents.path)")
+        return documents.appendingPathComponent("shopping.plist")
     }
     
-    init() {
-        let hasAppBeenOpened = UserDefaults.standard.bool(forKey: "hasAppBeenOpened")
-        if hasAppBeenOpened {
-            loadFromPersistentStore()
-        } else {
-            UserDefaults.standard.set(true, forKey: "hasAppBeenOpened")
+    private func saveToPersistentStore() {
+        guard let url = shoppingListURL else { return }
+        do {
+            let encoder = PropertyListEncoder()
+            let data = try encoder.encode(shoppingListItem)
+            try data.write(to: url)
+        } catch {
+            NSLog("Error saving Shopping List Data: \(error)")
         }
-        
-        saveToPersistentStore()
     }
-    
     
      func loadFromPersistentStore() {
         let fm = FileManager.default
@@ -48,15 +67,11 @@ class ShoppingListController {
             print("Error loading List data: \(error)")
         }
     }
-    private func saveToPersistentStore() {
-        guard let url = shoppingListURL else { return }
-        do {
-            let encoder = PropertyListEncoder()
-            let data = try encoder.encode(shoppingListItem)
-            try data.write(to: url)
-        } catch {
-            NSLog("Error saving Shopping List Data: \(error)")
-        }
+    
+    func updateStatus(item: ShoppingListItem) {
+        guard let statusUpdate = shoppingListItem.firstIndex(of: item) else { return }
+        shoppingListItem[statusUpdate].hasBeenAdded = !shoppingListItem[statusUpdate].hasBeenAdded
+        saveToPersistentStore()
     }
     
 }

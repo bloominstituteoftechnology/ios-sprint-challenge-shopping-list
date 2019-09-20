@@ -9,29 +9,40 @@
 import UIKit
 
 class UserDetailedViewController: UIViewController {
-
-    @IBAction func submitOrderButtonTapped(_ sender: UIButton) {
-        
-        let alertController = UIAlertController(title: "Order Recieved", message: "Will be Delivered in 15 minutes ", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Thank You", style: .default))
-        
-        self.present(alertController, animated: true, completion: nil)
-    }
+    
+    var shoppingItemController:  ShoppingListController?
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
+           super.viewDidLoad()
+            displayShoppingItems()
+       }
+       
 
-        // Do any additional setup after loading the view.
+    @IBOutlet weak var messageLabel: UILabel!
+    @IBOutlet weak var addressTextField: UITextField!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var submitButton: UIButton!
+    @IBAction func submitOrderButtonTapped(_ sender: UIButton) {
+        shoppingAlert()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func shoppingAlert() {
+        if shoppingItemController!.addedItems.count != 0 {
+            let alert = UIAlertController(title: "Order Recieved", message: "Thanks \(nameTextField.text!)! The item(s) you selected will be Delivered to your address at \(addressTextField.text!) in 15 minutes ", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Proceed", style: .default, handler: {_ in
+                let alert = UIAlertController(title: "Thank You", message: "You have successfuly submitted your order.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Proceed", style: .default
+                    , handler: {_ in self.navigationController?.popViewController(animated: true)
+                }))
+                self.present(alert, animated: true)
+        }))
+            alert.addAction((UIAlertAction(title: "Undo", style: .default, handler: nil)))
+            self.present(alert, animated: true)}
     }
-    */
-
+ 
+    func displayShoppingItems() {
+    if let numberOfItems = shoppingItemController?.addedItems.count {
+        messageLabel.text = "You currently have \(numberOfItems) item(s) in your shopping list. "
+    }
+}
 }

@@ -10,22 +10,24 @@ import UIKit
 
 class ShoppingListItemCollectionViewCell: UICollectionViewCell {
     
-}
-
-
-
-var shopList: ShoppingListItem? {
+    @IBOutlet weak var ItemNameLabel: UILabel!
+    @IBOutlet weak var addedLabel: UILabel!
+    @IBOutlet weak var shoppingItemImage: UIImageView!
     
+var shopList: ShoppingListItem? {
     didSet{
-        
         updateViews()
     }
 }
-
-
-
 func updateViews() {
-    guard let item = shopList else { return }
+    guard let shopList = shopList else { return }
+    ItemNameLabel.text = shopList.imageName
+    shoppingItemImage.image = UIImage(named: shopList.imageName)
+    if shopList.hasBeenAdded == false {
+        addedLabel.text = "Not Added"
+    } else if shopList.hasBeenAdded == true {
+        addedLabel.text = "Added"
+    }
     
-    imageOutlet.image = UIImage(data: )
+}
 }

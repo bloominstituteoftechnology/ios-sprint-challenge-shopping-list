@@ -7,11 +7,13 @@
 //
 
 import Foundation
+import UIKit
 
-struct ShoppingListItem: Codable {
-    var name: String
+struct ShoppingListItem: Equatable, Codable {
+    var imageName: String
+    var itemName: String
     var hasBeenAdded: Bool
-}
+    }
 
 
 
