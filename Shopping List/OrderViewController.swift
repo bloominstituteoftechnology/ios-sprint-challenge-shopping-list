@@ -28,6 +28,16 @@ class OrderViewController: UIViewController {
     }
     
     @IBAction func sendOrderTapped(_ sender: UIButton) {
+        showAlert()
+    }
+    
+    private func showAlert() {
+        guard let name = nameTextField.text,
+            let address = addressTextField.text else { return }
+        
+        let alert = UIAlertController(title: "Order for \(name) Successful", message: "Your order will be delivered to \(address) in 15 minutes.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
 }
