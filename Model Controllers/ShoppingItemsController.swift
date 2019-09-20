@@ -10,48 +10,94 @@ import Foundation
 
 class ShoppingItemsController {
     
+    init() {
+        updateShoppingList()
+        loadFromPersistentStore()
+    }
+    
+    
+     var shoppingList: [ShoppingItem] = []
+    
+    
     // MARK: - Creating the Shopping list
-    var shoppingList: [ShoppingItem] {
+    func updateShoppingList() {
         
-        var itemsNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
-        var itemsArray: [ShoppingItem] = []
+        let itemsNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
         
         for item in itemsNames {
             
-            var newItem = ShoppingItem(name: item, isAdded: false)
-            
-            
-//            let userDefault = UserDefaults.standard
-//            userDefault.set(false, forKey: .itemsHaveBeenCreated)
-            
-            itemsArray.append(newItem)
+            let newItem = ShoppingItem(name: item, isAdded: false)
+            shoppingList.append(newItem)
         }
-        
-        
-        
-//        Use a Bool and the UserDefaults to make sure that new shopping items are initialized only once.
-//        Save the shopping list to a file using a PropertyListEncoder as the user makes changes.
-        
-//        You’ll use an init and within that you’ll want to call the functions to create the shopping list items (you’ll want to check the user defaults key within that function) and load from persistent store
-
-    
-        return itemsArray
+        saveToPersistentStore()
     }
     
     
+//    func createItems() {
+//        shoppingList
+//        let userDefault = UserDefaults.standard
+//        userDefault.set(false, forKey: .itemsHaveBeenCreated)
+//    }
     
-    init() {
-        let userDefault = UserDefaults.standard
-        userDefault.set(false, forKey: .itemsHaveBeenCreated)
+//    @discardableResult func addShoppingItem(named name: String, isAdded: Bool) -> ShoppingItem {
+//
+////        let addedItem = ShoppingItem(name: name, isAdded: isAdded)
+////        shoppingList.append(addedItem)
+//        saveToPersistentStore()
+//
+//        return shoppingItem
+//    }
+//
+    private var persistentFileURL: URL? {
+        
+        let filemanager = FileManager.default
+        guard let documents = filemanager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
+        
+        return documents.appendingPathComponent("shoppingList.plist")
+        
     }
     
+    // MARK: - Save to Persistence Store
+    func saveToPersistentStore() {
+        
+        // Stars > Data > PList
+        guard let url = persistentFileURL else { return }
+        
+        do {
+            
+            let encoder = PropertyListEncoder()
+            let data = try encoder.encode(shoppingList)
+            try data.write(to: url)
+            
+            // writing data to shoppingList.plist
+            
+        } catch {
+            print("Error saving stars data \(error)")
+            
+            
+        }
+    }
     
-    
-    
-    
-    
-    
-    
+     // MARK: - Load to Persistence Store
+    func loadFromPersistentStore() {
+        
+        // PList > Data > Stars
+        let fileManager = FileManager.default
+        guard let url = persistentFileURL,
+            fileManager.fileExists(atPath: url.path) else { return }
+        
+        do {
+            
+            let data = try Data(contentsOf: url)
+            let decoder = PropertyListDecoder()
+            shoppingList = try decoder.decode([ShoppingItem].self, from: data)
+            
+            
+        } catch {
+            print("Error loading stars data \(error)")
+            
+        }
+    }
 }
 
 

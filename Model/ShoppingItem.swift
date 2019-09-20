@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ShoppingItem {
+class ShoppingItem: Codable {
     var name: String
     var isAdded: Bool = false
     //var imageData: Data
