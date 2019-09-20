@@ -18,7 +18,7 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     
     
-    
+    // Property
     var shoppingItem: ShoppingItem? {
         didSet {
             updateViews()
@@ -37,13 +37,5 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
         } else {
             isAddedLabel.text = "Not Added"
         }
-        
- 
-        //imageView.image = shoppingItem.
-        
-//        imageView.image = planet.image
-//        textLabel.text = planet.name
-        
     }
-    
 }
