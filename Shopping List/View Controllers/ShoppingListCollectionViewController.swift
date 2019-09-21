@@ -18,6 +18,14 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         super.viewWillAppear(animated)
         collectionView?.reloadData()
     }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "AddCustomerInfo" {
+//            guard let addInfo = segue.destination as? DetailViewController,
+//                let indexPath = collectionView?.indexPathsForSelectedItems?.first else { return }
+//
+//        }
+//    }
 
     // MARK: UICollectionViewDataSource
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

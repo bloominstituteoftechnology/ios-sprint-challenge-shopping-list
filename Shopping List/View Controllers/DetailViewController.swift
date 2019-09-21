@@ -15,9 +15,12 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var nameText: UITextField!
     @IBOutlet weak var addressText: UITextField!
     
+    // MARK: - Properties
+    var shoppingItemController: ShoppingItemController?
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        addItems(items: 0)
+        updateViews()
     }
     
     // MARK: - Methods
@@ -32,6 +35,11 @@ class DetailViewController: UIViewController {
     // MARK: - Actions
     @IBAction func sendOrderTapped(_ sender: UIButton) {
         alert()
+    }
+    
+    func updateViews() {
+        guard let itemCount = shoppingItemController?.shoppingItems.filter({$0.hasBeenAdded}).count else { return }
+        descriptionLabel.text = "You currently have \(itemCount) item(s) in your shopping list."
     }
     
 

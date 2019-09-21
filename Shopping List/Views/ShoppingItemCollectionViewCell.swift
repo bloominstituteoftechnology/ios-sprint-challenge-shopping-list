@@ -47,11 +47,5 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         }
 //        let userDefaults = UserDefaults.standard
 //        button = userDefaults.bool(forKey: "<#T##String#>")
-        
-        var addCount = 0
-        if shoppingItem?.hasBeenAdded == true {
-            addCount += 1
-        }
-        delegate?.addItems(items: addCount)
     }
 }
