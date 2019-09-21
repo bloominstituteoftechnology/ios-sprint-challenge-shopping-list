@@ -21,6 +21,7 @@ class ShoppingItemsController {
     
     // MARK: - Creating the Shopping list
     func updateShoppingList() {
+        guard UserDefaults.standard.bool(forKey: .itemsHaveBeenCreated) != true else { return }
         
         let itemsNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
         
@@ -30,24 +31,10 @@ class ShoppingItemsController {
             shoppingList.append(newItem)
         }
         saveToPersistentStore()
+        UserDefaults.standard.set(false, forKey: .itemsHaveBeenCreated)
     }
+
     
-    
-//    func createItems() {
-//        shoppingList
-//        let userDefault = UserDefaults.standard
-//        userDefault.set(false, forKey: .itemsHaveBeenCreated)
-//    }
-    
-//    @discardableResult func addShoppingItem(named name: String, isAdded: Bool) -> ShoppingItem {
-//
-////        let addedItem = ShoppingItem(name: name, isAdded: isAdded)
-////        shoppingList.append(addedItem)
-//        saveToPersistentStore()
-//
-//        return shoppingItem
-//    }
-//
     private var persistentFileURL: URL? {
         
         let filemanager = FileManager.default
@@ -56,6 +43,17 @@ class ShoppingItemsController {
         return documents.appendingPathComponent("shoppingList.plist")
         
     }
+    
+    func AddShoppingItems(shoppingItem: ShoppingItem) {
+        
+        shoppingItem.isAdded = !shoppingItem.isAdded
+        saveToPersistentStore()
+        
+    }
+    
+    
+    
+    
     
     // MARK: - Save to Persistence Store
     func saveToPersistentStore() {

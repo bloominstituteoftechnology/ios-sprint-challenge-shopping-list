@@ -11,6 +11,7 @@ import UIKit
 class ShoppingListCollectionViewCell: UICollectionViewCell {
     
     
+    
     // MARK: - IBOutlets
     @IBOutlet weak var isAddedLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!

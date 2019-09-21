@@ -10,7 +10,9 @@ import UIKit
 
 class ShoppingListDetailViewController: UIViewController {
     
-    var numberOfAddedItems: Int?
+    var numberOfAddedItems: Int = 8
+    
+    var shoppingItemsController: ShoppingItemsController?
     
     // MARK : - IBOutlets
     @IBOutlet weak var textView: UITextView!
@@ -18,23 +20,27 @@ class ShoppingListDetailViewController: UIViewController {
     @IBOutlet weak var addressTextField: UITextField!
     
     
-    
-    
     // VIEW DID LOAD
     override func viewDidLoad() {
         super.viewDidLoad()
-        textView.text = "You currently have \(numberOfAddedItems) Item(s) in your shopping list."
-
+        textView.text = "You currently have \(shoppingItemsController!.shoppingList.filter({$0.isAdded}).count) Item(s) in your shopping list."
+        
       
     }
     
     
     // MARK: - IBAction Submit Button
     @IBAction func submitOrderButton(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Delivery for\(nameTextField.text)", message: "Your order will be sent to \(addressTextField.text) in 15 mins!", preferredStyle: .actionSheet)
+        guard let name = nameTextField.text,
+            let address = addressTextField.text else { return }
+        
+        
+        
+        let alert = UIAlertController(title: "Delivery for \(name)", message: "Your order will be sent to \(address) in 15 mins!", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
+    
     
 
 }
