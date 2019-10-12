@@ -61,6 +61,8 @@
                                                 <constraint firstItem="M1Y-VP-AQt" firstAttribute="top" secondItem="agX-0B-l5r" secondAttribute="top" id="KUP-QH-pHM"/>
                                                 <constraint firstAttribute="bottom" secondItem="M1Y-VP-AQt" secondAttribute="bottom" id="Kjt-Ee-KCC"/>
                                                 <constraint firstItem="M1Y-VP-AQt" firstAttribute="leading" secondItem="agX-0B-l5r" secondAttribute="leading" id="TJ4-UG-a57"/>
+                                                <constraint firstAttribute="width" constant="126" id="UaX-pN-do3"/>
+                                                <constraint firstAttribute="height" constant="204" id="XtB-oh-kGX"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -88,7 +90,7 @@
                         <barButtonItem key="backBarButtonItem" title="Change shopping List" id="nEh-mZ-48M"/>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="MLB-zt-hnH">
                             <connections>
-                                <segue destination="5Kv-m4-UFy" kind="show" id="f3f-rh-YrJ"/>
+                                <segue destination="5Kv-m4-UFy" kind="show" identifier="PlaceOrderSegue" id="f3f-rh-YrJ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -100,7 +102,8 @@
         <!--Make Order View Controller-->
         <scene sceneID="jk5-aT-Slr">
             <objects>
-                <viewController id="5Kv-m4-UFy" customClass="makeOrderViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xo9-2L-uL9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController id="5Kv-m4-UFy" customClass="MakeOrderViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aqe-am-o60">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -114,12 +117,12 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DSm-eZ-e4m">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DSm-eZ-e4m">
                                         <rect key="frame" x="20" y="52.5" width="334" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8ry-lK-1sn">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8ry-lK-1sn">
                                         <rect key="frame" x="20" y="112.5" width="334" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -127,6 +130,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tqe-nu-xG5">
                                         <rect key="frame" x="147.5" y="172.5" width="79" height="30"/>
                                         <state key="normal" title="Send Order"/>
+                                        <connections>
+                                            <action selector="placeOrderTapped:" destination="5Kv-m4-UFy" eventType="touchUpInside" id="1gv-Db-j0P"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -146,8 +152,12 @@
                         <viewLayoutGuide key="safeArea" id="dqW-83-aXQ"/>
                     </view>
                     <navigationItem key="navigationItem" id="am7-mk-hQO"/>
+                    <connections>
+                        <outlet property="addressTextField" destination="8ry-lK-1sn" id="YUh-y7-VUY"/>
+                        <outlet property="basketLabelCount" destination="mMv-a2-HRn" id="rrw-gH-eF7"/>
+                        <outlet property="nameTextField" destination="DSm-eZ-e4m" id="yHC-jv-x5u"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Xo9-2L-uL9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1831.8840579710147" y="176.78571428571428"/>
         </scene>
