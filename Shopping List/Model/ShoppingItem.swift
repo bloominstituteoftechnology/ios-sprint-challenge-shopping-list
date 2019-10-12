@@ -10,14 +10,5 @@ import Foundation
 
 struct ShoppingItem {
     
-    var name: String
-    var image: UIImage
-    var itemAdded: Bool = false
-    
-    init(name: String, imageName: String, itemAdded: Bool) {
-        self.name = name
-        self.image = UIImage(named: imageName)!
-        self.itemAdded = itemAdded
-    }
 }
 
