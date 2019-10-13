@@ -17,30 +17,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gWG-Mr-xum">
-                            <size key="itemSize" width="120" height="140"/>
+                            <size key="itemSize" width="120" height="165"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="xvo-zE-790">
-                                <rect key="frame" x="0.0" y="0.0" width="120" height="140"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="xvo-zE-790" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="120" height="165"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="SCT-av-AWe">
-                                    <rect key="frame" x="0.0" y="0.0" width="120" height="140"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="120" height="165"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iTq-LY-Vva">
-                                            <rect key="frame" x="0.0" y="0.0" width="120" height="140"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="165"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ln6-Gx-lVm">
-                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="140"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="165"/>
                                                     <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nf8-NX-5Zu">
+                                                            <rect key="frame" x="0.0" y="0.0" width="120" height="25"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tX2-Ow-ZZt">
-                                                            <rect key="frame" x="0.0" y="0.0" width="120" height="119.5"/>
+                                                            <rect key="frame" x="0.0" y="25" width="120" height="119.5"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mAu-Ch-qzd">
-                                                            <rect key="frame" x="0.0" y="119.5" width="120" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="144.5" width="120" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -64,7 +70,12 @@
                                         <constraint firstItem="iTq-LY-Vva" firstAttribute="top" secondItem="SCT-av-AWe" secondAttribute="top" id="tZY-6b-GQb"/>
                                     </constraints>
                                 </collectionViewCellContentView>
-                                <size key="customSize" width="120" height="140"/>
+                                <size key="customSize" width="120" height="165"/>
+                                <connections>
+                                    <outlet property="isAddedLabel" destination="nf8-NX-5Zu" id="t0g-92-f0U"/>
+                                    <outlet property="itemImageViewOutlet" destination="tX2-Ow-ZZt" id="BAg-ha-AUq"/>
+                                    <outlet property="itemNameLabel" destination="mAu-Ch-qzd" id="Z5V-0M-9JO"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -72,7 +83,9 @@
                             <outlet property="delegate" destination="OSr-4P-kMN" id="1v3-Zg-EeA"/>
                         </connections>
                     </collectionView>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="9FT-UK-atU"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bjE-vS-gIx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
