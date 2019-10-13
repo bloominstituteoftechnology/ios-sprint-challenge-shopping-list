@@ -24,28 +24,42 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="Cell" id="DNn-GP-Ilk" customClass="ShoppingItemCollectionVCell" customModule="Shopping_List" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="Cell" id="DNn-GP-Ilk" customClass="ShoppingItemCollectionVCell" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="141" height="152"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="SYw-kP-Wla">
                                     <rect key="frame" x="0.0" y="0.0" width="141" height="152"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="8cQ-sd-xIN">
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="8cQ-sd-xIN">
                                             <rect key="frame" x="8" y="8" width="125" height="136"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XGZ-JL-A9R">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XGZ-JL-A9R">
                                                     <rect key="frame" x="0.0" y="0.0" width="125" height="109.5"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dMU-NY-kTD">
-                                                    <rect key="frame" x="41.5" y="115.5" width="42" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dMU-NY-kTD">
+                                                    <rect key="frame" x="0.0" y="115.5" width="125" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="XGZ-JL-A9R" firstAttribute="leading" secondItem="8cQ-sd-xIN" secondAttribute="leading" id="4wj-YR-3bx"/>
+                                                <constraint firstItem="dMU-NY-kTD" firstAttribute="leading" secondItem="8cQ-sd-xIN" secondAttribute="leading" id="Duq-5k-ThE"/>
+                                                <constraint firstAttribute="trailing" secondItem="XGZ-JL-A9R" secondAttribute="trailing" id="E1q-02-JDv"/>
+                                                <constraint firstItem="XGZ-JL-A9R" firstAttribute="top" secondItem="8cQ-sd-xIN" secondAttribute="top" id="aQg-Lr-np6"/>
+                                                <constraint firstAttribute="bottom" secondItem="dMU-NY-kTD" secondAttribute="bottom" id="hDO-Dx-iBE"/>
+                                                <constraint firstAttribute="trailing" secondItem="dMU-NY-kTD" secondAttribute="trailing" id="ySF-SP-Hvq"/>
+                                            </constraints>
                                         </stackView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="8cQ-sd-xIN" firstAttribute="trailing" secondItem="SYw-kP-Wla" secondAttribute="trailingMargin" id="Ap6-2q-xTb"/>
+                                        <constraint firstItem="8cQ-sd-xIN" firstAttribute="bottom" secondItem="SYw-kP-Wla" secondAttribute="bottomMargin" id="WXd-tc-Ssu"/>
+                                        <constraint firstItem="8cQ-sd-xIN" firstAttribute="top" secondItem="SYw-kP-Wla" secondAttribute="topMargin" id="sOV-eG-qpB"/>
+                                        <constraint firstItem="8cQ-sd-xIN" firstAttribute="leading" secondItem="SYw-kP-Wla" secondAttribute="leadingMargin" id="xAf-LB-YpN"/>
+                                    </constraints>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="141" height="152"/>
                                 <connections>
