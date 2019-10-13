@@ -24,9 +24,9 @@ class shoppingListCollectionViewCell: UICollectionViewCell {
     
     func updateViews(){
         guard let shoppingItem = shoppingItem else {return}
-        //set up label and image
-        imageView.image = UIImage(named: shoppingItem.name)
+       
         imageTitle.text = shoppingItem.name
+        imageView.image = UIImage(named: shoppingItem.name)
     }
     
 }
