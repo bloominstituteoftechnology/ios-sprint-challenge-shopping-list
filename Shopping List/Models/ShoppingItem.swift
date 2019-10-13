@@ -8,9 +8,7 @@
 
 import Foundation
 
- let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
-
-struct ShoppingItem {
+struct ShoppingItem: Codable, Equatable {
     let name: String
     var inShoppingList: Bool
     let image: String

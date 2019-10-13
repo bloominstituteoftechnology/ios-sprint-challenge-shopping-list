@@ -12,6 +12,10 @@
 		4613E91921143BFD00E7FF73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91821143BFD00E7FF73 /* Assets.xcassets */; };
 		4613E91C21143BFD00E7FF73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91A21143BFD00E7FF73 /* LaunchScreen.storyboard */; };
 		83077D5923515E9F0054D2EF /* ShoppingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83077D5823515E9F0054D2EF /* ShoppingItem.swift */; };
+		83C6619F2353B2C0009C885B /* ShoppingListCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C6619E2353B2C0009C885B /* ShoppingListCollectionVC.swift */; };
+		83C661A12353B2F8009C885B /* SendOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C661A02353B2F8009C885B /* SendOrderVC.swift */; };
+		83C661A32353B362009C885B /* ShoppingItemCollectionVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C661A22353B362009C885B /* ShoppingItemCollectionVCell.swift */; };
+		83C661A52353B44D009C885B /* ShoppingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C661A42353B44D009C885B /* ShoppingList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		4613E91B21143BFD00E7FF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4613E91D21143BFD00E7FF73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83077D5823515E9F0054D2EF /* ShoppingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItem.swift; sourceTree = "<group>"; };
+		83C6619E2353B2C0009C885B /* ShoppingListCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListCollectionVC.swift; sourceTree = "<group>"; };
+		83C661A02353B2F8009C885B /* SendOrderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendOrderVC.swift; sourceTree = "<group>"; };
+		83C661A22353B362009C885B /* ShoppingItemCollectionVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemCollectionVCell.swift; sourceTree = "<group>"; };
+		83C661A42353B44D009C885B /* ShoppingList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +63,8 @@
 			isa = PBXGroup;
 			children = (
 				83077D5723515E830054D2EF /* Models */,
+				83C6619C2353B28C009C885B /* Views */,
+				83C6619D2353B292009C885B /* Controllers */,
 				4613E91121143BFC00E7FF73 /* AppDelegate.swift */,
 				4613E91521143BFC00E7FF73 /* Main.storyboard */,
 				4613E91821143BFD00E7FF73 /* Assets.xcassets */,
@@ -70,6 +80,24 @@
 				83077D5823515E9F0054D2EF /* ShoppingItem.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		83C6619C2353B28C009C885B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				83C6619E2353B2C0009C885B /* ShoppingListCollectionVC.swift */,
+				83C661A02353B2F8009C885B /* SendOrderVC.swift */,
+				83C661A22353B362009C885B /* ShoppingItemCollectionVCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		83C6619D2353B292009C885B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				83C661A42353B44D009C885B /* ShoppingList.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -104,6 +132,7 @@
 				TargetAttributes = {
 					4613E90D21143BFC00E7FF73 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1110;
 					};
 				};
 			};
@@ -143,8 +172,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83C6619F2353B2C0009C885B /* ShoppingListCollectionVC.swift in Sources */,
+				83C661A52353B44D009C885B /* ShoppingList.swift in Sources */,
 				83077D5923515E9F0054D2EF /* ShoppingItem.swift in Sources */,
 				4613E91221143BFC00E7FF73 /* AppDelegate.swift in Sources */,
+				83C661A12353B2F8009C885B /* SendOrderVC.swift in Sources */,
+				83C661A32353B362009C885B /* ShoppingItemCollectionVCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,7 +330,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LambdaSchool.Shopping-List";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -315,7 +348,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LambdaSchool.Shopping-List";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
