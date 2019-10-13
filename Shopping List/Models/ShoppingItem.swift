@@ -11,6 +11,15 @@ import Foundation
  let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
 
 struct ShoppingItem {
-    var name: String
-    var addedToList: Bool = false
+    let name: String
+    var inShoppingList: Bool
+    let image: String
+    let selectedImage: String
+    
+    init(name: String) {
+        self.name = name
+        self.inShoppingList = false
+        self.image = name
+        self.selectedImage = "selected\(name)"
+    }
 }
