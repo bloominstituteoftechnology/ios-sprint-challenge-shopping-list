@@ -56,7 +56,7 @@ class ShoppingListCollectionVC: UICollectionViewController {
         // Configure the cell
         let shoppingItem = shoppingController.items[indexPath.item]
         cell.item = shoppingItem
-        //        shoppingController.saveToPersistentStore()
+                shoppingController.saveToPersistentStore()
         
         
         return cell
