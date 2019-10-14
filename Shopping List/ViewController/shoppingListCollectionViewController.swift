@@ -16,30 +16,22 @@ class shoppingListCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-//        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-//        collectionView?.reloadData()
 
     }
 
 
     // MARK: UICollectionViewDataSource
 
-//    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        1
-//    }
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        1
+    }
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         shoppingList.shoppingLists.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? shoppingListCollectionViewCell else { return UICollectionViewCell() }
     
-        // Configure the cell
-//        cell.imageView.image = UIImage(named: "Apple")
-//        cell.imageTitle.text = "Apple"
         let listItem = shoppingList.shoppingLists[indexPath.row]
         cell.shoppingItem = listItem
         return cell
