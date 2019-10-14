@@ -11,4 +11,5 @@ import Foundation
 struct ShoppingItem: Codable {
     var name: String
     var addedItem: Bool
+    
 }

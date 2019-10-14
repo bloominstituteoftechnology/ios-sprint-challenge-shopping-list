@@ -12,7 +12,7 @@ class ShoppingItemController{
     
     let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
 
-       var shoppingLists: [ShoppingItem] = []
+    var shoppingLists: [ShoppingItem] = []
     
     init() {
         let hasAppBeenOpened = UserDefaults.standard.bool(forKey: .isAddedToCartKey)
@@ -27,32 +27,7 @@ class ShoppingItemController{
                saveToPersistentStore()
            }
        }
-    
-//    var shoppingLists: [ShoppingItem] = []
-//
-//    func createShoppingList(shoppingList: ShoppingItem){
-//        let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
-//
-//        for items in itemNames{
-//            let myShoppingList = ShoppingItem(name: items, addedItem: false)
-//            shoppingLists.append(myShoppingList)
-//
-//            saveToPersistentStore()
-//        }
-        
-//         var isAddedtoCart = UserDefaults.standard.bool(forKey: .isAddedToCartKey)
-//        if isAddedtoCart == false{
-//            isAddedtoCart = true
-//        }
-    
-    
-//    init() {
-//        print("this is dir: \(persistentFileURL!)")
-//        loadFromPersistentStore()
-//    }
 }
-
-
 
     extension ShoppingItemController {
     
@@ -60,10 +35,6 @@ class ShoppingItemController{
         let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
         let filename = "ShoppingList.plist"
         return dir?.appendingPathComponent(filename)
-//           let fileManager = FileManager.default
-//           guard let documents = try? fileManager.url(for: .documentDirectory, in: .userDomainMask , appropriateFor: nil, create: true) else { return nil }
-//
-//           return documents.appendingPathComponent("ShoppingList.plist")
        }
     
     func saveToPersistentStore() {
@@ -76,15 +47,6 @@ class ShoppingItemController{
        } catch{
            NSLog("error saving to plist or writing data: \(error)")
        }
-//        guard let url = persistentFileURL else { return }
-//
-//        do {
-//        let encoder = PropertyListEncoder()
-//        let data = try encoder.encode(shoppingLists)
-//            try data.write(to: url)
-//        } catch {
-//            print("Error saving shoppingList data: \(error)")
-//        }
     }
     func loadFromPersistentStore() {
                 do{
@@ -95,15 +57,6 @@ class ShoppingItemController{
                 } catch{
                     NSLog("error with data: \(error)")
                 }
-//         guard let url = persistentFileURL else { return }
-//
-//        do {
-//            let data = try Data(contentsOf: url)
-//            let decoder = PropertyListDecoder()
-//            shoppingLists = try decoder.decode([ShoppingItem].self, from: data)
-//        } catch{
-//            print("Error loading sHoppingList data: \(error)")
-//        }
     }
     
 }
