@@ -36,7 +36,7 @@ class ShoppingListController {
         if userDefaults.bool(forKey: String.shoppingListKey) {
             loadFromPersistentStore()
         } else {
-            let itemNames = ["Popcorn", "Muffin", "Strawberries", "Grapes", "Milk", "Soda", "Apples"]
+            let itemNames = ["Popcorn", "Muffin", "Strawberries", "Grapes", "Milk", "Soda", "Apple"]
             for shoppingItems in itemNames {
                 shoppingList.append(ShoppingItems(name: shoppingItems))
                 

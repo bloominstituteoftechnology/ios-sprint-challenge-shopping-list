@@ -45,7 +45,8 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         } else if section == 1 {
             return shoppingListController.notInBasket.count
         } else {
-            return 0
+            return shoppingListController.shoppingList.count
+            
         }
         
     }
