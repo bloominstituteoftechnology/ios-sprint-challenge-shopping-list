@@ -9,11 +9,25 @@
 import UIKit
 
 class sendPurchaseViewController: UIViewController {
+    
+    var shoppingListContorller: ShoppingItemController?
 
+    @IBOutlet weak var itemsInCartLabel: UILabel!
+    
+    @IBOutlet weak var customerNameTextField: UITextField!
+    
+    @IBOutlet weak var customerDeliveryAddress: UITextField!
+    
+    @IBAction func submitOrderButton(_ sender: Any) {
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        guard let shoppingListContorller = shoppingListContorller else {return}
+        let purchaseList = shoppingListContorller.shoppingLists.filter {$0.addedItem == true}
+        itemsInCartLabel.text = "You have added \(String(describing: purchaseList.count)) (s) in your shopping list"
     }
     
 

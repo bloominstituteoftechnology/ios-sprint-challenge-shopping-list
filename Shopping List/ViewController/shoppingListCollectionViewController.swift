@@ -44,7 +44,22 @@ class shoppingListCollectionViewController: UICollectionViewController {
         cell.shoppingItem = listItem
         return cell
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        var item = shoppingList.shoppingLists[indexPath.item]
+        item.addedItem.toggle()
+        shoppingList.shoppingLists[indexPath.item] = item
+        shoppingList.saveToPersistentStore()
+        collectionView.reloadData()
+        return true
+    }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "sendPurchaseSegue"{
+            guard let purchaseVC = segue.destination as? sendPurchaseViewController else { return }
+            purchaseVC.shoppingListContorller = shoppingList
+        }
+    }
 
 
 }

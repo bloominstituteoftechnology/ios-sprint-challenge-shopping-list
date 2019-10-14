@@ -12,8 +12,7 @@ class shoppingListCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var imageTitle: UILabel!
-    @IBAction func hasBeenAdded(_ sender: Any) {
-    }
+    @IBOutlet weak var addedItemLabel: UILabel!
     
     
     var shoppingItem: ShoppingItem? {
@@ -24,7 +23,7 @@ class shoppingListCollectionViewCell: UICollectionViewCell {
     
     func updateViews(){
         guard let shoppingItem = shoppingItem else {return}
-       
+        addedItemLabel.text = "\(shoppingItem.addedItem ? "Added" : "Not Added")"
         imageTitle.text = shoppingItem.name
         imageView.image = UIImage(named: shoppingItem.name)
     }
