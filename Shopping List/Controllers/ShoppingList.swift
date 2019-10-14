@@ -60,7 +60,7 @@ class ShoppingList {
             let itemsData = try encoder.encode(items)
             try itemsData.write(to: url)
         } catch {
-            print("Error saving shopping list data: \(error)")
+            print(" \(error)")
         }
     }
     
@@ -74,7 +74,7 @@ class ShoppingList {
             let decodedItems = try decoder.decode([ShoppingItem].self, from: data)
             items = decodedItems
         } catch {
-            print("Error loading shoppinh list data: \(error)")
+            print(" \(error)")
         }
     }
 }

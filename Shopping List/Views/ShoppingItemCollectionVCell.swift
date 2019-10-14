@@ -10,9 +10,9 @@ import UIKit
 
 class ShoppingItemCollectionVCell: UICollectionViewCell {
     
-    
     @IBOutlet weak var imageItem: UIImageView!
     @IBOutlet weak var labelItemName: UILabel!
+    @IBOutlet weak var addedNotAddedLabel: UILabel!
     
     var item: ShoppingItem? {
         didSet {
@@ -21,12 +21,19 @@ class ShoppingItemCollectionVCell: UICollectionViewCell {
     }
     
     func updateView() {
-        guard let item = item else { return }
+        guard let item = item else {return}
         if item.inShoppingList {
-            imageItem.image = UIImage(named: item.selectedImage)
+            imageItem.image = UIImage(named: item.image)
+            labelItemName.text = "Added \(item.name) to your cart."
+            labelItemName.textColor = .red
+            addedNotAddedLabel.text = "Added"
+            addedNotAddedLabel.textColor = .black
         } else {
             imageItem.image = UIImage(named: item.image)
+            labelItemName.text = item.name
+            labelItemName.textColor = .black
+            addedNotAddedLabel.textColor = .clear
         }
-        labelItemName.text = item.name
+      
     }
 }

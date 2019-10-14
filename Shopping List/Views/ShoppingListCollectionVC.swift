@@ -39,7 +39,7 @@ class ShoppingListCollectionVC: UICollectionViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let orderDetailVC = segue.destination as? SendOrderVC else { return }
         selectedItemsCount()
-        orderDetailVC.numberOfItemsSelected = numberOfItemsSelected
+        orderDetailVC.itemsSelected = numberOfItemsSelected
     }
     
     
