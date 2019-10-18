@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+//private let reuseIdentifier = "Cell"
 
 class ShoppingItemsCollectionViewController: UICollectionViewController {
     
@@ -44,19 +44,22 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
+//    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 1
+//    }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return shoppingItemController.shoppingItems.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PropertyKeys.itemCell, for: indexPath) as? ShoppingItemCollectionViewCell else { return UICollectionViewCell() }
+        
+        cell.delegate = self
+        cell.shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
     
         // Configure the cell
     
@@ -94,4 +97,10 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
     }
     */
 
+}
+
+extension ShoppingItemsCollectionViewController: ShoppingItemCollectionViewCellDelegate {
+    func ItemTapped(forItem item: ShoppingItemCollectionViewCell) {
+        
+    }
 }
