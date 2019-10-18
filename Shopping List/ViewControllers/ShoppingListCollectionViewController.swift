@@ -43,7 +43,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
 
-        return 1
+        return 2
     }
 
 
@@ -62,6 +62,8 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         
         return cell
     }
+    
+    
 
     // MARK: UICollectionViewDelegate
 
