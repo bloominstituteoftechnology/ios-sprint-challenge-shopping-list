@@ -1,5 +1,5 @@
 //
-//  ShoppingItemsCollectionCollectionViewController.swift
+//  ShoppingItemsCollectionViewController.swift
 //  Shopping List
 //
 //  Created by Rick Wolter on 10/18/19.
@@ -10,36 +10,41 @@ import UIKit
 
 private let reuseIdentifier = "ItemCellReuseIdentifier"
 
-class ShoppingItemsCollectionCollectionViewController: UICollectionViewController {
+class ShoppingItemsCollectionViewController: UICollectionViewController {
 
     
     
     let shoppingItemsController = ShoppingItemController()
     
+    override func viewWillAppear(_ animated: Bool) {
+           super.viewWillAppear(animated)
+           collectionView?.reloadData()
+       }
     
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//
+//        // Uncomment the following line to preserve selection between presentations
+//        // self.clearsSelectionOnViewWillAppear = false
+//
+//        // Register cell classes
+//        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+//    }
+//
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-    }
-
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "cartSegueIdentifier" {
+            guard let destinationVC = segue.destination as? CartViewController else { return }
+           // destinationVC.notification = notification
+            destinationVC.shoppingItemsController = shoppingItemsController
+        }
     }
-    */
+    
 
     // MARK: UICollectionViewDataSource
-
+    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -51,14 +56,20 @@ class ShoppingItemsCollectionCollectionViewController: UICollectionViewControlle
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ShoppingItemCollectionViewCell else {return UICollectionViewCell()}
         let itemToGoInCell = shoppingItemsController.shoppingItems[indexPath.item]
         cell.shoppingItem = itemToGoInCell
-        
-    
+        print(shoppingItemsController.shoppingItems.count)
         // Configure the cell
     
         return cell
     }
 
     // MARK: UICollectionViewDelegate
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+          
+          let item = shoppingItemsController.shoppingItems[indexPath.item]
+          
+          shoppingItemsController.update(item: item)
+          collectionView.reloadData()
+      }
 
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
@@ -88,5 +99,6 @@ class ShoppingItemsCollectionCollectionViewController: UICollectionViewControlle
     
     }
     */
+    
 
 }

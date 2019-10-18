@@ -10,13 +10,22 @@ import UIKit
 
 class CartViewController: UIViewController {
 
+   var shoppingItemsController: ShoppingItemController?
+    
+    @IBOutlet weak var numberOfItemsTextLabel: UILabel!
+    @IBOutlet weak var shopperNameTextField: UITextField!
+    @IBOutlet weak var shopperAddressTextField: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func sendOrderButton(_ sender: UIButton) {
+    }
+    
     /*
     // MARK: - Navigation
 

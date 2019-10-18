@@ -12,7 +12,7 @@
         <!--Shopping List-->
         <scene sceneID="RcF-84-awh">
             <objects>
-                <collectionViewController id="cU8-hK-auK" customClass="ShoppingItemsCollectionCollectionViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="cU8-hK-auK" customClass="ShoppingItemsCollectionViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="sSw-OT-KP0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -130,6 +130,9 @@
                                 <state key="normal" title="Send Order">
                                     <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="sendOrderButton:" destination="0fl-RY-Xop" eventType="touchUpInside" id="pLl-pW-bdk"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You currently have X items in your cart" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xsf-dY-y06">
                                 <rect key="frame" x="20" y="131" width="369" height="125"/>
@@ -157,6 +160,11 @@
                         <viewLayoutGuide key="safeArea" id="KCH-2T-1i2"/>
                     </view>
                     <navigationItem key="navigationItem" id="GkP-TQ-c4e"/>
+                    <connections>
+                        <outlet property="numberOfItemsTextLabel" destination="xsf-dY-y06" id="w2c-I2-9X3"/>
+                        <outlet property="shopperAddressTextField" destination="VGc-0q-YbZ" id="uwT-aG-6Qu"/>
+                        <outlet property="shopperNameTextField" destination="bZo-mx-sdf" id="J3a-ws-n7t"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zhb-Im-OJ6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
