@@ -9,6 +9,11 @@
 import UIKit
 
 class SubmitOrderViewController: UIViewController {
+    
+    @IBOutlet weak var itemsLabel: UILabel!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var addressTextField: UITextField!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,7 +21,9 @@ class SubmitOrderViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func orderSent(_ sender: Any) {
+    }
+    
     /*
     // MARK: - Navigation
 
