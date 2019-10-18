@@ -46,9 +46,12 @@
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="253" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="748" translatesAutoresizingMaskIntoConstraints="NO" id="Axj-as-x9K">
                                                             <rect key="frame" x="0.0" y="24.5" width="180" height="161.5"/>
                                                         </imageView>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zAv-G3-H81">
+                                                        <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="756" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zAv-G3-H81">
                                                             <rect key="frame" x="0.0" y="190" width="180" height="30"/>
                                                             <state key="normal" title="Added"/>
+                                                            <connections>
+                                                                <action selector="addedButtonTapped:" destination="jle-ak-CXg" eventType="touchUpInside" id="zls-qA-ga3"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <constraints>
@@ -77,6 +80,7 @@
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <connections>
+                                    <outlet property="addedButton" destination="zAv-G3-H81" id="Woh-8K-v3O"/>
                                     <outlet property="image" destination="Axj-as-x9K" id="f0M-zx-uH6"/>
                                     <outlet property="nameLabel" destination="0uE-aq-qkr" id="LZZ-zn-38C"/>
                                 </connections>

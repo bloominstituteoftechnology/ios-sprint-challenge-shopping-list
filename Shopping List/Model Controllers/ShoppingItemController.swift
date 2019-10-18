@@ -34,6 +34,12 @@ class ShoppingItemController {
     
     // MARK: - Public Methods
     
+    func update(item: ShoppingItem) {
+        if let itemIndex = items.firstIndex(where: { $0.name == item.name }) {
+            items[itemIndex].added = item.added
+        }
+        saveToPersistenceStore()
+    }
     
     // MARK: - Private Methods
     

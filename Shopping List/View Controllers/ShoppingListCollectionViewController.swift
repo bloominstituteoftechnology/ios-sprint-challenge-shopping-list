@@ -62,6 +62,8 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ShoppingItemCollectionViewCell else { return  UICollectionViewCell() }
     
         cell.shoppingItem = shoppingItemController.items[indexPath.item]
+        cell.delegate = self
+        cell.shoppingItemController = shoppingItemController
     
         return cell
     }
