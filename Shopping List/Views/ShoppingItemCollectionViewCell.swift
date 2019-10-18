@@ -20,6 +20,7 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
             print("error; cell has no item!")
             return
         }
-        
+        image.image = UIImage(named: item.name)
+        nameLabel.text = item.name
     }
 }
