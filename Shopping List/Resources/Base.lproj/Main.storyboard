@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,7 +21,7 @@
                             <size key="itemSize" width="180" height="220"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="8" minY="8" maxX="8" maxY="16"/>
+                            <inset key="sectionInset" minX="8" minY="8" maxX="8" maxY="21"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoppingItemCell" id="jle-ak-CXg" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
@@ -91,11 +92,66 @@
                             <outlet property="delegate" destination="v5H-Q6-fLu" id="DVm-tS-VS9"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Shopping List" id="wWV-xr-Nye"/>
+                    <navigationItem key="navigationItem" title="Shopping List" id="wWV-xr-Nye">
+                        <barButtonItem key="rightBarButtonItem" title="Checkout" image="cart" catalog="system" id="9vF-CW-XgY">
+                            <connections>
+                                <segue destination="11G-W4-zFy" kind="show" id="eGe-Ya-7qM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vjt-Ez-M4S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="602.89855072463774" y="126.5625"/>
+        </scene>
+        <!--Checkout-->
+        <scene sceneID="QSl-G2-Dvz">
+            <objects>
+                <viewController id="11G-W4-zFy" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OyC-yF-Gfy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Zg8-Fj-V1h">
+                                <rect key="frame" x="20" y="180" width="374" height="142.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You currently have # items in your cart." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uai-Y3-ZEd">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T6g-D1-wtp">
+                                        <rect key="frame" x="0.0" y="28.5" width="374" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" textContentType="name"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZR8-6U-rPa">
+                                        <rect key="frame" x="0.0" y="70.5" width="374" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" textContentType="location"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gt3-U3-3IO">
+                                        <rect key="frame" x="0.0" y="112.5" width="374" height="30"/>
+                                        <state key="normal" title="Send order"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="IYi-8b-wpq" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Zg8-Fj-V1h" secondAttribute="bottom" constant="8" id="jIa-8c-4tc"/>
+                            <constraint firstItem="Zg8-Fj-V1h" firstAttribute="leading" secondItem="IYi-8b-wpq" secondAttribute="leading" constant="20" id="mqk-Z6-jGh"/>
+                            <constraint firstItem="Zg8-Fj-V1h" firstAttribute="top" secondItem="IYi-8b-wpq" secondAttribute="top" constant="40" id="qw3-WH-sFz"/>
+                            <constraint firstItem="IYi-8b-wpq" firstAttribute="trailing" secondItem="Zg8-Fj-V1h" secondAttribute="trailing" constant="20" id="ve2-l9-2K1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="IYi-8b-wpq"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Checkout" id="XDp-Ix-wti"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xft-ku-eam" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1422" y="127"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Xe7-ed-gLD">
@@ -116,4 +172,7 @@
             <point key="canvasLocation" x="-307.24637681159425" y="126.5625"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cart" catalog="system" width="64" height="50"/>
+    </resources>
 </document>

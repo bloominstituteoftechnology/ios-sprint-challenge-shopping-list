@@ -35,6 +35,7 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         nameLabel.text = item.name
         addedButton.setTitle(addedString, for: .normal)
         shoppingItemController?.update(item: item)
+        //delegate?.collectionView.reloadData()
     }
     
     @IBAction func addedButtonTapped(_ sender: UIButton) {
