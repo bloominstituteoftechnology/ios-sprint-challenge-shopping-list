@@ -14,14 +14,27 @@ class SubmitOrderViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     
+    var itemCount: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        updateViews()
     }
     
     @IBAction func orderSent(_ sender: Any) {
+        guard let name = nameTextField.text, let address = addressTextField.text, !name.isEmpty, !address.isEmpty else { return }
+        
+    }
+    
+    private func updateViews() {
+        guard let itemCount = itemCount else { return }
+        
+        itemsLabel.text = "You have \(itemCount) item(s) in your shopping list."
+    }
+    
+    private func sendAlert(to name: String, at address: String) {
+        print(name, address)
     }
     
     /*

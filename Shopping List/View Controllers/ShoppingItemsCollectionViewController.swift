@@ -8,12 +8,11 @@
 
 import UIKit
 
-//private let reuseIdentifier = "Cell"
-
 class ShoppingItemsCollectionViewController: UICollectionViewController {
     
     struct PropertyKeys {
         static let itemCell = "ItemCell"
+        static let orderSegue = "ShowSubmitOrderSegue"
     }
     
     let shoppingItemController = ShoppingItemController()
@@ -22,25 +21,20 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         
         shoppingItemController.fetchItems()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-//        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let submitOrderVC = segue.destination as? SubmitOrderViewController else { return }
+        submitOrderVC.itemCount = shoppingItemController.shoppingItems.filter( {$0.added} ).count
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
     // MARK: UICollectionViewDataSource
 

@@ -99,7 +99,11 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="pam-hI-txv">
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="NeJ-Bx-lPe"/>
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="NeJ-Bx-lPe">
+                            <connections>
+                                <segue destination="rPI-Np-WAw" kind="show" identifier="ShowSubmitOrderSegue" id="Ic1-Zs-jFl"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GOj-1u-R4d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -115,7 +119,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="rFx-hT-KjI">
-                                <rect key="frame" x="16" y="74" width="382" height="166.5"/>
+                                <rect key="frame" x="16" y="118" width="382" height="166.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Items label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3G-i7-JEV">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="20.5"/>
@@ -151,6 +155,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="idc-Yd-avv"/>
                     </view>
+                    <navigationItem key="navigationItem" id="JLs-Vp-qcZ"/>
                     <connections>
                         <outlet property="addressTextField" destination="RGb-0h-aRW" id="6hR-uf-QcM"/>
                         <outlet property="itemsLabel" destination="G3G-i7-JEV" id="t1t-n6-Ekv"/>
