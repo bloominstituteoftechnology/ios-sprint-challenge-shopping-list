@@ -95,7 +95,7 @@
                     <navigationItem key="navigationItem" title="Shopping List" id="wWV-xr-Nye">
                         <barButtonItem key="rightBarButtonItem" title="Checkout" image="cart" catalog="system" id="9vF-CW-XgY">
                             <connections>
-                                <segue destination="11G-W4-zFy" kind="show" id="eGe-Ya-7qM"/>
+                                <segue destination="11G-W4-zFy" kind="show" identifier="ToCheckoutSegue" id="eGe-Ya-7qM"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -107,7 +107,7 @@
         <!--Checkout-->
         <scene sceneID="QSl-G2-Dvz">
             <objects>
-                <viewController id="11G-W4-zFy" sceneMemberID="viewController">
+                <viewController id="11G-W4-zFy" customClass="CheckoutViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OyC-yF-Gfy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -134,6 +134,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gt3-U3-3IO">
                                         <rect key="frame" x="0.0" y="112.5" width="374" height="30"/>
                                         <state key="normal" title="Send order"/>
+                                        <connections>
+                                            <action selector="sendOrderButtonTapped:" destination="11G-W4-zFy" eventType="touchUpInside" id="zjN-g1-erg"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -148,6 +151,12 @@
                         <viewLayoutGuide key="safeArea" id="IYi-8b-wpq"/>
                     </view>
                     <navigationItem key="navigationItem" title="Checkout" id="XDp-Ix-wti"/>
+                    <connections>
+                        <outlet property="addressField" destination="ZR8-6U-rPa" id="ozE-im-beV"/>
+                        <outlet property="nameField" destination="T6g-D1-wtp" id="YbV-Fz-Lt8"/>
+                        <outlet property="numItemsLabel" destination="Uai-Y3-ZEd" id="vdE-2E-A4c"/>
+                        <outlet property="sendOrderButton" destination="gt3-U3-3IO" id="ion-Kx-hr6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xft-ku-eam" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
