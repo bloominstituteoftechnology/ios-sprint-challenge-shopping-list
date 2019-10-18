@@ -17,7 +17,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.reloadData()
-        updateViews()
+//        updateViews()
         shoppingListController.saveToPersistentStore()
     }
     
