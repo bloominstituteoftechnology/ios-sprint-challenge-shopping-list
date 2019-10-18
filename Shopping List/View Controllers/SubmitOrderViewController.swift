@@ -24,6 +24,7 @@ class SubmitOrderViewController: UIViewController {
     
     @IBAction func orderSent(_ sender: Any) {
         guard let name = nameTextField.text, let address = addressTextField.text, !name.isEmpty, !address.isEmpty else { return }
+        sendAlert(to: name, at: address)
         
     }
     
@@ -34,17 +35,17 @@ class SubmitOrderViewController: UIViewController {
     }
     
     private func sendAlert(to name: String, at address: String) {
-        print(name, address)
+        let title = "Delivery for \(name)!"
+        let message = "Your items will be delivered to \(address) in 15 minutes."
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        
+        let action = UIAlertAction(title: "Ok", style: .default) { alert in self.navigationController?.popToRootViewController(animated: true)}
+        alert.addAction(action)
+        
+        present(alert, animated: true)
+        
+//        dismiss(animated: true, completion: nil)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
