@@ -41,7 +41,8 @@ class CheckoutViewController: UIViewController {
 
     @IBAction func sendOrderButtonTapped(_ sender: UIButton) {
         guard let name = nameField.text, !name.isEmpty,
-            let address = addressField.text, !address.isEmpty
+            let address = addressField.text, !address.isEmpty,
+            let itemCount = shoppingItemController?.items.count, itemCount > 0
             else { return }
         
         let alert = UIAlertController(
