@@ -79,10 +79,10 @@
             </objects>
             <point key="canvasLocation" x="702.89855072463774" y="108.48214285714285"/>
         </scene>
-        <!--View Controller-->
+        <!--Order View Controller-->
         <scene sceneID="3Wm-BU-egR">
             <objects>
-                <viewController id="eyl-jh-vYP" sceneMemberID="viewController">
+                <viewController id="eyl-jh-vYP" customClass="OrderViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4kx-iI-kVb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -109,6 +109,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plA-LN-zje">
                                         <rect key="frame" x="0.0" y="178.5" width="374" height="30"/>
                                         <state key="normal" title="Submit Order"/>
+                                        <connections>
+                                            <action selector="submitOrderButton:" destination="eyl-jh-vYP" eventType="touchUpInside" id="qCw-WI-DzE"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -123,6 +126,11 @@
                         <viewLayoutGuide key="safeArea" id="aVQ-2R-eVb"/>
                     </view>
                     <navigationItem key="navigationItem" id="lUu-hK-2M4"/>
+                    <connections>
+                        <outlet property="addressLabel" destination="X0P-bQ-uKw" id="iV3-WN-4t9"/>
+                        <outlet property="itemCount" destination="IKR-ck-mvA" id="6R9-sS-EHZ"/>
+                        <outlet property="nameLabel" destination="4Tc-lr-c22" id="rid-Qi-Jhi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v3e-lw-OQZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
