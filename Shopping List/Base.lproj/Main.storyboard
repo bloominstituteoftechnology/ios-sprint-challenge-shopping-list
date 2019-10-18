@@ -12,7 +12,7 @@
         <!--Shopping List-->
         <scene sceneID="RcF-84-awh">
             <objects>
-                <collectionViewController id="cU8-hK-auK" sceneMemberID="viewController">
+                <collectionViewController id="cU8-hK-auK" customClass="ShoppingItemsCollectionCollectionViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="sSw-OT-KP0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,7 +24,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Lp5-YR-4q8">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemCellReuseIdentifier" id="Lp5-YR-4q8" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="189" height="238"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="giC-2H-ZmW">
@@ -72,6 +72,11 @@
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="189" height="238"/>
+                                <connections>
+                                    <outlet property="inCartLabel" destination="C6Y-nj-Vko" id="tFF-CU-Iuk"/>
+                                    <outlet property="itemImage" destination="S2d-6j-Gbr" id="qMf-xe-xyb"/>
+                                    <outlet property="itemNameLabel" destination="UP1-eY-5iy" id="cQv-3D-6Bt"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -91,10 +96,10 @@
             </objects>
             <point key="canvasLocation" x="928.98550724637687" y="-7.3660714285714279"/>
         </scene>
-        <!--View Controller-->
+        <!--Cart View Controller-->
         <scene sceneID="hMU-n5-ChB">
             <objects>
-                <viewController id="0fl-RY-Xop" sceneMemberID="viewController">
+                <viewController id="0fl-RY-Xop" customClass="CartViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IKL-vA-V0F">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
