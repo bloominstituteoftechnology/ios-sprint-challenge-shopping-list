@@ -1,5 +1,5 @@
 //
-//  ShoppingItemController.swift
+//  Key.swift
 //  Shopping List
 //
 //  Created by Rick Wolter on 10/18/19.
@@ -8,5 +8,6 @@
 
 import Foundation
 
-
-
+extension String {
+    static var appStartedKey = "appStartedKey"
+}
