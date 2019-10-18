@@ -10,4 +10,16 @@ import UIKit
 
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
+    var shoppingItem: ShoppingItem?
+    
+    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    func updateViews() {
+        guard let item = shoppingItem else {
+            print("error; cell has no item!")
+            return
+        }
+        
+    }
 }
