@@ -21,7 +21,8 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var addedButton: UIButton!
+    //@IBOutlet weak var addedButton: UIButton!
+    @IBOutlet weak var addedLabel: UILabel!
     
     func updateViews() {
         guard let item = shoppingItem else {
@@ -29,20 +30,16 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
             return
         }
         
-        let addedString = item.added ? "Added" : "Not added"
-        
         image.image = UIImage(named: item.name)
         nameLabel.text = item.name
-        addedButton.setTitle(addedString, for: .normal)
+        addedLabel.text = item.added ? "Added" : "Not added"
         shoppingItemController?.update(item: item, to: item.added)
         //delegate?.collectionView.reloadData()
     }
     
-    
-    
-    @IBAction func addedButtonTapped(_ sender: UIButton) {
-        addItemToCart()
-    }
+//    @IBAction func addedButtonTapped(_ sender: UIButton) {
+//        addItemToCart()
+//    }
     
     func addItemToCart() {
         shoppingItem?.added.toggle()
