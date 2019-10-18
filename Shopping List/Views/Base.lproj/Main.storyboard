@@ -24,7 +24,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoppingItemCell" id="IIV-F9-53k">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemCell" id="IIV-F9-53k" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="140" height="170"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ndY-gC-SNj">
@@ -60,6 +60,11 @@
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="140" height="170"/>
+                                <connections>
+                                    <outlet property="addedLabel" destination="wGd-AU-j8r" id="FEJ-oD-tiy"/>
+                                    <outlet property="itemImage" destination="lCU-Lt-hQq" id="UaD-Od-xTm"/>
+                                    <outlet property="itemName" destination="8jB-aC-mPp" id="CIM-vI-LOA"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -74,6 +79,11 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addItemLabel" destination="wGd-AU-j8r" id="gCa-og-JcQ"/>
+                        <outlet property="itemImage" destination="lCU-Lt-hQq" id="kPY-Ft-zQo"/>
+                        <outlet property="itemNameLabel" destination="8jB-aC-mPp" id="i42-rh-GBH"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dg9-oD-KwI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
