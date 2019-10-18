@@ -46,51 +46,46 @@ class ShoppingItemController {
     
     // MARK: -- Persistence
     
-    private var shoppingCartURL: URL? {
+    private var itemsListURL: URL? {
         let fm = FileManager.default
         guard let dir = fm.urls(for: .documentDirectory, in: .userDomainMask).first else {
-            print("cannot get url; invalid directory")
+            print("cannot get url; invalid directory?")
             return nil
         }
         return dir.appendingPathComponent("ItemList.plist")
     }
     
     private func saveToPersistenceStore() {
-        guard let url = shoppingCartURL else {
-            print("cannot save; invalid url?")
+        guard let url = itemsListURL else {
+            print("cannot save items list; invalid url?")
             return
         }
         
         do {
             let encoder = PropertyListEncoder()
-            let cartData = try encoder.encode(shoppingCart)
-            try cartData.write(to: url)
+            let itemsListData = try encoder.encode(items)
+            try itemsListData.write(to: url)
         } catch {
-            print("Error saving cart data: \(error)")
+            print("Error saving items list data: \(error)")
         }
     }
     
     private func loadFromPersistenceStore() {
         let fm = FileManager.default
-        guard let url = shoppingCartURL else {
+        guard let url = itemsListURL else {
             print("cannot load; invalid url?")
             return
         }
         if !fm.fileExists(atPath: url.path) {
-            print("error loading; cart data file does not yet exist")
+            print("error loading; items list data file does not yet exist")
         }
-        #warning("check this section!")
+
         do {
-            let cartData = try Data(contentsOf: url)
+            let itemListData = try Data(contentsOf: url)
             let decoder = PropertyListDecoder()
-            let cart = try decoder.decode([ShoppingItem].self, from: cartData)
-            for i in 0..<items.count {
-                if cart.contains(where: { $0.name == items[i].name }) {
-                    items[i].added = true
-                }
-            }
+            items = try decoder.decode([ShoppingItem].self, from: itemListData)
         } catch {
-            print("Error loading cart data: \(error)")
+            print("Error loading items list data: \(error)")
         }
     }
 }
