@@ -12,17 +12,6 @@ class ShoppingItemController: Codable {
         
     var itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
 
-    init() {
-        if UserDefaults.standard.bool(forKey: .shouldShowShoppingList) {
-            loadFromPersisitentStore()
-        }
-        }
-    
-    func createShoppingList(itemName: String) {
-        let shoppingItem = ShoppingItem(itemName: itemName, added: false)
-        shoppingItems.append(shoppingItem)
-            saveToPersistentStore()
-    }
         
         // MARK: - Private Methods
         

@@ -12,9 +12,11 @@ struct ShoppingItem: Equatable, Codable {
     
     var itemName: String
     var added: Bool
+    var imageData: Data
     
-    init(itemName: String, added: Bool) {
+    init(itemName: String, added: Bool, image: Data) {
         self.itemName = itemName
         self.added = added
+        self.imageData = image
     }
 }
