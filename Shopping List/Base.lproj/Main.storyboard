@@ -37,14 +37,15 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="rAz-Qt-R2T">
                                                     <rect key="frame" x="0.0" y="0.0" width="151" height="143"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Added?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsQ-bc-2rf">
-                                                            <rect key="frame" x="0.0" y="0.0" width="151" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="whk-Ox-2yd">
+                                                            <rect key="frame" x="0.0" y="0.0" width="151" height="30"/>
+                                                            <state key="normal" title="Added?"/>
+                                                            <connections>
+                                                                <action selector="hasBeenAddedTapped:" destination="2ul-GX-jz1" eventType="touchUpInside" id="Cqb-tl-Kc7"/>
+                                                            </connections>
+                                                        </button>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yJn-2C-ubC">
-                                                            <rect key="frame" x="0.0" y="20.5" width="151" height="102"/>
+                                                            <rect key="frame" x="0.0" y="30" width="151" height="92.5"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Item Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hru-2B-GYU">
                                                             <rect key="frame" x="0.0" y="122.5" width="151" height="20.5"/>
@@ -73,7 +74,7 @@
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="151" height="143"/>
                                 <connections>
-                                    <outlet property="hasBeenAdded" destination="hsQ-bc-2rf" id="Lr9-hM-ns0"/>
+                                    <outlet property="hasBeenAdded" destination="whk-Ox-2yd" id="clC-bw-69b"/>
                                     <outlet property="imageView" destination="yJn-2C-ubC" id="XTi-iQ-UXW"/>
                                     <outlet property="itemName" destination="hru-2B-GYU" id="MvJ-Oy-GJO"/>
                                 </connections>

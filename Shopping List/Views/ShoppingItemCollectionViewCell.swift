@@ -10,7 +10,7 @@ import UIKit
 
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var hasBeenAdded: UILabel!
+    @IBOutlet weak var hasBeenAdded: UIButton!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var itemName: UILabel!
     
@@ -31,10 +31,16 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         imageView.image = UIImage(named: item.name)
         shoppingListController?.updateHasBeenAdded(item)
         if item.hasBeenAdded {
-        hasBeenAdded.text = "Added"
+            hasBeenAdded.setTitle("Added", for: .normal)
         } else {
-        hasBeenAdded.text = "Not Added"
+            hasBeenAdded.setTitle("Not Added", for: .normal)
         }
     }
+    
+    @IBAction func hasBeenAddedTapped(_ sender: UIButton) {
+        item?.hasBeenAdded.toggle()
+        updateViews()
+    }
+    
     
 }

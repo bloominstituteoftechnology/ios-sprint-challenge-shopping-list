@@ -41,7 +41,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "DetailSegue" {
             guard let orderVC = segue.destination as? OrderViewController else { return }
-//            orderVC.shoppingItem =
+            orderVC.shoppingListController = self.shoppingListController
         }
     }
 
