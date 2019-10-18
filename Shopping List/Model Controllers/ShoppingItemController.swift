@@ -18,11 +18,12 @@ class ShoppingItemController {
     
     // MARK: - Properties
     
-    var items: [ShoppingItem]?
+    var items = [ShoppingItem]()
     
     init() {
         if !itemsListInitialized {
             initializeItemsList()
+        } else {
         }
     }
     
@@ -31,7 +32,9 @@ class ShoppingItemController {
     // MARK: - Private Methods
     
     private func initializeItemsList() {
-        
+        for itemName in itemNames {
+            items.append(ShoppingItem(name: itemName, added: false))
+        }
         UserDefaults.standard.set(true, forKey: .itemsListInitializedKey)
     }
 }
