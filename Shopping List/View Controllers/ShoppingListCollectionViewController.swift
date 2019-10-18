@@ -11,6 +11,8 @@ import UIKit
 private let reuseIdentifier = "ShoppingItemCell"
 
 class ShoppingListCollectionViewController: UICollectionViewController {
+    
+    var shoppingItemController = ShoppingItemController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +24,15 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        collectionView.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
     }
 
     /*
@@ -38,19 +49,19 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return shoppingItemController.items.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ShoppingItemCollectionViewCell else { return  UICollectionViewCell() }
     
-        // Configure the cell
+        cell.shoppingItem = shoppingItemController.items[indexPath.item]
     
         return cell
     }
