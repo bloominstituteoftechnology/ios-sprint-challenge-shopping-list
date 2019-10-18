@@ -19,7 +19,7 @@ class ShoppingItemController {
     // MARK: - Properties
     
     var items = [ShoppingItem]()
-    var shoppingCart: [ShoppingItem] {
+    var cart: [ShoppingItem] {
         return items.filter { $0.added }
     }
     

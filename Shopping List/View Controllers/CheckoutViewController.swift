@@ -9,6 +9,8 @@
 import UIKit
 
 class CheckoutViewController: UIViewController {
+    var shoppingItemController: ShoppingItemController?
+    
     @IBOutlet weak var numItemsLabel: UILabel!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var addressField: UITextField!
@@ -17,7 +19,14 @@ class CheckoutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let controller = shoppingItemController {
+            numItemsLabel.text = "You currently have \(controller.cart.count) items in your cart."
+        }
     }
     
 
@@ -32,5 +41,6 @@ class CheckoutViewController: UIViewController {
     */
 
     @IBAction func sendOrderButtonTapped(_ sender: UIButton) {
+        
     }
 }
