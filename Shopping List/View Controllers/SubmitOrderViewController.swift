@@ -45,7 +45,5 @@ class SubmitOrderViewController: UIViewController {
         alert.addAction(action)
         
         present(alert, animated: true)
-        
-//        dismiss(animated: true, completion: nil)
     }
 }
