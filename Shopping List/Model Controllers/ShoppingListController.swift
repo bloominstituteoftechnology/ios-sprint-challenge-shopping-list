@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ShoppingList {
+class ShoppingListController {
     
     // MARK: - Properties
 
@@ -44,7 +44,6 @@ class ShoppingList {
         
         for item in itemNames {
             items.append(ShoppingItem(name: item, hasBeenAdded: false))
-            
         }
         guard let url = shoppingListURL else { return }
         
