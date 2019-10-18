@@ -26,6 +26,8 @@ class CheckoutViewController: UIViewController {
         
         if let controller = shoppingItemController {
             numItemsLabel.text = "You currently have \(controller.cart.count) items in your cart."
+            nameField.text = controller.name
+            addressField.text = controller.address
         }
     }
 
@@ -44,6 +46,8 @@ class CheckoutViewController: UIViewController {
             let address = addressField.text, !address.isEmpty,
             let cartCount = shoppingItemController?.cart.count, cartCount > 0
             else { return }
+        
+        shoppingItemController?.saveDefaults(name: name, address: address)
         
         let alert = UIAlertController(
             title: "Order received!",

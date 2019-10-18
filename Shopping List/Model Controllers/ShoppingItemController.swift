@@ -15,6 +15,20 @@ class ShoppingItemController {
         // returns false if key not found
         return UserDefaults.standard.bool(forKey: .itemsListInitializedKey)
     }
+    var name: String {
+        if let name = UserDefaults.standard.string(forKey: .nameKey) {
+            return name
+        } else {
+            return ""
+        }
+    }
+    var address: String {
+        if let address = UserDefaults.standard.string(forKey: .addressKey) {
+            return address
+        } else {
+            return ""
+        }
+    }
     
     // MARK: - Properties
     
@@ -39,6 +53,11 @@ class ShoppingItemController {
             items[itemIndex].added = added
         }
         saveToPersistenceStore()
+    }
+    
+    func saveDefaults(name: String, address: String) {
+        UserDefaults.standard.set(name, forKey: .nameKey)
+        UserDefaults.standard.set(address, forKey: .addressKey)
     }
     
     // MARK: - Private Methods
@@ -98,4 +117,6 @@ class ShoppingItemController {
 
 extension String {
     static let itemsListInitializedKey = "ItemsListInitialized"
+    static let nameKey = "Name"
+    static let addressKey = "Address"
 }
