@@ -87,10 +87,12 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     */
 
 }
-
+/*
 extension ShoppingListCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let screenWidth = collectionView.widthAnchor.
         let cellWidth = (screenWidth * 0.5) - 16
         return CGSize(width: cellWidth, height: cellWidth + 20)
     }
 }
+*/
