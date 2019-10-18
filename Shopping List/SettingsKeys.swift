@@ -1,5 +1,5 @@
 //
-//  ShoppingItem.swift
+//  SettingsKeys.swift
 //  Shopping List
 //
 //  Created by Brandi on 10/18/19.
@@ -8,7 +8,6 @@
 
 import Foundation
 
-struct ShoppingItem: Equatable, Codable {
-    var itemName: String
-    var added: Bool
+extension String {
+    static var shouldShowShoppingList = "ShouldShouldShoppingList"
 }
