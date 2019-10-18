@@ -17,6 +17,12 @@ class ShoppingItemController {
     var shoppingItems: [ShoppingItem] = []
     let itemsExist = UserDefaults.standard.bool(forKey: PropertyKeys.existKey)
     
+    func itemAddedToggled(for item: ShoppingItem) {
+        guard let index = shoppingItems.firstIndex(of: item) else { return }
+
+        shoppingItems[index].added.toggle()
+    }
+    
     func fetchItems() {
         if itemsExist {
             loadFromPersistentStore()

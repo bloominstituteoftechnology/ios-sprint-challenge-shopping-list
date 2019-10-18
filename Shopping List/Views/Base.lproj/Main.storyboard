@@ -58,12 +58,22 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tCj-QO-Ua9">
+                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="193.5"/>
+                                                    <connections>
+                                                        <action selector="itemTapped:" destination="cbq-Dy-gvr" eventType="touchUpInside" id="vbD-hi-eaS"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="tCj-QO-Ua9" secondAttribute="trailing" id="0Ns-oX-3IB"/>
                                                 <constraint firstAttribute="bottom" secondItem="C99-Xa-hca" secondAttribute="bottom" id="2sr-3z-p1D"/>
                                                 <constraint firstItem="C99-Xa-hca" firstAttribute="top" secondItem="RGI-dC-hDh" secondAttribute="top" id="7gF-dg-uEg"/>
                                                 <constraint firstItem="C99-Xa-hca" firstAttribute="leading" secondItem="RGI-dC-hDh" secondAttribute="leading" id="9z7-Nt-gdm"/>
+                                                <constraint firstAttribute="bottom" secondItem="tCj-QO-Ua9" secondAttribute="bottom" id="DdQ-wQ-ZlI"/>
+                                                <constraint firstItem="tCj-QO-Ua9" firstAttribute="top" secondItem="RGI-dC-hDh" secondAttribute="top" id="KEU-TM-vmn"/>
+                                                <constraint firstItem="tCj-QO-Ua9" firstAttribute="leading" secondItem="RGI-dC-hDh" secondAttribute="leading" id="Wac-dX-DYI"/>
                                                 <constraint firstAttribute="trailing" secondItem="C99-Xa-hca" secondAttribute="trailing" id="bVU-eA-bKp"/>
                                             </constraints>
                                         </view>

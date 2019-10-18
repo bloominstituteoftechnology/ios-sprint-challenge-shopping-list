@@ -101,6 +101,9 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
 
 extension ShoppingItemsCollectionViewController: ShoppingItemCollectionViewCellDelegate {
     func ItemTapped(forItem item: ShoppingItemCollectionViewCell) {
+        guard let shoppingItem = item.shoppingItem else { return }
         
+        shoppingItemController.itemAddedToggled(for: shoppingItem)
+        collectionView.reloadData()
     }
 }

@@ -21,6 +21,11 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    @IBAction func itemTapped(_ sender: Any) {
+        delegate?.ItemTapped(forItem: self)
+    }
+    
+    
     private func updateViews() {
         guard let shoppingItem = shoppingItem, let image = UIImage(named: shoppingItem.name) else { return }
         
