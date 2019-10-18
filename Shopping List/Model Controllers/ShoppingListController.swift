@@ -19,7 +19,12 @@ class ShoppingList {
     // MARK: - Methods
     
     func updateHasBeenAdded(_ item: ShoppingItem) {
-        
+        if let index = items.firstIndex(of: item) {
+        var item = items[index]
+            item.hasBeenAdded.toggle()
+            items[index] = item
+            saveToPersistentStore()
+        }
     }
 
     
