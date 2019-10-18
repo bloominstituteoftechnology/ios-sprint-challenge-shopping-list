@@ -113,12 +113,25 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
 
 }
-/*
+
 extension ShoppingListCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let screenWidth = collectionView.widthAnchor.
-        let cellWidth = (screenWidth * 0.5) - 16
-        return CGSize(width: cellWidth, height: cellWidth + 20)
+        
+        let maxWidth: CGFloat = 200
+        let availableWidth = collectionView.frame.width
+        
+        var numColumns: CGFloat {
+            if availableWidth < maxWidth * 3 {
+                return 2
+            } else {
+                return (availableWidth / maxWidth).rounded(.down)
+            }
+        }
+        
+        let cellWidth = (availableWidth / numColumns) - 16
+        let cellHeight = cellWidth * 1.15
+        
+        return CGSize(width: cellWidth, height: cellHeight)
     }
 }
-*/
+
