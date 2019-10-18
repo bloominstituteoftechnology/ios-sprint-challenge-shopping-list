@@ -14,7 +14,7 @@ class OrderViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     
-    var shoppingItem: ShoppingItem?
+    var shoppingItem: [ShoppingItem] = []
     
     var shoppingListController: ShoppingListController?
 
@@ -24,15 +24,22 @@ class OrderViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func addOrder (_ sender: Any) {
+        showAlert()
+        
     }
-    */
+    
 
+    func showAlert() {
+        guard let name = nameTextField.text, !name.isEmpty,
+            let address = addressTextField.text, !address.isEmpty else { return }
+    
+        let alert = UIAlertController(title: "Hey \(name)!", message: "Your items will be delivered to \(address) pretty soon!", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Cool!", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    
+    
 }

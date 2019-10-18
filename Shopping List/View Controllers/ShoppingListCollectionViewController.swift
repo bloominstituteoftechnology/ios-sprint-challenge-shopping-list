@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let reuseIdentifier = "ItemCell"
+private let reuseIdentifier = "Cell"
 
 class ShoppingListCollectionViewController: UICollectionViewController {
      
@@ -16,9 +16,9 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView?.reloadData()
         updateViews()
-
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        shoppingListController.saveToPersistentStore()
     }
     
     // MARK: - Loading From UserDefaults:
@@ -41,7 +41,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "DetailSegue" {
             guard let orderVC = segue.destination as? OrderViewController else { return }
-//            orderVC.shoppingItem
+//            orderVC.shoppingItem =
         }
     }
 
@@ -59,7 +59,8 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ShoppingItemCollectionViewCell else { return UICollectionViewCell()}
-        let item = shoppingListController.items[indexPath.item]
+        
+        let item = shoppingListController.items[indexPath.row]
         cell.delegate = self
         cell.item = item
         

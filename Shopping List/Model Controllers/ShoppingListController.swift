@@ -39,7 +39,7 @@ class ShoppingListController {
         return dir.appendingPathComponent("ShoppingList.plist")
     }
     
-    private func saveToPersistentStore() {
+     func saveToPersistentStore() {
         let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
         
         for item in itemNames {
@@ -57,7 +57,7 @@ class ShoppingListController {
         }
     }
     
-    private func loadFromPersistenceStore(){
+     func loadFromPersistenceStore(){
         guard let url = shoppingListURL else { return }
         do {
             let data = try Data(contentsOf: url)

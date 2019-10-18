@@ -24,7 +24,7 @@
                             <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemCell" id="2ul-GX-jz1" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="2ul-GX-jz1" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="10" y="10" width="151" height="143"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="b5B-aM-hqp">
@@ -126,6 +126,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZQ-94-9ns">
                                         <rect key="frame" x="0.0" y="194.5" width="374" height="30"/>
                                         <state key="normal" title="Send Order"/>
+                                        <connections>
+                                            <action selector="addOrder:" destination="6N7-1S-nhB" eventType="touchUpInside" id="cIR-PN-gJp"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>

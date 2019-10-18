@@ -28,6 +28,13 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         guard let item = item else { return }
         
         itemName.text = item.name
+        imageView.image = UIImage(named: item.name)
+        shoppingListController?.updateHasBeenAdded(item)
+        if item.hasBeenAdded {
+        hasBeenAdded.text = "Added"
+        } else {
+        hasBeenAdded.text = "Not Added"
+        }
     }
     
 }
