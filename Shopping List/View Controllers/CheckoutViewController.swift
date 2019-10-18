@@ -28,7 +28,6 @@ class CheckoutViewController: UIViewController {
             numItemsLabel.text = "You currently have \(controller.cart.count) items in your cart."
         }
     }
-    
 
     /*
     // MARK: - Navigation
@@ -41,6 +40,26 @@ class CheckoutViewController: UIViewController {
     */
 
     @IBAction func sendOrderButtonTapped(_ sender: UIButton) {
+        guard let name = nameField.text, !name.isEmpty,
+            let address = addressField.text, !address.isEmpty
+            else { return }
         
+        let alert = UIAlertController(
+            title: "Order received!",
+            message: "Thanks, \(name). Your order will be delivered to \(address) in 15 minutes.",
+            preferredStyle: .alert
+        )
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: postAlertPopToRoot(_:)))
+            
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func postAlertPopToRoot(_ alert: UIAlertAction) {
+        guard let items = shoppingItemController?.items else { return }
+        for item in items {
+            shoppingItemController?.update(item: item, to: false)
+        }
+        navigationController?.popToRootViewController(animated: true)
     }
 }

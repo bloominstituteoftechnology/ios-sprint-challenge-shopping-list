@@ -34,7 +34,7 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         image.image = UIImage(named: item.name)
         nameLabel.text = item.name
         addedButton.setTitle(addedString, for: .normal)
-        shoppingItemController?.update(item: item)
+        shoppingItemController?.update(item: item, to: item.added)
         //delegate?.collectionView.reloadData()
     }
     
