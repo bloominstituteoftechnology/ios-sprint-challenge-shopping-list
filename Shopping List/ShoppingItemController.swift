@@ -9,7 +9,7 @@
 import Foundation
 
 class ShoppingItemController {
-    var shoppingItems: [ShoppingItem] {
+    var itemNames: [ShoppingItem] {
         let result = [ShoppingItem(itemName: "Apple", added: false),
                       ShoppingItem(itemName: "Grapes", added: false),
                       ShoppingItem(itemName: "Milk", added: false),
