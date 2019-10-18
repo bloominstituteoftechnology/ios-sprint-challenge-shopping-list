@@ -8,7 +8,14 @@
 
 import Foundation
 
-struct ShoppingItem {
+struct ShoppingItem: Equatable, Codable {
     var itemName: String
     var addedToShoppingList: Bool
+    //var itemImage: UIImage
+    
+    init(name: String, added: Bool = false) {
+        self.itemName = name
+        self.addedToShoppingList = added
+        //self.itemImage = UIImage
+    }
 }

@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Shopping List Collection View Controller-->
+        <!--Shopping List-->
         <scene sceneID="8tL-Ld-rI0">
             <objects>
                 <collectionViewController id="QrH-OW-GSt" customClass="ShoppingListCollectionViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
@@ -39,12 +39,19 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Added" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zWn-qs-fri">
                                                             <rect key="frame" x="0.0" y="0.0" width="150" height="21.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="21.5" id="pGt-E9-xeL"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="DIF-AR-mYU">
                                                             <rect key="frame" x="0.0" y="21.5" width="150" height="128"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="128" id="LeL-pB-YgB"/>
+                                                                <constraint firstAttribute="width" constant="150" id="nIa-OE-eDs"/>
+                                                            </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e26-Xh-07a">
                                                             <rect key="frame" x="0.0" y="149.5" width="150" height="20.5"/>
@@ -72,6 +79,11 @@
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="150" height="170"/>
+                                <connections>
+                                    <outlet property="addedToCartLabel" destination="zWn-qs-fri" id="Apn-Zu-eGH"/>
+                                    <outlet property="itemImageView" destination="DIF-AR-mYU" id="lzG-Ce-vc2"/>
+                                    <outlet property="itemNameLabel" destination="e26-Xh-07a" id="onF-qk-q6Z"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -79,7 +91,7 @@
                             <outlet property="delegate" destination="QrH-OW-GSt" id="lUd-JV-RX6"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="nA1-N6-h6w">
+                    <navigationItem key="navigationItem" title="Shopping List" id="nA1-N6-h6w">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="gam-go-b0Y">
                             <connections>
                                 <segue destination="OMQ-OR-y8w" kind="show" identifier="SendOrderSegue" id="sQu-iI-wYz"/>
@@ -145,8 +157,8 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VOt-xp-Neh" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WVi-N9-CuF">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="WVi-N9-CuF">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

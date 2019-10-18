@@ -10,4 +10,22 @@ import UIKit
 
 class ShoppingListCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - IBOutlets
+    @IBOutlet weak var addedToCartLabel: UILabel!
+    @IBOutlet weak var itemNameLabel: UILabel!
+    @IBOutlet weak var itemImageView: UIImageView!
+    
+    var shoppingItem: ShoppingItem? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    private func updateViews() {
+        guard let shoppingItem = shoppingItem else { return }
+        
+        addedToCartLabel.text = shoppingItem.addedToShoppingList ? "Added to cart" : "Not Added"
+        itemNameLabel.text = shoppingItem.itemName
+        itemImageView.image = UIImage(named: shoppingItem.itemName)        
+    }
 }

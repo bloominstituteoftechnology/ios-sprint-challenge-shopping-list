@@ -13,6 +13,8 @@ private let sendOrderSegueIdentifier = "SendOrderSegue"
 
 class ShoppingListCollectionViewController: UICollectionViewController {
 
+    var shoppingListController = ShoppingListController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,19 +41,30 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return shoppingListController.shoppingItems.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ShoppingListCollectionViewCell else
+        { return UICollectionViewCell() }
     
         // Configure the cell
-    
+        let item = shoppingListController.shoppingItems[indexPath.item]
+        cell.shoppingItem = item
+        
         return cell
     }
 
     // MARK: UICollectionViewDelegate
 
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let shoppingItem = shoppingListController.shoppingItems[indexPath.item]
+        shoppingListController.updateAddedToCart(for: shoppingItem)
+
+        collectionView.reloadData()
+    }
+    
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
