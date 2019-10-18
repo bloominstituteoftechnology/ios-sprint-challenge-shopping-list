@@ -16,6 +16,12 @@ class ShoppingItemController {
     
     var shoppingItems: [ShoppingItem] = []
     let itemsExist = UserDefaults.standard.bool(forKey: PropertyKeys.existKey)
+    var addedShoppingItems: [ShoppingItem] {
+        return shoppingItems.filter { $0.added }
+    }
+    var notAddedShoppingItems: [ShoppingItem] {
+        return shoppingItems.filter { $0.added == false }
+    }
     
     func itemAddedToggled(for item: ShoppingItem) {
         guard let index = shoppingItems.firstIndex(of: item) else { return }
@@ -26,6 +32,7 @@ class ShoppingItemController {
     func fetchItems() {
         if itemsExist {
             loadFromPersistentStore()
+//            print(shoppingItems.filter($0))
         } else {
             createItems()
             saveToPersistentStore()

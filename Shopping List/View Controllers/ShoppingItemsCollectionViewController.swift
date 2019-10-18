@@ -13,6 +13,7 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
     struct PropertyKeys {
         static let itemCell = "ItemCell"
         static let orderSegue = "ShowSubmitOrderSegue"
+        static let addedHeader = "AddedHeader"
     }
     
     let shoppingItemController = ShoppingItemController()
@@ -22,6 +23,8 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
         
         shoppingItemController.fetchItems()
     }
+    
+//    collectionviewheadder
 
     
     // MARK: - Navigation
@@ -37,24 +40,41 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
 
-        return 1
+        return 2
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-        return shoppingItemController.shoppingItems.count
+        switch section {
+        case 0:
+            print(shoppingItemController.notAddedShoppingItems.count)
+            return shoppingItemController.addedShoppingItems.count
+        default:
+            return shoppingItemController.notAddedShoppingItems.count
+        }
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PropertyKeys.itemCell, for: indexPath) as? ShoppingItemCollectionViewCell else { return UICollectionViewCell() }
         
         cell.delegate = self
-        cell.shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
+        cell.shoppingItem = itemFor(indexPath)
     
         return cell
     }
+    
+    private func itemFor(_ indexPath: IndexPath) -> ShoppingItem {
+        switch indexPath.section {
+        case 0:
+            return shoppingItemController.addedShoppingItems[indexPath.item]
+        default:
+            return shoppingItemController.notAddedShoppingItems[indexPath.item]
+        }
+    }
 }
+
+// MARK: - Extensions
 
 extension ShoppingItemsCollectionViewController: ShoppingItemCollectionViewCellDelegate {
     func ItemTapped(forItem item: ShoppingItemCollectionViewCell) {
