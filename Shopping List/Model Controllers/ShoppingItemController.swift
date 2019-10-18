@@ -26,8 +26,9 @@ class ShoppingItemController {
     init() {
         if !itemsListInitialized {
             initializeItemsList()
+            saveToPersistenceStore()
         } else {
-            loadItemsList()
+            loadFromPersistenceStore()
         }
     }
     
