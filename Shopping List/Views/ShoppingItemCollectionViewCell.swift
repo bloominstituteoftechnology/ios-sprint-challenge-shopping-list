@@ -38,15 +38,13 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         //delegate?.collectionView.reloadData()
     }
     
-    override func select(_ sender: Any?) {
-        add()
-    }
+    
     
     @IBAction func addedButtonTapped(_ sender: UIButton) {
-        add()
+        addItemToCart()
     }
     
-    private func add() {
+    func addItemToCart() {
         shoppingItem?.added.toggle()
         updateViews()
     }

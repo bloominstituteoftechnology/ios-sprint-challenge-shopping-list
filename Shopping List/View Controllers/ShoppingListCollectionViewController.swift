@@ -101,6 +101,15 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     }
     */
 
+    /*
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ShoppingItemCollectionViewCell else { return }
+        let item = shoppingItemController.items[indexPath.item]
+        shoppingItemController.update(item: item, to: !item.added)
+        collectionView.reloadData()
+    }
+ */
+
 }
 /*
 extension ShoppingListCollectionViewController: UICollectionViewDelegateFlowLayout {
