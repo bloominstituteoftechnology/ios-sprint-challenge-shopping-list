@@ -8,22 +8,36 @@
 
 import UIKit
 
+
 class OrderViewController: UIViewController {
 
     @IBOutlet weak var itemCount: UILabel!
     @IBOutlet weak var nameLabel: UITextField!
     @IBOutlet weak var addressLabel: UITextField!
     
+    var addedCount: Int = 3
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateViews()
+    }
     
     @IBAction func submitOrderButton(_ sender: Any) {
     }
     
+    private func updateViews() {
+        guard let itemCount = itemCount else { return }
+        
+        if addedCount == 1 {
+            itemCount.text = "You've added (\(addedCount)) item to your order.  Please complete the information below to submit your order."
+        } else {
+            itemCount.text = "You've added (\(addedCount)) items to your order.  Please complete the information below to submit your order."
+        }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    }
+
 
         // Do any additional setup after loading the view.
-    }
     
 
     /*
