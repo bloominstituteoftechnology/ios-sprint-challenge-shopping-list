@@ -37,21 +37,20 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="rAz-Qt-R2T">
                                                     <rect key="frame" x="0.0" y="0.0" width="120" height="150"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="whk-Ox-2yd">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3gL-6M-iYb">
                                                             <rect key="frame" x="0.0" y="0.0" width="120" height="9.5"/>
-                                                            <state key="normal" title="Added?"/>
-                                                            <connections>
-                                                                <action selector="hasBeenAddedTapped:" destination="2ul-GX-jz1" eventType="touchUpInside" id="Cqb-tl-Kc7"/>
-                                                            </connections>
-                                                        </button>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yJn-2C-ubC">
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yJn-2C-ubC">
                                                             <rect key="frame" x="0.0" y="9.5" width="120" height="120"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="120" id="kgB-bW-3n3"/>
                                                                 <constraint firstAttribute="height" constant="120" id="lZz-I1-7wN"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" ambiguous="YES" text="Item Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hru-2B-GYU">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Item Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hru-2B-GYU">
                                                             <rect key="frame" x="0.0" y="129.5" width="120" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -78,7 +77,7 @@
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="120" height="150"/>
                                 <connections>
-                                    <outlet property="hasBeenAdded" destination="whk-Ox-2yd" id="clC-bw-69b"/>
+                                    <outlet property="hasBeenAdded" destination="3gL-6M-iYb" id="vfL-RK-sBK"/>
                                     <outlet property="imageView" destination="yJn-2C-ubC" id="XTi-iQ-UXW"/>
                                     <outlet property="itemName" destination="hru-2B-GYU" id="MvJ-Oy-GJO"/>
                                 </connections>

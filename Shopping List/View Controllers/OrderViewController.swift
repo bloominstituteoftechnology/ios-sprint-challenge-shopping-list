@@ -27,21 +27,21 @@ class OrderViewController: UIViewController {
     
     @IBAction func addOrder (_ sender: Any) {
         showAlert()
-        
+         
     }
     
     
     func updateViews() {
-//        let addedItems = shoppingItem.filter {$0.hasBeenAdded}
+    
+//                let addedItems = shoppingItem.filter {$0.hasBeenAdded}
 //
-//        if addedItems.isEmpty {
-//            descriptionLabel.text = "There is nothing in your shopping cart!"
-//        } else {
-//            descriptionLabel.text = "You have \(addedItems.count) item(s) in your shopping cart."
-//        }
-        
+//                if addedItems.isEmpty {
+//                    descriptionLabel.text = "There is nothing in your shopping cart!"
+//                } else {
+//                    descriptionLabel.text = "You have \(addedItems.count) item(s) in your shopping cart."
+//                }
+//
         descriptionLabel.text = "You have a few items in your cart!"
-        
     }
     
 

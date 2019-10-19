@@ -12,24 +12,31 @@ class ShoppingListController {
     
     // MARK: - Properties
 
-    
     var items: [ShoppingItem] = []
     
+    let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+
+    
+    init() {
+        loadFromPersistenceStore()
+        if items.count == 0 {
+            for item in itemNames {
+            items.append(ShoppingItem(name: item, hasBeenAdded: false))
+            saveToPersistentStore()
+            }
+        }
+    }
     
     // MARK: - Methods
     
-    func updateHasBeenAdded(_ item: ShoppingItem) {
-        if let index = items.firstIndex(of: item) {
-        var item = items[index]
-            item.hasBeenAdded.toggle()
-            items[index] = item
-            saveToPersistentStore()
-        }
+    func updateItems(item: ShoppingItem) {
+        guard let index = items.index(of: item) else { return }
+        let hasBeenAdded = item.hasBeenAdded
+        items[index].hasBeenAdded = !hasBeenAdded
+        saveToPersistentStore()
     }
 
-    
-    
-    
+
     
     // MARK: - Persistence
     
@@ -40,16 +47,16 @@ class ShoppingListController {
     }
     
      func saveToPersistentStore() {
-        let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
-        
-        for item in itemNames {
-            items.append(ShoppingItem(name: item, hasBeenAdded: false))
-        }
+//        let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+//
+//        for item in itemNames {
+//            items.append(ShoppingItem(name: item, hasBeenAdded: false))
+//        }
         guard let url = shoppingListURL else { return }
         
         do {
             let encoder = PropertyListEncoder()
-            let shoppingData = try encoder.encode(itemNames)
+            let shoppingData = try encoder.encode(items)
             try shoppingData.write(to: url)
         } catch {
             print("Error loading shopping item data: \(error)")
@@ -60,8 +67,8 @@ class ShoppingListController {
      func loadFromPersistenceStore(){
         guard let url = shoppingListURL else { return }
         do {
-            let data = try Data(contentsOf: url)
             let decoder = PropertyListDecoder()
+            let data = try Data(contentsOf: url)
             let decodedItems = try decoder.decode([ShoppingItem].self, from: data)
             items = decodedItems
         } catch {
