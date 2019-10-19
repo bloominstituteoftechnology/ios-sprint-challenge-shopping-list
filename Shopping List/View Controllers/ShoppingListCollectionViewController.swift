@@ -66,5 +66,5 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
 
     // MARK: UICollectionViewDelegate
-
 }
+

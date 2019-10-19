@@ -15,15 +15,25 @@ class ShoppingItemController {
     let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     
     func createShoppingList() {
+        
+        guard UserDefaults.standard.bool(forKey: .shouldShowShoppingList) != true else { return }
+        
         for itemName in itemNames {
             print(itemName)
             let listItem = ShoppingItem(itemName: itemName)
             shoppingList.append(listItem)
+            
+            saveToPersistentStore()
+            UserDefaults.standard.set(true, forKey: .shouldShowShoppingList)
         }
     }
     
     init() {
+        if UserDefaults.standard.bool(forKey: .shouldShowShoppingList) == true {
+            loadFromPersisitentStore()
+        } else {
         createShoppingList()
+        }
     }
     
     // MARK: - Private Methods
