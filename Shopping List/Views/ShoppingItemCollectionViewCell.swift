@@ -26,7 +26,7 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
             let image = UIImage(named: shoppingItem.itemName)
             else { return }
         
-        addedLabel.text = shoppingItem.isAdded ? "Added" : "Not Added"
+        addedLabel.text = shoppingItem.isAdded ? "Remove" : "Add"
         itemName.text = shoppingItem.itemName
         itemImage.image = image
     }

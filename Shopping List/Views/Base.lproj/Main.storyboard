@@ -16,18 +16,19 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="I3L-ds-68B">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9o4-9k-SuZ">
+                        <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="layoutMargins" id="9o4-9k-SuZ">
                             <size key="itemSize" width="120" height="140"/>
+                            <size key="estimatedItemSize" width="120" height="140"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoppingItemCell" id="e3n-N4-I1j" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="120" height="140"/>
+                            <collectionViewCell autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" reuseIdentifier="ShoppingItemCell" id="e3n-N4-I1j" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
+                                <rect key="frame" x="8" y="8" width="120" height="140"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="J6E-e5-nCD">
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="46R-Q5-kEq">
                                     <rect key="frame" x="0.0" y="0.0" width="120" height="140"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -57,6 +58,9 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="FwH-fe-3dF" firstAttribute="centerY" secondItem="Rmw-ba-DIQ" secondAttribute="centerY" id="SLn-AD-jHF"/>
+                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -69,8 +73,8 @@
                                         </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="fci-F3-XmL" firstAttribute="leading" secondItem="J6E-e5-nCD" secondAttribute="leading" id="2Sh-mr-Et6"/>
-                                        <constraint firstItem="fci-F3-XmL" firstAttribute="top" secondItem="J6E-e5-nCD" secondAttribute="top" id="AiT-UB-ei7"/>
+                                        <constraint firstItem="fci-F3-XmL" firstAttribute="leading" secondItem="46R-Q5-kEq" secondAttribute="leading" id="2Sh-mr-Et6"/>
+                                        <constraint firstItem="fci-F3-XmL" firstAttribute="top" secondItem="46R-Q5-kEq" secondAttribute="top" id="AiT-UB-ei7"/>
                                         <constraint firstAttribute="trailing" secondItem="fci-F3-XmL" secondAttribute="trailing" id="ccs-sM-FBo"/>
                                         <constraint firstAttribute="bottom" secondItem="fci-F3-XmL" secondAttribute="bottom" id="lVA-Jx-gt4"/>
                                     </constraints>
