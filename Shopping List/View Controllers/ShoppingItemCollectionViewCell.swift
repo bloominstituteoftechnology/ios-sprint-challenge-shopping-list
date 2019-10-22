@@ -26,7 +26,8 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         guard let shoppingItem = shoppingItem else {return}
         itemNameLabel.text = shoppingItem.name
         inCartLabel.text = shoppingItem.isInList ? "Added" : "Not Added"
-        itemImage.image = UIImage(data: shoppingItem.image)
+        itemImage.image = shoppingItem.image
+        //itemImage.image = UIImage(data: shoppingItem.image)
     }
     
 }

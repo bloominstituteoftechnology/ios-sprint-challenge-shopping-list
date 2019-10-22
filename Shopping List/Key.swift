@@ -9,5 +9,5 @@
 import Foundation
 
 extension String {
-    static var appStartedKey = "appStartedKey"
+    static var appHasStoredDataKey = "appHasStoredDataKeyKey"
 }
