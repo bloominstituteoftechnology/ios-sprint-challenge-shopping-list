@@ -11,6 +11,10 @@ import UIKit
 class SkuCollectionVC: UICollectionViewController, SkuCollectionViewCELLDelegate {
     
     
+    // MARK: Properties
+    var delegate: SkuCollectionViewCELLDelegate?
+    let skuController = SkuController()
+    
     func toggleSkuInCart(for cell: SkuCollectionViewCELL) {
         
         guard let indexPath = collectionView?.indexPath(for: cell) else { return }
@@ -19,8 +23,6 @@ class SkuCollectionVC: UICollectionViewController, SkuCollectionViewCELLDelegate
         skuController.updateSkuInCart(for: sku)
         
         collectionView?.reloadItems(at: [indexPath])
-        
-        //collectionView?.reloadData()
     }
     
     override func viewDidLoad() {
@@ -45,7 +47,7 @@ class SkuCollectionVC: UICollectionViewController, SkuCollectionViewCELLDelegate
     
         // prepare for segue to viewcontroller and pass count, by perhaps calling collectionView to update/reload forcing a prepare for segue
         
-        guard let cartVC = self.storyboard?.instantiateViewController(withIdentifier: "ToCart") as? CartVC else { return }
+        //guard let cartVC = self.storyboard?.instantiateViewController(withIdentifier: "ToCart") as? CartVC else { return }
 
     }
     
@@ -74,9 +76,5 @@ class SkuCollectionVC: UICollectionViewController, SkuCollectionViewCELLDelegate
         return cell
     }
 
-    
-// MARK: Properties
-    var delegate: SkuCollectionViewCELLDelegate?
-    let skuController = SkuController()
     
 }
