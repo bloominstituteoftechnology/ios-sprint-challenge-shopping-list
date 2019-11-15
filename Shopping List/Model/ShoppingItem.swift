@@ -6,9 +6,14 @@
 //  Copyright © 2019 Lambda School. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-struct ShoppingItem {
+struct ShoppingItem: Equatable, Codable {
     let name: String
-    let addedToList: Bool
+    var addedToList: Bool
+    
+    init(name: String, addedToList: Bool) {
+        self.name = name
+        self.addedToList = addedToList
+    }
 }

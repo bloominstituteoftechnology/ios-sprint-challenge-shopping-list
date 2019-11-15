@@ -12,6 +12,10 @@
 		4613E91921143BFD00E7FF73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91821143BFD00E7FF73 /* Assets.xcassets */; };
 		4613E91C21143BFD00E7FF73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91A21143BFD00E7FF73 /* LaunchScreen.storyboard */; };
 		DE96D5FB237F06FA00C6D99D /* ShoppingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE96D5FA237F06FA00C6D99D /* ShoppingItem.swift */; };
+		DE96D5FE237F07F300C6D99D /* ShoppingListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE96D5FD237F07F300C6D99D /* ShoppingListCollectionViewController.swift */; };
+		DE96D600237F08DD00C6D99D /* ShoppingListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE96D5FF237F08DD00C6D99D /* ShoppingListCollectionViewCell.swift */; };
+		DE96D605237F098400C6D99D /* AddItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE96D604237F098400C6D99D /* AddItemDetailViewController.swift */; };
+		DE96D607237F09D900C6D99D /* ShoppingItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE96D606237F09D900C6D99D /* ShoppingItemController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		4613E91B21143BFD00E7FF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4613E91D21143BFD00E7FF73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE96D5FA237F06FA00C6D99D /* ShoppingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItem.swift; sourceTree = "<group>"; };
+		DE96D5FD237F07F300C6D99D /* ShoppingListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListCollectionViewController.swift; sourceTree = "<group>"; };
+		DE96D5FF237F08DD00C6D99D /* ShoppingListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListCollectionViewCell.swift; sourceTree = "<group>"; };
+		DE96D604237F098400C6D99D /* AddItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemDetailViewController.swift; sourceTree = "<group>"; };
+		DE96D606237F09D900C6D99D /* ShoppingItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +63,8 @@
 			isa = PBXGroup;
 			children = (
 				4613E91521143BFC00E7FF73 /* Main.storyboard */,
+				DE96D608237F09E700C6D99D /* Controllers */,
+				DE96D601237F08E800C6D99D /* Cell */,
 				DE96D5FC237F070D00C6D99D /* Model */,
 				4613E91821143BFD00E7FF73 /* Assets.xcassets */,
 				DE96D5F3237F040000C6D99D /* Resources */,
@@ -78,6 +88,24 @@
 				DE96D5FA237F06FA00C6D99D /* ShoppingItem.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		DE96D601237F08E800C6D99D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				DE96D5FF237F08DD00C6D99D /* ShoppingListCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		DE96D608237F09E700C6D99D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DE96D5FD237F07F300C6D99D /* ShoppingListCollectionViewController.swift */,
+				DE96D606237F09D900C6D99D /* ShoppingItemController.swift */,
+				DE96D604237F098400C6D99D /* AddItemDetailViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,6 +180,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE96D5FB237F06FA00C6D99D /* ShoppingItem.swift in Sources */,
+				DE96D5FE237F07F300C6D99D /* ShoppingListCollectionViewController.swift in Sources */,
+				DE96D600237F08DD00C6D99D /* ShoppingListCollectionViewCell.swift in Sources */,
+				DE96D605237F098400C6D99D /* AddItemDetailViewController.swift in Sources */,
+				DE96D607237F09D900C6D99D /* ShoppingItemController.swift in Sources */,
 				4613E91221143BFC00E7FF73 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
