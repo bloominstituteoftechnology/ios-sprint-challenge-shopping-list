@@ -35,23 +35,48 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - Collection View Delegate/DataSource Methods
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return 2
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return shoppingItemController.items.count
+        switch section {
+        case 0:
+            return shoppingItemController.addedItems.count
+        case 1:
+            return shoppingItemController.notAddedItems.count
+        default:
+            return 0
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.itemCell, for: indexPath) as? ShoppingItemCell else { return UICollectionViewCell() }
-        let item = shoppingItemController.items[indexPath.item]
-        cell.item = item
-        return cell
+        switch indexPath.section {
+        case 0:
+            let item = shoppingItemController.addedItems[indexPath.item]
+            cell.item = item
+            return cell
+        case 1:
+            let item = shoppingItemController.notAddedItems[indexPath.item]
+            cell.item = item
+            return cell
+        default:
+            return UICollectionViewCell()
+        }
+        
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = shoppingItemController.items[indexPath.item]
-        shoppingItemController.toggleAdded(for: item)
+        switch indexPath.section {
+        case 0:
+            let item = shoppingItemController.addedItems[indexPath.item]
+            shoppingItemController.toggleAdded(for: item)
+        case 1:
+            let item = shoppingItemController.notAddedItems[indexPath.item]
+            shoppingItemController.toggleAdded(for: item)
+        default:
+            break
+        }
         collectionView.reloadData()
     }
 }

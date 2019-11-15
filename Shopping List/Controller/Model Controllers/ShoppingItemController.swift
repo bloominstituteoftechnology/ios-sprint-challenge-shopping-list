@@ -16,6 +16,16 @@ class ShoppingItemController {
     let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     let defaults = UserDefaults.standard
     
+    /// Filtered list based on hasBeenAdded == true
+    var addedItems: [ShoppingItem] {
+        return items.filter( { $0.hasBeenAdded == true } )
+    }
+    
+    /// Filtered list based on hasBeenAdded == false
+    var notAddedItems: [ShoppingItem] {
+        return items.filter( { $0.hasBeenAdded == false } )
+    }
+    
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - File URL For Persistence
     var persistentFileURL: URL? = {
