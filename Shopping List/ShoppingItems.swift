@@ -7,7 +7,7 @@
 //
 
 import UIKit
-struct Item {
+struct Item: Equatable {
     
     var name: String
     var isPicked: Bool
