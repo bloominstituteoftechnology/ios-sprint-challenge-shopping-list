@@ -19,7 +19,6 @@ class AddItemDetailViewController: UIViewController {
             updateView()
         }
     }
-    
     // MARK: - Functions
     
     override func viewDidDisappear(_ animated: Bool) {
