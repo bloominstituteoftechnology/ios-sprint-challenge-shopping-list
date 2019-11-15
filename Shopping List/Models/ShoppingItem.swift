@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+struct ShoppingItem: Equatable, Codable {
+    var itemName: String
+    var added: Bool
+}

@@ -9,22 +9,30 @@
 import UIKit
 
 class DetailsViewController: UIViewController {
-
+    
+    var shoppingItemController: ShoppingItemController?
+    @IBOutlet weak var itemsLabel: UILabel!
+    @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var addressField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setLabel()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setLabel() {
+        itemsLabel.text = "You have \(shoppingItemController?.addedItems.count ?? 0) item(s) on your shopping list."
     }
-    */
-
+    
+    @IBAction func sendButton(_ sender: Any) {
+        if shoppingItemController?.addedItems.count != 0, nameField.text != "", addressField.text != "" {
+            let alert = UIAlertController(title: "Order Received", message: "Hey \(nameField.text!), your order of \(shoppingItemController?.addedItems.count ?? 0) items, will be delivered in the next 15 minutes to \(addressField.text!)", preferredStyle: .alert)
+            
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            
+            alert.addAction(okAction)
+            
+            present(alert, animated: true)
+        }
+    }
 }

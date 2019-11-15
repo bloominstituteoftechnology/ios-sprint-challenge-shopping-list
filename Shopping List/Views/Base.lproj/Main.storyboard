@@ -22,11 +22,11 @@
                             <size key="estimatedItemSize" width="150" height="150"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="sectionInset" minX="25" minY="25" maxX="25" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoppingCell" id="4Dt-60-pTW" customClass="ShoppingCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                <rect key="frame" x="25" y="25" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="WmB-eS-RO6">
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
@@ -39,6 +39,9 @@
                                                 <constraint firstAttribute="width" constant="150" id="taw-Ff-x1P"/>
                                             </constraints>
                                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="addedButton:" destination="4Dt-60-pTW" eventType="touchUpInside" id="sam-WQ-gU4"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6yA-75-2Xf">
                                             <rect key="frame" x="0.0" y="125" width="150" height="25"/>
@@ -49,27 +52,42 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nIN-aC-gUB">
-                                            <rect key="frame" x="108" y="0.0" width="42" height="20.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nIN-aC-gUB">
+                                            <rect key="frame" x="95" y="5" width="50" height="20"/>
                                             <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20" id="K4m-8M-MeS"/>
+                                                <constraint firstAttribute="width" constant="50" id="whM-By-f6H"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="nIN-aC-gUB" secondAttribute="trailing" id="4Pf-y4-lIN"/>
+                                        <constraint firstAttribute="trailing" secondItem="nIN-aC-gUB" secondAttribute="trailing" constant="5" id="4Pf-y4-lIN"/>
                                         <constraint firstItem="LxJ-fe-Ijg" firstAttribute="top" secondItem="WmB-eS-RO6" secondAttribute="top" id="4RG-dl-fSd"/>
                                         <constraint firstAttribute="bottom" secondItem="LxJ-fe-Ijg" secondAttribute="bottom" id="BUI-yX-63v"/>
                                         <constraint firstItem="LxJ-fe-Ijg" firstAttribute="leading" secondItem="WmB-eS-RO6" secondAttribute="leading" id="IX9-07-61U"/>
                                         <constraint firstAttribute="bottom" secondItem="6yA-75-2Xf" secondAttribute="bottom" id="LMU-et-ANK"/>
                                         <constraint firstAttribute="trailing" secondItem="LxJ-fe-Ijg" secondAttribute="trailing" id="QDX-Mh-ytC"/>
                                         <constraint firstItem="6yA-75-2Xf" firstAttribute="leading" secondItem="WmB-eS-RO6" secondAttribute="leading" id="R66-iS-KJI"/>
-                                        <constraint firstItem="nIN-aC-gUB" firstAttribute="top" secondItem="WmB-eS-RO6" secondAttribute="top" id="RFS-M4-txy"/>
+                                        <constraint firstItem="nIN-aC-gUB" firstAttribute="top" secondItem="WmB-eS-RO6" secondAttribute="top" constant="5" id="RFS-M4-txy"/>
                                         <constraint firstAttribute="trailing" secondItem="6yA-75-2Xf" secondAttribute="trailing" id="Rfj-m4-7gU"/>
                                     </constraints>
                                 </collectionViewCellContentView>
+                                <connections>
+                                    <outlet property="addedLabel" destination="nIN-aC-gUB" id="Jtn-1a-3p9"/>
+                                    <outlet property="button" destination="LxJ-fe-Ijg" id="qx3-n6-rzP"/>
+                                    <outlet property="nameLabel" destination="6yA-75-2Xf" id="qNn-Kb-uI2"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -100,7 +118,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="zcY-vg-94N">
                                 <rect key="frame" x="25" y="138" width="364" height="167"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lDK-cR-Dqk">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lDK-cR-Dqk">
                                         <rect key="frame" x="0.0" y="0.0" width="364" height="30"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                         <nil key="textColor"/>
@@ -119,6 +137,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xgD-oa-Do8">
                                         <rect key="frame" x="0.0" y="137" width="364" height="30"/>
                                         <state key="normal" title="Send Order"/>
+                                        <connections>
+                                            <action selector="sendButton:" destination="GTB-Pb-ykk" eventType="touchUpInside" id="DDG-DT-hbb"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -132,6 +153,11 @@
                         <viewLayoutGuide key="safeArea" id="rom-Ik-RlA"/>
                     </view>
                     <navigationItem key="navigationItem" id="GUt-ob-S2f"/>
+                    <connections>
+                        <outlet property="addressField" destination="908-7B-tbp" id="P5x-1g-8uW"/>
+                        <outlet property="itemsLabel" destination="lDK-cR-Dqk" id="bTk-09-hQY"/>
+                        <outlet property="nameField" destination="GzT-xX-fVW" id="dvw-z9-XeQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8QP-ef-KLP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
