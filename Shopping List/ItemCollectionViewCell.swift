@@ -10,6 +10,8 @@ import UIKit
 
 class ItemCollectionViewCell: UICollectionViewCell {
     
+    var tapCounter = 0
+    
     @IBOutlet weak var buttonLabel: UIButton!
     @IBOutlet weak var itemImage: UIImageView!
     @IBOutlet weak var itemLabel: UILabel!
@@ -27,7 +29,14 @@ class ItemCollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction func buttonPressed(_ sender: UIButton) {
-        sender.setTitle("Added", for: .normal)
+        
+        tapCounter += 1
+        
+        if tapCounter % 2 == 1 {
+            sender.setTitle("Added", for: .normal)
+        } else {
+            sender.setTitle("Not added", for: .normal)
+        }
+        
     }
-    
 }
