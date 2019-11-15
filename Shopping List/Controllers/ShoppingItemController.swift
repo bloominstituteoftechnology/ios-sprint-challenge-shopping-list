@@ -67,7 +67,7 @@ class ShoppingItemController {
     }
     
     func update(item: ShoppingItem) {
-        guard let index = shoppingItems.index(of: item) else { return }
+        guard let index = shoppingItems.firstIndex(of: item) else { return }
         var newItem = shoppingItems[index]
         newItem.addedToList = !newItem.addedToList
         shoppingItems[index] = newItem
@@ -85,7 +85,7 @@ class ShoppingItemController {
     
     func removeShoppingItem() {
         for item in shoppingItems {
-            guard let index = shoppingItems.index(of: item) else { return }
+            guard let index = shoppingItems.firstIndex(of: item) else { return }
             if item.addedToList == true {
                 shoppingItems.remove(at: index)
                 shoppingItems.append(ShoppingItem(name: "Strawberries", addedToList: true))
