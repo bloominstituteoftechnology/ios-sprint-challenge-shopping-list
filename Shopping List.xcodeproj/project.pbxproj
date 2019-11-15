@@ -11,6 +11,8 @@
 		4613E91721143BFC00E7FF73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91521143BFC00E7FF73 /* Main.storyboard */; };
 		4613E91921143BFD00E7FF73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91821143BFD00E7FF73 /* Assets.xcassets */; };
 		4613E91C21143BFD00E7FF73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91A21143BFD00E7FF73 /* LaunchScreen.storyboard */; };
+		635F2F5C237F0841005BF6B5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635F2F5B237F0841005BF6B5 /* Constants.swift */; };
+		635F2F63237F08DC005BF6B5 /* ShoppingListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635F2F62237F08DC005BF6B5 /* ShoppingListCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		4613E91821143BFD00E7FF73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4613E91B21143BFD00E7FF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4613E91D21143BFD00E7FF73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		635F2F5B237F0841005BF6B5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		635F2F62237F08DC005BF6B5 /* ShoppingListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,8 +67,8 @@
 		635F2F56237F043A005BF6B5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				4613E91121143BFC00E7FF73 /* AppDelegate.swift */,
-				4613E91821143BFD00E7FF73 /* Assets.xcassets */,
+				635F2F5F237F0875005BF6B5 /* Delegates */,
+				635F2F5E237F0864005BF6B5 /* Resources */,
 				4613E91D21143BFD00E7FF73 /* Info.plist */,
 			);
 			path = "Supporting Files";
@@ -82,6 +86,8 @@
 		635F2F58237F04A8005BF6B5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				635F2F60237F08AA005BF6B5 /* Model Controllers */,
+				635F2F61237F08B1005BF6B5 /* View Controllers */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -99,6 +105,46 @@
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		635F2F5D237F0857005BF6B5 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				635F2F5B237F0841005BF6B5 /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		635F2F5E237F0864005BF6B5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4613E91821143BFD00E7FF73 /* Assets.xcassets */,
+				635F2F5D237F0857005BF6B5 /* Constants */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		635F2F5F237F0875005BF6B5 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				4613E91121143BFC00E7FF73 /* AppDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		635F2F60237F08AA005BF6B5 /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
+		635F2F61237F08B1005BF6B5 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				635F2F62237F08DC005BF6B5 /* ShoppingListCollectionViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,11 +174,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0940;
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = "Lambda School";
 				TargetAttributes = {
 					4613E90D21143BFC00E7FF73 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1120;
 					};
 				};
 			};
@@ -173,6 +220,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4613E91221143BFC00E7FF73 /* AppDelegate.swift in Sources */,
+				635F2F63237F08DC005BF6B5 /* ShoppingListCollectionViewController.swift in Sources */,
+				635F2F5C237F0841005BF6B5 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,7 +374,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.chadarutherford.Shopping-List";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -343,7 +392,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.chadarutherford.Shopping-List";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
