@@ -10,4 +10,22 @@ import UIKit
 
 class ShoppingListCollectionViewCell: UICollectionViewCell {
     
+    
+    
+    
+    
+    
+    
+    
+    var item: ShoppingItem? {
+        didSet {
+            updateView()
+        }
+    }
+    
+    func updateView() {
+        guard let item = item else { return }
+        
+    }
+    
 }

@@ -1,9 +1,130 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="soZ-tj-CMb">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--Shopping List-->
+        <scene sceneID="Lqn-mF-Ket">
+            <objects>
+                <collectionViewController id="DHo-hC-Z0m" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="46r-Dg-Ggc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0TL-jn-FBK">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="g7e-m8-lzA">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="mQF-Tz-aQ1">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </collectionViewCellContentView>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="DHo-hC-Z0m" id="vKP-rA-38p"/>
+                            <outlet property="delegate" destination="DHo-hC-Z0m" id="zRD-as-cpC"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Shopping List" id="BOA-zs-ICR">
+                        <barButtonItem key="rightBarButtonItem" image="paperplane.fill" catalog="system" id="EE9-Nw-awn">
+                            <connections>
+                                <segue destination="JIp-gK-SzD" kind="show" id="677-Yj-s7r"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1E1-p1-uiC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="870" y="11"/>
+        </scene>
+        <!--Place Your Order-->
+        <scene sceneID="zaJ-ZJ-R3R">
+            <objects>
+                <viewController id="JIp-gK-SzD" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pCf-h2-EPp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7jS-IB-1hr">
+                                <rect key="frame" x="20" y="242.33333333333337" width="374" height="78"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GIh-6g-yrP">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your address:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EHI-rv-jEe">
+                                        <rect key="frame" x="0.0" y="43.999999999999972" width="374" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2gf-u5-1ju">
+                                <rect key="frame" x="167.66666666666666" y="363.33333333333331" width="79" height="30"/>
+                                <state key="normal" title="Send Order"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UHa-KO-2Qz">
+                                <rect key="frame" x="29" y="180" width="315" height="45.666666666666657"/>
+                                <string key="text">You currently have 3 item(s) in your
+shopping list.</string>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="7jS-IB-1hr" firstAttribute="top" secondItem="UHa-KO-2Qz" secondAttribute="bottom" constant="16.5" id="Brm-6E-QLO"/>
+                            <constraint firstItem="UHa-KO-2Qz" firstAttribute="top" secondItem="hAK-by-sDQ" secondAttribute="top" constant="40" id="F2e-1U-1EJ"/>
+                            <constraint firstItem="hAK-by-sDQ" firstAttribute="trailing" secondItem="7jS-IB-1hr" secondAttribute="trailing" constant="20" id="Xqx-XU-ouN"/>
+                            <constraint firstItem="2gf-u5-1ju" firstAttribute="top" secondItem="EHI-rv-jEe" secondAttribute="bottom" constant="43" id="aJD-8q-hOU"/>
+                            <constraint firstItem="UHa-KO-2Qz" firstAttribute="leading" secondItem="hAK-by-sDQ" secondAttribute="leading" constant="29" id="eXE-zl-lpx"/>
+                            <constraint firstItem="hAK-by-sDQ" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="UHa-KO-2Qz" secondAttribute="trailing" constant="8" id="fTJ-cT-FQq"/>
+                            <constraint firstItem="7jS-IB-1hr" firstAttribute="leading" secondItem="hAK-by-sDQ" secondAttribute="leading" constant="20" id="hzo-ir-bHN"/>
+                            <constraint firstItem="2gf-u5-1ju" firstAttribute="centerX" secondItem="pCf-h2-EPp" secondAttribute="centerX" id="qVw-BR-YEG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hAK-by-sDQ"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Place Your Order" id="UPD-Rx-46p"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gea-Xw-1R9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1642" y="11"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ud8-FO-fQ7">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="soZ-tj-CMb" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="mug-G5-ZdQ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="DHo-hC-Z0m" kind="relationship" relationship="rootViewController" id="BtI-Lk-Z7I"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SYN-f7-CRd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="81.159420289855078" y="10.714285714285714"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="paperplane.fill" catalog="system" width="64" height="60"/>
+    </resources>
 </document>
