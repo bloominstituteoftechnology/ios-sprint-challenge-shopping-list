@@ -11,3 +11,7 @@ import Foundation
 struct Cells {
     static let itemCell = "ItemCell"
 }
+
+struct UserDefaultKeys {
+    static let itemListSet = "ItemListSet"
+}
