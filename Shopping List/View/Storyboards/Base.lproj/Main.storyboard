@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -90,12 +91,71 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Shopping List" id="3mA-S0-98A">
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="ZIK-2b-BEz"/>
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="ZIK-2b-BEz">
+                            <connections>
+                                <segue destination="m1f-iE-euj" kind="show" id="G0W-Bm-yOr"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GqD-5h-E9i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1005.7971014492755" y="136.60714285714286"/>
+        </scene>
+        <!--Shopping List Detail View Controller-->
+        <scene sceneID="I5U-5H-j0e">
+            <objects>
+                <viewController id="m1f-iE-euj" customClass="ShoppingListDetailViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NFv-bp-P1E">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="YDu-Rk-Hui">
+                                <rect key="frame" x="26" y="140" width="362" height="177"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You currently have 3 items in your shopping list." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNS-hE-l7k">
+                                        <rect key="frame" x="0.0" y="0.0" width="362" height="55"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="brb-3t-i0U">
+                                        <rect key="frame" x="0.0" y="63" width="362" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="name"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UkM-KE-V3x">
+                                        <rect key="frame" x="0.0" y="105" width="362" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="street-address"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="45Z-0D-YRe">
+                                        <rect key="frame" x="0.0" y="147" width="362" height="30"/>
+                                        <state key="normal" title="Send Order"/>
+                                        <connections>
+                                            <action selector="sendOrderWasTapped:" destination="m1f-iE-euj" eventType="touchUpInside" id="n0w-Yb-sVS"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="YDu-Rk-Hui" firstAttribute="centerX" secondItem="1MW-gV-cNy" secondAttribute="centerX" id="7LR-TR-OFu"/>
+                            <constraint firstItem="YDu-Rk-Hui" firstAttribute="top" secondItem="1MW-gV-cNy" secondAttribute="top" id="NL1-1Z-fhT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1MW-gV-cNy"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="kSN-vl-OlP"/>
+                    <connections>
+                        <outlet property="addressTextField" destination="UkM-KE-V3x" id="F0Y-dW-VVU"/>
+                        <outlet property="nameTextField" destination="brb-3t-i0U" id="rJl-zE-es8"/>
+                        <outlet property="shoppingListNumberLabel" destination="YNS-hE-l7k" id="zIP-77-DYI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wIu-qi-plw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1660.8695652173915" y="136.60714285714286"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GB0-Mz-Tdx">
