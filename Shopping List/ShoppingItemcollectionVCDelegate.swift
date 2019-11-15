@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+
+protocol ShoppingItemCollectionViewCellDelegate: class {
+    
+    
+    func toggleHasBeenAdded(for cell: ShoppingItemCollectionViewCell)
+    
+}
+
+
