@@ -53,7 +53,7 @@
         <!--Place Your Order-->
         <scene sceneID="zaJ-ZJ-R3R">
             <objects>
-                <viewController id="JIp-gK-SzD" sceneMemberID="viewController">
+                <viewController id="JIp-gK-SzD" customClass="AddItemDetailViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pCf-h2-EPp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -76,6 +76,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2gf-u5-1ju">
                                 <rect key="frame" x="167.66666666666666" y="363.33333333333331" width="79" height="30"/>
                                 <state key="normal" title="Send Order"/>
+                                <connections>
+                                    <action selector="sendOrderButtonTapped:" destination="JIp-gK-SzD" eventType="touchUpInside" id="hpE-k5-xYV"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UHa-KO-2Qz">
                                 <rect key="frame" x="29" y="180" width="315" height="45.666666666666657"/>
@@ -100,6 +103,11 @@ shopping list.</string>
                         <viewLayoutGuide key="safeArea" id="hAK-by-sDQ"/>
                     </view>
                     <navigationItem key="navigationItem" title="Place Your Order" id="UPD-Rx-46p"/>
+                    <connections>
+                        <outlet property="itemLabel" destination="UHa-KO-2Qz" id="Csp-FE-2IE"/>
+                        <outlet property="sendToAddressTextField" destination="EHI-rv-jEe" id="KLD-Qu-gTb"/>
+                        <outlet property="sendToNameTextField" destination="GIh-6g-yrP" id="Sje-ft-toj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gea-Xw-1R9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

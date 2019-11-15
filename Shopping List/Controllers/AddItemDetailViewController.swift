@@ -9,22 +9,41 @@
 import UIKit
 
 class AddItemDetailViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    
+    @IBOutlet weak var itemLabel: UILabel!
+    @IBOutlet weak var sendToNameTextField: UITextField!
+    @IBOutlet weak var sendToAddressTextField: UITextField!
+    
+    var delegate: [ShoppingItem]? {
+        didSet {
+            updateView()
+        }
     }
     
+    // MARK: - Functions
+    
+    override func viewDidDisappear(_ animated: Bool) {
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
-
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateView()
+    }
+    
+    func updateView() {
+        guard let count = delegate?.count else { return }
+        self.itemLabel.text = "You have \(count) item(s) in your shopping list."
+    }
+    
+    @IBAction func sendOrderButtonTapped(_ sender: Any) {
+        guard let name = sendToNameTextField.text, let address = sendToAddressTextField.text, let count = delegate?.count else { return }
+        
+        let alert = UIAlertController(title: "Thank you, \(name) your order has been place!", message: "You will have \(count) item(s) that will be sent to \(address).", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        
+        present(alert, animated: true, completion: nil)
+        
+    }
 }
