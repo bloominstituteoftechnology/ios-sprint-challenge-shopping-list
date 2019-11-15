@@ -9,8 +9,8 @@
 import UIKit
 import Foundation
 
-struct ShoppingItem {
+struct ShoppingItem: Encodable {
     var itemNames: String
     var itemAdded: Bool
-    let image: UIImage?
+
 }

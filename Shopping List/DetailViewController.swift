@@ -25,7 +25,7 @@ class DetailViewController: UIViewController {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let alert = UIAlertController(title: "Submit Order:", message: "\(String(describing: NameLabel))\(AddressLabel ?? <#default value#>)", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Submit Order:", message: "\(String(describing: NameLabel))\(AddressLabel ??)", preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
     present(alert, animated: true, completion: nil)
 
