@@ -8,10 +8,17 @@
 
 import Foundation
 
+/// Constants for Cell Identifiers
 struct Cells {
     static let itemCell = "ItemCell"
 }
 
+/// Constants for the Segue Identifiers
+struct Segues {
+    static let showDetailSegue = "ShowDetailSegue"
+}
+
+/// Constants for UserDefaults Keys
 struct UserDefaultKeys {
     static let itemListSet = "ItemListSet"
 }

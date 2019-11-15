@@ -8,10 +8,14 @@
 
 import Foundation
 
+
+/// Model object  to create new instances of ShoppingItem
 struct ShoppingItem: Equatable, Codable {
     let name: String
     var hasBeenAdded: Bool
     
+    /// Initializer for the ShoppingItem object
+    /// - Parameter name: The name of the object to be created.
     init(name: String) {
         self.name = name
         self.hasBeenAdded = false

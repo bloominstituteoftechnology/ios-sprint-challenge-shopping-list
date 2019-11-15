@@ -21,6 +21,18 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     }
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case Segues.showDetailSegue:
+            guard let shoppingDetailVC = segue.destination as? ShoppingListDetailViewController else { return }
+            shoppingDetailVC.shoppingController = shoppingItemController
+        default:
+            break
+        }
+    }
+    
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - Collection View Delegate/DataSource Methods
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -40,5 +52,6 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = shoppingItemController.items[indexPath.item]
         shoppingItemController.toggleAdded(for: item)
+        collectionView.reloadData()
     }
 }

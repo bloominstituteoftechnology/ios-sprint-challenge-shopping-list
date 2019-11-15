@@ -10,16 +10,22 @@ import Foundation
 
 class ShoppingItemController {
     
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    // MARK: - Properties
     var items = [ShoppingItem]()
     let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     let defaults = UserDefaults.standard
     
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    // MARK: - File URL For Persistence
     var persistentFileURL: URL? = {
         let fileManager = FileManager.default
         guard let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
         return documentDirectory.appendingPathComponent("ShoppingList.plist")
     }()
     
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    // MARK: - Initialization
     init() {
         loadFromPersistentStore()
         initializeList()
@@ -27,7 +33,6 @@ class ShoppingItemController {
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - Instance Methods
-    
     /// Function to flip the value of the hasBeenAdded property on a single Shopping item
     /// - Parameter item: The ShoppingItem to be changed
     func toggleAdded(for item: ShoppingItem) {
