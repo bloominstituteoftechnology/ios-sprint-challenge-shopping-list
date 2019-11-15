@@ -31,25 +31,30 @@
                                     <rect key="frame" x="0.0" y="0.0" width="202" height="218"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9jC-73-iys">
-                                            <rect key="frame" x="0.0" y="39" width="202" height="142"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" image="Apple" translatesAutoresizingMaskIntoConstraints="NO" id="9jC-73-iys">
+                                            <rect key="frame" x="8" y="38" width="186" height="135"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="135" id="fc2-mi-uf7"/>
+                                            </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mBQ-bK-aHW">
-                                            <rect key="frame" x="55" y="189" width="85" height="21"/>
+                                            <rect key="frame" x="55" y="189.66666666666666" width="85" height="20.333333333333343"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Added" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tjs-Co-Ldr">
-                                            <rect key="frame" x="55" y="10" width="86" height="21"/>
+                                            <rect key="frame" x="55" y="10" width="86" height="20"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="9jC-73-iys" firstAttribute="trailing" secondItem="mQF-Tz-aQ1" secondAttribute="trailingMargin" id="0Vk-0I-HJa"/>
+                                        <constraint firstItem="9jC-73-iys" firstAttribute="leading" secondItem="mQF-Tz-aQ1" secondAttribute="leadingMargin" id="2bn-w7-4GP"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mBQ-bK-aHW" secondAttribute="trailing" constant="8" id="9Qf-FV-jGd"/>
+                                        <constraint firstItem="9jC-73-iys" firstAttribute="top" secondItem="Tjs-Co-Ldr" secondAttribute="bottom" constant="8" id="MV7-kZ-WzU"/>
                                         <constraint firstItem="mBQ-bK-aHW" firstAttribute="leading" secondItem="mQF-Tz-aQ1" secondAttribute="leading" constant="55" id="Pre-sH-rRP"/>
                                         <constraint firstItem="Tjs-Co-Ldr" firstAttribute="top" secondItem="mQF-Tz-aQ1" secondAttribute="top" constant="10" id="SV6-xL-44c"/>
                                         <constraint firstItem="Tjs-Co-Ldr" firstAttribute="leading" secondItem="mQF-Tz-aQ1" secondAttribute="leading" constant="55" id="X5e-pa-A2w"/>
@@ -164,4 +169,7 @@ shopping list.</string>
             <point key="canvasLocation" x="81.159420289855078" y="10.714285714285714"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Apple" width="229" height="300"/>
+    </resources>
 </document>
