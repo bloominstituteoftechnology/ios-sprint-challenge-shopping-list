@@ -41,7 +41,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let shoppingItem = shoppingItemController.shoppingList[indexPath.row]
-        shoppingItemController.AddShoppingItems(shoppingItem: shoppingItem)
+        shoppingItemController.AddShoppingItems(for: shoppingItem)
         collectionView.reloadItems(at: [indexPath])
     }
     

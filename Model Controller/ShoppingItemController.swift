@@ -17,7 +17,7 @@ class ShoppingItemController {
     }
 
 
-     var shoppingList: [ShoppingItem] = []
+     var shoppingList = [ShoppingItem]()
     
     
     // MARK: - Creating the Shopping list
@@ -36,19 +36,12 @@ class ShoppingItemController {
         UserDefaults.standard.set(false, forKey: .itemsHaveBeenCreated)
     }
     
-    func AddShoppingItems(shoppingItem: ShoppingItem) {
-        var itemStatus = shoppingItem.isAdded
-        switch itemStatus {
-        case true:
-            shoppingItem.isAdded = true
-        default:
-            <#code#>
-        }
-        
-        saveToPersistentStore()
-
-    }
     
+    func AddShoppingItems(for shoppingItem: ShoppingItem) {
+        guard let index = shoppingList.firstIndex(of: shoppingItem) else { return }
+        shoppingList[index].isAdded.toggle()
+        saveToPersistentStore()
+    }
     
     // MARK: CRUD
     

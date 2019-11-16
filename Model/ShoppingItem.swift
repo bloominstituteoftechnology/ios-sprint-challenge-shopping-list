@@ -11,7 +11,7 @@ import UIKit
 struct ShoppingItem: Equatable, Codable {
     
     var name: String
-    var isAdded: Bool
+    var isAdded: Bool = false
     var image: String
     
     init(name: String, isAdded: Bool, image: String) {
