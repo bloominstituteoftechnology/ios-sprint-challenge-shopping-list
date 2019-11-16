@@ -14,6 +14,8 @@ class ShoppingItemCollectionViewController: UICollectionViewController {
 
     let shoppingItemController = ShoppingItemsController()
     
+    var testcount = ShoppingItemsController().addedItems.count
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,27 +28,34 @@ class ShoppingItemCollectionViewController: UICollectionViewController {
         // Do any additional setup after loading the view.
     }
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "placeOrder" && segue.destination is OrderPlaceViewController{
+            let vc = segue.destination as? OrderPlaceViewController
+            vc?.count = shoppingItemController.addedItems.count
+            
+        }
+        
     }
-    */
+    
+    
 
     // MARK: UICollectionViewDataSource
     
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let addedItem = shoppingItemController.items[indexPath.item]
+        let addedItem = shoppingItemController.results[indexPath.item]
         shoppingItemController.pickedItem(addedItem)
+        
         
         let alert = UIAlertController(title: "Items added", message: "\(addedItem.name) \(shoppingItemController.addedItems.count)", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
+        
+       
     }
     
     
@@ -83,3 +92,4 @@ class ShoppingItemCollectionViewController: UICollectionViewController {
   
 
 }
+

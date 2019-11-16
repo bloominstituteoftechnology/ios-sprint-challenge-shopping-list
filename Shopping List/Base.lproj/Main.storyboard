@@ -88,7 +88,7 @@
                     <navigationItem key="navigationItem" id="irm-I9-SGX">
                         <barButtonItem key="rightBarButtonItem" title="Place Order" id="hg1-zr-kQ2">
                             <connections>
-                                <segue destination="Ait-AX-tMr" kind="show" id="Xc1-QW-VaK"/>
+                                <segue destination="Ait-AX-tMr" kind="show" identifier="placeOrder" id="Xc1-QW-VaK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -121,6 +121,9 @@
                                 <state key="normal" title="Send Order">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                 </state>
+                                <connections>
+                                    <action selector="sendOrder:" destination="Ait-AX-tMr" eventType="touchUpInside" id="xlU-ka-JhC"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HFh-s3-ucr">
                                 <rect key="frame" x="50" y="155.5" width="314" height="34"/>
@@ -147,6 +150,11 @@
                         <viewLayoutGuide key="safeArea" id="EY3-0E-W7y"/>
                     </view>
                     <navigationItem key="navigationItem" id="NdM-Dm-Gec"/>
+                    <connections>
+                        <outlet property="addressTextField" destination="4Cd-lg-Ijd" id="JWN-cx-wyU"/>
+                        <outlet property="listLabel" destination="cFd-kE-vgW" id="08w-n9-SHP"/>
+                        <outlet property="nameTextField" destination="HFh-s3-ucr" id="TTk-IF-rK1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yHQ-X7-Peg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
