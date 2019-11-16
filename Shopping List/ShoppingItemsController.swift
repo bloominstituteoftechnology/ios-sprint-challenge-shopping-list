@@ -27,7 +27,10 @@ class ShoppingItemsController {
         addedItems.append(itme)
     }
     
-    
+    func pickItem(item:Item){
+        guard let index = results.firstIndex(of:item) else {return}
+        results[index].isPicked = !results[index].isPicked 
+    }
     
     
     

@@ -9,21 +9,18 @@
 import UIKit
 
 class ShoppingItemsCollectionViewCell: UICollectionViewCell {
-    
-    
+     
+   
     @IBOutlet weak var selectedLabel: UILabel!
     @IBOutlet weak var itemImage: UIImageView!
     @IBOutlet weak var itemLabel: UILabel!
     
-    enum status:String {
-        case isPicked = "Added"
-        case notPicked = "Not Added"
-    }
+   
     
   
     
     
-    
+    var delegate:SelectionDelegate?
     var item: Item? {
         
         didSet{
@@ -33,10 +30,14 @@ class ShoppingItemsCollectionViewCell: UICollectionViewCell {
     
     func updateViews() {
         guard let item = item else { return }
-        
+      
         itemLabel.text = item.name
         itemImage.image = item.image
+        if item.isPicked{
+            selectedLabel.text = "Added"
+        }
         
+       
     }
     
 }

@@ -10,7 +10,19 @@ import UIKit
 
 
 
-class ShoppingItemCollectionViewController: UICollectionViewController {
+class ShoppingItemCollectionViewController: UICollectionViewController,SelectionDelegate {
+    
+    
+    
+    func toggleSelected(cell: ShoppingItemsCollectionViewCell) {
+        guard let indexPath = collectionView?.indexPath(for: cell) else {return}
+        
+        let item = shoppingItemController.results[indexPath.row]
+        shoppingItemController.pickItem(item:item)
+        collectionView?.reloadData()
+        
+    }
+    
 
     let shoppingItemController = ShoppingItemsController()
     
@@ -72,6 +84,7 @@ class ShoppingItemCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as? ShoppingItemsCollectionViewCell else {return UICollectionViewCell() }
+        cell.delegate = self 
     
         let item = shoppingItemController.results[indexPath.row]
         
