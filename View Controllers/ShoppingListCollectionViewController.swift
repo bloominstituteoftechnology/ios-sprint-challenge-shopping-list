@@ -17,30 +17,33 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         collectionView?.reloadData()
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "showDetailSegue" {
+            guard let completeOrderVC = segue.destination as? ListDetailViewController else { return }
+            completeOrderVC.shoppingItemController = shoppingItemController
+            
+        }
     }
-    */
+    
 
     // MARK: UICollectionViewDataSource
-
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 2
-    }
-
-    
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         return shoppingItemController.shoppingList.count
     }
     
+    
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let shoppingItem = shoppingItemController.shoppingList[indexPath.row]
+        shoppingItemController.AddShoppingItems(shoppingItem: shoppingItem)
+        collectionView.reloadItems(at: [indexPath])
+    }
     
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

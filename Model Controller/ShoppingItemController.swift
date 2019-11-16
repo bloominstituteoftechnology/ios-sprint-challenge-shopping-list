@@ -18,33 +18,43 @@ class ShoppingItemController {
 
 
      var shoppingList: [ShoppingItem] = []
-
+    
+    
     // MARK: - Creating the Shopping list
     
-    func addItem(with name: String, isAdded: Bool, with image: Data) -> ShoppingItem {
-        
-        let item = ShoppingItem(name: name, isAdded: isAdded, image: image)
-        shoppingList.append(item)
-        saveToPersistentStore()
-        
-        return item
-    }
-    
     func updateShoppingList() {
-        guard UserDefaults.standard.bool(forKey: .itemsHaveBeenCreated) == false else { return }
+        guard UserDefaults.standard.bool(forKey: .itemsHaveBeenCreated) != true else { return }
         
         let itemsNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
         
+        for item in itemsNames {
+            
+            let newItem = ShoppingItem(name: item, isAdded: false, image: item)
+            shoppingList.append(newItem)
+        }
         saveToPersistentStore()
         UserDefaults.standard.set(false, forKey: .itemsHaveBeenCreated)
     }
+    
+    func AddShoppingItems(shoppingItem: ShoppingItem) {
+        var itemStatus = shoppingItem.isAdded
+        switch itemStatus {
+        case true:
+            shoppingItem.isAdded = true
+        default:
+            <#code#>
+        }
+        
+        saveToPersistentStore()
+
+    }
+    
     
     // MARK: CRUD
     
     
     func deleteItem(named item: ShoppingItem) {
         guard let index = shoppingList.firstIndex(of: item) else { return }
-        
         shoppingList.remove(at: index)
         saveToPersistentStore()
         }

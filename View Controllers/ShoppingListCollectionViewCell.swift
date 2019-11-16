@@ -10,8 +10,13 @@ import UIKit
 
 class ShoppingListCollectionViewCell: UICollectionViewCell {
     
+    
+    var shoppingItem: ShoppingItem?
+    
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var itemLabelView: UILabel!
+    
+    @IBOutlet weak var isAddedLabel: UILabel!
     
     var item: ShoppingItem? {
         didSet {
@@ -22,7 +27,13 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
     func updateViews() {
         guard let item = item else { return}
         
-        itemImageView.image = UIImage(data: item.image)
+        itemImageView.image = item.fruitImage
         itemLabelView.text = item.name
+        
+        if item.isAdded == true {
+            isAddedLabel.text = "Added"
+        } else {
+            isAddedLabel.text = "Not Added"
+        }
         }
     }

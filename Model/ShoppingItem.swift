@@ -12,9 +12,20 @@ struct ShoppingItem: Equatable, Codable {
     
     var name: String
     var isAdded: Bool
-    var image: Data
-
+    var image: String
+    
+    init(name: String, isAdded: Bool, image: String) {
+        self.name = name
+        self.isAdded = isAdded
+        self.image = image
+    }
+    
+    var fruitImage: UIImage {
+        return UIImage(named: image)!
+    }
+    
 }
+
 
 extension String {
     static let itemsHaveBeenCreated = "ItemsHaveBeenCreated"
