@@ -36,15 +36,26 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Apple" translatesAutoresizingMaskIntoConstraints="NO" id="LoO-C6-BKa">
                                                     <rect key="frame" x="0.0" y="0.0" width="191" height="150"/>
+                                                    <gestureRecognizers/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XY1-xB-yyz">
                                                     <rect key="frame" x="142" y="8" width="42" height="21"/>
+                                                    <gestureRecognizers/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PJa-xq-I1X">
+                                                    <rect key="frame" x="139" y="120" width="44" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Chose"/>
+                                                    <connections>
+                                                        <action selector="onChose:" destination="G2l-tr-eX0" eventType="touchUpInside" id="S19-n9-MIi"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <gestureRecognizers/>
                                             <constraints>
                                                 <constraint firstItem="LoO-C6-BKa" firstAttribute="top" secondItem="seb-VB-YqS" secondAttribute="top" id="6Jw-Dn-2Ft"/>
                                                 <constraint firstItem="LoO-C6-BKa" firstAttribute="leading" secondItem="seb-VB-YqS" secondAttribute="leading" id="8Wm-6k-ac1"/>

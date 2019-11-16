@@ -9,22 +9,33 @@
 import UIKit
 
 class ShoppingItemsCollectionViewCell: UICollectionViewCell {
-     
+    var delegate:SelectionDelegate?
+  
    
+    @IBAction func onChose(_ sender: Any) {
+        
+        selectedLabel.text = "Added"
+               
+               
+    }
+    
     @IBOutlet weak var selectedLabel: UILabel!
     @IBOutlet weak var itemImage: UIImageView!
     @IBOutlet weak var itemLabel: UILabel!
     
+
+  
    
     
   
     
     
-    var delegate:SelectionDelegate?
+    //var delegate:SelectionDelegate?
     var item: Item? {
         
         didSet{
             updateViews()
+            
         }
     }
     
@@ -33,11 +44,19 @@ class ShoppingItemsCollectionViewCell: UICollectionViewCell {
       
         itemLabel.text = item.name
         itemImage.image = item.image
-        if item.isPicked{
-            selectedLabel.text = "Added"
-        }
+        
+        let picked = item.isPicked ? "Added" : "Not Added"
+        selectedLabel.text = picked
         
        
     }
     
+    @objc func onTapImage(){
+        
+        updateViews()
+        
+        
+    }
+    let imageGesture = UITapGestureRecognizer(target: UIImageView.self, action: #selector( onTapImage))
 }
+

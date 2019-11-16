@@ -10,7 +10,7 @@ import UIKit
 
 
 
-class ShoppingItemCollectionViewController: UICollectionViewController,SelectionDelegate {
+class ShoppingItemCollectionViewController: UICollectionViewController{
     
     
     
@@ -84,9 +84,11 @@ class ShoppingItemCollectionViewController: UICollectionViewController,Selection
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as? ShoppingItemsCollectionViewCell else {return UICollectionViewCell() }
-        cell.delegate = self 
+       
     
         let item = shoppingItemController.results[indexPath.row]
+       
+        
         
         cell.item = item
     
