@@ -37,18 +37,34 @@ class ShoppingItemCollectionViewController: UICollectionViewController {
     */
 
     // MARK: UICollectionViewDataSource
+    
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let addedItem = shoppingItemController.items[indexPath.item]
+        shoppingItemController.pickedItem(addedItem)
+        
+        let alert = UIAlertController(title: "Items added", message: "\(addedItem.name) \(shoppingItemController.addedItems.count)", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    
+    
+    
+    
 
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return shoppingItemController.items.count
+        return shoppingItemController.results.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as? ShoppingItemsCollectionViewCell else {return UICollectionViewCell() }
     
-        let item = shoppingItemController.items[indexPath.row]
+        let item = shoppingItemController.results[indexPath.row]
         
         cell.item = item
     

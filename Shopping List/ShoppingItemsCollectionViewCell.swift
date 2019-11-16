@@ -11,8 +11,18 @@ import UIKit
 class ShoppingItemsCollectionViewCell: UICollectionViewCell {
     
     
+    @IBOutlet weak var selectedLabel: UILabel!
     @IBOutlet weak var itemImage: UIImageView!
     @IBOutlet weak var itemLabel: UILabel!
+    
+    enum status:String {
+        case isPicked = "Added"
+        case notPicked = "Not Added"
+    }
+    
+  
+    
+    
     
     var item: Item? {
         
@@ -26,6 +36,7 @@ class ShoppingItemsCollectionViewCell: UICollectionViewCell {
         
         itemLabel.text = item.name
         itemImage.image = item.image
+        
     }
     
 }

@@ -11,7 +11,7 @@ import Foundation
 class ShoppingItemsController {
     
     var items: [Item] = []
-    var results = [Item(name: "apple"),
+    var results = [Item(name: "Apple"),
                     Item(name: "Grapes"),
                     Item(name: "Milk"),
                     Item(name: "Muffin"),
@@ -21,7 +21,11 @@ class ShoppingItemsController {
     
     
     
+    var addedItems: [Item] = []
     
+    func pickedItem(_ itme: Item) {
+        addedItems.append(itme)
+    }
     
     
     
