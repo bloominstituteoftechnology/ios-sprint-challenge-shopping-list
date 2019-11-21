@@ -9,25 +9,34 @@
 import UIKit
 
 class DetailViewController: UIViewController {
+    
     @IBOutlet weak var ItemsInShoppingList: UILabel!
     @IBOutlet weak var NameLabel: UITextField!
     @IBOutlet weak var AddressLabel: UITextField!
     
+    var shoppingListController: ShoppingListController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        updateViews()
     }
+    
     @IBAction func SendOrderButton(_ sender: Any) {
-//        guard let name = NameLabel.text, address = AddressLabel.text
-//            else { return }
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let name = NameLabel.text,
+            let address = AddressLabel.text
+            else { return }
+          let itemsCount = shoppingListController?.newShoppingItem.count
         
-        let alert = UIAlertController(title: "Submit Order:", message: "\(String(describing: NameLabel))\(AddressLabel ??)", preferredStyle: .alert)
-    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-    present(alert, animated: true, completion: nil)
+        let alert = UIAlertController(title: "Submit Order for: \(name) of \(itemsCount) items", message: "Deliver to: \(address)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
 
-}
+    }
+    
+    func updateViews() {
+        guard let items = shoppingListController?.newShoppingItem.count else { return }
+        ItemsInShoppingList.text = "You have \(items) items in your cart"
+    }
+    
 }

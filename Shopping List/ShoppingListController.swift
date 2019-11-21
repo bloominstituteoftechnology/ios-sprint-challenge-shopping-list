@@ -9,18 +9,39 @@
 import Foundation
 
 class ShoppingListController {
-     let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     
+    init() {
+        createList()
     }
-var newShoppingItem: [ShoppingItem] = []
 
-func addToShoppingItem(_ shoppingItem: ShoppingItem) {
-    newShoppingItem.append(shoppingItem)
-}
-
-//persistence
-
-private var persistentFileURL: URL? {
+    var newShoppingItem: [ShoppingItem] = []
+    
+    var listItems: [ShoppingItem] = []
+    
+    func createList() {
+        
+        let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+        
+        for items in itemNames {
+            let item = ShoppingItem(itemNames: items)
+            listItems.append(item)
+        }
+        return 
+    }
+    
+    
+    func createNewOrder(_ shoppingItem: ShoppingItem) {
+        newShoppingItem.append(shoppingItem)
+    }
+    
+    func addedToggle(_ shoppingItem: ShoppingItem) {
+        var tempItem = shoppingItem
+        tempItem.itemAdded.toggle()
+    }
+    
+    //persistence
+    
+    private var persistentFileURL: URL? {
         let fileManager = FileManager.default
         
         guard let documentsDir = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
@@ -57,7 +78,7 @@ private var persistentFileURL: URL? {
             newShoppingItem = try decoder.decode([ShoppingItem].self, from: shoppingItem)
         } catch {
             print("Error loading shopping item: \(error)")
+        }
     }
+    
 }
-
-

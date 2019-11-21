@@ -9,8 +9,8 @@
 import UIKit
 
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var ShoppingItemImage: UIImageView!
     
+    @IBOutlet weak var shoppingImageView: UIImageView!
     @IBOutlet weak var ItemNameLabel: UILabel!
     @IBOutlet weak var AddedLabel: UILabel!
     
@@ -21,8 +21,9 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     }
     func updateViews() {
         guard let shopping = shopping else { return }
-        ShoppingItemImage.image = shopping.image
+        shoppingImageView.image = shopping.itemImage
         ItemNameLabel.text = shopping.itemNames
-        AddedLabel.isEnabled = shopping.itemAdded
+        AddedLabel.text = shopping.itemAdded ? "Remove" : "Add"
+        
     }
 }

@@ -18,38 +18,55 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dgB-I4-9qo">
-                            <size key="itemSize" width="191" height="161"/>
+                            <size key="itemSize" width="191" height="175"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="BgU-7G-KlM" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="191" height="161"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemCell" id="BgU-7G-KlM" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="160" height="174"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Azd-dY-NYQ" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="191" height="161"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Azd-dY-NYQ" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="160" height="174"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Yt0-Eo-4aX">
-                                            <rect key="frame" x="10" y="5" width="171" height="151"/>
+                                        <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Yt0-Eo-4aX">
+                                            <rect key="frame" x="10" y="5" width="140" height="164"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="added" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9o5-at-LsB">
-                                                    <rect key="frame" x="61.5" y="0.0" width="48.5" height="10.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="added" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9o5-at-LsB">
+                                                    <rect key="frame" x="12" y="0.0" width="116" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="22" id="xTf-84-xIQ"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WEI-Lt-Ocs">
-                                                    <rect key="frame" x="15.5" y="10.5" width="140" height="120"/>
+                                                    <rect key="frame" x="0.0" y="22" width="140" height="120"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="120" id="9Pm-mL-H3f"/>
+                                                        <constraint firstAttribute="width" constant="140" id="d5u-bS-DbQ"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="item name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2TL-aL-Pu4">
-                                                    <rect key="frame" x="45.5" y="130.5" width="80" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="item name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2TL-aL-Pu4">
+                                                    <rect key="frame" x="12" y="142" width="116" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="22" id="qBQ-QH-YWP"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="9o5-at-LsB" secondAttribute="trailing" constant="12" id="HWg-tE-R7V"/>
+                                                <constraint firstItem="9o5-at-LsB" firstAttribute="leading" secondItem="Yt0-Eo-4aX" secondAttribute="leading" constant="12" id="jCi-RQ-KJt"/>
+                                                <constraint firstAttribute="trailing" secondItem="2TL-aL-Pu4" secondAttribute="trailing" constant="12" id="mlG-hX-gei"/>
+                                                <constraint firstItem="9o5-at-LsB" firstAttribute="top" secondItem="Yt0-Eo-4aX" secondAttribute="top" id="odq-PL-LAV"/>
+                                                <constraint firstItem="2TL-aL-Pu4" firstAttribute="leading" secondItem="Yt0-Eo-4aX" secondAttribute="leading" constant="12" id="qBF-9r-08R"/>
+                                            </constraints>
                                         </stackView>
                                     </subviews>
                                     <constraints>
@@ -59,11 +76,10 @@
                                         <constraint firstItem="Yt0-Eo-4aX" firstAttribute="leading" secondItem="Azd-dY-NYQ" secondAttribute="leading" constant="10" id="apj-yp-Ut1"/>
                                     </constraints>
                                 </collectionViewCellContentView>
-                                <size key="customSize" width="191" height="161"/>
                                 <connections>
                                     <outlet property="AddedLabel" destination="9o5-at-LsB" id="SV6-AI-MLU"/>
                                     <outlet property="ItemNameLabel" destination="2TL-aL-Pu4" id="OOR-nS-0h9"/>
-                                    <outlet property="ShoppingItemImage" destination="WEI-Lt-Ocs" id="R5l-gO-qg5"/>
+                                    <outlet property="shoppingImageView" destination="WEI-Lt-Ocs" id="rJz-E8-ZB2"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>

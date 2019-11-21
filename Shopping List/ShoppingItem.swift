@@ -9,8 +9,19 @@
 import UIKit
 import Foundation
 
-struct ShoppingItem: Encodable {
+struct ShoppingItem: Codable {
     var itemNames: String
     var itemAdded: Bool
+    var imageName: String
 
+    init (itemNames: String, itemAdded: Bool = false) {
+        self.itemNames = itemNames
+        self.itemAdded = itemAdded
+        self.imageName = itemNames
+}
+    
+    var itemImage: UIImage {
+        return UIImage(named: imageName)!
+    }
+    
 }
