@@ -35,14 +35,17 @@ class ShoppingListCollectionViewController: UICollectionViewController, sendList
 
         // Do any additional setup after loading the view.
     }
-
+    override func viewWillAppear(_ animated: Bool) {
+          super.viewWillAppear(true)
+        collectionView?.reloadData()
+      }
    
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+//     In a storyboard-based application, you will often want to do a little preparation before navigation
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        if segue.identifier == "OrderConfirmationPageSegue" {
 //            if let OrderVC = segue.destination as? OrderConfirmationViewController {
-//                OrderVC.delegate = ShoppingItemController.self
+//                OrderVC.delegate = sendListToOrderPage.self
 //            } else {
 //                return
 //                    }
