@@ -8,9 +8,13 @@
 
 import Foundation
 
-class ShoppingItem {
-    var itemNames: String
-    var wasAdded: Bool
+class ShoppingItem: Codable {
+    var itemName: String
+    var wasAdded: Bool = false
     
-    
+    init(itemName: String) {
+        self.itemName = itemName
+    }
 }
+
+
