@@ -16,5 +16,22 @@ class ShoppingItemsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var groceryItemImg: UIImageView!
     @IBOutlet weak var groceryItemName: UILabel!
     
+    var item: ShoppingItem? {
+        didSet {
+            updateView()
+        }
+    }
+    
+    func updateView() {
+        guard let item = item else { return }
+        groceryItemName.text = item.name
+        let image = UIImage(named: item.name)
+        groceryItemImg.image = image
+        if item.hasBeenAddedToList == false {
+            addedNotAddedLbl.text = "Not Added"
+        } else {
+            addedNotAddedLbl.text = "Added"
+        }
+    }
     
 }

@@ -10,8 +10,20 @@ import UIKit
 
 private let reuseIdentifier = "ShoppingListCell"
 
-class ShoppingListCollectionViewController: UICollectionViewController {
+protocol sendListToOrderPage {
+    func listIsSent(_: [ShoppingItem])
+}
+protocol addItemsDelegate {
+    func itemIsAdded(_ item: ShoppingItem)
+}
 
+class ShoppingListCollectionViewController: UICollectionViewController, sendListToOrderPage {
+    func listIsSent(_: [ShoppingItem]) {
+    }
+    
+    var delegate: sendListToOrderPage?
+    let shoppingItemController = ShoppingItemController()
+        
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,25 +48,32 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
+//    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 0
+//    }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return shoppingItemController.shoppingItems.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ShoppingItemsCollectionViewCell else { return UICollectionViewCell()}
     
-        // Configure the cell
-    
+        let item = shoppingItemController.shoppingItems[indexPath.item]
+        
+        cell.item = item
         return cell
     }
 
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = shoppingItemController.shoppingItems[indexPath.item]
+        shoppingItemController.update(item: item)
+        collectionView.reloadData()
+    }
+    
     // MARK: UICollectionViewDelegate
 
     /*
