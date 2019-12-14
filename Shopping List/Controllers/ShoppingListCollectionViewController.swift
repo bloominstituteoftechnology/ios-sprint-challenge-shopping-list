@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let reuseIdentifier = "ShoppingListCell"
+//private let reuseIdentifier = "ShoppingListCell"
 
 protocol sendListToOrderPage {
     func listIsSent(_: [ShoppingItem])
@@ -31,27 +31,30 @@ class ShoppingListCollectionViewController: UICollectionViewController, sendList
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "ShoppingListCell")
 
         // Do any additional setup after loading the view.
     }
 
-    /*
-    // MARK: - Navigation
+   
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "OrderConfirmationPageSegue" {
+//            if let OrderVC = segue.destination as? OrderConfirmationViewController {
+//                OrderVC.delegate = ShoppingItemController.self
+//            } else {
+//                return
+//                    }
+//    }
+//     }
+    
     // MARK: UICollectionViewDataSource
 
-//    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 2
+    }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -60,7 +63,7 @@ class ShoppingListCollectionViewController: UICollectionViewController, sendList
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ShoppingItemsCollectionViewCell else { return UICollectionViewCell()}
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingListCell", for: indexPath) as? ShoppingItemsCollectionViewCell else { return UICollectionViewCell()}
     
         let item = shoppingItemController.shoppingItems[indexPath.item]
         
