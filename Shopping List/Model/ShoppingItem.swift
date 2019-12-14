@@ -7,13 +7,17 @@
 //
 
 import Foundation
+import UIKit
 
-struct ShoppingItem: Equatable, Codable {
+struct ShoppingItem {
+    
     let name: String
+//    var image: UIImage
     var hasBeenAddedToList: Bool = false
     
     init(name: String, hasBeenAddedToList: Bool = false) {
         self.name = name
         self.hasBeenAddedToList = hasBeenAddedToList
+//        self.image = UIImage(named: image) ?? <#default value#>
     }
 }
