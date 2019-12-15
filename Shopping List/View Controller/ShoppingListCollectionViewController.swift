@@ -8,32 +8,32 @@
 
 import UIKit
 
-private let reuseIdentifier = "ShoppingListViewCell"
-
-class ShoppingListCollectionViewController: UICollectionViewController {
+class ShoppingListCollectionViewController: UICollectionViewController, ShoppingListDelegate {
 
     let shoppingListController = ShoppingListController()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+        collectionView?.reloadData()
     }
+    
+    func toggleHasBeenAdded(cell: ShoppingListCollectionViewCell) {
+        guard let indexPath = collectionView?.indexPath(for: cell) else { return }
+        shoppingListController.updateList(for: shoppingListController.shoppingItem[indexPath.item])
+        collectionView?.reloadData()
+      }
+      
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    /*
+  
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ShowOrder" {
+            guard let orderVC = segue.destination as? OrderViewController else {return}
+            
+        }
     }
     */
 
@@ -46,13 +46,13 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ShoppingListViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingListViewCell", for: indexPath) as? ShoppingListCollectionViewCell else {
             return UICollectionViewCell() }
+        
+        cell.delegate = self
 
         let item = shoppingListController.shoppingItem[indexPath.item]
-        cell.itemLabel.text = item.name
-       // cell.itemImage.image = item.image
-        
+        cell.item = item
         return cell
     }
 

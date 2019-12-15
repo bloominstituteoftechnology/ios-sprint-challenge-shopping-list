@@ -17,35 +17,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fIY-Mu-fLW">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fIY-Mu-fLW">
                             <size key="itemSize" width="175" height="175"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoppingListViewCell" id="vac-tu-pzE" customClass="ShoppingListViewCell" customModule="Shopping_List" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoppingListViewCell" id="vac-tu-pzE" customClass="ShoppingListCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="175" height="175"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="TUX-2T-SM5">
                                     <rect key="frame" x="0.0" y="0.0" width="175" height="175"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nKh-Pg-0fr">
-                                            <rect key="frame" x="24" y="24" width="127" height="126.5"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nKh-Pg-0fr">
+                                            <rect key="frame" x="0.0" y="0.0" width="175" height="175"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ft-aj-7Ok">
-                                                    <rect key="frame" x="0.0" y="0.0" width="127" height="30"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="175" height="78.5"/>
                                                     <state key="normal" title="Not Added"/>
                                                     <connections>
+                                                        <action selector="addItem:" destination="vac-tu-pzE" eventType="touchUpInside" id="4uf-mh-Z3n"/>
                                                         <action selector="itemAdded:" destination="vac-tu-pzE" eventType="touchUpInside" id="amg-hg-RmB"/>
                                                     </connections>
                                                 </button>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pmc-dS-3PS">
-                                                    <rect key="frame" x="0.0" y="30" width="127" height="76"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pmc-dS-3PS">
+                                                    <rect key="frame" x="0.0" y="78.5" width="175" height="76"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UdJ-oW-yRf">
-                                                    <rect key="frame" x="0.0" y="106" width="127" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UdJ-oW-yRf">
+                                                    <rect key="frame" x="0.0" y="154.5" width="175" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -53,11 +54,18 @@
                                             </subviews>
                                         </stackView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="nKh-Pg-0fr" firstAttribute="leading" secondItem="TUX-2T-SM5" secondAttribute="leading" id="0jw-Ql-0UE"/>
+                                        <constraint firstItem="nKh-Pg-0fr" firstAttribute="top" secondItem="TUX-2T-SM5" secondAttribute="top" id="28Z-Pw-qBv"/>
+                                        <constraint firstAttribute="trailing" secondItem="nKh-Pg-0fr" secondAttribute="trailing" id="Xqp-E7-0Ss"/>
+                                        <constraint firstAttribute="bottom" secondItem="nKh-Pg-0fr" secondAttribute="bottom" id="avA-b7-PGr"/>
+                                    </constraints>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="175" height="175"/>
                                 <connections>
-                                    <outlet property="itemImage" destination="pmc-dS-3PS" id="YhT-Hs-aXE"/>
-                                    <outlet property="itemLabel" destination="UdJ-oW-yRf" id="nMG-AQ-esh"/>
+                                    <outlet property="itemButton" destination="9ft-aj-7Ok" id="yyF-Cu-usE"/>
+                                    <outlet property="itemImage" destination="pmc-dS-3PS" id="jwJ-3A-EQr"/>
+                                    <outlet property="itemLabel" destination="UdJ-oW-yRf" id="Zp7-p3-jSJ"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -86,7 +94,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="on4-hC-cid">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="on4-hC-cid">
                                 <rect key="frame" x="30" y="136" width="354" height="133.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9P-vN-Geg">
@@ -117,6 +125,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="on4-hC-cid" firstAttribute="top" secondItem="iLL-Ce-SnI" secondAttribute="top" constant="48" id="4TU-yb-vAx"/>
                             <constraint firstItem="on4-hC-cid" firstAttribute="leading" secondItem="iLL-Ce-SnI" secondAttribute="leading" constant="30" id="KpQ-9k-7mb"/>
                             <constraint firstItem="iLL-Ce-SnI" firstAttribute="trailing" secondItem="on4-hC-cid" secondAttribute="trailing" constant="30" id="ndb-0l-lpU"/>
                         </constraints>

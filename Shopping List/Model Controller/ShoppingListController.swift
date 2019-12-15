@@ -7,15 +7,16 @@
 //
 
 import Foundation
-import UIKit
 
 class ShoppingListController {
+    
     
     init() {
         loadFromPersistentStore()
     }
+ 
     
-    var shoppingItem: [ShoppingItem] {
+    var shoppingItem: [ShoppingItem] =
         [ShoppingItem(name:  "Apple"),
          ShoppingItem(name: "Grapes"),
          ShoppingItem(name: "Milk"),
@@ -23,9 +24,17 @@ class ShoppingListController {
          ShoppingItem(name: "Popcorn"),
          ShoppingItem(name: "Soda"),
          ShoppingItem(name: "Strawberries")]
-    }
-    private(set) var addedItems: [ShoppingItem] = []
     
+    func updateList(for item: ShoppingItem) {
+        guard let index = shoppingItem.firstIndex(of: item) else {return}
+        shoppingItem[index].hasBeenAdded = !shoppingItem[index].hasBeenAdded
+        saveToPersistentStore()
+    }
+    
+    
+    var addedItems: [ShoppingItem] {
+        return shoppingItem.filter({ $0.hasBeenAdded })
+    }
    
     private func loadFromPersistentStore() {
         
@@ -36,7 +45,7 @@ class ShoppingListController {
             
             let plistDecoder = PropertyListDecoder()
             
-            self.addedItems = try plistDecoder.decode([ShoppingItem].self, from: notebooksData)
+            self.shoppingItem = try plistDecoder.decode([ShoppingItem].self, from: notebooksData)
         } catch {
             NSLog("Error decoding memories from property list: \(error)")
         }
@@ -47,7 +56,7 @@ class ShoppingListController {
         let plistEncoder = PropertyListEncoder()
         
         do {
-            let notebooksData = try plistEncoder.encode(addedItems)
+            let notebooksData = try plistEncoder.encode(shoppingItem)
             
             guard let fileURL = shoppingListURL else { return }
             
@@ -64,4 +73,5 @@ class ShoppingListController {
         
         return documentDirectory?.appendingPathComponent(fileName)
     }
-}
+    
+ }

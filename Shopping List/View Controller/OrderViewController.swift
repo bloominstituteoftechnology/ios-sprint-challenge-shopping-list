@@ -16,6 +16,7 @@ class OrderViewController: UIViewController {
     @IBOutlet weak var orderAddress: UITextField!
     
     @IBAction func submitOrder(_ sender: UIButton) {
+        showAlert()
     }
     
     private func showAlert() {
