@@ -16,7 +16,7 @@ extension String {
 class MainCollectionViewController: UICollectionViewController {
 
     let shoppingItemController = ShoppingItemController()
-    var delegate: nextView
+    var delegate: shoppingListDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
 

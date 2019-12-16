@@ -15,11 +15,6 @@ class CollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
-    //MARK: - IBActions
-    
-    
-    var delegate: CollectionViewCellDelegate?
-    
     var item: ShoppingItem? {
         didSet {
             updateViews()
@@ -30,7 +25,7 @@ class CollectionViewCell: UICollectionViewCell {
                guard let item = item else { return }
             nameLabel.text = item.itemName
                let image = UIImage(named: item.itemName)
-               itemImageView.image = image
+               imageView.image = image
                if item.isAdded == false {
                    addedLabel.text = "Not Added"
                } else {

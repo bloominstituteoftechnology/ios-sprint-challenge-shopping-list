@@ -53,7 +53,7 @@ class ShoppingItemController {
                 let decodeItems = try decoder.decode([ShoppingItem].self, from: itemData)
                 shoppingItems = decodeItems
                 } catch {
-                        print("\(error)")
+                        print("Error: \(error)")
             }
         }
         
@@ -96,8 +96,10 @@ class ShoppingItemController {
                 }
             }
         }
-    
-         
-       
-    
+}
+
+extension ShoppingItemController: itemsAddedDelegate {
+    func itemsAdded(_ item: ShoppingItem) {
+        shoppingItems.append(item)
+    }
 }

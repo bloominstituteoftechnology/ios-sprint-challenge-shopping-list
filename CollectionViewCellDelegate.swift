@@ -13,6 +13,6 @@ protocol itemsAddedDelegate {
     func itemsAdded(_: ShoppingItem)
 }
 
-protocol nextView {
+protocol shoppingListDelegate {
     func shoppingListSent(_: [ShoppingItem])
 }
