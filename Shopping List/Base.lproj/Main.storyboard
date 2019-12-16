@@ -37,31 +37,32 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="BJz-Rk-xca">
-                                            <rect key="frame" x="8" y="4" width="104.5" height="30"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="BJz-Rk-xca">
+                                            <rect key="frame" x="8" y="0.0" width="109" height="30"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bo4-nH-EeN">
-                                                    <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
-                                                    <state key="normal" title="Button"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="50.5" height="30"/>
+                                                    <state key="normal" title="Not"/>
                                                     <connections>
                                                         <action selector="addedButtonTapped:" destination="Oom-kt-CJ0" eventType="touchUpInside" id="pby-GG-h36"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Added" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DtR-ZR-Q5a">
-                                                    <rect key="frame" x="54" y="0.0" width="50.5" height="30"/>
+                                                    <rect key="frame" x="58.5" y="0.0" width="50.5" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </stackView>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nrV-jY-da7">
-                                            <rect key="frame" x="0.0" y="37" width="120" height="83"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="nrV-jY-da7">
+                                            <rect key="frame" x="0.0" y="30" width="120" height="89.5"/>
                                         </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="oNc-Lk-RXP" secondAttribute="trailing" id="8RH-Fz-nis"/>
                                         <constraint firstItem="nrV-jY-da7" firstAttribute="top" secondItem="BJz-Rk-xca" secondAttribute="bottom" id="IgJ-Jy-Lws"/>
+                                        <constraint firstItem="BJz-Rk-xca" firstAttribute="top" secondItem="aaL-oN-8KN" secondAttribute="top" id="N7L-8p-b6T"/>
                                         <constraint firstAttribute="bottom" secondItem="oNc-Lk-RXP" secondAttribute="bottom" id="lHJ-6k-Ein"/>
                                         <constraint firstItem="oNc-Lk-RXP" firstAttribute="top" secondItem="nrV-jY-da7" secondAttribute="bottom" id="lKE-ad-eya"/>
                                         <constraint firstItem="oNc-Lk-RXP" firstAttribute="leading" secondItem="aaL-oN-8KN" secondAttribute="leading" id="or0-G3-h4G"/>
