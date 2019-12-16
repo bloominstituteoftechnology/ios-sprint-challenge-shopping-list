@@ -8,6 +8,7 @@ class ShoppingCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
     }
 
     // MARK: UICollectionViewDataSource
@@ -37,7 +38,8 @@ class ShoppingCollectionViewController: UICollectionViewController {
         var shoppingItem = shoppingListController.shoppingItems[indexPath.item]
         
         shoppingItem.hasBeenAdded.toggle()
-        #warning("Collection View not reloaded")
+        shoppingListController.saveToPersistentStore()
+        #warning("Reload Collection View Data")
     }
     
 }
