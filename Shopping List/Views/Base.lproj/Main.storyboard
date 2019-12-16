@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Collection View Controller-->
+        <!--Shopping Items Collection View Controller-->
         <scene sceneID="yKS-Xz-4fo">
             <objects>
-                <collectionViewController id="OrX-cb-Z7V" sceneMemberID="viewController">
+                <collectionViewController id="OrX-cb-Z7V" customClass="ShoppingItemsCollectionViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="xDz-Lm-eHy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,7 +24,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="M1q-df-fbF">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="M1q-df-fbF" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="150" height="193"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ynn-2P-IG3">
@@ -58,15 +58,30 @@
                                                 </label>
                                             </subviews>
                                         </stackView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lpT-EQ-ef2">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="193"/>
+                                            <connections>
+                                                <action selector="itemTapped:" destination="M1q-df-fbF" eventType="touchUpInside" id="gA4-OD-PX7"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="C4D-ae-Vcx" firstAttribute="top" secondItem="ynn-2P-IG3" secondAttribute="top" id="2aX-ke-vUk"/>
+                                        <constraint firstAttribute="trailing" secondItem="lpT-EQ-ef2" secondAttribute="trailing" id="2th-sn-rFu"/>
                                         <constraint firstAttribute="trailing" secondItem="C4D-ae-Vcx" secondAttribute="trailing" id="CQk-mJ-hdc"/>
+                                        <constraint firstItem="lpT-EQ-ef2" firstAttribute="leading" secondItem="ynn-2P-IG3" secondAttribute="leading" id="EGg-Hu-gax"/>
+                                        <constraint firstAttribute="bottom" secondItem="lpT-EQ-ef2" secondAttribute="bottom" id="LCV-9f-Qj9"/>
                                         <constraint firstAttribute="bottom" secondItem="C4D-ae-Vcx" secondAttribute="bottom" id="QtA-FS-MER"/>
                                         <constraint firstItem="C4D-ae-Vcx" firstAttribute="leading" secondItem="ynn-2P-IG3" secondAttribute="leading" id="bSt-Aj-j0E"/>
+                                        <constraint firstItem="lpT-EQ-ef2" firstAttribute="top" secondItem="ynn-2P-IG3" secondAttribute="top" id="xS9-j9-VX3"/>
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="150" height="193"/>
+                                <connections>
+                                    <outlet property="addedItemLabel" destination="SOi-Jg-wRT" id="KJu-AR-af5"/>
+                                    <outlet property="imageView" destination="dQJ-KN-oGR" id="AF4-Pe-Uhw"/>
+                                    <outlet property="itemLabel" destination="lz7-ql-jv0" id="Tcj-hs-CxF"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
