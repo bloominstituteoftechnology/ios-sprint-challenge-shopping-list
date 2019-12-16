@@ -11,6 +11,7 @@ import UIKit
 class ListDetailViewController: UIViewController {
 
     @IBOutlet weak var itemsRemainingLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

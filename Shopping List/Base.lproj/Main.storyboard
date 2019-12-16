@@ -31,8 +31,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="120" height="140"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNc-Lk-RXP">
-                                            <rect key="frame" x="39" y="122" width="42" height="20.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNc-Lk-RXP">
+                                            <rect key="frame" x="0.0" y="119.5" width="120" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -56,18 +56,25 @@
                                             </subviews>
                                         </stackView>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nrV-jY-da7">
-                                            <rect key="frame" x="0.0" y="37" width="120" height="95"/>
+                                            <rect key="frame" x="0.0" y="37" width="120" height="83"/>
                                         </imageView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="oNc-Lk-RXP" secondAttribute="trailing" id="8RH-Fz-nis"/>
                                         <constraint firstItem="nrV-jY-da7" firstAttribute="top" secondItem="BJz-Rk-xca" secondAttribute="bottom" id="IgJ-Jy-Lws"/>
-                                        <constraint firstItem="oNc-Lk-RXP" firstAttribute="top" secondItem="nrV-jY-da7" secondAttribute="bottom" id="dvx-tl-bOs"/>
+                                        <constraint firstAttribute="bottom" secondItem="oNc-Lk-RXP" secondAttribute="bottom" id="lHJ-6k-Ein"/>
+                                        <constraint firstItem="oNc-Lk-RXP" firstAttribute="top" secondItem="nrV-jY-da7" secondAttribute="bottom" id="lKE-ad-eya"/>
+                                        <constraint firstItem="oNc-Lk-RXP" firstAttribute="leading" secondItem="aaL-oN-8KN" secondAttribute="leading" id="or0-G3-h4G"/>
                                         <constraint firstItem="nrV-jY-da7" firstAttribute="leading" secondItem="aaL-oN-8KN" secondAttribute="leading" id="rhr-vo-6eW"/>
                                         <constraint firstAttribute="trailing" secondItem="nrV-jY-da7" secondAttribute="trailing" id="rqh-Y9-UAW"/>
                                         <constraint firstItem="oNc-Lk-RXP" firstAttribute="centerX" secondItem="aaL-oN-8KN" secondAttribute="centerX" id="xSb-oE-sjv"/>
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="120" height="140"/>
+                                <connections>
+                                    <outlet property="itemImage" destination="nrV-jY-da7" id="mXp-8l-NuX"/>
+                                    <outlet property="itemName" destination="oNc-Lk-RXP" id="MsD-bS-qHS"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -84,15 +91,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="addedLabel" destination="Bo4-nH-EeN" id="Gca-M0-xg7"/>
-                        <outlet property="itemImage" destination="nrV-jY-da7" id="uB0-Pj-1pr"/>
-                        <outlet property="itemNameLabel" destination="oNc-Lk-RXP" id="GN0-WW-1GJ"/>
-                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oJQ-5Q-qxE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1394" y="144"/>
+            <point key="canvasLocation" x="1544.9275362318842" y="140.625"/>
         </scene>
         <!--List Detail View Controller-->
         <scene sceneID="cg1-65-GqE">
