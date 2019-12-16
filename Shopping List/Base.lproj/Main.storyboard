@@ -40,6 +40,10 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="18Y-As-r69">
                                             <rect key="frame" x="0.0" y="0.0" width="201" height="45"/>
                                             <state key="normal" title="Button"/>
+                                            <connections>
+                                                <action selector="ItemWasAddedButtonTapped:" destination="M47-64-gRV" eventType="touchUpInside" id="vgP-nZ-Apq"/>
+                                                <action selector="itemWasAddedLabel:" destination="M47-64-gRV" eventType="touchUpInside" id="dkq-OM-9wm"/>
+                                            </connections>
                                         </button>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s91-Fl-dgg">
                                             <rect key="frame" x="0.0" y="45" width="201" height="145"/>
@@ -63,6 +67,10 @@
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="201" height="211"/>
+                                <connections>
+                                    <outlet property="imageView" destination="s91-Fl-dgg" id="EgJ-Sd-Lut"/>
+                                    <outlet property="itemName" destination="SCr-cM-0o2" id="DXR-m8-wkA"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>

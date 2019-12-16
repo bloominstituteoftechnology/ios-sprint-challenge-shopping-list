@@ -9,7 +9,7 @@
 import Foundation
 
 
-struct Item {
+struct Item: Codable {
     let name: String
     let itemWasAdded: Bool
 }

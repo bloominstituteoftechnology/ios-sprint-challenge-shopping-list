@@ -10,6 +10,12 @@ import UIKit
 
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
+    @IBAction func ItemWasAddedButtonTapped(_ sender: UIButton) {
+    }
+    @IBAction func itemWasAddedLabel(_ sender: Any) {
+    }
     
+    @IBOutlet var imageView: UIImageView!
+    @IBOutlet var itemName: UILabel!
     
 }
