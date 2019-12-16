@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import UserNotifications
 
-class SubmitOrderViewController: UIViewController {
+class SubmitOrderViewController: UIViewController, UNUserNotificationCenterDelegate {
+    var messageSubtitle = "Shopping List"
     
     // MARK: - IBOutlets
     
@@ -21,6 +23,17 @@ class SubmitOrderViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
+        UNUserNotificationCenter.current().requestAuthorization(options:
+            [[.alert, .sound, .badge]],
+                completionHandler: { (granted, error) in
+            // Handle Error
+        })
+        UNUserNotificationCenter.current().delegate = self
+    }
+    
+        func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+
+        completionHandler([.alert, .sound])
     }
     
     private func updateViews() {
@@ -29,24 +42,47 @@ class SubmitOrderViewController: UIViewController {
         itemsLabel.text = "You have \(itemCount) item(s) in your shopping list."
     }
     
-    private func sendAlert(to name: String, at address: String) {
-        let title = "Delivery for \(name)!"
-        let message = "Your items will be delivered to \(address) in 15 minutes."
+//    private func sendAlert(to name: String, at address: String) {
+////
+////        let title = "Delivery for \(name)!"
+////        let message = "Your items will be delivered to \(address) in 15 minutes."
+////
+////        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+////
+////
+////        let action = UIAlertAction(title: "Ok", style: .default) { alert in self.navigationController?.popToRootViewController(animated: true)}
+////        alert.addAction(action)
+////
+////        present(alert, animated: true)
+//    }
+    
+    func sendNotification() {
+        let name = nameTextField.text
+        let address = addressTextField.text
         
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let content = UNMutableNotificationContent()
+        content.title = "Delivery for \(name ?? "unknown")!"
+        content.subtitle = messageSubtitle
+        content.body = "Your items will be delivered to \(address ?? "unknown") in 15 minutes."
+        content.badge = 1
         
-        
-        let action = UIAlertAction(title: "Ok", style: .default) { alert in self.navigationController?.popToRootViewController(animated: true)}
-        alert.addAction(action)
-        
-        present(alert, animated: true)
-    }
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3,
+                repeats: false)
+        let requestIdentifier = "demoNotification"
+        let request = UNNotificationRequest(identifier: requestIdentifier,
+                content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request,
+            withCompletionHandler: { (error) in
+                // Handle error
+    })
+}
     
     // MARK: - IBActions
     
     @IBAction func submitOrderButton(_ sender: Any) {
-        guard let name = nameTextField.text, let address = addressTextField.text, !name.isEmpty, !address.isEmpty else { return }
-        sendAlert(to: name, at: address)
+//        guard let name = nameTextField.text, let address = addressTextField.text, !name.isEmpty, !address.isEmpty else { return }
+//        sendAlert(to: name, at: address)
+        sendNotification()
     }
     
 }
