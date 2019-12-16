@@ -9,20 +9,18 @@
 import Foundation
 
 class ShoppingController {
-    
-    
-    var items: [Items] = [
+    var items: [Items] {
         
-//    var item = [
-//        Items(name: "Apple", added: false),
-//        Items(name: "Grapes", added: false),
-//        Items(name: "Milk", added: false),
-//        Items(name: "Muffin", added: false),
-//        Items(name: "Popcorn", added: false),
-//        Items(name: "Soda", added: false),
-//        Items(name: "Strawberries", added: false),
+   var item = [
+    Items(name: "Apple", imageName: "Apple"),
+        Items(name: "Grapes", imageName: "Grapes"),
+        Items(name: "Milk", imageName: "Milk"),
+        Items(name: "Muffin", imageName: "Muffin"),
+        Items(name: "Popcorn", imageName: "Popcorn"),
+        Items(name: "Soda", imageName: "Soda"),
+        Items(name: "Strawberries", imageName: "Strawberries"),
         ]
-//    let wasAdded = UserDefaults.standard.bool(forKey: .)
-//
-    
+
+    return item
+    }
 }

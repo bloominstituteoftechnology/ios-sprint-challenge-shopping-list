@@ -12,7 +12,7 @@ private let reuseIdentifier = "Cell"
 
 class ListCollectionViewController: UICollectionViewController {
    
- 
+ let shoppingController = ShoppingController()
     
     
     override func viewDidLoad() {
@@ -40,21 +40,17 @@ class ListCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return shoppingController.items.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ListCell", for: indexPath) as? ListCollectionViewCell else { return UICollectionViewCell()}
     
-        // Configure the cell
+        let item = shoppingController.items[indexPath.item]
+        cell.itemImage.image = item.image
+        cell.itemName.text = item.name
     
         return cell
     }

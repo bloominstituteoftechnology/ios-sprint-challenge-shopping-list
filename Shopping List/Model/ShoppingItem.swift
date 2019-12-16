@@ -6,14 +6,14 @@
 //  Copyright © 2019 Lambda School. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct Items {
     var name: String
-    var added: Bool
+    var image: UIImage
     
-    init(name: String, added: Bool) {
+    init(name: String, imageName: String) {
         self.name = name
-        self.added = added
+        self.image = UIImage(named: imageName)!
     }
 }
