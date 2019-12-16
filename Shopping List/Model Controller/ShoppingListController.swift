@@ -12,7 +12,7 @@ class ShoppingListConroller {
     
     // MARK: - Properties
 
-    var shoppingList: [ShoppingItem]
+    var shoppingList: [ShoppingItem] = []
     
     var shoppingCart: [ShoppingItem] {
         return shoppingList.filter( { $0.isOnShoppingList } )
@@ -71,26 +71,27 @@ class ShoppingListConroller {
     // MARK: - Initializer
     
     init() {
-        //let userDefaults = UserDefaults.standard
-        let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
-        var itemList: [ShoppingItem] = []
+        let userDefaults = UserDefaults.standard
+        let itemsHaveBeenInitialized = userDefaults.bool(forKey: .itemsHaveBeenInitializedKey)
         
-        for name in itemNames {
-            //if let item = userDefaults.object(forKey: name) as? ShoppingItem {
-                //itemList.append(item)
-            //} else {
+        if itemsHaveBeenInitialized {
+            loadFromPersistentStore()
+        } else {
+            let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+            var itemList: [ShoppingItem] = []
+            
+            for name in itemNames {
                 let item = ShoppingItem(name: name)
                 itemList.append(item)
-                //userDefaults.set(item, forKey: name)
-            //}
+            }
+            shoppingList = itemList
+            saveToPersistentStore()
+            userDefaults.set(true, forKey: .itemsHaveBeenInitializedKey)
         }
-        shoppingList = itemList
     }
     
 }
 
-/*
 extension String {
-    static var isListOfItemsInitializedKey = "IsListOfItemsInitialized"
+    static var itemsHaveBeenInitializedKey = "ItemsHaveBeenInitialized"
 }
-*/
