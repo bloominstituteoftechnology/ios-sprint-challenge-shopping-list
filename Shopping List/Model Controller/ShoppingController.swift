@@ -13,16 +13,16 @@ class ShoppingController {
     
     var items: [Items] = [
         
-    var item = [
-        Items(name: "Apple", added: false),
-        Items(name: "Grapes", added: false),
-        Items(name: "Milk", added: false),
-        Items(name: "Muffin", added: false),
-        Items(name: "Popcorn", added: false),
-        Items(name: "Soda", added: false),
-        Items(name: "Strawberries", added: false),
+//    var item = [
+//        Items(name: "Apple", added: false),
+//        Items(name: "Grapes", added: false),
+//        Items(name: "Milk", added: false),
+//        Items(name: "Muffin", added: false),
+//        Items(name: "Popcorn", added: false),
+//        Items(name: "Soda", added: false),
+//        Items(name: "Strawberries", added: false),
         ]
-    let wasAdded = UserDefaults.standard.bool(forKey: .)
-    
+//    let wasAdded = UserDefaults.standard.bool(forKey: .)
+//
     
 }

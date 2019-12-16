@@ -11,7 +11,10 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class ListCollectionViewController: UICollectionViewController {
-
+    @IBOutlet weak var itemImage: UIImageView!
+    @IBOutlet weak var itemNameLabel: UILabel!
+    @IBOutlet weak var addedLabel: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -86,4 +89,6 @@ class ListCollectionViewController: UICollectionViewController {
     }
     */
 
+    @IBAction func addedButtonTapped(_ sender: Any) {
+    }
 }

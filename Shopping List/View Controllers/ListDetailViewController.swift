@@ -10,6 +10,7 @@ import UIKit
 
 class ListDetailViewController: UIViewController {
 
+    @IBOutlet weak var itemsRemainingLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,5 +27,9 @@ class ListDetailViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    @IBAction func nameTextField(_ sender: Any) {
+    }
+    @IBAction func addressTextField(_ sender: Any) {
+    }
+    
 }
