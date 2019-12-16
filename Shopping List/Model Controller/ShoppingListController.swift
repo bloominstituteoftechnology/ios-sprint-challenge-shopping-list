@@ -78,13 +78,9 @@ class ShoppingListConroller {
             loadFromPersistentStore()
         } else {
             let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
-            var itemList: [ShoppingItem] = []
-            
             for name in itemNames {
-                let item = ShoppingItem(name: name)
-                itemList.append(item)
+                createShoppingItem(withName: name)
             }
-            shoppingList = itemList
             saveToPersistentStore()
             userDefaults.set(true, forKey: .itemsHaveBeenInitializedKey)
         }
