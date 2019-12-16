@@ -4,14 +4,15 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Collection View Controller-->
+        <!--List Collection View Controller-->
         <scene sceneID="3KL-Y2-nrs">
             <objects>
-                <collectionViewController id="Oom-kt-CJ0" sceneMemberID="viewController">
+                <collectionViewController id="Oom-kt-CJ0" customClass="ListCollectionViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="808-Pn-vME">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -23,7 +24,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="1nP-pm-q2N">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="1nP-pm-q2N" customClass="ListCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="120" height="140"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="aaL-oN-8KN">
@@ -51,7 +52,7 @@
                                                 </label>
                                             </subviews>
                                         </stackView>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7RM-xj-s3B">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7RM-xj-s3B" customClass="L">
                                             <rect key="frame" x="0.0" y="34" width="120" height="88"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="88" id="tvM-32-UVU"/>
@@ -77,12 +78,34 @@
                         </connections>
                     </collectionView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="u1a-F4-5TV"/>
+                    <navigationItem key="navigationItem" id="u1a-F4-5TV">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="aHT-v8-cVo">
+                            <connections>
+                                <segue destination="whs-dq-aD8" kind="show" id="PxE-8R-SM8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oJQ-5Q-qxE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1718.840579710145" y="143.97321428571428"/>
+            <point key="canvasLocation" x="1551" y="144"/>
+        </scene>
+        <!--List Detail View Controller-->
+        <scene sceneID="cg1-65-GqE">
+            <objects>
+                <viewController id="whs-dq-aD8" customClass="ListDetailViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yqf-nz-9PI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="gOt-Ce-Vjx"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="r77-dm-gCd"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nGT-mW-FjH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2320" y="144"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="oyh-mg-HIn">
