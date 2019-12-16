@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pqZ-4C-vUI">
-                            <size key="itemSize" width="165" height="165"/>
+                            <size key="itemSize" width="200" height="200"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -60,6 +60,11 @@
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="200" height="200"/>
+                                <connections>
+                                    <outlet property="itemAddedBool" destination="srj-3E-lbn" id="bDC-WA-w1K"/>
+                                    <outlet property="itemImage" destination="2oJ-nk-dN9" id="WK7-Rk-l81"/>
+                                    <outlet property="itemName" destination="pOQ-kI-yAU" id="ZhP-iP-Kpy"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -70,7 +75,7 @@
                     <navigationItem key="navigationItem" title="Shopping List" id="pIf-0k-j65">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="1Ny-hC-a7m">
                             <connections>
-                                <segue destination="opc-uV-ZCr" kind="show" id="bfs-D4-Yue"/>
+                                <segue destination="opc-uV-ZCr" kind="show" identifier="CheckoutSegue" id="bfs-D4-Yue"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -116,6 +121,9 @@
                                         <rect key="frame" x="0.0" y="154" width="374" height="34"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                         <state key="normal" title="Send Order"/>
+                                        <connections>
+                                            <action selector="sendOrderButtonTapped:" destination="opc-uV-ZCr" eventType="touchUpInside" id="7wZ-0K-6xA"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -129,6 +137,11 @@
                         <viewLayoutGuide key="safeArea" id="Rln-EF-bum"/>
                     </view>
                     <navigationItem key="navigationItem" id="jf2-HJ-iZW"/>
+                    <connections>
+                        <outlet property="addressTectField" destination="ez2-R5-3gK" id="cdW-H5-uhp"/>
+                        <outlet property="checkoutTitle" destination="6d9-At-jNE" id="FgU-hC-5HH"/>
+                        <outlet property="nameTextField" destination="EHP-4E-4AD" id="8dO-kB-oUX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eld-zA-U13" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
