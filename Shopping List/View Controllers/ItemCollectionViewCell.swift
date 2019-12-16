@@ -7,4 +7,5 @@ class ItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet var itemImage: UIImageView!
     @IBOutlet var itemName: UILabel!
     
+    
 }

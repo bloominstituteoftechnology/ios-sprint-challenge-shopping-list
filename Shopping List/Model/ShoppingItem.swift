@@ -1,6 +1,6 @@
 import Foundation
 
-struct ShoppingItem {
+struct ShoppingItem: Codable {
     var itemName: String
     var hasBeenAdded: Bool
 }
