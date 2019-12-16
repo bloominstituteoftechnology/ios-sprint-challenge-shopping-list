@@ -2,27 +2,25 @@ import UIKit
 
 class CheckoutViewController: UIViewController {
     
+    let shoppingListController = ShoppingListController()
+    
     // MARK: - IBOutlets
     @IBOutlet var checkoutTitle: UILabel!
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var addressTectField: UITextField!
     
     
-    // MARK: - Properties
-    var shoppingListController = ShoppingListController()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateTitle()
     }
     
-    // MARK: - Functions
-    // Update Checkout Title
     func updateTitle() {
-        let cartCountArray = shoppingListController.shoppingItems.filter { $0.hasBeenAdded }
-        let cartCount = String(cartCountArray.count)
-        checkoutTitle.text = "You currently have \(cartCount) item(s) in your shopping list!"
+        let filteredArray = shoppingListController.shoppingItems.filter { $0.hasBeenAdded == true }
+        let countTitle = filteredArray.count
+        checkoutTitle.text = "You have \(String(countTitle)) item(s) in your shopping list."
     }
+    
     
     // Alert
     private func showAlert() {

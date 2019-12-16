@@ -22,15 +22,18 @@ class ShoppingListController {
     
     // Initializing the array of Shopping Items (once)
     init() {
-        if !firstInitalizationOccured {
+        if firstInitalizationOccured == false {
             for x in itemNames {
                 createShoppingItem(itemName: x, hasBeenAdded: false)
             }
-            saveToPersistentStore()
             let userDefaults = UserDefaults.standard
             userDefaults.set(true, forKey: "ShouldInitialize")
+            saveToPersistentStore()
+            print("Initial Initialize")
         }
         loadFromPersistentStore()
+        print("Loaded from store")
+        
     }
     
     
@@ -44,7 +47,13 @@ class ShoppingListController {
         return shoppingItem
     }
     
-    
+    // Updating Item
+    func updateItem(indexPath: IndexPath){
+        shoppingItems[indexPath.row].hasBeenAdded.toggle()
+        saveToPersistentStore()
+        print("Saved to Persistent Store")
+    }
+
     
     // MARK: - Persistent Storage
     
@@ -83,5 +92,6 @@ class ShoppingListController {
             print("Error loading Shopping Items data: \(error)")
         }
     }
+    
+    
 }
-
