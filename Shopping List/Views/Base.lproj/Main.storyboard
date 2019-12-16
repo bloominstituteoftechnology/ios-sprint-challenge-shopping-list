@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1Zl-Xs-3V0">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -24,7 +24,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="M1q-df-fbF" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemCell" id="M1q-df-fbF" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="150" height="193"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ynn-2P-IG3">
@@ -101,10 +101,10 @@
             </objects>
             <point key="canvasLocation" x="1011.5942028985507" y="150.66964285714286"/>
         </scene>
-        <!--View Controller-->
+        <!--Submit Order View Controller-->
         <scene sceneID="pK0-iG-955">
             <objects>
-                <viewController id="T5v-oM-iSx" sceneMemberID="viewController">
+                <viewController id="T5v-oM-iSx" customClass="SubmitOrderViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3Iu-ty-ZVN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -131,6 +131,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gy0-ir-Soa">
                                         <rect key="frame" x="0.0" y="160.5" width="374" height="30"/>
                                         <state key="normal" title="Submit Order"/>
+                                        <connections>
+                                            <action selector="submitOrderButton:" destination="T5v-oM-iSx" eventType="touchUpInside" id="mfZ-mR-g62"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -144,6 +147,11 @@
                         <viewLayoutGuide key="safeArea" id="H9O-8q-GNo"/>
                     </view>
                     <navigationItem key="navigationItem" id="gJs-md-993"/>
+                    <connections>
+                        <outlet property="addressTextField" destination="kIc-xX-8cM" id="OxZ-iI-TZl"/>
+                        <outlet property="itemsLabel" destination="veu-jB-Kcu" id="Gvx-s2-ZfN"/>
+                        <outlet property="nameTextField" destination="d50-Dc-ovx" id="mya-zD-Iby"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Dz-hM-aMX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
