@@ -14,6 +14,10 @@ class ShoppingListConroller {
 
     var shoppingList: [ShoppingItem]
     
+    var shoppingCart: [ShoppingItem] {
+        return shoppingList.filter( { $0.isOnShoppingList } )
+       }
+    
     // MARK: - Methods
 
     func createShoppingItem(withName name: String, isOnShoppingList: Bool = false) {
@@ -67,20 +71,26 @@ class ShoppingListConroller {
     // MARK: - Initializer
     
     init() {
+        //let userDefaults = UserDefaults.standard
         let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
         var itemList: [ShoppingItem] = []
-        let userDefaults = UserDefaults.standard
         
         for name in itemNames {
-            let item = ShoppingItem(name: name)
-            itemList.append(item)
-            userDefaults.set(item, forKey: name)
+            //if let item = userDefaults.object(forKey: name) as? ShoppingItem {
+                //itemList.append(item)
+            //} else {
+                let item = ShoppingItem(name: name)
+                itemList.append(item)
+                //userDefaults.set(item, forKey: name)
+            //}
         }
-        
         shoppingList = itemList
     }
+    
 }
 
+/*
 extension String {
-    static var shoppingListKey = "ShoppingList"
+    static var isListOfItemsInitializedKey = "IsListOfItemsInitialized"
 }
+*/

@@ -15,23 +15,20 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
     var shoppingItem: ShoppingItem? {
         didSet { updateViews() }
     }
-    
+        
     // MARK: IBOutlets
 
     @IBOutlet weak var isOnShoppingListLabel: UILabel!
     @IBOutlet weak var itemNameLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     
-    
-    // MARK: IBOutlets
-
-    @IBAction func itemButtonTapped(_ sender: UIButton) {
-        
-    }
-    
     // MARK: Methods
     
     func updateViews() {
-        
+        guard let item = shoppingItem else { return }
+        isOnShoppingListLabel.text = item.isOnShoppingList ? "Added" : "Not Added"
+        itemNameLabel.text = item.name
+        imageView.image = UIImage(named: item.name)
     }
+    
 }
