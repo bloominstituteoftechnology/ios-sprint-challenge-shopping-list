@@ -22,10 +22,6 @@ class SubmitOrderViewController: UIViewController {
         }
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,8 +40,6 @@ class SubmitOrderViewController: UIViewController {
         guard let name = nameTextField.text, let address = addressTextField.text, let count = delegate?.count else { return }
       
         let alert = UIAlertController(title: "Delivery for \(name)!", message: "Your items will be delivered \(count) item(s) to \(address) in 15 minutes.", preferredStyle: .alert)
-            
-
 
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
          present(alert, animated: true)

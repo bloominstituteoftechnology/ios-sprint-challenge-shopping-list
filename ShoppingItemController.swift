@@ -12,20 +12,18 @@ import UIKit
 class ShoppingItemController {
 
     var itemNames = ["APPLE", "GRAPES", "MILK", "MUFFIN", "POPCORN", "SODA", "STRAWBERRIES"]
-    
-    let cell = CollectionViewCell()
-    var shoppingItems: [ShoppingItem] = []
+
+    var shoppingItems = [ShoppingItem]()
         
-    
-    var shoppingListURL: URL? {
-    let fileManager = FileManager.default
-        guard let URL = fileManager.urls(for: .desktopDirectory, in: .userDomainMask).first else { return nil }
-        return URL.appendingPathComponent("ShoppingList.plist")
-    }
 
     var addedItems: [ShoppingItem] {
-        return shoppingItems.filter { $0.isAdded }
+       let addedItems = shoppingItems.filter { $0.isAdded == true }
+        return addedItems
         }
+    var notAddedItems: [ShoppingItem] {
+        let notAddedItems = shoppingItems.filter { $0.isAdded == false}
+        return notAddedItems
+    }
         init() {
             let userDefaults = UserDefaults.standard
             if userDefaults.bool(forKey: "createItems") {
@@ -33,7 +31,14 @@ class ShoppingItemController {
                 createItems()
             }
         }
-        func saveToPersistentStore() {
+    
+    var shoppingListURL: URL? {
+       let fileManager = FileManager.default
+           guard let URL = fileManager.urls(for: .desktopDirectory, in: .userDomainMask).first else { return nil }
+           return URL.appendingPathComponent("ShoppingList.plist")
+       }
+    
+        private func saveToPersistentStore() {
             guard let URL = shoppingListURL else { return }
             do {
                 let encoder = PropertyListEncoder()
@@ -44,16 +49,17 @@ class ShoppingItemController {
             }
         }
                    
-        func loadFromPersistentStore() {
+       private func loadFromPersistentStore() {
             let fileManager = FileManager.default
-            guard let URL = shoppingListURL, fileManager.fileExists(atPath: URL.path) else { return }
+            guard let URL = shoppingListURL,
+                fileManager.fileExists(atPath: URL.path) else { return }
             do {
                 let decoder = PropertyListDecoder()
                 let itemData = try Data(contentsOf: URL)
                 let decodeItems = try decoder.decode([ShoppingItem].self, from: itemData)
                 shoppingItems = decodeItems
                 } catch {
-                        print("Error: \(error)")
+                        print("Error saving shopping list data: \(error)")
             }
         }
         
@@ -71,30 +77,22 @@ class ShoppingItemController {
         
         func update(item: ShoppingItem) {
             guard let index = shoppingItems.firstIndex(of: item) else { return }
-            var newItem = shoppingItems[index]
-            newItem.isAdded = !newItem.isAdded
-            shoppingItems[index] = newItem
+            shoppingItems[index].isAdded.toggle()
             saveToPersistentStore()
         }
         
         func createItems() {
             for name in itemNames {
-                shoppingItems.append(ShoppingItem(itemName: name, isAdded: false))
+                shoppingItems.append(ShoppingItem(itemName: name))
             }
             let userDefaults = UserDefaults.standard
             userDefaults.set(true, forKey: "createItems")
             saveToPersistentStore()
         }
-        
-        func removeShoppingItem() {
-            for item in shoppingItems {
-                guard let index = shoppingItems.firstIndex(of: item) else { return }
-                if item.isAdded == true {
-                    shoppingItems.remove(at: index)
-                    shoppingItems.append(ShoppingItem(itemName: "Soda", isAdded: true))
-                    addToPersistentStore(index:index)
-                }
-            }
+        func updateAddedToCart(for item: ShoppingItem) {
+            guard let itemIndex = shoppingItems.firstIndex(of: item) else { return }
+            shoppingItems[itemIndex].isAdded.toggle()
+            saveToPersistentStore()
         }
 }
 

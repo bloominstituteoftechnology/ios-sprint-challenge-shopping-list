@@ -17,6 +17,7 @@ class MainCollectionViewController: UICollectionViewController {
 
     let shoppingItemController = ShoppingItemController()
     var delegate: shoppingListDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,6 +27,11 @@ class MainCollectionViewController: UICollectionViewController {
     }
 
     // MARK: UICollectionViewDataSource
+    
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+
+           return 2
+       }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
@@ -51,4 +57,11 @@ class MainCollectionViewController: UICollectionViewController {
             return
         }
     }
+     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            
+            let shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
+            shoppingItemController.updateAddedToCart(for: shoppingItem)
+
+            collectionView.reloadData()
+        }
 }

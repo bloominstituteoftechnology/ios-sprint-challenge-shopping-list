@@ -14,7 +14,7 @@ struct ShoppingItem: Equatable, Codable {
     var isAdded: Bool
 
     
-    init(itemName: String, isAdded: Bool) {
+    init(itemName: String, isAdded: Bool = false) {
         self.itemName = itemName
         self.isAdded = isAdded
     }

@@ -21,7 +21,6 @@ class CollectionViewCell: UICollectionViewCell {
         }
     }
     private func updateViews() {
-        func updateView() {
                guard let item = item else { return }
             nameLabel.text = item.itemName
                let image = UIImage(named: item.itemName)
@@ -32,6 +31,6 @@ class CollectionViewCell: UICollectionViewCell {
                    addedLabel.text = "Added"
                }
            }
-        }
+        
 
 }
