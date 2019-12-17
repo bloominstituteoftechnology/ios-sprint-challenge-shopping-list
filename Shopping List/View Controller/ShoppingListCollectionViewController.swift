@@ -8,34 +8,35 @@
 
 import UIKit
 
-class ShoppingListCollectionViewController: UICollectionViewController, ShoppingListDelegate {
+class ShoppingListCollectionViewController: UICollectionViewController {
 
-    let shoppingListController = ShoppingListController()
+    var shoppingListController = ShoppingListController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.collectionView?.delegate = self
+        self.collectionView?.dataSource = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         collectionView?.reloadData()
     }
     
-    func toggleHasBeenAdded(cell: ShoppingListCollectionViewCell) {
-        guard let indexPath = collectionView?.indexPath(for: cell) else { return }
-        shoppingListController.updateList(for: shoppingListController.shoppingItem[indexPath.item])
-        collectionView?.reloadData()
-      }
-      
 
     
     // MARK: - Navigation
 
-    /*
+    
   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowOrder" {
             guard let orderVC = segue.destination as? OrderViewController else {return}
+            orderVC.shoppingListController = shoppingListController
             
         }
     }
-    */
+    
 
     // MARK: UICollectionViewDataSource
 
@@ -48,9 +49,7 @@ class ShoppingListCollectionViewController: UICollectionViewController, Shopping
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingListViewCell", for: indexPath) as? ShoppingListCollectionViewCell else {
             return UICollectionViewCell() }
-        
-        cell.delegate = self
-
+  
         let item = shoppingListController.shoppingItem[indexPath.item]
         cell.item = item
         return cell
@@ -65,12 +64,16 @@ class ShoppingListCollectionViewController: UICollectionViewController, Shopping
     }
     */
 
-    /*
+    
     // Uncomment this method to specify if the specified item should be selected
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return true
     }
-    */
+   
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        shoppingListController.updateList(for: shoppingListController.shoppingItem[indexPath.item])
+        collectionView.reloadData()
+    }
 
     /*
     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item

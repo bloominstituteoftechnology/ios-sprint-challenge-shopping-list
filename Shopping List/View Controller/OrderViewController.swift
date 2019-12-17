@@ -19,6 +19,9 @@ class OrderViewController: UIViewController {
         showAlert()
     }
     
+    var shoppingListController = ShoppingListController ()
+    //var addedItems: ShoppingItem?
+    
     private func showAlert() {
         
         let alert = UIAlertController(title: "Your Order Has Been Submitted", message: "\(String(describing: orderName.text)), your order will be delivered in 15 minutes to \(String(describing: orderAddress.text))", preferredStyle: .alert)
@@ -31,8 +34,11 @@ class OrderViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        updateViews()
         // Do any additional setup after loading the view.
+    }
+    private func updateViews() {
+        orderLabel.text = "You have \(shoppingListController.addedItems.count) in your cart"
     }
     
     

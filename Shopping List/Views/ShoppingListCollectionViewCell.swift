@@ -10,9 +10,7 @@ import UIKit
 
 class ShoppingListCollectionViewCell: UICollectionViewCell {
     
-    @IBAction func addItem(_ sender: UIButton) {
-       delegate?.toggleHasBeenAdded(cell: self)
-    }
+   
     
     func updateViews () {
         guard let item = item else {return }
@@ -20,12 +18,12 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
         let image = item.name
         itemImage.image = UIImage(named: image)!
         if item.hasBeenAdded == true {
-        itemButton.setTitle("Added", for: .normal)
+            itemAddedLabel.text = "Added"
+        } else {
+            itemAddedLabel.text = "Not Added"
         }
-     
     }
     
-    weak var delegate: ShoppingListDelegate?
     
     var item: ShoppingItem? {
         didSet {
@@ -33,11 +31,11 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
         }
     }
     
-
+    @IBOutlet weak var itemAddedLabel: UILabel!
+    
     @IBOutlet weak var itemImage: UIImageView!
     
     @IBOutlet weak var itemLabel: UILabel!
     
-    @IBOutlet weak var itemButton: UIButton!
     
 }

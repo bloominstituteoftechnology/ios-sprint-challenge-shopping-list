@@ -34,18 +34,16 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nKh-Pg-0fr">
                                             <rect key="frame" x="0.0" y="0.0" width="175" height="175"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ft-aj-7Ok">
-                                                    <rect key="frame" x="0.0" y="0.0" width="175" height="78.5"/>
-                                                    <state key="normal" title="Not Added"/>
-                                                    <connections>
-                                                        <action selector="addItem:" destination="vac-tu-pzE" eventType="touchUpInside" id="4uf-mh-Z3n"/>
-                                                        <action selector="itemAdded:" destination="vac-tu-pzE" eventType="touchUpInside" id="amg-hg-RmB"/>
-                                                    </connections>
-                                                </button>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pmc-dS-3PS">
-                                                    <rect key="frame" x="0.0" y="78.5" width="175" height="76"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KAq-DB-JsO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="175" height="55.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pmc-dS-3PS">
+                                                    <rect key="frame" x="0.0" y="55.5" width="175" height="99"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UdJ-oW-yRf">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UdJ-oW-yRf">
                                                     <rect key="frame" x="0.0" y="154.5" width="175" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -63,7 +61,7 @@
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="175" height="175"/>
                                 <connections>
-                                    <outlet property="itemButton" destination="9ft-aj-7Ok" id="yyF-Cu-usE"/>
+                                    <outlet property="itemAddedLabel" destination="KAq-DB-JsO" id="G2i-5r-5mY"/>
                                     <outlet property="itemImage" destination="pmc-dS-3PS" id="jwJ-3A-EQr"/>
                                     <outlet property="itemLabel" destination="UdJ-oW-yRf" id="Zp7-p3-jSJ"/>
                                 </connections>
