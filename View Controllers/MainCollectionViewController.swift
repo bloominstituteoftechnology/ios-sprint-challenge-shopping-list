@@ -43,6 +43,8 @@ class MainCollectionViewController: UICollectionViewController {
     
         let item = shoppingItemController.shoppingItems[indexPath.item]
         cell.item = item
+        cell.imageView.image = item.image
+        cell.nameLabel.text = item.itemName
         return cell
     }
 

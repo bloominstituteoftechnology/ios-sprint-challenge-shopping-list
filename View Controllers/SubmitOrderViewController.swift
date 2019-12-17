@@ -21,7 +21,7 @@ class SubmitOrderViewController: UIViewController {
             updateViews()
         }
     }
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

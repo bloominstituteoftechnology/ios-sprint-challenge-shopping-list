@@ -83,7 +83,8 @@ class ShoppingItemController {
         
         func createItems() {
             for name in itemNames {
-                shoppingItems.append(ShoppingItem(itemName: name))
+                let shoppingItem = ShoppingItem(itemName: name, isAdded: false, imageName: name.lowercased())
+                shoppingItems.append(shoppingItem)
             }
             let userDefaults = UserDefaults.standard
             userDefaults.set(true, forKey: "createItems")
