@@ -12,15 +12,15 @@ struct ShoppingItem: Equatable, Codable {
 
     let itemName: String
     var isAdded: Bool
-    var imageName: String
+//    var imageName: String
 
     
     init(itemName: String, isAdded: Bool = false, imageName: String) {
         self.itemName = itemName
         self.isAdded = isAdded
-        self.imageName = itemName
+//        self.imageName = itemName
     }
-    var image: UIImage {
-        return UIImage(named: imageName)!
-    }
+//    var image: UIImage {
+//        return UIImage(named: imageName)!
+//    }
 }

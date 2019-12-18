@@ -15,13 +15,7 @@ class SubmitOrderViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     
-    var itemCount: Int?
-    var delegate: [ShoppingItem]? {
-        didSet {
-            updateViews()
-        }
-    }
-
+    var shoppingItemController: ShoppingItemController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,16 +24,26 @@ class SubmitOrderViewController: UIViewController {
     }
     
     func updateViews() {
-               guard let itemCount = itemCount else { return }
-
-               itemsLabel.text = "You have \(itemCount) item(s) in your shopping list."
+               guard let shoppingItemController = shoppingItemController else { return }
+                nameTextField.becomeFirstResponder()
+                let shoppingItemCount = shoppingItemController.addedItems.count
+                itemsLabel.text = "You have \(shoppingItemCount) item(s) in your shopping list."
            }
     
     //MARK: - IBActions
     @IBAction func orderSent(_ sender: Any) {
-        guard let name = nameTextField.text, let address = addressTextField.text, let count = delegate?.count else { return }
-      
-        let alert = UIAlertController(title: "Delivery for \(name)!", message: "Your items will be delivered \(count) item(s) to \(address) in 15 minutes.", preferredStyle: .alert)
+        guard let name = nameTextField.text,
+              let address = addressTextField.text,
+            !name.isEmpty,
+            !address.isEmpty else { return }
+        
+        showOrderAlert()
+    }
+        
+        private func showOrderAlert() {
+            let alert = UIAlertController(title: "Order Submitted!", message: "\(nameTextField.text!) your order will be delivered in 15 minutes to \(addressTextField.text!).", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
 
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
          present(alert, animated: true)

@@ -11,26 +11,23 @@ import UIKit
 class CollectionViewCell: UICollectionViewCell {
     
     //MARK: - IBOutlets
-    @IBOutlet weak var addedLabel: UILabel!
+    
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var addedLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     
-    var item: ShoppingItem? {
+    var shoppingItem: ShoppingItem? {
         didSet {
             updateViews()
         }
     }
     private func updateViews() {
-               guard let item = item else { return }
-            nameLabel.text = item.itemName
-               let image = UIImage(named: item.itemName)
-               imageView.image = image
-               if item.isAdded == false {
-                   addedLabel.text = "Not Added"
-               } else {
-                   addedLabel.text = "Added"
-               }
-           }
+        guard let shoppingItem = shoppingItem else { return }
+        
+        addedLabel.text = shoppingItem.isAdded ? "Added to cart" : "Not added"
+        nameLabel.text = shoppingItem.itemName
+//        imageView.image = UIImage(named: shoppingItem.imageName)
+    }
         
 
 }

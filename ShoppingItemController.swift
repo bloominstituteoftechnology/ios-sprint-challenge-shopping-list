@@ -88,7 +88,7 @@ class ShoppingItemController {
             }
             let userDefaults = UserDefaults.standard
             userDefaults.set(true, forKey: "createItems")
-            saveToPersistentStore()
+            //saveToPersistentStore()
         }
         func updateAddedToCart(for item: ShoppingItem) {
             guard let itemIndex = shoppingItems.firstIndex(of: item) else { return }
@@ -97,8 +97,4 @@ class ShoppingItemController {
         }
 }
 
-extension ShoppingItemController: itemsAddedDelegate {
-    func itemsAdded(_ item: ShoppingItem) {
-        shoppingItems.append(item)
-    }
-}
+
