@@ -36,7 +36,7 @@ class ShoppingListVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "DeliverListSegue" {
             guard let destination = segue.destination as? DetailVC else {return}
-            destination.items = shopper.shoppingItems
+            destination.shopper = shopper
         }
     }
     
@@ -55,8 +55,6 @@ extension ShoppingListVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FoodCell", for: indexPath) as? FoodItemCell else {fatalError("Cell not instantiated")}
         cell.item = shopper.shoppingItems[indexPath.item]
-        #warning("DEV REMOVE")
-        print(cell.item?.name ?? "WARNING: Item Name Not Set")
         return cell
     }
     
@@ -64,6 +62,15 @@ extension ShoppingListVC: UICollectionViewDataSource {
 }
 
 extension ShoppingListVC: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FoodCell", for: indexPath) as? FoodItemCell else {fatalError("Cell not instantiated")}
+        cell.shopper = shopper
+        var item = shopper.shoppingItems[indexPath.item]
+        item.hasBeenAdded = !item.hasBeenAdded
+        shopper.shoppingItems[indexPath.item] = item
+        cell.item = item
+        cell.deliverItem()
+        collectionView.reloadData()
+    }
 }
 

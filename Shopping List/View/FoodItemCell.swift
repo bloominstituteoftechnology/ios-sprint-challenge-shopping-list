@@ -13,6 +13,7 @@ class FoodItemCell: UICollectionViewCell {
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var addedLbl: UILabel!
     
+    var shopper: ShoppingController?
     var item: ShoppingItem? {
         didSet {
             updateViews()
@@ -27,6 +28,22 @@ class FoodItemCell: UICollectionViewCell {
             self.addedLbl.text = "Added"
         } else {
             self.addedLbl.text = "Not Added"
+        }
+    }
+    
+    func deliverItem() {
+        
+        #warning("Item is nil, can't deliver items")
+        if let item = self.item {
+            print("item exists")
+            shopper?.update(item: item)
+            if item.hasBeenAdded {
+                print("adding item")
+                //addedLbl.text = "Added"
+            } else {
+                print("not adding item")
+                //addedLbl.text = "Not Added"
+            }
         }
     }
 }

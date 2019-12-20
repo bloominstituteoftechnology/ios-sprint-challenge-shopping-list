@@ -11,7 +11,6 @@ import Foundation
 class ShoppingController {
     //MARK: Class properties
     var shoppingItems: [ShoppingItem] = []
-    var wasItemAdded: Bool = false
     
     private let itemNames: [String] = [
         "Apple",
@@ -23,11 +22,16 @@ class ShoppingController {
         "Strawberries"
     ]
     
+    var itemsToDeliver: [ShoppingItem] {
+        return shoppingItems.filter {$0.hasBeenAdded == true}
+    }
+    
     //MARK: Class Methods
     func update(item: ShoppingItem) {
-        print("\(item.name) wasAdded: \(wasItemAdded)")
         for (index, iteratedItem) in shoppingItems.enumerated() where iteratedItem == item {
-            let newItem = ShoppingItem(name: item.name, hasBeenAdded: !item.hasBeenAdded)
+            #warning("Work out logic to switch this (might be easier once coredata is implemented")
+            print(item.hasBeenAdded)
+            let newItem = ShoppingItem(name: item.name, hasBeenAdded: true)
             shoppingItems[index] = newItem
         }
     }
@@ -40,4 +44,25 @@ class ShoppingController {
             }
         }
     }
+    
+    
+    
+    //MARK: FileOps
+    
+
+    
+    
+    var readingList: URL? {
+        let fileManager = FileManager.default
+       
+        guard let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {return nil}
+        //append books.plist to documentDirectory to create file at path (URL)
+        let booksUrl = documentDirectory.appendingPathComponent("books.plist")
+        return booksUrl
+    }
+    
+    
+    
+    
 }
+

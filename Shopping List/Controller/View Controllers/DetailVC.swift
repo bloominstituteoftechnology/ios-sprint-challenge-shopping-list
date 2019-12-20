@@ -12,7 +12,11 @@ class DetailVC: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     
-    var items: [ShoppingItem]?
+    var shopper: ShoppingController?
+    //refactoring, but need to save time
+    var items: [ShoppingItem]? {
+        shopper?.itemsToDeliver
+    }
     var address: String?
     var name: String?
     
@@ -38,7 +42,7 @@ class DetailVC: UIViewController {
         super.viewDidLoad()
         nameTextField.delegate = self
         addressTextField.delegate = self
-        print(items)
+        print(items ?? "No Items")
         // Do any additional setup after loading the view.
     }
     
@@ -56,8 +60,8 @@ class DetailVC: UIViewController {
     //MARK: Helper Methods
     func deliverList() {
         //unwrap name and address. show alert if nil
-        guard let name = name,
-              let address = address else {
+        guard let _ = name,
+              let _ = address else {
                 //MARK:unwrap textField.text and attempt to set name and address
                 guard let nameText = nameTextField.text,
                 nameText != "" else {
