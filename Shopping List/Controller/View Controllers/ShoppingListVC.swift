@@ -52,7 +52,7 @@ extension ShoppingListVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FoodCell", for: indexPath) as? FoodItemCell else {fatalError("Cell not instantiated")}
         cell.item = shopper.shoppingItems[indexPath.item]
-        print(cell.item?.name ?? "WARNING: Item Name Not Set")
+        //print(cell.item?.name ?? "WARNING: Item Name Not Set")
         return cell
     }
     
