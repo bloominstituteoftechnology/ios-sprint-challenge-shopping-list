@@ -9,16 +9,36 @@
 import UIKit
 
 class DetailVC: UIViewController {
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var addressTextField: UITextField!
+    
+    var items: [ShoppingItem]?
+    var address: String?
+    var name: String?
+    
+    var friendlyList: [String] {
+        guard let items = items else {return []}
+        var outputList: [String] = []
+        for item in items {
+            outputList.append(item.name)
+        }
+        return outputList
+    }
     
     @IBAction func saveBtnTapped(_ sender: UIButton) {
-        navigationController?.popViewController(animated: true)
+        deliverList()
+        if name != nil && address != nil {
+            navigationController?.popViewController(animated: true)
+        }
     }
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        nameTextField.delegate = self
+        addressTextField.delegate = self
+        print(items)
         // Do any additional setup after loading the view.
     }
     
@@ -32,5 +52,52 @@ class DetailVC: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    //MARK: Helper Methods
+    func deliverList() {
+        //unwrap name and address. show alert if nil
+        guard let name = name,
+              let address = address else {
+                //MARK:unwrap textField.text and attempt to set name and address
+                guard let nameText = nameTextField.text,
+                nameText != "" else {
+                    Alert.show(title: "Please Enter a name.", message: "", vc: self)
+                    return
+                }
+                self.name = nameText
+                guard let addressText = addressTextField.text,
+                addressText != "" else {
+                    Alert.show(title: "Please Enter an address.", message: "", vc: self)
+                    return
+                }
+                self.address = addressText
+                if friendlyList.count > 0 {
+                    Alert.show(title: "Thanks, \(self.name!)! We're on Our Way!", message: "your \(friendlyList) will be delivered to \(self.address!)", vc: self)
+                } else {
+                    Alert.show(title: "Unknown Error", message: "Sorry, \(self.name!) you order wasn't accepted. Please try again. Thanks for your patience!", vc: self)
+                }
+            return
+        }
+        
 
+    }
+
+}
+
+extension DetailVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard let text = textField.text else {return false}
+        switch textField {
+        case nameTextField:
+            name = text
+            resignFirstResponder()
+            addressTextField.becomeFirstResponder()
+        case addressTextField:
+            address = text
+            resignFirstResponder()
+            default:
+            resignFirstResponder()
+        }
+        return true
+    }
 }

@@ -91,7 +91,7 @@
                     <navigationItem key="navigationItem" title="Shopping List" largeTitleDisplayMode="always" id="cDd-lQ-3fU">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="lfP-bs-BJl">
                             <connections>
-                                <segue destination="UZs-CZ-iop" kind="show" id="NGe-5M-ouh"/>
+                                <segue destination="UZs-CZ-iop" kind="show" identifier="DeliverListSegue" id="NGe-5M-ouh"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -111,8 +111,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="3E3-hD-VVm">
-                                <rect key="frame" x="20" y="108" width="374" height="257.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="3E3-hD-VVm">
+                                <rect key="frame" x="20" y="108" width="374" height="179.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You curently have 3 item(s) in your shopping list." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k2X-Av-E3s">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="57.5"/>
@@ -121,18 +121,18 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TBS-ya-BZr">
-                                        <rect key="frame" x="0.0" y="91.5" width="374" height="34"/>
+                                        <rect key="frame" x="0.0" y="65.5" width="374" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OuK-q8-DgU">
-                                        <rect key="frame" x="0.0" y="159.5" width="374" height="34"/>
+                                        <rect key="frame" x="0.0" y="107.5" width="374" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EwY-1w-je2">
-                                        <rect key="frame" x="0.0" y="227.5" width="374" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                        <rect key="frame" x="0.0" y="149.5" width="374" height="30"/>
+                                        <state key="normal" title="Send Order"/>
                                         <connections>
                                             <action selector="saveBtnTapped:" destination="UZs-CZ-iop" eventType="touchUpInside" id="65e-9W-XSd"/>
                                         </connections>
@@ -151,6 +151,10 @@
                         <viewLayoutGuide key="safeArea" id="Wc2-ET-C1C"/>
                     </view>
                     <navigationItem key="navigationItem" id="5fD-BD-OBg"/>
+                    <connections>
+                        <outlet property="addressTextField" destination="OuK-q8-DgU" id="rU3-LO-pxH"/>
+                        <outlet property="nameTextField" destination="TBS-ya-BZr" id="pfK-2W-dVL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="np9-1A-qg2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
