@@ -13,6 +13,8 @@ class OrderDetailViewController: UIViewController {
     let shoppingListController = ShoppingListController()
     
     var shoppingItem: ShoppingItem?
+    
+    var shoppingItems: [ShoppingItem] = []
 
     @IBOutlet weak var orderTextLabel: UILabel!
     @IBOutlet weak var enterNameTF: UITextField!

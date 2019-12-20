@@ -26,7 +26,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
             guard let indexPath = collectionView?.indexPathsForSelectedItems?.first?.item,
                        let selectedItemVC = segue.destination as? OrderDetailViewController else {return}
             let selectedItems = shoppingListController.selectedItems
-            selectedItemVC.shoppingItem = selectedItems
+            selectedItemVC.shoppingItems = selectedItems
             
                }
     }
