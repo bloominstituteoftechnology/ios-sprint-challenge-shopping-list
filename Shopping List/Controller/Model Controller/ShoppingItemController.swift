@@ -8,14 +8,15 @@
 
 import Foundation
 
-class ShoppingItemController {
+struct PropertyKeys {
+    static let existKey = "itemsExistKey"
+}
 
-    struct PropertyKeys {
-        static let existKey = "itemsExistKey"
-    }
+class ShoppingItemController {
 
     var shoppingItems: [ShoppingItem] = []
     let itemsExist = UserDefaults.standard.bool(forKey: PropertyKeys.existKey)
+    
     var addedShoppingItems: [ShoppingItem] {
         return shoppingItems.filter { $0.added }
     }
@@ -25,14 +26,12 @@ class ShoppingItemController {
 
     func itemAddedToggled(for item: ShoppingItem) {
         guard let index = shoppingItems.firstIndex(of: item) else { return }
-
         shoppingItems[index].added.toggle()
     }
 
     func fetchItems() {
         if itemsExist {
             loadFromPersistentStore()
-//            print(shoppingItems.filter($0))
         } else {
             createItems()
             saveToPersistentStore()
@@ -49,15 +48,14 @@ class ShoppingItemController {
         }
     }
 
-    private var persistentFileURL: URL? {
+    var persistentFileURL: URL? {
         let fm = FileManager.default
         guard let dir = fm.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
         return dir.appendingPathComponent("shoppingList-items.plist")
     }
 
-    private func saveToPersistentStore() {
+    func saveToPersistentStore() {
         guard let url = persistentFileURL else { return }
-
         do {
             let encoder = PropertyListEncoder()
             let data = try encoder.encode(shoppingItems)
@@ -67,7 +65,7 @@ class ShoppingItemController {
         }
     }
 
-    private func loadFromPersistentStore() {
+    func loadFromPersistentStore() {
         let fm = FileManager.default
         guard let url = persistentFileURL,
             fm.fileExists(atPath: url.path) else { return }

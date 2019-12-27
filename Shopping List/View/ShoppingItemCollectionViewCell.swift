@@ -16,6 +16,8 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var nameLabel: UILabel!
 
     var delegate: ShoppingItemCollectionViewCellDelegate?
+    var shoppingController: ShoppingItemController?
+    
     var shoppingItem: ShoppingItem? {
         didSet {
             updateViews()
@@ -40,6 +42,7 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         addedLabel.text = addedText
         imageView.image = image
         nameLabel.text = shoppingItem.name
+        shoppingController?.saveToPersistentStore()
     }
 
 }

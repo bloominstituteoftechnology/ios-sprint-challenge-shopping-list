@@ -45,6 +45,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A62524123ADA4AF005B59C7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1A62524723ADA573005B59C7 /* Delegates */,
+				1AB76BF823AD548F00668655 /* ShoppingItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1A62524223ADA4D5005B59C7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1A62524423ADA4E1005B59C7 /* View Controller */,
+				1A62524323ADA4DB005B59C7 /* Model Controller */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1A62524323ADA4DB005B59C7 /* Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1AB76BF223AD544D00668655 /* ShoppingItemController.swift */,
+			);
+			path = "Model Controller";
+			sourceTree = "<group>";
+		};
+		1A62524423ADA4E1005B59C7 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1AB76BF423AD546E00668655 /* ShoppingItemsCollectionViewController.swift */,
+				1AB76BF623AD548000668655 /* SubmitOrderViewController.swift */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		1A62524523ADA539005B59C7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4613E91521143BFC00E7FF73 /* Main.storyboard */,
+				1AB76BFA23AD54A400668655 /* ShoppingItemCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1A62524723ADA573005B59C7 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				1AB76BF023AD541200668655 /* ShoppingItemCollectionViewCellDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
 		1AB76BEE23AD53B700668655 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -74,14 +126,10 @@
 		4613E91021143BFC00E7FF73 /* Shopping List */ = {
 			isa = PBXGroup;
 			children = (
+				1A62524123ADA4AF005B59C7 /* Model */,
 				1AB76BEE23AD53B700668655 /* Resources */,
-				4613E91521143BFC00E7FF73 /* Main.storyboard */,
-				1AB76BF023AD541200668655 /* ShoppingItemCollectionViewCellDelegate.swift */,
-				1AB76BF223AD544D00668655 /* ShoppingItemController.swift */,
-				1AB76BF423AD546E00668655 /* ShoppingItemsCollectionViewController.swift */,
-				1AB76BF623AD548000668655 /* SubmitOrderViewController.swift */,
-				1AB76BF823AD548F00668655 /* ShoppingItem.swift */,
-				1AB76BFA23AD54A400668655 /* ShoppingItemCollectionViewCell.swift */,
+				1A62524223ADA4D5005B59C7 /* Controller */,
+				1A62524523ADA539005B59C7 /* View */,
 				4613E91D21143BFD00E7FF73 /* Info.plist */,
 			);
 			path = "Shopping List";

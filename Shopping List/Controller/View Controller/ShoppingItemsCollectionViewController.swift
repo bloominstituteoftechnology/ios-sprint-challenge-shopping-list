@@ -20,24 +20,19 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         shoppingItemController.fetchItems()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         guard let submitOrderVC = segue.destination as? SubmitOrderViewController else { return }
         submitOrderVC.itemCount = shoppingItemController.shoppingItems.filter( {$0.added} ).count
     }
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-
         return 2
     }
 
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-
         switch section {
         case 0:
             print(shoppingItemController.notAddedShoppingItems.count)
@@ -49,10 +44,9 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PropertyKeys.itemCell, for: indexPath) as? ShoppingItemCollectionViewCell else { return UICollectionViewCell() }
-        
+        cell.shoppingController = shoppingItemController
         cell.delegate = self
         cell.shoppingItem = itemFor(indexPath)
-    
         return cell
     }
     
