@@ -7,40 +7,46 @@
 //
 
 import Foundation
-protocol iteamInitializedDelegate: class {
-    func itemisInitialized()
+
+protocol itemInitializedDelegate: AnyObject {
+    func itemTapped(_ item: ItemCollectionViewCell)
 }
+
 class ShoppingListController {
     
     
     // Mark: - Properties
     
-    private(set) var itemName: [ShoppingItem] = []
+    var itemName: [ShoppingItem] = []
     
-    let itemsOnList = UserDefaults.standard.bool(forKey: .shoppingItemIntializedKey)
+    let itemsOnListToPersist = UserDefaults.standard.bool(forKey: .shoppingItemIntializedKey)
 
-    
-    
-    // Mark: func
-    
     var addedToCart: [ShoppingItem] {
         return itemName.filter { $0.addedToList}
     }
-    var notAddedtoCart:[ShoppingItem]{
+    var notAddedtoCart:[ShoppingItem] {
         return itemName.filter { $0.addedToList}
     }
     
+    // Mark: - func
+    func itemToggled(for item: ShoppingItem) {
+        guard let index = itemName.firstIndex(of: item) else { return }
+        
+        itemName[index].addedToList.toggle()
+    }
+    
     func checkforItem() {
-        if itemName != nil  {
+        if itemsOnListToPersist {
             loadFromPersistentStore()
         } else {
-            createShoppingList()
+            createList()
             savetoPersistenStore()
             UserDefaults.standard.set(true, forKey: .shoppingItemIntializedKey)
+            
         }
     }
     
-    func createShoppingList () {
+    func createList() {
         let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
         for item in itemNames {
             let item = ShoppingItem(name: item)

@@ -8,29 +8,23 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+private let reuseIdentifier = "ItemCell"
 
 class ShoppingItemsCollectionViewController: UICollectionViewController {
 
+    let shoppingListController = ShoppingListController()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
-    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+        
+        shoppingListController.checkforItem()
+        
+        
+      
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        guard let userDetailVC = segue.destination as? UserDetailViewController else { return }
+        userDetailVC.itemCount = shoppingListController.itemName.filter( {$0.added} ).count
     }
     */
 

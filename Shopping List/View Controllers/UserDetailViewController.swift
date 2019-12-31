@@ -8,23 +8,56 @@
 
 import UIKit
 
+
+
 class UserDetailViewController: UIViewController {
 
+    
+    @IBOutlet weak var itemCountLabel: UILabel!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var addressTextField: UITextField!
+    
+    
+    var itemsOrderedCount: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateViews()
 
-        // Do any additional setup after loading the view.
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func updateViews() {
+        guard let itemCount = itemsOrderedCount else { return }
+        
+        itemCountLabel.text = "You have \(itemCount) item(s)"
     }
-    */
 
+    private func alert(to name: String, at address: String) {
+        let alertTitle = "Thank you for your order, \(name)!"
+        let message = "In 15 minutes your order will be delivered to \(address)"
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Confirm", style: .default)
+        { alert in
+            self.navigationController?.popViewController(animated: true)}
+        alert.addAction(action)
+        
+        present(alert, animated: true)
+        }
+    
+    //Mark: - IBAaction
+    @IBAction func submitOrderButtonTapped(_ sender: UIButton) {
+        
+        guard let name = nameTextField.text,
+            let address = addressTextField.text,
+            !name.isEmpty,
+            !address.isEmpty else { return }
+        
+        alert(to: name, at: address)
+            
+    }
 }
+    
+
