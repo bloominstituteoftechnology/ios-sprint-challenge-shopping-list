@@ -20,10 +20,6 @@ class ShoppingItemController {
         }
     }
     
-//    func itemIsAdded(_ item: ShoppingItem) {
-//        shoppingItems.append(item)
-//    }
-    
     
     private var shoppingListURL: URL? {
         let fileManager = FileManager.default
@@ -41,7 +37,6 @@ class ShoppingItemController {
     // save , add, & load from persistent store
     func saveToPersistentStore() {
         guard let URL = shoppingListURL else { return }
-        
         do {
             let encoder = PropertyListEncoder()
             let shoppingData = try encoder.encode(shoppingItems)
