@@ -9,15 +9,15 @@
 import Foundation
 import UIKit
 
-struct ShoppingItem: Equatable, Codable {
+class ShoppingItem: Codable {
     
-    let name: String
+    var name: String
 //    var image: UIImage
-    var hasBeenAddedToList: Bool = false
+    var hasBeenAddedToList: Bool
     
-    init(name: String, hasBeenAddedToList: Bool = false) {
+    init(name: String, hasBeenAddedToList: Bool) {
         self.name = name
+//        self.image = UIImage(named: imageName)!
         self.hasBeenAddedToList = hasBeenAddedToList
-//        self.image = UIImage(named: image) ?? <#default value#>
     }
 }

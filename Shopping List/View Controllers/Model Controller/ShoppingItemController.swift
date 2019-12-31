@@ -8,14 +8,22 @@
 
 import Foundation
 
-class ShoppingItemController: addItemsDelegate {
-    func itemIsAdded(_ item: ShoppingItem) {
-        shoppingItems.append(item)
-    }
+class ShoppingItemController {
     
-    let cell = ShoppingItemsCollectionViewCell()
+    let userDefaults = UserDefaults.standard
     let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     var shoppingItems: [ShoppingItem] = []
+
+    init() {
+        if userDefaults.bool(forKey: "itemsCreated") == false || shoppingItems.count == 0 {
+                createItems()
+        }
+    }
+    
+//    func itemIsAdded(_ item: ShoppingItem) {
+//        shoppingItems.append(item)
+//    }
+    
     
     private var shoppingListURL: URL? {
         let fileManager = FileManager.default
@@ -57,28 +65,21 @@ class ShoppingItemController: addItemsDelegate {
         }
     }
     func createItems() {
-        for products in itemNames {
-            shoppingItems.append(ShoppingItem(name: products, hasBeenAddedToList: false))
+        for itemName in itemNames {
+            shoppingItems.append(ShoppingItem(name: itemName, hasBeenAddedToList: false))
         }
-        let userDefaults = UserDefaults.standard
-        userDefaults.set(true, forKey: "createItems")
+        userDefaults.set(true, forKey: "itemsCreated")
         saveToPersistentStore()
     }
 
     func update(item: ShoppingItem){
-        guard let index = shoppingItems.firstIndex(of: item) else { return }
-        var newItem = shoppingItems[index]
-        newItem.hasBeenAddedToList = !newItem.hasBeenAddedToList
-        shoppingItems[index] = newItem
+//        guard let index = shoppingItems.firstIndex(of: item) else { return }
+//        var newItem = shoppingItems[index]
+        item.hasBeenAddedToList = !item.hasBeenAddedToList
+        //        shoppingItems[index] = newItem
         saveToPersistentStore()
     }
     
-    init() {
-        let userDefaults = UserDefaults.standard
-        if userDefaults.bool(forKey: "createItems"){
-    } else {
-    createItems()
-    }
     
     }
-}
+
