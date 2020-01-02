@@ -19,6 +19,7 @@ class UserDetailViewController: UIViewController {
     
     
     var itemsOrderedCount: Int?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,18 +34,13 @@ class UserDetailViewController: UIViewController {
         itemCountLabel.text = "You have \(itemCount) item(s)"
     }
 
-    private func alert(to name: String, at address: String) {
-        let alertTitle = "Thank you for your order, \(name)!"
-        let message = "In 15 minutes your order will be delivered to \(address)"
+    private func showAlert(to name: String, at address: String) {
         
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Delivery for \(name)", message: "In 15 minutes your order will be delivered to \(address)", preferredStyle: .alert)
         
-        let action = UIAlertAction(title: "Confirm", style: .default)
-        { alert in
-            self.navigationController?.popViewController(animated: true)}
-        alert.addAction(action)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         
-        present(alert, animated: true)
+            self.present(alert, animated: true, completion: nil)
         }
     
     //Mark: - IBAaction
@@ -54,8 +50,9 @@ class UserDetailViewController: UIViewController {
             let address = addressTextField.text,
             !name.isEmpty,
             !address.isEmpty else { return }
+            
         
-        alert(to: name, at: address)
+        
             
     }
 }

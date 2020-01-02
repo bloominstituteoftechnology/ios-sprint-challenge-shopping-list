@@ -37,14 +37,16 @@ class ItemCollectionViewCell: UICollectionViewCell {
             statusLabel.text = text
             itemImage.image = image
             productName.text = itemName.name
-            
-    }
-    
 }
+//    }
 //    @IBAction func itemTapped(_ sender: Any) {
-//        delegate?.itemTapped(item: self)
+//
 //    }
 //
-//}
-
-
+//
+//
+//
+//
+//
+//
+}

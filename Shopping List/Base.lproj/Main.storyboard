@@ -43,19 +43,32 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bnS-3p-d2G">
+                                                    <rect key="frame" x="0.0" y="16" width="134" height="2"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="itemTapped:" destination="1ex-BJ-XzD" eventType="touchUpInside" id="gml-BL-MwJ"/>
+                                                    </connections>
+                                                </button>
                                                 <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="05T-4y-S0j">
-                                                    <rect key="frame" x="15" y="18" width="104" height="143.5"/>
+                                                    <rect key="frame" x="15" y="18" width="104" height="143"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="05T-4y-S0j" secondAttribute="height" multiplier="8:11" id="bZ7-ey-w62"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gXA-yf-zO4">
-                                                    <rect key="frame" x="46" y="163.5" width="42" height="20.5"/>
+                                                    <rect key="frame" x="46" y="163" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="bnS-3p-d2G" secondAttribute="trailing" id="IsP-kd-4Ye"/>
+                                                <constraint firstItem="bnS-3p-d2G" firstAttribute="top" secondItem="7hm-B2-T3C" secondAttribute="bottom" id="mYv-fh-hVL"/>
+                                                <constraint firstItem="05T-4y-S0j" firstAttribute="top" secondItem="bnS-3p-d2G" secondAttribute="bottom" id="qpI-ur-YFL"/>
+                                                <constraint firstItem="bnS-3p-d2G" firstAttribute="leading" secondItem="qRS-hM-aN6" secondAttribute="leadingMargin" id="zKi-4t-WNJ"/>
+                                            </constraints>
                                         </stackView>
                                     </subviews>
                                     <constraints>
@@ -68,6 +81,7 @@
                                 <size key="customSize" width="150" height="200"/>
                                 <connections>
                                     <outlet property="itemImage" destination="05T-4y-S0j" id="DaZ-Gz-fEE"/>
+                                    <outlet property="productName" destination="gXA-yf-zO4" id="RmB-92-ceo"/>
                                     <outlet property="statusLabel" destination="7hm-B2-T3C" id="aat-rb-2NF"/>
                                 </connections>
                             </collectionViewCell>

@@ -8,31 +8,29 @@
 
 import Foundation
 
-protocol itemInitializedDelegate: AnyObject {
-    func itemTapped(_ item: ItemCollectionViewCell)
-}
+
 
 class ShoppingListController {
     
     
     // Mark: - Properties
     
-    var itemName: [ShoppingItem] = []
+    var shoppingList: [ShoppingItem] = []
     
     let itemsOnListToPersist = UserDefaults.standard.bool(forKey: .shoppingItemIntializedKey)
 
     var addedToCart: [ShoppingItem] {
-        return itemName.filter { $0.addedToList}
+        return shoppingList.filter { $0.addedToList}
     }
     var notAddedtoCart:[ShoppingItem] {
-        return itemName.filter { $0.addedToList}
+        return shoppingList.filter { $0.addedToList}
     }
     
     // Mark: - func
     func itemToggled(for item: ShoppingItem) {
-        guard let index = itemName.firstIndex(of: item) else { return }
+        guard let index = shoppingList.firstIndex(of: item) else { return }
         
-        itemName[index].addedToList.toggle()
+        shoppingList[index].addedToList.toggle()
     }
     
     func checkforItem() {
@@ -50,7 +48,7 @@ class ShoppingListController {
         let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
         for item in itemNames {
             let item = ShoppingItem(name: item)
-            itemName.append(item)
+            shoppingList.append(item)
         }
     }
     
@@ -70,7 +68,7 @@ class ShoppingListController {
         
         do {
             let encoder = PropertyListEncoder()
-            let data = try encoder.encode(itemName)
+            let data = try encoder.encode(shoppingList)
             try data.write(to: url)
         } catch {
             print("Error saving shopping list data: \(error)")
@@ -84,7 +82,7 @@ class ShoppingListController {
         do {
             let data = try Data(contentsOf: url)
             let decoder = PropertyListDecoder()
-            self.itemName = try decoder.decode([ShoppingItem].self, from: data)
+            self.shoppingList = try decoder.decode([ShoppingItem].self, from: data)
         } catch {
             print("Error loading \(error)")
         }
