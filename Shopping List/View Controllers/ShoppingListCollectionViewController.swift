@@ -10,71 +10,75 @@ import UIKit
 
 //private let reuseIdentifier = "ItemCell"
 
+
+
 protocol itemInitializedDelegate: AnyObject {
-    func itemTapped(_ item: ShoppingItemCollectionViewCell)
+    func itemTapped(shoppingItem item: ShoppingItemCollectionViewCell)
 }
 
-class ShoppingListCollectionViewController: UICollectionViewController {
+class ShoppingListCollectionViewController: UICollectionViewController  {
 
     let shoppingListController = ShoppingListController()
     
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        shoppingListController.loadFromPersistentStore()
+        shoppingListController.loadItems()
+        
     }
     
+   
+    
     override func viewWillAppear(_ animated: Bool) {
+        self.collectionView!.delegate = self
         super.viewWillAppear(animated)
         collectionView?.reloadData()
-    }
         
+    }
+    
+ 
+   
+   
+    
+  
         
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
        
-        if segue.identifier == "OrderSegue"{
+        if segue.identifier == "OrderSegue" {
         
        guard let userDetailVC = segue.destination as? UserDetailViewController else { return }
-        userDetailVC.itemsOrderedCount = shoppingListController.addedToCart.count
+            userDetailVC.itemsOrderedCount = shoppingListController.addedToCart.count
     }
     }
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 2
-    }
-
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return shoppingListController.shoppingList.count
+        return shoppingListController.shoppingItem.count
     }
-
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as? ShoppingItemCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.delegate = self
-        cell.itemName = shoppingListController.addedToCart[indexPath.item]
-        cell.itemName = shoppingListController.notAddedtoCart[indexPath.item]
-    
+        let item = shoppingListController.shoppingItem[indexPath.item]
+        cell.statusLabel.text = shoppingItem.
         // Configure the cell
     
         return cell
     }
-    }
+}
 
 
     // MARK: UICollectionViewDelegate
 
 extension ShoppingListCollectionViewController: itemInitializedDelegate {
    
-    func itemTapped(_ item: ShoppingItemCollectionViewCell) {
-        guard let itemName = item.itemName else { return }
+    func itemTapped(shoppingItem item: ShoppingItemCollectionViewCell) {
+       
+        guard let shoppingItem = item.shoppingItem else { return }
         
-        shoppingListController.itemToggled(for: itemName)
+        shoppingListController.itemToggled(for: shoppingItem)
         collectionView?.reloadData()
 }
-
-
 }

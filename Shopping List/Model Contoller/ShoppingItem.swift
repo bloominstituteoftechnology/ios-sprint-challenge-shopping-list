@@ -13,7 +13,7 @@ import UIKit
 struct ShoppingItem: Codable, Equatable {
     var name: String
     var addedToList: Bool = false
-
     
+
 }
 

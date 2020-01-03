@@ -13,17 +13,21 @@ import UIKit
 class UserDetailViewController: UIViewController {
 
     
+
     @IBOutlet weak var itemCountLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     
     
+    
     var itemsOrderedCount: Int?
-
+    let shoppingListController = ShoppingListController()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
+        shoppingListController.loadItems()
 
         
     }
@@ -31,7 +35,7 @@ class UserDetailViewController: UIViewController {
     private func updateViews() {
         guard let itemCount = itemsOrderedCount else { return }
         
-        itemCountLabel.text = "You have \(itemCount) item(s)"
+        itemCountLabel.text = "You have \(itemCount) item(s) add to your shopping list."
     }
 
     private func showAlert(to name: String, at address: String) {
@@ -50,6 +54,7 @@ class UserDetailViewController: UIViewController {
             let address = addressTextField.text,
             !name.isEmpty,
             !address.isEmpty else { return }
+        showAlert(to: name, at: address)
             
         
         

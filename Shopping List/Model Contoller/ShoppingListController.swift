@@ -10,47 +10,57 @@ import Foundation
 
 
 
+
 class ShoppingListController {
     
     
-    // Mark: - Properties
+    // MARK: - Properties
     
-    var shoppingList: [ShoppingItem] = []
-    
-    let itemsOnListToPersist = UserDefaults.standard.bool(forKey: .shoppingItemIntializedKey)
+    var shoppingItem: [ShoppingItem] = []
 
+    
+    let shoppingItemIntializedKey = UserDefaults.standard.bool(forKey: .shoppingItemIntializedKey)
+    
     var addedToCart: [ShoppingItem] {
-        return shoppingList.filter { $0.addedToList}
+        return shoppingItem.filter( { $0.addedToList })
     }
-    var notAddedtoCart:[ShoppingItem] {
-        return shoppingList.filter { $0.addedToList}
+    var notAddedToCart: [ShoppingItem] {
+        return shoppingItem.filter( { !$0.addedToList})
     }
     
-    // Mark: - func
-    func itemToggled(for item: ShoppingItem) {
-        guard let index = shoppingList.firstIndex(of: item) else { return }
+
+    
+   // MARK: - Initializer
         
-        shoppingList[index].addedToList.toggle()
-    }
-    
-    func checkforItem() {
-        if itemsOnListToPersist {
+        
+    func loadItems() {
+     if shoppingItemIntializedKey {
             loadFromPersistentStore()
-        } else {
-            createList()
+         } else {
+           createNewItem()
             savetoPersistenStore()
             UserDefaults.standard.set(true, forKey: .shoppingItemIntializedKey)
             
         }
+       
     }
+
+    //MARK: - Functions
     
-    func createList() {
-        let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
-        for item in itemNames {
-            let item = ShoppingItem(name: item)
-            shoppingList.append(item)
-        }
+    func createNewItem() {
+        
+    let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+   
+        for name in itemNames {
+            let item = ShoppingItem(name: name)
+            shoppingItem.append(item)
     }
+}
+    func itemToggled(for item: ShoppingItem) {
+          guard let index = shoppingItem.firstIndex(of: item) else { return }
+
+          shoppingItem[index].addedToList.toggle()
+      }
     
     // Mark: - Persistence
     
@@ -68,7 +78,7 @@ class ShoppingListController {
         
         do {
             let encoder = PropertyListEncoder()
-            let data = try encoder.encode(shoppingList)
+            let data = try encoder.encode(shoppingItem)
             try data.write(to: url)
         } catch {
             print("Error saving shopping list data: \(error)")
@@ -82,7 +92,7 @@ class ShoppingListController {
         do {
             let data = try Data(contentsOf: url)
             let decoder = PropertyListDecoder()
-            self.shoppingList = try decoder.decode([ShoppingItem].self, from: data)
+            self.shoppingItem = try decoder.decode([ShoppingItem].self, from: data)
         } catch {
             print("Error loading \(error)")
         }
@@ -90,7 +100,6 @@ class ShoppingListController {
     }
     
 }
-
 
 extension String {
     static var shoppingItemIntializedKey = "shoppingItemInializedKey"
