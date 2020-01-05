@@ -29,14 +29,14 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
             guard let shoppingItem = shoppingItem,
             let image = UIImage(named: shoppingItem.name) else  { return }
             
-             statusLabel.text = ""
+            var statusLabel. = ""
             if shoppingItem.addedToList {
-                statusLabel.text = "Added"
+                text = "Added"
             } else {
-                statusLabel.text = "Not Added"
+                text = "Not Added"
             }
             
-            statusLabel.text = statusLabel.text
+            statusLabel.text = text
             itemImage.image = image
             productName.text = shoppingItem.name
             
