@@ -10,9 +10,15 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
+protocol itemDelegate: AnyObject {
+    func itemTapped(shoppingItem item: ShoppingListCollectionViewCell)
+}
+
+
+
 class ShoppingListCollectionViewController: UICollectionViewController {
     // MARK: Properties
-    let listController = ListController()
+    let listController: ListController = ListController()
     
     
     
@@ -41,4 +47,12 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         }
     }
 
+}
+// MARK: - Extensions
+
+extension ShoppingListCollectionViewController: itemDelegate {
+    func ItemTapped(forItem item: ShoppingListCollectionViewCell) {
+        guard let shoppingItem = item.shoppingItem else { return }
+
+    }
 }
