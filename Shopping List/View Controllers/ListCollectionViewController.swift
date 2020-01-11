@@ -10,7 +10,7 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-protocol ShoppingListDelegate {
+protocol ShoppingListDelegate: class {
     func shouldBeAdded()
 }
 
@@ -60,6 +60,7 @@ class ListCollectionViewController: UICollectionViewController {
         delegate?.shouldBeAdded()
     }
 }
+
 extension String {
     static var notAdded = "notAdded"
 }

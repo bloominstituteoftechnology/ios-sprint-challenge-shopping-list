@@ -21,6 +21,11 @@ class ShoppingController {
         Items(name: "Strawberries", imageName: "Strawberries"),
         ]
 
+        let wasAdded = UserDefaults.standard.bool(forKey: .notAdded)
+        if wasAdded {
+            item.append(Items(name: <#T##String#>, imageName: <#T##String#>))
+        }
+        
     return item
     }
 }
