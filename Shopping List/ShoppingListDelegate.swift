@@ -8,5 +8,5 @@
 
 import Foundation
 protocol ShoppingListDelegate: class {
-    func toggleHasBeenAdded(cell: ShoppingItemsCollectionViewCell)
+    func toggleHasBeenAdded(forItem item: ShoppingItemsCollectionViewCell)
 }

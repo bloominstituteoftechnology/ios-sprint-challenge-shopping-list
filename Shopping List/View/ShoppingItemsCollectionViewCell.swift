@@ -16,6 +16,7 @@ class ShoppingItemsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var groceryItemImg: UIImageView!
     @IBOutlet weak var groceryItemName: UILabel!
     
+    var delegate: ShoppingListDelegate?
     var shoppingItem: ShoppingItem? {
         didSet {
             updateView()

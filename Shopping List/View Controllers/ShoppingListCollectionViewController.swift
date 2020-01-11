@@ -26,6 +26,7 @@ class ShoppingListCollectionViewController: UICollectionViewController, sendList
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        shoppingItemController.fetchItems()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -66,7 +67,7 @@ class ShoppingListCollectionViewController: UICollectionViewController, sendList
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = self.collectionView(collectionView, cellForItemAt: indexPath) as? ShoppingItemsCollectionViewCell,
         let item = cell.shoppingItem else { return }
-        shoppingItemController.update(item: item)
+        shoppingItemController.update(for: item)
         collectionView.reloadData()
 //        collectionView.reloadItems(at: [indexPath])
     }
@@ -81,14 +82,12 @@ class ShoppingListCollectionViewController: UICollectionViewController, sendList
     // MARK: UICollectionViewDelegate
 }
 
-//extension ShoppingListCollectionViewController: ShoppingListDelegate {
-//    func toggleHasBeenAdded(cell: ShoppingItemsCollectionViewCell) {
-//    }
-//
-//    func ItemTapped(forItem item: ShoppingItemsCollectionViewCell) {
-//        guard let shoppingItem = item.shoppingItem else { return }
-//
-////        shoppingItemController.itemIsAdded(shoppingItem)
-//        collectionView?.reloadData()
-//    }
+extension ShoppingListCollectionViewController: ShoppingListDelegate {
+    func toggleHasBeenAdded(forItem item: ShoppingItemsCollectionViewCell) {
+        guard let shoppingItem = item.shoppingItem else { return }
+        shoppingItemController.update(for: shoppingItem)
+         collectionView?.reloadData()
+    }
+  }
+    
 
