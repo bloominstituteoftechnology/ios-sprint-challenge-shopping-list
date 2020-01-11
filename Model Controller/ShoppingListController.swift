@@ -1,68 +1,58 @@
 //
-//  ShoppingListController.swift
+//  ShoppingItemController.swift
 //  Shopping List
 //
-//  Created by Gerardo Hernandez on 12/30/19.
-//  Copyright © 2019 Lambda School. All rights reserved.
+//  Created by Gerardo Hernandez on 1/2/20.
+//  Copyright © 2020 Lambda School. All rights reserved.
 //
 
 import Foundation
-
-
-
+import UIKit
 
 class ShoppingListController {
     
-    
-    // MARK: - Properties
+    //MARK: - Properties
     
     var shoppingItem: [ShoppingItem] = []
-
     
-    let shoppingItemIntializedKey = UserDefaults.standard.bool(forKey: .shoppingItemIntializedKey)
-    
-    var addedToCart: [ShoppingItem] {
-        return shoppingItem.filter( { $0.addedToList })
-    }
-    var notAddedToCart: [ShoppingItem] {
-        return shoppingItem.filter( { !$0.addedToList})
+    var itemsAdded: [ShoppingItem] {
+        return shoppingItem.filter( { $0.hasBeenAdded} )
     }
     
-
     
-   // MARK: - Initializer
+    //Mark: - Initializer
+    
+    init() {
+        let userDefaults = UserDefaults.standard
+        let itemToggleStatusKey = userDefaults.bool(forKey: .itemToggleStatusKey)
         
         
-    func loadItems() {
-     if shoppingItemIntializedKey {
+        if itemToggleStatusKey {
             loadFromPersistentStore()
-         } else {
-           createNewItem()
-            savetoPersistenStore()
-            UserDefaults.standard.set(true, forKey: .shoppingItemIntializedKey)
+        } else {
+            let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
             
+            for itemName in itemNames {
+                createShoppingItems(name: itemName)
+            }
+            savetoPersistenStore()
+            UserDefaults.standard.set(true, forKey: .itemToggleStatusKey)
         }
-       
-    }
-
-    //MARK: - Functions
-    
-    func createNewItem() {
         
-    let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
-   
-        for name in itemNames {
-            let item = ShoppingItem(name: name)
-            shoppingItem.append(item)
     }
-}
-    func itemToggled(for item: ShoppingItem) {
-          guard let index = shoppingItem.firstIndex(of: item) else { return }
-
-          shoppingItem[index].addedToList.toggle()
-      }
     
-    // Mark: - Persistence
+    //Mark: Methods
+    
+    func createShoppingItems(name itemName: String, hasBeenAdeed: Bool = false){
+    }
+    
+    func statusLabelToggle(for item: ShoppingItem) {
+        guard let index = shoppingItem.firstIndex(of: item) else { return }
+        shoppingItem[index].hasBeenAdded.toggle()
+        savetoPersistenStore()
+    }
+    
+    // MARK: - Persistence
     
     
     private var shoppingListURL: URL? {
@@ -82,8 +72,8 @@ class ShoppingListController {
             try data.write(to: url)
         } catch {
             print("Error saving shopping list data: \(error)")
+        }
     }
-}
     
     func loadFromPersistentStore() {
         let fileManager = FileManager.default
@@ -98,11 +88,8 @@ class ShoppingListController {
         }
         
     }
-    
 }
 
 extension String {
-    static var shoppingItemIntializedKey = "shoppingItemInializedKey"
+    static var itemToggleStatusKey = "itemToggleStatusKey"
 }
-
-
