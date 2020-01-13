@@ -44,6 +44,9 @@ class ShoppingListController {
     //Mark: Methods
     
     func createShoppingItems(name itemName: String, hasBeenAdeed: Bool = false){
+        let item = ShoppingItem(itemName: itemName, hasBeenAdded: hasBeenAdeed)
+        self.shoppingItem.append(item)
+        
     }
     
     func statusLabelToggle(for item: ShoppingItem) {

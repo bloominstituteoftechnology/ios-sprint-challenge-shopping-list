@@ -11,18 +11,17 @@ import UIKit
 
 class ShoppingItemCollectionViewController: UICollectionViewController {
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        shoppingListController.loadFromPersistentStore()
-    }
-    
-    
     // MARK: - Properties
     
     let shoppingListController = ShoppingListController()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    
     // MARK: - Navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "OrderSegue",
             let userOrderVC = segue.destination as? UserOrderViewController {
@@ -34,19 +33,16 @@ class ShoppingItemCollectionViewController: UICollectionViewController {
     // MARK: -  UICollectionViewDataSource
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return shoppingListController.shoppingItem.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingItemCell", for: indexPath) as? ShoppingItemCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.shoppingItem = shoppingListController.shoppingItem[indexPath.item]
-        
+        let item = shoppingListController.shoppingItem[indexPath.item]
+        cell.shoppingItem = item
         return cell
     }
-    
-    
     
     
     //MARK: - UICollectionViewDelegate
