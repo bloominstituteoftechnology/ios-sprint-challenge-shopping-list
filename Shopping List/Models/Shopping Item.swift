@@ -11,5 +11,8 @@ import Foundation
 
 struct Item: Codable {
     let name: String
+    let image: String
     let itemWasAdded: Bool
 }
+
+let defaults = UserDefaults.standard

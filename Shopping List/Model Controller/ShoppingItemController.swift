@@ -19,9 +19,9 @@ var Items: [Item] = []
     func addItem() {
         
         for item in itemNames {
-            let itemInstance = Item(name: item, itemWasAdded: false)
+            let itemInstance = Item(name: item, image: "", itemWasAdded: false)
             Items.append(itemInstance)
+            
         }
-        PropertyListEncoder
     }
 }

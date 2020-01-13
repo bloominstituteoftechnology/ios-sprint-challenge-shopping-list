@@ -11,8 +11,6 @@ import UIKit
 private let reuseIdentifier = "ShoppingItem"
 
 class ShoppingItemsCollectionViewController: UICollectionViewController {
-
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
