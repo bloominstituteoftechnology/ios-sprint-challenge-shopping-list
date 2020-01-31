@@ -12,15 +12,12 @@ import Foundation
 class ShoppingListController{
     var shoppingItems: [ShoppingItem]{
     let itemNames = [
-        "Apple",
-        "Grapes",
-        "Milk",
-        "Muffin",
-        "Popcorn",
-        "Soda",
-        "Strawberries"]
+        ShoppingItem(imageName: "Apple"),
+        ShoppingItem(imageName: "Grapes"),
+        ShoppingItem(imageName: "Milk"),
+        ShoppingItem(imageName:  "Muffin"),
+        ShoppingItem(imageName: "Popcorn"),
+        ShoppingItem(imageName: "Soda"),
+        ShoppingItem(imageName: "Strawberries")]
     }
-    
-    return itemNames
-    
 }

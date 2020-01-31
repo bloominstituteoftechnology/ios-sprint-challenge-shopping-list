@@ -14,13 +14,19 @@ class shoppingListDefaults{
     let addedToListPreferenceKey: String = "addedToListPreferenceKey"
     
     func setDefaultPreferences(){
-        UserDefaults.standard.set(<#T##value: Bool##Bool#>, forKey: addedToListPreferenceKey)
+        UserDefaults.standard.set(
+            
+            , forKey: addedToListPreferenceKey)
     }
     
+    var addedToListPreferences: String?{
+        return
+            UserDefaults.standard.string(forKey: addedToListPreferenceKey)
+    }
     
     init() {
-        guard addedToListPreferenceKey == nil else { return }
-            setDefaultPreference()
+        guard addedToListPreferences == nil else { return }
+            setDefaultPreferences()
         
     }
     

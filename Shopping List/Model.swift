@@ -7,13 +7,16 @@
 //
 
 import Foundation
-
+import UIKit
 
 struct ShoppingItem: Encodable, Decodable{
 
     
-    var name: String
-    var hasBeenAddedToList: Bool
-    var shoppingItemImage: UIImage
     
+    var imageName: String
+    var hasBeenAddedToList: Bool = false
+  
+    var image: UIImage {
+           return UIImage(named: imageName)!
+       }
 }
