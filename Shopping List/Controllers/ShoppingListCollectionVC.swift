@@ -12,8 +12,13 @@ import UIKit
 
 class ShoppingListCollectionVC: UICollectionViewController {
 
-    var pickedItems = 10
+    var pickedItems = 0 {
+        didSet {
+            nextButton.isEnabled = (pickedItems > 0)
+        }
+    }
     
+    @IBOutlet weak var nextButton: UIBarButtonItem!
     
     var shop = ShopplingListController()
   
@@ -21,7 +26,7 @@ class ShoppingListCollectionVC: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.reloadData()
-       
+        
     }
 
     // MARK: - UICollectionViewDataSource

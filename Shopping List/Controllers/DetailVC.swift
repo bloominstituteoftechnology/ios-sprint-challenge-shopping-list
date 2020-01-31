@@ -22,7 +22,7 @@ class DetailVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-            introLabel.text = "You currently have \(totalItem) items in you shoppling list please"
+            introLabel.text = "You currently have \(totalItem) items in you shoppling list."
         nameTextField.becomeFirstResponder()
     }
     
@@ -34,6 +34,11 @@ class DetailVC: UIViewController {
         setNotification()
         navigationController?.popViewController(animated: true)
     }
+    
+    
+    
+    
+    
     
     
     func setNotification() {
