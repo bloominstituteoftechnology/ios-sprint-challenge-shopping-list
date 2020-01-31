@@ -25,13 +25,14 @@ class OrderViewController: UIViewController {
 
     
     func showAlert() {
-        let alert = UIAlertController(title: "Your Order Has Been Submitted", message: "\(String(describing: orderName.text)), your order will be delivered in 15 minutes to \(String(describing: orderAddress.text))", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Your Order Has Been Submitted", message: "\(String(describing: orderName.text!)), your order will be delivered in 15 minutes to \(String(describing: orderAddress.text!))", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         
         self.present(alert, animated: true, completion: nil)
         }
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
