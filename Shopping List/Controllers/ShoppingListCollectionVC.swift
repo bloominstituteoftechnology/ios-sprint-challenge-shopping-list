@@ -24,9 +24,6 @@ class ShoppingListCollectionVC: UICollectionViewController {
        
     }
 
-    
-    
-    
     // MARK: UICollectionViewDataSource
     
     
@@ -45,9 +42,9 @@ class ShoppingListCollectionVC: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard  let cell  = collectionView.cellForItem(at: indexPath) as? ShopCell else { return }
         
-        shop.shoppingLists[indexPath.item].isAdded.toggle()
+        shop.toggle(for: indexPath.item)
         cell.itemStatus.text = shop.shoppingLists[indexPath.item].isAdded ? "Added" : "No Added"
-        cell.itemStatus.textColor = shop.shoppingLists[indexPath.item].isAdded ? UIColor.green : UIColor.red
+//        cell.itemStatus.textColor = shop.shoppingLists[indexPath.item].isAdded ? UIColor.green : UIColor.red
         
         let addedItems = shop.shoppingLists.filter {
             $0.isAdded
