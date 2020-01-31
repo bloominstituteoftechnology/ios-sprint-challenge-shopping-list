@@ -14,29 +14,39 @@ class AddItemDetailViewController: UIViewController {
     @IBOutlet weak var listLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
-   
-    var delegate: [ShoppingItem]? {
-        didSet {
-            updateView()
-        }
+     
+    @IBAction func sendOrderButton(_ sender: UIButton) {
+        showAlert()
     }
-  
+    var shoppingListController =  ShoppingItemController()
+
+    func showAlert() {
+        let alert = UIAlertController(title: "Your Order Has Been Submitted", message: "\(String(describing: nameTextField.text!)), your order will be delivered in 15 minutes to \(String(describing: addressTextField.text!))", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        
+        self.present(alert, animated: true, completion: nil)
+        }
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateView()
-        }
-    
-    func updateView() {
-        guard let count = delegate?.count else { return }
-        self.listLabel.text = "You have \(count) item(s) in your shopping list."
+        updateViews()
+     // Do any additional setup after loading the view.
     }
-    
- 
 
-    @IBAction func sendOrderButton(_ sender: Any) {
-        guard let name = nameTextField.text, let address = addressTextField.text, let count = delegate?.count else { return }
-        let alert = UIAlertController(title: "Thank you, \(name) your order has been placed!", message: "You will have \(count) item(s) that will be sent to \(address).", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
+    func updateViews() {
+        listLabel.text = "You have \(shoppingListController.addedItems.count) item(s) in your cart"
     }
+
+    /*
+    // MARK: - Navigation
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
 }
+
+
