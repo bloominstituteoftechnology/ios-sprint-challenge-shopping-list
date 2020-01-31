@@ -10,25 +10,26 @@ import UIKit
 
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
-    
-    @IBOutlet weak var addedLabel: UILabel!
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
+     func updateView() {
+             guard let item = item else { return }
+             nameLabel.text = item.name
+             let image = item.name
+             imageView.image = UIImage(named: image)!
+             if item.addedToList == false {
+                 addedLabel.text = "Not Added"
+             } else {
+                 addedLabel.text = "Added"
+             }
+         }
 
     var item: ShoppingItem? {
          didSet {
              updateView()
          }
      }
-        func updateView() {
-            guard let item = item else { return }
-            nameLabel.text = item.name
-            let image = item.name
-            imageView.image = UIImage(named: image)!
-            if item.addedToList == false {
-                addedLabel.text = "Not Added"
-            } else {
-                addedLabel.text = "Added"
-            }
-        }
+    
+    @IBOutlet weak var addedLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+
 }

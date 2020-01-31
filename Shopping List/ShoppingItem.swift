@@ -8,11 +8,11 @@
 
 import UIKit
 
-struct ShoppingItem {
+struct ShoppingItem: Equatable, Codable{
     let name: String
     var addedToList: Bool
     
-    init(name: String, addedToList: Bool) {
+    init(name: String, addedToList: Bool = false) {
         self.name = name
         self.addedToList = addedToList
     }
