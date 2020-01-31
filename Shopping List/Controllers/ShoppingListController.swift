@@ -26,8 +26,9 @@ class ShoppingListController {
         return shoppingList.filter({ $0.addedToList == false })
     }
     
-    func updateList(for item: Int){
-        shoppingList[item].addedToList.toggle()
+    func updateList(for item: ShoppingItem){
+        guard let item = shoppingList.firstIndex(of: item) else { return }
+        shoppingList[item].addedToList = !shoppingList[item].addedToList
         saveToPersisentStore()
     }
     

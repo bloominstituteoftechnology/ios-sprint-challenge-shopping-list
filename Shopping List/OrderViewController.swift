@@ -23,6 +23,8 @@ class OrderViewController: UIViewController {
         present(ac, animated: true)
         navigationController?.popViewController(animated: true)
     }
+    
+    //MARK: - Variables
     var shoppingListController = ShoppingListController()
     var shoppingItem: ShoppingItem?{
         didSet{
@@ -33,6 +35,7 @@ class OrderViewController: UIViewController {
     //MARK: - Functions
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateViews()
     }
     
     func updateViews(){
