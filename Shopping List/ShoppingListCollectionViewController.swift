@@ -31,14 +31,8 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
-        // Do any additional setup after loading the view.
     }
 
     // MARK: - Navigation
@@ -46,13 +40,11 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PlaceOrderSegua"{
             if let placeOrderVC = segue.destination as? PlaceOrderViewController{
-                
-                
+                let passedList = shoppingList
+                placeOrderVC.shoppingList = passedList
             }
         }
-        
-        
-     
+
     }
 
 
@@ -71,8 +63,8 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingItemViewCell", for: indexPath) as? ShoppingListCollectionViewCell else { return UICollectionViewCell()}
         let shoppingItem = shoppingListController.shoppingItems[indexPath.row]
-        cell.shoppingItemImage.image = shoppingItem.shoppingItemImage
-        cell.shoppingItemDescription.text = shoppingItem.name
+        cell.shoppingItemImage.image = shoppingItem.image
+        cell.shoppingItemDescription.text = shoppingItem.imageName
         return cell
     }
 

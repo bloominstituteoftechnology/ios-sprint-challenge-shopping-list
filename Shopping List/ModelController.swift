@@ -11,7 +11,7 @@ import Foundation
 
 class ShoppingListController{
     var shoppingItems: [ShoppingItem]{
-    let itemNames = [
+    let items = [
         ShoppingItem(imageName: "Apple"),
         ShoppingItem(imageName: "Grapes"),
         ShoppingItem(imageName: "Milk"),
@@ -19,5 +19,7 @@ class ShoppingListController{
         ShoppingItem(imageName: "Popcorn"),
         ShoppingItem(imageName: "Soda"),
         ShoppingItem(imageName: "Strawberries")]
+        
+        return items
     }
 }
