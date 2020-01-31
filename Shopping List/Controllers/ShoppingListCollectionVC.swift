@@ -14,13 +14,13 @@ class ShoppingListCollectionVC: UICollectionViewController {
 
     var pickedItems = 10
     
-
+    
     var shop = ShopplingListController()
-   
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        collectionView?.reloadData()
        
     }
 
@@ -44,7 +44,7 @@ class ShoppingListCollectionVC: UICollectionViewController {
         
         shop.toggle(for: indexPath.item)
         cell.itemStatus.text = shop.shoppingLists[indexPath.item].isAdded ? "Added" : "No Added"
-//        cell.itemStatus.textColor = shop.shoppingLists[indexPath.item].isAdded ? UIColor.green : UIColor.red
+        cell.itemStatus.textColor = shop.shoppingLists[indexPath.item].isAdded ? UIColor.green : UIColor.red
         
         let addedItems = shop.shoppingLists.filter {
             $0.isAdded
@@ -53,12 +53,7 @@ class ShoppingListCollectionVC: UICollectionViewController {
         
         pickedItems = addedItems.count
     }
-    
-    
-    
-    
-    
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Helper.shopSegue {
             guard let destVC = segue.destination as? DetailVC else { return }
