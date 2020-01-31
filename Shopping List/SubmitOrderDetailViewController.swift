@@ -1,5 +1,5 @@
 //
-//  ShoppingListViewController.swift
+//  SubmitOrderDetailViewController.swift
 //  Shopping List
 //
 //  Created by Nichole Davidson on 1/31/20.
@@ -8,13 +8,8 @@
 
 import UIKit
 
-class ShoppingListViewController: UIViewController {
+class SubmitOrderDetailViewController: UIViewController {
 
-    
-   
-    // so new items are initialized only once
-   
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
