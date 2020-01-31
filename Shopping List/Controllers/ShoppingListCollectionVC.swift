@@ -24,17 +24,13 @@ class ShoppingListCollectionVC: UICollectionViewController {
        
     }
 
-    // MARK: UICollectionViewDataSource
-    
-    
+    // MARK: - UICollectionViewDataSource
+ 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return shop.shoppingLists.count
         
     }
-    
-  
-    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard  let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Helper.shopCellId, for: indexPath) as? ShopCell else { return UICollectionViewCell() }
         let item = shop.shoppingLists[indexPath.item]
@@ -42,9 +38,7 @@ class ShoppingListCollectionVC: UICollectionViewController {
         return cell
         
     }
-    
-   
-    
+  
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard  let cell  = collectionView.cellForItem(at: indexPath) as? ShopCell else { return }
         
