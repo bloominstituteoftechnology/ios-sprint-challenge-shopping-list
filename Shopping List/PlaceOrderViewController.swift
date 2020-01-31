@@ -43,7 +43,7 @@ class PlaceOrderViewController: UIViewController {
         
         guard let listCount = shoppingList?.count,
             let address = addressTextField.text else {return}
-        let orderAlert = UIAlertController(title: "You're order has been placed", message: "You have \(listCount)) items heading to \(address)", preferredStyle: .alert)
+        let orderAlert = UIAlertController(title: "You're order has been placed", message: "You have \(listCount)) items heading to \(address). You're order should arrive in 15 min.", preferredStyle: .alert)
         
         let acknowledgeAction = UIAlertAction(title: "Return to shopping list.", style: .cancel, handler: nil)
         

@@ -19,7 +19,6 @@ class ShoppingListController{
         ShoppingItem(imageName: "Popcorn"),
         ShoppingItem(imageName: "Soda"),
         ShoppingItem(imageName: "Strawberries")]
-        
         return items
     }
 }

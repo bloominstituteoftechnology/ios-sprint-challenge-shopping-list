@@ -11,25 +11,31 @@ import Foundation
 
 class shoppingListDefaults{
     
-    let addedToListPreferenceKey: String = "addedToListPreferenceKey"
+    let defaults = UserDefaults.standard
     
-    func setDefaultPreferences(){
-        UserDefaults.standard.set(
-            
-            , forKey: addedToListPreferenceKey)
-    }
+//    defaults.set(false, forKey: "addedItem")
     
-    var addedToListPreferences: String?{
-        return
-            UserDefaults.standard.string(forKey: addedToListPreferenceKey)
-    }
     
-    init() {
-        guard addedToListPreferences == nil else { return }
-            setDefaultPreferences()
-        
-    }
     
+//    let addedToListPreferenceKey: String = "addedToListPreferenceKey"
+//
+//    func setDefaultPreferences(){
+//        UserDefaults.standard.set(
+//
+//            , forKey: addedToListPreferenceKey)
+//    }
+//
+//    var addedToListPreferences: String?{
+//        return
+//            UserDefaults.standard.string(forKey: addedToListPreferenceKey)
+//    }
+//
+//    init() {
+//        guard addedToListPreferences == nil else { return }
+//            setDefaultPreferences()
+//
+//    }
+//
     
     
     
