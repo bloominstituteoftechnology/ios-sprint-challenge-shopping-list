@@ -4,7 +4,7 @@ This sprint challenge is designed to ensure that you are competent with the conc
 
 ## Instructions
 
-Please read this entire README to make sure you understand what is expected of you before you begin. Failure to read and follow the instructions and requirements will be reflected in your results.
+**Please read this entire README to make sure you understand what is expected of you before you begin. This includes the instructions in the requirements section. Failure to read and follow the instructions and requirements will be reflected in your results.**
 
 In your solution, it is especially important that you follow best practices such as MVC and good, consistent code style. You will be scored on these aspects as well as the project requirements below.
 
@@ -37,7 +37,8 @@ Please view the screen recording so you will know what your finished project sho
 1. A `ShoppingItem` model object with properties: 
 	1. A name of the item ("Apple").
 	2. A `Bool` indicating whether the item has been added to the shopping list.
-2. **The shopping items should be persisted between launches of the application.** On the first launch of the application, use the given shopping `itemNames` to create instances of the `ShoppingItem` model, and save them to a file. 
+	3. You will need to make a computed property that initializes a `UIImage` from the name of the item.
+2. **The shopping items should be persisted between launches of the application.** On the first launch of the application, use the given shopping `itemNames` to create instances of the `ShoppingItem` model, and save them to a file using `FileManager`. To help you do this, read the following substeps:
 	1. Use this snippet of names of images from the asset catalog to create instances of items in the `ShoppingList` model controller:
 
             let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
