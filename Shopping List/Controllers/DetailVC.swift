@@ -40,7 +40,7 @@ class DetailVC: UIViewController {
         let center = UNUserNotificationCenter.current()
         
         let content = UNMutableNotificationContent()
-        content.title = "You currently have \(totalItem) items in you shoppling list please"
+        content.title = "You currently have \(totalItem) items in you shoppling list."
         content.body = "Hi \(nameTextField.text ?? "").Your order will be delivered in 15 mins to \(addressTextField.text ?? "")"
         content.sound = .defaultCritical
         
