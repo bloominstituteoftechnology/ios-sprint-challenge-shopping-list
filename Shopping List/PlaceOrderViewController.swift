@@ -11,6 +11,9 @@ import UIKit
 class PlaceOrderViewController: UIViewController {
 
     
+    var shoppingList: [ShoppingItem]?
+    var shoppingListController: ShoppingListController?
+    
     @IBOutlet weak var orderInformationLabel: UILabel!
     
     @IBOutlet weak var nameTextField: UITextField!
@@ -18,24 +21,35 @@ class PlaceOrderViewController: UIViewController {
     @IBOutlet weak var addressTextField: UITextField!
     
     @IBAction func placeOrderButton(_ sender: UIButton) {
+        orderAlert()
+        navigationController?.popViewController(animated: true)
+        
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        if let shoppingList = shoppingList{
+            orderInformationLabel.text = "You have \(shoppingList.count)"
+        } else{
+        orderInformationLabel.text = "You do not have any items in your shopping list."
+        }
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+// MARK - Alert
+    
+    func orderAlert(){
+        
+        guard let listCount = shoppingList?.count,
+            let address = addressTextField.text else {return}
+        let orderAlert = UIAlertController(title: "You're order has been placed", message: "You have \(listCount)) items heading to \(address)", preferredStyle: .alert)
+        
+        let acknowledgeAction = UIAlertAction(title: "Return to shopping list.", style: .cancel, handler: nil)
+        
+        orderAlert.addAction(acknowledgeAction)
+        present(orderAlert, animated: true, completion: nil)
     }
-    */
+ 
 
 }
