@@ -9,16 +9,25 @@
 import UIKit
 
 class SubmitOrderDetailViewController: UIViewController {
-
+    
+    @IBOutlet weak var itemsInCartLabel: UILabel!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var addressTextField: UITextField!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func submitOrderButtonTapped(_ sender: Any) {
+    }
     /*
-    // MARK: - Navigation
+     @IBAction func submitOrderButtonTapped(_ sender: Any) {
+     }
+     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

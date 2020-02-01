@@ -10,4 +10,22 @@ import UIKit
 
 class ListOfItemsCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var shoppingItemImage: UIImageView!
+    @IBOutlet weak var shoppingItemNameLabel: UILabel!
+    @IBAction func itemAddedTappedButton(_ sender: Any) {
+    }
+    
+    var shoppingItem: ShoppingItem? {
+        didSet{
+            updateViews()
+        }
+    }
+    
+    func updateViews() {
+        guard let shoppingItem = shoppingItem else { return }
+        
+        shoppingItemImage.image = shoppingItem.image
+        shoppingItemNameLabel.text = shoppingItem.nameOfItem
+        
+    }
 }

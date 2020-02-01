@@ -10,13 +10,13 @@ import Foundation
 
 class ShoppingListController {
     var items: [ShoppingItem] {
-    let itemNames = [ShoppingItem(name: "Apple", imageName: "apple"),
-                    ShoppingItem(name: "Grapes", imageName: "grapes"),
-                    ShoppingItem(name: "Milk", imageName: "milk"),
-                    ShoppingItem(name: "Muffin", imageName: "muffin"),
-                    ShoppingItem(name: "Popcorn", imageName: "popcorn"),
-                    ShoppingItem(name: "Soda", imageName: "soda"),
-                    ShoppingItem(name: "Strawberries", imageName: "strawberries")]
+    let itemNames = [ShoppingItem(nameOfItem: "Apple", imageName: "apple"),
+                    ShoppingItem(nameOfItem: "Grapes", imageName: "grapes"),
+                    ShoppingItem(nameOfItem: "Milk", imageName: "milk"),
+                    ShoppingItem(nameOfItem: "Muffin", imageName: "muffin"),
+                    ShoppingItem(nameOfItem: "Popcorn", imageName: "popcorn"),
+                    ShoppingItem(nameOfItem: "Soda", imageName: "soda"),
+                    ShoppingItem(nameOfItem: "Strawberries", imageName: "strawberries")]
         
     
             func addToList() {
@@ -31,11 +31,9 @@ class ShoppingListController {
         
         guard let documentsDir = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
         
-        // ~/MyApp/Documents/stars.plist
+        let itemsURL = documentsDir.appendingPathComponent("info.plist")
         
-        let shoppingListURL = documentsDir.appendingPathComponent("info.plist")
-        
-        return shoppingListURL
+        return itemsURL
     }
     
     func saveToPersistentStore() {
@@ -46,8 +44,8 @@ class ShoppingListController {
        
        do {
            
-           let shoppingListData = try encoder.encode(items)
-           try shoppingListData.write(to: fileURL)
+           let itemsData = try encoder.encode(items)
+           try itemsData.write(to: fileURL)
            
        } catch {
            print("Error encoding items array: \(error)")
@@ -61,13 +59,13 @@ class ShoppingListController {
         
         do {
             
-            let shoppingListData = try Data(contentsOf: fileURL)
+            let itemsData = try Data(contentsOf: fileURL)
             
             let decoder = PropertyListDecoder()
             
-            let shoppingListArray = try decoder.decode([ShoppingItem].self, from: shoppingListData)
+            let itemsArray = try decoder.decode([ShoppingItem].self, from: itemsData)
             
-            self.items = shoppingListArray
+            self.items = itemsArray
             
         } catch {
             
