@@ -16,44 +16,45 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="qTZ-VQ-bla">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="2" id="jNt-3b-ZKu">
-                            <size key="itemSize" width="121" height="150"/>
+                            <size key="itemSize" width="115" height="116"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="4" minY="16" maxX="4" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoppingItemCell" id="HuN-1S-McN" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
-                                <rect key="frame" x="4" y="16" width="121" height="150"/>
+                                <rect key="frame" x="4" y="16" width="115" height="116"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="xzO-FW-Vxi">
-                                    <rect key="frame" x="0.0" y="0.0" width="121" height="150"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="115" height="116"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="C7n-8l-H5A">
-                                            <rect key="frame" x="0.0" y="0.0" width="121" height="121"/>
+                                            <rect key="frame" x="5" y="8" width="105" height="74"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" secondItem="C7n-8l-H5A" secondAttribute="height" multiplier="1:1" id="8to-c0-e1q"/>
+                                                <constraint firstAttribute="width" secondItem="C7n-8l-H5A" secondAttribute="height" multiplier="105:74" id="0CG-5W-KD4"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Added" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MW8-p4-HRU">
-                                            <rect key="frame" x="8" y="125" width="105" height="17"/>
+                                            <rect key="frame" x="8" y="90" width="99" height="17"/>
                                             <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="14"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="MW8-p4-HRU" firstAttribute="leading" secondItem="xzO-FW-Vxi" secondAttribute="leading" constant="8" id="17n-b0-3CB"/>
-                                        <constraint firstItem="C7n-8l-H5A" firstAttribute="leading" secondItem="xzO-FW-Vxi" secondAttribute="leading" id="6fy-97-2Bl"/>
-                                        <constraint firstItem="C7n-8l-H5A" firstAttribute="top" secondItem="xzO-FW-Vxi" secondAttribute="top" id="GJh-mE-Px7"/>
-                                        <constraint firstItem="MW8-p4-HRU" firstAttribute="top" secondItem="C7n-8l-H5A" secondAttribute="bottom" constant="4" id="ho1-ed-pDG"/>
-                                        <constraint firstAttribute="trailing" secondItem="C7n-8l-H5A" secondAttribute="trailing" id="kVp-jX-DeD"/>
-                                        <constraint firstAttribute="trailing" secondItem="MW8-p4-HRU" secondAttribute="trailing" constant="8" id="oF7-fI-WjQ"/>
+                                        <constraint firstItem="MW8-p4-HRU" firstAttribute="leading" secondItem="xzO-FW-Vxi" secondAttribute="leading" constant="8" id="AzP-M1-8Yg"/>
+                                        <constraint firstAttribute="trailing" secondItem="C7n-8l-H5A" secondAttribute="trailing" constant="5" id="ELv-8t-Gwz"/>
+                                        <constraint firstAttribute="trailing" secondItem="MW8-p4-HRU" secondAttribute="trailing" constant="8" id="eoj-M1-WXi"/>
+                                        <constraint firstItem="MW8-p4-HRU" firstAttribute="top" secondItem="C7n-8l-H5A" secondAttribute="bottom" constant="8" id="gv3-tc-AO5"/>
+                                        <constraint firstItem="MW8-p4-HRU" firstAttribute="top" secondItem="C7n-8l-H5A" secondAttribute="bottom" constant="8" id="i46-IA-weU"/>
+                                        <constraint firstItem="C7n-8l-H5A" firstAttribute="top" secondItem="xzO-FW-Vxi" secondAttribute="top" constant="8" id="mUT-hM-efr"/>
+                                        <constraint firstItem="C7n-8l-H5A" firstAttribute="leading" secondItem="xzO-FW-Vxi" secondAttribute="leading" constant="5" id="wtw-8l-hOr"/>
                                     </constraints>
                                 </collectionViewCellContentView>
-                                <size key="customSize" width="121" height="150"/>
+                                <size key="customSize" width="115" height="116"/>
                                 <connections>
                                     <outlet property="hasBeenAddedLabel" destination="MW8-p4-HRU" id="Pal-G2-OxQ"/>
                                     <outlet property="shoppingItemImageView" destination="C7n-8l-H5A" id="nJJ-8H-adX"/>
@@ -93,7 +94,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="spa-qe-rRb">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="spa-qe-rRb">
                                         <rect key="frame" x="0.0" y="52" width="294" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -106,7 +107,7 @@
                                     <constraint firstAttribute="height" constant="68" id="dEw-vL-8KF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qJ-BE-ELC">
@@ -121,7 +122,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstItem="iLb-zu-IMp" firstAttribute="trailing" secondItem="1v0-0j-qLe" secondAttribute="trailing" constant="60" id="BNy-OB-aQV"/>
                             <constraint firstItem="GY7-vE-0v9" firstAttribute="leading" secondItem="iLb-zu-IMp" secondAttribute="leading" constant="20" id="Jxa-aW-LFw"/>
@@ -152,7 +153,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7Wd-vU-hgX" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="MBb-R7-rwL">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="MBb-R7-rwL">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

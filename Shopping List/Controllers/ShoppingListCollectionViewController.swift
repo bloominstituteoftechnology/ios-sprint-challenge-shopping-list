@@ -16,14 +16,23 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         collectionView?.delegate = self
     }
     
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return shoppingItemController.shoppingItems.count
+        if section == 0 {
+            return shoppingItemController.addedItems.count
+        } else {
+            return shoppingItemController.notAddedItems.count
+        }
+        
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingItemCell", for: indexPath) as? ShoppingItemCollectionViewCell else { return UICollectionViewCell() }
         
-        let shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
+        let shoppingItem = getShoppingItem(for: indexPath)
         
         cell.shoppingItem = shoppingItem
         
@@ -32,12 +41,9 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
+        let shoppingItem = getShoppingItem(for: indexPath)
         shoppingItemController.toggleHasBeenAdded(for: shoppingItem)
-        if let cell = collectionView.cellForItem(at: indexPath) as? ShoppingItemCollectionViewCell {
-            cell.shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
-        }
-        
+        collectionView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -47,6 +53,17 @@ class ShoppingListCollectionViewController: UICollectionViewController {
             }
             
         }
+    }
+    
+    func getShoppingItem(for indexPath: IndexPath) -> ShoppingItem {
+        let shoppingItem: ShoppingItem
+        if indexPath.section == 0 {
+            shoppingItem = shoppingItemController.addedItems[indexPath.item]
+        } else {
+            shoppingItem = shoppingItemController.notAddedItems[indexPath.item]
+        }
+        
+        return shoppingItem
     }
     
 }

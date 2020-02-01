@@ -14,6 +14,8 @@ extension String {
 
 class ShoppingItemController {
     
+    var shoppingItems: [ShoppingItem] = []
+    
     let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     
     var hasData: Bool {
@@ -27,9 +29,30 @@ class ShoppingItemController {
  
     }
     
+    var addedItems: [ShoppingItem] {
+        let added = shoppingItems.filter { return $0.hasBeenAdded }
+        return added
+    }
+    
+    var notAddedItems: [ShoppingItem] {
+        let notAdded = shoppingItems.filter { return !$0.hasBeenAdded }
+        return notAdded
+    }
+    
     var numberOfItemsAdded: Int {
         let filtered = shoppingItems.filter { return $0.hasBeenAdded }
         return filtered.count
+    }
+    
+    var persistentFileURL: URL? {
+        let fileManager = FileManager.default
+        
+        guard let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
+        
+        let shoppingItemURL = documentsDirectory.appendingPathComponent("shoppingItems.plist")
+        
+        return shoppingItemURL
+        
     }
     
     init() {
@@ -44,19 +67,6 @@ class ShoppingItemController {
           loadFromPersistentStore()
         }
         
-        
-    }
-    
-    var shoppingItems: [ShoppingItem] = []
-    
-    var persistentFileURL: URL? {
-        let fileManager = FileManager.default
-        
-        guard let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
-        
-        let shoppingItemURL = documentsDirectory.appendingPathComponent("shoppingItems.plist")
-        
-        return shoppingItemURL
         
     }
     

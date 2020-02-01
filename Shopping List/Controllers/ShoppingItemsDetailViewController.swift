@@ -42,14 +42,13 @@ class ShoppingItemsDetailViewController: UIViewController {
     
     
     @IBAction func sendOrderTapped(_ sender: Any) {
-        
         if let name = nameTextField.text, !name.isEmpty, let address = addressTextField.text, !address.isEmpty {
-            let ac = UIAlertController(title: "Delivery For \(name)", message: "Your order will be delivered to \(address) in 15 minutes", preferredStyle: .alert)
+            let title = "Delivery For \(name)"
+            let body = "Your order will be delivered to \(address) in 15 minutes"
             
-            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-            ac.addAction(action)
+            navigationController?.popViewController(animated: true)
             
-            present(ac, animated: true)
+            NotificationCenter.sharedNotificationCenter.sendNotification(title: title, message: body)
             
         }
         
