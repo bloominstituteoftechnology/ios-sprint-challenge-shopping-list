@@ -14,7 +14,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
     let shoppingListController = ShoppingListController()
     var shoppingList = [ShoppingItem]()
-//    let shoppoingListViewCell = ShoppingListCollectionViewCell()
+    let shoppoingListViewCell = ShoppingListCollectionViewCell()
     
     // MARK - Life Cycle
     
@@ -56,7 +56,6 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = shoppingListController.shoppingItems[indexPath.item]
         shoppingListController.update(item: item)
-//        shoppoingListViewCell.updateViews()
         collectionView.reloadData()
         
     }

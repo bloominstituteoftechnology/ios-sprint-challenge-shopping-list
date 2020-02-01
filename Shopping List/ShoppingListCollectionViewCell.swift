@@ -38,9 +38,10 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
         guard let shoppingItem = shoppingItem else {return}
         shoppingItemImage.image = shoppingItem.image
         shoppingItemDescription.text = shoppingItem.imageName
-        
-        let hasBeenAdded = UserDefaults.standard.bool(forKey: .isAddedToListKey)
-        shoppingItem.hasBeenAddedToList = hasBeenAdded
+        shoppingItem.hasBeenAddedToList = UserDefaults.standard.bool(forKey: .isAddedToListKey)
+        if shoppingItem.hasBeenAddedToList{
+            addedToShoppingListLabel.text = ""
+        }
+        addedToShoppingListLabel.text = "Add to List"
     }
-    
 }
