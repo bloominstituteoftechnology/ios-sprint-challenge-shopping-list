@@ -8,21 +8,18 @@
 
 import UIKit
 
-// qprivate let reuseIdentifier = "ShoppingItemViewCell"
-
 class ShoppingListCollectionViewController: UICollectionViewController {
     
-       // MARK - Properties
+    // MARK - Properties
+    
     let shoppingListController = ShoppingListController()
     var shoppingList = [ShoppingItem]()
     
-      
-    
-//     MARK - Life Cycle ((Is that the correct term?))
+    // MARK - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        collectionView?.dataSource = self
     }
     
     // MARK: - Navigation
@@ -40,11 +37,6 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
     // MARK: UICollectionViewDataSource
     
-//    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        return 1
-//    }
-    
-    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return shoppingListController.shoppingItems.count
     }
@@ -58,15 +50,10 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
     // MARK: UICollectionViewDelegate
     
-    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = shoppingListController.shoppingItems[indexPath.row]
+        let item = shoppingListController.shoppingItems[indexPath.item]
         shoppingListController.update(item: item)
         collectionView.reloadData()
-        
-    }
-
-    @IBAction func unwindToShoppingVC (_ sender: UIStoryboardSegue){
         
     }
 }

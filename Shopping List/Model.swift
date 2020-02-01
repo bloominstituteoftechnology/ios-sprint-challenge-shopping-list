@@ -10,14 +10,11 @@ import Foundation
 import UIKit
 
 class ShoppingItem: Codable{
-
-    
     var imageName: String
     var hasBeenAddedToList: Bool
-  
     var image: UIImage {
-           return UIImage(named: imageName)!
-       }
+        return UIImage(named: imageName)!
+    }
     
     init(imageName: String, hasBeenAddedToList: Bool = false) {
         self.imageName = imageName

@@ -10,9 +10,13 @@ import UIKit
 
 class PlaceOrderViewController: UIViewController {
     
+    // Properties
     
     var shoppingList: [ShoppingItem]?
     var shoppingListController: ShoppingListController?
+    var shoppingListViewController = ShoppingListCollectionViewController()
+    
+    // Outlets
     
     @IBOutlet weak var orderInformationLabel: UILabel!
     
@@ -20,11 +24,13 @@ class PlaceOrderViewController: UIViewController {
     
     @IBOutlet weak var addressTextField: UITextField!
     
+    // Actions
+    
     @IBAction func placeOrderButton(_ sender: UIButton) {
         orderAlert()
-        
     }
     
+    // Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,22 +47,16 @@ class PlaceOrderViewController: UIViewController {
                 orderInformationLabel.text = "You do not have any items in your shopping list."
             }
         }
-        
     }
     
     // MARK - Alert
     
     func orderAlert(){
-        
         guard let listCount = shoppingList?.count,
             let address = addressTextField.text else {return}
         let orderAlert = UIAlertController(title: "You're order has been placed", message: "You have \(listCount)) items heading to \(address). You're order should arrive in 15 min.", preferredStyle: .alert)
-        
-        let acknowledgeAction = UIAlertAction(title: "Return to shopping list.", style: .cancel, handler: nil)
-        
+        let acknowledgeAction = UIAlertAction(title: "Return", style: .cancel, handler: nil)
         orderAlert.addAction(acknowledgeAction)
         present(orderAlert, animated: true, completion: nil)
     }
-    
-    
 }

@@ -11,26 +11,26 @@ import Foundation
 
 class ShoppingListDefaults{
     
-    var itemIsOrdered: Bool {
-        UserDefaults.standard.register(defaults: ["IsOrdered": false])
-        return UserDefaults.standard.bool(forKey: "isOrdered")
+//    var itemIsOrdered: Bool {
+//        UserDefaults.standard.register(defaults: ["IsOrdered": false])
+//        return UserDefaults.standard.bool(forKey: "isOrdered")
+//    }
+//
+
+
+    
+    
+    
+    let defaults = UserDefaults.standard
+
+    func setDefaultPreferences(){
+        defaults.set(false, forKey: "addedToList")
     }
     
-
-
-    
-    
-    
-//    let defaults = UserDefaults.standard
-//
-//    func setDefaultPreferences(){
-//        defaults.set(false, forKey: "addedToList")
-//    }
-    
 //    defaults.set(false, forKey: "addedItem")
-    
-    
-    
+//
+//
+//
 //    let addedToListPreferenceKey: String = "addedToListPreferenceKey"
 //
 //    func setDefaultPreferences(){

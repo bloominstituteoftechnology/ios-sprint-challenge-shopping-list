@@ -10,7 +10,15 @@ import UIKit
 
 class ShoppingListCollectionViewCell: UICollectionViewCell {
     
-//    let shoppingListController = ShoppingListController()
+    // Properties
+    
+    var shoppingItem: ShoppingItem?{
+        didSet{
+            updateViews()
+        }
+    }
+    
+    //  Outletes
     
     @IBOutlet weak var addedToShoppingListLabel: UILabel!
     
@@ -18,11 +26,7 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var shoppingItemDescription: UILabel!
     
-    var shoppingItem: ShoppingItem?{
-        didSet{
-        updateViews()
-        }
-    }
+    // Methods
     
     func updateViews(){
         guard let shoppingItem = shoppingItem else {return}
