@@ -9,14 +9,18 @@
 import Foundation
 import UIKit
 
-struct ShoppingItem: Encodable, Decodable{
+class ShoppingItem: Codable{
 
     
-    
     var imageName: String
-    var hasBeenAddedToList: Bool = false
+    var hasBeenAddedToList: Bool
   
     var image: UIImage {
            return UIImage(named: imageName)!
        }
+    
+    init(imageName: String, hasBeenAddedToList: Bool = false) {
+        self.imageName = imageName
+        self.hasBeenAddedToList = hasBeenAddedToList
+    }
 }

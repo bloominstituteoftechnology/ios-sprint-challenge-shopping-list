@@ -9,7 +9,7 @@
 import UIKit
 
 class PlaceOrderViewController: UIViewController {
-
+    
     
     var shoppingList: [ShoppingItem]?
     var shoppingListController: ShoppingListController?
@@ -22,7 +22,6 @@ class PlaceOrderViewController: UIViewController {
     
     @IBAction func placeOrderButton(_ sender: UIButton) {
         orderAlert()
-        navigationController?.popViewController(animated: true)
         
     }
     
@@ -30,14 +29,22 @@ class PlaceOrderViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let shoppingList = shoppingList{
-            orderInformationLabel.text = "You have \(shoppingList.count)"
-        } else{
-        orderInformationLabel.text = "You do not have any items in your shopping list."
+            var orderedItemCount: Int = 0
+            for item in shoppingList{
+                if item.hasBeenAddedToList{
+                    orderedItemCount += 1
+                }
+            }
+            if orderedItemCount > 1{
+                orderInformationLabel.text = "You have \(orderedItemCount) items in your shopping cart."
+            } else{
+                orderInformationLabel.text = "You do not have any items in your shopping list."
+            }
         }
         
     }
     
-// MARK - Alert
+    // MARK - Alert
     
     func orderAlert(){
         
@@ -50,6 +57,6 @@ class PlaceOrderViewController: UIViewController {
         orderAlert.addAction(acknowledgeAction)
         present(orderAlert, animated: true, completion: nil)
     }
- 
-
+    
+    
 }

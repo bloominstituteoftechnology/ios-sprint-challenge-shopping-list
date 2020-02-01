@@ -10,13 +10,13 @@ import UIKit
 
 class ShoppingListCollectionViewCell: UICollectionViewCell {
     
+//    let shoppingListController = ShoppingListController()
     
     @IBOutlet weak var addedToShoppingListLabel: UILabel!
     
     @IBOutlet weak var shoppingItemImage: UIImageView!
     
     @IBOutlet weak var shoppingItemDescription: UILabel!
-    
     
     var shoppingItem: ShoppingItem?{
         didSet{

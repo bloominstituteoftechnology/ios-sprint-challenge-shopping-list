@@ -9,9 +9,23 @@
 import Foundation
 
 
-class shoppingListDefaults{
+class ShoppingListDefaults{
     
-    let defaults = UserDefaults.standard
+    var itemIsOrdered: Bool {
+        UserDefaults.standard.register(defaults: ["IsOrdered": false])
+        return UserDefaults.standard.bool(forKey: "isOrdered")
+    }
+    
+
+
+    
+    
+    
+//    let defaults = UserDefaults.standard
+//
+//    func setDefaultPreferences(){
+//        defaults.set(false, forKey: "addedToList")
+//    }
     
 //    defaults.set(false, forKey: "addedItem")
     
