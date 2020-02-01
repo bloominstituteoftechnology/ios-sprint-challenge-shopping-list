@@ -18,5 +18,14 @@ class ShoppingItem: Codable {
     
     init(nameOfItem: String, imageName: String) {
         self.nameOfItem = nameOfItem
+        self.addedToList = false
+    }
+}
+
+class ShoppingCart: Codable {
+    var itemListed: String
+    
+    init(itemListed: String) {
+        self.itemListed = itemListed
     }
 }

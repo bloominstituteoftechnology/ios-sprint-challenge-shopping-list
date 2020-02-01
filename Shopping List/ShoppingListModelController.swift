@@ -6,10 +6,15 @@
 //  Copyright © 2020 Lambda School. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-class ShoppingListController {
-    var items: [ShoppingItem] {
+extension String {
+    static var itemAdded = "itemAdded"
+}
+class ShoppingListController: ItemAddedButtonDelegate {
+   
+    
+    var items: [ShoppingCart] = []
     let itemNames = [ShoppingItem(nameOfItem: "Apple", imageName: "apple"),
                     ShoppingItem(nameOfItem: "Grapes", imageName: "grapes"),
                     ShoppingItem(nameOfItem: "Milk", imageName: "milk"),
@@ -18,10 +23,25 @@ class ShoppingListController {
                     ShoppingItem(nameOfItem: "Soda", imageName: "soda"),
                     ShoppingItem(nameOfItem: "Strawberries", imageName: "strawberries")]
         
-            func addToList() {
-                let itemAdded = UserDefaults.standard.bool(forKey: <#T##String#>)
-               }
-   }
+        let itemAdded = UserDefaults.standard.bool(forKey: .itemAdded)
+
+//        if itemAdded {
+//            itemAdded.append(ShoppingCart(itemListed: itemListed))
+//    }
+//        return result
+
+        
+        init() {
+            loadFromPersistentStore()
+        }
+   
+    var itemsInCart: [ShoppingCart] = []
+    
+    func itemAddedTappedButton(_ item: ShoppingCart) {
+        itemsInCart.append(item)
+       }
+    
+ 
     
     var persistentFileURL: URL? {
         
@@ -47,7 +67,7 @@ class ShoppingListController {
         do {
             let itemsData = try Data(contentsOf: fileURL)
             let decoder = PropertyListDecoder()
-            let itemsArray = try decoder.decode([ShoppingItem].self, from: itemsData)
+            let itemsArray = try decoder.decode([ShoppingCart].self, from: itemsData)
             self.items = itemsArray
         } catch {
             print("Error decoding items: \(error)")

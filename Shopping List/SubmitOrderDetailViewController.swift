@@ -9,6 +9,8 @@
 import UIKit
 
 class SubmitOrderDetailViewController: UIViewController {
+   
+    
     
     @IBOutlet weak var itemsInCartLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
@@ -22,7 +24,9 @@ class SubmitOrderDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func submitOrderButtonTapped(_ sender: Any) {
+    func updateMessage() {
+      
+        
     }
     /*
      @IBAction func submitOrderButtonTapped(_ sender: Any) {

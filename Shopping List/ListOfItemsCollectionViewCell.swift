@@ -10,7 +10,7 @@ import UIKit
 
 protocol ItemAddedButtonDelegate {
     
-    func itemAddedTappedButton(cell: UICollectionViewCell)
+    func itemAddedTappedButton(_ item: ShoppingCart)
 }
 
 class ListOfItemsCollectionViewCell: UICollectionViewCell {
@@ -19,13 +19,24 @@ class ListOfItemsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var shoppingItemNameLabel: UILabel!
     
     @IBOutlet weak var itemAddedButton: UIButton!
-    @IBAction func itemAddedTappedButton(_ sender: UIButton) {
-            
-        delegate?.itemAddedTappedButton(cell: self)
+    
+    @IBAction func itemAddedTappedButton(_ sender: Any) {
+        
+        guard let itemName = shoppingItemNameLabel.text,
+            let addItem = shoppingItemNameLabel.text,
+            !addItem.isEmpty else { return }
+        
+        let item = ShoppingCart(itemListed: itemName)
+        
+        if let addItem = shoppingItemNameLabel.text,
+            !addItem.isEmpty {
+            item.itemListed.append(addItem)
+        }
+        delegate?.itemAddedTappedButton(item)
     }
     
     var delegate: ItemAddedButtonDelegate?
-    
+    var items: [ShoppingItem] = []
     
     var shoppingItem: ShoppingItem? {
         didSet{
@@ -33,15 +44,21 @@ class ListOfItemsCollectionViewCell: UICollectionViewCell {
         }
     }
     
-
+//    func shoppingCart(nameOfItem: String) {
+//        let item = ShoppingItem(nameOfItem: nameOfItem, imageName: image)
+//        items.append(item)
+//    }
     func updateViews() {
+        
         guard let shoppingItem = shoppingItem else { return }
         
         if shoppingItem.addedToList {
-            itemAddedButton.setTitle("Added", for: [])
+            itemAddedButton.setTitle("Added", for: []);
+            
         } else {
             itemAddedButton.setTitle("Not Added", for : [])
         }
+      
         
 //        shoppingItemImage.image = shoppingItem.image
 //        shoppingItemNameLabel.text = shoppingItem.nameOfItem
