@@ -69,10 +69,9 @@
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cjb-te-dSp">
                                             <rect key="frame" x="108" y="-8" width="46" height="30"/>
-                                            <state key="normal" title="Button"/>
+                                            <state key="normal" title="Not Added"/>
                                             <connections>
-                                                <action selector="itemAddedTappedButton:" destination="6P1-Lq-2D3" eventType="touchUpInside" id="Vll-DC-WA2"/>
-                                                <action selector="itemAddedTappedButton:" destination="Glo-AK-8dQ" eventType="touchUpInside" id="Vs7-yh-gIV"/>
+                                                <action selector="itemAddedTappedButton:" destination="Glo-AK-8dQ" eventType="touchUpInside" id="0oT-xd-NYe"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -90,6 +89,7 @@
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="162" height="195"/>
                                 <connections>
+                                    <outlet property="itemAddedButton" destination="cjb-te-dSp" id="guS-jC-gFq"/>
                                     <outlet property="shoppingItemImage" destination="D2j-Vo-veE" id="oVt-w8-CrO"/>
                                     <outlet property="shoppingItemNameLabel" destination="wiw-aG-Fnq" id="4I8-B3-aFl"/>
                                 </connections>

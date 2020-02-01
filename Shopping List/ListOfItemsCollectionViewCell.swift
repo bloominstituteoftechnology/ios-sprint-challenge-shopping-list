@@ -8,12 +8,24 @@
 
 import UIKit
 
+protocol ItemAddedButtonDelegate {
+    
+    func itemAddedTappedButton(cell: UICollectionViewCell)
+}
+
 class ListOfItemsCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var shoppingItemImage: UIImageView!
     @IBOutlet weak var shoppingItemNameLabel: UILabel!
-    @IBAction func itemAddedTappedButton(_ sender: Any) {
+    
+    @IBOutlet weak var itemAddedButton: UIButton!
+    @IBAction func itemAddedTappedButton(_ sender: UIButton) {
+            
+        delegate?.itemAddedTappedButton(cell: self)
     }
+    
+    var delegate: ItemAddedButtonDelegate?
+    
     
     var shoppingItem: ShoppingItem? {
         didSet{
@@ -21,11 +33,19 @@ class ListOfItemsCollectionViewCell: UICollectionViewCell {
         }
     }
     
+
     func updateViews() {
         guard let shoppingItem = shoppingItem else { return }
         
-        shoppingItemImage.image = shoppingItem.image
-        shoppingItemNameLabel.text = shoppingItem.nameOfItem
+        if shoppingItem.addedToList {
+            itemAddedButton.setTitle("Added", for: [])
+        } else {
+            itemAddedButton.setTitle("Not Added", for : [])
+        }
+        
+//        shoppingItemImage.image = shoppingItem.image
+//        shoppingItemNameLabel.text = shoppingItem.nameOfItem
+        
         
     }
 }

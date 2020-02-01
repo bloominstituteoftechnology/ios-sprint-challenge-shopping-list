@@ -18,57 +18,38 @@ class ShoppingListController {
                     ShoppingItem(nameOfItem: "Soda", imageName: "soda"),
                     ShoppingItem(nameOfItem: "Strawberries", imageName: "strawberries")]
         
-    
             func addToList() {
                 let itemAdded = UserDefaults.standard.bool(forKey: <#T##String#>)
                }
-            
    }
     
     var persistentFileURL: URL? {
         
         let fileManager = FileManager.default
-        
         guard let documentsDir = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
-        
         let itemsURL = documentsDir.appendingPathComponent("info.plist")
-        
         return itemsURL
     }
     
     func saveToPersistentStore() {
-       
        guard let fileURL = persistentFileURL else { return }
-       
        let encoder = PropertyListEncoder()
-       
        do {
-           
            let itemsData = try encoder.encode(items)
            try itemsData.write(to: fileURL)
-           
        } catch {
            print("Error encoding items array: \(error)")
-          
        }
     }
     
     func loadFromPersistentStore() {
-        
         guard let fileURL = persistentFileURL else { return }
-        
         do {
-            
             let itemsData = try Data(contentsOf: fileURL)
-            
             let decoder = PropertyListDecoder()
-            
             let itemsArray = try decoder.decode([ShoppingItem].self, from: itemsData)
-            
             self.items = itemsArray
-            
         } catch {
-            
             print("Error decoding items: \(error)")
         }
     }
