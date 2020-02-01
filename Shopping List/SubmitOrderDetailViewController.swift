@@ -57,7 +57,7 @@ class SubmitOrderDetailViewController: UIViewController, ItemAddedButtonDelegate
         
             let item = shoppingListController.items[indexPath.row]
             
-            cell.shoppingItem = item
+           cell.items = [item]
         
             return cell
         }

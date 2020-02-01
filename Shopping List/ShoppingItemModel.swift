@@ -10,7 +10,7 @@ import UIKit
 
 class ShoppingItem: Codable {
     var nameOfItem: String
-    var addedToList: Bool
+    var addedToList: Bool = false
     var image: UIImage {
         let itemImage = UIImage(named: "\(nameOfItem)")!
         return itemImage
@@ -18,7 +18,6 @@ class ShoppingItem: Codable {
     
     init(nameOfItem: String, imageName: String) {
         self.nameOfItem = nameOfItem
-        self.addedToList = false
     }
 }
 
