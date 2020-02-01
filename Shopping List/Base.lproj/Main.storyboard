@@ -47,7 +47,7 @@
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="410" height="58"/>
                             </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Glo-AK-8dQ" customClass="ListOfItemsCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoppingListItemCell" id="Glo-AK-8dQ" customClass="ListOfItemsCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="126" y="68" width="162" height="195"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="VCe-MW-ay9">
@@ -108,10 +108,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <connections>
-                        <outlet property="shoppingItemImage" destination="D2j-Vo-veE" id="F5c-AB-yTL"/>
-                        <outlet property="shoppingItemNameLabel" destination="wiw-aG-Fnq" id="1CG-nU-mHV"/>
-                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ug-uH-z5A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -137,17 +133,17 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QpM-9f-D1v">
+                                    <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QpM-9f-D1v">
                                         <rect key="frame" x="8" y="79" width="338" height="33"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s9m-fJ-NH9">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s9m-fJ-NH9">
                                         <rect key="frame" x="8" y="131" width="338" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AEv-ER-FcD">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AEv-ER-FcD">
                                         <rect key="frame" x="131" y="184" width="92" height="30"/>
                                         <state key="normal" title="Submit Order"/>
                                         <connections>
@@ -156,17 +152,12 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="s9m-fJ-NH9" firstAttribute="top" secondItem="QpM-9f-D1v" secondAttribute="bottom" constant="8" id="2BP-nh-efZ"/>
                                     <constraint firstItem="QpM-9f-D1v" firstAttribute="leading" secondItem="m5r-WU-GBU" secondAttribute="leading" constant="8" id="2rE-m3-tEP"/>
                                     <constraint firstItem="gdj-fp-4Sl" firstAttribute="leading" secondItem="m5r-WU-GBU" secondAttribute="leading" constant="8" id="4nQ-oc-tyx"/>
-                                    <constraint firstItem="QpM-9f-D1v" firstAttribute="top" secondItem="gdj-fp-4Sl" secondAttribute="bottom" constant="8" id="FRM-wQ-j8Q"/>
                                     <constraint firstAttribute="trailing" secondItem="s9m-fJ-NH9" secondAttribute="trailing" constant="8" id="GWP-Vo-4dZ"/>
-                                    <constraint firstItem="gdj-fp-4Sl" firstAttribute="top" relation="greaterThanOrEqual" secondItem="m5r-WU-GBU" secondAttribute="top" constant="8" id="OCO-dx-7Jh"/>
                                     <constraint firstItem="s9m-fJ-NH9" firstAttribute="leading" secondItem="m5r-WU-GBU" secondAttribute="leading" constant="8" id="bLv-dW-dxo"/>
                                     <constraint firstAttribute="trailing" secondItem="gdj-fp-4Sl" secondAttribute="trailing" constant="8" id="eH8-zn-sZ4"/>
                                     <constraint firstAttribute="trailing" secondItem="QpM-9f-D1v" secondAttribute="trailing" constant="8" id="nhU-di-Z1F"/>
-                                    <constraint firstItem="s9m-fJ-NH9" firstAttribute="top" secondItem="QpM-9f-D1v" secondAttribute="bottom" constant="8" id="vcy-2A-Fpa"/>
-                                    <constraint firstItem="AEv-ER-FcD" firstAttribute="top" secondItem="s9m-fJ-NH9" secondAttribute="bottom" constant="8" id="yWd-ZC-cFI"/>
                                 </constraints>
                             </stackView>
                         </subviews>

@@ -36,9 +36,9 @@ class ListOfItemsCollectionViewCell: UICollectionViewCell {
     }
     
     var delegate: ItemAddedButtonDelegate?
-    var items: [ShoppingItem] = []
+    var items: [ShoppingCart] = []
     
-    var shoppingItem: ShoppingItem? {
+    var shoppingItem: ShoppingCart? {
         didSet{
             updateViews()
         }
@@ -52,7 +52,7 @@ class ListOfItemsCollectionViewCell: UICollectionViewCell {
         
         guard let shoppingItem = shoppingItem else { return }
         
-        if shoppingItem.addedToList {
+        if shoppingItem.itemListed {
             itemAddedButton.setTitle("Added", for: []);
             
         } else {
