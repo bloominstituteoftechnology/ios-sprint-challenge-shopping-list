@@ -25,7 +25,8 @@ class ShoppingListController{
     
     // Create instance of class
     
-    var shoppingItems: [ShoppingItem]{
+    var shoppingItems: [ShoppingItem] {
+        
         let items = [
             ShoppingItem(imageName: "Apple"),
             ShoppingItem(imageName: "Grapes"),
@@ -34,6 +35,12 @@ class ShoppingListController{
             ShoppingItem(imageName: "Popcorn"),
             ShoppingItem(imageName: "Soda"),
             ShoppingItem(imageName: "Strawberries")]
+        
+        // Loading Defaults
+        let hasBeenAddedToList = UserDefaults.standard.bool(forKey: .isAddedToListKey)
+        for item in items{
+            item.hasBeenAddedToList = hasBeenAddedToList
+        }
         return items
     }
     

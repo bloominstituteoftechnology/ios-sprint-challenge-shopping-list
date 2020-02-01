@@ -8,6 +8,11 @@
 
 import UIKit
 
+extension String{
+    
+    static var isAddedToListKey = "IsAddedToList"
+}
+
 class ShoppingListCollectionViewCell: UICollectionViewCell {
     
     // Properties
@@ -17,6 +22,7 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
             updateViews()
         }
     }
+    
     
     //  Outletes
     
@@ -32,11 +38,9 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
         guard let shoppingItem = shoppingItem else {return}
         shoppingItemImage.image = shoppingItem.image
         shoppingItemDescription.text = shoppingItem.imageName
-        if shoppingItem.hasBeenAddedToList{
-            addedToShoppingListLabel.text = "Added"
-        }else {
-            addedToShoppingListLabel.text = "Not Added"
-        }
+        
+        let hasBeenAdded = UserDefaults.standard.bool(forKey: .isAddedToListKey)
+        shoppingItem.hasBeenAddedToList = hasBeenAdded
     }
     
 }
