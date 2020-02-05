@@ -23,10 +23,3 @@ class ShoppingItem: Codable {
     }
 }
 
-//class ShoppingCart: Codable {
-//    var itemListed: String
-//
-//    init(itemListed: String) {
-//        self.itemListed = itemListed
-//    }
-// }

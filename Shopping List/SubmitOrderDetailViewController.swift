@@ -12,7 +12,7 @@ class SubmitOrderDetailViewController: UIViewController {
    
     
    
-    var shoppingListController: ShoppingListController?
+    var shoppingListController: ShoppingListController!
     
     @IBOutlet weak var itemsInCartLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
@@ -23,20 +23,23 @@ class SubmitOrderDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        showAlert()
+       updateViews()
+    }
+    
+    func updateViews() {
+        
+        let numberOfAdded = shoppingListController.items.filter({$0.addedToList}).count
+        itemsInCartLabel.text = "You currently have \(numberOfAdded) in your shopping list."
     }
 
-    
-//    func updateMessage() {
-//
-//        if shoppingListController.itemAdded {
-//            itemsInCartLabel.text = "You currently have \(shoppingListController.items.count)"
-//        }
-//    }
+
+    @IBAction func submitOrderButtonTapped(_ sender: Any) {
+        showAlert()
+    }
     
     private func showAlert() {
            
-        let alert = UIAlertController(title: "Delivery for \(nameTextField.text)", message: "Your shopping items will be delivered to \(addressTextField.text).", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Delivery for \(nameTextField?.text)", message: "Your shopping items will be delivered to \(addressTextField?.text).", preferredStyle: .alert)
            
            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
            
