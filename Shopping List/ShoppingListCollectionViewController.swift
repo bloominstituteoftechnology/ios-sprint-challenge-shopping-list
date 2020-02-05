@@ -9,20 +9,13 @@
 import UIKit
 
 
-private let reuseIdentifier = "Cell"
 
 class ShoppingListCollectionViewController: UICollectionViewController {
 
-    var itemsInCart: [ShoppingCart] = []
+    let shoppingListController = ShoppingListController()
 
     override func viewDidLoad() {
-        super.viewDidLoad()
 
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
     }
 
 
@@ -30,25 +23,41 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return shoppingListController.items.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingListItemCell", for: indexPath) as? ListOfItemsCollectionViewCell else {fatalError()}
     
-        // Configure the cell
+        let item = shoppingListController.items[indexPath.row]
+        
+        cell.shoppingItem = item
     
         return cell
     }
-
- 
     
+
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = shoppingListController.items[indexPath.row]
+        shoppingListController.updateIsAdded(shoppingItem: item)
+        collectionView.reloadItems(at: [indexPath])
+        
+    }
+    
+    // MARK: Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SubmitOrderSegue" {
+            guard let submitOrderVC = segue.destination as? SubmitOrderDetailViewController else { return }
+            submitOrderVC.shoppingListController = shoppingListController
+        }
+    }
     
 
 }

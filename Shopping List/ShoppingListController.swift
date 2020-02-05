@@ -11,43 +11,42 @@ import UIKit
 extension String {
     static var itemAdded = "itemAdded"
 }
-class ShoppingListController: ItemAddedButtonDelegate {
+class ShoppingListController {
    
+    init() {
+        createList()
+        loadFromPersistentStore()
+    }
     
-    var items: [ShoppingCart] = []
-    let itemNames = [ShoppingItem(nameOfItem: "Apple", imageName: "apple"),
-                    ShoppingItem(nameOfItem: "Grapes", imageName: "grapes"),
-                    ShoppingItem(nameOfItem: "Milk", imageName: "milk"),
-                    ShoppingItem(nameOfItem: "Muffin", imageName: "muffin"),
-                    ShoppingItem(nameOfItem: "Popcorn", imageName: "popcorn"),
-                    ShoppingItem(nameOfItem: "Soda", imageName: "soda"),
-                    ShoppingItem(nameOfItem: "Strawberries", imageName: "strawberries")]
+    var items: [ShoppingItem] = []
+    
+    
+    func createList() {
+        guard UserDefaults.standard.bool(forKey: String.itemAdded) != true else { return }
+                
+        let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
         
-        let itemAdded = UserDefaults.standard.bool(forKey: .itemAdded)
-
-//        if itemAdded {
-//            itemAdded.append(ShoppingCart(itemListed: itemListed))
-//    }
-//        return result
-
-        
-        init() {
-            loadFromPersistentStore()
+        for itemName in itemNames {
+            let shoppingItem = ShoppingItem(nameOfItem: itemName)
+            items.append(shoppingItem)
         }
-   
-    var itemsInCart: [ShoppingCart] = []
+        
+        saveToPersistentStore()
+        
+        UserDefaults.standard.set(true, forKey: String.itemAdded)
+    }
     
-    func itemAddedTappedButton(_ item: ShoppingCart) {
-        itemsInCart.append(item)
-       }
+    func updateIsAdded(shoppingItem: ShoppingItem) {
+        shoppingItem.addedToList = !shoppingItem.addedToList
+        saveToPersistentStore()
+    }
     
- 
     
     var persistentFileURL: URL? {
         
         let fileManager = FileManager.default
         guard let documentsDir = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
-        let itemsURL = documentsDir.appendingPathComponent("info.plist")
+        let itemsURL = documentsDir.appendingPathComponent("ShoppingItems.plist")
         return itemsURL
     }
     
@@ -67,7 +66,7 @@ class ShoppingListController: ItemAddedButtonDelegate {
         do {
             let itemsData = try Data(contentsOf: fileURL)
             let decoder = PropertyListDecoder()
-            let itemsArray = try decoder.decode([ShoppingCart].self, from: itemsData)
+            let itemsArray = try decoder.decode([ShoppingItem].self, from: itemsData)
             self.items = itemsArray
         } catch {
             print("Error decoding items: \(error)")
