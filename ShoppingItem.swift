@@ -7,9 +7,19 @@
 //
 
 import Foundation
+import UIKit
+
 
 struct ShoppingItem: Codable, Equatable {
-    let name: String
-    var added: Bool = true
+    let itemName: String
+    var added: Bool
+    var image: UIImage? {
+        let itemImage = UIImage(named: itemName)
+        return itemImage
+        
+       
+        
+    }
+    
 }
 
