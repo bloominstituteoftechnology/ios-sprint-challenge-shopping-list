@@ -9,4 +9,4 @@
 import Foundation
 
 
- let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+let itemNames: [ShoppingItem] = [ShoppingItem(popcorn: "popcorn", soda: "soda", milk: "milk", muffin: "muffin", apple: "apple", hasBeenAdded: false)]

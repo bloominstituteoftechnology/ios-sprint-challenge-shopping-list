@@ -9,12 +9,21 @@
 import Foundation
 
 class ShoppingItem {
+    var popcorn: String
+    var soda: String
+    var milk: String
+    var muffin: String
     var apple: String
     var hasBeenAdded: Bool
     
-    init(apple: String, hasBeenAdded: Bool) {
+    init(popcorn:String, soda: String, milk: String, muffin: String, apple: String, hasBeenAdded: Bool) {
+        self.popcorn = popcorn
+        self.soda = soda
+        self.milk = milk
+        self.muffin = muffin
         self.apple = apple
         self.hasBeenAdded = false
-        
     }
 }
+
+
