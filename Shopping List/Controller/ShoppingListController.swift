@@ -11,6 +11,8 @@ import Foundation
 
 class ShoppingListController {
 
+    var shoppingItems: [ShoppingItem] = []
+    
     let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     
     var hasData: Bool {
@@ -22,6 +24,14 @@ class ShoppingListController {
         
         return true
         
+    }
+    var addedItems: [ShoppingItem] {
+        let added = shoppingItems.filter( { return $0.addedToShoppingList })
+        return added
+    }
+    var notAddedItems: [ShoppingItem] {
+        let notAdded = shoppingItems.filter( { return !$0.addedToShoppingList} )
+        return notAdded
     }
     
     var numberOfItemsAdded: Int {
@@ -43,8 +53,6 @@ class ShoppingListController {
 
 
     }
-
-    var shoppingItems: [ShoppingItem] = []
 
     var persistentFileURL: URL? {
         let fileManager = FileManager.default
