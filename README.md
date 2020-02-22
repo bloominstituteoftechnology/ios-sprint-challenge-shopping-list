@@ -42,13 +42,13 @@ Please view the screen recording so you will know what your finished project sho
 	1. Use this snippet of names of images from the asset catalog to create instances of items in the `ShoppingList` model controller:
 
             let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
-
+s
 	2. Use a `Bool` and the `UserDefaults` to make sure that new shopping items are initialized only once.
 	3. Save the shopping list to a file using a `PropertyListEncoder` as the user makes changes.
 	4. Test and verify that your app saves and loads changes to the shopping list (quit and relaunch the app).
 3. A custom Collection View Controller that shows a list of shopping items. 
 	1. The Collection View Controller should be embedded in a navigation controller.
-4. A custom Collection View Controller Cell must display all the properties of the shopping item.
+4. A custom Collection View Controller tell must display all the properties of the shopping item.
 5. Upon selecting the custom cell, the item's `Bool` value should change from `true` to `false` or vice-versa.
 6. A bar button item on the Collection View Controller that performs a "Show" segue to a detail `UIViewController` subclass. This `UIViewController` should allow the user to fill in their name, address, and submit the order.
 	1. The detail View Controller should display how many items have been added to the "shopping list".
