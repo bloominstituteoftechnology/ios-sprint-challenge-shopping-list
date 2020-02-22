@@ -28,6 +28,10 @@ class OrderDetailViewController: UIViewController {
     }
 
     @IBAction func sendOrderButtonPressed(_ sender: UIButton) {
-        
+        let alert = UIAlertController(title: "Delivery for \(nameTextField.text!)!", message: "Your shopping items will be delivered to \(addressTextField.text!) in 15 minutes!", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+
+        self.present(alert, animated: true, completion: nil)
     }
 }
