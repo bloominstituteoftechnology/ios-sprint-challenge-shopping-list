@@ -10,17 +10,54 @@ import Foundation
 import UIKit
 
 class ShoppingItemController {
+    var items: [ShoppingItem] {
+        ShoppingItem(name: "Apple", hasBeenAdded: false)
+        ShoppingItem(name: "Grapes", hasBeenAdded: false)
+        ShoppingItem(name: "Milk", hasBeenAdded: false)
+        ShoppingItem(name: "Muffin", hasBeenAdded: false)
+        ShoppingItem(name: "Popcorn", hasBeenAdded: false)
+        ShoppingItem(name: "Soda", hasBeenAdded: false)
+        ShoppingItem(name: "Strawberries", hasBeenAdded: false)
+
+    }
     
-    private(set) var items: [ShoppingItem] = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+       
+     private var persistentFileURL: URL? {
+         let fileManager = FileManager.default
+         guard let documents = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
+         
+         return documents.appendingPathComponent("shoppingItems.plist")
+     }
+     
+     init() {
+         // load from p store
+     }
     
-    private var persistentFileURL: URL? {
-        let fileManager = FileManager.default
-        guard let documents = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
+    func saveToPersistentStore() {
+        guard let url = persistentFileURL else { return }
         
-        return documents.appendingPathComponent("shoppingItems.plist")
+        do {
+            let encoder = PropertyListEncoder()
+            let data = try encoder.encode(items)
+            try data.write(to: url)
+        } catch {
+            print("Error saving items data: \(error)")
+        }
     }
     
-    init() {
-        // load from p store
+    func loadFromPersistentStore() {
+        let fileManager = FileManager.default
+        guard let url = persistentFileURL,
+            fileManager.fileExists(atPath: url.path) else { return }
+        
+        do {
+            let data = try Data(contentsOf: url)
+            let decoder = PropertyListDecoder()
+            items = try decoder.decode([ShoppingItem].self, from: data)
+        } catch {
+            print("Error loading items data: \(error)")
+        }
     }
+    
+    
 }
