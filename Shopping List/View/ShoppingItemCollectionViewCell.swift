@@ -9,10 +9,11 @@
 import UIKit
 
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
-    
+   
     var item: ShoppingItem? {
         didSet {
             updateViews()
+            print("viewCell is showing")
         }
     }
     
