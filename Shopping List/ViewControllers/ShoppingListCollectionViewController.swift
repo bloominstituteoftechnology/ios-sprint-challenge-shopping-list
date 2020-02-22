@@ -1,27 +1,24 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
 class ShoppingListCollectionViewController: UICollectionViewController {
+    
+    let shoppingItemController = ShoppingItemModelController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
 
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 0
-    }
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        shoppingItemController.shoppingList.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as? ShoppingItemCollectionViewCell else { return UICollectionViewCell() }
+        let shoppingItem = shoppingItemController.shoppingList[indexPath.item]
+        cell.shoppingItem = shoppingItem
         return cell
     }
     
