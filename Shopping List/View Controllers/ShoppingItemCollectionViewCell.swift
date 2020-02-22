@@ -15,5 +15,11 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet var itemNameLabel: UILabel!
     @IBOutlet var itemImageView: UIImageView!
     
+    // MARK: Properties
+    var itemName: String?
+    
+    private func updateViews() {
+        
+    }
     
 }

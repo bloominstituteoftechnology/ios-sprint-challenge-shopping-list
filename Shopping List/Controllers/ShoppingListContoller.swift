@@ -12,7 +12,31 @@ class ShoppingListController {
     
     // MARK: Properties
     var itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
-    var shoppingList: [ShoppingItem] = []
+    
+    var shoppingList: [ShoppingItem] {
+        if !UserDefaults.standard.bool(forKey: "DidInitializeShoppingList") {
+            var slInitArray: [ShoppingItem] = []
+            for i in 0..<itemNames.count {
+                let newItem = ShoppingItem(itemName: itemNames[i], hasBeenAdded: false)
+                slInitArray.append(newItem)
+            }
+            UserDefaults.standard.set(true, forKey: "DidInitializeShoppingList")
+            return slInitArray
+        } else {
+            loadFromPersistentStore()
+            return self.shoppingList
+        }
+    }
+    
+    var shoppingListSelected: [ShoppingItem] {
+        var slArray: [ShoppingItem] = []
+        for item in shoppingList {
+            if item.hasBeenAdded {
+                slArray.append(item)
+            }
+        }
+        return slArray
+    }
     
     private var persistentFileURL: URL? {
         let fileManager = FileManager.default
@@ -38,12 +62,12 @@ class ShoppingListController {
         guard let url = persistentFileURL, fileManager.fileExists(atPath: url.path) else {
             return }
         
-        do {
-            let data = try Data(contentsOf: url)
-            let decoder = PropertyListDecoder()
-            shoppingList = try decoder.decode([ShoppingItem].self, from: data)
-        } catch {
-            print("error loading Shopping List data: \(error)")
-        }
+//        do {
+//            let data = try Data(contentsOf: url)
+//            let decoder = PropertyListDecoder()
+//            shoppingList = try decoder.decode([ShoppingItem].self, from: data)
+//        } catch {
+//            print("error loading Shopping List data: \(error)")
+//        }
     }
 }

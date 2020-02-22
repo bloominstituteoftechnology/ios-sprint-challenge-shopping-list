@@ -10,6 +10,8 @@ import UIKit
 
 class AddressViewController: UIViewController {
     
+    var shoppingListController = ShoppingListController()
+    
     // MARK: IBOutlets
     @IBOutlet var currentNumberOfItemsLabel: UILabel!
     @IBOutlet var nameTextField: UITextField!
