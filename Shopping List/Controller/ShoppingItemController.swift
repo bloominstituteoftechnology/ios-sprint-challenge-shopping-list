@@ -10,8 +10,8 @@ import Foundation
 
 class ShoppingItemController {
 
-    let defaultItemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
-    let alreadySavedKey = "alreadySavedKey"
+    private let defaultItemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+    private let alreadySavedKey = "alreadySavedKey"
 
     private(set) var items: [ShoppingItem] = []
 
