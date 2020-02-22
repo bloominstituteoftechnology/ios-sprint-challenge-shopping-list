@@ -16,10 +16,17 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet var itemImageView: UIImageView!
     
     // MARK: Properties
-    var itemName: String?
+    var item: ShoppingItem?
     
     private func updateViews() {
-        
+        guard let item = item else { return }
+        if item.hasBeenAdded {
+            addedLabel.text = .added
+        } else {
+            addedLabel.text = .notAdded
+        }
+        itemNameLabel.text = item.itemName
+        itemImageView.image = UIImage(contentsOfFile: item.itemName)
     }
     
 }

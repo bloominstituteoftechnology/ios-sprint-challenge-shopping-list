@@ -41,7 +41,6 @@ class ShoppingListController {
     private var persistentFileURL: URL? {
         let fileManager = FileManager.default
         guard let documents = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
-        
         return documents.appendingPathComponent("shoppingList.plist")
     }
     

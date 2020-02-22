@@ -8,6 +8,7 @@
 
 import Foundation
 
-//extension String {
-//    static let didInitializeList = 
-//}
+extension String {
+    static let added = "Added"
+    static let notAdded = "Not Added"
+}
