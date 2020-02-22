@@ -25,7 +25,6 @@ class ShoppingItemDetailViewController: UIViewController {
     
     //MARK: - IBActions
     @IBAction func submitOrderButtonTapped(_ sender: Any) {
-        navigationController?.popToRootViewController(animated: true)
         showAlert()
     }
     

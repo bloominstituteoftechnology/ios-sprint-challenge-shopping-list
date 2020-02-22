@@ -39,4 +39,9 @@ class ShoppingItemCollectionViewController: UICollectionViewController {
         }
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        var item = itemController.items[indexPath.item]
+        item.hasBeenAdded.toggle()
+    }
+    
 }

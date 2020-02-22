@@ -11,7 +11,6 @@ import UIKit
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
     let itemContoller = ShoppingItemController()
-    var delegate: ShoppingItemDelegate?
     
     var item: ShoppingItem? {
         didSet {
@@ -34,9 +33,5 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         default:
             hasBeenAddedLabel.text = "Not Added"
         }
-    }
-    
-    func ItemAdded() {
-        collection
     }
 }
