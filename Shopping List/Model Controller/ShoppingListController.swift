@@ -11,8 +11,8 @@ import UIKit
 class ShoppingListController {
     
     var items: [ShoppingItem] = []
-        
     
+    let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     
     private var persistentFileURL: URL? {
         let fileManager = FileManager.default
