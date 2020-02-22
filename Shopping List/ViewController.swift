@@ -4,7 +4,7 @@
 //
 //  Created by Spencer Curtis on 8/3/18.
 //  Copyright © 2018 Lambda School. All rights reserved.
-//
+//  comment for first commit
 
 import UIKit
 
