@@ -8,14 +8,18 @@
 
 import UIKit
 
-class ShoppingItem: Encodable, Decodable {
+struct ShoppingItem: Codable {
     var name: String
-    var itemSelected: Bool = false
-//    var image: UIImage
+    var itemSelected: Bool
     
-    init(name: String) {
-        self.name = name
+    
+    var image: UIImage {
+        return UIImage(named: name)!
+    }
         
-//        self.image = UIImage(named: imageName)!
+    
+    init(name: String, itemSelected: Bool = false) {
+        self.name = name
+        self.itemSelected = itemSelected
     }
 }

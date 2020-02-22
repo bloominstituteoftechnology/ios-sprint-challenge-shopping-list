@@ -10,15 +10,24 @@ import Foundation
 
 
 class ShoppingItemController {
-    var shoppingList: [ShoppingItem] = []
+    
+    var shoppingList: [ShoppingItem] = [
+        ShoppingItem(name: "Apple"),
+        ShoppingItem(name: "Grapes"),
+        ShoppingItem(name: "Milk"),
+        ShoppingItem(name: "Muffin"),
+        ShoppingItem(name: "Popcorn"),
+        ShoppingItem(name: "Soda"),
+        ShoppingItem(name: "Strawberries"),
+    ]
+
     var itemSelected = UserDefaults.standard.bool(forKey: .shoppingListKey)
-    var itemNames = ["Apples", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
 
 
 private var persistentFileURL: URL? {
     let fileManager = FileManager.default
     guard let documents = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
-    
+
     return documents.appendingPathComponent("shoppingList.plist")
 }
 
@@ -26,11 +35,10 @@ private var persistentFileURL: URL? {
     saveToPersistentStore()
     }
 
-
 func saveToPersistentStore() {
-    
+
     guard let url = persistentFileURL else { return }
-    
+
     do {
         let encoder = PropertyListEncoder()
         let data = try encoder.encode(shoppingList)
@@ -41,19 +49,19 @@ func saveToPersistentStore() {
 }
 
 func loadFromPersistentStore() {
-    
+
     let fileManager = FileManager.default
     guard let url = persistentFileURL, fileManager.fileExists(atPath: url.path) else {
         return }
-    
+
     do {
         let data = try Data(contentsOf: url)
         let decoder = PropertyListDecoder()
         shoppingList = try decoder.decode([ShoppingItem].self, from: data)
-        
+
     } catch {
         print("error loading Shopping List: \(error)")
-        
+
         }
     }
 }
