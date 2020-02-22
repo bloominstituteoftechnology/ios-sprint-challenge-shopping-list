@@ -9,11 +9,10 @@
 import Foundation
 import UIKit
 
-struct ShoppingItem {
+struct ShoppingItem: Codable, Equatable {
     var name: String
-    var added: Bool
-    var image: UIImage {
-        
+    var added = false
+    var image: UIImage? {
+        return UIImage(named: name)
     }
-    
 }
