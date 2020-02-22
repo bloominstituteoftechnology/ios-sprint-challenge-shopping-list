@@ -32,6 +32,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         
         let shoppingItem = shoppingItemController.shoppingList[indexPath.item]
         cell.shoppingItem = shoppingItem
+        cell.shoppingItemController = shoppingItemController
         return cell
     }
 

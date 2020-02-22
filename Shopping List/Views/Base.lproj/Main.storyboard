@@ -49,25 +49,27 @@
                                                 </label>
                                             </subviews>
                                         </stackView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Added" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0aK-qG-H6W">
-                                            <rect key="frame" x="18" y="8" width="144" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jcA-eg-JV5">
+                                            <rect key="frame" x="67" y="0.0" width="46" height="30"/>
+                                            <state key="normal" title="Button"/>
+                                            <connections>
+                                                <action selector="addOrRemove:" destination="yKr-1l-VMn" eventType="touchUpInside" id="vnF-pS-IRq"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="hRC-MN-2nn" firstAttribute="leading" secondItem="XDs-R4-gfE" secondAttribute="leading" id="8pY-MR-5Dd"/>
                                         <constraint firstAttribute="trailing" secondItem="hRC-MN-2nn" secondAttribute="trailing" id="FWV-vD-5Xn"/>
-                                        <constraint firstItem="0aK-qG-H6W" firstAttribute="top" secondItem="XDs-R4-gfE" secondAttribute="top" constant="8" id="cJV-mH-Fpl"/>
+                                        <constraint firstItem="jcA-eg-JV5" firstAttribute="centerX" secondItem="XDs-R4-gfE" secondAttribute="centerX" id="TZr-Tq-m6F"/>
                                         <constraint firstAttribute="bottom" secondItem="hRC-MN-2nn" secondAttribute="bottom" id="d6c-0k-4hv"/>
-                                        <constraint firstAttribute="trailing" secondItem="0aK-qG-H6W" secondAttribute="trailing" constant="18" id="oX3-Kq-Hgn"/>
-                                        <constraint firstItem="0aK-qG-H6W" firstAttribute="centerX" secondItem="XDs-R4-gfE" secondAttribute="centerX" id="rAN-hY-wC8"/>
+                                        <constraint firstItem="hRC-MN-2nn" firstAttribute="top" secondItem="jcA-eg-JV5" secondAttribute="bottom" id="vRn-lt-JiK"/>
                                         <constraint firstItem="hRC-MN-2nn" firstAttribute="top" secondItem="XDs-R4-gfE" secondAttribute="top" constant="30" id="zLG-63-DQ9"/>
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="180" height="180"/>
                                 <connections>
+                                    <outlet property="addOrRemoveButton" destination="jcA-eg-JV5" id="Ybt-FJ-Q07"/>
+                                    <outlet property="addOrRemoveTapped" destination="jcA-eg-JV5" id="UxJ-SW-erp"/>
                                     <outlet property="shoppingItemImage" destination="hOE-1R-oIg" id="ruf-Si-St0"/>
                                     <outlet property="shoppingItemLabel" destination="1vZ-Zw-oaR" id="PWH-Pp-7p9"/>
                                 </connections>
