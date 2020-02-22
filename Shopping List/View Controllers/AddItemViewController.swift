@@ -19,10 +19,22 @@ class AddItemViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         listLabel.text = ("You currently have blank items(s) in your shopping list.")
-
-
     }
     
+    // MARK: IBActions
+    
+    @IBAction func sendButtonTapped(_ sender: Any) {
+        showAlert()
+        navigationController?.popViewController(animated: true)
+    }
+    
+    private func showAlert() {
+        let alert = UIAlertController(title: "Order Complete", message: "Your order will be delivered in 15 min to \(addressText.text).", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        alert.addAction(okAction)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
 
     /*
     // MARK: - Navigation

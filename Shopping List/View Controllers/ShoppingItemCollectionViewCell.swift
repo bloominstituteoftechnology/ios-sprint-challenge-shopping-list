@@ -21,7 +21,7 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var shoppingItemLabel: UILabel!
     
     func updateViews() {
-        shoppingItemImage.image = shoppingItem?.image
+//        shoppingItemImage.image = shoppingItem?.image
         shoppingItemLabel.text = shoppingItem?.name
     }
 }
