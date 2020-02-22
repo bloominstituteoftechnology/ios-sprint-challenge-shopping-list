@@ -55,12 +55,22 @@
                                                 </label>
                                             </subviews>
                                         </stackView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFq-Qh-YTj">
+                                            <rect key="frame" x="0.0" y="0.0" width="172" height="187"/>
+                                            <connections>
+                                                <action selector="overlayButtonWasTapped:" destination="r0A-7d-Qws" eventType="touchUpInside" id="71d-D3-UQ6"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="UxL-b3-VBv" firstAttribute="top" secondItem="GTM-cC-lxZ" secondAttribute="top" id="Aa9-dn-Dks"/>
+                                        <constraint firstAttribute="trailing" secondItem="TFq-Qh-YTj" secondAttribute="trailing" id="F4F-Gl-qyM"/>
                                         <constraint firstAttribute="trailing" secondItem="UxL-b3-VBv" secondAttribute="trailing" id="Jdb-lJ-4vx"/>
+                                        <constraint firstItem="TFq-Qh-YTj" firstAttribute="leading" secondItem="GTM-cC-lxZ" secondAttribute="leading" id="SQH-nD-ewM"/>
+                                        <constraint firstAttribute="bottom" secondItem="TFq-Qh-YTj" secondAttribute="bottom" id="VE5-qN-vwO"/>
                                         <constraint firstItem="UxL-b3-VBv" firstAttribute="leading" secondItem="GTM-cC-lxZ" secondAttribute="leading" id="Vxe-wd-dpR"/>
                                         <constraint firstAttribute="bottom" secondItem="UxL-b3-VBv" secondAttribute="bottom" id="Y1F-Wj-xeU"/>
+                                        <constraint firstItem="TFq-Qh-YTj" firstAttribute="top" secondItem="GTM-cC-lxZ" secondAttribute="top" id="bAo-bj-AIk"/>
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="172" height="187"/>
