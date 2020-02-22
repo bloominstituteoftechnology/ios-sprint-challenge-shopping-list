@@ -13,6 +13,7 @@
 		4613E91921143BFD00E7FF73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91821143BFD00E7FF73 /* Assets.xcassets */; };
 		4613E91C21143BFD00E7FF73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91A21143BFD00E7FF73 /* LaunchScreen.storyboard */; };
 		63F092F62400CB86000E182A /* ShoppingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F092F52400CB86000E182A /* ShoppingItem.swift */; };
+		63F092F92400CD58000E182A /* ShoppingItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F092F82400CD58000E182A /* ShoppingItemController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		4613E91B21143BFD00E7FF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4613E91D21143BFD00E7FF73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63F092F52400CB86000E182A /* ShoppingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItem.swift; sourceTree = "<group>"; };
+		63F092F82400CD58000E182A /* ShoppingItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				63F092F42400CB7C000E182A /* Model */,
+				63F092F72400CD49000E182A /* Controller */,
 				63F092F22400C996000E182A /* View Controllers */,
 				63F092F32400C99B000E182A /* Views */,
 				63F092F12400C978000E182A /* Resources */,
@@ -97,6 +100,14 @@
 				63F092F52400CB86000E182A /* ShoppingItem.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		63F092F72400CD49000E182A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				63F092F82400CD58000E182A /* ShoppingItemController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,6 +184,7 @@
 			files = (
 				63F092F62400CB86000E182A /* ShoppingItem.swift in Sources */,
 				4613E91421143BFC00E7FF73 /* ViewController.swift in Sources */,
+				63F092F92400CD58000E182A /* ShoppingItemController.swift in Sources */,
 				4613E91221143BFC00E7FF73 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

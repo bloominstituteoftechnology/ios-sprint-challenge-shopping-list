@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct ShoppingItem {
+struct ShoppingItem: Codable {
 
     let name: String
     var addedToList: Bool
