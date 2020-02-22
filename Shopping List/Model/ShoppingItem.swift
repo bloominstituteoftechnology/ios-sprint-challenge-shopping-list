@@ -8,12 +8,12 @@
 
 import UIKit
 
-class ShoppingItem {
-    var item: String = "Apple"
+struct ShoppingItem: Codable {
+    var itemName: String = "Apple"
     var itemAdded: Bool = false
-
-    var itemImage: UIImage {
-        guard let itemImage = UIImage(named: item) else { return UIImage() }
+    
+    var itemImageName: UIImage {
+        guard let itemImage = UIImage(named: itemName) else { return UIImage() }
         return itemImage
     }
 }
