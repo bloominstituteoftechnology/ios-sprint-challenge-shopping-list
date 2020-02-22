@@ -55,5 +55,14 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         cell.item = item
         return cell
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let shoppingItem = shoppingController.shoppingItems[indexPath.item]
+        shoppingController.toggleHasBeenAdded(for: shoppingItem)
+        if let cell = collectionView.cellForItem(at: indexPath) as? ShoppingItemCollectionViewCell {
+            cell.item = shoppingController.shoppingItems[indexPath.item]
+        }
+
+    }
 
 }
