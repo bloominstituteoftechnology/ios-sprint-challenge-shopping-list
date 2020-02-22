@@ -10,6 +10,8 @@ import UIKit
 
 class ShoppingListCollectionViewController: UICollectionViewController {
 
+    let itemController = ShoppingItemController()
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -19,13 +21,12 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+        return itemController.items.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingItemCell", for: indexPath)
-        // Configure the cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingItemCell", for: indexPath) as! ShoppingItemCollectionViewCell
+        cell.item = itemController.items[indexPath.item]
         return cell
     }
 }
