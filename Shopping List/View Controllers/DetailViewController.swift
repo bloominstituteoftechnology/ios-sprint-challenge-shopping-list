@@ -10,15 +10,17 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    //MARK: - IBOutlets
     @IBOutlet weak var cartInfoLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     
-
+    let shoppingListController = ShoppingListController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        cartInfoLabel.text = "You have \(shoppingListController.getAddedItems().count) item/s in your cart"
     }
     
     
@@ -27,15 +29,24 @@ class DetailViewController: UIViewController {
         if let name = nameTextField.text,
             let address = addressTextField.text,
             !name.isEmpty,
-            !address.isEmpty {
+            !address.isEmpty,
+        shoppingListController.getAddedItems().count != 0{
         let alert = UIAlertController(title: "Order Received", message: "Thank you \(name)! Your order will be delivered to \(address)", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
         
         navigationController?.popViewController(animated: true)
+        } else if shoppingListController.getAddedItems().count != 0 {
+            let alert = UIAlertController(title: "Missing Information", message: "Please provide your name and address", preferredStyle: .actionSheet)
+            let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
         } else {
-            print("no good boy")
+            let alert = UIAlertController(title: "No items in cart", message: "", preferredStyle: .actionSheet)
+            let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
         }
         
     }
