@@ -58,7 +58,7 @@ class ShoppingList {
             try data.write(to: url)
             
         } catch {
-            print("Error saving photo data: \(error)")
+            print("Error saving data: \(error)")
         }
         
     }
@@ -82,4 +82,14 @@ class ShoppingList {
             print("error loading data: \(error)")
         }
     }
+    
+    func savePreference() {
+        UserDefaults.standard.set(shoppingItems, forKey: itemPreferenceKey)
+    }
+
+    func loadPerference() {
+        let itemPerference = UserDefaults.standard.string(forKey: itemPreferenceKey)
+    }
+
+    let itemPreferenceKey = "itemPreference"
 }
