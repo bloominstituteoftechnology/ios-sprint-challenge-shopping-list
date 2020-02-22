@@ -36,7 +36,7 @@ class ShoppingListController {
             print("Error when saving to storage")
         }
     }
-    
+    /*
     func loadFromPersistentStore() {
         let fileManager = FileManager.default
         guard let url = persistentFileURL,
@@ -48,5 +48,5 @@ class ShoppingListController {
         } catch {
             print("Error when loading from storage")
         }
-    }
+    }*/
 }
