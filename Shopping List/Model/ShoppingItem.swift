@@ -17,3 +17,10 @@ struct ShoppingItem: Codable {
         UIImage(named: name) ?? UIImage()
     }
 }
+
+extension ShoppingItem: Equatable {
+
+    static func == (lhs: ShoppingItem, rhs: ShoppingItem) -> Bool {
+        return lhs.name == rhs.name
+    }
+}
