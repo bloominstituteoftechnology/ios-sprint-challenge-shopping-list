@@ -21,6 +21,10 @@ class ShoppingItemController {
             .appendingPathComponent("ShoppingItemList.plist")
     }
 
+    var addedItems: [ShoppingItem] {
+        items.filter { $0.addedToList }
+    }
+
     init() {
         if UserDefaults.standard.bool(forKey: alreadySavedKey) {
             loadFromPersistentStore()
