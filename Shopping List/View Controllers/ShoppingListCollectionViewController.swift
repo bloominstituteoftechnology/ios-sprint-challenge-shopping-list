@@ -26,19 +26,20 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "showOrderSegue" {
+            let addOrderVC = segue.destination as! ShowOrderViewController
+            addOrderVC.shippingController = shoppingController
+            
+        }
     }
-    */
+
 
     // MARK: UICollectionViewDataSource
 
-    /*override func numberOfSections(in collectionView: UICollectionView) -> Int {
+    /* override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 0
     } */
