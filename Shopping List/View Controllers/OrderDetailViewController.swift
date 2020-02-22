@@ -14,8 +14,17 @@ class OrderDetailViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
 
+    var itemCount: Int?
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        updateViews()
+    }
+
+    private func updateViews() {
+        guard let itemCount = itemCount else { return }
+        orderSummaryLabel.text = "You currently have \(itemCount) item(s) in your shopping list."
     }
 
     @IBAction func sendOrderButtonPressed(_ sender: UIButton) {

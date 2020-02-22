@@ -17,7 +17,10 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
+        if segue.identifier == "DeliveryOptionsSegue" {
+            guard let orderDetailVC = segue.destination as? OrderDetailViewController else { return }
+            orderDetailVC.itemCount = itemController.addedItems.count
+        }
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
