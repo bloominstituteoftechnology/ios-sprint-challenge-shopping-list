@@ -62,5 +62,14 @@ class ShoppingItemController {
         }
     }
     
+    func toggleHasBeenAdded(for item: ShoppingItem) {
+        if let shoppingItemIndex = items.firstIndex(of: item) {
+            var shoppingItem = items[shoppingItemIndex]
+            shoppingItem.hasBeenAdded.toggle()
+            items[shoppingItemIndex] = shoppingItem
+            saveToPersistentStore()
+        }
+    }
+    
     
 }
