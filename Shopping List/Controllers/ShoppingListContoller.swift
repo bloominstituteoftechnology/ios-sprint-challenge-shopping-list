@@ -57,8 +57,8 @@ class ShoppingListController {
         }
     }
     
-    func createShoppingItem(itemName: String, hasBeenAdded: Bool) {
-        let item = ShoppingItem(itemName: itemName, hasBeenAdded: hasBeenAdded)
+    func createShoppingItem(itemName: String) {
+        let item = ShoppingItem(itemName: itemName, hasBeenAdded: false)
         shoppingList.append(item)
     }
     
@@ -83,9 +83,9 @@ class ShoppingListController {
     }
     
     func createShoppingList() {
-        if UserDefaults.standard.bool(forKey: "DidInitializeShoppingList") {
+        if !UserDefaults.standard.bool(forKey: "DidInitializeShoppingList") {
             for i in 0..<itemNames.count {
-                createShoppingItem(itemName: itemNames[i], hasBeenAdded: false)
+                createShoppingItem(itemName: itemNames[i])
             }
             UserDefaults.standard.set(false, forKey: "DidInitializeShoppingList")
         } else {

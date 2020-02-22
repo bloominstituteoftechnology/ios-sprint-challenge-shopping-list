@@ -12,6 +12,6 @@ struct ShoppingItem: Codable, Equatable {
     var itemName: String
     var hasBeenAdded: Bool
     var itemImage: UIImage? {
-        return UIImage(contentsOfFile: "\(itemName).png")
+        return UIImage(named: itemName)
     }
 }

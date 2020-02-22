@@ -20,14 +20,6 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         shoppingListController.createShoppingList()
 
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        shoppingListController.createShoppingList()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        shoppingListController.createShoppingList()
-    }
 
     /*
     // MARK: - Navigation
@@ -42,7 +34,6 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return shoppingListController.itemNames.count
     }
 
