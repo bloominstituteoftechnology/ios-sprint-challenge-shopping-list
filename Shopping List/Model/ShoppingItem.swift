@@ -11,7 +11,10 @@ import UIKit
 class ShoppingItem {
 var name: String
 var addedToList: Bool = false
-
+var image: UIImage? {
+    let itemImage = UIImage(named: name)
+    return itemImage
+    }
 init(name: String, addedToList: Bool = false) {
     self.name = name
     self.addedToList = addedToList
