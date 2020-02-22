@@ -13,20 +13,7 @@ class ShoppingListController {
     // MARK: Properties
     var itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     
-    var shoppingList: [ShoppingItem] {
-        if !UserDefaults.standard.bool(forKey: "DidInitializeShoppingList") {
-            var slInitArray: [ShoppingItem] = []
-            for i in 0..<itemNames.count {
-                let newItem = ShoppingItem(itemName: itemNames[i], hasBeenAdded: false)
-                slInitArray.append(newItem)
-            }
-            UserDefaults.standard.set(true, forKey: "DidInitializeShoppingList")
-            return slInitArray
-        } else {
-            loadFromPersistentStore()
-            return self.shoppingList
-        }
-    }
+    var shoppingList: [ShoppingItem] = []
     
     var shoppingListSelected: [ShoppingItem] {
         var slArray: [ShoppingItem] = []
@@ -61,12 +48,48 @@ class ShoppingListController {
         guard let url = persistentFileURL, fileManager.fileExists(atPath: url.path) else {
             return }
         
-//        do {
-//            let data = try Data(contentsOf: url)
-//            let decoder = PropertyListDecoder()
-//            shoppingList = try decoder.decode([ShoppingItem].self, from: data)
-//        } catch {
-//            print("error loading Shopping List data: \(error)")
-//        }
+        do {
+            let data = try Data(contentsOf: url)
+            let decoder = PropertyListDecoder()
+            shoppingList = try decoder.decode([ShoppingItem].self, from: data)
+        } catch {
+            print("error loading Shopping List data: \(error)")
+        }
+    }
+    
+    func createShoppingItem(itemName: String, hasBeenAdded: Bool) {
+        let item = ShoppingItem(itemName: itemName, hasBeenAdded: hasBeenAdded)
+        shoppingList.append(item)
+    }
+    
+    func retrieveShoppingItem(index: Int) -> ShoppingItem {
+        return shoppingList[index]
+    }
+    
+    func updateShoppingItem(item: ShoppingItem, itemName: String?, hasBeenAdded: Bool?){
+        var updatedItem = item
+        
+        if let itemName = itemName {
+            updatedItem.itemName = itemName
+        }
+        
+        if let hasBeenAdded = hasBeenAdded {
+            updatedItem.hasBeenAdded = hasBeenAdded
+        }
+        
+        guard let index = shoppingList.firstIndex(of: item) else { return }
+        shoppingList.remove(at: index)
+        shoppingList.append(updatedItem)
+    }
+    
+    func createShoppingList() {
+        if !UserDefaults.standard.bool(forKey: "DidInitializeShoppingList") {
+            for i in 0..<itemNames.count {
+                createShoppingItem(itemName: itemNames[i], hasBeenAdded: false)
+            }
+            UserDefaults.standard.set(false, forKey: "DidInitializeShoppingList")
+        } else {
+            loadFromPersistentStore()
+        }
     }
 }
