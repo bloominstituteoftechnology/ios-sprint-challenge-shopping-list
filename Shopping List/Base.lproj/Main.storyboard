@@ -68,8 +68,8 @@
         <!--Shopping List-->
         <scene sceneID="bzb-EB-n7D">
             <objects>
-                <collectionViewController id="970-Vo-hht" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Sg3-LM-yzb">
+                <collectionViewController id="970-Vo-hht" customClass="ShoppingListCollectionViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Sg3-LM-yzb" customClass="ShoppingListCell">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -80,7 +80,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="0i2-qA-Hmt">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="0i2-qA-Hmt" customClass="ShoppingListCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="120" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="EBD-6P-cMC">
@@ -116,6 +116,10 @@
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="120" height="150"/>
+                                <connections>
+                                    <outlet property="imageView" destination="lET-dd-8b1" id="NOy-Jy-KlA"/>
+                                    <outlet property="shoppingLabel" destination="B4k-KI-iuN" id="Rsg-nX-J5j"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -138,7 +142,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0rr-Vt-PCe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="13" y="46"/>
+            <point key="canvasLocation" x="-132" y="27"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="k1P-wG-rmg">
@@ -156,7 +160,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="93m-VX-1B9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-762" y="46"/>
+            <point key="canvasLocation" x="-1303" y="27"/>
         </scene>
     </scenes>
 </document>
