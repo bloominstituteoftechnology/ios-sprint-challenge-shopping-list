@@ -5,7 +5,18 @@ class ShoppingItemModelController {
     
     var shoppingList: [ShoppingItem] = []
     
-    
+    init() {
+        if UserDefaults.standard.bool(forKey: .alreadyExistsKey) {
+            loadFromPersistentStore()
+        } else {
+            let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+            for item in itemNames {
+                shoppingList.append(ShoppingItem(itemName: item))
+            }
+            saveToPersistentStore()
+            UserDefaults.standard.set(true, forKey: .alreadyExistsKey)
+        }
+    }
     
     // MARK: - Persistence
     
