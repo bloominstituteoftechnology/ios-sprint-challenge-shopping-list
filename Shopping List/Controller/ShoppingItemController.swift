@@ -10,17 +10,20 @@ import Foundation
 import UIKit
 
 class ShoppingItemController {
-    var items: [ShoppingItem] {
-        ShoppingItem(name: "Apple", hasBeenAdded: false)
-        ShoppingItem(name: "Grapes", hasBeenAdded: false)
-        ShoppingItem(name: "Milk", hasBeenAdded: false)
-        ShoppingItem(name: "Muffin", hasBeenAdded: false)
-        ShoppingItem(name: "Popcorn", hasBeenAdded: false)
-        ShoppingItem(name: "Soda", hasBeenAdded: false)
+    var items: [ShoppingItem] = [
+        ShoppingItem(name: "Apple", hasBeenAdded: false),
+        ShoppingItem(name: "Grapes", hasBeenAdded: false),
+        ShoppingItem(name: "Milk", hasBeenAdded: false),
+        ShoppingItem(name: "Muffin", hasBeenAdded: false),
+        ShoppingItem(name: "Popcorn", hasBeenAdded: false),
+        ShoppingItem(name: "Soda", hasBeenAdded: false),
         ShoppingItem(name: "Strawberries", hasBeenAdded: false)
-
-    }
+]
     
+    var itemsAddedCount: Int {
+        let itemsAdded = items.filter { return $0.hasBeenAdded }
+        return itemsAdded.count
+    }
        
      private var persistentFileURL: URL? {
          let fileManager = FileManager.default
@@ -30,7 +33,7 @@ class ShoppingItemController {
      }
      
      init() {
-         // load from p store
+         loadFromPersistentStore()
      }
     
     func saveToPersistentStore() {
