@@ -36,4 +36,12 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         return cell
     }
 
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ShoppingItemCollectionViewCell else { return }
+        
+        let shoppingItem = shoppingItemController.shoppingList[indexPath.item]
+        shoppingItemController.toggleItemSelected(shoppingItem: shoppingItem)
+        let updatedShoppingitem = shoppingItemController.shoppingList[indexPath.item]
+        cell.shoppingItem = updatedShoppingitem
+    }
 }

@@ -17,6 +17,11 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        updateViews()
+    }
+    
     // MARK: IBOutlets
     @IBOutlet weak var shoppingItemImage: UIImageView!
     @IBOutlet weak var shoppingItemLabel: UILabel!
@@ -42,8 +47,8 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     func updateViews() {
         shoppingItemImage.image = shoppingItem?.image
         shoppingItemLabel.text = shoppingItem?.name
-        guard let isItemSelected = shoppingItem?.itemSelected else { return }
-        let buttonTitle = isItemSelected ? "Remove" : "Add"
+        guard let item = shoppingItem else { return }
+        let buttonTitle = item.itemSelected ? "Remove" : "Add"
         addOrRemoveButton.setTitle(buttonTitle, for: .normal)
             
     }

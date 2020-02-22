@@ -26,7 +26,7 @@ class ShoppingItemController {
     
     func toggleItemSelected(shoppingItem: ShoppingItem) {
         guard let index = shoppingList.firstIndex(of: shoppingItem) else { return }
-        shoppingList[index].itemSelected.toggle()
+        shoppingList[index].itemSelected = !shoppingList[index].itemSelected
     }
     
     private var persistentFileURL: URL? {
