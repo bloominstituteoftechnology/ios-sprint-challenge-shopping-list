@@ -20,7 +20,7 @@ class ShoppingItemDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        updateViews()
     }
     
     //MARK: - IBActions

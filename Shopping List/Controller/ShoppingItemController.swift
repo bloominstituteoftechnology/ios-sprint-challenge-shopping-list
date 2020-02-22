@@ -21,8 +21,13 @@ class ShoppingItemController {
 ]
     
     var itemsAddedCount: Int {
-        let itemsAdded = items.filter { return $0.hasBeenAdded }
-        return itemsAdded.count
+        var count = 0
+        for item in items {
+            if item.hasBeenAdded == true {
+                count += 1
+            }
+        }
+        return count
     }
        
      private var persistentFileURL: URL? {
