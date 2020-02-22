@@ -11,7 +11,7 @@ import UIKit
 struct ShoppingItem: Codable {
 
     let name: String
-    var addedToList: Bool
+    var addedToList: Bool = false
 
     var image: UIImage {
         UIImage(named: name) ?? UIImage()
