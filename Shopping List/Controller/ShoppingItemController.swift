@@ -59,3 +59,11 @@ class ShoppingItemController {
         }
     }
 }
+
+extension ShoppingItemController: ShoppingItemCellDelegate {
+
+    func itemWasUpdated(item: ShoppingItem) {
+        guard let index = items.firstIndex(of: item) else { return }
+        items[index] = item
+    }
+}

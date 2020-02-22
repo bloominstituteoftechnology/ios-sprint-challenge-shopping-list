@@ -8,11 +8,17 @@
 
 import UIKit
 
+protocol ShoppingItemCellDelegate {
+    func itemWasUpdated(item: ShoppingItem)
+}
+
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var addedLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var itemNameLabel: UILabel!
+
+    var delegate: ShoppingItemCellDelegate?
 
     var item: ShoppingItem? {
         didSet {
@@ -30,5 +36,8 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
 
     @IBAction func overlayButtonWasTapped(_ sender: UIButton) {
         item?.addedToList.toggle()
+        if let item = item {
+            delegate?.itemWasUpdated(item: item)
+        }
     }
 }
