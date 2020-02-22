@@ -8,20 +8,17 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
 class ShoppingListCollectionViewController: UICollectionViewController {
 
+    //MARK: - Properties
+    let shoppingController = ShoppingListController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        collectionView?.reloadData()
     }
     
     //MARK: - IBOutlet
@@ -48,15 +45,14 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+        return shoppingController.shoppingItems.count
+        
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        // Configure the cell
-    
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "itemCell", for: indexPath) as? ShoppingItemCollectionViewCell else { return UICollectionViewCell() }
+        let item = shoppingController.shoppingItems[indexPath.item]
+        cell.item = item
         return cell
     }
 

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ShoppingList {
+class ShoppingListController {
     var shoppingItems: [ShoppingItem] {
         var shoppingItems = [
             ShoppingItem(name: "Apple", addedToShoppingList: false),
@@ -76,7 +76,7 @@ class ShoppingList {
             let decoder = PropertyListDecoder()
             
             // Decode the data and place in array (we specify what type to decode itself into)
-            shoppingItems = try decoder.decode([ShoppingItem].self, from: data)
+            //shoppingItems = try decoder.decode([ShoppingItem].self, from: data)
             
         } catch {
             print("error loading data: \(error)")
