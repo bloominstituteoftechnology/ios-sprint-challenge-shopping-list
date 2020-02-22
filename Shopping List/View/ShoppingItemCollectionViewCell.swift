@@ -13,7 +13,6 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     var item: ShoppingItem? {
         didSet {
             updateViews()
-            print("viewCell is showing")
         }
     }
     
@@ -25,14 +24,14 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
     
     func updateViews() {
-        print("Showing boxes")
         if let item = item {
             itemImageView.image = item.image
             itemNameLabel.text = item.name
+
             if item.addedToShoppingList {
-                addToCartLabel.text = "Not added"
-            } else {
                 addToCartLabel.text = "Added"
+            } else {
+                addToCartLabel.text = "Not added"
             }
         }
     }

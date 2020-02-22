@@ -38,20 +38,18 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+    /*override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 0
-    }
+    } */
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("returning number of cells")
         return shoppingController.shoppingItems.count
         
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("Is this even being called?")
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "itemCell", for: indexPath) as? ShoppingItemCollectionViewCell else { return UICollectionViewCell() }
         let item = shoppingController.shoppingItems[indexPath.item]
         cell.item = item
