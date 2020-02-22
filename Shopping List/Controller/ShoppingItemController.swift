@@ -11,7 +11,7 @@ import Foundation
 class ShoppingItemController {
 
     let defaultItemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
-    let alreadyRunKey = "alreadyRunKey"
+    let alreadySavedKey = "alreadySavedKey"
 
     private(set) var items: [ShoppingItem] = []
 
@@ -22,15 +22,21 @@ class ShoppingItemController {
     }
 
     init() {
-        if UserDefaults.standard.bool(forKey: alreadyRunKey) {
-
+        if UserDefaults.standard.bool(forKey: alreadySavedKey) {
+            loadFromPersistentStore()
+        } else {
+            for itemName in defaultItemNames {
+                let item = ShoppingItem(name: itemName)
+                items.append(item)
+            }
+            saveToPersistentStore()
+            UserDefaults.standard.set(true, forKey: alreadySavedKey)
         }
         // if not run yet
         //   insert default items to array
         //   write to disk
         // else
         //   read from disk
-
     }
 
     func loadFromPersistentStore() {
