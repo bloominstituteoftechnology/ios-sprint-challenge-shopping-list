@@ -1,12 +1,9 @@
-//
-//  ShoppingItemCollectionViewCell.swift
-//  Shopping List
-//
-//  Created by Chris Price on 12/14/19.
-//  Copyright © 2019 Lambda School. All rights reserved.
-//
 
 import UIKit
+
+protocol ShoppingItemCollectonViewCellDelegate: class {
+    
+}
 
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
   
@@ -14,4 +11,14 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
+    var shoppingItem: ShoppingItem? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    private func updateViews() {
+        guard let shoppingItem = shoppingItem, let image = UIImage(named: shoppingItem.itemName) else { return }
+        
+    }
 }
