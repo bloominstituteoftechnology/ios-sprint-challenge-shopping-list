@@ -9,11 +9,18 @@
 import UIKit
 
 class AddItemViewController: UIViewController {
-
+    
+    // MARK: IBOutlets
+    
+    @IBOutlet weak var listLabel: UILabel!
+    @IBOutlet weak var nameText: UITextField!
+    @IBOutlet weak var addressText: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        listLabel.text = ("You currently have blank items(s) in your shopping list.")
 
-        // Do any additional setup after loading the view.
+
     }
     
 

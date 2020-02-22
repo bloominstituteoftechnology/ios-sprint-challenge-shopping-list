@@ -12,8 +12,10 @@ private let reuseIdentifier = "ShoppingItemCell"
 
 class ShoppingListCollectionViewController: UICollectionViewController {
     
+    let shoppingList = ShoppingList()
+    
     @IBAction func unwindToShoppingListCollectionViewController(segue: UIStoryboardSegue) {
-        self.collectionView.reloadData()
+        self.collectionView?.reloadData()
     }
 
 
@@ -41,22 +43,16 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+        return shoppingList.shoppingItems.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        // Configure the cell
-    
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ShoppingItemCollectionViewCell else { return UICollectionViewCell() }
+        
+        let shoppinglist = shoppingList.shoppingItems[indexPath.item]
+        cell.shoppingItem = shoppinglist
         return cell
     }
 
