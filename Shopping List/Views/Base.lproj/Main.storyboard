@@ -60,6 +60,11 @@
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="150" height="190"/>
+                                <connections>
+                                    <outlet property="addedLabel" destination="on1-Wu-SXf" id="7K8-Jm-PBY"/>
+                                    <outlet property="itemImageView" destination="PXT-Ai-9TB" id="z8k-Uu-Ckw"/>
+                                    <outlet property="itemNameLabel" destination="WnN-7t-nbN" id="mZj-vS-RFX"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -109,6 +114,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ris-Zc-okI">
                                         <rect key="frame" x="0.0" y="154.5" width="414" height="30"/>
                                         <state key="normal" title="Send Order"/>
+                                        <connections>
+                                            <action selector="sendOrderButtonTapped:" destination="Za6-Hb-IVI" eventType="touchUpInside" id="Xvq-js-ZGu"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -124,6 +132,11 @@
                     <navigationItem key="navigationItem" id="RpF-yc-lKP">
                         <barButtonItem key="backBarButtonItem" title="Change Shopping List" id="iXJ-kd-t1n"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addressTextField" destination="hvm-yp-uOJ" id="o2o-ry-QnQ"/>
+                        <outlet property="currentNumberOfItemsLabel" destination="42B-qd-vcU" id="DUR-Xv-5RR"/>
+                        <outlet property="nameTextField" destination="Fzf-1S-YyQ" id="Gpn-X8-SAn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i0o-Su-sbN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
