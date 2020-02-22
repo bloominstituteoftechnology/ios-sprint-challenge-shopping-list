@@ -20,6 +20,14 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         shoppingListController.createShoppingList()
 
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        shoppingListController.createShoppingList()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        shoppingListController.createShoppingList()
+    }
 
     /*
     // MARK: - Navigation

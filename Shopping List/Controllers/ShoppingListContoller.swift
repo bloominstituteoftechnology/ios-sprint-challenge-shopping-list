@@ -83,7 +83,7 @@ class ShoppingListController {
     }
     
     func createShoppingList() {
-        if !UserDefaults.standard.bool(forKey: "DidInitializeShoppingList") {
+        if UserDefaults.standard.bool(forKey: "DidInitializeShoppingList") {
             for i in 0..<itemNames.count {
                 createShoppingItem(itemName: itemNames[i], hasBeenAdded: false)
             }
