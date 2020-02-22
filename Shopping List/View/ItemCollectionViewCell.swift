@@ -21,9 +21,17 @@ class ItemCollectionViewCell: UICollectionViewCell {
     
     func updateView() {
         guard let addedToCart = shoppingItem?.hasBeenAddedToCart else { return }
-        let image = addedToCart ? UIImage(named: "checkmarkFull")! : UIImage(named: "emptyCheckmark")!
-        addedToCartImage.image = image
+        if #available(iOS 13.0, *) {
+            let inCartItem = UIImage(systemName: "checkmark.circle.fill")
+            let emptyCartItem = UIImage(systemName: "checkmark.circle")
+            guard let image = addedToCart ? inCartItem : emptyCartItem else { return }
+                    addedToCartImage.image = image
+        } else {
+            let image = addedToCart ? UIImage(named: "checkmarkFull")! : UIImage(named: "emptyCheckmark")!
+                    addedToCartImage.image = image
+        }
         itemImage.image = shoppingItem?.itemImage
         itemLabel.text = shoppingItem?.name
     }
+    
 }

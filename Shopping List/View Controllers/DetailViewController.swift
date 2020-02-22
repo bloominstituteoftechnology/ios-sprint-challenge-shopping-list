@@ -31,7 +31,7 @@ class DetailViewController: UIViewController {
             !name.isEmpty,
             !address.isEmpty,
         shoppingListController.getAddedItems().count != 0{
-        let alert = UIAlertController(title: "Order Received", message: "Thank you \(name)! Your order will be delivered to \(address)", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Order Received", message: "Thank you \(name)! Your order will be delivered to \(address) in 15 mins.", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
@@ -43,8 +43,10 @@ class DetailViewController: UIViewController {
             alert.addAction(okAction)
             present(alert, animated: true, completion: nil)
         } else {
-            let alert = UIAlertController(title: "No items in cart", message: "", preferredStyle: .actionSheet)
-            let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            let alert = UIAlertController(title: "No items in cart", message: "Go back to shopping..", preferredStyle: .actionSheet)
+            let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: {(alert: UIAlertAction!) in
+                self.navigationController?.popViewController(animated: true)
+            })
             alert.addAction(okAction)
             present(alert, animated: true, completion: nil)
         }
