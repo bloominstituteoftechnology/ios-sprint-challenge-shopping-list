@@ -111,7 +111,6 @@ class ShoppingListController {
             shoppingItem.addedToShoppingList.toggle()
             shoppingItems[shoppingItemIndex] = shoppingItem
             saveToPersistentStore()
-
         }
 
     }

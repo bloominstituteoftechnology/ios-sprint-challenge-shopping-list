@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class ShoppingListCollectionViewController: UICollectionViewController {
 
     //MARK: - Properties
@@ -61,13 +62,33 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let shoppingItem = getShoppingItem(for: indexPath)
-        
+        let shoppingItem = shoppingController.shoppingItems[indexPath.item]
         shoppingController.toggleHasBeenAdded(for: shoppingItem)
+        if let cell = collectionView.cellForItem(at: indexPath) as? ShoppingItemCollectionViewCell {
+            cell.item = shoppingController.shoppingItems[indexPath.item]
+        }
         collectionView.reloadData()
-
+       // collectionView.reloadItems(at: [indexPath])
     }
+        
     
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if (kind == UICollectionElementKindSectionHeader) {
+            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "AddedHeader", for: indexPath) as? HeaderCollectionReusableView else { fatalError("Invalid view type") }
+            // Customize headerView here
+            var headerText = "Header"
+            if indexPath.section == 0 {
+                headerText = "Added to Shopping List"
+            } else {
+                headerText = "Not Added"
+            }
+            
+            headerView.headerLabel.text = headerText
+            return headerView
+        }
+        fatalError()
+    }
+
     
     // MARK: - Functions
     
