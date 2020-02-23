@@ -8,12 +8,16 @@
 
 import UIKit
 
+//protocol IsSelectedDelegate {
+//    func isSelectedArray(_ shoppingItem: ShoppingItem)
+//}
+
 private let reuseIdentifier = "ShoppingItemCell"
 
 class ShoppingListCollectionViewController: UICollectionViewController {
     
     let shoppingItemController = ShoppingItemController()
-
+//    var delegate: IsSelectedDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,3 +49,4 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         cell.shoppingItem = updatedShoppingitem
     }
 }
+

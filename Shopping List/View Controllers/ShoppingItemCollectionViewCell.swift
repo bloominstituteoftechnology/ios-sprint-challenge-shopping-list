@@ -7,10 +7,15 @@
 //
 
 import UIKit
+//
+//protocol IsSelectedDelegate {
+//    func isSelectedArray(_ shoppingItem: ShoppingItem)
+//}
 
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
     var shoppingItemController: ShoppingItemController?
+//    var delegate: IsSelectedDelegate?
     var shoppingItem: ShoppingItem? {
         didSet {
             updateViews()
@@ -50,8 +55,18 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         guard let item = shoppingItem else { return }
         let buttonTitle = item.itemSelected ? "Remove" : "Add"
         addOrRemoveButton.setTitle(buttonTitle, for: .normal)
-            
     }
+    
+//    func isSelectedArray(_ shoppingItem: ShoppingItem) {
+//        delegate?.isSelectedArray(shoppingItem)
+//           var shoppingItemArray: [ShoppingItem] = []
+//           let isSelectedCheck = shoppingItem.itemSelected
+//           if isSelectedCheck == true {
+//               shoppingItemArray.append(shoppingItem)
+//           } else {
+//               return
+//           }
+//       }
 }
 
 
