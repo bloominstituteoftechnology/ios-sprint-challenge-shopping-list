@@ -10,6 +10,8 @@ import UIKit
 
 class AddItemViewController: UIViewController {
     
+    var shoppingItemController: ShoppingItemController?
+    
     
     // MARK: IBOutlets
     
@@ -19,8 +21,8 @@ class AddItemViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.view.delegate = self
-        listLabel.text = ("You currently have blank blank items(s) in your shopping list.")
+        guard let shoppingItemController = shoppingItemController else { return }
+        listLabel.text = ("You currently have \(shoppingItemController.itemSelectedAdd.count) items(s) in your shopping list.")
     }
     
     // MARK: IBActions
@@ -35,9 +37,10 @@ class AddItemViewController: UIViewController {
         let okAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
         alert.addAction(okAction)
         
-        self.present(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: {
+            self.dismiss(animated: true, completion: nil)
+        })
     }
-
 }
 
 //extension AddItemViewController: IsSelectedDelegate {

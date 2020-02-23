@@ -22,4 +22,8 @@ struct ShoppingItem: Codable, Equatable {
         self.name = name
         self.itemSelected = itemSelected
     }
+    
+    static func == (lhs: ShoppingItem, rhs: ShoppingItem) -> Bool {
+        return lhs.name == rhs.name
+    }
 }

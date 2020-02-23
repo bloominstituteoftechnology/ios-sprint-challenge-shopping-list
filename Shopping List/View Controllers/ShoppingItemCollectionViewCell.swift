@@ -15,9 +15,9 @@ import UIKit
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
     var shoppingItemController: ShoppingItemController?
-//    var delegate: IsSelectedDelegate?
     var shoppingItem: ShoppingItem? {
         didSet {
+            print(shoppingItem?.itemSelected)
             updateViews()
         }
     }
@@ -36,18 +36,18 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     @IBAction func addOrRemove(_ sender: Any?) {
         guard let shoppingItemController = shoppingItemController,
             let shoppingItem = shoppingItem else { return }
-        shoppingItemController.toggleItemSelected(shoppingItem: shoppingItem)
-//        let button = UIButton()
-//             if button.isSelected {
-//                 button.setTitle("Remove", for: .normal)
-//                 button.setTitleColor(.red, for: .normal)
-//                shoppingItem?.itemSelected = false
-//             } else {
-//                 button.setTitle("Add", for: .normal)
-//                 button.setTitleColor(.blue, for: .normal)
-//                shoppingItem?.itemSelected = true
-//             }
-         }
+//        shoppingItemController.toggleItemSelected(shoppingItem: shoppingItem)
+        //        let button = UIButton()
+        //             if button.isSelected {
+        //                 button.setTitle("Remove", for: .normal)
+        //                 button.setTitleColor(.red, for: .normal)
+        //                shoppingItem?.itemSelected = false
+        //             } else {
+        //                 button.setTitle("Add", for: .normal)
+        //                 button.setTitleColor(.blue, for: .normal)
+        //                shoppingItem?.itemSelected = true
+        //             }
+    }
     
     func updateViews() {
         shoppingItemImage.image = shoppingItem?.image
@@ -56,17 +56,7 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         let buttonTitle = item.itemSelected ? "Remove" : "Add"
         addOrRemoveButton.setTitle(buttonTitle, for: .normal)
     }
-    
-//    func isSelectedArray(_ shoppingItem: ShoppingItem) {
-//        delegate?.isSelectedArray(shoppingItem)
-//           var shoppingItemArray: [ShoppingItem] = []
-//           let isSelectedCheck = shoppingItem.itemSelected
-//           if isSelectedCheck == true {
-//               shoppingItemArray.append(shoppingItem)
-//           } else {
-//               return
-//           }
-//       }
+
 }
 
 
