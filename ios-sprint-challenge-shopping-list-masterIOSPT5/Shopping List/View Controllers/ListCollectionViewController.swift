@@ -19,9 +19,7 @@ class ListCollectionViewController: UICollectionViewController {
     
  
     let shoppingController = ShoppingController()
-    
     var notAdded: Bool = true
-    var shoppingListController: ShoppingListViewController?
     var delegate: ShoppingListDelegate?
     
     override func viewDidLoad() {
@@ -37,7 +35,11 @@ class ListCollectionViewController: UICollectionViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        <#code#>
+        if segue.identifier == "SubmitOrderSegue" {
+            guard let submitOrderVC = segue.destination as? ShoppingListViewController else { return }
+            submitOrderVC.shoppingController = shoppingController
+            
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

@@ -8,7 +8,9 @@
 
 import UIKit
 
-class ShoppingListViewController: UIViewController, ShoppingListDelegate {
+class ShoppingListViewController: UIViewController{
+    
+    var shoppingController: ShoppingController?
     
     @IBOutlet weak var itemsOrderedLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
@@ -36,10 +38,4 @@ class ShoppingListViewController: UIViewController, ShoppingListDelegate {
         self.present(alert, animated: true, completion: nil)
     }
     
-}
-
-extension ShoppingListViewController {
-       func shouldBeAdded() {
-           itemsOrderedLabel.text = "\(numberOfItems) items added"
-       }       
 }
