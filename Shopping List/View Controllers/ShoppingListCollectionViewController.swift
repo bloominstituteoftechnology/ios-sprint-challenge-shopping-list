@@ -8,25 +8,18 @@
 
 import UIKit
 
-//protocol IsSelectedDelegate {
-//    func isSelectedArray(_ shoppingItem: ShoppingItem)
-//}
-
 private let reuseIdentifier = "ShoppingItemCell"
 
 class ShoppingListCollectionViewController: UICollectionViewController {
     
     let shoppingItemController = ShoppingItemController()
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     // MARK: UICollectionViewDataSource
-    
-    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return shoppingItemController.shoppingList.count
     }
@@ -48,13 +41,8 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         cell.shoppingItem = shoppingItemController.shoppingList[indexPath.item]
         if let index = shoppingItemController.itemSelectedAdd.firstIndex(of: shoppingItem) {
             shoppingItemController.itemSelectedAdd.remove(at: index)
-            
         } else {
             shoppingItemController.itemSelectedAdd.append(shoppingItem)
-
-        }
-        for item in shoppingItemController.itemSelectedAdd {
-            print(item.name)
         }
     }
     
@@ -62,8 +50,6 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         if segue.identifier == "ShoppingListDetailSegue" {
             let addItemVC = segue.destination as! AddItemViewController
             addItemVC.shoppingItemController = shoppingItemController
-            
-            
         }
     }
 }

@@ -21,6 +21,7 @@ struct ShoppingItem: Codable, Equatable {
     init(name: String, itemSelected: Bool = false) {
         self.name = name
         self.itemSelected = itemSelected
+        
     }
     
     static func == (lhs: ShoppingItem, rhs: ShoppingItem) -> Bool {

@@ -22,11 +22,9 @@ class ShoppingItemController {
     ]
     
     var itemSelected = UserDefaults.standard.bool(forKey: .shoppingListKey)
-    var itemSelectedAdd: [ShoppingItem] = [] {
-        didSet {
-            print(itemSelectedAdd)
-        }
-    }
+    var itemSelectedAdd: [ShoppingItem] = []
+    
+    
     
     func toggleItemSelected(shoppingItem: ShoppingItem) {
         guard let index = shoppingList.firstIndex(of: shoppingItem) else { return }

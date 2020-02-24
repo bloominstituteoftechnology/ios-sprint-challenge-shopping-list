@@ -26,7 +26,6 @@ class AddItemViewController: UIViewController {
     }
     
     // MARK: IBActions
-    
     @IBAction func sendButtonTapped(_ sender: Any) {
         showAlert()
         navigationController?.popViewController(animated: true)
@@ -34,17 +33,10 @@ class AddItemViewController: UIViewController {
     
     private func showAlert() {
         let alert = UIAlertController(title: "Order Complete", message: "Your order will be delivered in 15 min to \(addressText.text ?? "Error").", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        let okAction = UIAlertAction(title: "Okay", style: .default, handler: nil )
         alert.addAction(okAction)
         
-        self.present(alert, animated: true, completion: {
-            self.dismiss(animated: true, completion: nil)
-        })
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
-//extension AddItemViewController: IsSelectedDelegate {
-//    func isSelectedArray(_ shoppingItem: ShoppingItem) {
-//
-//    }
-//}
