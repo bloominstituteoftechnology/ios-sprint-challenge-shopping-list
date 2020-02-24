@@ -10,12 +10,39 @@ import UIKit
 
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
+    //MARK: -IBOutlets and IBActions-
+    
     @IBAction func ItemWasAddedButtonTapped(_ sender: UIButton) {
         
     }
     
-    @IBOutlet var ItemWasAddedLabel: UIButton!
-    @IBOutlet var imageView: UIImageView!
+    @IBOutlet var itemWasAddedLabel: UILabel!
+    @IBOutlet var itemImage: UIImageView!
     @IBOutlet var itemName: UILabel!
     
-}
+    
+    
+    //MARK: -Important properties-
+    
+    var item: Item? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    
+    //MARK: -Important methods-
+    
+    func updateViews() {
+        guard let item = item else {return}
+        itemName.text = item.name
+        itemImage.image = UIImage(named: item.name)
+        
+        if UserDefaults.standard.bool(forKey: item.name) {
+            itemWasAddedLabel.text = "Added"
+        } else {
+            itemWasAddedLabel.text = "Not Added"
+        }
+    }
+    
+}//End of class

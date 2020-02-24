@@ -6,13 +6,17 @@
 //  Copyright © 2019 Lambda School. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 
 struct Item: Codable {
-    let name: String
-    let image: String
-    let itemWasAdded: Bool
-}
-
-let defaults = UserDefaults.standard
+    
+    var name: String
+    var itemWasAdded: Bool
+    
+    init(name: String, itemWasAdded: Bool) {
+        self.name = name
+        self.itemWasAdded = itemWasAdded
+    }
+    
+}//End of class
