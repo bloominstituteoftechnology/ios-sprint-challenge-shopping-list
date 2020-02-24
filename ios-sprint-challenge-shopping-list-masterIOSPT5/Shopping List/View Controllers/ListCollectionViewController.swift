@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+
 var numberOfItems = 0
 
 protocol ShoppingListDelegate: class {
@@ -19,7 +19,7 @@ class ListCollectionViewController: UICollectionViewController {
     
  
     let shoppingController = ShoppingController()
-    var notAdded: Bool = true
+   
     var delegate: ShoppingListDelegate?
     
     override func viewDidLoad() {
@@ -64,7 +64,7 @@ class ListCollectionViewController: UICollectionViewController {
     
     // MARK: UICollectionViewDelegate
     func shouldBeAdded() {
-        shoppingController.items.wasAdded
+        shoppingController.items
         self.collectionView?.reloadData()
     }
 }
