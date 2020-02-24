@@ -46,7 +46,7 @@ class ListCollectionViewController: UICollectionViewController {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ListCell", for: indexPath) as? ListCollectionViewCell else { return UICollectionViewCell()}
     
         let item = shoppingController.items[indexPath.item]
-        //cell.itemImage.image = item.image
+        cell.itemImage.image = UIImage(named: item.name)
         cell.itemNameLabel.text = item.name
         
         return cell
@@ -64,6 +64,7 @@ class ListCollectionViewController: UICollectionViewController {
     
     // MARK: UICollectionViewDelegate
     func shouldBeAdded() {
+        shoppingController.items.wasAdded
         self.collectionView?.reloadData()
     }
 }

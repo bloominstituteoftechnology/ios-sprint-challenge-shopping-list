@@ -12,17 +12,17 @@ class ShoppingController {
     var items: [Items] {
         
         let item = [
-    Items(name: "Apple", imageName: "Apple"),
-        Items(name: "Grapes", imageName: "Grapes"),
-        Items(name: "Milk", imageName: "Milk"),
-        Items(name: "Muffin", imageName: "Muffin"),
-        Items(name: "Popcorn", imageName: "Popcorn"),
-        Items(name: "Soda", imageName: "Soda"),
-        Items(name: "Strawberries", imageName: "Strawberries"),
+            Items(name: "Apple", wasAdded: false),
+            Items(name: "Grapes", wasAdded: false),
+            Items(name: "Milk", wasAdded: false),
+            Items(name: "Muffin", wasAdded: false),
+            Items(name: "Popcorn",  wasAdded: false),
+            Items(name: "Soda",  wasAdded: false),
+            Items(name: "Strawberries", wasAdded: false),
         ]
-
+        
         let wasAdded = UserDefaults.standard.bool(forKey: .added)
-    return item
+        return item
     }
     
 
@@ -44,16 +44,14 @@ class ShoppingController {
         }
     }
     
-//    func loadFromPersistentStore() {
-//        do {
-//            guard let url = shoppingListURL else { return }
-//            let listsData = try Data(contentsOf: url)
-//            let decodedLists = PropertyListDecoder()
-//            items  = try decodedLists.decode([Items].self, from: listsData)
-//        } catch {
-//            print("Something went wrong: \(error)")
-//        }
-//    }
-    
-    
+    func loadFromPersistentStore() {
+        do {
+            guard let url = shoppingListURL else { return }
+            let listsData = try Data(contentsOf: url)
+            let decodedLists = PropertyListDecoder()
+            items  = try decodedLists.decode([Items].self, from: listsData)
+        } catch {
+            print("Something went wrong: \(error)")
+        }
+    }
 }

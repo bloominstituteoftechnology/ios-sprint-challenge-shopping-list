@@ -11,12 +11,14 @@ import UIKit
 struct Items: Encodable, Decodable {
     
     var name: String
-    //var image: UIImage
     var wasAdded: Bool
+    //var image: UIImage//{
+    //        return UIImage(named: UIImage)!
+    //    }
     
-    init(name: String, imageName: String, wasAdded: Bool = false) {
+    init(name: String, wasAdded: Bool = false) {
         self.name = name
-       // self.image = UIImage(named: imageName)!
-        self .wasAdded = wasAdded
+      //  self.image = UIImage(named: imageName)!
+        self.wasAdded = wasAdded
     }
 }
