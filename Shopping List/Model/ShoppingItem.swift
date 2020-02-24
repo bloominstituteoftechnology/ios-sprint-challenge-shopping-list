@@ -11,8 +11,6 @@ import UIKit
 struct ShoppingItem: Codable, Equatable {
     var name: String
     var itemSelected: Bool
-    
-    
     var image: UIImage {
         return UIImage(named: name)!
     }

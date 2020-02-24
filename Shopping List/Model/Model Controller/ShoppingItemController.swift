@@ -20,11 +20,8 @@ class ShoppingItemController {
         ShoppingItem(name: "Soda"),
         ShoppingItem(name: "Strawberries"),
     ]
-    
-    var itemSelected = UserDefaults.standard.bool(forKey: .shoppingListKey)
+
     var itemSelectedAdd: [ShoppingItem] = []
-    
-    
     
     func toggleItemSelected(shoppingItem: ShoppingItem) {
         guard let index = shoppingList.firstIndex(of: shoppingItem) else { return }
@@ -41,6 +38,13 @@ class ShoppingItemController {
     
     init() {
         saveToPersistentStore()
+    }
+    
+    @discardableResult func createShoppingItem(_ name: String, _ itemSelected: Bool) -> ShoppingItem {
+        let shoppingItem = ShoppingItem(name: name, itemSelected: itemSelected)
+        shoppingList.append(shoppingItem)
+        saveToPersistentStore()
+        return shoppingItem
     }
     
     func saveToPersistentStore() {

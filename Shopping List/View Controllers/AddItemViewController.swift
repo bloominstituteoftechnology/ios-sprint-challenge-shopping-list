@@ -28,7 +28,7 @@ class AddItemViewController: UIViewController {
     // MARK: IBActions
     @IBAction func sendButtonTapped(_ sender: Any) {
         showAlert()
-        navigationController?.popViewController(animated: true)
+//        navigationController?.popViewController(animated: true)
     }
     
     private func showAlert() {
