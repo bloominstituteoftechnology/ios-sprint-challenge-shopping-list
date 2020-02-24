@@ -29,10 +29,10 @@ class ShoppingListeOrderViewController: UIViewController {
     }
     */
     @IBAction func nameTextField(_ sender: Any) {
-        // filler to help push and create a pull request
+        
     }
     @IBAction func addressTextField(_ sender: Any) {
-         // filler to help push and create a pull request
+         
     }
     
     @IBAction func submitOrderTapped(_ sender: Any) {
