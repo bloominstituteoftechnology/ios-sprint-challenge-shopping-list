@@ -21,7 +21,7 @@ class ListCollectionViewController: UICollectionViewController {
     let shoppingController = ShoppingController()
     
     var notAdded: Bool = true
-    
+    var shoppingListController: ShoppingListViewController?
     var delegate: ShoppingListDelegate?
     
     override func viewDidLoad() {
@@ -36,11 +36,15 @@ class ListCollectionViewController: UICollectionViewController {
         return shoppingController.items.count
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        <#code#>
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ListCell", for: indexPath) as? ListCollectionViewCell else { return UICollectionViewCell()}
     
         let item = shoppingController.items[indexPath.item]
-        cell.itemImage.image = item.image
+        //cell.itemImage.image = item.image
         cell.itemNameLabel.text = item.name
         
         return cell
@@ -52,6 +56,7 @@ class ListCollectionViewController: UICollectionViewController {
        let userDefaults = UserDefaults.standard
        userDefaults.bool(forKey: .added)
        delegate?.shouldBeAdded()
+        shoppingController.saveToPersistentStore()
       print("item at \(indexPath.item) tapped with \(numberOfItems) taps")
     }
     

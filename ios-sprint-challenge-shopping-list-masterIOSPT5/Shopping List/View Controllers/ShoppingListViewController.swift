@@ -8,16 +8,20 @@
 
 import UIKit
 
-class ShoppingListViewController: UIViewController {
-
+class ShoppingListViewController: UIViewController, ShoppingListDelegate {
+    
     @IBOutlet weak var itemsOrderedLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        updateViews()
         // Do any additional setup after loading the view.
+    }
+   
+    func updateViews() {
+        itemsOrderedLabel.text = "\(numberOfItems) items added"
     }
     
     @IBAction func submitOrderTapped(_ sender: Any) {
@@ -32,4 +36,10 @@ class ShoppingListViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+}
+
+extension ShoppingListViewController {
+       func shouldBeAdded() {
+           itemsOrderedLabel.text = "\(numberOfItems) items added"
+       }       
 }

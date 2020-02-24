@@ -11,7 +11,7 @@ import Foundation
 class ShoppingController {
     var items: [Items] {
         
-   var item = [
+        let item = [
     Items(name: "Apple", imageName: "Apple"),
         Items(name: "Grapes", imageName: "Grapes"),
         Items(name: "Milk", imageName: "Milk"),
@@ -25,7 +25,7 @@ class ShoppingController {
     return item
     }
     
-    
+
     var shoppingListURL: URL? {
         let fileManager = FileManager.default
         guard let documents = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
@@ -44,16 +44,16 @@ class ShoppingController {
         }
     }
     
-    func loadFromPersistentStore() {
-        do {
-            guard let url = shoppingListURL else { return }
-            let listsData = try Data(contentsOf: url)
-            let decodedLists = PropertyListDecoder()
-            items  = try decodedLists.decode([Items].self, from: listsData)
-        } catch {
-            print("Something went wrong: \(error)")
-        }
-    }
+//    func loadFromPersistentStore() {
+//        do {
+//            guard let url = shoppingListURL else { return }
+//            let listsData = try Data(contentsOf: url)
+//            let decodedLists = PropertyListDecoder()
+//            items  = try decodedLists.decode([Items].self, from: listsData)
+//        } catch {
+//            print("Something went wrong: \(error)")
+//        }
+//    }
     
     
 }

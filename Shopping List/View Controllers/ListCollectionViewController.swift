@@ -23,6 +23,13 @@ class ListCollectionViewController: UICollectionViewController {
     
     var delegate: ShoppingListDelegate?
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        collectionView?.reloadData()
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        
@@ -55,9 +62,12 @@ class ListCollectionViewController: UICollectionViewController {
       print("item at \(indexPath.item) tapped with \(numberOfItems) taps")
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == 
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDetailSegue" {
+            guard let submitOrderVC = segue.destination as? ShoppingListeOrderViewController else { return }
+            
+        }
+    }
     
     // MARK: UICollectionViewDelegate
     func shouldBeAdded() {
