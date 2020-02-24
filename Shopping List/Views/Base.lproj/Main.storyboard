@@ -16,7 +16,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="f94-X3-U3v">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iL6-GF-Pjm">
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -50,7 +50,8 @@
                                             </subviews>
                                         </stackView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jcA-eg-JV5">
-                                            <rect key="frame" x="67" y="0.0" width="46" height="30"/>
+                                            <rect key="frame" x="65" y="0.0" width="50" height="30"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <state key="normal" title="Button"/>
                                             <connections>
                                                 <action selector="addOrRemove:" destination="yKr-1l-VMn" eventType="touchUpInside" id="vnF-pS-IRq"/>
@@ -127,6 +128,7 @@
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mih-Kc-sQY">
                                         <rect key="frame" x="0.0" y="258" width="394" height="30"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Send Order"/>
                                         <connections>
                                             <action selector="sendButtonTapped:" destination="GSN-uX-FWG" eventType="touchUpInside" id="FnO-KP-wVS"/>
@@ -136,7 +138,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="yzF-Te-3WC" firstAttribute="trailing" secondItem="Ghj-TI-ixK" secondAttribute="trailing" constant="10" id="7F7-eq-9sF"/>
                             <constraint firstItem="Ghj-TI-ixK" firstAttribute="top" secondItem="yzF-Te-3WC" secondAttribute="top" constant="50" id="951-W4-yIT"/>
