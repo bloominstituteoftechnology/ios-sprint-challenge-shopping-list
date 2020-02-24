@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ListDetailViewController: UIViewController {
+class ShoppingListeOrderViewController: UIViewController {
 
     @IBOutlet weak var itemsRemainingLabel: UILabel!
     
@@ -35,4 +35,10 @@ class ListDetailViewController: UIViewController {
          // filler to help push and create a pull request
     }
     
+    @IBAction func submitOrderTapped(_ sender: Any) {
+        let alert = UIAlertController(title: "Your Order was sent", message: "Order", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Done", style: .destructive, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+       
+    }
 }

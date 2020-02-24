@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Items {
+struct Items {//}: Codable, Equatable {
     var name: String
     var image: UIImage
     

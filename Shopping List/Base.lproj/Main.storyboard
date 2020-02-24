@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="apM-1K-cBK">
-                            <size key="itemSize" width="113" height="136"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="apM-1K-cBK">
+                            <size key="itemSize" width="120" height="140"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -31,18 +31,16 @@
                                     <rect key="frame" x="0.0" y="0.0" width="120" height="140"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="BJz-Rk-xca">
-                                            <rect key="frame" x="8" y="0.0" width="109" height="30"/>
+                                        <view contentMode="scaleToFill" id="tIt-yS-0DO">
+                                            <rect key="frame" x="-147" y="-378" width="414" height="896"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        </view>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="BJz-Rk-xca">
+                                            <rect key="frame" x="8" y="0.0" width="82.5" height="20.5"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bo4-nH-EeN">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50.5" height="30"/>
-                                                    <state key="normal" title="Not"/>
-                                                    <connections>
-                                                        <action selector="addedButtonTapped:" destination="Oom-kt-CJ0" eventType="touchUpInside" id="pby-GG-h36"/>
-                                                    </connections>
-                                                </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Added" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DtR-ZR-Q5a">
-                                                    <rect key="frame" x="58.5" y="0.0" width="50.5" height="30"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Added" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DtR-ZR-Q5a">
+                                                    <rect key="frame" x="0.0" y="0.0" width="82.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -63,6 +61,7 @@
                                         <constraint firstAttribute="trailing" secondItem="oNc-Lk-RXP" secondAttribute="trailing" id="8RH-Fz-nis"/>
                                         <constraint firstItem="nrV-jY-da7" firstAttribute="top" secondItem="BJz-Rk-xca" secondAttribute="bottom" id="IgJ-Jy-Lws"/>
                                         <constraint firstItem="BJz-Rk-xca" firstAttribute="top" secondItem="aaL-oN-8KN" secondAttribute="top" id="N7L-8p-b6T"/>
+                                        <constraint firstItem="BJz-Rk-xca" firstAttribute="leading" secondItem="aaL-oN-8KN" secondAttribute="leadingMargin" id="kN9-3X-cwH"/>
                                         <constraint firstAttribute="bottom" secondItem="oNc-Lk-RXP" secondAttribute="bottom" id="lHJ-6k-Ein"/>
                                         <constraint firstItem="oNc-Lk-RXP" firstAttribute="top" secondItem="nrV-jY-da7" secondAttribute="bottom" id="lKE-ad-eya"/>
                                         <constraint firstItem="oNc-Lk-RXP" firstAttribute="leading" secondItem="aaL-oN-8KN" secondAttribute="leading" id="or0-G3-h4G"/>
@@ -73,6 +72,7 @@
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="120" height="140"/>
                                 <connections>
+                                    <outlet property="addedLabel" destination="DtR-ZR-Q5a" id="XyR-ib-BNv"/>
                                     <outlet property="itemImage" destination="nrV-jY-da7" id="mXp-8l-NuX"/>
                                     <outlet property="itemName" destination="oNc-Lk-RXP" id="MsD-bS-qHS"/>
                                 </connections>
@@ -87,7 +87,7 @@
                     <navigationItem key="navigationItem" id="u1a-F4-5TV">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="aHT-v8-cVo">
                             <connections>
-                                <segue destination="whs-dq-aD8" kind="show" id="PxE-8R-SM8"/>
+                                <segue destination="whs-dq-aD8" kind="show" identifier="ShowDetailSegue" id="PxE-8R-SM8"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -97,10 +97,10 @@
             </objects>
             <point key="canvasLocation" x="1544.9275362318842" y="140.625"/>
         </scene>
-        <!--List Detail View Controller-->
+        <!--Shopping Liste Order View Controller-->
         <scene sceneID="cg1-65-GqE">
             <objects>
-                <viewController id="whs-dq-aD8" customClass="ListDetailViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="whs-dq-aD8" customClass="ShoppingListeOrderViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yqf-nz-9PI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -108,6 +108,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M5K-Dt-Fqp">
                                 <rect key="frame" x="161" y="276.5" width="92" height="30"/>
                                 <state key="normal" title="Submit Order"/>
+                                <connections>
+                                    <action selector="submitOrderTapped:" destination="whs-dq-aD8" eventType="touchUpInside" id="Nzt-W3-Iax"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="sdb-pl-KF2">
                                 <rect key="frame" x="10" y="170.5" width="394" height="76"/>

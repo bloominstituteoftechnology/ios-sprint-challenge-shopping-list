@@ -9,14 +9,15 @@
 import UIKit
 
 private let reuseIdentifier = "Cell"
-
+var numberOfItems = 0
 protocol ShoppingListDelegate: class {
     func shouldBeAdded()
 }
 
 class ListCollectionViewController: UICollectionViewController {
     
- let shoppingController = ShoppingController()
+ 
+    let shoppingController = ShoppingController()
     
     var notAdded: Bool = true
     
@@ -24,10 +25,7 @@ class ListCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+       
     }
 
     // MARK: UICollectionViewDataSource
@@ -43,24 +41,30 @@ class ListCollectionViewController: UICollectionViewController {
         let item = shoppingController.items[indexPath.item]
         cell.itemImage.image = item.image
         cell.itemName.text = item.name
+        
     
         return cell
     }
-
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // check to see if already added, then numberOfItems -= 1 (watch for less than 0 amount)
+        numberOfItems += 1
+       let userDefaults = UserDefaults.standard
+       userDefaults.bool(forKey: .added)
+       delegate?.shouldBeAdded()
+      print("item at \(indexPath.item) tapped with \(numberOfItems) taps")
+    }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == 
+//    }
+    
     // MARK: UICollectionViewDelegate
     func shouldBeAdded() {
         self.collectionView?.reloadData()
     }
-   
-    @IBAction func addedButtonTapped(_ sender: Any) {
-        notAdded = !notAdded
-        
-        let userDefaults = UserDefaults.standard
-        userDefaults.bool(forKey: .notAdded)
-        delegate?.shouldBeAdded()
-    }
 }
 
 extension String {
-    static var notAdded = "notAdded"
+    static var added = "notAdded"
 }
