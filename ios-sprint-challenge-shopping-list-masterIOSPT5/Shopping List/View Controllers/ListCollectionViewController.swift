@@ -31,21 +31,20 @@ class ListCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return shoppingController.items.count
+        return shoppingController.itemNames.count
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SubmitOrderSegue" {
             guard let submitOrderVC = segue.destination as? ShoppingListViewController else { return }
             submitOrderVC.shoppingController = shoppingController
-            
         }
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ListCell", for: indexPath) as? ListCollectionViewCell else { return UICollectionViewCell()}
     
-        let item = shoppingController.items[indexPath.item]
+        let item = shoppingController.itemNames[indexPath.item]
         cell.itemImage.image = UIImage(named: item.name)
         cell.itemNameLabel.text = item.name
         
@@ -55,8 +54,9 @@ class ListCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // check to see if already added, then numberOfItems -= 1 (watch for less than 0 amount)
         numberOfItems += 1
-       let userDefaults = UserDefaults.standard
-       userDefaults.bool(forKey: .added)
+        UserDefaults.standard.set(true, forKey: .added)
+//       let userDefaults = UserDefaults.standard
+//       userDefaults.bool(forKey: .added)
        delegate?.shouldBeAdded()
         shoppingController.saveToPersistentStore()
       print("item at \(indexPath.item) tapped with \(numberOfItems) taps")
@@ -70,5 +70,5 @@ class ListCollectionViewController: UICollectionViewController {
 }
 
 extension String {
-    static var added = "notAdded"
+    static var added = "added"
 }

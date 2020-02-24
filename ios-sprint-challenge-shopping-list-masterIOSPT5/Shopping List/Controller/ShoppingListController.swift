@@ -33,8 +33,8 @@ class ShoppingController {
 
     func saveArray() {
         for item in items {
-            
             itemNames.append(item)
+            saveToPersistentStore()
         }
     }
     
