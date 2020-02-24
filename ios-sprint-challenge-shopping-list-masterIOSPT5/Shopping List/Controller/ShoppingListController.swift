@@ -33,23 +33,23 @@ class ShoppingController {
         return documents.appendingPathComponent("shoppingList.plist")
     }
     
-//    func saveToPersistentStore() {
-//        do {
-//            guard let url = shoppingListURL else { return }
-//            let encoder = PropertyListEncoder()
-//            let listsData = try encoder.encode(items)
-//            try listsData.write(to: url)
-//        } catch {
-//            print("Something went wrong: \(error)")
-//        }
-//    }
+    func saveToPersistentStore() {
+        do {
+            guard let url = shoppingListURL else { return }
+            let encoder = PropertyListEncoder()
+            let listsData = try encoder.encode(items)
+            try listsData.write(to: url)
+        } catch {
+            print("Something went wrong: \(error)")
+        }
+    }
     
     func loadFromPersistentStore() {
         do {
             guard let url = shoppingListURL else { return }
             let listsData = try Data(contentsOf: url)
             let decodedLists = PropertyListDecoder()
-           // items  = try decodedLists.decode([Items].self, from: listsData)
+            items  = try decodedLists.decode([Items].self, from: listsData)
         } catch {
             print("Something went wrong: \(error)")
         }

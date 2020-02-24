@@ -20,18 +20,6 @@ class ShoppingListViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    
     @IBAction func submitOrderTapped(_ sender: Any) {
         guard let name = nameTextField.text,
             let address = addressTextField.text,
@@ -39,7 +27,7 @@ class ShoppingListViewController: UIViewController {
             !address.isEmpty else { return }
         
         
-        let alert = UIAlertController(title: "\(name), your Order was sent!", message: "To \(address)", preferredStyle: .alert)
+        let alert = UIAlertController(title: "\(name), your Order will arrive in 15 minutes!", message: "To \(address)", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Done", style: .destructive, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }

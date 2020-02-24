@@ -43,7 +43,6 @@ class ListCollectionViewController: UICollectionViewController {
         cell.itemImage.image = item.image
         cell.itemNameLabel.text = item.name
         
-    
         return cell
     }
     
@@ -55,10 +54,6 @@ class ListCollectionViewController: UICollectionViewController {
        delegate?.shouldBeAdded()
       print("item at \(indexPath.item) tapped with \(numberOfItems) taps")
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier ==
-//    }
     
     // MARK: UICollectionViewDelegate
     func shouldBeAdded() {

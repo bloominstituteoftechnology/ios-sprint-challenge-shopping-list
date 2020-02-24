@@ -8,12 +8,15 @@
 
 import UIKit
 
-struct Items {//}: Codable, Equatable {
+struct Items: Codable, Equatable {
+    
     var name: String
     var image: UIImage
+    var wasAdded: Bool
     
-    init(name: String, imageName: String) {
+    init(name: String, imageName: String, wasAdded: Bool = false) {
         self.name = name
         self.image = UIImage(named: imageName)!
+        self .wasAdded = wasAdded
     }
 }
