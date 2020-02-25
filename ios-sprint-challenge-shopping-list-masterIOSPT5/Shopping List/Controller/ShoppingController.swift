@@ -10,8 +10,9 @@ import Foundation
 
 class ShoppingController {
     var itemNames: [Items] = []
+    
     init() {
-        saveArray()
+        CopyOfArray()
         loadFromPersistentStore()
     }
     
@@ -27,15 +28,19 @@ class ShoppingController {
             Items(name: "Strawberries"),//, wasAdded: false),
         ]
         
-        _ = UserDefaults.standard.bool(forKey: .added)
         return item
     }
 
-    func saveArray() {
+    func CopyOfArray() {
         for item in items {
             itemNames.append(item)
-            saveToPersistentStore()
         }
+        saveToPersistentStore()
+    }
+    
+    var sortedItems: [Items] {
+        let sortedItems = itemNames.sorted(by: { $0.name < $1.name })
+        return sortedItems
     }
     
     

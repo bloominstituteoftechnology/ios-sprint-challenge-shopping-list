@@ -14,19 +14,23 @@ class ListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var itemNameLabel: UILabel!
     
     var delegate: ShoppingListDelegate?
-    
+    var shoppingController =  ShoppingController()
     var items: Items? {
         didSet {
           updateViews()
         }
     }
-    
-    
+        
     func updateViews() {
+        // need to check for indexPath ?
+       // guard let item = shoppingController.itemNames else { return }
         guard let item = items else { return }
         if UserDefaults.standard.bool(forKey: .added) {
+            
         addedLabel.text = "Tapped"
+        
         }
+        
     }
     
 }

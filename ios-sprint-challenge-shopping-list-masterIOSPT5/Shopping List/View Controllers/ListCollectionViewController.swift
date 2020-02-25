@@ -52,19 +52,22 @@ class ListCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // check to see if already added, then numberOfItems -= 1 (watch for less than 0 amount)
+       // guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ListCell", for: indexPath) as? ListCollectionViewCell else { return }
+        let shoppingItem = shoppingController.sortedItems[indexPath.item]
+       //  check to see if already added, then numberOfItems -= 1 (watch for less than 0 amount)
+       // cell.items = shoppingItem
         numberOfItems += 1
         UserDefaults.standard.set(true, forKey: .added)
-//       let userDefaults = UserDefaults.standard
-//       userDefaults.bool(forKey: .added)
-       delegate?.shouldBeAdded()
+        shoppingController.itemNames.remove(at: indexPath.item)
+        shoppingController.itemNames.append(shoppingItem)
+        delegate?.shouldBeAdded()
         shoppingController.saveToPersistentStore()
-      print("item at \(indexPath.item) tapped with \(numberOfItems) taps")
+        // create an array of ordered items to send over and list
+        print("item at \(indexPath.item) tapped with \(numberOfItems) taps")
     }
     
     // MARK: UICollectionViewDelegate
     func shouldBeAdded() {
-        shoppingController.items
         self.collectionView?.reloadData()
     }
 }

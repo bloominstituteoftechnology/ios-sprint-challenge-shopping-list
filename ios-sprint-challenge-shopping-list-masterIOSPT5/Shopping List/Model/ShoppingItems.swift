@@ -11,7 +11,7 @@ import UIKit
 struct Items: Encodable, Decodable {
     
     var name: String
-    var wasAdded: Bool
+    var added: Bool
     //var image: UIImage//{
     //        return UIImage(named: UIImage)!
     //    }
@@ -19,6 +19,6 @@ struct Items: Encodable, Decodable {
     init(name: String, wasAdded: Bool = false) {
         self.name = name
       //  self.image = UIImage(named: imageName)!
-        self.wasAdded = wasAdded
+        self.added = wasAdded
     }
 }
