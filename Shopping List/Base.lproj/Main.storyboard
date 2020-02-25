@@ -91,10 +91,10 @@
             </objects>
             <point key="canvasLocation" x="1586.9565217391305" y="189.50892857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--Next Page View Controller-->
         <scene sceneID="JeY-z0-cUW">
             <objects>
-                <viewController id="8Vj-pa-brn" sceneMemberID="viewController">
+                <viewController id="8Vj-pa-brn" customClass="NextPageViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9Mp-b3-7by">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -102,6 +102,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fCN-J8-7K7">
                                 <rect key="frame" x="0.0" y="354" width="414" height="30"/>
                                 <state key="normal" title="Send Order"/>
+                                <connections>
+                                    <action selector="sendButtonTapped:" destination="8Vj-pa-brn" eventType="touchUpInside" id="32w-vU-WH8"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You currently have 0 item(s) in your shopping cart" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q1T-uF-R8E">
                                 <rect key="frame" x="10" y="170" width="414" height="53"/>
@@ -140,6 +143,11 @@
                         <viewLayoutGuide key="safeArea" id="Ihc-Kz-CK5"/>
                     </view>
                     <navigationItem key="navigationItem" id="jNe-9X-eAm"/>
+                    <connections>
+                        <outlet property="address" destination="Fgn-Wf-vYa" id="fuf-xM-oic"/>
+                        <outlet property="itemStatement" destination="Q1T-uF-R8E" id="Z4j-iA-JqN"/>
+                        <outlet property="name" destination="GwZ-qH-5AQ" id="hVX-1B-0qc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sIC-4I-w7e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

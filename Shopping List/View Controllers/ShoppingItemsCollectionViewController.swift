@@ -19,7 +19,8 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
     // MARK: - Prepare for segue -
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "NextSegue" {
-            //do shit hereeeeeee
+            let nextPageVC = segue.destination as! NextPageViewController
+            nextPageVC.number = itemController.addedItems.count
         }
     }
     
@@ -52,8 +53,5 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
     
     //MARK: -Important methods-
     
-    func loadStuff() {
-        
-    }
     
 } //End of class
