@@ -5,6 +5,7 @@ class ShoppingItemModelController {
     
     var shoppingList: [ShoppingItem] = []
     
+    // Loads from UserDefaults or else creates a new list.
     init() {
         if UserDefaults.standard.bool(forKey: .alreadyExistsKey) {
             loadFromPersistentStore()
@@ -17,6 +18,24 @@ class ShoppingItemModelController {
             UserDefaults.standard.set(true, forKey: .alreadyExistsKey)
         }
     }
+    
+    // MARK: - Methods
+    
+    // Toggling the wasAdded vs. !wasAdded. Called in ...
+    func toggleItemAdded(item: ShoppingItem) {
+        guard let index = shoppingList.firstIndex(of: item) else { return }
+        shoppingList[index].wasAdded.toggle()
+        saveToPersistentStore() //Do I need this? Is it appropriate here?
+    }
+    
+    // Arrays of added items vs. not added items
+    var addedItems: [ShoppingItem] {
+        return shoppingList.filter { $0.wasAdded }
+    }
+    var notAddedItems: [ShoppingItem] {
+        return shoppingList.filter { $0.wasAdded == false }
+    }
+    
     
     // MARK: - Persistence
     
