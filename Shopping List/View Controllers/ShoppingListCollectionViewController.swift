@@ -23,15 +23,16 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         // Do any additional setup after loading the view.
     }
 
-    /*
+
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "EnterAddressSegue" {
+            let enterAddressVC = segue.destination as! EnterAddressViewController
+            enterAddressVC.shoppingItemController = shoppingItemController
+            
+        }
     }
-    */
 
     // MARK: UICollectionViewDataSource
 
@@ -53,7 +54,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        shoppingItemController.shoppingList[indexPath.item].hasAddedItem.toggle()
+        shoppingItemController.updateItemHasAdded(item: indexPath.item)
         collectionView.reloadData()
     }
 

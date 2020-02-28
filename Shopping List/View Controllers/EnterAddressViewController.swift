@@ -15,6 +15,9 @@ class EnterAddressViewController: UIViewController {
     @IBOutlet var enterNameTextField: UITextField!
     @IBOutlet var enterAddressTextField: UITextField!
     
+    // MARK: - Properties
+    var shoppingItemController: ShoppingItemController?
+    
     
     // MARK: - IBActions
     @IBAction func sendOrderButton(_ sender: Any) {
@@ -22,25 +25,25 @@ class EnterAddressViewController: UIViewController {
             !name.isEmpty,
             let address = enterAddressTextField.text,
             !address.isEmpty else { return }
-        
+        let alert = UIAlertController(title: "\(name)", message:
+            """
+            Your items will be deleivered to:
+            \(address)
+            in 15 minutes.
+            """, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
     }
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        guard let numberOfItems = shoppingItemController?.shoppingListSelected.count else { return }
+        numberOfItemsLabel.text = """
+            You have \(numberOfItems) in your
+            shopping list
+            """
+        
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

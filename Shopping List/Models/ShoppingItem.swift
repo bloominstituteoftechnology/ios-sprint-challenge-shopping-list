@@ -14,9 +14,9 @@ struct ShoppingItem: Codable, Equatable {
     var imageName: String
     
     init(name: String, hasAddedItem: Bool = false) {
-            self.name = name
+        self.name = name
         self.imageName = name.lowercased()
-            self.hasAddedItem = hasAddedItem
+        self.hasAddedItem = hasAddedItem
        }
     
     var image: UIImage  {

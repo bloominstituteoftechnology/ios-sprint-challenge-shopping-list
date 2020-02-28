@@ -11,7 +11,7 @@ import Foundation
 class ShoppingItemController {
     // MARK: - Properties
     var shoppingList: [ShoppingItem] = []
-    var itemNames: [String] = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
+    var itemNames: [String] = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     
     var shoppingListSelected: [ShoppingItem] {
         var slArray: [ShoppingItem] = []
@@ -46,9 +46,9 @@ class ShoppingItemController {
         saveToPersistentStore()
     }
     
-    func updateItemHasAdded(item: ShoppingItem) {
-        guard let index = shoppingList.firstIndex(of: item) else { return }
-        shoppingList[index].hasAddedItem.toggle()
+    func updateItemHasAdded(item: Int) {
+        //guard let index = shoppingList.firstIndex(of: item) else { return }
+        shoppingList[item].hasAddedItem.toggle()
         saveToPersistentStore()
     }
     
