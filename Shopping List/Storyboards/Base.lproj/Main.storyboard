@@ -44,8 +44,17 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Apple" translatesAutoresizingMaskIntoConstraints="NO" id="ugF-tL-eSI">
-                                                    <rect key="frame" x="0.0" y="40" width="180" height="200"/>
+                                                    <rect key="frame" x="0.0" y="40" width="180" height="160"/>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apple" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5e-bX-TXn">
+                                                    <rect key="frame" x="0.0" y="210" width="180" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="jCE-0h-M0r"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </stackView>
                                     </subviews>
@@ -58,6 +67,7 @@
                                 </collectionViewCellContentView>
                                 <connections>
                                     <outlet property="imageView" destination="ugF-tL-eSI" id="0X9-te-YAh"/>
+                                    <outlet property="nameLabel" destination="e5e-bX-TXn" id="xau-zW-tYk"/>
                                     <outlet property="statusLabel" destination="S77-WV-9zj" id="Fe3-XH-yDj"/>
                                 </connections>
                             </collectionViewCell>

@@ -14,7 +14,7 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
-    
+    @IBOutlet weak var nameLabel: UILabel!
     
     //MARK: - Properties
     
@@ -31,5 +31,6 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         guard let item = item else { return }
         statusLabel.text = item.isOnShoppingList ? "Added" : "Not Added"
         imageView.image = item.image
+        nameLabel.text = item.name
     }
 }
