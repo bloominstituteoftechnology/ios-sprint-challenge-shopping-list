@@ -72,6 +72,7 @@ class ShoppingItemController {
                 }
             }
         }
+        saveToPersistentStore()
         print(shoppingList)
     }
     
