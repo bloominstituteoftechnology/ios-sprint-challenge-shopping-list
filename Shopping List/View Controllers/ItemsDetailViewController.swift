@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemsDetailViewController: UIViewController {
+class ItemsDetailViewController: UIViewController, UINavigationControllerDelegate {
 
     var item: ShoppingItem?
     var shoppingContoller: ShoppingListController?
@@ -24,13 +24,22 @@ class ItemsDetailViewController: UIViewController {
     
     @IBAction func sendOrder(_ sender: Any) {
         
-        alert()
+        alert(name: nameLabel, address: addressLabel)
+        
+        if let name = nameLabel.text
+        let address = addressLabel.text {
+            
+            shoppingContoller?.itemNames = name
+            shoppingContoller?.address = address
+            
+            alert = true 
+        }
     }
     
     // Shopping List Notifications
     
-    func alert() {
-        let alert = UIAlertController(title: "Delivery for \(String(describing: nameLabel))!", message: "Your shopping items will be delivered to \(String(describing: addressLabel))", preferredStyle: .alert)
+    func alert(name: String, address: String, minutes: Int = 15) {
+        let alert = UIAlertController(title: "Delivery for \(name)!", message: "Your shopping items will be delivered to \(address) in  \(minutes)", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true)
     }

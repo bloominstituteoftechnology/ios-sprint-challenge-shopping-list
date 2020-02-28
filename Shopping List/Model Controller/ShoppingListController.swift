@@ -20,6 +20,9 @@ class ShoppingListController {
         ShoppingItem(name: "Strawberries"),
     ]
     
+    var name = ""
+    var address = ""
+    
  
     
        // MARK: - Persistence
