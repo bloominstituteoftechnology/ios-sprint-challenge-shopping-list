@@ -21,6 +21,3 @@ struct ShoppingItem: Codable, Equatable {
        }
 }
 
-
-//MARK: - Still having an error
-// could not dequeue a view of kind: UICollectionElementKindCell with identifier ShoppingItemCell - must register a nib or a class for the identifier or connect a prototype cell in a storyboard'

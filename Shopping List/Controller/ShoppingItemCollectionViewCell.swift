@@ -13,7 +13,6 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
 //MARK: - Outlets
     
     @IBOutlet weak var shoppingImage: UIImageView!
-    @IBOutlet weak var shoppingItemLabel: UILabel!
     @IBOutlet weak var hasBeenAddedLabel: UILabel!
     
     var shoppingItem: ShoppingItem? {
@@ -25,7 +24,6 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     func updateViews() {
         if let item = shoppingItem {
             shoppingImage.image = item.image
-            shoppingItemLabel.text = item.name
             switch item.hasBeenAdded {
                 case true:
                     hasBeenAddedLabel.text = "Added"
