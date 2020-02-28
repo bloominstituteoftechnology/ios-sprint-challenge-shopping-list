@@ -26,7 +26,8 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         guard let name = shoppingItem?.itemName,
             let pic = shoppingItem?.imageName else { return }
 
-        imageView.image = UIImage(contentsOfFile: pic)
+        let picImage = UIImage(named: pic)
+        imageView.image = picImage
         itemNameLabel.text = name
         
         if shoppingItem?.onShoppingList == true {
