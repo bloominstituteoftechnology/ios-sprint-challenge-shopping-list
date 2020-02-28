@@ -8,6 +8,10 @@
 
 import UIKit
 
+//MARK: - Making the Key
+extension String {
+    static let isFirstRunKey = "ShoppingListIsFirstRunKey"
+}
 class ShoppingListCollectionViewController: UICollectionViewController {
     let itemNames = ["Apple",
                      "Grapes",
@@ -16,17 +20,19 @@ class ShoppingListCollectionViewController: UICollectionViewController {
                      "Popcorn",
                      "Soda",
                      "Strawberries"]
+//MARK: - UserData
+    var hasData: Bool {
+        let setting = UserDefaults.standard.bool(forKey: .isFirstRunKey)
+        
+        if !setting {
+            return false
+        }
+        return true
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "ShoppingCell")
-
-        // Do any additional setup after loading the view.
     }
 
     /*
@@ -43,21 +49,34 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return itemNames.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingCell", for: indexPath) as? ShoppingItemCollectionViewCell else { return UICollectionViewCell()}
+        
+        let item = ShoppingItem(name: itemNames[indexPath.item])
     
-        // Configure the cell
+        cell.shoppingItem = item
     
         return cell
+    }
+//MARK: - Persistent = where we are saving
+    var persistentFileURL: URL? {
+        let fileManager = FileManager.default
+        
+        guard let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
+        
+        let shoppingItemURL = documentsDirectory.appendingPathComponent("shoppingItems.plist")
+        
+        return shoppingItemURL
+        
     }
 
     // MARK: UICollectionViewDelegate

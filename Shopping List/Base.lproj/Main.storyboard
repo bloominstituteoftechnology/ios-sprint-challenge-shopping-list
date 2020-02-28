@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,28 +32,38 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bna-Dg-IzN">
-                                            <rect key="frame" x="5" y="8" width="165" height="121.5"/>
+                                            <rect key="frame" x="5" y="26" width="165" height="113.5"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Go4-2W-xS6">
-                                            <rect key="frame" x="20" y="134.5" width="135" height="20.5"/>
+                                            <rect key="frame" x="20" y="144.5" width="135" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ui3-UD-jhx">
+                                            <rect key="frame" x="20" y="5" width="135" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="bna-Dg-IzN" firstAttribute="top" secondItem="30t-Fh-3rY" secondAttribute="top" constant="8" id="1oU-KZ-h3p"/>
                                         <constraint firstItem="Go4-2W-xS6" firstAttribute="leading" secondItem="30t-Fh-3rY" secondAttribute="leading" constant="20" id="3aC-Um-vBL"/>
                                         <constraint firstAttribute="trailing" secondItem="Go4-2W-xS6" secondAttribute="trailing" constant="20" id="698-L3-V5w"/>
+                                        <constraint firstAttribute="trailing" secondItem="Ui3-UD-jhx" secondAttribute="trailing" constant="20" id="9Ft-oX-you"/>
+                                        <constraint firstItem="Ui3-UD-jhx" firstAttribute="top" secondItem="30t-Fh-3rY" secondAttribute="top" constant="5" id="LqI-Pv-2cI"/>
+                                        <constraint firstItem="bna-Dg-IzN" firstAttribute="top" secondItem="Ui3-UD-jhx" secondAttribute="bottom" id="Q0b-5Z-Bt9"/>
                                         <constraint firstAttribute="trailing" secondItem="bna-Dg-IzN" secondAttribute="trailing" constant="5" id="RKz-Uh-lv7"/>
                                         <constraint firstItem="bna-Dg-IzN" firstAttribute="leading" secondItem="30t-Fh-3rY" secondAttribute="leading" constant="5" id="cog-Fh-VoJ"/>
+                                        <constraint firstItem="Ui3-UD-jhx" firstAttribute="leading" secondItem="30t-Fh-3rY" secondAttribute="leading" constant="20" id="jXj-Ls-Gre"/>
                                         <constraint firstItem="Go4-2W-xS6" firstAttribute="centerX" secondItem="bna-Dg-IzN" secondAttribute="centerX" id="lmK-6d-b85"/>
-                                        <constraint firstAttribute="bottom" secondItem="Go4-2W-xS6" secondAttribute="bottom" constant="20" id="pt1-Vo-kJX"/>
+                                        <constraint firstAttribute="bottom" secondItem="Go4-2W-xS6" secondAttribute="bottom" constant="10" id="pt1-Vo-kJX"/>
                                         <constraint firstItem="Go4-2W-xS6" firstAttribute="top" secondItem="bna-Dg-IzN" secondAttribute="bottom" constant="5" id="x3a-V5-kGT"/>
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="175" height="175"/>
                                 <connections>
+                                    <outlet property="hasBeenAddedLabel" destination="Ui3-UD-jhx" id="moh-Vr-5M4"/>
                                     <outlet property="shoppingImage" destination="bna-Dg-IzN" id="VUv-2v-7a1"/>
                                     <outlet property="shoppingItemLabel" destination="Go4-2W-xS6" id="wiK-mG-wZs"/>
                                 </connections>
@@ -68,6 +79,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5eH-UO-P4m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1185.5072463768117" y="182.8125"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="2j6-yk-NCa">
+            <objects>
+                <viewController id="Wsi-uu-MoO" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lyA-25-E2A">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="qqv-zt-sJF"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Im2-AY-0cs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2195" y="176"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="MxI-2K-XNR">
