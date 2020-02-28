@@ -1,5 +1,5 @@
 //
-//  CartViewController.swift
+//  CheckoutViewController.swift
 //  Shopping List
 //
 //  Created by Mark Gerrior on 2/28/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CartViewController: UIViewController {
+class CheckoutViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
