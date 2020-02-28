@@ -16,7 +16,7 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
 
     // MARK: - Navigation
@@ -40,8 +40,26 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
     
         cell.shoppingItem = shoppingItemController.items[indexPath.item]
     
+        cell.delegate = self
         return cell
     }
-
-
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        #warning("implement for touch")
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ShoppingItemCollectionViewCell else { return }
+        
+            cell.shoppingItem = shoppingItemController.items[indexPath.item]
+            cell.delegate = self
+            cell.hasBeenButtonTapped(self)
+    }
 }
+
+extension ShoppingItemsCollectionViewController: ShoppingItemCellDelegate {
+    func toggleHasBeenRead(for cell: ShoppingItemCollectionViewCell) {
+        guard let item = cell.shoppingItem else { return }
+        shoppingItemController.updateHasBeenAdded(for: item)
+        collectionView?.reloadData()
+    }
+}
+
+
