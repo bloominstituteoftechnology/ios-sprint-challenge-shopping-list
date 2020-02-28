@@ -18,11 +18,17 @@ class OrderViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateView()
+        
     }
     
     @IBAction func orderButton(_ sender: Any) {
     }
     
+    func updateView() {
+        guard let itemController = itemController else {return}
+        listSizeLabel.text = "You currently have \(itemController.addedItems.count) in your shopping list."
+    }
     
     
 

@@ -20,6 +20,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         itemController.initValues
         itemController.loadFromPersistentStore()
+        itemController.items[0].isAdded = true
         
         print(itemController.items.count)
 
@@ -32,6 +33,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         if segue.identifier == "SendOrderSegue" {
             guard let orderVC = segue.destination as? OrderViewController else { return}
             orderVC.itemController = self.itemController
+            print("Segue hit")
             
         }
         
