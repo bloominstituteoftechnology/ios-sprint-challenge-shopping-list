@@ -22,7 +22,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
     // MARK: UICollectionViewDataSource
     
-    private let itemNotOnListSection = 0
+    private let itemsNotOnListSection = 0
     private let itemsOnListSection = 1
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -30,23 +30,32 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == itemNotOnListSection {
-            return shoppingList.shoppingItemsNotOnList.count
+        if section == itemsNotOnListSection {
+            return shoppingList.itemsNotOnList.count
         } else {
-            return shoppingList.shoppingItemsOnList.count
+            return shoppingList.itemsOnList.count
         }
     }
     
     func itemFor(indexPath: IndexPath) -> ShoppingItem {
         let item: ShoppingItem
         
-        if indexPath.section == itemNotOnListSection {
-            item = shoppingList.shoppingItemsNotOnList[indexPath.item]
+        if indexPath.section == itemsNotOnListSection {
+            item = shoppingList.itemsNotOnList[indexPath.item]
         } else {
-            item = shoppingList.shoppingItemsOnList[indexPath.item]
+            item = shoppingList.itemsOnList[indexPath.item]
         }
         
         return item
+    }
+    
+    func indexPathFor(item: ShoppingItem) -> IndexPath? {
+        if let itemIndex = shoppingList.itemsNotOnList.firstIndex(of: item) {
+            return IndexPath(item: itemIndex, section: itemsNotOnListSection)
+        } else if let itemIndex = shoppingList.itemsOnList.firstIndex(of: item) {
+            return IndexPath(item: itemIndex, section: itemsOnListSection)
+        }
+        return nil
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -62,8 +71,15 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = itemFor(indexPath: indexPath)
         
-        shoppingList.toggleItemOnShoppingList(item)
-        collectionView.reloadData()
+        let newItem = shoppingList.toggleItemOnShoppingList(item)
+        
+        if let newIndexPath = indexPathFor(item: newItem) {
+            collectionView.moveItem(at: indexPath, to: newIndexPath)
+            collectionView.reloadItems(at: [newIndexPath])
+        } else {
+            collectionView.reloadData()
+        }
+        
     }
     
     

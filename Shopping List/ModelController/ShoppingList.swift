@@ -18,24 +18,27 @@ class ShoppingList {
     
     private(set) var shoppingItems: [ShoppingItem]
     
-    var shoppingItemsOnList: [ShoppingItem] {
+    var itemsOnList: [ShoppingItem] {
         shoppingItems.filter { $0.isOnShoppingList }
     }
     
-    var shoppingItemsNotOnList: [ShoppingItem] {
+    var itemsNotOnList: [ShoppingItem] {
         shoppingItems.filter { !$0.isOnShoppingList }
     }
     
     // Update
     
-    func toggleItemOnShoppingList(_ item: ShoppingItem) {
-        guard let index = shoppingItems.firstIndex(of: item) else { return }
+    @discardableResult
+    func toggleItemOnShoppingList(_ item: ShoppingItem) -> ShoppingItem {
+        guard let index = shoppingItems.firstIndex(of: item) else { return item }
         
         var itemToUpdate = shoppingItems[index]
         itemToUpdate.isOnShoppingList.toggle()
         
         shoppingItems[index] = itemToUpdate
         saveToPersistentStore()
+        
+        return itemToUpdate
     }
     
     

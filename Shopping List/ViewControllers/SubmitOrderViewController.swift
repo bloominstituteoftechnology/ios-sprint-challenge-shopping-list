@@ -70,7 +70,7 @@ class SubmitOrderViewController: UIViewController {
     
     private func updateStatus() {
         guard let shoppingList = shoppingList else { return }
-        statusLabel.text = "You currently have \(shoppingList.shoppingItemsOnList.count) items in your shopping list."
+        statusLabel.text = "You currently have \(shoppingList.itemsOnList.count) items in your shopping list."
     }
     
     
