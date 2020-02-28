@@ -71,7 +71,20 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDelegate
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        itemController.items[indexPath.row].isAdded.toggle()
+        
+        /* Get the item that was tapped. Find that item in  */
+        
+        if indexPath.section == 0 {
+            let item =  itemController.addedItems[indexPath.row]
+            guard let itemIndex = itemController.items.firstIndex(of: item) else {return}
+            itemController.items[itemIndex].isAdded.toggle()
+        } else if indexPath.section == 1 {
+            let item =  itemController.nonAddedItems[indexPath.row]
+            guard let itemIndex = itemController.items.firstIndex(of: item) else {return}
+            itemController.items[itemIndex].isAdded.toggle()
+        }
+        
+//        itemController.items[indexPath.row].isAdded.toggle()
         itemController.saveToPersistentStore()
         self.collectionView?.reloadData()
     }
