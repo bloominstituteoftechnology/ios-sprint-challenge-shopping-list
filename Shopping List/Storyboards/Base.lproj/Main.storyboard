@@ -120,9 +120,16 @@
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kRD-wy-bPY">
                                 <rect key="frame" x="20" y="267.5" width="374" height="30"/>
-                                <state key="normal" title="Send Order"/>
+                                <state key="normal" title="Send Order Alert"/>
                                 <connections>
                                     <action selector="sendOrderButtonTapped:" destination="Y9z-nf-D1f" eventType="touchUpInside" id="Cgk-yp-7BO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aDo-R1-NDZ">
+                                <rect key="frame" x="20" y="305.5" width="374" height="30"/>
+                                <state key="normal" title="Send Order Notification"/>
+                                <connections>
+                                    <action selector="sendOrderNotification:" destination="Y9z-nf-D1f" eventType="touchUpInside" id="4gO-iG-s5x"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -134,9 +141,12 @@
                             <constraint firstItem="kRD-wy-bPY" firstAttribute="top" secondItem="bHK-ER-ejB" secondAttribute="bottom" constant="8" id="IM2-QA-YP1"/>
                             <constraint firstItem="bHK-ER-ejB" firstAttribute="leading" secondItem="3xn-ot-dq2" secondAttribute="leading" constant="20" id="S12-8C-zEN"/>
                             <constraint firstItem="kRD-wy-bPY" firstAttribute="leading" secondItem="3xn-ot-dq2" secondAttribute="leading" constant="20" id="Sl5-MV-BEH"/>
+                            <constraint firstItem="aDo-R1-NDZ" firstAttribute="top" secondItem="kRD-wy-bPY" secondAttribute="bottom" constant="8" id="bOT-R2-RgA"/>
                             <constraint firstItem="3xn-ot-dq2" firstAttribute="trailing" secondItem="bHK-ER-ejB" secondAttribute="trailing" constant="20" id="edF-tG-mBb"/>
                             <constraint firstItem="bHK-ER-ejB" firstAttribute="top" secondItem="eSh-A3-uM8" secondAttribute="bottom" constant="8" id="fNL-9s-BPZ"/>
+                            <constraint firstItem="aDo-R1-NDZ" firstAttribute="leading" secondItem="3xn-ot-dq2" secondAttribute="leading" constant="20" id="hRR-U1-BlV"/>
                             <constraint firstItem="eSh-A3-uM8" firstAttribute="leading" secondItem="3xn-ot-dq2" secondAttribute="leading" constant="20" id="hkX-qC-x6K"/>
+                            <constraint firstItem="3xn-ot-dq2" firstAttribute="trailing" secondItem="aDo-R1-NDZ" secondAttribute="trailing" constant="20" id="vRc-hd-7Jj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3xn-ot-dq2"/>
                     </view>
