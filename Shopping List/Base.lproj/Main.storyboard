@@ -9,43 +9,49 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Collection View Controller-->
+        <!--Shopping List-->
         <scene sceneID="yYc-Xh-NvN">
             <objects>
-                <collectionViewController id="zh0-VL-egz" sceneMemberID="viewController">
+                <collectionViewController id="zh0-VL-egz" customClass="ShoppingListCollectionViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="z7Q-DU-r29">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="15s-ao-PpU">
-                            <size key="itemSize" width="178" height="179"/>
+                            <size key="itemSize" width="184" height="168"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" id="03z-3D-HQy">
-                                <rect key="frame" x="0.0" y="0.0" width="178" height="179"/>
+                                <rect key="frame" x="0.0" y="0.0" width="184" height="168"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="evb-MS-eb9">
-                                    <rect key="frame" x="0.0" y="0.0" width="178" height="179"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="184" height="168"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6hZ-jg-JlR">
-                                            <rect key="frame" x="8" y="9" width="162" height="162"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="134" id="B8g-FL-D6c"/>
-                                                <constraint firstAttribute="width" secondItem="6hZ-jg-JlR" secondAttribute="height" multiplier="1:1" id="Dkv-9A-gwN"/>
-                                            </constraints>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="grq-eG-dnw">
+                                            <rect key="frame" x="2" y="0.0" width="182" height="143"/>
                                         </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="72c-bd-6g9">
+                                            <rect key="frame" x="2" y="145" width="180" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="6hZ-jg-JlR" firstAttribute="bottom" secondItem="evb-MS-eb9" secondAttribute="bottomMargin" id="BQF-Li-K5j"/>
-                                        <constraint firstItem="6hZ-jg-JlR" firstAttribute="leading" secondItem="evb-MS-eb9" secondAttribute="leading" constant="8" id="eGH-hg-1Nc"/>
-                                        <constraint firstAttribute="trailing" secondItem="6hZ-jg-JlR" secondAttribute="trailing" constant="8" id="v8p-bn-5aD"/>
+                                        <constraint firstAttribute="trailing" secondItem="grq-eG-dnw" secondAttribute="trailing" id="3XY-Bz-78b"/>
+                                        <constraint firstAttribute="trailing" secondItem="72c-bd-6g9" secondAttribute="trailing" constant="2" id="QPK-Rn-e1x"/>
+                                        <constraint firstItem="72c-bd-6g9" firstAttribute="leading" secondItem="evb-MS-eb9" secondAttribute="leading" constant="2" id="kkN-7f-iTH"/>
+                                        <constraint firstItem="grq-eG-dnw" firstAttribute="leading" secondItem="72c-bd-6g9" secondAttribute="leading" id="qFt-sK-lFU"/>
+                                        <constraint firstItem="grq-eG-dnw" firstAttribute="top" secondItem="evb-MS-eb9" secondAttribute="top" id="t5A-Ks-8WL"/>
+                                        <constraint firstAttribute="bottom" secondItem="72c-bd-6g9" secondAttribute="bottom" constant="2" id="tWJ-iL-UY4"/>
+                                        <constraint firstItem="72c-bd-6g9" firstAttribute="top" secondItem="grq-eG-dnw" secondAttribute="bottom" constant="2" id="wsz-FU-ydf"/>
                                     </constraints>
                                 </collectionViewCellContentView>
-                                <size key="customSize" width="178" height="179"/>
+                                <size key="customSize" width="184" height="168"/>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -53,7 +59,7 @@
                             <outlet property="delegate" destination="zh0-VL-egz" id="3Eh-a4-XlB"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="Ej4-Yh-Rsz">
+                    <navigationItem key="navigationItem" title="Shopping List" id="Ej4-Yh-Rsz">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="GCr-r1-kS7">
                             <connections>
                                 <segue destination="azj-ze-F2n" kind="show" id="mXE-0G-ozb"/>
@@ -65,10 +71,10 @@
             </objects>
             <point key="canvasLocation" x="1310.144927536232" y="5.3571428571428568"/>
         </scene>
-        <!--View Controller-->
+        <!--Items Detail View Controller-->
         <scene sceneID="IXp-m6-mOB">
             <objects>
-                <viewController id="azj-ze-F2n" sceneMemberID="viewController">
+                <viewController id="azj-ze-F2n" customClass="ItemsDetailViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WuN-zA-uOY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
