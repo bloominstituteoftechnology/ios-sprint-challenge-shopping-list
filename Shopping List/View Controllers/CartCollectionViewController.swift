@@ -8,8 +8,7 @@
 
 import UIKit
 
-// FIXME: What to do with?
-private let reuseIdentifier = "Cell"
+private let reuseIdentifier = "ShoppingItemCell"
 
 class CartCollectionViewController: UICollectionViewController, DeliveryAlertDelegate {
 
