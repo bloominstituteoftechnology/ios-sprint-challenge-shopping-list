@@ -79,7 +79,16 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         } else {
             collectionView.reloadData()
         }
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeader", for: indexPath) as? ShoppingListSectionHeaderView else {
+            fatalError("Unable to dequeue view of type \(ShoppingListSectionHeaderView.self)")
+        }
         
+        sectionHeader.title = indexPath.section == itemsOnListSection ? "Items on Shopping List" : "Items Not on Shopping List"
+        
+        return sectionHeader
     }
     
     

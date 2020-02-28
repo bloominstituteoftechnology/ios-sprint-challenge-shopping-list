@@ -19,13 +19,13 @@
                         <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="I0Z-ty-tA5">
                             <size key="itemSize" width="200" height="250"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="headerReferenceSize" width="50" height="50"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoppingItemCell" id="dTe-is-bVh" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="10" width="200" height="250"/>
+                                <rect key="frame" x="0.0" y="60" width="200" height="250"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="BMR-IZ-kGp">
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="250"/>
@@ -62,6 +62,34 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="SectionHeader" id="OeK-xX-9Ni" customClass="ShoppingListSectionHeaderView" customModule="Shopping_List" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iNV-gY-sKA">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                    <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Items on Shopping List" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1oV-eF-c2x">
+                                    <rect key="frame" x="100" y="13" width="214.5" height="24"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="iNV-gY-sKA" firstAttribute="leading" secondItem="OeK-xX-9Ni" secondAttribute="leading" id="9vG-1z-XqD"/>
+                                <constraint firstItem="1oV-eF-c2x" firstAttribute="centerY" secondItem="OeK-xX-9Ni" secondAttribute="centerY" id="B7A-VQ-ZAh"/>
+                                <constraint firstItem="iNV-gY-sKA" firstAttribute="top" secondItem="OeK-xX-9Ni" secondAttribute="top" id="BS4-bQ-loV"/>
+                                <constraint firstAttribute="trailing" secondItem="iNV-gY-sKA" secondAttribute="trailing" id="NGn-tS-0yV"/>
+                                <constraint firstAttribute="bottom" secondItem="iNV-gY-sKA" secondAttribute="bottom" id="Yn9-Vv-eXj"/>
+                                <constraint firstItem="1oV-eF-c2x" firstAttribute="centerX" secondItem="OeK-xX-9Ni" secondAttribute="centerX" id="wAr-Gm-Iyd"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="titleLabel" destination="1oV-eF-c2x" id="ATT-Qv-ttz"/>
+                            </connections>
+                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="CFV-X4-kSI" id="0hw-r9-hML"/>
                             <outlet property="delegate" destination="CFV-X4-kSI" id="AuW-aW-Xva"/>
