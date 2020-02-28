@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct ShoppingItem {
-    let name: String
+struct ShoppingItem: Codable {
+    var name: String
     var isAdded: Bool
-    let imageData: Data
+    var imageData: Data
 }
