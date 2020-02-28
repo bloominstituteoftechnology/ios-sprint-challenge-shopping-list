@@ -16,21 +16,16 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
     }
 
-    
     // MARK: - Navigation
 
-   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SubmitOrderSegue" {
             guard let submitOrderVC = segue.destination as? SubmitOrderViewController else { return }
             submitOrderVC.shoppingListController = shoppingListController
         }
-        
     }
-    
 
     // MARK: UICollectionViewDataSource
 
@@ -45,6 +40,11 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         cell.shoppingItem = item
         return cell
     }
-
-
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = shoppingListController.items[indexPath.row]
+        shoppingListController.updateShoppingList(shoppingItem: item)
+        collectionView.reloadItems(at: [indexPath])
+        
+    }
 }

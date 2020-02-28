@@ -30,12 +30,12 @@ class SubmitOrderViewController: UIViewController {
     }
     
     @IBAction func submitOrderTapped(_ sender: Any) {
-        
+        showAlert()
     }
 
     func showAlert() {
         
-        let alert = UIAlertController(title: "Thanks for submitting your order, \(nameTextField?.text)!", message: "Your shopping items will be delivered to \(addressTextField?.text)", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Thanks for submitting your order, \(nameTextField.text ?? "")!", message: "Your shopping items will be delivered to \(addressTextField.text ?? "") in 15 minutes.", preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "Cool", style: .cancel, handler: nil)
         
@@ -44,5 +44,4 @@ class SubmitOrderViewController: UIViewController {
         present(alert, animated: true, completion: nil)
         
     }
-
 }

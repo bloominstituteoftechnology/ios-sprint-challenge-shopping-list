@@ -17,11 +17,11 @@ class ShoppingItem: Codable {
     init(name: String, itemAdded: Bool = false){
         self.name = name
         self.itemAdded = itemAdded
-        self.imageName = name.lowercased()
+        self.imageName = name
     }
     
     var itemImage: UIImage! {
-           UIImage(named: imageName)
+        UIImage(named: imageName)
        }
 }
 

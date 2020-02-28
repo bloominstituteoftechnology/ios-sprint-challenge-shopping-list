@@ -14,16 +14,15 @@ extension String {
 
 class ShoppingListController {
     
-    var items:[ShoppingItem] = []
+    var items: [ShoppingItem] = []
     
     init() {
         createShoppingList()
         loadFromPersistentStore()
     }
     
-    
     func createShoppingList() {
-        UserDefaults.standard.bool(forKey: String.itemAdded)
+        guard UserDefaults.standard.bool(forKey: String.itemAdded) != true else { return }
         
         let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
         
@@ -36,27 +35,25 @@ class ShoppingListController {
         UserDefaults.standard.set(true, forKey: String.itemAdded)
     }
     
-    
+    func updateShoppingList(shoppingItem: ShoppingItem) {
+        shoppingItem.itemAdded = !shoppingItem.itemAdded
+        saveToPersistentStore()
+    }
     
     // MARK: - Persistence
     
-    // The location of the Stars file that we will be saving to and loading from
     var persistentFileURL: URL? {
         
         let fileManager = FileManager.default
-        
-        // ~/MyApp/Documents/
+     
         let documentsDir = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
-        
-        // ~/MyApp/Documents/stars.plist
+    
         let itemsURL = documentsDir?.appendingPathComponent("items.plist")
         
         return itemsURL
     }
-    
-    // Saves the stars to the persistent file URL
+
     func saveToPersistentStore() {
-        // Convert Stars into a Property List
         
         let encoder = PropertyListEncoder()
         
@@ -69,11 +66,10 @@ class ShoppingListController {
            try itemsPlist.write(to: itemsURL)
             
         } catch {
-            // The catch statement gets called if the function(s) that you call "try" on fails.
+       
             print("Unable to save items to plist: \(error)")
             
         }
-        
     }
     
     func loadFromPersistentStore() {
@@ -83,7 +79,7 @@ class ShoppingListController {
         let decoder = PropertyListDecoder()
         
         do {
-            // Goes to the starsURL and grab the file (data) from that location
+    
             let itemsData = try Data(contentsOf: itemsURL)
             
             let itemsArray = try decoder.decode([ShoppingItem].self, from: itemsData)

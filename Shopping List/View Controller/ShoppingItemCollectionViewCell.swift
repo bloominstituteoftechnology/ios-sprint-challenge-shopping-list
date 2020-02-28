@@ -14,7 +14,6 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var itemAddedLabel: UILabel!
     @IBOutlet weak var itemNameLabel: UILabel!
 
-    
     var shoppingItem: ShoppingItem! {
         didSet {
             updateViews()
@@ -26,6 +25,6 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         guard let shoppingItem = shoppingItem else { return }
         itemImage.image = shoppingItem.itemImage
         itemNameLabel.text = shoppingItem.name
-        itemAddedLabel.text = shoppingItem.itemAdded ? "Not Added" : "Added"
+        itemAddedLabel.text = shoppingItem.itemAdded ? "Added" : "Not Added"
     }
 }
