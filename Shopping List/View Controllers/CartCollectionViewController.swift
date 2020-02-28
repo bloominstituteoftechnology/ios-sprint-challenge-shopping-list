@@ -93,10 +93,12 @@ class CartCollectionViewController: UICollectionViewController, DeliveryAlertDel
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
+
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ShoppingItemCollectionViewCell else { fatalError("ShoppingItemCollectionViewCell was expected" ) }
+        
         // Configure the cell
-    
+        cell.shoppingItem = cartController.cart[indexPath.item] // same as .row
+
         return cell
     }
 
