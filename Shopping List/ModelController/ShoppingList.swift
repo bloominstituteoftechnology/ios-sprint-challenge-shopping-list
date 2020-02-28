@@ -12,13 +12,19 @@ import Foundation
 
 class ShoppingList {
     
-    private(set) var shoppingItems: [ShoppingItem]
-    
-    
-    
-    
     //MARK: - CRUD
     
+    // Read
+    
+    private(set) var shoppingItems: [ShoppingItem]
+    
+    var shoppingItemsOnList: [ShoppingItem] {
+        shoppingItems.filter { $0.isOnShoppingList }
+    }
+    
+    var shoppingItemsNotOnList: [ShoppingItem] {
+        shoppingItems.filter { !$0.isOnShoppingList }
+    }
     
     // Update
     
