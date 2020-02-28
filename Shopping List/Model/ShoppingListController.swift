@@ -16,6 +16,12 @@ class ShoppingListController {
     
     var items:[ShoppingItem] = []
     
+    init() {
+        createShoppingList()
+        loadFromPersistentStore()
+    }
+    
+    
     func createShoppingList() {
         UserDefaults.standard.bool(forKey: String.itemAdded)
         
@@ -29,6 +35,8 @@ class ShoppingListController {
         
         UserDefaults.standard.set(true, forKey: String.itemAdded)
     }
+    
+    
     
     // MARK: - Persistence
     

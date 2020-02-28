@@ -26,11 +26,6 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         guard let shoppingItem = shoppingItem else { return }
         itemImage.image = shoppingItem.itemImage
         itemNameLabel.text = shoppingItem.name
-        
-        if shoppingItem.itemAdded == true {
-            itemAddedLabel.text = "Added"
-        } else {
-            itemAddedLabel.text = "Not Added"
-        }
+        itemAddedLabel.text = shoppingItem.itemAdded ? "Not Added" : "Added"
     }
 }
