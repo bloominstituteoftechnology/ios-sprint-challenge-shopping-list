@@ -10,11 +10,20 @@ import UIKit
 
 class ItemsDetailViewController: UIViewController {
 
+    var item: ShoppingItem?
+    var shoppingContoller: ShoppingListController?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
+    
+    
+    
+    @IBAction func sendOrder(_ sender: Any) {
+    }
+    
+    
     
 
     /*
