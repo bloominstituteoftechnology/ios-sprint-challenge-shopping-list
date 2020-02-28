@@ -36,11 +36,25 @@ class CartController {
     init() {
         if listInitialized == false {
             let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+
+            for item in itemNames {
+                let item = createItem(title: item, image: item)
+                cart.append(item)
+            }
             
+            saveToPersistentStore()
+
             listInitialized = true
         } else {
             loadFromPersistentStore()
         }
+    }
+
+    func createItem(title: String, image: String ) -> ShoppingItem {
+        let item = ShoppingItem(itemName: title,
+                                onShoppingList: false,
+                                imageName: image)
+        return item
     }
 
     // MARK: Persistent Store
