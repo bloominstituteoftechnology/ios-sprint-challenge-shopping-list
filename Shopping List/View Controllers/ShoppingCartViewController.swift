@@ -10,10 +10,21 @@ import UIKit
 
 class ShoppingCartViewController: UIViewController {
 
+    // MARK: - Outlets
+    @IBOutlet weak var itemCountLabel: UILabel!
+    @IBOutlet weak var yourNameTextField: UITextField!
+    @IBOutlet weak var yourAddressTextField: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
+    
+    // MARK: - Actions
+    @IBAction func sendOrderButtonTapped(_ sender: Any) {
+    }
+    
     
     // MARK: - Navigation
 
