@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		150E580424097CFA0048514B /* ShoppingListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150E580324097CFA0048514B /* ShoppingListController.swift */; };
 		157C53D4240975120021834C /* ShoppingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157C53D3240975120021834C /* ShoppingItem.swift */; };
 		4613E91221143BFC00E7FF73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4613E91121143BFC00E7FF73 /* AppDelegate.swift */; };
 		4613E91721143BFC00E7FF73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91521143BFC00E7FF73 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		150E580324097CFA0048514B /* ShoppingListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListController.swift; sourceTree = "<group>"; };
 		157C53D3240975120021834C /* ShoppingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItem.swift; sourceTree = "<group>"; };
 		4613E90E21143BFC00E7FF73 /* Shopping List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shopping List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4613E91121143BFC00E7FF73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -48,16 +50,25 @@
 			isa = PBXGroup;
 			children = (
 				4613E91521143BFC00E7FF73 /* Main.storyboard */,
-				157C53D3240975120021834C /* ShoppingItem.swift */,
 				4613E91A21143BFD00E7FF73 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		157C53D5240978FC0021834C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				157C53D3240975120021834C /* ShoppingItem.swift */,
+				150E580324097CFA0048514B /* ShoppingListController.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		4613E90521143BFC00E7FF73 = {
 			isa = PBXGroup;
 			children = (
 				4613E91021143BFC00E7FF73 /* Shopping List */,
+				157C53D5240978FC0021834C /* Model */,
 				157C53D1240973AA0021834C /* Resources */,
 				4613E90F21143BFC00E7FF73 /* Products */,
 			);
@@ -152,6 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				157C53D4240975120021834C /* ShoppingItem.swift in Sources */,
+				150E580424097CFA0048514B /* ShoppingListController.swift in Sources */,
 				4613E91221143BFC00E7FF73 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
