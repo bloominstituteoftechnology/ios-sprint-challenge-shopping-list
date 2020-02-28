@@ -15,22 +15,17 @@ class ItemCollectionViewCell: UICollectionViewCell {
               updateViews()
           }
       }
-      
-    
     
     private func updateViews() {
         guard let item = item else { return }
         
-        
+        imageView.image = item.image
+        label.text = item.name
         
     }
 
     
-    
-    
-    
-    
-    @IBOutlet weak var imageView: UIView!
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var label: UILabel!
     
     

@@ -59,7 +59,7 @@ class ShoppingListController {
            guard let itemsURL = shoppingListURL else { return }
            do {
                var itemsData = try Data(contentsOf: itemsURL)
-               itemsData = try PropertyListDecoder().decode([ShoppingItem], from: itemsData)
+//               itemsData = try PropertyListDecoder().decode([ShoppingItem], from: itemsData)
            } catch {
                print("Error decoding items: \(error)")
            }
