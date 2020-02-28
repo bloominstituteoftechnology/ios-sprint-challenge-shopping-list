@@ -9,8 +9,7 @@
 import UIKit
 
 protocol DeliveryAlertDelegate {
-    var deliveryAlert: Bool { get set }
-    var delayInSeconds: Int { get set }
+    func showDeliveryAlert()
 }
 
 class CheckoutViewController: UIViewController {
@@ -24,17 +23,24 @@ class CheckoutViewController: UIViewController {
     @IBOutlet weak var addressTextField: UITextField!
     
     @IBAction func send(_ sender: Any) {
+        var showAlert = false
+        
         if let name = nameTextField.text,
             let address = addressTextField.text {
         
             cartController?.name = name
             cartController?.address = address
             
-            alertDeligate?.deliveryAlert = true
-            alertDeligate?.delayInSeconds = 5
+            showAlert = true
         }
         
         navigationController?.popViewController(animated: true)
+        
+        // TODO: Being paranoid. Want the dismiss first before I call this.
+        // Not sure I'm happy with this. Given this will be a timed delay thing, maybe it's OK? Would prefer to "send a message" and not still be in this code during alert.
+        if showAlert == true {
+            alertDeligate?.showDeliveryAlert()
+        }
     }
     
     override func viewDidLoad() {

@@ -12,8 +12,6 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class CartCollectionViewController: UICollectionViewController, DeliveryAlertDelegate {
-    var deliveryAlert = false
-    var delayInSeconds = 5
 
     var cartController = CartController()
     
@@ -27,10 +25,6 @@ class CartCollectionViewController: UICollectionViewController, DeliveryAlertDel
 //        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
-        if deliveryAlert == true {
-            deliveryAlert = false
-            showDeliveryAlert(name: cartController.name, address: cartController.address)
-        }
     }
 
     // MARK: - Navigation
@@ -48,6 +42,10 @@ class CartCollectionViewController: UICollectionViewController, DeliveryAlertDel
     }
 
     // MARK: Alerts and Timers
+    func showDeliveryAlert() {
+        showDeliveryAlert(name: cartController.name, address: cartController.address)
+    }
+    
     private func showDeliveryAlert(name: String, address: String, inMinutes: Int = 15) {
         let alert = UIAlertController(title: "Delivery for \(name)!",
             message: "Your shopping items will be delivered to \(address) in \(inMinutes) minutes.",
