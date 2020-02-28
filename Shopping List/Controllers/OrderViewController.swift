@@ -23,6 +23,14 @@ class OrderViewController: UIViewController {
     }
     
     @IBAction func orderButton(_ sender: Any) {
+        guard let name = nameTextField.text,
+            let address = addressField.text else {return}
+        
+        let alert = UIAlertController(title: "Order Placed", message: "Order for \(name) will be delivered to \(address) in 15 minutes.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        
+        present(alert, animated: true, completion: nil)
+        
     }
     
     func updateView() {
