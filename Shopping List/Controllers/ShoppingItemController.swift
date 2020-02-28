@@ -77,6 +77,7 @@ class ShoppingItemController: Codable {
             let imageData = UIImagePNGRepresentation(image) else {return}
             self.items.append(ShoppingItem(name: item, isAdded: false, imageData: imageData))
         }
+        saveToPersistentStore()
         UserDefaults.standard.set(true, forKey: initKey)
     }
     

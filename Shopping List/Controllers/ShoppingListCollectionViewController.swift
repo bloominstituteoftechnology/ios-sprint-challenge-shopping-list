@@ -18,6 +18,10 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        itemController.initValues
+        itemController.loadFromPersistentStore()
+        
+        print(itemController.items.count)
 
     }
 
