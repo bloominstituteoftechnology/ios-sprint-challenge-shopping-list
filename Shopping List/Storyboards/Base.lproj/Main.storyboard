@@ -18,17 +18,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZV0-7L-7vu">
-                            <size key="itemSize" width="193" height="227"/>
+                            <size key="itemSize" width="193" height="260"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoppingItemCell" id="4tb-ct-HPp" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="193" height="227"/>
+                                <rect key="frame" x="0.0" y="0.0" width="193" height="260"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="JGL-1l-FyI">
-                                    <rect key="frame" x="0.0" y="0.0" width="193" height="227"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="193" height="260"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vC6-33-LQz">
@@ -38,26 +38,31 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gjs-6O-lkV">
-                                            <rect key="frame" x="8" y="42" width="177" height="177"/>
+                                            <rect key="frame" x="8" y="46" width="177" height="177"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="gjs-6O-lkV" secondAttribute="height" multiplier="1:1" id="Iki-XL-xxX"/>
                                             </constraints>
                                         </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SMH-e0-WwN">
+                                            <rect key="frame" x="8" y="231" width="177" height="21"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="gjs-6O-lkV" secondAttribute="bottom" constant="8" id="FiH-AF-oVt"/>
+                                        <constraint firstAttribute="bottom" secondItem="SMH-e0-WwN" secondAttribute="bottom" constant="8" id="5aM-eq-Ead"/>
                                         <constraint firstItem="vC6-33-LQz" firstAttribute="top" secondItem="JGL-1l-FyI" secondAttribute="top" constant="8" id="G5o-U5-mRV"/>
                                         <constraint firstAttribute="trailing" secondItem="gjs-6O-lkV" secondAttribute="trailing" constant="8" id="Iyb-6G-EHy"/>
+                                        <constraint firstItem="SMH-e0-WwN" firstAttribute="top" secondItem="gjs-6O-lkV" secondAttribute="bottom" constant="8" id="RiW-XC-0PY"/>
                                         <constraint firstItem="gjs-6O-lkV" firstAttribute="leading" secondItem="JGL-1l-FyI" secondAttribute="leading" constant="8" id="aBq-bZ-Hlb"/>
                                         <constraint firstAttribute="trailing" secondItem="vC6-33-LQz" secondAttribute="trailing" constant="8" id="ciP-HB-boL"/>
+                                        <constraint firstItem="SMH-e0-WwN" firstAttribute="leading" secondItem="JGL-1l-FyI" secondAttribute="leading" constant="8" id="hjP-4N-3ZP"/>
                                         <constraint firstItem="vC6-33-LQz" firstAttribute="leading" secondItem="JGL-1l-FyI" secondAttribute="leading" constant="8" id="jos-tP-6Ug"/>
+                                        <constraint firstAttribute="trailing" secondItem="SMH-e0-WwN" secondAttribute="trailing" constant="8" id="xeL-Po-az7"/>
                                     </constraints>
                                 </collectionViewCellContentView>
-                                <size key="customSize" width="193" height="227"/>
-                                <connections>
-                                    <outlet property="imageView" destination="gjs-6O-lkV" id="n1Z-re-VFs"/>
-                                    <outlet property="itemNameLabel" destination="vC6-33-LQz" id="BOb-Dw-g2z"/>
-                                </connections>
+                                <size key="customSize" width="193" height="260"/>
                             </collectionViewCell>
                         </cells>
                         <connections>
