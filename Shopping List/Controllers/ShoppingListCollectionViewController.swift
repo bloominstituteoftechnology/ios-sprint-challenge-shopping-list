@@ -42,19 +42,26 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
+        if section == 0 {
+            return itemController.addedItems.count
+        } else if section == 1 {
+            return itemController.nonAddedItems.count
+        }
         return itemController.items.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ItemCollectionViewCell else {fatalError()}
         
-        cell.item = itemController.items[indexPath.row]
+        var item = itemFor(indexPath: indexPath)
+        
+        cell.item = item
     
         // Configure the cell
     
@@ -68,6 +75,8 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         itemController.saveToPersistentStore()
         self.collectionView?.reloadData()
     }
+    
+    
     
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
@@ -98,4 +107,27 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     }
     */
 
+    
+    
+    func itemFor(indexPath: IndexPath) -> ShoppingItem {
+        if indexPath.section == 0 {
+            return itemController.addedItems[indexPath.row]
+        } else {
+            return itemController.nonAddedItems[indexPath.row]
+        }
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        if let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeader", for: indexPath) as? SectionTitleCollectionReusableView{
+            if indexPath.section == 0 {
+                sectionHeader.setionTitleLabel.text = "Added Items"
+            } else {
+                sectionHeader.setionTitleLabel.text = "Non-Added Items"
+            }
+            return sectionHeader
+        }
+        return UICollectionReusableView()
+    }
+    
 }

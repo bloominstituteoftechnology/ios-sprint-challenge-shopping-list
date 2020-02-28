@@ -29,6 +29,13 @@ class ShoppingItemController: Codable {
         }
     }
     
+    var nonAddedItems: [ShoppingItem] {
+        get {
+            let nonAdded: [ShoppingItem] = items.filter{item in !item.isAdded}
+            return nonAdded
+        }
+    }
+    
     var shoppingListURL: URL? {
         get {
             let fileManager = FileManager.default
