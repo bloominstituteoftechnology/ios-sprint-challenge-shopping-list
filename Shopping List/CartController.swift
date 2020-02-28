@@ -11,6 +11,10 @@ import Foundation
 class CartController {
     var cart = [ShoppingItem]()
     
+    var numOfItemsInCart: Int {
+        return cart.filter { $0.onShoppingList == true }.count
+    }
+    
     // Cart delivery information.
     var name = ""
     var address = ""

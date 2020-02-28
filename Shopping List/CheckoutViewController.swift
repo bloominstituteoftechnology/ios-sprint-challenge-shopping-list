@@ -14,7 +14,6 @@ protocol DeliveryAlertDelegate {
 
 class CheckoutViewController: UIViewController {
 
-    var cartItemCount = 2
     var cartController: CartController?
     var alertDeligate: DeliveryAlertDelegate?
     
@@ -47,15 +46,17 @@ class CheckoutViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        var descriptionText = ""
+        var descriptionText = "Your shopping list is empty."
         
-        switch cartItemCount {
-        case 0:
-            descriptionText = "Your shopping list is empty."
-        case 1:
-            descriptionText = "You currently have \(cartItemCount) item in your shopping list."
-        default:
-            descriptionText = "You currently have \(cartItemCount) items in your shopping list."
+        if let cartController = cartController {
+            switch cartController.numOfItemsInCart {
+            case 0:
+                descriptionText = "Your shopping list is empty."
+            case 1:
+                descriptionText = "You currently have \(cartController.numOfItemsInCart) item in your shopping list."
+            default:
+                descriptionText = "You currently have \(cartController.numOfItemsInCart) items in your shopping list."
+            }
         }
         
         descriptionLabel.text = descriptionText
