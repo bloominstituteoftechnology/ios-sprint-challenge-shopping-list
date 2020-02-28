@@ -8,12 +8,16 @@
 
 import Foundation
 
+extension String {
+    static var itemAdded = "itemAdded"
+}
+
 class ShoppingListController {
     
     var items:[ShoppingItem] = []
     
     func createShoppingList() {
-        UserDefaults.standard.bool(forKey: "itemAdded")
+        UserDefaults.standard.bool(forKey: String.itemAdded)
         
         let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
         
@@ -21,6 +25,9 @@ class ShoppingListController {
             let shoppingItem = ShoppingItem(name: itemName)
             items.append(shoppingItem)
         }
+        saveToPersistentStore()
+        
+        UserDefaults.standard.set(true, forKey: String.itemAdded)
     }
     
     // MARK: - Persistence
