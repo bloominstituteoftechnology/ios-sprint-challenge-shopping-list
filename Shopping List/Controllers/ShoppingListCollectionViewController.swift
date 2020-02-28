@@ -20,7 +20,6 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         itemController.initValues
         itemController.loadFromPersistentStore()
-        itemController.items[0].isAdded = true
         
         print(itemController.items.count)
 
@@ -64,6 +63,12 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDelegate
 
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        itemController.items[indexPath.row].isAdded.toggle()
+        itemController.saveToPersistentStore()
+        self.collectionView?.reloadData()
+    }
+    
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
