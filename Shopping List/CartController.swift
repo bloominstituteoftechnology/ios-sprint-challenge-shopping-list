@@ -11,6 +11,10 @@ import Foundation
 class CartController {
     var cart = [ShoppingItem]()
     
+    // Cart delivery information.
+    var name = ""
+    var address = ""
+    
     // This initilizer is treated as the viewDidLoad of the model controller.
     init() {
         loadFromPersistentStore()

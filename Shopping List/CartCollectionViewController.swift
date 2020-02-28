@@ -8,10 +8,15 @@
 
 import UIKit
 
+// FIXME: What to do with?
 private let reuseIdentifier = "Cell"
 
-class CartCollectionViewController: UICollectionViewController {
+class CartCollectionViewController: UICollectionViewController, DeliveryAlertDelegate {
+    var deliveryAlert = false
+    var delayInSeconds = 5
 
+    var cartController = CartController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,20 +24,41 @@ class CartCollectionViewController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+//        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
+        if deliveryAlert == true {
+            deliveryAlert = false
+            showDeliveryAlert(name: cartController.name, address: cartController.address)
+        }
     }
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+
+        if segue.identifier == "ShowCheckout" {
+            guard let checkoutVC = segue.destination as? CheckoutViewController else {return}
+            checkoutVC.cartController = cartController
+            checkoutVC.alertDeligate = self
+        }
     }
-    */
+
+    // MARK: Alerts and Timers
+    private func showDeliveryAlert(name: String, address: String, inMinutes: Int = 15) {
+        let alert = UIAlertController(title: "Delivery for \(name)!",
+            message: "Your shopping items will be delivered to \(address) in \(inMinutes) minutes.",
+                                      preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        
+        alert.addAction(okAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
 
     // MARK: UICollectionViewDataSource
 
