@@ -78,6 +78,11 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Shopping List" id="xGs-2H-VcJ">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="z19-pi-T6w">
+                            <connections>
+                                <segue destination="Q86-zs-lmy" kind="show" identifier="AddShoppingItem" id="mHu-Je-ZcE"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="KNv-4J-GWy">
                             <connections>
                                 <segue destination="Y9z-nf-D1f" kind="show" identifier="ShowOrderVC" id="9g9-PU-iYQ"/>
@@ -89,7 +94,7 @@
             </objects>
             <point key="canvasLocation" x="492.75362318840581" y="75"/>
         </scene>
-        <!--Create Order View Controller-->
+        <!--Order Shopping List-->
         <scene sceneID="2xA-q9-S07">
             <objects>
                 <viewController id="Y9z-nf-D1f" customClass="CreateOrderViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
@@ -150,7 +155,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3xn-ot-dq2"/>
                     </view>
-                    <navigationItem key="navigationItem" id="bCc-E3-ULF"/>
+                    <navigationItem key="navigationItem" title="Order Shopping List" id="bCc-E3-ULF"/>
                     <connections>
                         <outlet property="addressTextField" destination="Se1-5n-rTO" id="5Bq-by-EGg"/>
                         <outlet property="nameTextField" destination="mwi-lg-G3d" id="TJO-yH-CUH"/>
@@ -159,7 +164,69 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bA3-Lx-im5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1213.0434782608697" y="75"/>
+            <point key="canvasLocation" x="1286" y="-330"/>
+        </scene>
+        <!--Add Shopping Item-->
+        <scene sceneID="MLZ-Ky-ljY">
+            <objects>
+                <viewController id="Q86-zs-lmy" customClass="AddShoppingItemViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wGf-qk-5C8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3TV-nq-Vzd">
+                                <rect key="frame" x="20" y="148" width="374" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="big-hp-ngk"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ccT-Vd-bSv">
+                                <rect key="frame" x="20" y="356" width="374" height="30"/>
+                                <state key="normal" title="Add Watermelon"/>
+                                <connections>
+                                    <action selector="addWatermelonButtonTapped:" destination="Q86-zs-lmy" eventType="touchUpInside" id="mxI-fO-m77"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Td1-zX-8fu">
+                                <rect key="frame" x="20" y="394" width="374" height="30"/>
+                                <state key="normal" title="Add Bread"/>
+                                <connections>
+                                    <action selector="addBreadButtonTapped:" destination="Q86-zs-lmy" eventType="touchUpInside" id="ePe-7v-IHI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w7p-M5-Qfd">
+                                <rect key="frame" x="20" y="432" width="374" height="30"/>
+                                <state key="normal" title="Add Cherries"/>
+                                <connections>
+                                    <action selector="addCherriesButtonTapped:" destination="Q86-zs-lmy" eventType="touchUpInside" id="hdm-zZ-fv2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Td1-zX-8fu" firstAttribute="top" secondItem="ccT-Vd-bSv" secondAttribute="bottom" constant="8" id="1pT-8l-6Pk"/>
+                            <constraint firstItem="IEX-zg-mCf" firstAttribute="trailing" secondItem="w7p-M5-Qfd" secondAttribute="trailing" constant="20" id="2op-OJ-MAM"/>
+                            <constraint firstItem="3TV-nq-Vzd" firstAttribute="leading" secondItem="IEX-zg-mCf" secondAttribute="leading" constant="20" id="VVw-vT-z0G"/>
+                            <constraint firstItem="3TV-nq-Vzd" firstAttribute="top" secondItem="IEX-zg-mCf" secondAttribute="top" constant="8" id="aFI-en-D4g"/>
+                            <constraint firstItem="IEX-zg-mCf" firstAttribute="trailing" secondItem="3TV-nq-Vzd" secondAttribute="trailing" constant="20" id="e2v-WR-Z6c"/>
+                            <constraint firstItem="Td1-zX-8fu" firstAttribute="leading" secondItem="IEX-zg-mCf" secondAttribute="leading" constant="20" id="lg0-0i-dHB"/>
+                            <constraint firstItem="IEX-zg-mCf" firstAttribute="trailing" secondItem="Td1-zX-8fu" secondAttribute="trailing" constant="20" id="naU-XT-xTi"/>
+                            <constraint firstItem="w7p-M5-Qfd" firstAttribute="top" secondItem="Td1-zX-8fu" secondAttribute="bottom" constant="8" id="pTU-QF-dhF"/>
+                            <constraint firstItem="ccT-Vd-bSv" firstAttribute="leading" secondItem="IEX-zg-mCf" secondAttribute="leading" constant="20" id="tzP-zb-FMa"/>
+                            <constraint firstItem="IEX-zg-mCf" firstAttribute="trailing" secondItem="ccT-Vd-bSv" secondAttribute="trailing" constant="20" id="vex-Kh-erg"/>
+                            <constraint firstItem="w7p-M5-Qfd" firstAttribute="leading" secondItem="IEX-zg-mCf" secondAttribute="leading" constant="20" id="vio-qt-Mdr"/>
+                            <constraint firstItem="ccT-Vd-bSv" firstAttribute="top" secondItem="3TV-nq-Vzd" secondAttribute="bottom" constant="8" id="wev-NJ-2pL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="IEX-zg-mCf"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Shopping Item" id="e4U-pD-JTc"/>
+                    <connections>
+                        <outlet property="imageView" destination="3TV-nq-Vzd" id="MWT-BD-8Bb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Ah-pP-rfQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1285.5072463768117" y="324.77678571428572"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vJG-ml-07B">

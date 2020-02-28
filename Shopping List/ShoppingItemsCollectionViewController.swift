@@ -35,6 +35,10 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
             guard let ShowOrderVC = segue.destination as? CreateOrderViewController else { return }
             
             ShowOrderVC.shoppingItemController = shoppingItemController
+        } else if segue.identifier == "AddShoppingItem" {
+            guard let AddShoppingItem = segue.destination as? AddShoppingItemViewController else { return }
+            
+            AddShoppingItem.shoppingItemController = shoppingItemController
         }
     }
 

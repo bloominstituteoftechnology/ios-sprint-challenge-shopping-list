@@ -37,6 +37,13 @@ class ShoppingItemController {
         }
     }
     
+    
+    
+    func addNewShoppingItem(name: String) {
+        items.append(ShoppingItem(name: name))
+        saveToPersistentStore()
+    }
+    
     func updateHasBeenAdded(for item: ShoppingItem) {
         
         for i in 0..<items.count {
