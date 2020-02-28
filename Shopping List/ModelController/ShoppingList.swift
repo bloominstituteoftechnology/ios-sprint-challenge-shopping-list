@@ -20,10 +20,16 @@ class ShoppingList {
     //MARK: - CRUD
     
     
+    // Update
     
-    
-    
-    
+    func toggleItemOnShoppingList(_ item: ShoppingItem) {
+        guard let index = shoppingItems.firstIndex(of: item) else { return }
+        
+        var itemToUpdate = shoppingItems[index]
+        itemToUpdate.isOnShoppingList.toggle()
+        
+        shoppingItems[index] = itemToUpdate
+    }
     
     
     //MARK: - Init
