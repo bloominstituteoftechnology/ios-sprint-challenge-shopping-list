@@ -15,6 +15,7 @@
 		9260483B2409748C00BBB69A /* CartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9260483A2409748C00BBB69A /* CartController.swift */; };
 		9260483F24097A4900BBB69A /* CartCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9260483E24097A4900BBB69A /* CartCollectionViewController.swift */; };
 		9260484124097C0E00BBB69A /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9260484024097C0E00BBB69A /* CheckoutViewController.swift */; };
+		9260484324098CDE00BBB69A /* ShoppingItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9260484224098CDE00BBB69A /* ShoppingItemCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		9260483A2409748C00BBB69A /* CartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartController.swift; sourceTree = "<group>"; };
 		9260483E24097A4900BBB69A /* CartCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCollectionViewController.swift; sourceTree = "<group>"; };
 		9260484024097C0E00BBB69A /* CheckoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
+		9260484224098CDE00BBB69A /* ShoppingItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,12 +62,10 @@
 		4613E91021143BFC00E7FF73 /* Shopping List */ = {
 			isa = PBXGroup;
 			children = (
-				9260483E24097A4900BBB69A /* CartCollectionViewController.swift */,
-				9260483A2409748C00BBB69A /* CartController.swift */,
-				9260484024097C0E00BBB69A /* CheckoutViewController.swift */,
+				9260484524098CFB00BBB69A /* Model */,
 				926048342409724200BBB69A /* Resources */,
-				926048362409730200BBB69A /* ShoppingItem.swift */,
 				92604835240972E800BBB69A /* Storyboards */,
+				9260484424098CF000BBB69A /* View Controllers */,
 			);
 			path = "Shopping List";
 			sourceTree = "<group>";
@@ -87,6 +87,25 @@
 				4613E91521143BFC00E7FF73 /* Main.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		9260484424098CF000BBB69A /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9260483E24097A4900BBB69A /* CartCollectionViewController.swift */,
+				9260484024097C0E00BBB69A /* CheckoutViewController.swift */,
+				9260484224098CDE00BBB69A /* ShoppingItemCollectionViewCell.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		9260484524098CFB00BBB69A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9260483A2409748C00BBB69A /* CartController.swift */,
+				926048362409730200BBB69A /* ShoppingItem.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9260483F24097A4900BBB69A /* CartCollectionViewController.swift in Sources */,
+				9260484324098CDE00BBB69A /* ShoppingItemCollectionViewCell.swift in Sources */,
 				926048372409730200BBB69A /* ShoppingItem.swift in Sources */,
 				9260483B2409748C00BBB69A /* CartController.swift in Sources */,
 				9260484124097C0E00BBB69A /* CheckoutViewController.swift in Sources */,
