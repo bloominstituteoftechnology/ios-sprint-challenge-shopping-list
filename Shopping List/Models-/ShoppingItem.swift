@@ -7,3 +7,11 @@
 //
 
 import UIKit
+
+struct ShoppingItem: Codable, Equatable {
+    let name: String
+    var added: Bool = false
+    var image: UIImage? {
+        return UIImage(named: name)
+    }
+}
