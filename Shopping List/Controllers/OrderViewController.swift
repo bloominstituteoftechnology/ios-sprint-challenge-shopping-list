@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class OrderViewController: UIViewController {
 
@@ -22,14 +23,22 @@ class OrderViewController: UIViewController {
         
     }
     
+    
     @IBAction func orderButton(_ sender: Any) {
         guard let name = nameTextField.text,
             let address = addressField.text else {return}
+//
+//        let alert = UIAlertController(title: "Order Placed", message: "Order for \(name) will be delivered to \(address) in 15 minutes.", preferredStyle: .alert)
+//        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+//
+//        present(alert, animated: true, completion: nil)
         
-        let alert = UIAlertController(title: "Order Placed", message: "Order for \(name) will be delivered to \(address) in 15 minutes.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        let content = UNUserNotificationCenter.current()
         
-        present(alert, animated: true, completion: nil)
+        content.requestAuthorization(options: .alert) {(granted, error) in }
+        scheduleNotification()
+        print("We got down here")
+        
         
     }
     
@@ -40,4 +49,26 @@ class OrderViewController: UIViewController {
     
     
 
+    func scheduleNotification() {
+        let center = UNUserNotificationCenter.current()
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Delivery for \(nameTextField.text!)"
+        content.body = "Your shopping items will be delivered to \(addressField.text!)"
+        content.categoryIdentifier = "alarm"
+        content.userInfo = ["customData": "fizzbuzz"]
+        content.sound = UNNotificationSound.default()
+        
+        var dateComponents = DateComponents()
+        dateComponents.hour = 10
+        dateComponents.minute = 30
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 6, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        
+        center.add(request)
+    }
+    
+    
 }
