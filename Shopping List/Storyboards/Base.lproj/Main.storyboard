@@ -23,7 +23,7 @@
                             <inset key="sectionInset" minX="13" minY="15" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="EXf-AS-SMJ">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="EXf-AS-SMJ" customClass="ItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="13" y="15" width="183" height="202"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gMX-gp-Bp7">
@@ -51,6 +51,11 @@
                                     </subviews>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="183" height="202"/>
+                                <connections>
+                                    <outlet property="isAddedLabel" destination="dEy-AD-Z6P" id="Lnu-yC-o7D"/>
+                                    <outlet property="itemImageView" destination="gYj-Ht-fh3" id="Or9-62-wnb"/>
+                                    <outlet property="nameLabel" destination="8Ll-lO-tUo" id="A4O-Ze-O3H"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
