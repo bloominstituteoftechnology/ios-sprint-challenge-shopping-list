@@ -9,5 +9,28 @@
 import UIKit
 
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
+
+    var shoppingItem: ShoppingItem? {
+        didSet {
+            updateViews()
+        }
+    }
+
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var itemNameLabel: UILabel!
     
+   // TODO: Why can't I create an action from the cell?
+
+    
+    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var label: UILabel!
+    
+    func updateViews() {
+        guard let name = shoppingItem?.itemName,
+            let pic = shoppingItem?.imageName else { return }
+
+        imageView.image = UIImage(contentsOfFile: pic)
+        itemNameLabel.text = name
+    }
 }
+
