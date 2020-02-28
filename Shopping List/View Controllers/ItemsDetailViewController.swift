@@ -13,6 +13,8 @@ class ItemsDetailViewController: UIViewController {
     var item: ShoppingItem?
     var shoppingContoller: ShoppingListController?
     
+    @IBOutlet weak var nameLabel: UITextField!
+    @IBOutlet weak var addressLabel: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,11 +23,21 @@ class ItemsDetailViewController: UIViewController {
     
     
     @IBAction func sendOrder(_ sender: Any) {
+        
+        alert()
+    }
+    
+    // Shopping List Notifications
+    
+    func alert() {
+        let alert = UIAlertController(title: "Delivery for \(String(describing: nameLabel))!", message: "Your shopping items will be delivered to \(String(describing: addressLabel))", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true)
     }
     
     
     
-
+    
     /*
     // MARK: - Navigation
 
