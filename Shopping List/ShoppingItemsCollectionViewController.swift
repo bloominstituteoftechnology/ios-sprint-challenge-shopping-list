@@ -45,20 +45,44 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDataSource
 
-
+//
+//    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+//        return 2
+//    }
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
+        
         return shoppingItemController.items.count
+        
+//        if section == 0 {
+//            return shoppingItemController.addedItems.count
+//        } else {
+//            return shoppingItemController.unaddedItems.count
+//        }
     }
+    
+    
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ShoppingItemCollectionViewCell else { return UICollectionViewCell() }
     
+        //cell.shoppingItem = itemFor(indexPath: indexPath)
         cell.shoppingItem = shoppingItemController.items[indexPath.item]
     
         cell.delegate = self
         return cell
     }
+    
+    
+    func itemFor(indexPath: IndexPath) -> ShoppingItem {
+        if indexPath.section == 0 {
+            return shoppingItemController.addedItems[indexPath.row]
+        } else {
+            return shoppingItemController.unaddedItems[indexPath.row]
+        }
+    }
+    
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ShoppingItemCollectionViewCell else { return }
@@ -68,6 +92,7 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
             cell.hasBeenButtonTapped(self)
     }
 }
+
 
 extension ShoppingItemsCollectionViewController: ShoppingItemCellDelegate {
     func toggleHasBeenRead(for cell: ShoppingItemCollectionViewCell) {
