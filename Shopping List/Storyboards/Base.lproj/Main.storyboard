@@ -80,6 +80,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G6L-Q7-Id0">
                                         <rect key="frame" x="0.0" y="134.5" width="374" height="30"/>
                                         <state key="normal" title="Send Order"/>
+                                        <connections>
+                                            <action selector="send:" destination="19O-y8-hqY" eventType="touchUpInside" id="ylR-ym-u1q"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -93,6 +96,11 @@
                         <viewLayoutGuide key="safeArea" id="2Uy-qQ-DtW"/>
                     </view>
                     <navigationItem key="navigationItem" id="J1s-C8-158"/>
+                    <connections>
+                        <outlet property="addressTextField" destination="EmL-XY-nWJ" id="ZHC-o9-b2E"/>
+                        <outlet property="descriptionLabel" destination="bOd-f5-7tW" id="Vr9-iQ-GuK"/>
+                        <outlet property="nameTextField" destination="Zzp-fS-ZxR" id="rW0-o4-rZ5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Big-21-DvF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
