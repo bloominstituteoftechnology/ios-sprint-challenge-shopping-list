@@ -23,7 +23,5 @@ class ShoppingItem: Codable {
         self.itemAdded = itemAdded
         self.imageName = name.lowercased()
     }
-    
- 
 }
 
