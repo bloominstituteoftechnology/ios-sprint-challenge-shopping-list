@@ -13,6 +13,8 @@ private let reuseIdentifier = "Cell"
 
 class CartCollectionViewController: UICollectionViewController, DeliveryAlertDelegate {
 
+    var timer: Timer?
+    var alertDelayInSeconds = 5.0
     var cartController = CartController()
     
     override func viewDidLoad() {
@@ -41,9 +43,9 @@ class CartCollectionViewController: UICollectionViewController, DeliveryAlertDel
         }
     }
 
-    // MARK: Alerts and Timers
+    // MARK: Alerts
     func showDeliveryAlert() {
-        showDeliveryAlert(name: cartController.name, address: cartController.address)
+        startTimer()
     }
     
     private func showDeliveryAlert(name: String, address: String, inMinutes: Int = 15) {
@@ -56,6 +58,26 @@ class CartCollectionViewController: UICollectionViewController, DeliveryAlertDel
         alert.addAction(okAction)
         
         present(alert, animated: true, completion: nil)
+    }
+
+    // MARK: Timers
+    func startTimer() {
+        timer = Timer.scheduledTimer(withTimeInterval: alertDelayInSeconds,
+                                     repeats: false,
+                                     block: timerFired(timer:))
+    }
+
+    func timerFired(timer: Timer) {
+        cancelTimer()
+        
+        showDeliveryAlert(name: cartController.name, address: cartController.address)
+    }
+        
+    func cancelTimer() {
+        // We must invalidate a timer, or it will continue to run even if we
+        // start a new timer
+        timer?.invalidate()
+        timer = nil
     }
 
     // MARK: UICollectionViewDataSource
