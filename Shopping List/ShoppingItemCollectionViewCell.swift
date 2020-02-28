@@ -48,8 +48,6 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
             hasBeenAddedLabel.text = "Not Added"
         } else {
             hasBeenAddedLabel.text = "Added"
-        }
-        #warning("this else might not be necessary")
-        
+        }        
     }
 }

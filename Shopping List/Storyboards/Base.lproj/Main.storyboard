@@ -40,8 +40,8 @@
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Q10-j3-q5t">
                                             <rect key="frame" x="8" y="32" width="174" height="147"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" secondItem="Q10-j3-q5t" secondAttribute="height" multiplier="58:49" id="V5m-HB-2eC"/>
-                                                <constraint firstAttribute="height" constant="147" id="XOy-OB-Exg"/>
+                                                <constraint firstAttribute="height" constant="147" id="I5O-vB-qvi"/>
+                                                <constraint firstAttribute="width" secondItem="Q10-j3-q5t" secondAttribute="height" multiplier="58:49" id="aHQ-RG-hvG"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yLS-C6-xof">
@@ -54,14 +54,14 @@
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="Ap0-lO-tU9" secondAttribute="trailing" constant="8" id="24f-b2-VOT"/>
                                         <constraint firstAttribute="trailing" secondItem="yLS-C6-xof" secondAttribute="trailing" constant="8" id="2bd-T3-376"/>
-                                        <constraint firstItem="Q10-j3-q5t" firstAttribute="leading" secondItem="UUh-sV-G4v" secondAttribute="leading" constant="8" id="MAg-59-yiM"/>
+                                        <constraint firstItem="Q10-j3-q5t" firstAttribute="leading" secondItem="UUh-sV-G4v" secondAttribute="leading" constant="8" id="4TX-9D-Yfh"/>
+                                        <constraint firstItem="Q10-j3-q5t" firstAttribute="top" secondItem="yLS-C6-xof" secondAttribute="bottom" constant="3" id="Cq1-Zw-bhQ"/>
+                                        <constraint firstItem="Ap0-lO-tU9" firstAttribute="top" secondItem="Q10-j3-q5t" secondAttribute="bottom" constant="3" id="gbW-yt-350"/>
                                         <constraint firstItem="yLS-C6-xof" firstAttribute="leading" secondItem="UUh-sV-G4v" secondAttribute="leading" constant="8" id="gvI-Jw-lWc"/>
                                         <constraint firstItem="yLS-C6-xof" firstAttribute="top" secondItem="UUh-sV-G4v" secondAttribute="top" constant="8" id="h4r-E7-FpC"/>
-                                        <constraint firstItem="Ap0-lO-tU9" firstAttribute="top" secondItem="Q10-j3-q5t" secondAttribute="bottom" constant="3" id="hvX-jO-Cka"/>
                                         <constraint firstItem="Ap0-lO-tU9" firstAttribute="leading" secondItem="UUh-sV-G4v" secondAttribute="leading" constant="8" id="hzR-MV-mkm"/>
                                         <constraint firstAttribute="bottom" secondItem="Ap0-lO-tU9" secondAttribute="bottom" constant="8" id="l2y-TC-Tzj"/>
-                                        <constraint firstAttribute="trailing" secondItem="Q10-j3-q5t" secondAttribute="trailing" constant="8" id="pWY-aW-iJ2"/>
-                                        <constraint firstItem="Q10-j3-q5t" firstAttribute="top" secondItem="yLS-C6-xof" secondAttribute="bottom" constant="3" id="tuW-Te-lSq"/>
+                                        <constraint firstAttribute="trailing" secondItem="Q10-j3-q5t" secondAttribute="trailing" constant="8" id="v00-c1-3rL"/>
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="190" height="211"/>
@@ -80,7 +80,7 @@
                     <navigationItem key="navigationItem" title="Shopping List" id="xGs-2H-VcJ">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="KNv-4J-GWy">
                             <connections>
-                                <segue destination="Y9z-nf-D1f" kind="show" id="9g9-PU-iYQ"/>
+                                <segue destination="Y9z-nf-D1f" kind="show" identifier="ShowOrderVC" id="9g9-PU-iYQ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

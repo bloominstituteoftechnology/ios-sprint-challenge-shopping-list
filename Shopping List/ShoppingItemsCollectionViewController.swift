@@ -18,12 +18,24 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         
     }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        collectionView?.reloadData()
+        
+    }
 
     // MARK: - Navigation
 
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
+        if segue.identifier == "ShowOrderVC" {
+            guard let ShowOrderVC = segue.destination as? CreateOrderViewController else { return }
+            
+            ShowOrderVC.shoppingItemController = shoppingItemController
+        }
     }
 
 
@@ -45,7 +57,6 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        #warning("implement for touch")
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ShoppingItemCollectionViewCell else { return }
         
             cell.shoppingItem = shoppingItemController.items[indexPath.item]

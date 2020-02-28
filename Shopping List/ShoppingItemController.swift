@@ -43,7 +43,15 @@ class ShoppingItemController {
         for i in 0..<items.count {
             if items[i] == item {
                 if items[i].isAdded {
+                    
+                    for j in 0..<shoppingList.count {
+                        if shoppingList[j] == items[i] {
+                            shoppingList.remove(at: j)
+                            return
+                        }
+                    }
                     items[i].isAdded = false
+
                 } else {
                     items[i].isAdded = true
                     shoppingList.append(items[i])
