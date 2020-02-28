@@ -18,6 +18,11 @@ class EnterAddressViewController: UIViewController {
     
     // MARK: - IBActions
     @IBAction func sendOrderButton(_ sender: Any) {
+        guard let name = enterNameTextField.text,
+            !name.isEmpty,
+            let address = enterAddressTextField.text,
+            !address.isEmpty else { return }
+        
     }
     
 

@@ -11,9 +11,17 @@ import UIKit
 struct ShoppingItem: Codable, Equatable {
     var name: String
     var hasAddedItem: Bool
-    var imageData: Data {
-        guard let image = UIImage(named: name.lowercased()),
-            let data = UIImagePNGRepresentation(image) else { return Data() }
-        return data
+    var imageName: String
+    
+    init(name: String, hasAddedItem: Bool = false) {
+            self.name = name
+        self.imageName = name.lowercased()
+            self.hasAddedItem = hasAddedItem
+       }
+    
+    var image: UIImage  {
+        return UIImage(named: imageName)!
     }
+    
+   
 }

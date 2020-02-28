@@ -11,7 +11,7 @@ import Foundation
 class ShoppingItemController {
     // MARK: - Properties
     var shoppingList: [ShoppingItem] = []
-    var itemNames: [String] = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+    var itemNames: [String] = ["apple", "grapes", "milk", "muffin", "popcorn", "soda", "strawberries"]
     
     var shoppingListSelected: [ShoppingItem] {
         var slArray: [ShoppingItem] = []
@@ -23,6 +23,10 @@ class ShoppingItemController {
         return slArray
     }
     
+    init() {
+        createShoppingList()
+        loadFromPersistentStore()
+    }
     // MARK: - CRUD
     
     func createItem(name: String) {
@@ -35,11 +39,16 @@ class ShoppingItemController {
         return shoppingList[atIndex]
     }
     
-    func updateItem(item: ShoppingItem, hasAdded: Bool, newName: String?) {
+    func updateItem(item: ShoppingItem, newName: String?) {
         guard let index = shoppingList.firstIndex(of: item) else { return }
         guard let newName = newName, !newName.isEmpty else { return }
         shoppingList[index].name = newName
-        shoppingList[index].hasAddedItem = hasAdded
+        saveToPersistentStore()
+    }
+    
+    func updateItemHasAdded(item: ShoppingItem) {
+        guard let index = shoppingList.firstIndex(of: item) else { return }
+        shoppingList[index].hasAddedItem.toggle()
         saveToPersistentStore()
     }
     
@@ -57,6 +66,7 @@ class ShoppingItemController {
                 createItem(name: itemNames[i])
             }
             UserDefaults.standard.set(true, forKey: "DidInitializeShoppingList")
+            saveToPersistentStore()
         }
     }
     

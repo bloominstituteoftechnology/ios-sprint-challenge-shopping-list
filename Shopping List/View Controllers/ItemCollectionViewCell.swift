@@ -15,5 +15,19 @@ class ItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet var itemImageView: UIImageView!
     @IBOutlet var itemNameLabel: UILabel!
     
+    // MARK: - Properties
+    var shoppingItem: ShoppingItem? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    func updateViews() {
+        guard let shoppingItem = shoppingItem else { return }
+        addedLabel.text = shoppingItem.hasAddedItem ? "Added" : "Not Added"
+        itemNameLabel.text = shoppingItem.name
+        itemImageView.image = shoppingItem.image
+        
+    }
     
 }
