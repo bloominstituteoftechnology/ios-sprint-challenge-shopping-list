@@ -8,106 +8,62 @@
 
 import UIKit
 
-//MARK: - Making the Key
-extension String {
-    static let isFirstRunKey = "ShoppingListIsFirstRunKey"
-}
 class ShoppingListCollectionViewController: UICollectionViewController {
-    let itemNames = ["Apple",
-                     "Grapes",
-                     "Milk",
-                     "Muffin",
-                     "Popcorn",
-                     "Soda",
-                     "Strawberries"]
-//MARK: - UserData
-    var hasData: Bool {
-        let setting = UserDefaults.standard.bool(forKey: .isFirstRunKey)
-        
-        if !setting {
-            return false
-        }
-        return true
-    }
-
+    
+    var shoppingItemController = ShoppingItemController()
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
-
+        collectionView?.delegate = self
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    // MARK: UICollectionViewDataSource
-
+    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
     }
-
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return itemNames.count
+        if section == 0 {
+            return shoppingItemController.addedItems.count
+        } else {
+            return shoppingItemController.notAddedItems.count
+        }
+        
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingCell", for: indexPath) as? ShoppingItemCollectionViewCell else { return UICollectionViewCell()}
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingItemCell", for: indexPath) as? ShoppingItemCollectionViewCell else { return UICollectionViewCell() }
         
-        let item = ShoppingItem(name: itemNames[indexPath.item])
-    
-        cell.shoppingItem = item
-    
+        let shoppingItem = getShoppingItem(for: indexPath)
+        
+        cell.shoppingItem = shoppingItem
+        
         return cell
-    }
-//MARK: - Persistent = where we are saving
-    var persistentFileURL: URL? {
-        let fileManager = FileManager.default
-        
-        guard let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
-        
-        let shoppingItemURL = documentsDirectory.appendingPathComponent("shoppingItems.plist")
-        
-        return shoppingItemURL
         
     }
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let shoppingItem = getShoppingItem(for: indexPath)
+        shoppingItemController.toggleHasBeenAdded(for: shoppingItem)
+        collectionView.reloadData()
     }
-    */
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDetailViewSegue" {
+            if let detailVC = segue.destination as? ShoppingItemDetailViewController {
+                detailVC.shoppingItemCount = shoppingItemController.numberOfItemsAdded
+            }
+            
+        }
+    }
+    
+    func getShoppingItem(for indexPath: IndexPath) -> ShoppingItem {
+        let shoppingItem: ShoppingItem
+        if indexPath.section == 0 {
+            shoppingItem = shoppingItemController.addedItems[indexPath.item]
+        } else {
+            shoppingItem = shoppingItemController.notAddedItems[indexPath.item]
+        }
+        
+        return shoppingItem
+    }
+    
 }

@@ -29,8 +29,8 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
             switch item.hasBeenAdded {
                 case true:
                     hasBeenAddedLabel.text = "Added"
-            case false:
-                hasBeenAddedLabel.text = "False"
+                case false:
+                    hasBeenAddedLabel.text = "False"
             }
         }
     }
