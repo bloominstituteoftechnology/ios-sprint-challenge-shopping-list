@@ -8,11 +8,24 @@
 
 import Foundation
 
+extension String {
+    static let listInitializedKey = "listInitialized"
+}
+
 class CartController {
     var cart = [ShoppingItem]()
     
     var numOfItemsInCart: Int {
         return cart.filter { $0.onShoppingList == true }.count
+    }
+    
+    var listInitialized: Bool {
+        get {
+            UserDefaults.standard.bool(forKey: .listInitializedKey)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: .listInitializedKey)
+        }
     }
     
     // Cart delivery information.
@@ -21,44 +34,14 @@ class CartController {
     
     // This initilizer is treated as the viewDidLoad of the model controller.
     init() {
-        loadFromPersistentStore()
+        if listInitialized == false {
+            let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+            
+            listInitialized = true
+        } else {
+            loadFromPersistentStore()
+        }
     }
-
-    // FIXME: Reuse?
-//    func create(pic: Photo) {
-//        photos.append(pic)
-//
-//        saveToPersistentStore()
-//    }
-
-    // FIXME: Reuse?
-//    func create(title: String, image: Data ) {
-//        let pic = Photo(imageData: image, title: title)
-//
-//        photos.append(pic)
-//
-//        saveToPersistentStore()
-//    }
-    
-    // FIXME: Reuse?
-//    func update(pic: Photo, title: String, image: Data) {
-//        var somethingChanged = false
-//
-//        if let index = photos.firstIndex(where: { $0 == pic }) {
-//            if (photos[index].title != title) {
-//                photos[index].title = title
-//                somethingChanged = true
-//            }
-//            if (photos[index].imageData != image) {
-//                photos[index].imageData = image
-//                somethingChanged = true
-//            }
-//        }
-//
-//        if somethingChanged {
-//            saveToPersistentStore()
-//        }
-//    }
 
     // MARK: Persistent Store
     
