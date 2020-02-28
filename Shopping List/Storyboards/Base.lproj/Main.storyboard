@@ -86,10 +86,51 @@
                     <view key="view" contentMode="scaleToFill" id="y6j-6e-nVW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="pvz-mG-nlZ">
+                                <rect key="frame" x="20" y="160" width="374" height="232"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You currently have 3 item(s) in your shopping list." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vrH-vG-Ep5">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="53"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tIj-0f-xpf">
+                                        <rect key="frame" x="0.0" y="80" width="374" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CVe-lP-joS">
+                                        <rect key="frame" x="0.0" y="141" width="374" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dVM-hk-h6I">
+                                        <rect key="frame" x="0.0" y="202" width="374" height="30"/>
+                                        <state key="normal" title="Send Order"/>
+                                        <connections>
+                                            <action selector="sendOrderTapped:" destination="aaa-6G-69g" eventType="touchUpInside" id="guK-WG-bCJ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="HNC-hH-LQT" firstAttribute="trailing" secondItem="pvz-mG-nlZ" secondAttribute="trailing" constant="20" id="FX9-td-h1G"/>
+                            <constraint firstItem="pvz-mG-nlZ" firstAttribute="leading" secondItem="HNC-hH-LQT" secondAttribute="leading" constant="20" id="ili-I3-kgB"/>
+                            <constraint firstItem="pvz-mG-nlZ" firstAttribute="top" secondItem="HNC-hH-LQT" secondAttribute="top" constant="20" id="tH8-ZW-Bli"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="HNC-hH-LQT"/>
                     </view>
                     <navigationItem key="navigationItem" id="tN0-3B-GNg"/>
+                    <connections>
+                        <outlet property="addressTextField" destination="CVe-lP-joS" id="294-vO-xxE"/>
+                        <outlet property="nameTextField" destination="tIj-0f-xpf" id="uwS-vt-o3I"/>
+                        <outlet property="sendOrderButton" destination="dVM-hk-h6I" id="ZOp-bF-ALm"/>
+                        <outlet property="statusLabel" destination="vrH-vG-Ep5" id="aGN-Cy-dVN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U4P-XV-hpw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
