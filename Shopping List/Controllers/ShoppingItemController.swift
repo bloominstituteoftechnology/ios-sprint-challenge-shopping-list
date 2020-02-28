@@ -7,8 +7,19 @@
 //
 
 import Foundation
+import UIKit
 
 class ShoppingItemController: Codable {
+    var initKey = "userDefaultsSet"
+    var initValues: Bool {
+        get {
+            while !UserDefaults.standard.bool(forKey: initKey) { // If we don't get true, run set default.
+                setDefault()
+            }
+            return true
+        }
+    }
+    
     var items: [ShoppingItem] = []
     
     var addedItems: [ShoppingItem] {
@@ -56,5 +67,17 @@ class ShoppingItemController: Codable {
         }
     }
     
+    // MARK: - UserDefaults
+    
+    func setDefault() {
+        
+        let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+        for item in itemNames {
+            guard let image = UIImage(named: item),
+            let imageData = UIImagePNGRepresentation(image) else {return}
+            self.items.append(ShoppingItem(name: item, isAdded: false, imageData: imageData))
+        }
+        UserDefaults.standard.set(true, forKey: initKey)
+    }
     
 }
