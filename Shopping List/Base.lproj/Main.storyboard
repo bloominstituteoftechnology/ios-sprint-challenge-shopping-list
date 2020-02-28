@@ -34,11 +34,22 @@
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bna-Dg-IzN">
                                             <rect key="frame" x="13" y="16" width="89" height="62.5"/>
                                             <constraints>
+                                                <constraint firstAttribute="height" constant="62.5" id="Fmd-JW-WcE"/>
                                                 <constraint firstAttribute="width" secondItem="bna-Dg-IzN" secondAttribute="height" multiplier="105:74" id="NcJ-SV-fIn"/>
+                                                <constraint firstAttribute="width" constant="89" id="TOP-Ag-kgZ"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Added" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Go4-2W-xS6">
                                             <rect key="frame" x="16" y="86.5" width="99" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xu7-cY-zfz">
+                                            <rect key="frame" x="42" y="15.5" width="31" height="20.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20.5" id="WAE-S0-PgI"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
@@ -49,12 +60,15 @@
                                         <constraint firstItem="Go4-2W-xS6" firstAttribute="leading" secondItem="5tr-na-DYV" secondAttribute="leadingMargin" constant="8" id="B8a-34-etn"/>
                                         <constraint firstItem="Go4-2W-xS6" firstAttribute="trailing" secondItem="5tr-na-DYV" secondAttribute="trailingMargin" constant="8" id="C7R-RN-uoF"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="bna-Dg-IzN" secondAttribute="trailing" constant="5" id="gF9-a8-lgT"/>
+                                        <constraint firstItem="xu7-cY-zfz" firstAttribute="top" secondItem="5tr-na-DYV" secondAttribute="topMargin" constant="7.5" id="lR3-MS-0Lh"/>
+                                        <constraint firstItem="xu7-cY-zfz" firstAttribute="centerX" secondItem="5tr-na-DYV" secondAttribute="centerX" id="rt4-ve-IdN"/>
                                         <constraint firstItem="Go4-2W-xS6" firstAttribute="top" secondItem="bna-Dg-IzN" secondAttribute="bottom" constant="8" id="t7s-6S-ZZC"/>
                                         <constraint firstItem="bna-Dg-IzN" firstAttribute="top" secondItem="5tr-na-DYV" secondAttribute="topMargin" constant="8" id="wwp-0W-EMh"/>
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="115" height="116"/>
                                 <connections>
+                                    <outlet property="hasBeenAddedLabel" destination="xu7-cY-zfz" id="yeU-Ja-OGP"/>
                                     <outlet property="shoppingImage" destination="bna-Dg-IzN" id="VUv-2v-7a1"/>
                                     <outlet property="shoppingItemLabel" destination="Go4-2W-xS6" id="wiK-mG-wZs"/>
                                 </connections>
