@@ -32,7 +32,7 @@ class ItemsDetailViewController: UIViewController, UINavigationControllerDelegat
             shoppingContoller?.itemNames = name
             shoppingContoller?.address = address
             
-            alert = true 
+            alert() = true 
         }
     }
     

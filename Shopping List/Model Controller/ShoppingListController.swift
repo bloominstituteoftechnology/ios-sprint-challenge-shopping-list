@@ -8,6 +8,11 @@
 
 import Foundation
 
+
+extension String {
+    static let addItemKey = "addItem"
+}
+
 class ShoppingListController {
     
     var itemNames: [ShoppingItem] = [
