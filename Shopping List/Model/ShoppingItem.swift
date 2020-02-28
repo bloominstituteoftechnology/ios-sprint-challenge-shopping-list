@@ -10,7 +10,7 @@ import UIKit
 
 struct ShoppingItem {
     var name: String
-    var isAdded: Bool
+    var isAdded: Bool = false
     var image: UIImage {
         return UIImage(named: name)!
     }
