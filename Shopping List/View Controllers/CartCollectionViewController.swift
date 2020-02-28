@@ -115,6 +115,10 @@ class CartCollectionViewController: UICollectionViewController, DeliveryAlertDel
         
         cartController.cart[indexPath.item].onShoppingList.toggle()
         
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ShoppingItemCollectionViewCell else { fatalError("ShoppingItemCollectionViewCell was expected" ) }
+
+        cell.shoppingItem = cartController.cart[indexPath.item]
+        
         return true
     }
 
