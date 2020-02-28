@@ -9,7 +9,8 @@
 import Foundation
 
 import UIKit
-struct ShoppingItem {
+
+struct ShoppingItem: Codable {
     var name: String
     var didItemAdded: Bool
         
