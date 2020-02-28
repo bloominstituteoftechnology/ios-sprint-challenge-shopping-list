@@ -84,6 +84,11 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Shopping List" largeTitleDisplayMode="always" id="7Mf-LF-fnl">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="dqO-hi-wsO">
+                            <connections>
+                                <segue destination="1yY-in-E9y" kind="show" identifier="addItem" id="nEw-gV-cK1"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="U9d-bF-cKL">
                             <connections>
                                 <segue destination="6Mw-LD-kq1" kind="show" identifier="checkout" id="wsM-pi-88v"/>
@@ -94,6 +99,61 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hz5-02-SRH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="984.05797101449286" y="129.91071428571428"/>
+        </scene>
+        <!--Add Detail View Controller-->
+        <scene sceneID="sdP-fm-b13">
+            <objects>
+                <viewController id="1yY-in-E9y" customClass="AddDetailViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bdN-wA-ESa">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add an item?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vk2-2H-SCf">
+                                <rect key="frame" x="61" y="317" width="292" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="6Xd-mO-3dr"/>
+                                    <constraint firstAttribute="width" constant="292" id="hTK-WM-3JG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="FOOD NAME" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BpH-GK-68Z">
+                                <rect key="frame" x="78" y="431" width="257" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wkt-7T-X5u">
+                                <rect key="frame" x="136.5" y="540" width="141" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="LAK-zO-9MT"/>
+                                    <constraint firstAttribute="width" constant="141" id="Mp5-iX-w2y"/>
+                                </constraints>
+                                <state key="normal" title="Add Food"/>
+                                <connections>
+                                    <action selector="addFoodPressed:" destination="1yY-in-E9y" eventType="touchUpInside" id="JG7-rs-o78"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="BpH-GK-68Z" firstAttribute="top" secondItem="Vk2-2H-SCf" secondAttribute="bottom" constant="107" id="Pom-bj-X7F"/>
+                            <constraint firstItem="Wkt-7T-X5u" firstAttribute="centerX" secondItem="xfK-Kj-DeP" secondAttribute="centerX" id="UP4-Ep-ZIi"/>
+                            <constraint firstItem="BpH-GK-68Z" firstAttribute="centerY" secondItem="xfK-Kj-DeP" secondAttribute="centerY" id="feM-rl-IIU"/>
+                            <constraint firstItem="Wkt-7T-X5u" firstAttribute="top" secondItem="BpH-GK-68Z" secondAttribute="bottom" constant="22" id="tKD-8p-fUf"/>
+                            <constraint firstItem="BpH-GK-68Z" firstAttribute="centerX" secondItem="xfK-Kj-DeP" secondAttribute="centerX" id="x0Q-0j-2yN"/>
+                            <constraint firstItem="Vk2-2H-SCf" firstAttribute="centerX" secondItem="xfK-Kj-DeP" secondAttribute="centerX" id="ydi-DR-h9j"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xfK-Kj-DeP"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="i9n-sC-eDY"/>
+                    <connections>
+                        <outlet property="foodText" destination="BpH-GK-68Z" id="6Zu-Ud-rmm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bg2-6A-d8I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1895.6521739130437" y="-158.03571428571428"/>
         </scene>
         <!--Shopping Detail View Controller-->
         <scene sceneID="Jnb-7p-3n5">
@@ -159,7 +219,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="byY-O6-36l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1871.0144927536232" y="133.92857142857142"/>
+            <point key="canvasLocation" x="1901" y="544"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eZu-Pd-sLm">

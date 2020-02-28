@@ -16,10 +16,8 @@ class ShoppingCollectionViewController: UICollectionViewController {
     
     private func itemFor(indexPath: IndexPath) -> ShoppingItem {
         if indexPath.section == 0 {
-            print("this is section 0")
             return shoppingController.pickedItems[indexPath.row]
         } else {
-            print("this is section 1")
             return shoppingController.unpickedItems[indexPath.row]
         }
     }
@@ -36,7 +34,11 @@ class ShoppingCollectionViewController: UICollectionViewController {
             guard let vc = segue.destination as? ShoppingDetailViewController else {return}
             vc.shopList = shoppingController.pickedItems
         }
-            
+        
+        if segue.identifier == "addItem" {
+            guard let vc = segue.destination as? AddDetailViewController else {return}
+            vc.delegate = self
+        }
     }
 
     // MARK: UICollectionViewDataSource
@@ -48,13 +50,9 @@ class ShoppingCollectionViewController: UICollectionViewController {
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("ITEMS ALL TOGETHER: \(shoppingController.shoppingItems) ITEMS UNPICKED: \(shoppingController.unpickedItems)")
-                if section == 0 {
-            print("THERES PICKED ITEMS HERE")
+        if section == 0 {
             return shoppingController.pickedItems.count
         } else {
-            print("THERES ITEMS HERE")
-                    print("UNPICKED ITEMS COUNT: \(shoppingController.pickedItems.count)")
             return shoppingController.unpickedItems.count
         }
     }
@@ -62,10 +60,7 @@ class ShoppingCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ShoppingCollectionViewCell else {return UICollectionViewCell()}
     
-               print("CELL COMING UP")
          let item = itemFor(indexPath: indexPath)
-         print(indexPath.section)
-         print(item.name)
          cell.item = item
     
         return cell
@@ -78,6 +73,12 @@ class ShoppingCollectionViewController: UICollectionViewController {
         toggleHasBeenPicked(for: item)
     }
     
+}
 
-
+extension ShoppingCollectionViewController: AddItemDelegate {
+    func itemWasAdded(_ item: ShoppingItem) {
+        shoppingController.createItem(with: item.name, added: item.added)
+        collectionView?.reloadData()
+    }
+    
 }

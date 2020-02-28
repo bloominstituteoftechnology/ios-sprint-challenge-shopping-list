@@ -31,10 +31,5 @@ class ShoppingCollectionViewCell: UICollectionViewCell {
         } else {
             addedLabel.text = "Not Added"
         }
-        
-        
     }
-    
-    
-    
 }

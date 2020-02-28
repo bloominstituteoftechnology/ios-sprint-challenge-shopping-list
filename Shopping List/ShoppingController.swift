@@ -63,20 +63,7 @@ class ShoppingController {
         }
         saveToPersistentStore()
     }
-    /*
-    func updateNameOrReasson(with book: Book, title: String? = nil, reason: String? = nil){
-        
-        if let index = books.firstIndex(where: {$0.title == book.title}){
-            if let newTitle = title {
-                books[index].title = newTitle
-            }
-            if let newReason = reason {
-                books[index].reasonToRead = newReason
-            }
-        }
-        saveToPersistentStore()
-    }
-    */
+
     func saveToPersistentStore() {
         let encoder = PropertyListEncoder()
         
@@ -130,14 +117,12 @@ class ShoppingController {
     func checkItemsInStock() {
         let wasLoaded = UserDefaults.standard.bool(forKey: "loaded")
         if wasLoaded == false {
-            print("NOT LOADED")
             let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
             
             for item in itemNames {
                 createItem(with: item, added: false)
                 
             }
-            print("ARRAY COUNT: \(shoppingItems)")
             UserDefaults.standard.set(true, forKey: "loaded")
         }
     }
