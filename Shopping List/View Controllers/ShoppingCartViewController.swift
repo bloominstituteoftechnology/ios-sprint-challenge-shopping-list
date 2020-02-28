@@ -33,7 +33,7 @@ class ShoppingCartViewController: UIViewController {
     func updateViews() {
         if let shoppingList = shoppingList {
             let filteredItems = shoppingList.shoppingItems.filter( { $0.added == true } )
-            itemCountLabel.text = "You have" + "\(filteredItems.count)" + "item(s) in your shopping list"
+            itemCountLabel.text = "You have" + " \(filteredItems.count) " + "item(s) in your shopping list"
         }
     }
     
