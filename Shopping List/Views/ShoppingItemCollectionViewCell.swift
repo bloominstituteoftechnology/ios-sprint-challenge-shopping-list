@@ -10,4 +10,18 @@ import UIKit
 
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
+    
+    var item: ShoppingItem? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    private func updateViews() {
+        guard let item = item else { return }
+        statusLabel.text = item.isOnShoppingList ? "Added" : "Not Added"
+        imageView.image = item.image
+    }
 }

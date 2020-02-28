@@ -36,15 +36,37 @@ class ShoppingListCollectionViewController: UICollectionViewController {
             return shoppingList.shoppingItemsOnList.count
         }
     }
-
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "", for: indexPath)
     
-        // Configure the cell
+    func itemFor(indexPath: IndexPath) -> ShoppingItem {
+        let item: ShoppingItem
+        
+        if indexPath.section == itemNotOnListSection {
+            item = shoppingList.shoppingItemsNotOnList[indexPath.item]
+        } else {
+            item = shoppingList.shoppingItemsOnList[indexPath.item]
+        }
+        
+        return item
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingItemCell", for: indexPath) as? ShoppingItemCollectionViewCell else {
+            fatalError("Unable to dequeue cell of type \(ShoppingItemCollectionViewCell.self)")
+        }
+        
+        cell.item = itemFor(indexPath: indexPath)
     
         return cell
     }
 
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = itemFor(indexPath: indexPath)
+        
+        shoppingList.toggleItemOnShoppingList(item)
+        collectionView.reloadData()
+    }
+    
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

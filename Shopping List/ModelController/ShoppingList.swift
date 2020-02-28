@@ -35,6 +35,7 @@ class ShoppingList {
         itemToUpdate.isOnShoppingList.toggle()
         
         shoppingItems[index] = itemToUpdate
+        saveToPersistentStore()
     }
     
     
