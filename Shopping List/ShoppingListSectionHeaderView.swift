@@ -9,12 +9,24 @@
 import UIKit
 
 class ShoppingListSectionHeaderView: UICollectionReusableView {
-        
+    
+    //MARK: - IBOutlets
+    
     @IBOutlet weak var titleLabel: UILabel!
+    
+    
+    //MARK: - Properties
     
     var title: String? {
         didSet {
-            titleLabel.text = title
+            updateViews()
         }
+    }
+    
+    
+    //MARK: - Private
+    
+    private func updateViews() {
+        titleLabel.text = title
     }
 }

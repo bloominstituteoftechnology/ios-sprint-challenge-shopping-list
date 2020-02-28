@@ -32,6 +32,8 @@ class SubmitOrderViewController: UIViewController {
     
     //MARK: - Private
     
+    // Notification
+    
     private func registerLocalNotification() {
         let center = UNUserNotificationCenter.current()
         
@@ -68,6 +70,8 @@ class SubmitOrderViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    // Update Views
+    
     private func updateStatus() {
         guard let shoppingList = shoppingList else { return }
         statusLabel.text = "You currently have \(shoppingList.itemsOnList.count) items in your shopping list."
@@ -83,6 +87,9 @@ class SubmitOrderViewController: UIViewController {
         updateStatus()
     }
 }
+
+
+//MARK: - TextFieldDelegate
 
 extension SubmitOrderViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {

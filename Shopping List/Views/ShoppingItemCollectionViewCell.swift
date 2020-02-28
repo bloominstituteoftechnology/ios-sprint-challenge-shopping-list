@@ -10,14 +10,22 @@ import UIKit
 
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
+    //MARK: - IBOutlets
+    
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    
+    
+    //MARK: - Properties
     
     var item: ShoppingItem? {
         didSet {
             updateViews()
         }
     }
+    
+    
+    //MARK: - Private
     
     private func updateViews() {
         guard let item = item else { return }

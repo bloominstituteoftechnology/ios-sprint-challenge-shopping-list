@@ -17,25 +17,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="I0Z-ty-tA5">
-                            <size key="itemSize" width="200" height="250"/>
-                            <size key="headerReferenceSize" width="50" height="50"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="I0Z-ty-tA5">
+                            <size key="itemSize" width="180" height="240"/>
+                            <size key="headerReferenceSize" width="50" height="80"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoppingItemCell" id="dTe-is-bVh" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="60" width="200" height="250"/>
+                                <rect key="frame" x="0.0" y="80" width="180" height="240"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="BMR-IZ-kGp">
-                                    <rect key="frame" x="0.0" y="0.0" width="200" height="250"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="180" height="240"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="h9U-OQ-6en">
-                                            <rect key="frame" x="0.0" y="0.0" width="200" height="250"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="180" height="240"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Added" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S77-WV-9zj">
-                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="30"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="180" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="eNG-vw-Y2r"/>
                                                     </constraints>
@@ -44,7 +44,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Apple" translatesAutoresizingMaskIntoConstraints="NO" id="ugF-tL-eSI">
-                                                    <rect key="frame" x="0.0" y="40" width="200" height="210"/>
+                                                    <rect key="frame" x="0.0" y="40" width="180" height="200"/>
                                                 </imageView>
                                             </subviews>
                                         </stackView>
@@ -63,15 +63,15 @@
                             </collectionViewCell>
                         </cells>
                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="SectionHeader" id="OeK-xX-9Ni" customClass="ShoppingListSectionHeaderView" customModule="Shopping_List" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iNV-gY-sKA">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                    <rect key="frame" x="0.0" y="20" width="414" height="40"/>
                                     <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Items on Shopping List" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1oV-eF-c2x">
-                                    <rect key="frame" x="100" y="13" width="214.5" height="24"/>
+                                    <rect key="frame" x="100" y="28" width="214.5" height="24"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
@@ -81,9 +81,9 @@
                             <constraints>
                                 <constraint firstItem="iNV-gY-sKA" firstAttribute="leading" secondItem="OeK-xX-9Ni" secondAttribute="leading" id="9vG-1z-XqD"/>
                                 <constraint firstItem="1oV-eF-c2x" firstAttribute="centerY" secondItem="OeK-xX-9Ni" secondAttribute="centerY" id="B7A-VQ-ZAh"/>
-                                <constraint firstItem="iNV-gY-sKA" firstAttribute="top" secondItem="OeK-xX-9Ni" secondAttribute="top" id="BS4-bQ-loV"/>
+                                <constraint firstItem="iNV-gY-sKA" firstAttribute="top" secondItem="OeK-xX-9Ni" secondAttribute="top" constant="20" id="BS4-bQ-loV"/>
                                 <constraint firstAttribute="trailing" secondItem="iNV-gY-sKA" secondAttribute="trailing" id="NGn-tS-0yV"/>
-                                <constraint firstAttribute="bottom" secondItem="iNV-gY-sKA" secondAttribute="bottom" id="Yn9-Vv-eXj"/>
+                                <constraint firstAttribute="bottom" secondItem="iNV-gY-sKA" secondAttribute="bottom" constant="20" id="Yn9-Vv-eXj"/>
                                 <constraint firstItem="1oV-eF-c2x" firstAttribute="centerX" secondItem="OeK-xX-9Ni" secondAttribute="centerX" id="wAr-Gm-Iyd"/>
                             </constraints>
                             <connections>

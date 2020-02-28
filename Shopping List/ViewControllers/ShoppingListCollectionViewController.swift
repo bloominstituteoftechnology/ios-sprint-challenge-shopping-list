@@ -13,13 +13,6 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
     let shoppingList = ShoppingList()
     
-    //MARK: - View Lifecycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
-    
     // MARK: UICollectionViewDataSource
     
     private let itemsNotOnListSection = 0
