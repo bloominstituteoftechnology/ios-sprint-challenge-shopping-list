@@ -85,7 +85,7 @@
                     <navigationItem key="navigationItem" id="Tjg-3c-oul">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="6vJ-88-IHs">
                             <connections>
-                                <segue destination="cyG-Yj-vl2" kind="show" id="E8R-Fn-bHq"/>
+                                <segue destination="cyG-Yj-vl2" kind="show" identifier="SendOrderSegue" id="E8R-Fn-bHq"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -94,10 +94,10 @@
             </objects>
             <point key="canvasLocation" x="1046.376811594203" y="68.973214285714278"/>
         </scene>
-        <!--View Controller-->
+        <!--Order View Controller-->
         <scene sceneID="pWD-So-9ig">
             <objects>
-                <viewController id="cyG-Yj-vl2" sceneMemberID="viewController">
+                <viewController id="cyG-Yj-vl2" customClass="OrderViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fSK-Cy-vuC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -124,6 +124,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m6V-Ld-VXT">
                                         <rect key="frame" x="0.0" y="179" width="384" height="30"/>
                                         <state key="normal" title="Send Order"/>
+                                        <connections>
+                                            <action selector="orderButton:" destination="cyG-Yj-vl2" eventType="touchUpInside" id="AFv-GQ-G2e"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -139,6 +142,11 @@
                     <navigationItem key="navigationItem" id="uqo-xI-BPO">
                         <barButtonItem key="backBarButtonItem" title="Change Shopping List" id="Chd-S1-Sgm"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addressField" destination="lev-xg-PAg" id="KVl-oL-1Ia"/>
+                        <outlet property="listSizeLabel" destination="DO9-wR-mGG" id="y2X-rf-zbV"/>
+                        <outlet property="nameTextField" destination="J68-96-pS7" id="2WI-zU-HUm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SbM-hZ-aMq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
