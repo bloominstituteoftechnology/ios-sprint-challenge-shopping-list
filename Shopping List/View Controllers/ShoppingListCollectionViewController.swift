@@ -60,7 +60,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         let item = shoppingListController.itemNames[indexPath.item]
        
         shoppingListController.itemNames[indexPath.item] = item
-        shoppingListController.saveToPersistentStore()
+        shoppingListController.addItemCart(item: 1)
         collectionView.reloadData()
         return true
         

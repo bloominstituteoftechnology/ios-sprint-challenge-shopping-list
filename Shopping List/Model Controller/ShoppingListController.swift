@@ -66,7 +66,7 @@ class ShoppingListController {
             let data = try Data(contentsOf: itemsURL)
             let decoder = PropertyListDecoder()
             let shoppingItemList = try decoder.decode([ShoppingItem].self, from: data)
-            self.shoppingItems = shoppingItemList
+           // self.shoppingItems = shoppingItemList
         } catch {
             print("Error decoding items: \(error)")
         }

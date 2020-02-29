@@ -18,29 +18,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="15s-ao-PpU">
-                            <size key="itemSize" width="184" height="168"/>
+                            <size key="itemSize" width="161" height="156"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="ItemCell" id="03z-3D-HQy" customClass="ItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="184" height="168"/>
+                                <rect key="frame" x="0.0" y="0.0" width="161" height="156"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="evb-MS-eb9">
-                                    <rect key="frame" x="0.0" y="0.0" width="184" height="168"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y16-eb-Tc1">
+                                    <rect key="frame" x="0.0" y="0.0" width="161" height="156"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Grapes" translatesAutoresizingMaskIntoConstraints="NO" id="grq-eG-dnw">
-                                            <rect key="frame" x="2" y="0.0" width="182" height="182"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Apple" translatesAutoresizingMaskIntoConstraints="NO" id="2xe-rP-Ddg">
+                                            <rect key="frame" x="8" y="8" width="145" height="120"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="182" id="KCX-jF-ejg"/>
-                                                <constraint firstAttribute="width" secondItem="grq-eG-dnw" secondAttribute="height" multiplier="1:1" id="nY8-iw-l8d"/>
+                                                <constraint firstAttribute="width" secondItem="2xe-rP-Ddg" secondAttribute="height" multiplier="29:24" id="Eff-0f-H2O"/>
                                             </constraints>
                                         </imageView>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ZY-Ua-FvO">
-                                            <rect key="frame" x="55" y="138" width="78" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ZY-Ua-FvO">
+                                            <rect key="frame" x="8" y="9" width="145" height="139"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <state key="normal" title="Not Added">
                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -51,13 +48,23 @@
                                         </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="grq-eG-dnw" secondAttribute="trailing" id="3XY-Bz-78b"/>
-                                        <constraint firstItem="grq-eG-dnw" firstAttribute="top" secondItem="evb-MS-eb9" secondAttribute="top" id="t5A-Ks-8WL"/>
+                                        <constraint firstItem="2xe-rP-Ddg" firstAttribute="top" secondItem="y16-eb-Tc1" secondAttribute="top" constant="8" id="9jL-Mx-tD1"/>
+                                        <constraint firstItem="4ZY-Ua-FvO" firstAttribute="top" secondItem="y16-eb-Tc1" secondAttribute="top" constant="9" id="Bi4-hK-652"/>
+                                        <constraint firstItem="2xe-rP-Ddg" firstAttribute="leading" secondItem="y16-eb-Tc1" secondAttribute="leading" constant="8" id="FLk-hR-jTt"/>
+                                        <constraint firstAttribute="trailing" secondItem="4ZY-Ua-FvO" secondAttribute="trailing" constant="8" id="Zn0-4v-X6W"/>
+                                        <constraint firstAttribute="bottom" secondItem="4ZY-Ua-FvO" secondAttribute="bottom" constant="8" id="sPl-Cs-RBS"/>
+                                        <constraint firstAttribute="trailing" secondItem="2xe-rP-Ddg" secondAttribute="trailing" constant="8" id="t2L-CI-0X0"/>
+                                        <constraint firstItem="4ZY-Ua-FvO" firstAttribute="leading" secondItem="y16-eb-Tc1" secondAttribute="leading" constant="8" id="xaQ-6V-DNi"/>
                                     </constraints>
                                 </collectionViewCellContentView>
-                                <size key="customSize" width="184" height="168"/>
+                                <constraints>
+                                    <constraint firstItem="y16-eb-Tc1" firstAttribute="leading" secondItem="03z-3D-HQy" secondAttribute="leadingMargin" constant="-8" id="T96-q5-qnH"/>
+                                    <constraint firstItem="y16-eb-Tc1" firstAttribute="top" secondItem="03z-3D-HQy" secondAttribute="topMargin" constant="-8" id="dzU-cf-CFB"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="y16-eb-Tc1" secondAttribute="bottom" constant="-8" id="ofm-fr-21U"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="y16-eb-Tc1" secondAttribute="trailing" constant="-8" id="vKD-qF-8oP"/>
+                                </constraints>
+                                <size key="customSize" width="161" height="156"/>
                                 <connections>
-                                    <outlet property="imageView" destination="evb-MS-eb9" id="VEK-Jk-grm"/>
                                     <outlet property="notAddedButton" destination="4ZY-Ua-FvO" id="Ut8-Bj-fEw"/>
                                 </connections>
                             </collectionViewCell>
@@ -157,6 +164,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Grapes" width="504" height="550"/>
+        <image name="Apple" width="229" height="300"/>
     </resources>
 </document>
