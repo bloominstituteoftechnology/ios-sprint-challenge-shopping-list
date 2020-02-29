@@ -25,8 +25,21 @@ class ShoppingListController {
     var shoppingItems: [ShoppingItem] = []
     
     
+    init() {
+        let addedItem = UserDefaults.standard.bool(forKey: .addItemKey)
+        if addedItem {
+            loadFromPersistentStore() }
+        else {
+            UserDefaults.standard.set(true, forKey: .addItemKey)
+            saveToPersistentStore()
+        }
+    }
     
-    
+    func addItemCart(item: Int) {
+          shoppingItems[item].hasBeenAdded.toggle()
+          saveToPersistentStore()
+          }
+      }
     
     var shoppingListURL: URL? {
         let fileManager = FileManager.default
@@ -35,26 +48,12 @@ class ShoppingListController {
         return documentsDirectory.appendingPathComponent("ShoppingList.plist")
     }
 
- 
-    init() {
-        let addedItem = UserDefaults.standard.bool(forKey: .addItemKey)
-        if addedItem {
-            loadFromPersistentStore() }
-        else {
-            UserDefaults.standard.set(true, forKey: .addItemKey)
-            addItemCart()
-            saveToPersistentStore()
-        }
-    }
 
-    
-    
-   
     func saveToPersistentStore() {
         guard let itemsURL = shoppingListURL else { return }
         do {
             let encoder = PropertyListEncoder()
-            let data = try encoder.encode(shoppingItems)
+            let data = try encoder.encode(shoppingListURL)
             try data.write(to: itemsURL)
         } catch {
             print("Unable to save item(s) to plist: \(error)")
@@ -73,18 +72,13 @@ class ShoppingListController {
         }
     }
     
-    func addItemCart() {
-        for item in itemNames {
-            itemNames.append(item)
-        }
-    }
     
         
           
     
     
     
-    }
+   
     
     
     

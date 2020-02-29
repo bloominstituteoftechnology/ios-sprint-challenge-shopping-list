@@ -34,7 +34,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as? ItemCollectionViewCell else { return UICollectionViewCell() }
         
         let item = shoppingListController.itemNames[indexPath.item]
-        
+        //cell.shoppingItem = item 
     
         
         return cell
@@ -58,7 +58,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         
         
         let item = shoppingListController.itemNames[indexPath.item]
-      
+       
         shoppingListController.itemNames[indexPath.item] = item
         shoppingListController.saveToPersistentStore()
         collectionView.reloadData()

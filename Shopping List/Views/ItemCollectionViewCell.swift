@@ -15,21 +15,36 @@ class ItemCollectionViewCell: UICollectionViewCell {
               updateViews()
           }
       }
+    @IBOutlet weak var notAddedButton: UIButton!
+    
+    
+    
+    @IBOutlet weak var imageView: UIImageView!
+    
+    @IBAction func notAdded(_ sender: Any) {
+        guard var item = item else { return }
+        
+        item.hasBeenAdded = !item.hasBeenAdded
+        
+        let buttonTapped = notAddedButton.currentTitle! == "Not Added" ?
+        "Not Added" : "Added"
+        notAddedButton.setTitle(buttonTapped, for: .normal)
+    }
+    
     
     private func updateViews() {
         guard let item = item else { return }
         
         imageView.image = item.image
-        label.text = item.name
+        item.hasBeenAdded = !item.hasBeenAdded
+        
+        if item.hasBeenAdded == true {
+            notAddedButton.setTitle("Not Added", for: [])
+        } else {
+            notAddedButton.setTitle("Added", for: [])
+        }
         
     }
-
-    
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var label: UILabel!
-    
-    
-    
     
     
     
