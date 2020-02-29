@@ -10,39 +10,38 @@ import UIKit
 
 
 class ShoppingListCollectionViewController: UICollectionViewController {
-
+    
     let shoppingListController = ShoppingListController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         collectionView?.reloadData()
     }
     
-
+    
     // MARK: UICollectionViewDataSource
-
-
+    
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return shoppingListController.itemNames.count
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as? ItemCollectionViewCell else { return UICollectionViewCell() }
-    
+        
         let item = shoppingListController.itemNames[indexPath.item]
         
-        cell.item = item
-    
+        
         return cell
     }
-
-   
     
-
+    
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "SendOrderSegue" {
@@ -52,5 +51,17 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     }
     
     
+    // MARK: - UICollectionViewDelegate 
     
+    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        
+        
+        let item = shoppingListController.itemNames[indexPath.item]
+      
+        shoppingListController.itemNames[indexPath.item] = item
+        shoppingListController.saveToPersistentStore()
+        collectionView.reloadData()
+        return true
+        
+    }
 }

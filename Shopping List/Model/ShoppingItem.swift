@@ -8,21 +8,15 @@
 
 import UIKit
 
-struct ShoppingItem: Codable, Equatable {
+class ShoppingItem: Codable {
     
     var name: String
-    var hasBeenAdded: Bool
-    var image: UIImage {
-        return UIImage(named: name)!
-    }
-    
-    init(name: String, hasBeenAdded: Bool = false) {
-        self.name = name
-        self.hasBeenAdded = hasBeenAdded
+    var hasBeenAdded: Bool = false
+    var image: UIImage? {
+        return UIImage(named: name)
     }
     
     
- 
    
     
     

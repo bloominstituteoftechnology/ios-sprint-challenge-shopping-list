@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemsDetailViewController: UIViewController, UINavigationControllerDelegate {
+class ItemsDetailViewController: UIViewController {
 
     var item: ShoppingItem?
     var shoppingContoller: ShoppingListController?
@@ -18,30 +18,33 @@ class ItemsDetailViewController: UIViewController, UINavigationControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateViews()
     }
     
     
     
     @IBAction func sendOrder(_ sender: Any) {
+        alert()
+        }
         
-        alert(name: nameLabel, address: addressLabel)
         
-        if let name = nameLabel.text
-        let address = addressLabel.text {
-            
-            shoppingContoller?.itemNames = name
-            shoppingContoller?.address = address
-            
-            alert() = true 
+    func updateViews() {
+        if let shoppingController = shoppingContoller {
+            let items = shoppingController.shoppingItems.filter( {$0.hasBeenAdded == true })
         }
     }
     
+    
     // Shopping List Notifications
     
-    func alert(name: String, address: String, minutes: Int = 15) {
-        let alert = UIAlertController(title: "Delivery for \(name)!", message: "Your shopping items will be delivered to \(address) in  \(minutes)", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true)
+    func alert() {
+        if let name = nameLabel.text,
+            let address = addressLabel.text {
+            let alert = UIAlertController(title: "Heya \(name)!", message: "Your items will be delivered in 15 mintues to \(address).", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true)
+        }
     }
     
     
