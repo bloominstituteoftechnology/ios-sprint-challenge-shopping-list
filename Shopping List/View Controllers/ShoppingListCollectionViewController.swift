@@ -35,6 +35,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         
         let item = shoppingListController.itemNames[indexPath.item]
         
+    
         
         return cell
     }
