@@ -31,7 +31,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="184" height="168"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Apple" translatesAutoresizingMaskIntoConstraints="NO" id="grq-eG-dnw">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Grapes" translatesAutoresizingMaskIntoConstraints="NO" id="grq-eG-dnw">
                                             <rect key="frame" x="2" y="0.0" width="182" height="143"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="182" id="KCX-jF-ejg"/>
@@ -90,48 +90,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MUQ-SM-lZr">
-                                <rect key="frame" x="57" y="179" width="283" height="78"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="You currently have 3 item(s) in your shopping list" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uxv-aO-fop">
-                                <rect key="frame" x="15" y="110" width="385" height="79"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="79" id="87f-9q-aOS"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Hj-sg-ZUv">
-                                <rect key="frame" x="159" y="325" width="79" height="30"/>
-                                <state key="normal" title="Send Order"/>
-                                <connections>
-                                    <action selector="sendOrder:" destination="azj-ze-F2n" eventType="touchUpInside" id="RYr-Sm-vrF"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your address:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AYX-3h-Vp3">
-                                <rect key="frame" x="57" y="265" width="283" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="htJ-oO-xgu">
+                                <rect key="frame" x="10" y="97" width="384" height="207"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="You have 3 item(s) in your shopping list." translatesAutoresizingMaskIntoConstraints="NO" id="riS-GE-ZBM">
+                                        <rect key="frame" x="0.0" y="0.0" width="384" height="61"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="21"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MUQ-SM-lZr">
+                                        <rect key="frame" x="0.0" y="77" width="384" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your address:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AYX-3h-Vp3">
+                                        <rect key="frame" x="0.0" y="127" width="384" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Hj-sg-ZUv">
+                                        <rect key="frame" x="0.0" y="177" width="384" height="30"/>
+                                        <state key="normal" title="Send Order"/>
+                                        <connections>
+                                            <action selector="sendOrder:" destination="azj-ze-F2n" eventType="touchUpInside" id="RYr-Sm-vrF"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="kxl-M9-RST" firstAttribute="bottom" secondItem="AYX-3h-Vp3" secondAttribute="bottom" constant="563" id="2ZO-gv-dcj"/>
-                            <constraint firstItem="8Hj-sg-ZUv" firstAttribute="centerX" secondItem="AYX-3h-Vp3" secondAttribute="centerX" id="5LD-5U-9nh"/>
-                            <constraint firstItem="uxv-aO-fop" firstAttribute="leading" secondItem="kxl-M9-RST" secondAttribute="leading" constant="15" id="7dk-TQ-aGp"/>
-                            <constraint firstItem="AYX-3h-Vp3" firstAttribute="top" secondItem="MUQ-SM-lZr" secondAttribute="bottom" constant="8" id="GUI-fh-EBy"/>
-                            <constraint firstItem="MUQ-SM-lZr" firstAttribute="top" secondItem="uxv-aO-fop" secondAttribute="bottom" constant="-10" id="Kg1-eW-4we"/>
-                            <constraint firstItem="uxv-aO-fop" firstAttribute="top" secondItem="kxl-M9-RST" secondAttribute="top" constant="22" id="SLI-gJ-Xzd"/>
-                            <constraint firstItem="AYX-3h-Vp3" firstAttribute="trailing" secondItem="MUQ-SM-lZr" secondAttribute="trailing" id="Unt-v0-xOe"/>
-                            <constraint firstItem="AYX-3h-Vp3" firstAttribute="leading" secondItem="kxl-M9-RST" secondAttribute="leading" constant="57" id="VVZ-7D-N0W"/>
-                            <constraint firstItem="uxv-aO-fop" firstAttribute="centerX" secondItem="WuN-zA-uOY" secondAttribute="centerX" id="gBe-gs-neY"/>
-                            <constraint firstItem="AYX-3h-Vp3" firstAttribute="top" secondItem="MUQ-SM-lZr" secondAttribute="bottom" constant="8" id="igA-gt-AUM"/>
-                            <constraint firstItem="AYX-3h-Vp3" firstAttribute="leading" secondItem="MUQ-SM-lZr" secondAttribute="leading" id="phC-tM-xey"/>
-                            <constraint firstItem="8Hj-sg-ZUv" firstAttribute="top" secondItem="AYX-3h-Vp3" secondAttribute="bottom" constant="26" id="v2j-Id-JRT"/>
-                            <constraint firstItem="kxl-M9-RST" firstAttribute="trailing" secondItem="AYX-3h-Vp3" secondAttribute="trailing" constant="74" id="vbq-ZY-QhU"/>
+                            <constraint firstItem="htJ-oO-xgu" firstAttribute="top" secondItem="kxl-M9-RST" secondAttribute="top" constant="9" id="Pf0-Gt-bSj"/>
+                            <constraint firstItem="htJ-oO-xgu" firstAttribute="trailing" secondItem="WuN-zA-uOY" secondAttribute="trailingMargin" id="V7L-dP-oE0"/>
+                            <constraint firstItem="htJ-oO-xgu" firstAttribute="leading" secondItem="kxl-M9-RST" secondAttribute="leading" constant="10" id="h7d-bI-wHX"/>
+                            <constraint firstItem="kxl-M9-RST" firstAttribute="bottom" secondItem="htJ-oO-xgu" secondAttribute="bottom" constant="558" id="zP8-vC-sSX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kxl-M9-RST"/>
                     </view>
@@ -143,7 +137,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYK-9h-12D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2029" y="5"/>
+            <point key="canvasLocation" x="2028.985507246377" y="4.6875"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="MpJ-DF-bda">
@@ -165,6 +159,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Apple" width="229" height="300"/>
+        <image name="Grapes" width="504" height="550"/>
     </resources>
 </document>
