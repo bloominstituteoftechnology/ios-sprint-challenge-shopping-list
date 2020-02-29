@@ -14,6 +14,7 @@ class OrderViewController: UIViewController {
         super.viewDidLoad()
         updateViews()
     }
+    
     @IBAction func sendOrderTapped(_ sender: UIButton) {
         guard let name = userNameTextField.text, let address = addressTextField.text, !name.isEmpty, !address.isEmpty else { return }
         sendAlert(to: name, at: address)
@@ -25,6 +26,8 @@ class OrderViewController: UIViewController {
         numberOfItemsLabel.text = "You currently have \(itemCount) item(s) in your shopping list."
     }
     
+    
+    // Alert code
     private func sendAlert(to name: String, at address: String) {
         let title = "Delivery for \(name)!"
         let message = "Your items will be delivered to \(address) in 15 minutes."

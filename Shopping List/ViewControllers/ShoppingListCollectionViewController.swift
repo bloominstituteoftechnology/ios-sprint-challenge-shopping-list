@@ -24,7 +24,9 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         
         guard let orderVC = segue.destination as? OrderViewController else { return }
         orderVC.itemCount = shoppingItemController.shoppingList.filter( {$0.wasAdded} ).count
-    }    // MARK: UICollectionViewDataSource
+    }
+    
+    // MARK: UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         shoppingItemController.shoppingList.count
