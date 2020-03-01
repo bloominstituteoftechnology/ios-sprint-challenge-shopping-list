@@ -12,14 +12,11 @@ class ShoppingItem: Codable {
     
     var name: String
     var hasBeenAdded: Bool = false
+    
     var image: UIImage? {
-        return UIImage(named: name)
+        let picture = UIImage(named: name)
+        return picture
     }
-    
-    
-   
-    
-    
 }
 
 

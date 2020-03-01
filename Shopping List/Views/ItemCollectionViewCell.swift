@@ -16,21 +16,9 @@ class ItemCollectionViewCell: UICollectionViewCell {
           }
       }
     @IBOutlet weak var notAddedButton: UIButton!
-    
-    
-    
     @IBOutlet weak var imageView: UIImageView!
     
-    @IBAction func notAdded(_ sender: Any) {
-        guard var item = item else { return }
-        
-        item.hasBeenAdded = !item.hasBeenAdded
-        
-        let buttonTapped = notAddedButton.currentTitle! == "Not Added" ?
-        "Not Added" : "Added"
-        notAddedButton.setTitle(buttonTapped, for: .normal)
-    }
-    
+   
     
     private func updateViews() {
         guard let item = item else { return }

@@ -11,7 +11,7 @@ import UIKit
 
 class ShoppingListCollectionViewController: UICollectionViewController {
     
-    let shoppingListController = ShoppingListController()
+    var shoppingListController = ShoppingListController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +60,6 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         let item = shoppingListController.itemNames[indexPath.item]
        
         shoppingListController.itemNames[indexPath.item] = item
-        shoppingListController.addItemCart(item: 1)
         collectionView.reloadData()
         return true
         

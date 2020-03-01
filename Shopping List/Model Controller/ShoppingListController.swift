@@ -35,11 +35,12 @@ class ShoppingListController {
         }
     }
     
-    func addItemCart(item: Int) {
-          shoppingItems[item].hasBeenAdded.toggle()
-          saveToPersistentStore()
-          }
-      }
+
+    
+    var addItems: [ShoppingItem] {
+        let addItem = shoppingItems.filter{ $0.hasBeenAdded == true }
+        return addItem
+    }
     
     var shoppingListURL: URL? {
         let fileManager = FileManager.default
@@ -87,3 +88,4 @@ class ShoppingListController {
     
     
 
+}

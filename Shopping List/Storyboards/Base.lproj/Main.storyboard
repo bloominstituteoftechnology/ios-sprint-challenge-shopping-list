@@ -30,14 +30,12 @@
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y16-eb-Tc1">
                                     <rect key="frame" x="0.0" y="0.0" width="161" height="156"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Apple" translatesAutoresizingMaskIntoConstraints="NO" id="2xe-rP-Ddg">
-                                            <rect key="frame" x="8" y="8" width="145" height="120"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="2xe-rP-Ddg" secondAttribute="height" multiplier="29:24" id="Eff-0f-H2O"/>
-                                            </constraints>
-                                        </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ZY-Ua-FvO">
-                                            <rect key="frame" x="8" y="9" width="145" height="139"/>
+                                            <rect key="frame" x="8" y="126" width="145" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="Itp-ft-o8A"/>
+                                                <constraint firstAttribute="width" constant="145" id="Jkf-UE-g1R"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <state key="normal" title="Not Added">
                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -46,25 +44,28 @@
                                                 <action selector="notAdded:" destination="03z-3D-HQy" eventType="touchUpInside" id="jwM-Su-kgu"/>
                                             </connections>
                                         </button>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Milk" translatesAutoresizingMaskIntoConstraints="NO" id="prJ-Ly-NfN">
+                                            <rect key="frame" x="8" y="8" width="145" height="117"/>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="2xe-rP-Ddg" firstAttribute="top" secondItem="y16-eb-Tc1" secondAttribute="top" constant="8" id="9jL-Mx-tD1"/>
-                                        <constraint firstItem="4ZY-Ua-FvO" firstAttribute="top" secondItem="y16-eb-Tc1" secondAttribute="top" constant="9" id="Bi4-hK-652"/>
-                                        <constraint firstItem="2xe-rP-Ddg" firstAttribute="leading" secondItem="y16-eb-Tc1" secondAttribute="leading" constant="8" id="FLk-hR-jTt"/>
-                                        <constraint firstAttribute="trailing" secondItem="4ZY-Ua-FvO" secondAttribute="trailing" constant="8" id="Zn0-4v-X6W"/>
-                                        <constraint firstAttribute="bottom" secondItem="4ZY-Ua-FvO" secondAttribute="bottom" constant="8" id="sPl-Cs-RBS"/>
-                                        <constraint firstAttribute="trailing" secondItem="2xe-rP-Ddg" secondAttribute="trailing" constant="8" id="t2L-CI-0X0"/>
-                                        <constraint firstItem="4ZY-Ua-FvO" firstAttribute="leading" secondItem="y16-eb-Tc1" secondAttribute="leading" constant="8" id="xaQ-6V-DNi"/>
+                                        <constraint firstItem="prJ-Ly-NfN" firstAttribute="trailing" secondItem="y16-eb-Tc1" secondAttribute="trailingMargin" id="Glh-cZ-I7Q"/>
+                                        <constraint firstItem="prJ-Ly-NfN" firstAttribute="leading" secondItem="4ZY-Ua-FvO" secondAttribute="leading" id="PH9-Ia-fF3"/>
+                                        <constraint firstAttribute="bottom" secondItem="4ZY-Ua-FvO" secondAttribute="bottom" id="Vgd-Qr-IsC"/>
+                                        <constraint firstItem="4ZY-Ua-FvO" firstAttribute="top" secondItem="prJ-Ly-NfN" secondAttribute="bottom" constant="1" id="Vln-BH-TrM"/>
+                                        <constraint firstItem="prJ-Ly-NfN" firstAttribute="leading" secondItem="y16-eb-Tc1" secondAttribute="leadingMargin" id="lsj-zS-wbw"/>
+                                        <constraint firstItem="prJ-Ly-NfN" firstAttribute="top" secondItem="y16-eb-Tc1" secondAttribute="topMargin" id="me4-b4-UWk"/>
+                                        <constraint firstItem="prJ-Ly-NfN" firstAttribute="trailing" secondItem="4ZY-Ua-FvO" secondAttribute="trailing" id="uqZ-zt-rOA"/>
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <constraints>
-                                    <constraint firstItem="y16-eb-Tc1" firstAttribute="leading" secondItem="03z-3D-HQy" secondAttribute="leadingMargin" constant="-8" id="T96-q5-qnH"/>
-                                    <constraint firstItem="y16-eb-Tc1" firstAttribute="top" secondItem="03z-3D-HQy" secondAttribute="topMargin" constant="-8" id="dzU-cf-CFB"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="y16-eb-Tc1" secondAttribute="bottom" constant="-8" id="ofm-fr-21U"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="y16-eb-Tc1" secondAttribute="trailing" constant="-8" id="vKD-qF-8oP"/>
+                                    <constraint firstItem="y16-eb-Tc1" firstAttribute="leading" secondItem="03z-3D-HQy" secondAttribute="leadingMargin" constant="-8" id="Jur-5x-MQL"/>
+                                    <constraint firstItem="y16-eb-Tc1" firstAttribute="top" secondItem="03z-3D-HQy" secondAttribute="topMargin" constant="-8" id="tqv-nS-air"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="y16-eb-Tc1" secondAttribute="bottom" constant="-8" id="zub-rM-oT0"/>
                                 </constraints>
                                 <size key="customSize" width="161" height="156"/>
                                 <connections>
+                                    <outlet property="imageView" destination="prJ-Ly-NfN" id="ova-G1-opF"/>
                                     <outlet property="notAddedButton" destination="4ZY-Ua-FvO" id="Ut8-Bj-fEw"/>
                                 </connections>
                             </collectionViewCell>
@@ -137,6 +138,7 @@
                     <navigationItem key="navigationItem" id="0kp-JZ-9No"/>
                     <connections>
                         <outlet property="addressLabel" destination="AYX-3h-Vp3" id="C5A-2y-aFP"/>
+                        <outlet property="name" destination="riS-GE-ZBM" id="a8h-7n-sog"/>
                         <outlet property="nameLabel" destination="MUQ-SM-lZr" id="MeL-xt-fOO"/>
                     </connections>
                 </viewController>
@@ -164,6 +166,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Apple" width="229" height="300"/>
+        <image name="Milk" width="1331" height="1635"/>
     </resources>
 </document>
