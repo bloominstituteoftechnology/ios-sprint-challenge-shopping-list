@@ -26,7 +26,9 @@ class OrderViewController: UIViewController {
     
     @IBAction func orderButton(_ sender: Any) {
         guard let name = nameTextField.text,
-            let address = addressField.text else {return}
+            let address = addressField.text,
+            !name.isEmpty,
+            !address.isEmpty else {return}
         
         let content = UNUserNotificationCenter.current()
         

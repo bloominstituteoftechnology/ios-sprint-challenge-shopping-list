@@ -11,14 +11,6 @@ import UIKit
 
 class ShoppingItemController: Codable {
     var initKey = "userDefaultsSet"
-    var initValues: Bool {
-        get {
-            while !UserDefaults.standard.bool(forKey: initKey) { // If we don't get true, run set default.
-                setDefault()
-            }
-            return true
-        }
-    }
     
     var items: [ShoppingItem] = []
     
@@ -44,6 +36,14 @@ class ShoppingItemController: Codable {
             
             return plistFile
     } }
+    
+    // MARK: - Init
+    
+    init() {
+        while !UserDefaults.standard.bool(forKey: initKey) { // If we don't get true, run set default.
+        setDefault()
+        }
+    }
     
     
     // MARK: - PropertyListEncoder
