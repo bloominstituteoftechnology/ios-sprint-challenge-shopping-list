@@ -11,27 +11,22 @@ import UIKit
 
 var numberOfItems = 0
 
-protocol ShoppingListDelegate: class {
-    func shouldBeAdded()
-}
-
 class ListCollectionViewController: UICollectionViewController {
     
  
     let shoppingController = ShoppingController()
    
-    var delegate: ShoppingListDelegate?
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        collectionView?.backgroundColor = .lightGray
     }
 
     // MARK: UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return shoppingController.itemNames.count
+        return shoppingController.items.count
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -44,32 +39,25 @@ class ListCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ListCell", for: indexPath) as? ListCollectionViewCell else { return UICollectionViewCell()}
     
-        let item = shoppingController.itemNames[indexPath.item]
-        cell.itemImage.image = UIImage(named: item.name)
-        cell.itemNameLabel.text = item.name
-        
+        let item = shoppingController.items[indexPath.item]
+        cell.item = item
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       // guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ListCell", for: indexPath) as? ListCollectionViewCell else { return }
-        let shoppingItem = shoppingController.sortedItems[indexPath.item]
-       //  check to see if already added, then numberOfItems -= 1 (watch for less than 0 amount)
-       // cell.items = shoppingItem
+
+        let shoppingItem = shoppingController.items[indexPath.item]
+    
+        ///  check to see if already added, then numberOfItems -= 1 (watch for less than 0 amount)
         numberOfItems += 1
-        UserDefaults.standard.set(true, forKey: .added)
-        shoppingController.itemNames.remove(at: indexPath.item)
-        shoppingController.itemNames.append(shoppingItem)
-        delegate?.shouldBeAdded()
+        
+        shoppingController.updateAddedBool(shoppingItem: shoppingItem)
         shoppingController.saveToPersistentStore()
-        // create an array of ordered items to send over and list
-        print("item at \(indexPath.item) tapped with \(numberOfItems) taps")
+        collectionView.reloadItems(at: [indexPath])
+        /// create an array of ordered items as well as the number of
     }
     
     // MARK: UICollectionViewDelegate
-    func shouldBeAdded() {
-        self.collectionView?.reloadData()
-    }
 }
 
 extension String {

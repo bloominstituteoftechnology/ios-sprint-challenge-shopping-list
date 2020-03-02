@@ -18,11 +18,16 @@ class ShoppingListViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = .systemRed
+        nameTextField.backgroundColor = UIColor(white: 1, alpha: 0.75)
+        addressTextField.backgroundColor = UIColor(white: 1, alpha: 0.75)
         updateViews()
         // Do any additional setup after loading the view.
     }
    
     func updateViews() {
+        
         itemsOrderedLabel.text = "\(numberOfItems) items added"
     }
     

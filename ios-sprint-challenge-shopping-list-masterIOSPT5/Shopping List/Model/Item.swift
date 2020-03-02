@@ -8,17 +8,19 @@
 
 import UIKit
 
-struct Items: Encodable, Decodable {
+class Item: Codable {
     
     var name: String
+    var imageName: String
     var added: Bool
-    //var image: UIImage//{
-    //        return UIImage(named: UIImage)!
-    //    }
+   
     
     init(name: String, wasAdded: Bool = false) {
         self.name = name
-      //  self.image = UIImage(named: imageName)!
+        self.imageName = name.lowercased()
         self.added = wasAdded
+    }
+    var image: UIImage {
+        return UIImage(named:name)!
     }
 }

@@ -9,40 +9,32 @@
 import Foundation
 
 class ShoppingController {
-    var itemNames: [Items] = []
+   
+    var items = [Item]()
     
     init() {
-        CopyOfArray()
+      creatShoppingListItems()
         loadFromPersistentStore()
     }
     
-    var items: [Items] {
-        
-        let item = [
-            Items(name: "Apple"),//, wasAdded: false),
-            Items(name: "Grapes"),//, wasAdded: false),
-            Items(name: "Milk"),//, wasAdded: false),
-            Items(name: "Muffin"),//, wasAdded: false),
-            Items(name: "Popcorn"),//,  wasAdded: false),
-            Items(name: "Soda"),//,  wasAdded: false),
-            Items(name: "Strawberries"),//, wasAdded: false),
-        ]
-        
-        return item
-    }
 
-    func CopyOfArray() {
-        for item in items {
-            itemNames.append(item)
+
+    func creatShoppingListItems() {
+        guard UserDefaults.standard.bool(forKey: "ItemsHaveBeenCreated") != true else { return }
+        let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+        for itemString in itemNames {
+            let item = Item(name: itemString)
+            items.append(item)
         }
+    }
+    
+    
+    func updateAddedBool(shoppingItem: Item) {
+       
+        shoppingItem.added = !shoppingItem.added
+     
         saveToPersistentStore()
     }
-    
-    var sortedItems: [Items] {
-        let sortedItems = itemNames.sorted(by: { $0.name < $1.name })
-        return sortedItems
-    }
-    
     
     var shoppingListURL: URL? {
         let fileManager = FileManager.default
@@ -55,7 +47,7 @@ class ShoppingController {
         do {
             guard let url = shoppingListURL else { return }
             let encoder = PropertyListEncoder()
-            let listsData = try encoder.encode(itemNames)
+            let listsData = try encoder.encode(items)
             try listsData.write(to: url)
         } catch {
             print("Something went wrong: \(error)")
@@ -67,7 +59,7 @@ class ShoppingController {
             guard let url = shoppingListURL else { return }
             let listsData = try Data(contentsOf: url)
             let decodedLists = PropertyListDecoder()
-            itemNames  = try decodedLists.decode([Items].self, from: listsData)
+            items  = try decodedLists.decode([Item].self, from: listsData)
         } catch {
             print("Something went wrong: \(error)")
         }

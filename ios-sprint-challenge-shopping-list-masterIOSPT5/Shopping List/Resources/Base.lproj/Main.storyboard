@@ -112,7 +112,9 @@
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UfN-sq-UO3">
                                 <rect key="frame" x="145" y="333.5" width="124" height="30"/>
-                                <state key="normal" title="Submit your order"/>
+                                <state key="normal" title="Submit your order">
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
                                 <connections>
                                     <action selector="submitOrderTapped:" destination="edt-8h-FRv" eventType="touchUpInside" id="CZw-X2-i66"/>
                                 </connections>

@@ -13,24 +13,18 @@ class ListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var itemImage: UIImageView!
     @IBOutlet weak var itemNameLabel: UILabel!
     
-    var delegate: ShoppingListDelegate?
+   // var delegate: ShoppingListDelegate?
     var shoppingController =  ShoppingController()
-    var items: Items? {
+    var item: Item? {
         didSet {
           updateViews()
         }
     }
         
     func updateViews() {
-        // need to check for indexPath ?
-       // guard let item = shoppingController.itemNames else { return }
-        guard let item = items else { return }
-        if UserDefaults.standard.bool(forKey: .added) {
-            
-        addedLabel.text = "Tapped"
-        
-        }
-        
+        guard let item = item else { return }
+        itemNameLabel.text = item.name
+        addedLabel.text = item.added ? "Added" : "Not Added"
+        itemImage.image = item.image     
     }
-    
 }
