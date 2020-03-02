@@ -10,50 +10,48 @@ import Foundation
 
 
 class ShoppingItemController {
-    
-    var shoppingList: [ShoppingItem] = [
-        ShoppingItem(name: "Apple"),
-        ShoppingItem(name: "Grapes"),
-        ShoppingItem(name: "Milk"),
-        ShoppingItem(name: "Muffin"),
-        ShoppingItem(name: "Popcorn"),
-        ShoppingItem(name: "Soda"),
-        ShoppingItem(name: "Strawberries"),
-    ]
 
+    var shoppingListItems: [ShoppingItem] = []
     var itemSelectedAdd: [ShoppingItem] = []
     
     func toggleItemSelected(shoppingItem: ShoppingItem) {
-        guard let index = shoppingList.firstIndex(of: shoppingItem) else { return }
-        shoppingList[index].itemSelected = !shoppingList[index].itemSelected
+        guard let index = shoppingListItems.firstIndex(of: shoppingItem) else { return }
+        shoppingListItems[index].itemSelected = !shoppingListItems[index].itemSelected
+        saveToPersistentStore()
     }
 
     
     private var persistentFileURL: URL? {
-        let fileManager = FileManager.default
-        guard let documents = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+        let fileName = "shoppingItems.plist"
         
-        return documents.appendingPathComponent("shoppingList.plist")
+        return documentsDirectory?.appendingPathComponent(fileName)
     }
     
     init() {
-        saveToPersistentStore()
+       createShoppingItem()
+        loadFromPersistentStore()
     }
     
-    @discardableResult func createShoppingItem(_ name: String, _ itemSelected: Bool) -> ShoppingItem {
-        let shoppingItem = ShoppingItem(name: name, itemSelected: itemSelected)
-        shoppingList.append(shoppingItem)
+    func createShoppingItem() {
+        
+        guard UserDefaults.standard.bool(forKey: "itemsHaveBeenCreated") != true else { return }
+        let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Strawberries", "Soda", "Popcorn"]
+        for itemName in itemNames {
+            let item = ShoppingItem(name: itemName)
+            shoppingListItems.append(item)
+        }
         saveToPersistentStore()
-        return shoppingItem
+        UserDefaults.standard.set(true, forKey: "itemsHaveBeenCreated")
     }
     
     func saveToPersistentStore() {
         
         guard let url = persistentFileURL else { return }
         
+        let plistEncoder = PropertyListEncoder()
         do {
-            let encoder = PropertyListEncoder()
-            let data = try encoder.encode(shoppingList)
+            let data = try plistEncoder.encode(shoppingListItems)
             try data.write(to: url)
         } catch {
             print("Error saving Shopping List: \(error)")
@@ -69,7 +67,8 @@ class ShoppingItemController {
         do {
             let data = try Data(contentsOf: url)
             let decoder = PropertyListDecoder()
-            shoppingList = try decoder.decode([ShoppingItem].self, from: data)
+            self.shoppingListItems = try decoder.decode([ShoppingItem].self, from: data)
+            print("\(shoppingListItems)")
             
         } catch {
             print("error loading Shopping List: \(error)")
