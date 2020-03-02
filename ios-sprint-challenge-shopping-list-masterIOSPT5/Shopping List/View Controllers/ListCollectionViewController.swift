@@ -44,24 +44,16 @@ class ListCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
         let shoppingItem = shoppingController.items[indexPath.item]
-        
         if shoppingItem.added {
             numberOfItems -= 1
+            shoppingController.removeItem(shoppingItem.name)
         } else {
             numberOfItems += 1
+            shoppingController.orderedItems(shoppingItem.name)
         }
         shoppingController.updateAddedBool(shoppingItem: shoppingItem)
-        shoppingController.orderedItems(shoppingItem.name)
         shoppingController.saveToPersistentStore()
         collectionView.reloadItems(at: [indexPath])
-        /// create an array of ordered items as well as the number of
     }
-    
-    // MARK: UICollectionViewDelegate
-}
-
-extension String {
-    static var added = "added"
 }

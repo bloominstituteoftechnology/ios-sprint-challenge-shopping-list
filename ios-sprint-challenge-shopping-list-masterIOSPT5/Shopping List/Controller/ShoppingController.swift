@@ -34,13 +34,14 @@ class ShoppingController {
       
     }
     
-    func itemList()  -> String {
-        for word in itemsOrdered {
-            list = (list + ", " + word)
+    func removeItem(_ item: String ) {
+        for (index, value) in itemsOrdered.enumerated() {
+            if value == item {
+                itemsOrdered.remove(at: index)
+            }
         }
-        return list
     }
-    
+  
 func updateAddedBool(shoppingItem: Item) {
        
         shoppingItem.added = !shoppingItem.added

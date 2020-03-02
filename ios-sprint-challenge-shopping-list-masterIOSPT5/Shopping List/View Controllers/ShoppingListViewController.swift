@@ -28,15 +28,14 @@ class ShoppingListViewController: UIViewController{
     }
    
     func updateViews() {
-       
-        func itemList()  -> String {
-            for word in shoppingController!.itemsOrdered {
-                list = (list + " " + word)
-            }
-            return list
-        }
-        
         itemsOrderedLabel.text = "\(numberOfItems) items added: \n\(itemList())"
+    }
+    
+    func itemList()  -> String {
+        for word in shoppingController!.itemsOrdered {
+            list = (list + " " + word)
+        }
+        return list
     }
     
     @IBAction func submitOrderTapped(_ sender: Any) {
@@ -46,7 +45,7 @@ class ShoppingListViewController: UIViewController{
             !address.isEmpty else { return }
         
         if numberOfItems == 0 {
-            let alert = UIAlertController(title: "You don't have any items to process!", message: "Please order something", preferredStyle: .alert)
+            let alert = UIAlertController(title: "You don't have any items to process!", message: "Please order something!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Done", style: .destructive, handler: nil))
             self.present(alert, animated: true, completion: nil)
         } else {
@@ -55,5 +54,4 @@ class ShoppingListViewController: UIViewController{
         self.present(alert, animated: true, completion: nil)
         }
     }
-    
 }
