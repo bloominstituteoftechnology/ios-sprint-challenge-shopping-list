@@ -37,10 +37,15 @@ class ShoppingListViewController: UIViewController{
             !name.isEmpty,
             !address.isEmpty else { return }
         
-        
+        if numberOfItems == 0 {
+            let alert = UIAlertController(title: "You don't have any items to process!", message: "Please order something", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Done", style: .destructive, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
         let alert = UIAlertController(title: "\(name), your Order will arrive in 15 minutes!", message: "To \(address)", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Done", style: .destructive, handler: nil))
         self.present(alert, animated: true, completion: nil)
+        }
     }
     
 }
