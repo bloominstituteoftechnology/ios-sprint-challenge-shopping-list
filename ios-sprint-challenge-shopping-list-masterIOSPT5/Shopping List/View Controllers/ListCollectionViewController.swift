@@ -16,7 +16,6 @@ class ListCollectionViewController: UICollectionViewController {
  
     let shoppingController = ShoppingController()
    
-   
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.backgroundColor = .lightGray
@@ -54,6 +53,7 @@ class ListCollectionViewController: UICollectionViewController {
             numberOfItems += 1
         }
         shoppingController.updateAddedBool(shoppingItem: shoppingItem)
+        shoppingController.orderedItems(shoppingItem.name)
         shoppingController.saveToPersistentStore()
         collectionView.reloadItems(at: [indexPath])
         /// create an array of ordered items as well as the number of

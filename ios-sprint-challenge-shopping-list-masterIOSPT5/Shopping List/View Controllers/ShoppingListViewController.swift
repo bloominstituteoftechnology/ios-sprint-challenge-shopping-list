@@ -11,6 +11,7 @@ import UIKit
 class ShoppingListViewController: UIViewController{
     
     var shoppingController: ShoppingController?
+    var list = ""
     
     @IBOutlet weak var itemsOrderedLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
@@ -27,8 +28,15 @@ class ShoppingListViewController: UIViewController{
     }
    
     func updateViews() {
+       
+        func itemList()  -> String {
+            for word in shoppingController!.itemsOrdered {
+                list = (list + " " + word)
+            }
+            return list
+        }
         
-        itemsOrderedLabel.text = "\(numberOfItems) items added"
+        itemsOrderedLabel.text = "\(numberOfItems) items added: \n\(itemList())"
     }
     
     @IBAction func submitOrderTapped(_ sender: Any) {

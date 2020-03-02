@@ -9,15 +9,16 @@
 import Foundation
 
 class ShoppingController {
-   
-    var items = [Item]()
     
+    var items = [Item]()
+    var itemsOrdered: [String] = []
+    var list = ""
     init() {
-      creatShoppingListItems()
+        creatShoppingListItems()
         loadFromPersistentStore()
     }
     
-
+    
 
     func creatShoppingListItems() {
         guard UserDefaults.standard.bool(forKey: "ItemsHaveBeenCreated") != true else { return }
@@ -28,8 +29,19 @@ class ShoppingController {
         }
     }
     
+    func orderedItems(_ name: String) {
+        itemsOrdered.append(name)
+      
+    }
     
-    func updateAddedBool(shoppingItem: Item) {
+    func itemList()  -> String {
+        for word in itemsOrdered {
+            list = (list + ", " + word)
+        }
+        return list
+    }
+    
+func updateAddedBool(shoppingItem: Item) {
        
         shoppingItem.added = !shoppingItem.added
      
