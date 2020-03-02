@@ -47,10 +47,12 @@ class ListCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
         let shoppingItem = shoppingController.items[indexPath.item]
-    
-        ///  check to see if already added, then numberOfItems -= 1 (watch for less than 0 amount)
-        numberOfItems += 1
         
+        if shoppingItem.added {
+            numberOfItems -= 1
+        } else {
+            numberOfItems += 1
+        }
         shoppingController.updateAddedBool(shoppingItem: shoppingItem)
         shoppingController.saveToPersistentStore()
         collectionView.reloadItems(at: [indexPath])
