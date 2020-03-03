@@ -47,7 +47,7 @@ let shoppingController = ShoppingController()
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as! ImageCollectionViewCell
         cell.item = shoppingController.shoppingItems[indexPath.item]
-        cell.delegate = shoppingController as! ShoppingItemDelegate
+        cell.delegate = shoppingController as? ShoppingItemDelegate
         
         
         return cell

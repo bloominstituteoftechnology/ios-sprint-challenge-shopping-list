@@ -18,70 +18,50 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1JJ-23-Zij">
-                            <size key="itemSize" width="177" height="178"/>
+                            <size key="itemSize" width="175" height="196"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemCell" id="1d2-Xm-4eK" customClass="ImageCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="177" height="178"/>
+                                <rect key="frame" x="0.0" y="0.0" width="175" height="196"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="fUJ-54-Ygk">
-                                    <rect key="frame" x="0.0" y="0.0" width="177" height="178"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="175" height="196"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mX7-Mg-FJi">
-                                            <rect key="frame" x="20" y="8" width="140" height="153"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7zY-SO-66C">
+                                            <rect key="frame" x="0.0" y="3" width="172" height="187"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not added" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oTV-hm-RHL">
-                                                    <rect key="frame" x="0.0" y="0.0" width="140" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Not Added" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SmV-nv-57O">
+                                                    <rect key="frame" x="0.0" y="0.0" width="172" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cKG-JE-jA2">
-                                                    <rect key="frame" x="0.0" y="20.5" width="140" height="112"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9BS-nj-Zu2">
+                                                    <rect key="frame" x="0.0" y="20.5" width="172" height="142.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="160" id="5JM-Ez-F9p"/>
-                                                        <constraint firstAttribute="height" constant="112" id="MDJ-gn-0sr"/>
+                                                        <constraint firstAttribute="height" constant="142.5" id="7k8-sg-IHp"/>
+                                                        <constraint firstAttribute="width" constant="172" id="fKD-4g-Qqb"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WNq-9k-XFR">
-                                                    <rect key="frame" x="0.0" y="132.5" width="140" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEz-mZ-hGV" userLabel="Item Name">
+                                                    <rect key="frame" x="0.0" y="163" width="172" height="24"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </stackView>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jNJ-dw-YWh">
-                                            <rect key="frame" x="8" y="157" width="157" height="30"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="jNJ-dw-YWh" secondAttribute="height" multiplier="157:30" id="zuK-UZ-ueS"/>
-                                            </constraints>
-                                            <state key="normal" title="Click here"/>
-                                            <connections>
-                                                <action selector="ButtonTapped:" destination="1d2-Xm-4eK" eventType="touchUpInside" id="yI0-Dn-sHi"/>
-                                            </connections>
-                                        </button>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstItem="jNJ-dw-YWh" firstAttribute="leading" secondItem="fUJ-54-Ygk" secondAttribute="leading" constant="8" id="AWm-MG-oDf"/>
-                                        <constraint firstAttribute="bottom" secondItem="mX7-Mg-FJi" secondAttribute="bottom" constant="17" id="BjJ-ho-yRc"/>
-                                        <constraint firstItem="jNJ-dw-YWh" firstAttribute="top" secondItem="WNq-9k-XFR" secondAttribute="bottom" constant="-4" id="Qwc-9F-Ctc"/>
-                                        <constraint firstItem="mX7-Mg-FJi" firstAttribute="top" secondItem="fUJ-54-Ygk" secondAttribute="top" constant="8" id="W4d-R1-LE5"/>
-                                        <constraint firstAttribute="trailing" secondItem="jNJ-dw-YWh" secondAttribute="trailing" constant="12" id="fZ8-ZR-Afu"/>
-                                        <constraint firstItem="mX7-Mg-FJi" firstAttribute="leading" secondItem="fUJ-54-Ygk" secondAttribute="leading" constant="20" symbolic="YES" id="qoU-ow-r0X"/>
-                                        <constraint firstAttribute="trailing" secondItem="mX7-Mg-FJi" secondAttribute="trailing" constant="17" id="uz5-VC-cFI"/>
-                                    </constraints>
                                 </collectionViewCellContentView>
-                                <size key="customSize" width="177" height="178"/>
+                                <size key="customSize" width="175" height="196"/>
                                 <connections>
-                                    <outlet property="addlLabel" destination="oTV-hm-RHL" id="eKG-8f-CVl"/>
-                                    <outlet property="buttonTapped" destination="jNJ-dw-YWh" id="lAK-FM-scW"/>
-                                    <outlet property="itemImage" destination="cKG-JE-jA2" id="ckO-t3-lst"/>
-                                    <outlet property="itemNameLabel" destination="WNq-9k-XFR" id="kN8-Dn-DEL"/>
+                                    <outlet property="addlLabel" destination="SmV-nv-57O" id="y16-TJ-LkG"/>
+                                    <outlet property="itemImage" destination="9BS-nj-Zu2" id="LG2-yG-e15"/>
+                                    <outlet property="itemNameLabel" destination="BEz-mZ-hGV" id="yfB-yk-GoL"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
