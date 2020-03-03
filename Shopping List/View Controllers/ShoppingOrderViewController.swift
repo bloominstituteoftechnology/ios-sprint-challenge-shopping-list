@@ -9,13 +9,12 @@
 import UIKit
 
 class ShoppingOrderViewController: UIViewController {
-    @IBOutlet weak var itemCountLabel: UILabel!
-    
+
+    @IBOutlet weak var orderSummaryLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
-    
     @IBOutlet weak var addressTextField: UITextField!
-    
-  var itemInCount: Int?
+
+    var itemInCount: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,26 +24,15 @@ class ShoppingOrderViewController: UIViewController {
 
     private func updateViews() {
         guard let itemInCount = itemInCount else { return }
-        itemCountLabel.text = "You currently have \(itemInCount) item(s) in your shopping list."
+        orderSummaryLabel.text = "You currently have \(itemInCount) item(s) in your shopping list."
     }
-    
-    
-    @IBAction func sendOrder(_ sender: Any) {
-        let alert = UIAlertController(title: "Delivery for \(nameTextField.text!)!", message: "Your Delivery will be delivered to \(addressTextField.text!) in 15 minutes!", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-            alert.addAction(okAction)
 
-            self.present(alert, animated: true, completion: nil)
-        }
-    
-    /*
-    // MARK: - Navigation
+    @IBAction func sendOrderButtonPressed(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Delivery for \(nameTextField.text!)!", message: "Your delivery will be delivered to the address \(addressTextField.text!) in just 15 minutes! ", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        self.present(alert, animated: true, completion: nil)
     }
-    */
-
 }
+

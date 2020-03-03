@@ -7,35 +7,36 @@
 //
 
 import UIKit
-protocol ShoppingItemDelegate {
-    func itemUpdated(shoppingItem: ShoppingItem)
+
+protocol ShoppingItemCellDelegate {
+    func itemUpdated(item: ShoppingItem)
 }
+
 class ImageCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var addlLabel: UILabel!
-    @IBOutlet weak var itemImage: UIImageView!
+    
+    @IBOutlet weak var addedLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var itemNameLabel: UILabel!
-    
-    var delegate: ShoppingItemDelegate?
-    
+
+    var delegate: ShoppingItemCellDelegate?
+
     var item: ShoppingItem? {
-          didSet {
-              updateViews()
-          }
-      }
-
-      private func updateViews() {
-          guard let shoppingItem = item else { return }
-        addlLabel.text = shoppingItem.didItemAdded ? "Added" : "Not Added"
-        itemImage.image = shoppingItem.itemImage
-          itemNameLabel.text = shoppingItem.name
-      }
-    
-    @IBAction func ButtonTapped(_ sender: UIButton) {
-        item?.didItemAdded.toggle()
-        if let shoppingItem = item {
-            delegate?.itemUpdated(shoppingItem: shoppingItem)
+        didSet {
+            updateViews()
         }
-
     }
-    
+
+    private func updateViews() {
+        guard let item = item else { return }
+        addedLabel.text = item.didAdded ? "Added" : "Not Added"
+        imageView.image = item.image
+        itemNameLabel.text = item.name
+    }
+
+    @IBAction func overlayButtonWasTapped(_ sender: UIButton) {
+        item?.didAdded.toggle()
+        if let item = item {
+            delegate?.itemUpdated(item: item)
+        }
+    }
 }

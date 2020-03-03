@@ -7,15 +7,22 @@
 //
 
 import Foundation
-
 import UIKit
 
-struct ShoppingItem: Codable {
-    var name: String
-    var didItemAdded: Bool = false 
-        
-        var itemImage: UIImage {
-            UIImage(named: name) ?? UIImage()
-        }
-        
+struct ShoppingItem: Codable, Equatable {
+
+    let name: String
+    var didAdded: Bool = false
+
+    var image: UIImage {
+        UIImage(named: name) ?? UIImage()
     }
+}
+
+//Finished Project 
+
+
+
+
+
+
