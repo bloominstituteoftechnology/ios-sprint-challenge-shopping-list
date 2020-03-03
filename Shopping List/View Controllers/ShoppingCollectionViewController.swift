@@ -19,7 +19,11 @@ class ShoppingCollectionViewController: UICollectionViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+<<<<<<< HEAD
         if segue.identifier == "orderItemSegue" {
+=======
+        if segue.identifier == "orderCellSegue" {
+>>>>>>> 7f6aacbb84c626b6326834b97e22c975924af3b6
             guard let orderDetailVC = segue.destination as? ShoppingOrderViewController else { return }
             orderDetailVC.itemInCount = itemController.addedItems.count
         }
