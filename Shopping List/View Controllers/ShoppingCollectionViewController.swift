@@ -26,7 +26,7 @@ let shoppingController = ShoppingController()
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "orderItemSegue" {
             guard let orderDetailVC = segue.destination as? ShoppingOrderViewController else { return }
-             orderDetailVC.itemCount = itemController.addedItems.count
+            orderDetailVC.
         }
     }
     

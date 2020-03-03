@@ -12,7 +12,7 @@ import UIKit
 
 struct ShoppingItem: Codable {
     var name: String
-    var didItemAdded: Bool
+    var didItemAdded: Bool = false 
         
         var itemImage: UIImage {
             UIImage(named: name) ?? UIImage()

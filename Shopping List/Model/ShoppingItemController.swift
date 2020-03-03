@@ -24,7 +24,24 @@ class ShoppingController {
             
             return shoppingURL
         }
-        
+    
+    init() {
+    if UserDefaults.standard.bool(forKey: onlyOnceKey) {
+        loadFromPersistentStore()
+    } else {
+        for item in itemNames {
+            let item = ShoppingItem(name: item)
+            shoppingItems.append(item)
+        }
+        saveToPersistentStore()
+        UserDefaults.standard.set(true, forKey: onlyOnceKey)
+        }
+    }
+    
+    var addItems: [ShoppingItem] {
+        shoppingItems.filter { $0.didItemAdded }
+       }
+
         func saveToPersistentStore() {
             
             let encoder = PropertyListEncoder()
@@ -51,10 +68,8 @@ class ShoppingController {
                 print("error decoding \(error)")
             }
         }
+        
+        
     }
-
-
-    
-      
         
     
