@@ -29,6 +29,7 @@ class ImageCollectionViewCell: UICollectionViewCell {
     private func updateViews() {
         guard let item = item else { return }
         addedLabel.text = item.didAdded ? "Added" : "Not Added"
+        addedLabel.alpha = item.didAdded ? 1.0 : 0.3
         imageView.image = item.image
         itemNameLabel.text = item.name
     }

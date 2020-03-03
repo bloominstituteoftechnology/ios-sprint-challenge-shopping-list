@@ -24,7 +24,7 @@ class ShoppingCollectionViewController: UICollectionViewController {
 
         if segue.identifier == "orderItemSegue" {
             guard let orderDetailVC = segue.destination as? ShoppingOrderViewController else { return }
-            orderDetailVC.itemInCount = itemController.addedItems.count
+            orderDetailVC.itemCount = itemController.addedItems.count
         }
     }
         

@@ -14,7 +14,7 @@ class ShoppingOrderViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
 
-    var itemInCount: Int?
+    var itemCount: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +23,8 @@ class ShoppingOrderViewController: UIViewController {
     }
 
     private func updateViews() {
-        guard let itemInCount = itemInCount else { return }
-        orderSummaryLabel.text = "You currently have \(itemInCount) item(s) in your shopping list."
+        guard let itemCount = itemCount else { return }
+        orderSummaryLabel.text = "You currently have \(itemCount) item(s) in your shopping list."
     }
 
     @IBAction func sendOrderButtonPressed(_ sender: UIButton) {

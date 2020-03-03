@@ -37,11 +37,7 @@ class ShoppingItemController {
             saveToPersistentStore()
             UserDefaults.standard.set(true, forKey: onlySavedKey)
         }
-        // if not run yet
-        //   insert default items to array
-        //   write to disk
-        // else
-        //   read from disk
+        
     }
 
     func loadFromPersistentStore() {
