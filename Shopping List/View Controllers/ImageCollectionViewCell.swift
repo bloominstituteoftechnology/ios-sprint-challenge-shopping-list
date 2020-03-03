@@ -17,22 +17,22 @@ class ImageCollectionViewCell: UICollectionViewCell {
     
     var delegate: ShoppingItemDelegate?
     
-    var shoppingItem: ShoppingItem? {
+    var item: ShoppingItem? {
           didSet {
               updateViews()
           }
       }
 
       private func updateViews() {
-          guard let shoppingItem = shoppingItem else { return }
+          guard let shoppingItem = item else { return }
         addlLabel.text = shoppingItem.didItemAdded ? "Added" : "Not Added"
         itemImage.image = shoppingItem.itemImage
           itemNameLabel.text = shoppingItem.name
       }
     
     @IBAction func ButtonTapped(_ sender: UIButton) {
-        shoppingItem?.didItemAdded.toggle()
-        if let shoppingItem = shoppingItem {
+        item?.didItemAdded.toggle()
+        if let shoppingItem = item {
             delegate?.itemUpdated(shoppingItem: shoppingItem)
         }
 

@@ -26,7 +26,7 @@ let shoppingController = ShoppingController()
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "orderItemSegue" {
             guard let orderDetailVC = segue.destination as? ShoppingOrderViewController else { return }
-            orderDetailVC.
+            orderDetailVC.itemInCount = shoppingController.addItems.count
         }
     }
     
@@ -41,15 +41,19 @@ let shoppingController = ShoppingController()
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return shoppingController.itemNames.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as! ImageCollectionViewCell
+        cell.item = shoppingController.shoppingItems[indexPath.item]
+        cell.delegate = shoppingController as! ShoppingItemDelegate
+        
+        
+        return cell
     
         // Configure the cell
     
-        return cell
     }
 
     // MARK: UICollectionViewDelegate

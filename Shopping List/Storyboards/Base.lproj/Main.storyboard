@@ -102,10 +102,10 @@
             </objects>
             <point key="canvasLocation" x="794.20289855072474" y="86.383928571428569"/>
         </scene>
-        <!--Shopping Collection View Controller-->
+        <!--Shopping Order View Controller-->
         <scene sceneID="Egw-KB-X4e">
             <objects>
-                <viewController id="mRd-yX-PCR" customClass="ShoppingCollectionViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="mRd-yX-PCR" customClass="ShoppingOrderViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lef-id-4nY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -135,6 +135,9 @@
                                             <constraint firstAttribute="height" constant="30" id="2Xf-33-WpZ"/>
                                         </constraints>
                                         <state key="normal" title="Send Order"/>
+                                        <connections>
+                                            <action selector="sendOrder:" destination="mRd-yX-PCR" eventType="touchUpInside" id="Tzq-y5-5Bs"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -148,6 +151,11 @@
                         <viewLayoutGuide key="safeArea" id="SSl-uU-Uoy"/>
                     </view>
                     <navigationItem key="navigationItem" id="vyb-cr-vsv"/>
+                    <connections>
+                        <outlet property="addressTextField" destination="27o-pX-1Sv" id="yWB-dp-hUQ"/>
+                        <outlet property="itemCountLabel" destination="G3e-Ed-WPs" id="Yiu-Bk-sOk"/>
+                        <outlet property="nameTextField" destination="h5B-2E-p0h" id="A5J-KD-zOc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aju-g8-Szs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
