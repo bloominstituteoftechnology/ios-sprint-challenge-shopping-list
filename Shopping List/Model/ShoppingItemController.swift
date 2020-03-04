@@ -11,35 +11,52 @@ import Foundation
 
 class ShoppingItemController {
 
-    private let defaultItemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
-    private let onlySavedKey = "onlySavedKey"
-
-    private(set) var newItems: [ShoppingItem] = []
-
-    var itemListURL: URL? {
-        FileManager.default
-            .urls(for: .documentDirectory, in: .userDomainMask).first?
-            .appendingPathComponent("ShoppingItemList.plist")
-    }
+  
+   var newItems: [ShoppingItem] = [ShoppingItem(name: "Apple", didAdded: false),
+                                                 ShoppingItem(name: "Grapes", didAdded: false),
+                                                 ShoppingItem(name: "Milk", didAdded: false),
+                                                 ShoppingItem(name: "Muffin", didAdded: false),
+                                                 ShoppingItem(name: "Popcorn", didAdded: false),
+                                                 ShoppingItem(name: "Soda", didAdded: false),
+                                                 ShoppingItem(name: "Strawberries", didAdded: false)]
 
     var addedItems: [ShoppingItem] {
-        newItems.filter { $0.didAdded }
+        newItems.filter { $0.didAdded == true }
     }
+    
+    var removedFromList: [ShoppingItem]{
+           return newItems.filter({ $0.didAdded == false })
+       }
+    
+    func updateList(for item: ShoppingItem){
+        guard let item = newItems.firstIndex(of: item) else { return }
+        newItems[item].didAdded = !newItems[item].didAdded
+        saveToPersistentStore()
+    }
+    
+//    func updateList(for item: ShoppingItem){
+//        guard let item = newItems.firstIndex(of: item) else { return }
+//        newItems[item].addedItems = !newItems[item].addedItems
+//        saveToPersisentStore()
+//    }
 
     init() {
-        if UserDefaults.standard.bool(forKey: onlySavedKey) {
             loadFromPersistentStore()
-        } else {
-            for itemName in defaultItemNames {
-                let item = ShoppingItem(name: itemName)
-            newItems.append(item)
-            }
-            saveToPersistentStore()
-            UserDefaults.standard.set(true, forKey: onlySavedKey)
-        }
-        
     }
-
+    
+    func createItem(name: String, didAdded: Bool ) {
+          let shoppingLists = ShoppingItem(name: name, didAdded: didAdded)
+          newItems.append(shoppingLists)
+          saveToPersistentStore()
+      }
+    
+    var itemListURL: URL? {
+          let fileManager = FileManager.default
+          guard let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
+          let listURL = documentsDirectory.appendingPathComponent("ShoppingList.plist")
+          return listURL
+      }
+    
     func loadFromPersistentStore() {
         guard let url = itemListURL else { return }
         do {
@@ -59,12 +76,11 @@ class ShoppingItemController {
             print("Error saving items: \(error)")
         }
     }
+    
+    
+    
 }
 
-extension ShoppingItemController: ShoppingItemCellDelegate {
 
-    func itemUpdated(item: ShoppingItem) {
-        guard let index = newItems.firstIndex(of: item) else { return }
-        newItems[index] = item
-    }
-}
+  
+

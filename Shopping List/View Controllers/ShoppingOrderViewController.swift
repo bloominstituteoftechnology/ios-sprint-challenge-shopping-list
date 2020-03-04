@@ -14,25 +14,38 @@ class ShoppingOrderViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
 
-    var itemCount: Int?
+    var shoppingItemController = ShoppingItemController()
+    
+  
+    
 
+
+    @IBAction func sendOrderButtonPressed(_ sender: UIButton) {
+               guard let name = nameTextField.text, let address = addressTextField.text else { return }
+        let alert = UIAlertController(title: "Delivery for \(name)!", message: "Your shopping items will be deliverd to \(address) in 15 minutes", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true)
+        navigationController?.popViewController(animated: true)
+
+    }
+    
+    var shoppingItem: ShoppingItem?{
+          didSet{
+              updateViews()
+          }
+      }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         updateViews()
     }
-
-    private func updateViews() {
-        guard let itemCount = itemCount else { return }
-        orderSummaryLabel.text = "You currently have \(itemCount) item(s) in your shopping list."
-    }
-
-    @IBAction func sendOrderButtonPressed(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Delivery for \(nameTextField.text!)!", message: "Your delivery will be delivered to the address \(addressTextField.text!) in just 15 minutes! ", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(okAction)
-
-        self.present(alert, animated: true, completion: nil)
-    }
+    
+    func updateViews(){
+        orderSummaryLabel.text = "You currently have \(shoppingItemController.addedItems.count) item(s) in your shopping list"
+          
+      }
 }
 

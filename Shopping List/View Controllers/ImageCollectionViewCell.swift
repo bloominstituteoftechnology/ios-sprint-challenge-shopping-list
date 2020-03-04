@@ -26,18 +26,15 @@ class ImageCollectionViewCell: UICollectionViewCell {
         }
     }
 
-    private func updateViews() {
-        guard let item = item else { return }
-        addedLabel.text = item.didAdded ? "Added" : "Not Added"
-        addedLabel.alpha = item.didAdded ? 1.0 : 0.3
-        imageView.image = item.image
-        itemNameLabel.text = item.name
+    func updateViews() {
+        guard let shoppingList = item else { return }
+               imageView.image = shoppingList.image
+        itemNameLabel.text = shoppingList.name
+        if shoppingList.didAdded == true {
+                   addedLabel.text = "Added"
+               }else{
+                   addedLabel.text = "Not Added"
+               }
     }
 
-    @IBAction func overlayButtonWasTapped(_ sender: UIButton) {
-        item?.didAdded.toggle()
-        if let item = item {
-            delegate?.itemUpdated(item: item)
-        }
-    }
 }
