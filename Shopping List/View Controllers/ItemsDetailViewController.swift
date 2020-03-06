@@ -10,6 +10,16 @@ import UIKit
 
 class ItemsDetailViewController: UIViewController {
 
+    var item: ShoppingItem?{
+        didSet{
+            updateViews()
+        }
+    var shoppingContoller: ShoppingListController?
+        
+    func updateViews() {
+            orderAmount.text = "You currently have \(shoppingController.itemNames.count) item(s) in your list."
+            }
+        }
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
@@ -32,18 +42,11 @@ class ItemsDetailViewController: UIViewController {
         }
     }
     
-    func updateViews() {
-        orderAmount.text = "You currently have \(shoppingController.itemNames.count) item(s) in your list."
-        }
-    }
+    
     
     @IBOutlet weak var orderAmount: UILabel!
     @IBOutlet weak var nameLabel: UITextField!
     @IBOutlet weak var addressLabel: UITextField!
    
-var item: ShoppingItem?{
-    didSet{
-        updateViews()
-    }
-var shoppingContoller: ShoppingListController?
+
 }

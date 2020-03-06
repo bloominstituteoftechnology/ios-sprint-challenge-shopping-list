@@ -24,27 +24,46 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ybe-A8-cQ9">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemCell" id="ybe-A8-cQ9" customClass="ShoppingCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="186" height="199"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="fbM-Ol-eOt">
                                     <rect key="frame" x="0.0" y="0.0" width="186" height="199"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qev-rd-ZAX">
-                                            <rect key="frame" x="4" y="37" width="178" height="154"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qev-rd-ZAX">
+                                            <rect key="frame" x="4" y="37" width="178" height="129"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Not Added" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OLT-f3-LYQ">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Added" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OLT-f3-LYQ">
                                             <rect key="frame" x="52" y="8" width="86" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGM-3r-aQx">
+                                            <rect key="frame" x="74" y="170" width="34" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="OLT-f3-LYQ" firstAttribute="top" secondItem="fbM-Ol-eOt" secondAttribute="topMargin" id="5ua-i6-7wV"/>
+                                        <constraint firstItem="OLT-f3-LYQ" firstAttribute="leading" secondItem="fbM-Ol-eOt" secondAttribute="leading" constant="52" id="GlS-bX-qcp"/>
+                                        <constraint firstItem="Qev-rd-ZAX" firstAttribute="leading" secondItem="fbM-Ol-eOt" secondAttribute="leading" constant="4" id="NX0-c3-aYC"/>
+                                        <constraint firstItem="Qev-rd-ZAX" firstAttribute="centerX" secondItem="fbM-Ol-eOt" secondAttribute="centerX" id="Sem-O8-GQn"/>
+                                        <constraint firstItem="hGM-3r-aQx" firstAttribute="top" secondItem="Qev-rd-ZAX" secondAttribute="bottom" constant="4" id="e0i-Nh-6G4"/>
+                                        <constraint firstItem="hGM-3r-aQx" firstAttribute="bottom" secondItem="fbM-Ol-eOt" secondAttribute="bottomMargin" id="pvk-Fz-NAb"/>
+                                        <constraint firstItem="Qev-rd-ZAX" firstAttribute="top" secondItem="OLT-f3-LYQ" secondAttribute="bottom" constant="8" id="txo-SQ-rqf"/>
+                                        <constraint firstItem="hGM-3r-aQx" firstAttribute="leading" secondItem="fbM-Ol-eOt" secondAttribute="leading" constant="74" id="vfC-Md-fRf"/>
+                                    </constraints>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="186" height="199"/>
+                                <connections>
+                                    <outlet property="imageView" destination="Qev-rd-ZAX" id="PWX-Fx-h7C"/>
+                                    <outlet property="itemLabel" destination="hGM-3r-aQx" id="fYC-Su-JV3"/>
+                                    <outlet property="notAddedLabel" destination="OLT-f3-LYQ" id="3HT-Qb-BGc"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -56,19 +75,19 @@
                         <barButtonItem key="backBarButtonItem" title="Change Shopping List" id="w5A-8y-VEt"/>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="Lkb-GJ-8fy">
                             <connections>
-                                <segue destination="Zxl-PK-Giy" kind="show" id="uvb-FI-BVY"/>
+                                <segue destination="Zxl-PK-Giy" kind="show" identifier="SendOrderSegue" id="uvb-FI-BVY"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="btA-ZN-uGY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="889.85507246376824" y="22.767857142857142"/>
+            <point key="canvasLocation" x="866.66666666666674" y="22.767857142857142"/>
         </scene>
-        <!--View Controller-->
+        <!--Items Detail View Controller-->
         <scene sceneID="fn6-8A-XKA">
             <objects>
-                <viewController id="Zxl-PK-Giy" sceneMemberID="viewController">
+                <viewController id="Zxl-PK-Giy" customClass="ItemsDetailViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hZ0-gc-ezz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -111,7 +130,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fWU-QG-qHm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1739.1304347826087" y="22.767857142857142"/>
+            <point key="canvasLocation" x="1604" y="23"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="v0T-Kp-sja">
@@ -129,7 +148,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cE2-pE-oQZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-20.289855072463769" y="22.767857142857142"/>
+            <point key="canvasLocation" x="122" y="23"/>
         </scene>
     </scenes>
 </document>

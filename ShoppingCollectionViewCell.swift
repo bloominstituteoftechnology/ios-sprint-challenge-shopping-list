@@ -15,9 +15,10 @@ class ShoppingCollectionViewCell: UICollectionViewCell {
                  updateViews()
              }
          }
-       @IBOutlet weak var itemLabel: UILabel!
-       @IBOutlet weak var notAddedButton: UIButton!
-       @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var itemLabel: UILabel!
+    @IBOutlet weak var notAddedLabel: UILabel!
+    
+    @IBOutlet weak var imageView: UIImageView!
        
       
        
@@ -28,9 +29,9 @@ class ShoppingCollectionViewCell: UICollectionViewCell {
            item.hasBeenAdded = !item.hasBeenAdded
            
            if item.hasBeenAdded == true {
-               notAddedButton.setTitle("Not Added", for: [])
+               notAddedLabel.text = "Not Added"
            } else {
-               notAddedButton.setTitle("Added", for: [])
+               notAddedLabel.text = "Added"
            }
            
        }
