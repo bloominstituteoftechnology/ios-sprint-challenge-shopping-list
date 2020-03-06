@@ -18,51 +18,46 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xtM-Wt-c0l">
-                            <size key="itemSize" width="186" height="199"/>
+                            <size key="itemSize" width="197" height="213"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemCell" id="ybe-A8-cQ9" customClass="ShoppingCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="186" height="199"/>
+                                <rect key="frame" x="0.0" y="0.0" width="197" height="213"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="fbM-Ol-eOt">
-                                    <rect key="frame" x="0.0" y="0.0" width="186" height="199"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" id="fbM-Ol-eOt">
+                                    <rect key="frame" x="0.0" y="0.0" width="197" height="213"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qev-rd-ZAX">
-                                            <rect key="frame" x="4" y="37" width="178" height="129"/>
+                                            <rect key="frame" x="8" y="8" width="181" height="181"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="Qev-rd-ZAX" secondAttribute="height" multiplier="1:1" id="OCb-2o-Dzu"/>
+                                            </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Added" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OLT-f3-LYQ">
-                                            <rect key="frame" x="52" y="8" width="86" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGM-3r-aQx">
-                                            <rect key="frame" x="74" y="170" width="34" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FOF-xW-wv6">
+                                            <rect key="frame" x="8" y="198" width="181" height="7"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="OLT-f3-LYQ" firstAttribute="top" secondItem="fbM-Ol-eOt" secondAttribute="topMargin" id="5ua-i6-7wV"/>
-                                        <constraint firstItem="OLT-f3-LYQ" firstAttribute="leading" secondItem="fbM-Ol-eOt" secondAttribute="leading" constant="52" id="GlS-bX-qcp"/>
-                                        <constraint firstItem="Qev-rd-ZAX" firstAttribute="leading" secondItem="fbM-Ol-eOt" secondAttribute="leading" constant="4" id="NX0-c3-aYC"/>
-                                        <constraint firstItem="Qev-rd-ZAX" firstAttribute="centerX" secondItem="fbM-Ol-eOt" secondAttribute="centerX" id="Sem-O8-GQn"/>
-                                        <constraint firstItem="hGM-3r-aQx" firstAttribute="top" secondItem="Qev-rd-ZAX" secondAttribute="bottom" constant="4" id="e0i-Nh-6G4"/>
-                                        <constraint firstItem="hGM-3r-aQx" firstAttribute="bottom" secondItem="fbM-Ol-eOt" secondAttribute="bottomMargin" id="pvk-Fz-NAb"/>
-                                        <constraint firstItem="Qev-rd-ZAX" firstAttribute="top" secondItem="OLT-f3-LYQ" secondAttribute="bottom" constant="8" id="txo-SQ-rqf"/>
-                                        <constraint firstItem="hGM-3r-aQx" firstAttribute="leading" secondItem="fbM-Ol-eOt" secondAttribute="leading" constant="74" id="vfC-Md-fRf"/>
+                                        <constraint firstItem="Qev-rd-ZAX" firstAttribute="top" secondItem="fbM-Ol-eOt" secondAttribute="top" constant="8" id="2Y9-U9-2Qo"/>
+                                        <constraint firstAttribute="bottom" secondItem="FOF-xW-wv6" secondAttribute="bottom" constant="8" id="6ne-ox-C3n"/>
+                                        <constraint firstAttribute="trailing" secondItem="FOF-xW-wv6" secondAttribute="trailing" constant="8" id="KgF-sp-P8O"/>
+                                        <constraint firstItem="FOF-xW-wv6" firstAttribute="top" secondItem="Qev-rd-ZAX" secondAttribute="bottom" constant="9" id="NMy-hl-ft7"/>
+                                        <constraint firstItem="Qev-rd-ZAX" firstAttribute="leading" secondItem="fbM-Ol-eOt" secondAttribute="leading" constant="8" id="RYI-Q4-Owh"/>
+                                        <constraint firstAttribute="trailing" secondItem="Qev-rd-ZAX" secondAttribute="trailing" constant="8" id="h2o-lK-PCv"/>
+                                        <constraint firstItem="FOF-xW-wv6" firstAttribute="leading" secondItem="fbM-Ol-eOt" secondAttribute="leading" constant="8" id="iTd-bV-UKo"/>
                                     </constraints>
                                 </collectionViewCellContentView>
-                                <size key="customSize" width="186" height="199"/>
+                                <size key="customSize" width="197" height="213"/>
                                 <connections>
                                     <outlet property="imageView" destination="Qev-rd-ZAX" id="PWX-Fx-h7C"/>
-                                    <outlet property="itemLabel" destination="hGM-3r-aQx" id="fYC-Su-JV3"/>
-                                    <outlet property="notAddedLabel" destination="OLT-f3-LYQ" id="3HT-Qb-BGc"/>
+                                    <outlet property="notAddedLabel" destination="FOF-xW-wv6" id="3IH-4G-0As"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>

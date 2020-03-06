@@ -26,7 +26,7 @@ class ShoppingCollectionViewCell: UICollectionViewCell {
            guard let list = item else { return }
            
            imageView.image = list.image
-           itemLabel.text = list.name
+           
            
            if list.hasBeenAdded == true {
                notAddedLabel.text = "Not Added"
