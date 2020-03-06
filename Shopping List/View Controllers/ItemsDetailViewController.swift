@@ -14,12 +14,13 @@ class ItemsDetailViewController: UIViewController {
         didSet{
             updateViews()
         }
+    }
     var shoppingContoller: ShoppingListController?
-        
+        // guard let 
     func updateViews() {
-            orderAmount.text = "You currently have \(shoppingController.itemNames.count) item(s) in your list."
+        orderAmount.text = "You currently have \(shoppingContoller?.itemNames.count) item(s) in your list."
             }
-        }
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()

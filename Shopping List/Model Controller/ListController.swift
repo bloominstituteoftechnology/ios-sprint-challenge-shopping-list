@@ -27,20 +27,21 @@ class ShoppingListController {
     
     
     init() {
-        loadFromPersistentStore
+        loadFromPersistentStore()
     }
     
     func updateAddedItem(for item: ShoppingItem) {
-        guard let item = itemNames.firstIndex(of: item) else { return }
-        itemNames[index].hasBeenAdded.toggle()
+        item.hasBeenAdded = !item.hasBeenAdded
         saveToPersistentStore()
         }
-    }
     
-    var addItems: [ShoppingItem] {
+    
+    var filterItems: [ShoppingItem] {
         let addItem = shoppingItems.filter{ $0.hasBeenAdded == true }
         return addItem
     }
+    
+    // Create Items function
     
     // MARK: - Persistence
     
@@ -63,14 +64,16 @@ class ShoppingListController {
            }
        }
 
-       func loadFromPersistentStore() {
-           guard let itemsURL = shoppingListURL else { return }
-           do {
+      private func loadFromPersistentStore() {
+           
+           do { guard let itemsURL = shoppingListURL else { return }
                let data = try Data(contentsOf: itemsURL)
                let decoder = PropertyListDecoder()
-               let shoppingItemList = try decoder.decode([ShoppingItem].self, from: data)
+               self.shoppingItems = try decoder.decode([ShoppingItem].self, from: data)
               // self.shoppingItems = shoppingItemList
            } catch {
                print("Error decoding items: \(error)")
            }
-       }
+    }
+
+}
