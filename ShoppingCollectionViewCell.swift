@@ -23,12 +23,12 @@ class ShoppingCollectionViewCell: UICollectionViewCell {
       
        
        private func updateViews() {
-           guard let item = item else { return }
+           guard let list = item else { return }
            
-           imageView.image = item.image
-           item.hasBeenAdded = !item.hasBeenAdded
+           imageView.image = list.image
+           itemLabel.text = list.name
            
-           if item.hasBeenAdded == true {
+           if list.hasBeenAdded == true {
                notAddedLabel.text = "Not Added"
            } else {
                notAddedLabel.text = "Added"
