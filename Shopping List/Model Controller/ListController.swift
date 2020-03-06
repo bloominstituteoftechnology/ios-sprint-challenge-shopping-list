@@ -9,21 +9,18 @@
 import Foundation
 
 
-extension String {
-    static let addItemKey = "addItem"
-}
 
 class ShoppingListController {
    
     var shoppingItems: [ShoppingItem] = []
     
-    var itemNames = ["Apple",
-                        "Grapes",
-                        "Milk",
-                        "Muffin",
-                        "Popcorn",
-                        "Soda",
-                        "Strawberries"]
+    var itemNames: [ShoppingItem] = [ShoppingItem(name: "Apple", hasBeenAdded: false),
+                                    ShoppingItem(name: "Grapes", hasBeenAdded: false),
+                                    ShoppingItem(name: "Milk", hasBeenAdded: false),
+                                    ShoppingItem(name: "Muffin", hasBeenAdded: false),
+                                    ShoppingItem(name: "Popcorn", hasBeenAdded: false),
+                                    ShoppingItem(name: "Soda", hasBeenAdded: false),
+                                    ShoppingItem(name: "Strawberries", hasBeenAdded: false)]
     
     
     init() {
@@ -31,17 +28,23 @@ class ShoppingListController {
     }
     
     func updateAddedItem(for item: ShoppingItem) {
-        item.hasBeenAdded = !item.hasBeenAdded
+        guard let item = itemNames.firstIndex(of: item) else {return}
+        itemNames[item].hasBeenAdded = !itemNames[item].hasBeenAdded
         saveToPersistentStore()
         }
     
     
     var filterItems: [ShoppingItem] {
-        let addItem = shoppingItems.filter{ $0.hasBeenAdded == true }
-        return addItem
+         shoppingItems.filter { $0.hasBeenAdded == true }
     }
     
     // Create Items function
+    
+    func createItem(name: String, hasBeenAdded: Bool) {
+        let shoppingItem = ShoppingItem(name: name, hasBeenAdded: hasBeenAdded)
+        itemNames.append(shoppingItem)
+        saveToPersistentStore()
+    }
     
     // MARK: - Persistence
     

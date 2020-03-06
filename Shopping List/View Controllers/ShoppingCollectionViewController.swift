@@ -12,6 +12,12 @@ import UIKit
 class ShoppingCollectionViewController: UICollectionViewController {
     var shoppingListController = ShoppingListController()
     
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -24,8 +30,8 @@ class ShoppingCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as? ShoppingCollectionViewCell else { return UICollectionViewCell() }
-        let item = shoppingListController.itemNames[indexPath.item]
-        cell.item = item
+        let newItem = shoppingListController.itemNames[indexPath.item]
+        cell.item = newItem
         return cell
     }
     
