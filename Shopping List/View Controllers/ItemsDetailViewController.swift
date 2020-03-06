@@ -28,19 +28,22 @@ class ItemsDetailViewController: UIViewController {
             let action = UIAlertAction(title: "OK", style: .default, handler: nil)
             alert.addAction(action)
             present(alert, animated: true)
+            navigationController?.popViewController(animated: true)
         }
     }
     
     func updateViews() {
-        if let shoppingController = shoppingContoller {
-            let items = shoppingController.shoppingItems.filter( {$0.hasBeenAdded == true })
+        orderAmount.text = "You currently have \(shoppingController.itemNames.count) item(s) in your list."
         }
     }
     
-    
+    @IBOutlet weak var orderAmount: UILabel!
     @IBOutlet weak var nameLabel: UITextField!
     @IBOutlet weak var addressLabel: UITextField!
    
-    var item: ShoppingItem?
-    var shoppingContoller: ShoppingListController?
+var item: ShoppingItem?{
+    didSet{
+        updateViews()
+    }
+var shoppingContoller: ShoppingListController?
 }
