@@ -46,7 +46,7 @@ class ShoppingCollectionViewController: UICollectionViewController {
         
         if segue.identifier == "SendOrderSegue" {
             guard let itemsDetailVC = segue.destination as? ItemsDetailViewController else { return }
-            itemsDetailVC.shoppingListController = self.shoppingListController
+            itemsDetailVC.shoppingContoller = shoppingListController
         }
     }
 }
