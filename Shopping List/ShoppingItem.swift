@@ -8,13 +8,16 @@
 
 import UIKit
 
-struct ShoppingItem {
+class ShoppingItem: Codable {
     var name: String
     var addedOnTheShoppingList: Bool = false
-    var image: UIImage
+    var imageName: String
+    var picture: UIImage {
+        return UIImage(named: imageName)!
+    }
     
-    init(name: String, imageName: String) {
+    init(name: String) {
         self.name = name
-        self.image = UIImage(named: imageName)!
+        self.imageName = name
     }
 }

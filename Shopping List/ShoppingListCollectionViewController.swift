@@ -10,31 +10,59 @@ import UIKit
 
 
 
-// Mark :- IBOutlets
-
 
 class ShoppingListCollectionViewController: UICollectionViewController {
-    private var shoppingListController = ShoppingListController()
-
- 
-        
-
-
-  
-
+    let shoppingListController = ShoppingListController()
+    
+    
+    
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return shoppingListController.shoppingList.count
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingListCell", for: indexPath)
-    
-        // Configure the cell
-    
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingListCell", for: indexPath) as? ShoppingListCollectionViewCell else { return UICollectionViewCell() }
+        
+        let shoppingList = shoppingListController.shoppingList[indexPath.item]
+        
+        cell.shoppinglist = shoppingList
+        
         return cell
     }
-
     
-
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        var shoppingListItem = shoppingListController.shoppingList[indexPath.row]
+        
+        shoppingListController.updateShoppingList(shoppingItem: shoppingListItem)
+        collectionView.reloadItems(at: [indexPath])
+        
+        
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShoppingListSegue" {
+           guard let shoppinglistVC = segue.destination as? ShoppingListViewController else { return }
+            
+            shoppinglistVC.shoppingListController = shoppingListController
+            
+            
+        }
+    }
+        
+        
+        
+        
+        
+        
+        
+        
+        
 }
+
