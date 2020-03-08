@@ -33,6 +33,8 @@ class NextPageViewController: UIViewController {
     var number = 0
     var userName = ""
     var userAddress = ""
+    
+    
     //MARK: -Alerts-
     
     private func showAlert() {

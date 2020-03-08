@@ -9,14 +9,14 @@
 import UIKit
 
 
-struct Item: Codable {
+struct Item: Codable, Equatable {
     
     var name: String
     var itemWasAdded: Bool
     
-    init(name: String, itemWasAdded: Bool) {
+    init(name: String) {
         self.name = name
-        self.itemWasAdded = itemWasAdded
+        self.itemWasAdded = false
     }
     
 }//End of class

@@ -12,7 +12,7 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        itemController.addItems()
+        itemController.loadFromPresistentStore()
     }
     
     
@@ -26,11 +26,10 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
     
     
     // MARK: -UICollectionViewDataSource-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingItem", for: indexPath) as! ShoppingItemCollectionViewCell
-        
         cell.item = itemController.items[indexPath.item]
-        
         return cell
     }
     
@@ -40,15 +39,14 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         itemController.items[indexPath.item].itemWasAdded.toggle()
-        itemController.save(item: itemController.items[indexPath.item])
+        itemController.addOrRemove(item: itemController.items[indexPath.item], index: indexPath.item)
         collectionView.reloadData()
     }
     
     
     //MARK: -Important properties-
     
-    var itemController = ShoppingItemController()
-    
+    let itemController = ShoppingItemController()
     
     
     //MARK: -Important methods-

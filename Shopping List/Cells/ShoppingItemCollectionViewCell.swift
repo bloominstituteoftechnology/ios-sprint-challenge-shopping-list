@@ -21,7 +21,6 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet var itemName: UILabel!
     
     
-    
     //MARK: -Important properties-
     
     var item: Item? {
@@ -38,11 +37,12 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         itemName.text = item.name
         itemImage.image = UIImage(named: item.name)
         
-        if UserDefaults.standard.bool(forKey: item.name) {
+        if item.itemWasAdded {
             itemWasAddedLabel.text = "Added"
         } else {
             itemWasAddedLabel.text = "Not Added"
         }
     }
+    
     
 }//End of class
