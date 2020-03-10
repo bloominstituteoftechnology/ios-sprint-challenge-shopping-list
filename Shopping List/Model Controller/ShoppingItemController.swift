@@ -11,6 +11,7 @@ import UIKit
 class ShoppingItemController {
     
     init() {
+        createShoppingList()
         loadFromPresistentStore()
     }
     
@@ -31,12 +32,13 @@ class ShoppingItemController {
     
     func createShoppingList() {
         let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
-        guard !UserDefaults.standard.bool(forKey: createListKey) else {return}
+        guard UserDefaults.standard.bool(forKey: createListKey) == false else {return}
         for item in itemNames {
             let itemInstance = Item(name: item)
             items.append(itemInstance)
         }
         UserDefaults.standard.set(true, forKey: createListKey)
+        saveToPresistentStore()
     }
     
     func addOrRemove(item: Item, index: Int) {
