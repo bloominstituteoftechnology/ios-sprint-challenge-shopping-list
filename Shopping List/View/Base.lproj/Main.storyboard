@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aMN-ze-8vT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aMN-ze-8vT">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -69,8 +69,9 @@
                                 <size key="customSize" width="150" height="150"/>
                                 <connections>
                                     <outlet property="addedLabel" destination="qTM-fM-hQF" id="hyr-Zo-Eiw"/>
-                                    <outlet property="imageView" destination="caI-Mj-Tbk" id="06G-Nc-kbo"/>
-                                    <outlet property="nameLabel" destination="UeY-9R-JSr" id="UsZ-Cp-TCo"/>
+                                    <outlet property="imageView" destination="caI-Mj-Tbk" id="ENe-ci-LbJ"/>
+                                    <outlet property="isAddedLabel" destination="qTM-fM-hQF" id="EjH-lO-qES"/>
+                                    <outlet property="nameLabel" destination="UeY-9R-JSr" id="ywD-Cv-TCV"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -128,7 +129,7 @@ in your shopping cart</string>
                                             <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="sendOrderButtonTapped:" destination="gsi-Ew-bIW" eventType="touchUpInside" id="RVY-yg-oER"/>
+                                            <action selector="sendOrderButtonTapped:" destination="gsi-Ew-bIW" eventType="touchUpInside" id="bLq-GK-rTq"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -148,9 +149,9 @@ in your shopping cart</string>
                     </view>
                     <navigationItem key="navigationItem" id="Osv-wY-BN6"/>
                     <connections>
-                        <outlet property="itemCountLabel" destination="RBu-7j-Mj4" id="1cj-WV-BxT"/>
-                        <outlet property="yourAddressTextField" destination="pTb-SK-oif" id="CF2-DQ-czR"/>
-                        <outlet property="yourNameTextField" destination="mot-lg-633" id="qoq-jw-I2G"/>
+                        <outlet property="addressTextField" destination="pTb-SK-oif" id="kT7-Zq-J96"/>
+                        <outlet property="itemCountLabel" destination="RBu-7j-Mj4" id="rbo-rS-Tmv"/>
+                        <outlet property="nameTextField" destination="mot-lg-633" id="YTf-Cb-E9G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qMW-9n-r1u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -178,6 +179,6 @@ in your shopping cart</string>
     </scenes>
     <resources>
         <image name="Apple" width="229" height="300"/>
-        <image name="cart" catalog="system" width="64" height="50"/>
+        <image name="cart" catalog="system" width="128" height="102"/>
     </resources>
 </document>
