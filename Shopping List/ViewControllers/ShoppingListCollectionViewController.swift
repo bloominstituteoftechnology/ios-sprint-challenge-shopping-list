@@ -28,6 +28,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
             guard let shoppingCartViewController = segue.destination as? ShoppingCartViewController else { fatalError("failure to downcast segue destination")}
             // Pass the selected object to the new view controller.
             // FIXME: - pass shopping shoppingitemcontroller to destination's shopping list
+            shoppingCartViewController.
         }
     }
 
