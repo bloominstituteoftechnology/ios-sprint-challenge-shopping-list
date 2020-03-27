@@ -40,6 +40,8 @@ class ShoppingCartController {
         if UserDefaults.standard.bool(forKey: key) == false {
             saveToPersistence()
             return
+        } else {
+            loadToPersistence()
         }
     }
     
@@ -65,6 +67,20 @@ class ShoppingCartController {
     
     func loadToPersistence() {
         
+        guard let persistentURL = persistentURL else { return }
+        
+        do {
+            //Decoder
+            let decoder = PropertyListDecoder()
+            let shoppingPlist = try Data(contentsOf: persistentURL)
+            
+            //Decode plist
+            let items = try decoder.decode([ShoppingItem].self, from: shoppingPlist)
+            shoppingItems = items
+            
+        } catch {
+            print("Error Loading: \(error) ")
+        }
     }
     
     

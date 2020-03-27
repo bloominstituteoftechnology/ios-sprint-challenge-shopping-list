@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -76,11 +77,84 @@
                             <outlet property="delegate" destination="tpA-Gv-yik" id="mAa-Zy-3lv"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Shopping Cart" id="yoK-Ub-8xe"/>
+                    <navigationItem key="navigationItem" title="Shopping Cart" id="yoK-Ub-8xe">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="wsc-aa-auw">
+                            <connections>
+                                <segue destination="hur-Zs-OrF" kind="show" identifier="CartSegue" id="cs5-kk-UO1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CnR-76-EHO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1021.7391304347827" y="230.35714285714283"/>
+        </scene>
+        <!--Cart View Controller-->
+        <scene sceneID="hcF-EN-YXv">
+            <objects>
+                <viewController id="hur-Zs-OrF" customClass="CartViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="geV-Uj-h49">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="QNh-jp-H4a">
+                                <rect key="frame" x="57" y="160" width="300" height="142.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t6E-3g-bDP">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="20.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="OLj-1p-K1Q"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hb5-gp-XOy">
+                                        <rect key="frame" x="0.0" y="28.5" width="300" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="KLX-3w-8Q9"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="owx-TY-DNs">
+                                        <rect key="frame" x="0.0" y="70.5" width="300" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="djR-I9-PH2"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U4z-zr-WBi">
+                                        <rect key="frame" x="110.5" y="112.5" width="79" height="30"/>
+                                        <state key="normal" title="Send Order"/>
+                                        <connections>
+                                            <action selector="buttonSendOrder:" destination="H0c-B4-Gba" eventType="touchUpInside" id="YfL-hD-Hoy"/>
+                                            <action selector="buttonSendOrder:" destination="hur-Zs-OrF" eventType="touchUpInside" id="tvP-en-qGh"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="QNh-jp-H4a" firstAttribute="top" secondItem="yKX-No-HgI" secondAttribute="top" constant="20" id="QYw-q6-xRI"/>
+                            <constraint firstItem="yKX-No-HgI" firstAttribute="trailing" secondItem="QNh-jp-H4a" secondAttribute="trailing" constant="57" id="YKw-il-v0m"/>
+                            <constraint firstItem="QNh-jp-H4a" firstAttribute="leading" secondItem="yKX-No-HgI" secondAttribute="leading" constant="57" id="csr-Qc-IRU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yKX-No-HgI"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="GSd-4l-J8d"/>
+                    <connections>
+                        <outlet property="labelItemCounter" destination="t6E-3g-bDP" id="xqr-Ce-Tm5"/>
+                        <outlet property="textFieldAddress" destination="owx-TY-DNs" id="Dzm-Q2-zRM"/>
+                        <outlet property="textFieldName" destination="Hb5-gp-XOy" id="hlR-WX-6cP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hZD-Ep-uZx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="H0c-B4-Gba" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1773.913043478261" y="229.6875"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="inT-4P-Yga">
