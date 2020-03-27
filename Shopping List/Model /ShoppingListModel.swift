@@ -14,7 +14,6 @@ struct ShoppingItem: Codable {
     let hasBeenAdded: Bool
     
     
-//    var itemPics
-    
-    
-}
+        
+    }
+

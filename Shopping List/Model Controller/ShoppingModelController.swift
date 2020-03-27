@@ -14,24 +14,10 @@ class ShoppingController: Codable {
     
     
     
-    var itemNames: [ShoppingItem]  {
-        
-        var result = [
-            ShoppingItem(name: "Apple", hasBeenAdded: false),
-            ShoppingItem(name: "Grapes", hasBeenAdded: false),
-            ShoppingItem(name: "Milk", hasBeenAdded: false),
-            ShoppingItem(name: "Muffin", hasBeenAdded: false),
-            ShoppingItem(name: "Popcorn", hasBeenAdded: false),
-            ShoppingItem(name: "Soda", hasBeenAdded: false),
-            ShoppingItem(name: "Strawberries", hasBeenAdded: false)
-            ]
-        
-        
-        
-        
-            return result
+    let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     
-    }
+    
+    
 
     var shoppingListURL: URL? {
         
@@ -71,6 +57,8 @@ class ShoppingController: Codable {
             let shoppingPlist = try Data(contentsOf: shoppingURL)
             
             let shoppingItems = try decoder.decode([ShoppingItem].self, from: shoppingPlist)
+            
+            self.itemNames = shoppingItems
             
             
 
