@@ -2,7 +2,7 @@
 //  ShoppingItemsCollectionViewController.swift
 //  Shopping List
 //
-//  Created by Bling Morley on 3/27/20.
+//  Created by Cody Morley on 3/27/20.
 //  Copyright © 2020 Lambda School. All rights reserved.
 //
 
@@ -23,6 +23,8 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    
 
     /*
     // MARK: - Navigation
