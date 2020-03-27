@@ -29,7 +29,6 @@ class CartViewController: UIViewController {
         alert.addAction(alertAction)
         present(alert, animated: true)
         
-        
         //Reset Items to not added since you have ordered food
         if let items = shoppingController?.shoppingItems {
             for i in 0...items.count - 1 {
