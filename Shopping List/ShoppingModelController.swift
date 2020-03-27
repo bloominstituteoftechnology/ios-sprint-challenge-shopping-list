@@ -11,10 +11,8 @@ import Foundation
 class ShoppingController {
     
     var shoppingList: [ShoppingList] = []
-   
-    //Use a Bool and the UserDefaults to make sure that new shopping items are initialized only once.
     
-    let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+    
     
     init() {
         loadFromPersistentStore()

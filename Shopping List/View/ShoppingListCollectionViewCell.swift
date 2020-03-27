@@ -10,22 +10,22 @@ import UIKit
 
 class ShoppingListCollectionViewCell: UICollectionViewCell {
     
+
     @IBOutlet weak var nameLabel: UILabel!
-    
     @IBOutlet weak var imageView: UIImageView!
     
     
-    // the planet the cell should display in its views.
     var shoppingList:ShoppingList? {
         didSet {
-            // any time the planet's value changes run this code.
             updateViews()
         }
     }
     
-    func updateViews() {
-        imageView.image =
-        nameLabel.text = 
+    
+    
+    func updateViews(){
+        imageView.image = shoppingList?.image
+        nameLabel.text = shoppingList?.itemName
     }
     
 }
