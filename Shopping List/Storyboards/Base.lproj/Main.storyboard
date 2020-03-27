@@ -4,11 +4,12 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Collection View Controller-->
+        <!--Shopping List-->
         <scene sceneID="pAH-rl-Tqf">
             <objects>
                 <collectionViewController id="Vt0-Ha-mIL" sceneMemberID="viewController">
@@ -23,7 +24,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="MMY-h3-kic">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="MMY-h3-kic" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="169" height="201"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="xHq-ep-VwH">
@@ -63,6 +64,11 @@
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="169" height="201"/>
+                                <connections>
+                                    <outlet property="addedOrNotLabel" destination="m1M-vD-ta7" id="zTC-2v-59L"/>
+                                    <outlet property="itemImageView" destination="MEe-w2-0yu" id="0tb-LQ-7i4"/>
+                                    <outlet property="shoppingItemName" destination="nqp-Be-O0B" id="H52-yl-oRY"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -70,11 +76,71 @@
                             <outlet property="delegate" destination="Vt0-Ha-mIL" id="Fin-ET-kBX"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="wuP-Fi-Fua"/>
+                    <navigationItem key="navigationItem" title="Shopping List" id="wuP-Fi-Fua">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="eW4-h7-vob">
+                            <connections>
+                                <segue destination="gmb-vM-nql" kind="show" id="Hgk-en-L37"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="akw-fB-qDS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="682.60869565217399" y="49.553571428571423"/>
+        </scene>
+        <!--SendOrder-->
+        <scene sceneID="V7n-Y0-boi">
+            <objects>
+                <viewController title="SendOrder" id="gmb-vM-nql" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="G4b-ww-nmB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cQ-1z-xaP">
+                                <rect key="frame" x="20" y="147" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TIY-F1-lrw">
+                                <rect key="frame" x="20" y="204" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Your Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="td6-W8-LFI">
+                                <rect key="frame" x="20" y="246" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6jt-R0-59a">
+                                <rect key="frame" x="168" y="318" width="79" height="30"/>
+                                <state key="normal" title="Send Order"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="TIY-F1-lrw" firstAttribute="leading" secondItem="kii-16-Lhg" secondAttribute="leading" constant="20" id="ALc-sP-UW9"/>
+                            <constraint firstItem="kii-16-Lhg" firstAttribute="trailing" secondItem="td6-W8-LFI" secondAttribute="trailing" constant="20" id="Cro-Gs-Dls"/>
+                            <constraint firstItem="td6-W8-LFI" firstAttribute="leading" secondItem="kii-16-Lhg" secondAttribute="leading" constant="20" id="LpP-DU-w4d"/>
+                            <constraint firstItem="kii-16-Lhg" firstAttribute="bottom" secondItem="6jt-R0-59a" secondAttribute="bottom" constant="514" id="SZW-8z-eYD"/>
+                            <constraint firstItem="kii-16-Lhg" firstAttribute="trailing" secondItem="TIY-F1-lrw" secondAttribute="trailing" constant="20" id="WBq-ct-bPB"/>
+                            <constraint firstItem="td6-W8-LFI" firstAttribute="top" secondItem="TIY-F1-lrw" secondAttribute="bottom" constant="8" id="Xp6-Q4-Uyg"/>
+                            <constraint firstItem="6jt-R0-59a" firstAttribute="leading" secondItem="kii-16-Lhg" secondAttribute="leading" constant="168" id="aWI-wd-2qS"/>
+                            <constraint firstItem="6cQ-1z-xaP" firstAttribute="top" secondItem="kii-16-Lhg" secondAttribute="top" constant="59" id="cbn-y3-2vw"/>
+                            <constraint firstItem="kii-16-Lhg" firstAttribute="trailing" secondItem="6jt-R0-59a" secondAttribute="trailing" constant="167" id="dsb-bu-eMh"/>
+                            <constraint firstItem="6jt-R0-59a" firstAttribute="top" secondItem="td6-W8-LFI" secondAttribute="bottom" constant="38" id="hQI-x6-0Bm"/>
+                            <constraint firstItem="kii-16-Lhg" firstAttribute="bottom" secondItem="td6-W8-LFI" secondAttribute="bottom" constant="582" id="jCN-TR-BYc"/>
+                            <constraint firstItem="6cQ-1z-xaP" firstAttribute="leading" secondItem="kii-16-Lhg" secondAttribute="leading" constant="20" id="o0q-M0-DCu"/>
+                            <constraint firstItem="TIY-F1-lrw" firstAttribute="top" secondItem="6cQ-1z-xaP" secondAttribute="bottom" constant="36" id="uQI-tc-6k7"/>
+                            <constraint firstItem="kii-16-Lhg" firstAttribute="trailing" secondItem="6cQ-1z-xaP" secondAttribute="trailing" constant="20" id="yGC-Mu-Yj0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="kii-16-Lhg"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="07f-CX-DeM"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tTW-2i-mQ4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1487" y="50"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jkw-K4-bgn">
