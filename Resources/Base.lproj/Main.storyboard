@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="l9d-Uj-gem">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Shopping List Collection View Controller-->
+        <scene sceneID="4fu-E3-fbw">
+            <objects>
+                <collectionViewController id="bbp-OX-nmL" customClass="ShoppingListCollectionViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="LUB-CV-lRm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7xj-4n-S0a">
+                            <size key="itemSize" width="199" height="208"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoppingCell" id="XrL-9w-frw">
+                                <rect key="frame" x="0.0" y="0.0" width="199" height="208"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="j4s-yr-iAj">
+                                    <rect key="frame" x="0.0" y="0.0" width="199" height="208"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="viz-hB-1BB">
+                                            <rect key="frame" x="8" y="37" width="183" height="163"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="viz-hB-1BB" secondAttribute="height" multiplier="183:163" id="kSh-kU-BeS"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kwa-D5-DGQ">
+                                            <rect key="frame" x="8" y="8" width="183" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="viz-hB-1BB" secondAttribute="bottom" constant="8" id="Dea-EV-JlL"/>
+                                        <constraint firstAttribute="trailing" secondItem="kwa-D5-DGQ" secondAttribute="trailing" constant="8" id="IzJ-VZ-5nJ"/>
+                                        <constraint firstItem="viz-hB-1BB" firstAttribute="leading" secondItem="j4s-yr-iAj" secondAttribute="leading" constant="8" id="XYq-nq-Oyr"/>
+                                        <constraint firstAttribute="trailing" secondItem="viz-hB-1BB" secondAttribute="trailing" constant="8" id="ZCA-k0-cF3"/>
+                                        <constraint firstItem="kwa-D5-DGQ" firstAttribute="leading" secondItem="j4s-yr-iAj" secondAttribute="leading" constant="8" id="saJ-8z-QEj"/>
+                                        <constraint firstItem="kwa-D5-DGQ" firstAttribute="top" secondItem="j4s-yr-iAj" secondAttribute="top" constant="8" id="vQq-UB-eTe"/>
+                                    </constraints>
+                                </collectionViewCellContentView>
+                                <size key="customSize" width="199" height="208"/>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="bbp-OX-nmL" id="nR0-Gx-zb8"/>
+                            <outlet property="delegate" destination="bbp-OX-nmL" id="sTS-90-KrJ"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="hCM-zq-wJD">
+                        <barButtonItem key="rightBarButtonItem" title="Add Item" id="2Hs-PU-jsB">
+                            <connections>
+                                <segue destination="Xym-Sf-FOg" kind="show" id="Zlu-YB-x7n"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uoe-Qm-XeX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1092.753623188406" y="154.6875"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="fEh-oM-ggq">
+            <objects>
+                <viewController id="Xym-Sf-FOg" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VdR-SK-iJt">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rea-nj-We3">
+                                <rect key="frame" x="186" y="147" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="47g-1F-8B8">
+                                <rect key="frame" x="159" y="221" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lE1-Ws-2BQ">
+                                <rect key="frame" x="159" y="301" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yco-Z6-gx1">
+                                <rect key="frame" x="182" y="409" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="W31-Cr-KyY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="pyr-88-N9P"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jb8-lb-qhP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1874" y="159"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="OWb-iF-qvh">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="l9d-Uj-gem" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Cce-EL-Xr2">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bbp-OX-nmL" kind="relationship" relationship="rootViewController" id="gUM-YH-yv4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T00-Kg-um0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="182.60869565217394" y="154.6875"/>
+        </scene>
+    </scenes>
+</document>
