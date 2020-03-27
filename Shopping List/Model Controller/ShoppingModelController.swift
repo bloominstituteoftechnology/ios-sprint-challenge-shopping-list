@@ -9,15 +9,20 @@
 import Foundation
 import UIKit
 
-class ShoppingController: Codable {
+class ShoppingController {
+    
+    init() {
+        loadFromPersistenceStore()
+        saveToPersistenceStore()
+    }
+    
+    
+    
     
     
     
     
     let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
-    
-    
-    
 
     var shoppingListURL: URL? {
         
@@ -58,7 +63,7 @@ class ShoppingController: Codable {
             
             let shoppingItems = try decoder.decode([ShoppingItem].self, from: shoppingPlist)
             
-            self.itemNames = shoppingItems
+            self.shoppingItem = shoppingItems
             
             
 
