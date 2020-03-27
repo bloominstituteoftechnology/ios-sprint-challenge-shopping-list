@@ -11,6 +11,7 @@
 		2746C28D242E51850003D92B /* ShoppingListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2746C28C242E51850003D92B /* ShoppingListCollectionViewController.swift */; };
 		2746C28F242E51CC0003D92B /* SendOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2746C28E242E51CC0003D92B /* SendOrderViewController.swift */; };
 		2746C291242E520C0003D92B /* ShoppingItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2746C290242E520C0003D92B /* ShoppingItemCollectionViewCell.swift */; };
+		2746C293242E5AC10003D92B /* ShoppingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2746C292242E5AC10003D92B /* ShoppingController.swift */; };
 		4613E91221143BFC00E7FF73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4613E91121143BFC00E7FF73 /* AppDelegate.swift */; };
 		4613E91721143BFC00E7FF73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91521143BFC00E7FF73 /* Main.storyboard */; };
 		4613E91921143BFD00E7FF73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91821143BFD00E7FF73 /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 		2746C28C242E51850003D92B /* ShoppingListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListCollectionViewController.swift; sourceTree = "<group>"; };
 		2746C28E242E51CC0003D92B /* SendOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendOrderViewController.swift; sourceTree = "<group>"; };
 		2746C290242E520C0003D92B /* ShoppingItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		2746C292242E5AC10003D92B /* ShoppingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingController.swift; sourceTree = "<group>"; };
 		4613E90E21143BFC00E7FF73 /* Shopping List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shopping List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4613E91121143BFC00E7FF73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4613E91621143BFC00E7FF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				2746C290242E520C0003D92B /* ShoppingItemCollectionViewCell.swift */,
 				2746C28E242E51CC0003D92B /* SendOrderViewController.swift */,
 				2746C28C242E51850003D92B /* ShoppingListCollectionViewController.swift */,
+				2746C292242E5AC10003D92B /* ShoppingController.swift */,
 				2746C28A242E50050003D92B /* ShoppingList.swift */,
 				4613E91821143BFD00E7FF73 /* Assets.xcassets */,
 				4613E91A21143BFD00E7FF73 /* LaunchScreen.storyboard */,
@@ -105,6 +108,7 @@
 				TargetAttributes = {
 					4613E90D21143BFC00E7FF73 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1140;
 					};
 				};
 			};
@@ -149,6 +153,7 @@
 				2746C28F242E51CC0003D92B /* SendOrderViewController.swift in Sources */,
 				2746C28D242E51850003D92B /* ShoppingListCollectionViewController.swift in Sources */,
 				4613E91221143BFC00E7FF73 /* AppDelegate.swift in Sources */,
+				2746C293242E5AC10003D92B /* ShoppingController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,7 +306,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LambdaSchool.Shopping-List";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -319,7 +324,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LambdaSchool.Shopping-List";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

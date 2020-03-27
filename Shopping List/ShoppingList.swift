@@ -8,3 +8,13 @@
 
 import Foundation
 
+struct ShoppingItem: Equatable, Codable {
+    var name: String
+    var added: Bool
+    
+    var image: UIImage? {
+        let pic = UIImage(named: name)
+        return pic
+    }
+}
+
