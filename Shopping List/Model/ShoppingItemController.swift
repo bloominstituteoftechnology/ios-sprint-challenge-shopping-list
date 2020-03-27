@@ -11,7 +11,7 @@ import Foundation
 
 class ShoppingItemController {
     
-    let key = "id"
+    let key = "myKey"
     let itemNames: [ShoppingEnum] = [.apple, .grapes, .milk, .muffin, .popcorn, .soda, .strawberries]
     
     init() {
@@ -19,17 +19,15 @@ class ShoppingItemController {
     }
     
     //Functions
-    /*func savePersistence() {
+    func savePersistence() {
         let userDefault = UserDefaults.standard
-        userDefault.set([], forKey: <#T##String#>)
-    } */
-    
-    func loadPersistence() {
-        if UserDefaults.standard.array(forKey: key) == nil {
-            //savePersistence()
-        }
+        userDefault.set(true, forKey: key)
     }
     
-    
+    func loadPersistence() {
+        if UserDefaults.standard.bool(forKey: key) == nil {
+            savePersistence()
+        }
+    }
 }
 
