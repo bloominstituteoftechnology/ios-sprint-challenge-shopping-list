@@ -12,7 +12,9 @@ import UIKit
 struct ShoppingItem {
     var name: String
     var hasBeenAdded: Bool
-    var image: UIImage 
+    var image: UIImage {
+        UIImage(named: self.name)
+    }
     
     init(name: String, hasBeenAdded: Bool = false) {
         self.name = name
