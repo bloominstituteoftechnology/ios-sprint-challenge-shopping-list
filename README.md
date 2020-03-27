@@ -34,10 +34,11 @@ Please view the screen recording so you will know what your finished project sho
 
 ## Requirements
 
-1. A `ShoppingItem` model object with properties: 
+//1. A `ShoppingItem` model object with properties: 
 	1. A name of the item ("Apple").
 	2. A `Bool` indicating whether the item has been added to the shopping list.
 	3. You will need to make a computed property that initializes a `UIImage` from the name of the item.
+    
 2. **The shopping items should be persisted between launches of the application.** On the first launch of the application, use the given shopping `itemNames` to create instances of the `ShoppingItem` model, and save them to a file using `FileManager`. To help you do this, read the following substeps:
 	1. Use this snippet of names of images from the asset catalog to create instances of items in the `ShoppingList` model controller:
 
@@ -46,11 +47,15 @@ Please view the screen recording so you will know what your finished project sho
 	2. Use a `Bool` and the `UserDefaults` to make sure that new shopping items are initialized only once.
 	3. Save the shopping list to a file using a `PropertyListEncoder` as the user makes changes.
 	4. Test and verify that your app saves and loads changes to the shopping list (quit and relaunch the app).
+    
 3. A custom Collection View Controller that shows a list of shopping items. 
-	1. The Collection View Controller should be embedded in a navigation controller.
+	//1. The Collection View Controller should be embedded in a navigation controller.
 4. A custom Collection View Controller Cell must display all the properties of the shopping item.
 5. Upon selecting the custom cell, the item's `Bool` value should change from `true` to `false` or vice-versa. You can know when a cell has been selected by using the `didSelectItemAt` method in the `UICollectionViewDelegate` protocol
 6. A bar button item on the Collection View Controller that performs a "Show" segue to a detail `UIViewController` subclass. This `UIViewController` should allow the user to fill in their name, address, and submit the order.
+
+
+
 	1. The detail View Controller should display how many items have been added to the "shopping list".
 7. In the detail view controller, add a button "Submit Order" that creates a `UIAlert` saying the user's order will be delivered in 15 minutes to the user's address.
 	1. The alert must include the user's name in the title
