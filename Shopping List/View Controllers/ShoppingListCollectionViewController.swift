@@ -38,9 +38,9 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addSegue" {
-            if let destination = segue.destination as? ShoppingCartViewController {
+            guard let destination = segue.destination as? ShoppingCartViewController else { return }
                 destination.shoppingList = shoppingItemController
             }
         }
     }
-}
+

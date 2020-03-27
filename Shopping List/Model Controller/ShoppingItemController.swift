@@ -28,7 +28,11 @@ class ShoppingItemController {
             saveToPersistentStore()
         }
     }
-    
+    func addToCart() {
+           for item in itemNames {
+               shoppingItems.append(ShoppingItem(name: item))
+           }
+       }
     
     var shoppingListURL: URL? {
            let fileManager = FileManager.default
@@ -60,10 +64,6 @@ class ShoppingItemController {
         }
     }
         
-    func addToCart() {
-        for item in itemNames {
-            shoppingItems.append(ShoppingItem(name: item))
-        }
-    }
+   
     
 }
