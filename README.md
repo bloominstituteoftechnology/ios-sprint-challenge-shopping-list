@@ -49,7 +49,7 @@ Please view the screen recording so you will know what your finished project sho
 3. A custom Collection View Controller that shows a list of shopping items. 
 	1. The Collection View Controller should be embedded in a navigation controller.
 4. A custom Collection View Controller Cell must display all the properties of the shopping item.
-5. Upon selecting the custom cell, the item's `Bool` value should change from `true` to `false` or vice-versa.
+5. Upon selecting the custom cell, the item's `Bool` value should change from `true` to `false` or vice-versa. You can know when a cell has been selected by using the `didSelectItemAt` method in the `UICollectionViewDelegate` protocol
 6. A bar button item on the Collection View Controller that performs a "Show" segue to a detail `UIViewController` subclass. This `UIViewController` should allow the user to fill in their name, address, and submit the order.
 	1. The detail View Controller should display how many items have been added to the "shopping list".
 7. In the detail view controller, add a button "Submit Order" that creates a `UIAlert` saying the user's order will be delivered in 15 minutes to the user's address.
