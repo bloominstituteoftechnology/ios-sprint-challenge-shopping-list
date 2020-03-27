@@ -13,23 +13,23 @@ class ShoppingListController {
     
     // MARK: Properties
     
-    var shoppingList: [ShoppingItem] {
-        get {
-            let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
-            var shoppingList: [ShoppingItem] = []
-            for item in itemNames {
-                shoppingList.append(ShoppingItem(name: item))
-            }
-            return shoppingList
-        }
-        set {}
-    }
-    
+    var shoppingList = [ShoppingItem(name: "Apple"),
+                        ShoppingItem(name: "Grapes"),
+                        ShoppingItem(name: "Milk"),
+                        ShoppingItem(name: "Muffin"),
+                        ShoppingItem(name: "Popcorn"),
+                        ShoppingItem(name: "Soda"),
+                        ShoppingItem(name: "Strawberries")]
+
     // MARK: - CRUD
     
-    func updateItem(item: ShoppingItem, didAdd: Bool) {
+    func createItem(name: String) {
+        shoppingList.append(ShoppingItem(name: name))
+    }
+    
+    func updateItem(item: ShoppingItem) {
         guard let itemIndex = shoppingList.firstIndex(of: item) else {return}
         
-        shoppingList[itemIndex].didAdd = didAdd
+        shoppingList[itemIndex].didAdd = !shoppingList[itemIndex].didAdd
     }
 }

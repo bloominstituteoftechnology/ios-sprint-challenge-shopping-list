@@ -12,7 +12,7 @@ import UIKit
 struct ShoppingItem: Equatable {
     let name: String
     var didAdd: Bool = false
-    var image: UIImage? {
-        return UIImage(contentsOfFile: name)
+    var image: UIImage {
+        return UIImage(named: name)!
     }
 }
