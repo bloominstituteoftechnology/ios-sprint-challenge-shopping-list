@@ -22,15 +22,17 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
          @IBOutlet weak var addedLabel: UILabel!
          
       
-         private func updateViews() {
-            guard let item = shoppingItem else { return }
-                 imageView.image = UIImage(named: item.name)
-                 nameLabel.text = item.name
-            if item.hasBeenAdded == false {
-                addedLabel.text = "Add"
-            } else {
-                addedLabel.text = "Added"
-            }
+  
+    private func updateViews() {
+        guard let item = shoppingItem,
+            imageView.image == UIImage(named: item.name),
+            nameLabel.text == item.name else { return }
+        
+        if item.hasBeenAdded == false {
+            addedLabel.text = "Add"
+        } else {
+            addedLabel.text = "Added"
+        }
     }
 }
          
