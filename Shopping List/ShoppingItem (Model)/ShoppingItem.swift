@@ -6,9 +6,10 @@
 //  Copyright © 2020 Lambda School. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct ShoppingItem {
     let name: String
-    
+    var isAdded: Bool = false
+    var image: UIImage? { UIImage(named: name) }
 }
