@@ -24,6 +24,18 @@ class OrderDetailViewController: UIViewController {
     }
     
     @IBAction func sendOrder(_ sender: Any) {
+        showAlert()
+    }
+    
+    func showAlert(){
+        
+        guard let name = nameTextField.text, !name.isEmpty else {return}
+        guard let address = addressTextField.text, !address.isEmpty else {return}
+        let alert = UIAlertController(title: "Order for \(name)", message: "Your order will be delivered to \(address) in 15 minutes", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
     }
     
     /*

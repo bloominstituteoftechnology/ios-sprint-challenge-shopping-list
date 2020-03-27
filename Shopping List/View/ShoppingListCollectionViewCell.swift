@@ -38,4 +38,6 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
         
     }
     
+//    let changeHasAdded = UserDefaults.standard.set(, forKey: <#T##String#>)
+    
 }
