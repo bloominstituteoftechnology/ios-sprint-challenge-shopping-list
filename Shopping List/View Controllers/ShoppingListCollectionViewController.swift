@@ -19,6 +19,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        shoppingController.loadFromPersistentStore()
         collectionView?.reloadData()
     }
 

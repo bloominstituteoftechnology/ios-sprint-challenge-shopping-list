@@ -27,12 +27,6 @@ class ShoppingListController {
         let itemsURL = documentsDir?.appendingPathComponent("items.plist")
         return itemsURL
     }
-    
-    // MARK: - Lifecycle
-    
-    init() {
-        loadFromPersistentStore()
-    }
 
     // MARK: - CRUD
     
