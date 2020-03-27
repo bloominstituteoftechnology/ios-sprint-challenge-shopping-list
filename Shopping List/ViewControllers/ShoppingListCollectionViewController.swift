@@ -27,8 +27,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
             // Get the new view controller using [segue destinationViewController].
             guard let shoppingCartViewController = segue.destination as? ShoppingCartViewController else { fatalError("failure to downcast segue destination")}
             // Pass the selected object to the new view controller.
-            // FIXME: - pass shopping shoppingitemcontroller to destination's shopping list
-            shoppingCartViewController.
+            shoppingCartViewController.shoppingList = shoppingItemController
         }
     }
 
@@ -39,7 +38,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: .reuseIdentifier, for: indexPath) as? ShoppingListCollectionViewCell else { fatalError("failure to dequeue cell") }
         // Configure the cell
-        // FIXME: - add configuration
+        cell.shoppingItem = shoppingItemController.shoppingItems[indexPath.row]
         return cell
     }
 
