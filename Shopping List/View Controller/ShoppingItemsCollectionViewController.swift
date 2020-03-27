@@ -30,6 +30,7 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
         if let destination = segue.destination as? CartViewController {
             if identifier == "CartSegue" {
                 destination.shoppingController = shoppingController
+                destination.delegate = self
             }
         }
     }

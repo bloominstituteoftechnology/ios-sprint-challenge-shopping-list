@@ -59,7 +59,6 @@ class ShoppingCartController {
             
             //Write to file
             try encode.write(to: url)
-            print("Saved")
         } catch {
             print("Error Saving: \(error)")
         }

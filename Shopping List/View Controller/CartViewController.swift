@@ -20,15 +20,28 @@ class CartViewController: UIViewController {
     }
     
     //Variables
+    var delegate: ShoppingItemsCollectionViewController?
     var shoppingController: ShoppingCartController?
 
     @IBAction func buttonSendOrder(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Your Order Will Be Delivered in 15 minutes!", message: "\(textFieldName.text ?? "No Name")'s order will be delivered to \(textFieldAddress.text ?? "No Address")", preferredStyle: .alert)
+        let alert = UIAlertController(title: "(\(textFieldName.text ?? "No Name")'s) Order will Be delivered in 15 minutes!", message: "Order will be delivered to \(textFieldAddress.text ?? "No Address")", preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
         alert.addAction(alertAction)
         present(alert, animated: true)
+        
+        
+        //Reset Items to not added since you have ordered food
+        if let items = shoppingController?.shoppingItems {
+            for i in 0...items.count - 1 {
+                shoppingController?.shoppingItems[i].hasBeenAdded = false
+            }
+            
+            if let myDelegate = delegate {
+                myDelegate.collectionView?.reloadData()
+            }
+        }
+        
     }
-    
     
     //Functions
     func updateViews() {
@@ -42,16 +55,5 @@ class CartViewController: UIViewController {
         }
         labelItemCounter.text = "You currently have \(inShoppingCart) items in your shopping list!"
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
