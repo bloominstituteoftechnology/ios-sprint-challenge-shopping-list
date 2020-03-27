@@ -6,7 +6,7 @@
 //  Copyright © 2020 Lambda School. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct ShoppingItem: Equatable, Codable {
     var name: String
@@ -15,6 +15,12 @@ struct ShoppingItem: Equatable, Codable {
     var image: UIImage? {
         let pic = UIImage(named: name)
         return pic
+    }
+    
+    
+    init(name: String, added: Bool = false) {
+        self.name = name
+        self.added = added
     }
 }
 

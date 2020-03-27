@@ -10,10 +10,27 @@ import Foundation
 
 class ShoppingController {
     
-    var shoppingItems: [ShoppingItem] = []
+    var shoppingItems: [ShoppingItem] = [
+        ShoppingItem(name: "Apple", added: false),
+        ShoppingItem(name: "Grapes", added: false),
+        ShoppingItem(name: "Milk", added: false),
+        ShoppingItem(name: "Muffin", added: false),
+        ShoppingItem(name: "Popcorn", added: false),
+        ShoppingItem(name: "Soda", added: false),
+        ShoppingItem(name: "Strawberries", added: false),
+    ]
+
+    
+    func addItemToCart(item: ShoppingItem) {
+        guard let index = shoppingItems.firstIndex(of: item) else { return }
+        shoppingItems[index].added.toggle()
+        saveToPersistentStore()
+    }
+    
     
     init() {
         loadFromPersistentStore()
+        checkItems()
     }
     
     
@@ -24,6 +41,21 @@ class ShoppingController {
         let shoppingURL = documentsDir?.appendingPathComponent("ShoppingList.plist")
         
         return shoppingURL
+    }
+    
+    func checkItems() {
+            let wasLoaded = UserDefaults.standard.bool(forKey: "loaded")
+            if wasLoaded == false {
+                print("NOT LOADED")
+                let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+
+                for item in itemNames {
+                    createItem(with: item, added: false)
+
+                }
+                print("ARRAY COUNT: \(shoppingItems)")
+                UserDefaults.standard.set(true, forKey: "loaded")
+            }
     }
     
     func saveToPersistentStore() {
@@ -88,6 +120,18 @@ class ShoppingController {
     }
     
     func updateItem(with item: ShoppingItem) {
+    if let index = shoppingItems.firstIndex(where: {$0.name == item.name}){
+        if shoppingItems[index].added == false {
+            shoppingItems[index].added = true
+        } else {
+            shoppingItems[index].added = false
+        }
+
+    }
+    saveToPersistentStore()
+}
+    
+    func didSelectItem(with item: ShoppingItem) {
         if let index = shoppingItems.firstIndex(where: {$0.name == item.name}){
             if shoppingItems[index].added == false {
                 shoppingItems[index].added = true

@@ -24,7 +24,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="UKb-79-OeF" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="UKb-79-OeF" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="150" height="180"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="eLa-CO-TwD" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
@@ -93,39 +93,67 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7R-dQ-Uez">
-                                <rect key="frame" x="46" y="125" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7R-dQ-Uez">
+                                <rect key="frame" x="10" y="128" width="394" height="34"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RgA-c0-RDE">
-                                <rect key="frame" x="46" y="165" width="97" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Your Name:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RgA-c0-RDE">
+                                <rect key="frame" x="10" y="172" width="394" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="iqs-Ig-Zh1"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8iy-rB-Tla">
-                                <rect key="frame" x="46" y="220" width="97" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Your Address:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8iy-rB-Tla">
+                                <rect key="frame" x="10" y="216" width="394" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="Q3a-Iu-mCi"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UqQ-JM-pv5">
-                                <rect key="frame" x="46" y="286" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UqQ-JM-pv5">
+                                <rect key="frame" x="164" y="270" width="86" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="5jF-TD-0V3"/>
+                                </constraints>
+                                <state key="normal" title="Add Order"/>
+                                <connections>
+                                    <action selector="sendOrderTapped:" destination="RHq-v0-1J5" eventType="touchUpInside" id="Q5A-rl-1tx"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="U7R-dQ-Uez" firstAttribute="top" secondItem="lz1-hD-SZS" secondAttribute="top" constant="40" id="2dy-ig-QdM"/>
+                            <constraint firstItem="RgA-c0-RDE" firstAttribute="leading" secondItem="lz1-hD-SZS" secondAttribute="leading" constant="10" id="8L6-8b-UCS"/>
+                            <constraint firstItem="U7R-dQ-Uez" firstAttribute="leading" secondItem="lz1-hD-SZS" secondAttribute="leading" constant="10" id="8o2-6j-Kz5"/>
+                            <constraint firstItem="lz1-hD-SZS" firstAttribute="trailing" secondItem="RgA-c0-RDE" secondAttribute="trailing" constant="10" id="FYF-U2-e9i"/>
+                            <constraint firstItem="8iy-rB-Tla" firstAttribute="top" secondItem="RgA-c0-RDE" secondAttribute="bottom" constant="10" id="QZ3-Dm-Gzw"/>
+                            <constraint firstItem="RgA-c0-RDE" firstAttribute="top" secondItem="U7R-dQ-Uez" secondAttribute="bottom" constant="10" id="Yo1-1a-CEU"/>
+                            <constraint firstItem="lz1-hD-SZS" firstAttribute="trailing" secondItem="U7R-dQ-Uez" secondAttribute="trailing" constant="10" id="ZBl-Hx-vU6"/>
+                            <constraint firstItem="lz1-hD-SZS" firstAttribute="bottom" secondItem="UqQ-JM-pv5" secondAttribute="bottom" constant="562" id="aDz-ES-b5e"/>
+                            <constraint firstItem="UqQ-JM-pv5" firstAttribute="leading" secondItem="lz1-hD-SZS" secondAttribute="leading" constant="164" id="gvQ-1A-9WD"/>
+                            <constraint firstItem="lz1-hD-SZS" firstAttribute="trailing" secondItem="UqQ-JM-pv5" secondAttribute="trailing" constant="164" id="lt9-Gy-egd"/>
+                            <constraint firstItem="lz1-hD-SZS" firstAttribute="trailing" secondItem="8iy-rB-Tla" secondAttribute="trailing" constant="10" id="oFO-vA-nOR"/>
+                            <constraint firstItem="8iy-rB-Tla" firstAttribute="leading" secondItem="lz1-hD-SZS" secondAttribute="leading" constant="10" id="wIP-67-VDF"/>
+                            <constraint firstItem="UqQ-JM-pv5" firstAttribute="top" secondItem="8iy-rB-Tla" secondAttribute="bottom" constant="20" id="ycn-5F-zif"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="lz1-hD-SZS"/>
                     </view>
                     <navigationItem key="navigationItem" id="1hG-5B-I1E"/>
+                    <connections>
+                        <outlet property="addressLabel" destination="8iy-rB-Tla" id="HMQ-KS-QuE"/>
+                        <outlet property="howManyLabel" destination="U7R-dQ-Uez" id="4Zf-fK-pIW"/>
+                        <outlet property="nameLabel" destination="RgA-c0-RDE" id="i4t-lL-Mot"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KRh-h2-caY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1651" y="59"/>
+            <point key="canvasLocation" x="1650.7246376811595" y="58.928571428571423"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zvE-wv-E7o">
