@@ -20,9 +20,19 @@ class OrderDetailViewController: UIViewController {
     var shoppingListController: ShoppingListController?
     
     override func viewDidLoad() {
+        updateViews()
         super.viewDidLoad()
+        
+  
 
         // Do any additional setup after loading the view.
+    }
+    
+    func updateViews(){
+        
+        guard let items = shoppingListController?.addedItems else {return}
+        
+            yourShoppingListLabel.text = "You currently have" + " \(String(describing: items.count))" + " item(s) in your shopping list."
     }
     
     @IBAction func sendOrder(_ sender: Any) {

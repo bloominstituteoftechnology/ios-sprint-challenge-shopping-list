@@ -12,11 +12,11 @@ class ShoppingListController {
     
     var shoppingItems : [ShoppingItem] = [ShoppingItem(name: "Apple", hasAdded: false),
                                           ShoppingItem(name: "Grapes", hasAdded: false),
-                                          ShoppingItem(name: "Apple", hasAdded: false),
-                                          ShoppingItem(name: "Apple", hasAdded: false),
-                                          ShoppingItem(name: "Apple", hasAdded: false),
-                                          ShoppingItem(name: "Apple", hasAdded: false),
-                                          ShoppingItem(name: "Apple", hasAdded: false),
+                                          ShoppingItem(name: "Milk", hasAdded: false),
+                                          ShoppingItem(name: "Muffin", hasAdded: false),
+                                          ShoppingItem(name: "Popcorn", hasAdded: false),
+                                          ShoppingItem(name: "Soda", hasAdded: false),
+                                          ShoppingItem(name: "Strawberries", hasAdded: false),
     ]
     
     //    let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
