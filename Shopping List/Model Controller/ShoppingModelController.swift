@@ -7,14 +7,30 @@
 //
 
 import Foundation
+import UIKit
 
 class ShoppingController {
     
-    let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     
     
     
+    var itemNames: [ShoppingItem]  {
+        
+        var result = [
+            ShoppingItem(name: "Apple", hasBeenAdded: false),
+            ShoppingItem(name: "Grapes", hasBeenAdded: false),
+            ShoppingItem(name: "Milk", hasBeenAdded: false),
+            ShoppingItem(name: "Muffin", hasBeenAdded: false),
+            ShoppingItem(name: "Popcorn", hasBeenAdded: false),
+            ShoppingItem(name: "Soda", hasBeenAdded: false),
+            ShoppingItem(name: "Strawberries", hasBeenAdded: false)
+            ]
     
+        let shoppingItem = UserDefaults.standard.bool(forKey: .)
+    
+    
+    }
+
     var shoppingListURL: URL? {
         
         let fileManager = FileManager.default
@@ -43,7 +59,37 @@ class ShoppingController {
         }
     }
     
-    
+    func loadFromPersistenceStore() {
+        
+        guard let shoppingURL = shoppingListURL else { return }
+        
+        do {
+            let decoder = PropertyListDecoder()
+            
+            let shoppingPlist = try Data(contentsOf: shoppingURL)
+            
+            let shoppingItems = try decoder.decode([ShoppingItem].self, from: shoppingPlist)
+            
+            
+            
+            
+           
+            
+            
+  
+            
+        } catch let decodeError {
+            print("Error Decoding: \(decodeError)")
+            
+        }
+        
+        
+        
+        
+        
+        
+        
+    }
     
     
     

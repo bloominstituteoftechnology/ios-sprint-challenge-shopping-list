@@ -6,12 +6,13 @@
 //  Copyright © 2020 Lambda School. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-struct ShoppingItem {
+struct ShoppingItem: Equatable, Codable {
+     
+    let name: String
+    let hasBeenAdded: Bool
     
-    var name: String
-    var hasBeenAdded: Bool
     
 //    var itemPics
     

@@ -17,6 +17,8 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
     
     
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +55,9 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingItemCell", for: indexPath) as? ShoppingItemCollectionViewCell else { fatalError("Cell is not a ShoppingItemCell")}
         
-        let shoppingItem = shoppingList.itemNames[indexPath.row]
+        let item = shoppingList.itemNames[indexPath.row]
+        
+        
         
         
         
