@@ -21,7 +21,6 @@ class ShoppingListCollectionViewController: UICollectionViewController, Shopping
     
     var shoppingListController = ShoppingListController()
     
-  
 
     override func viewDidLoad() {
         super.viewDidLoad()
