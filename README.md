@@ -2,15 +2,15 @@
 
 This sprint challenge is designed to ensure that you are competent with the concepts taught throughout Sprint 2. 
 
-## Instructions
+Instructions
 
-**Please read this entire README to make sure you understand what is expected of you before you begin. This includes the instructions in the requirements section. Failure to read and follow the instructions and requirements will be reflected in your results.**
+Please read this entire README to make sure you understand what is expected of you before you begin. This includes the instructions in the requirements section. Failure to read and follow the instructions and requirements will be reflected in your results.**
 
 In your solution, it is especially important that you follow best practices such as MVC and good, consistent code style. You will be scored on these aspects as well as the project requirements below.
 
 Begin by forking this repository. Clone your fork to your local computer. Use the starter project included in the repository, as it contains images in the assets folder and a file you will use. Commit as appropriate while you work. 
 
-## Submission
+ Submission
 
 1. Push your final commit to GitHub by the end of the challenge. 
 2. Create a Pull Request (PR) from your Github fork and tag your Project Manager (PM).
@@ -20,7 +20,7 @@ Begin by forking this repository. Clone your fork to your local computer. Use th
 
 Good luck!
 
-### 20 Minute Rule
+20 Minute Rule
 
 You are not allowed to collaborate during the Sprint Challenge. However, you are encouraged to follow the twenty-minute rule and seek support from your PM and Instructor in your cohort help channel on Slack. Your work reflects your proficiency in iOS and your command of the concepts and techniques in this first unit.
 
