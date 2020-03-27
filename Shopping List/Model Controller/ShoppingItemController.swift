@@ -21,6 +21,18 @@ class ShoppingListController {
     
     //    let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     
+    var addedItems : [ShoppingItem] {
+        return shoppingItems.filter{$0.hasAdded == true}
+    }
+    var notAddedItems : [ShoppingItem] {
+           return shoppingItems.filter{$0.hasAdded == false}
+        
+    }
+    
+    init(){
+            loadFromPersistentStore()
+        }
+    
     func creatItem(name: String, hasAdded: Bool) -> ShoppingItem {
         let item = ShoppingItem(name: name, hasAdded: hasAdded)
         shoppingItems.append(item)

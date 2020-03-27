@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 class ShoppingListCollectionViewCell: UICollectionViewCell {
     
    
@@ -17,6 +19,8 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var nameLabel: UILabel!
+    
+    var delegate : ShoppingListCollectionViewCellDelegete?
     
     var shoppingItem: ShoppingItem?{
         
@@ -38,6 +42,8 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
         
     }
     
-//    let changeHasAdded = UserDefaults.standard.set(, forKey: <#T##String#>)
+   
+    
+    //    let changeHasAdded = UserDefaults.standard.set(, forKey: <#T##String#>)
     
 }

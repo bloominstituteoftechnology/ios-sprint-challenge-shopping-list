@@ -8,11 +8,18 @@
 
 import UIKit
 
+//protocol UICollectionViewDelegate{
+//
+//    func didSelectItemAt(for cell: ShoppingListCollectionViewCell)
+//}
+
 private let reuseIdentifier = "Cell"
 
-class ShoppingListCollectionViewController: UICollectionViewController {
+class ShoppingListCollectionViewController: UICollectionViewController, ShoppingListCollectionViewCellDelegete {
     
     var shoppingListController = ShoppingListController()
+    
+  
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,28 +32,44 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    func cellTapped(for cell: ShoppingListCollectionViewCell) {
+      
+    }
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "AddOrderSegue" {
+            guard  let detailVC = segue.destination as? OrderDetailViewController else {
+                return}
+            
+            detailVC.shoppingListController = shoppingListController
+        }
     }
-    */
+
 
     // MARK: UICollectionViewDataSource
-//
-//    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
+
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 2
+    }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return shoppingListController.shoppingItems.count
+        
+        switch section {
+        case 0:
+            return shoppingListController.addedItems.count
+           
+        default:
+             return shoppingListController.notAddedItems.count
+        }
+      
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -54,16 +77,29 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingItemCell", for: indexPath) as? ShoppingListCollectionViewCell else
         {fatalError("Cell is not a ShoppingListCollectionViewCell")}
     
-        let item = shoppingListController.shoppingItems[indexPath.row]
-        // Configure the cell
-    
+
+        cell.delegate = self
+        let item = itemFor(indexPath: indexPath)
         cell.shoppingItem = item
         
         return cell
     }
 
+    func itemFor(indexPath: IndexPath) -> ShoppingItem {
+    
+    if indexPath.section == 0 {
+        return shoppingListController.addedItems[indexPath.row]
+    }else{
+        return shoppingListController.notAddedItems[indexPath.row]
+    }
+        
     // MARK: UICollectionViewDelegate
 
+    
+//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        //shoppingListController.shoppingItems[indexPath.row]
+    }
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
