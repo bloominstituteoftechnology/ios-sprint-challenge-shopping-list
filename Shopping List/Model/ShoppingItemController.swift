@@ -14,6 +14,15 @@ class ShoppingItemController {
     let key = "myKey"
     let itemNames: [ShoppingEnum] = [.apple, .grapes, .milk, .muffin, .popcorn, .soda, .strawberries]
     
+    var shoppingItems: [ShoppingItem?] = [
+        ShoppingItem(name: .apple, inShoppingList: false),
+        ShoppingItem(name: .grapes, inShoppingList: false),
+        ShoppingItem(name: .milk, inShoppingList: false),
+        ShoppingItem(name: .muffin, inShoppingList: false),
+        ShoppingItem(name: .popcorn, inShoppingList: false),
+        ShoppingItem(name: .soda, inShoppingList: false),
+        ShoppingItem(name: .strawberries, inShoppingList: false),]
+    
     init() {
         loadPersistence()
     }

@@ -21,14 +21,16 @@ class CartViewController: UIViewController {
     }
     
     //Variables
-    var shoppingItems: [ShoppingItem?] = []
+    var shoppingItemController: ShoppingItemController?
         
     //Functions
     func updateViews() {
         var inShoppingCart = 0
-        for i in shoppingItems {
-            if i?.inShoppingList == true {
-                inShoppingCart += 1
+        if let shoppingItems = shoppingItemController?.shoppingItems {
+            for i in shoppingItems {
+                if i?.inShoppingList == true {
+                    inShoppingCart += 1
+                }
             }
         }
         labelItems.text = "You currently have \(inShoppingCart) Items in your shopping list!"

@@ -16,15 +16,7 @@ class ItemsCollectionViewController: UICollectionViewController {
     }
 
     //Variables
-    var shoppingItems: [ShoppingItem] = [
-        ShoppingItem(name: .apple, inShoppingList: false),
-        ShoppingItem(name: .grapes, inShoppingList: false),
-        ShoppingItem(name: .milk, inShoppingList: false),
-        ShoppingItem(name: .muffin, inShoppingList: false),
-        ShoppingItem(name: .popcorn, inShoppingList: false),
-        ShoppingItem(name: .soda, inShoppingList: false),
-        ShoppingItem(name: .strawberries, inShoppingList: false),
-        ]
+    let shoppingItemController = ShoppingItemController()
     
     
     //Functions
@@ -42,7 +34,7 @@ class ItemsCollectionViewController: UICollectionViewController {
         
         if let destination = segue.destination as? CartViewController {
             if identifier == "cartSegue" {
-                destination.shoppingItems = shoppingItems
+                destination.shoppingItemController = shoppingItemController
             }
         }
     }
@@ -50,7 +42,7 @@ class ItemsCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return shoppingItems.count
+        return shoppingItemController.shoppingItems.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -58,7 +50,7 @@ class ItemsCollectionViewController: UICollectionViewController {
     
         guard let myCell = cell as? ItemCollectionViewCell else { return cell }
     
-        myCell.shoppingItem = shoppingItems[indexPath.item]
+        myCell.shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
         
         return myCell
     }
@@ -75,15 +67,15 @@ class ItemsCollectionViewController: UICollectionViewController {
 
     // Uncomment this method to specify if the specified item should be selected
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+
+            if shoppingItemController.shoppingItems[indexPath.item]?.inShoppingList == true {
+                shoppingItemController.shoppingItems[indexPath.item]?.inShoppingList = false
+            } else {
+                shoppingItemController.shoppingItems[indexPath.item]?.inShoppingList = true
+            }
         
-        if shoppingItems[indexPath.item].inShoppingList == true {
-            shoppingItems[indexPath.item].inShoppingList = false
-        } else {
-            shoppingItems[indexPath.item].inShoppingList = true
-        }
-        collectionView.reloadData()
-        
-        return true
+            collectionView.reloadData()
+         return true
     }
 
     /*
