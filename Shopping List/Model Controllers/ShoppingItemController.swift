@@ -20,6 +20,19 @@ class ShoppingListController {
                         ShoppingItem(name: "Popcorn"),
                         ShoppingItem(name: "Soda"),
                         ShoppingItem(name: "Strawberries")]
+    var persistentFileURL: URL? {
+        let fileManager = FileManager.default
+        let documentsDir = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
+        
+        let itemsURL = documentsDir?.appendingPathComponent("items.plist")
+        return itemsURL
+    }
+    
+    // MARK: - Lifecycle
+    
+    init() {
+        loadFromPersistentStore()
+    }
 
     // MARK: - CRUD
     
@@ -31,5 +44,35 @@ class ShoppingListController {
         guard let itemIndex = shoppingList.firstIndex(of: item) else {return}
         
         shoppingList[itemIndex].didAdd = !shoppingList[itemIndex].didAdd
+    }
+    
+    // MARK: - Persistance
+    
+    func saveToPersistentStore() {
+        guard let persistentFileURL = persistentFileURL else {return}
+
+        do {
+            let encoder = PropertyListEncoder()
+            let itemsPlist = try encoder.encode(shoppingList)
+            
+            try itemsPlist.write(to: persistentFileURL)
+        } catch {
+            print("Error saving added items: \(error)")
+        }
+    }
+    
+    func loadFromPersistentStore() {
+        guard let persistentFileURL = persistentFileURL else {return}
+
+        do {
+            let decoder = PropertyListDecoder()
+            
+            let itemsPlist = try Data(contentsOf: persistentFileURL)
+            let items = try decoder.decode([ShoppingItem].self, from: itemsPlist)
+            
+            self.shoppingList = items
+        } catch {
+            print("Error loading added items: \(error)")
+        }
     }
 }
