@@ -63,6 +63,11 @@
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="150" height="170"/>
+                                <connections>
+                                    <outlet property="hasAddedLabel" destination="oPM-5D-8u9" id="8ll-TN-9TI"/>
+                                    <outlet property="imageView" destination="r4U-yO-P9c" id="WA1-Gy-8RW"/>
+                                    <outlet property="nameLabel" destination="ta1-f4-mAe" id="G4k-Sa-zyE"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -109,6 +114,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZP2-no-gk7">
                                 <rect key="frame" x="167.5" y="339" width="79" height="30"/>
                                 <state key="normal" title="Send Order"/>
+                                <connections>
+                                    <action selector="sendOrder:" destination="wX1-ad-byr" eventType="touchUpInside" id="Vyk-Zz-RBX"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -129,6 +137,11 @@
                         <viewLayoutGuide key="safeArea" id="qQF-K1-RnG"/>
                     </view>
                     <navigationItem key="navigationItem" id="8nM-Qg-uih"/>
+                    <connections>
+                        <outlet property="addressTextField" destination="CjU-wn-Ji5" id="Q1h-ey-eky"/>
+                        <outlet property="nameTextField" destination="0it-Lz-11a" id="YE3-dC-bfz"/>
+                        <outlet property="yourShoppingListLabel" destination="b93-Of-TKV" id="6xF-a5-fog"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KRm-hq-BMX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

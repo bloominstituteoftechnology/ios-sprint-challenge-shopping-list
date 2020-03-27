@@ -10,13 +10,22 @@ import UIKit
 
 class OrderDetailViewController: UIViewController {
 
+    @IBOutlet weak var yourShoppingListLabel: UILabel!
+    
+    
+    @IBOutlet weak var nameTextField: UITextField!
+    
+    @IBOutlet weak var addressTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func sendOrder(_ sender: Any) {
+    }
+    
     /*
     // MARK: - Navigation
 
