@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+
 
 class ShoppingListCollectionViewController: UICollectionViewController {
     
@@ -25,7 +25,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+       
 
         // Do any additional setup after loading the view.
     }
@@ -50,9 +50,17 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        // Configure the cell
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingItemCell", for: indexPath) as? ShoppingItemCollectionViewCell else { fatalError("Cell is not a ShoppingItemCell")}
+        
+        let shoppingItem = shoppingList.itemNames[indexPath.row]
+        
+        
+        
+         
+        
+        
+        
     
         return cell
     }
