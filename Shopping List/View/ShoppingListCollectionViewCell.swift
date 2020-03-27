@@ -34,11 +34,10 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
         imageView.image = shoppingItem?.image
         nameLabel.text = shoppingItem?.name
         
-        if shoppingItem?.hasAdded == true {
-            hasAddedLabel.text = "Added"
-        }else{
-            hasAddedLabel.text = "Not Added"
-        }
+        guard let item = shoppingItem else {return}
+        
+        hasAddedLabel.text = item.hasAdded ? "Added" : "Not Added"
+        
         
     }
     

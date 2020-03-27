@@ -96,14 +96,19 @@ class ShoppingListCollectionViewController: UICollectionViewController, Shopping
     }else{
         return shoppingListController.notAddedItems[indexPath.row]
     }
-        
+    }
     // MARK: UICollectionViewDelegate
 
-    
-//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        //shoppingListController.shoppingItems[indexPath.row]
-    }
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            
+            
+            let shoppingItem =  shoppingListController.shoppingItems[indexPath.row]
+            shoppingListController.updateHasAdded(shoppingItem)
+        collectionView.reloadData()
+            
+        }
+
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
@@ -132,5 +137,6 @@ class ShoppingListCollectionViewController: UICollectionViewController, Shopping
     
     }
     */
+
 
 }

@@ -33,11 +33,17 @@ class ShoppingListController {
             loadFromPersistentStore()
         }
     
-//    func cellTapped(for item : ShoppingItem){
-//
-//        guard let index = shoppingItems.firstIndex(of : item) else {return}
-//        shoppingItems[index]
-//    }
+
+    
+    func updateHasAdded(_ item: ShoppingItem) {
+        
+        guard let index = shoppingItems.firstIndex(of : item) else {return}
+        shoppingItems[index].hasAdded = !shoppingItems[index].hasAdded
+
+        saveToPersistentStore()
+    }
+      
+
     
     func creatItem(name: String, hasAdded: Bool) -> ShoppingItem {
         let item = ShoppingItem(name: name, hasAdded: hasAdded)
