@@ -12,8 +12,12 @@ import UIKit
 
 class ShoppingListCollectionViewController: UICollectionViewController {
     
+    @IBAction func sendOrderButton(_ sender: Any) {
+    }
     
     let shoppingList = ShoppingController()
+    
+    
     
     
     
@@ -57,14 +61,9 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         
         let item = shoppingList.itemNames[indexPath.row]
         
+        cell.shoppingItem = item
         
-        
-        
-        
-         
-        
-        
-        
+       
     
         return cell
     }

@@ -12,7 +12,7 @@
         <!--Shopping List-->
         <scene sceneID="pAH-rl-Tqf">
             <objects>
-                <collectionViewController id="Vt0-Ha-mIL" sceneMemberID="viewController">
+                <collectionViewController id="Vt0-Ha-mIL" customClass="ShoppingListCollectionViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Icy-TV-8xr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -91,7 +91,7 @@
         <!--SendOrder-->
         <scene sceneID="V7n-Y0-boi">
             <objects>
-                <viewController title="SendOrder" id="gmb-vM-nql" sceneMemberID="viewController">
+                <viewController title="SendOrder" id="gmb-vM-nql" customClass="ShoppingListCollectionViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="G4b-ww-nmB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -115,6 +115,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6jt-R0-59a">
                                 <rect key="frame" x="168" y="318" width="79" height="30"/>
                                 <state key="normal" title="Send Order"/>
+                                <connections>
+                                    <action selector="sendOrderButton:" destination="gmb-vM-nql" eventType="touchUpInside" id="Fqf-JK-lCj"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ShoppingController {
+class ShoppingController: Codable {
     
     
     
@@ -25,9 +25,11 @@ class ShoppingController {
             ShoppingItem(name: "Soda", hasBeenAdded: false),
             ShoppingItem(name: "Strawberries", hasBeenAdded: false)
             ]
-    
-        let shoppingItem = UserDefaults.standard.bool(forKey: .)
-    
+        
+        
+        
+        
+            return result
     
     }
 
@@ -71,13 +73,7 @@ class ShoppingController {
             let shoppingItems = try decoder.decode([ShoppingItem].self, from: shoppingPlist)
             
             
-            
-            
-           
-            
-            
-  
-            
+
         } catch let decodeError {
             print("Error Decoding: \(decodeError)")
             

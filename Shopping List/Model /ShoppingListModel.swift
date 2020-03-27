@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct ShoppingItem: Equatable, Codable {
+struct ShoppingItem: Codable {
      
     let name: String
     let hasBeenAdded: Bool
