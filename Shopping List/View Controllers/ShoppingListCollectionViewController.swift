@@ -20,6 +20,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         
         shoppingController.loadFromPersistentStore()
+        shoppingController.initializeItems()
         collectionView?.reloadData()
     }
 

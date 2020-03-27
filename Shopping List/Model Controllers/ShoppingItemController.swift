@@ -13,13 +13,8 @@ class ShoppingListController {
     
     // MARK: Properties
     
-    var shoppingList = [ShoppingItem(name: "Apple"),
-                        ShoppingItem(name: "Grapes"),
-                        ShoppingItem(name: "Milk"),
-                        ShoppingItem(name: "Muffin"),
-                        ShoppingItem(name: "Popcorn"),
-                        ShoppingItem(name: "Soda"),
-                        ShoppingItem(name: "Strawberries")]
+    let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+    var shoppingList: [ShoppingItem] = []
     var persistentFileURL: URL? {
         let fileManager = FileManager.default
         let documentsDir = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
@@ -67,6 +62,23 @@ class ShoppingListController {
             self.shoppingList = items
         } catch {
             print("Error loading added items: \(error)")
+        }
+    }
+    
+    // MARK: - Userdefaults
+    
+    func initializeItems() {
+        for item in itemNames {
+            if !UserDefaults.standard.bool(forKey: item) {
+                shoppingList.append(ShoppingItem(name: item))
+                UserDefaults.standard.set(true, forKey: item)
+            }
+        }
+        for item in shoppingList {
+            if !itemNames.contains(item.name) {
+                guard let itemIndex = shoppingList.firstIndex(of: item) else {return}
+                shoppingList.remove(at: itemIndex)
+            }
         }
     }
 }
