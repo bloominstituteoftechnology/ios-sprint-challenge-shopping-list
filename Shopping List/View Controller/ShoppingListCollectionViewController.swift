@@ -17,6 +17,8 @@ private let reuseIdentifier = "Cell"
 
 class ShoppingListCollectionViewController: UICollectionViewController, ShoppingListCollectionViewCellDelegete {
     
+    
+    
     var shoppingListController = ShoppingListController()
     
   
@@ -35,6 +37,8 @@ class ShoppingListCollectionViewController: UICollectionViewController, Shopping
     
     func cellTapped(for cell: ShoppingListCollectionViewCell) {
       
+//        guard let shoppingItem = cell.shoppingItem else {return}
+        
     }
 
 
