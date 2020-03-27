@@ -10,21 +10,36 @@ import UIKit
 
 class ShoppingCartViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+     var shoppingList: ShoppingItemController?
 
-        // Do any additional setup after loading the view.
-    }
-    
+     @IBOutlet weak var itemCountLabel: UILabel!
+     @IBOutlet weak var yourNameTextField: UITextField!
+     @IBOutlet weak var yourAddressTextField: UITextField!
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     override func viewDidLoad() {
+         super.viewDidLoad()
+         updateViews()
+     }
 
+     @IBAction func sendOrderButtonTapped(_ sender: Any) {
+         alert()
+     }
+
+     func updateViews() {
+         if let shoppingList = shoppingList {
+             let shoppingCart = shoppingList.shoppingItems.filter( { $0.hasBeenAdded == true } )
+             itemCountLabel.text = "You currently have " + " \(shoppingCart.count) " + "item(s) in your shopping cart"
+         }
+     }
+
+     func alert() {
+         if let name = yourNameTextField.text,
+             let address = yourAddressTextField.text {
+             let alert = UIAlertController(title: "Hello \(name)", message: "Your items will be delivered in 15 minutes to \(address)", preferredStyle: .alert)
+             let action = UIAlertAction(title: "Done", style: .default, handler: nil)
+             alert.addAction(action)
+             present(alert, animated: true, completion: nil)
+         }
+     }
 }

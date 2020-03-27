@@ -16,12 +16,7 @@ class ShoppingItemController {
     
     let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     var shoppingItems: [ShoppingItem] = []
-    var shoppingListURL: URL? {
-        let fileManager = FileManager.default
-        guard let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
-            else { return nil }
-        return documentsDirectory.appendingPathComponent("ShoppingList.plist")
-    }
+   
    
     init() {
         let added = UserDefaults.standard.bool(forKey: .addedPreferenceKey)
@@ -33,6 +28,14 @@ class ShoppingItemController {
             saveToPersistentStore()
         }
     }
+    
+    
+    var shoppingListURL: URL? {
+           let fileManager = FileManager.default
+           guard let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
+               else { return nil }
+           return documentsDirectory.appendingPathComponent("ShoppingList.plist")
+       }
     
     func saveToPersistentStore() {
         guard let save = shoppingListURL else { return }

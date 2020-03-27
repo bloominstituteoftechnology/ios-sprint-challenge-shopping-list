@@ -6,13 +6,13 @@
 //  Copyright © 2020 Lambda School. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct ShoppingItem: Codable, Equatable {
     
     var name: String
     var hasBeenAdded: Bool = false
-   // var image: UIImage? {
-      //  return UIImage(named: name)
+    var image: UIImage? {
+        return UIImage(named: name)
     }
-// }
+ }
