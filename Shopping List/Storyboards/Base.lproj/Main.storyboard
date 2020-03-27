@@ -24,14 +24,50 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="3jv-gJ-LdF" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoppingItemCell" id="3jv-gJ-LdF" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="180" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="zfI-0z-ECw">
                                     <rect key="frame" x="0.0" y="0.0" width="180" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mCw-Io-4xl">
+                                            <rect key="frame" x="15" y="25" width="150" height="150"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="mCw-Io-4xl" secondAttribute="height" multiplier="1:1" id="1Ho-hY-9u5"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ez7-ZH-cFX">
+                                            <rect key="frame" x="15" y="178" width="150" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kf0-oo-jWz">
+                                            <rect key="frame" x="15" y="1" width="150" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="ez7-ZH-cFX" secondAttribute="bottom" constant="1" id="4xr-9C-JuW"/>
+                                        <constraint firstItem="Kf0-oo-jWz" firstAttribute="leading" secondItem="mCw-Io-4xl" secondAttribute="leading" id="DBg-tr-RdJ"/>
+                                        <constraint firstItem="mCw-Io-4xl" firstAttribute="leading" secondItem="zfI-0z-ECw" secondAttribute="leading" constant="15" id="G8d-en-bJG"/>
+                                        <constraint firstItem="ez7-ZH-cFX" firstAttribute="leading" secondItem="mCw-Io-4xl" secondAttribute="leading" id="GfQ-QW-djY"/>
+                                        <constraint firstItem="ez7-ZH-cFX" firstAttribute="trailing" secondItem="mCw-Io-4xl" secondAttribute="trailing" id="STo-rb-odh"/>
+                                        <constraint firstItem="Kf0-oo-jWz" firstAttribute="trailing" secondItem="mCw-Io-4xl" secondAttribute="trailing" id="VL1-2i-dxO"/>
+                                        <constraint firstItem="mCw-Io-4xl" firstAttribute="centerX" secondItem="zfI-0z-ECw" secondAttribute="centerX" id="gDy-vD-jHe"/>
+                                        <constraint firstItem="Kf0-oo-jWz" firstAttribute="top" secondItem="zfI-0z-ECw" secondAttribute="top" constant="1" id="hzD-To-dCT"/>
+                                        <constraint firstItem="mCw-Io-4xl" firstAttribute="centerY" secondItem="zfI-0z-ECw" secondAttribute="centerY" id="kYd-zC-KPj"/>
+                                    </constraints>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="180" height="200"/>
+                                <connections>
+                                    <outlet property="hasBeenAddedLabel" destination="Kf0-oo-jWz" id="YAd-PV-Qoh"/>
+                                    <outlet property="imageView" destination="mCw-Io-4xl" id="DSL-HF-P8F"/>
+                                    <outlet property="nameLabel" destination="ez7-ZH-cFX" id="0W4-Ka-Wxu"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -62,6 +98,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WeG-J2-9Dr">
                                 <rect key="frame" x="167.5" y="411.5" width="79" height="30"/>
                                 <state key="normal" title="Send Order"/>
+                                <connections>
+                                    <action selector="sendOrder:" destination="Ssf-TK-B0E" eventType="touchUpInside" id="WEm-eH-Mpy"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSX-bS-JR3">
                                 <rect key="frame" x="39" y="121" width="311" height="21"/>
@@ -100,6 +139,11 @@
                         <viewLayoutGuide key="safeArea" id="0b5-CV-3Zm"/>
                     </view>
                     <navigationItem key="navigationItem" id="uiI-9d-ZiH"/>
+                    <connections>
+                        <outlet property="addressField" destination="c3Y-uF-P6f" id="faZ-B4-iNt"/>
+                        <outlet property="nameField" destination="pbl-WX-CTA" id="XPX-8p-3QB"/>
+                        <outlet property="textLabel" destination="MSX-bS-JR3" id="SlH-gK-Z4k"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fjf-Y0-Fqw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

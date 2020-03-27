@@ -9,5 +9,8 @@
 import UIKit
 
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
-    
+   
+    @IBOutlet weak var hasBeenAddedLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
 }

@@ -10,13 +10,25 @@ import UIKit
 
 class SendOrderViewController: UIViewController {
 
+    @IBOutlet weak var textLabel: UILabel!
+    @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var addressField: UITextField!
+    
+    
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func sendOrder(_ sender: Any) {
+    }
+    
     /*
     // MARK: - Navigation
 
