@@ -34,24 +34,36 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j2h-6z-hiD">
                                             <rect key="frame" x="0.0" y="0.0" width="180" height="200"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="947-FD-C0V">
-                                                    <rect key="frame" x="8" y="26" width="164" height="148"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Apple" translatesAutoresizingMaskIntoConstraints="NO" id="947-FD-C0V">
+                                                    <rect key="frame" x="14" y="27" width="152" height="136"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="136" id="dBE-Gf-iov"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="556-mX-mUN">
-                                                    <rect key="frame" x="69" y="170" width="46" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="556-mX-mUN">
+                                                    <rect key="frame" x="8" y="170" width="164" height="30"/>
                                                     <state key="normal" title="Button"/>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbB-sr-ERX">
-                                                    <rect key="frame" x="71" y="0.0" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbB-sr-ERX">
+                                                    <rect key="frame" x="8" y="1" width="164" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <constraints>
+                                                <constraint firstItem="nbB-sr-ERX" firstAttribute="leading" secondItem="j2h-6z-hiD" secondAttribute="leading" constant="8" id="2fL-HY-9G9"/>
+                                                <constraint firstItem="947-FD-C0V" firstAttribute="centerX" secondItem="556-mX-mUN" secondAttribute="centerX" id="D2l-7T-gLv"/>
+                                                <constraint firstItem="556-mX-mUN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="j2h-6z-hiD" secondAttribute="leading" id="FEM-Ue-2xQ"/>
+                                                <constraint firstAttribute="bottom" secondItem="556-mX-mUN" secondAttribute="bottom" id="H8o-qd-qMX"/>
+                                                <constraint firstItem="556-mX-mUN" firstAttribute="top" secondItem="947-FD-C0V" secondAttribute="bottom" constant="7" id="JUD-z1-OIB"/>
+                                                <constraint firstAttribute="trailing" secondItem="556-mX-mUN" secondAttribute="trailing" constant="8" id="O69-rq-Z0n"/>
+                                                <constraint firstItem="947-FD-C0V" firstAttribute="leading" secondItem="j2h-6z-hiD" secondAttribute="leading" constant="14" id="UtZ-oJ-SK8"/>
+                                                <constraint firstAttribute="trailing" secondItem="nbB-sr-ERX" secondAttribute="trailing" constant="8" id="YXQ-ck-lFa"/>
+                                                <constraint firstItem="947-FD-C0V" firstAttribute="centerX" secondItem="nbB-sr-ERX" secondAttribute="centerX" id="lhA-yw-Bme"/>
+                                                <constraint firstItem="947-FD-C0V" firstAttribute="top" secondItem="nbB-sr-ERX" secondAttribute="bottom" constant="5" id="uTd-OJ-eph"/>
+                                            </constraints>
                                         </view>
                                     </subviews>
                                     <constraints>
@@ -158,4 +170,7 @@ in your shopping cart</string>
             <point key="canvasLocation" x="274" y="70"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Apple" width="229" height="300"/>
+    </resources>
 </document>
