@@ -62,18 +62,66 @@
 		4613E91021143BFC00E7FF73 /* Shopping List */ = {
 			isa = PBXGroup;
 			children = (
-				4613E91121143BFC00E7FF73 /* AppDelegate.swift */,
-				FEF32D95242EA163003F25DA /* ShoppingItem.swift */,
-				FEF32D97242EA16E003F25DA /* ShoppingItemController.swift */,
-				FEF32D9B242EA193003F25DA /* ShoppingListCollectionViewCell.swift */,
-				FEF32D9D242EA19F003F25DA /* ShoppingCartViewController.swift */,
-				FEF32D9E242EA19F003F25DA /* ShoppingListCollectionViewController.swift */,
-				FEF32D99242EA17E003F25DA /* Main.storyboard */,
-				4613E91821143BFD00E7FF73 /* Assets.xcassets */,
-				4613E91A21143BFD00E7FF73 /* LaunchScreen.storyboard */,
+				FE754F6C2431268A009617AB /* Model */,
+				FE754F6B24312681009617AB /* Model Controller */,
+				FE754F6A2431267B009617AB /* View */,
+				FE754F6924312672009617AB /* View Controllers */,
+				FE754F6824312664009617AB /* Storyboards */,
 				4613E91D21143BFD00E7FF73 /* Info.plist */,
+				FE754F6724312653009617AB /* Resources */,
 			);
 			path = "Shopping List";
+			sourceTree = "<group>";
+		};
+		FE754F6724312653009617AB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4613E91121143BFC00E7FF73 /* AppDelegate.swift */,
+				4613E91821143BFD00E7FF73 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		FE754F6824312664009617AB /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				FEF32D99242EA17E003F25DA /* Main.storyboard */,
+				4613E91A21143BFD00E7FF73 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		FE754F6924312672009617AB /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FEF32D9D242EA19F003F25DA /* ShoppingCartViewController.swift */,
+				FEF32D9E242EA19F003F25DA /* ShoppingListCollectionViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		FE754F6A2431267B009617AB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FEF32D9B242EA193003F25DA /* ShoppingListCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FE754F6B24312681009617AB /* Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FEF32D97242EA16E003F25DA /* ShoppingItemController.swift */,
+			);
+			path = "Model Controller";
+			sourceTree = "<group>";
+		};
+		FE754F6C2431268A009617AB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FEF32D95242EA163003F25DA /* ShoppingItem.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
