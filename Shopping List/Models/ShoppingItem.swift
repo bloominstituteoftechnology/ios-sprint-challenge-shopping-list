@@ -12,16 +12,9 @@ import UIKit
 struct ShoppingItem {
     var name: String
     var hasBeenAdded: Bool
+    
     var image: UIImage {
-        UIImage(named: self.name)
+        guard let image = (UIImage(named: name)) else { return UIImage() }
+        return image
     }
-    
-    init(name: String, hasBeenAdded: Bool = false) {
-        self.name = name
-        self.hasBeenAdded = hasBeenAdded
-        self.image = UIImage(named: name) 
-    }
-    
-    
-    
 }

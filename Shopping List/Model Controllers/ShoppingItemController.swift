@@ -7,3 +7,22 @@
 //
 
 import Foundation
+import UIKit
+
+class ShoppingItemController {
+    private var shoppingItems: [ShoppingItem] = []
+    let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+
+    init() {
+        for name in itemNames {
+            createItem(name: name)
+        }
+    }
+
+    func createItem(name: String) {
+        let item = ShoppingItem(name: name, hasBeenAdded: false)
+        shoppingItems.append(item)
+    }
+
+
+}
