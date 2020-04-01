@@ -11,11 +11,14 @@ import UIKit
 
 class ShoppingItemController {
     
-    var itemHelper = ItemHelper()
     var shoppingItems: [ShoppingItem] = []
     let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+    var itemPreferenceKey: String = "Key"
+    var itemPreferences: [ShoppingItem]?
+    
+    
     var preferencesSet: Bool {
-        if itemHelper.itemPreferences == nil {
+        if itemPreferences == nil {
             return false
         } else {
             return true
@@ -27,17 +30,27 @@ class ShoppingItemController {
         shoppingItems.append(item)
     }
     
+    func saveView() {
+        let itemPreferences = shoppingItems
+        UserDefaults.standard.set(itemPreferences, forKey: itemPreferenceKey)
+    }
+    
+    func loadView() {
+        let itemPreferences = UserDefaults.standard.array(forKey: itemPreferenceKey)
+    }
+    
+    
     init() {
-        if !preferencesSet {
-        for name in itemNames {
-            createItem(name: name)
-            itemHelper.saveView()
-            }
+        if preferencesSet {
+       loadView()
+       if let preferences = itemPreferences {
+           shoppingItems = preferences
         } else {
-            itemHelper.loadView()
-            if let preferences = itemHelper.itemPreferences {
-                shoppingItems = preferences
+            for name in itemNames {
+            createItem(name: name)
             }
+        saveView()
+          }
         }
     }
 }
