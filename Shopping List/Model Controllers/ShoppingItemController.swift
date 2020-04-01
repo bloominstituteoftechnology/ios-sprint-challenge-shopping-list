@@ -10,19 +10,33 @@ import Foundation
 import UIKit
 
 class ShoppingItemController {
-    private var shoppingItems: [ShoppingItem] = []
+    
+    var itemHelper = ItemHelper()
+    var shoppingItems: [ShoppingItem] = []
     let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
-
-    init() {
-        for name in itemNames {
-            createItem(name: name)
+    var preferencesSet: Bool {
+        if itemHelper.itemPreferences == nil {
+            return false
+        } else {
+            return true
         }
     }
-
+    
     func createItem(name: String) {
         let item = ShoppingItem(name: name, hasBeenAdded: false)
         shoppingItems.append(item)
     }
-
-
+    
+    init() {
+        if !preferencesSet {
+        for name in itemNames {
+            createItem(name: name)
+            }
+        } else {
+            itemHelper.loadView()
+            if let preferences = itemHelper.itemPreferences {
+                shoppingItems = preferences
+            }
+        }
+    }
 }
