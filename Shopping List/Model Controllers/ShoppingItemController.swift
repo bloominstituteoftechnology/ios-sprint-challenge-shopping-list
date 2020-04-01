@@ -31,7 +31,7 @@ class ShoppingItemController {
     }
     
     func saveView() {
-        let itemPreferences = shoppingItems
+        let itemPreferences = itemNames
         UserDefaults.standard.set(itemPreferences, forKey: itemPreferenceKey)
     }
     
@@ -45,12 +45,12 @@ class ShoppingItemController {
             loadView()
             if let preferences = itemPreferences {
                 shoppingItems = preferences
-            } else {
+            }
+        } else {
                 for name in itemNames {
                     createItem(name: name)
-                }
-            saveView()
             }
+            saveView()
         }
     }
 }

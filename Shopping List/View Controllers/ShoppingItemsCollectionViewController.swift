@@ -12,7 +12,7 @@ private let reuseIdentifier = "ShoppingItemCell"
 
 class ShoppingItemsCollectionViewController: UICollectionViewController {
 
-    var shoppingItemController = ShoppingItemController()
+    var shoppingItemController: ShoppingItemController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,15 +23,23 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
     
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "placeOrderSegue" {
+            guard let sendOrder = segue.destination as? SendOrderViewController else { return }
+            let shoppingItemsCount = shoppingItemController?.shoppingItems.filter({$0.hasBeenAdded}).count
+            sendOrder.itemCount = shoppingItemsCount
+            
+            
+                
+            
+        }
+        
     }
-    */
+    
 
     // MARK: UICollectionViewDataSource
 
@@ -43,12 +51,12 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return shoppingItemController.shoppingItems.count
+        return shoppingItemController?.shoppingItems.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ShoppingItemCollectionViewCell else { return UICollectionViewCell() }
-        let item = shoppingItemController.shoppingItems[indexPath.item]
+        let item = shoppingItemController?.shoppingItems[indexPath.item]
         cell.item = item
         return cell
     }

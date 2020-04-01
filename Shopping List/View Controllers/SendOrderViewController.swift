@@ -14,6 +14,7 @@ class SendOrderViewController: UIViewController {
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var addressField: UITextField!
     
+    var itemCount: Int?
     
     
     
@@ -22,11 +23,12 @@ class SendOrderViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        guard let itemCount = itemCount else { return }
+        textLabel.text = "You currently have \(itemCount) items in your shopping list."
     }
     
     @IBAction func sendOrder(_ sender: Any) {
+        
     }
     
     /*
