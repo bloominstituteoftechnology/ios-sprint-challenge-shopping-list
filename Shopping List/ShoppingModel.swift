@@ -9,18 +9,18 @@
 import Foundation
 import UIKit
 
-
-
-struct ShoppingList {
+struct ShoppingList: Equatable, Codable {
     
     var itemName: String
     var itemAdded: Bool
-    var image: UIImage
-    
-    init(itemName: String, itemAdded: Bool, imageName: String) {
-        self.itemName = itemName
-        self.itemAdded = itemAdded
-        self.image = UIImage(named: imageName)!
+    var Image: UIImage {
+
+        guard let image = UIImage(named: itemName) else {return UIImage()}
+        return image
     }
-    
+}
+
+struct Address {
+    var name: String
+    var address: String
 }

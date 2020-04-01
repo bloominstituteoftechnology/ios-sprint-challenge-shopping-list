@@ -8,26 +8,31 @@
 
 import UIKit
 
-class ShoppingListCollectionViewCell: UICollectionViewCell {
+class ShoppingListCollectionViewCell: UICollectionViewCell  {
     
-
+    var shoppingController: ShoppingController?
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     
+    func updateViews(){
+        imageView.image = shoppingList?.Image
+        changeLabel()
+        
+    }
+    
+    func changeLabel(){
+        guard let didAdd = shoppingList?.itemAdded else {return}
+        if didAdd == true {
+            nameLabel.text = "Added" } else
+        { nameLabel.text = "Not Added"
+        }
+    }
     
     var shoppingList:ShoppingList? {
         didSet {
             updateViews()
         }
     }
-    
-    
-    
-    func updateViews(){
-        imageView.image = shoppingList?.image
-        nameLabel.text = shoppingList?.itemName
-    }
-    
 }
 
-//Upon selecting the custom cell, the item's Bool value should change from true to false or vice-versa. You can know when a cell has been selected by using the didSelectItemAt method in the UICollectionViewDelegate protocol

@@ -7,79 +7,76 @@
 //
 
 import Foundation
+import UIKit
 
 class ShoppingController {
     
+    // MARK: - PROPERTIES
+    
     var shoppingList: [ShoppingList] = []
-    
-    
+    //    private(set) var addresses = Address(name: String, address: String)
     
     init() {
+        createItems()
         loadFromPersistentStore()
     }
     
+    // MARK: - C.R.U.D Method
+    
+    func createItems() {
+        
+        let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+        for item in itemNames {
+            let myShoppingList = ShoppingList(itemName: item, itemAdded: true)
+            shoppingList.append(myShoppingList)
+        }
+    }
+    
+    func toggleBool(myshoppingList: ShoppingList) {
+        guard let index = shoppingList.firstIndex(of: myshoppingList) else {return}
+        shoppingList[index].itemAdded = !shoppingList[index].itemAdded
+    }
+    
+    //   func storeAddress(name: String, address: String) {
+    //       let myAddress = Address(name: name, address: address)
+    //   }
+    
+ 
     //MARK: - Persistence
     
-    var persistentFileURL: URL? {
-        
-        let fileManger = FileManager.default
-        
-        // Grab the app's documents directory - ex. MyUser/Documents/
-        let documentsDir = fileManger.urls(for: .documentDirectory, in: .userDomainMask).first
-        
-        // Create a unique locatino for the property lsit (plist)
-        let shoppinglistURL = documentsDir?.appendingPathComponent("shoppinglist.plist")
+    private var shoppingURL: URL? {
+        let fileManager = FileManager.default
+        let documentsDir = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
+        let shoppinglistURL = documentsDir?.appendingPathComponent("shopping.plist")
         
         return shoppinglistURL
     }
     
     func saveToPersistentStore() {
+        let encoder = PropertyListEncoder()
         
         do {
             
-            // Create the encoder
-            let encoder = PropertyListEncoder()
-            
-            // Encode the shoppingList into a plist
-            let shoppingPlist = try encoder.encode(shoppingList)
-            
-            // Grab the location we want to save the plist to.
-            guard let persistentFileURL = persistentFileURL else { return }
-            
-            // Save the file to the documents directory
-            try shoppingPlist.write(to: persistentFileURL)
-            
+            let shoppingData = try encoder.encode(shoppingList)
+            guard let persistentFileURL = shoppingURL else { return }
+            try shoppingData.write(to: persistentFileURL)
         } catch {
-            // Handle the error that gets "thrown" here.  iOS interpolates the error for you here.
-            // This catch statement will only run if a throwing method fails.
-            print("Error saving shopping list: \(error)")
+            NSLog("Error saving shopping list: \(error)")
         }
-        
     }
     
     func loadFromPersistentStore() {
         
-        guard let persistentFileURL = persistentFileURL else { return }
-        
         do {
-            
-            // Creatge gthe decoder
+            guard let persistentFileURL = shoppingURL else { return }
             let decoder = PropertyListDecoder()
-            
-            // Grab the data (plist)
-            let shoppingPlist = try Data(contentsOf: persistentFileURL)
-            
-            // Plist -> [ShoppingList]
-            let shoppingList = try decoder.decode([ShoppingList].self, from: shoppingPlist)
+            let shoppingData = try Data(contentsOf: persistentFileURL)
+            let shoppingList = try decoder.decode([ShoppingList].self, from: shoppingData)
             
             self.shoppingList = shoppingList
             
         } catch {
-            print("Error decoding shopping list: \(error)")
+            NSLog("Error decoding shopping list: \(error)")
         }
     }
-    
-    
-    
-    
 }
