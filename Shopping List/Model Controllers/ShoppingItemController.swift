@@ -31,6 +31,7 @@ class ShoppingItemController {
         if !preferencesSet {
         for name in itemNames {
             createItem(name: name)
+            itemHelper.saveView()
             }
         } else {
             itemHelper.loadView()
