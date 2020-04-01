@@ -42,15 +42,15 @@ class ShoppingItemController {
     
     init() {
         if preferencesSet {
-       loadView()
-       if let preferences = itemPreferences {
-           shoppingItems = preferences
-        } else {
-            for name in itemNames {
-            createItem(name: name)
+            loadView()
+            if let preferences = itemPreferences {
+                shoppingItems = preferences
+            } else {
+                for name in itemNames {
+                    createItem(name: name)
+                }
+            saveView()
             }
-        saveView()
-          }
         }
     }
 }
