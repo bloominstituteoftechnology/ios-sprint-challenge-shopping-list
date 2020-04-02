@@ -39,6 +39,11 @@ class ShoppingItemController {
         let itemPreferences = UserDefaults.standard.array(forKey: itemPreferenceKey)
     }
     
+    func updateHasBeenAdded() {
+        
+        
+    }
+    
     
     init() {
         if preferencesSet {
