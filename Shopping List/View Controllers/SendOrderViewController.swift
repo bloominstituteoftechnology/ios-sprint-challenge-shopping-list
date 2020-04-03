@@ -28,7 +28,12 @@ class SendOrderViewController: UIViewController {
     }
     
     @IBAction func sendOrder(_ sender: Any) {
+        let alert = UIAlertController(title: "Delivery for \(nameField.text ?? "name not found")", message: "Your shopping list will be delivered to \(addressField.text ?? "address not found")", preferredStyle: .alert)
         
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        
+        present(alert, animated: true)
     }
     
     /*
