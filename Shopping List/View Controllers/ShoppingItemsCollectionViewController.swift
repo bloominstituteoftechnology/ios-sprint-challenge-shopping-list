@@ -62,6 +62,9 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        var selectedItem = shoppingItemController.shoppingItems[indexPath.item]
+        selectedItem.hasBeenAdded = !selectedItem.hasBeenAdded
+        collectionView.reloadData()
         
     }
 

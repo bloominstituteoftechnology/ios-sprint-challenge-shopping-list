@@ -37,10 +37,10 @@ class ShoppingItemController {
     
     func loadView() {
         let itemPreferences = UserDefaults.standard.array(forKey: itemPreferenceKey)
+       
     }
     
-    func updateHasBeenAdded() {
-        
+    func updateHasBeenAdded(item: ShoppingItem) {
         
     }
     
