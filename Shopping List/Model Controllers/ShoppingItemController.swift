@@ -66,11 +66,11 @@ class ShoppingItemController {
     
     func setList() {
         listSet = true
-        
+        UserDefaults.standard.set(listSet, forKey: listSetKey)
     }
     
     func loadList() {
-        
+        listSet = UserDefaults.standard.bool(forKey: listSetKey)
     }
 
 }

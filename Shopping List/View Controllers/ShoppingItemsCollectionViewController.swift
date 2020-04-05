@@ -16,13 +16,17 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if shoppingItemController.listSet == false {
+        shoppingItemController.loadList()
+        
+        switch shoppingItemController.listSet {
+        case false:
             for name in shoppingItemController.itemNames {
-                createItem(name: name)
+                shoppingItemController.createItem(name: name)
                 shoppingItemController.saveView()
-                
             }
-        } else
+        case true:
+            loadView()
+        }
     }
     
     
