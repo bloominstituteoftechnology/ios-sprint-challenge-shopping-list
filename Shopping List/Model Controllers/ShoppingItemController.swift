@@ -10,52 +10,67 @@ import Foundation
 import UIKit
 
 class ShoppingItemController {
-    
+
     var shoppingItems: [ShoppingItem] = []
     let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
-    var itemPreferenceKey: String = "Key"
-    var itemPreferences: [ShoppingItem]?
-    
-    
-    var preferencesSet: Bool {
-        if itemPreferences == nil {
-            return false
-        } else {
-            return true
-        }
+
+    var listSet: Bool = false
+    let listSetKey = "Key"
+
+    var shoppingListURL: URL? {
+        let filemanager = FileManager.default
+        let documentsDir = filemanager.urls(for: .documentDirectory, in: .userDomainMask).first
+        let itemsURL = documentsDir?.appendingPathComponent("ShoppingList.plist")
+        return itemsURL
     }
+
+
     
+
+
     func createItem(name: String) {
         let item = ShoppingItem(name: name, hasBeenAdded: false)
         shoppingItems.append(item)
+        saveView()
     }
-    
+
+    func updateHasBeenAdded(item: ShoppingItem) {
+        guard let itemIndex = shoppingItems.firstIndex(of: item) else { return }
+        shoppingItems[itemIndex].hasBeenAdded = !shoppingItems[itemIndex].hasBeenAdded
+        saveView()
+    }
+
     func saveView() {
-        let itemPreferences = itemNames
-        UserDefaults.standard.set(itemPreferences, forKey: itemPreferenceKey)
+        do {
+            let encoder = PropertyListEncoder()
+            let itemsPList = try encoder.encode(shoppingItems)
+            guard let shoppingListURL = shoppingListURL else { return }
+            try itemsPList.write(to: shoppingListURL)
+        } catch let saveError {
+            print("Error saving shopping list. \(saveError)")
+        }
     }
     
     func loadView() {
-        let itemPreferences = UserDefaults.standard.array(forKey: itemPreferenceKey)
-       
+        guard let shoppingListURL = shoppingListURL else { return }
+    
+        do {
+            let decoder = PropertyListDecoder()
+            let itemsPList = try Data(contentsOf: shoppingListURL)
+            let decodedList = try decoder.decode([ShoppingItem].self, from: itemsPList)
+            self.shoppingItems = decodedList
+        } catch let loadError {
+            print("Error loading shopping list. \(loadError)")
+        }
     }
     
-    func updateHasBeenAdded(item: ShoppingItem) {
+    func setList() {
+        listSet = true
         
     }
     
-    
-    init() {
-        if preferencesSet {
-            loadView()
-            if let preferences = itemPreferences {
-                shoppingItems = preferences
-            }
-        } else {
-                for name in itemNames {
-                    createItem(name: name)
-            }
-            saveView()
-        }
+    func loadList() {
+        
     }
+
 }

@@ -16,9 +16,13 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
-        // Do any additional setup after loading the view.
+        if shoppingItemController.listSet == false {
+            for name in shoppingItemController.itemNames {
+                createItem(name: name)
+                shoppingItemController.saveView()
+                
+            }
+        } else
     }
     
     
@@ -62,8 +66,8 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        var selectedItem = shoppingItemController.shoppingItems[indexPath.item]
-        selectedItem.hasBeenAdded = !selectedItem.hasBeenAdded
+        let selectedItem = shoppingItemController.shoppingItems[indexPath.item]
+        shoppingItemController.updateHasBeenAdded(item: selectedItem)
         collectionView.reloadData()
         
     }
