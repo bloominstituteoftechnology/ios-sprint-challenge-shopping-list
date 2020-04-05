@@ -25,7 +25,7 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
                 shoppingItemController.saveView()
             }
         case true:
-            loadView()
+            shoppingItemController.loadView()
         }
     }
     
