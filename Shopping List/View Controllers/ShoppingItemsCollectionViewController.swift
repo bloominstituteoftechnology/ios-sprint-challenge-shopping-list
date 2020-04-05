@@ -22,6 +22,7 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
         case false:
             for name in shoppingItemController.itemNames {
                 shoppingItemController.createItem(name: name)
+                shoppingItemController.setList()
                 shoppingItemController.saveView()
             }
         case true:
