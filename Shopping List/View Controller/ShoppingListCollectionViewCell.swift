@@ -9,13 +9,9 @@
 import UIKit
 
 class ShoppingListCollectionViewCell: UICollectionViewCell {
-    // MARK: Properties
 
     @IBOutlet weak var isAddedLabel: UILabel!
-    
     @IBOutlet weak var itemNameLabel: UILabel!
-    
-    
     @IBOutlet weak var itemImageView: UIImageView!
     
     var shoppingItem: ShoppingItem? {
@@ -23,7 +19,6 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
             updateViews()
         }
     }
-    
     private func updateViews() {
         guard let shoppingItem = shoppingItem else { return }
         

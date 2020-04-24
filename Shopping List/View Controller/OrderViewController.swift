@@ -14,10 +14,7 @@ class OrderViewController: UIViewController {
     
     @IBOutlet weak var howManyItemLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
-    
     @IBOutlet weak var addressTextField: UITextField!
-    
-    
     
     var shoppingItemController: ShoppingItemController?
     
@@ -31,8 +28,6 @@ class OrderViewController: UIViewController {
         numOfItems = shoppingItemController.addedItems.count
         
         howManyItemLabel.text = "You Currently have \(numOfItems) items(s) in your shopping list"
-        
-        
     }
     
     @IBAction func sendOrderTabbed(_ sender: UIButton) {
@@ -45,5 +40,4 @@ class OrderViewController: UIViewController {
                 present(alert, animated: true, completion: nil)
         }
     }
-    
 }

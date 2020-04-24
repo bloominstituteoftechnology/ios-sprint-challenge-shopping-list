@@ -21,13 +21,10 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         collectionView.reloadData()
     }
     
-
-
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return shoppingItemController.shoppingItems.count
     }
@@ -35,7 +32,6 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingListCell", for: indexPath) as? ShoppingListCollectionViewCell else { return UICollectionViewCell() }
     
-
         cell.shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
     
         return cell
