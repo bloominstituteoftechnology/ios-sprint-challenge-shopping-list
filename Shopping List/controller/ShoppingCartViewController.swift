@@ -24,7 +24,6 @@ class ShoppingCartViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func sendOrderPressed(_ sender: UIButton) {
         notificationSetup()
-        print(123)
     }
     
     
