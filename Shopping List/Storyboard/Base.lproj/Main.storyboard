@@ -12,7 +12,7 @@
         <!--Shopping List-->
         <scene sceneID="1Ok-SG-kMf">
             <objects>
-                <collectionViewController id="QnV-wy-rhY" sceneMemberID="viewController">
+                <collectionViewController id="QnV-wy-rhY" customClass="ShoppingListCollectionViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="4hN-Wt-gGS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,7 +24,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="cQN-nd-RqM">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoppingListCell" id="cQN-nd-RqM" customClass="ShoppingListCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="189" height="177"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="J6S-xL-e0D">
@@ -68,6 +68,11 @@
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="189" height="177"/>
+                                <connections>
+                                    <outlet property="isAddedLabel" destination="9Vb-MY-Pk8" id="9Qo-p9-jew"/>
+                                    <outlet property="itemImageView" destination="qDU-sd-LDX" id="4Ur-pS-4NZ"/>
+                                    <outlet property="itemNameLabel" destination="vI9-Oq-ykR" id="xJc-kY-azG"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -78,7 +83,7 @@
                     <navigationItem key="navigationItem" title="Shopping List" id="pFA-xw-wz3">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="syw-bX-PUR">
                             <connections>
-                                <segue destination="KeQ-VI-Vm0" kind="show" id="HGS-t2-9x1"/>
+                                <segue destination="KeQ-VI-Vm0" kind="show" identifier="OrderSegue" id="HGS-t2-9x1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -87,10 +92,10 @@
             </objects>
             <point key="canvasLocation" x="947.82608695652186" y="152.67857142857142"/>
         </scene>
-        <!--View Controller-->
+        <!--Order View Controller-->
         <scene sceneID="OCq-HU-yB5">
             <objects>
-                <viewController id="KeQ-VI-Vm0" sceneMemberID="viewController">
+                <viewController id="KeQ-VI-Vm0" customClass="OrderViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3Xb-uy-BgI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -119,6 +124,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Qe-ML-yyI">
                                 <rect key="frame" x="163" y="433" width="88" height="30"/>
                                 <state key="normal" title="Send Order"/>
+                                <connections>
+                                    <action selector="sendOrderTabbed:" destination="KeQ-VI-Vm0" eventType="touchUpInside" id="Hlw-sW-F9G"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -136,6 +144,11 @@
                         <viewLayoutGuide key="safeArea" id="3AK-zA-69w"/>
                     </view>
                     <navigationItem key="navigationItem" id="fgR-Ee-BoW"/>
+                    <connections>
+                        <outlet property="addressTextField" destination="Na2-39-KpI" id="idy-6r-yNk"/>
+                        <outlet property="howManyItemLabel" destination="fwp-0U-PpW" id="L6d-vi-hTF"/>
+                        <outlet property="nameTextField" destination="L6N-Tx-CPb" id="eze-k1-DeB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K2y-Gx-mRT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

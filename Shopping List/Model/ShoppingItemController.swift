@@ -17,7 +17,7 @@ class ShoppingItemController {
     
     var addedItems: [ShoppingItem] {
         return shoppingItems.filter { $0.isAdded == true }
-        
+       
     }
     
     private var shoppingListURL: URL? {

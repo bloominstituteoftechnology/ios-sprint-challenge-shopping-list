@@ -14,6 +14,6 @@ struct ShoppingItem: Codable {
     
     init(name: String) {
         self.name = name
-        isAdded = false
+        isAdded = true
     }
 }
