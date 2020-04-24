@@ -9,78 +9,127 @@
 import Foundation
 import UIKit
 
-class ShoppingController {
+
+
+class ShoppingModelController {
     
+    var shoppingItems: [ShoppingItem] = [ShoppingItem(name: itemNames[0], isAdded: false),
+                                         ShoppingItem(name: itemNames[1], isAdded: false),
+                                         ShoppingItem(name: itemNames[2], isAdded: false),
+                                         ShoppingItem(name: itemNames[3], isAdded: false),
+                                         ShoppingItem(name: itemNames[4], isAdded: false),
+                                         ShoppingItem(name: itemNames[5], isAdded: false),
+                                         ShoppingItem(name: itemNames[6], isAdded: false)]
     init() {
-        loadFromPersistenceStore()
-        saveToPersistenceStore()
+        
+        if !hasData {
+            
+            for item in itemNames { 
+                
+                createShoppingItem(name: item, isAdded: false)
+                
+            }
+            
+            saveToPersistentStore()
+            
+        } else {
+            
+            loadFromPersistentStore()
+            
+        }
     }
     
+    var hasData: Bool {
+        
+        let data = UserDefaults.standard.bool(forKey: .shoppingItemKey)
+        
+        if !data {
+            
+            return false
+        }
+        
+        return true
+    }
     
+    var totalItemsAdded: Int {
+        
+        let items = shoppingItems.filter { return $0.isAdded }
+        
+        return items.count
+        
+    }
     
-    
-    
-    
-    
-    let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
-
-    var shoppingListURL: URL? {
+    var persistentFileURL: URL? {
         
         let fileManager = FileManager.default
         
+        guard let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
         
-        let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
+        let shoppingItemURL = documentsDirectory.appendingPathComponent("shoppingItems.plist")
         
-        let shoppingURL = documentsDirectory?.appendingPathComponent("shoppingItems.plist")
+        return shoppingItemURL
         
-        return shoppingURL
     }
     
-    func saveToPersistenceStore() {
+    func saveToPersistentStore() {
+        
+        guard let fileURL = persistentFileURL else { return }
+        
         do {
             
             let encoder = PropertyListEncoder()
+            let data = try encoder.encode(shoppingItems)
+            try data.write(to: fileURL)
             
-            let shoppingItemsPlist = try encoder.encode(itemNames)
             
-            guard let myPersFile = shoppingListURL else { return }
+        } catch {
             
-            try shoppingItemsPlist.write(to: myPersFile)
-            
-            } catch let saveError {
-            print("Error Saving Shopping List: \(saveError)")
+            print(error)
         }
+        
     }
     
-    func loadFromPersistenceStore() {
+    func loadFromPersistentStore() {
         
-        guard let shoppingURL = shoppingListURL else { return }
+        guard let fileURL = persistentFileURL else { return }
         
         do {
+            
             let decoder = PropertyListDecoder()
             
-            let shoppingPlist = try Data(contentsOf: shoppingURL)
+            let propertyListData = try Data(contentsOf: fileURL)
             
-            let shoppingItems = try decoder.decode([ShoppingItem].self, from: shoppingPlist)
+            let data = try decoder.decode([ShoppingItem].self, from: propertyListData)
             
-            self.shoppingItem = shoppingItems
+            shoppingItems = data
             
+        } catch {
             
-
-        } catch let decodeError {
-            print("Error Decoding: \(decodeError)")
-            
+            print(error)
         }
-        
-        
-        
-        
-        
-        
         
     }
     
+    func createShoppingItem(name: String, isAdded: Bool) {
+        
+        let shoppingItem = ShoppingItem(name: name, isAdded: isAdded)
+        shoppingItems.append(shoppingItem)
+        saveToPersistentStore()
+    }
     
-    
-    
+    func toggleHasBeenAdded(for item: ShoppingItem) {
+        if let shoppingItemIndex = shoppingItems.firstIndex(of: item) {
+            var shoppingItem = shoppingItems[shoppingItemIndex]
+            shoppingItem.isAdded.toggle()
+            shoppingItems[shoppingItemIndex] = shoppingItem
+            saveToPersistentStore()
+            
+        }
+    }
+}
+
+extension ShoppingModelController: ItemAddedDelegate  {
+    func itemAdded(_ item: ShoppingItem) {
+        shoppingItems.append(item)
+    }
 }

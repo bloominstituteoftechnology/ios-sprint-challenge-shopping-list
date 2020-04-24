@@ -8,96 +8,60 @@
 
 import UIKit
 
-
+protocol ItemAddedDelegate {
+    
+    func itemAdded(_ item: ShoppingItem)
+}
 
 class ShoppingListCollectionViewController: UICollectionViewController {
     
-    @IBAction func sendOrderButton(_ sender: Any) {
-    }
+    var shoppingItemController = ShoppingModelController()
     
-    let shoppingList = ShoppingController()
-    
-    
-    
-   
-    
-    
-    
-
     override func viewDidLoad() {
-       
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-       
-
-        // Do any additional setup after loading the view.
+//        collectionView?.delegate = self
+//        collectionView?.dataSource = self
+        collectionView?.reloadData()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    // MARK: UICollectionViewDataSource
-
-
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         
-        return shoppingList.itemNames.count
+        if segue.identifier == "sendOrderSegue" {
+            guard let detailVC = segue.destination as? ShoppingItemsDetailViewController else { return }
+            detailVC.shoppingItemCount = shoppingItemController.totalItemsAdded
+        }
     }
-
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return shoppingItemController.shoppingItems.count
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingItemCell", for: indexPath) as? ShoppingItemCollectionViewCell else { fatalError("Cell is not a ShoppingItemCell")}
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingItemCell", for: indexPath)
         
-        let item = shoppingList.itemNames[indexPath.row]
         
-        cell.shoppingItem = item
-        
-       
-    
+        guard let myCell = cell as? ShoppingItemCollectionViewCell else { return UICollectionViewCell() }
+        myCell.shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
         return cell
+        
     }
 
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        var shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
+        
+        shoppingItemController.toggleHasBeenAdded(for: shoppingItem)
+        
+        shoppingItem.isAdded.toggle()
+        
+        shoppingItemController.saveToPersistentStore()
+        
+        collectionView.reloadData()
     }
-    */
-
 }
