@@ -76,18 +76,18 @@
             </objects>
             <point key="canvasLocation" x="821.73913043478262" y="88.392857142857139"/>
         </scene>
-        <!--View Controller-->
+        <!--Checkout View Controller-->
         <scene sceneID="gBU-7p-yn7">
             <objects>
-                <viewController id="kRr-zz-2aZ" sceneMemberID="viewController">
+                <viewController id="kRr-zz-2aZ" customClass="CheckoutViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3v2-wO-eTW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tpD-rG-MEX">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="checkout message" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tpD-rG-MEX">
                                 <rect key="frame" x="24" y="121" width="366" height="152"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bdJ-c8-43Z">
@@ -106,6 +106,9 @@
                                 <state key="normal" title="send order">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="sendOrder:" destination="kRr-zz-2aZ" eventType="touchUpInside" id="qiX-C5-Vws"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -113,7 +116,7 @@
                             <constraint firstItem="yvz-M1-Juq" firstAttribute="trailing" secondItem="bdJ-c8-43Z" secondAttribute="trailing" constant="76" id="0ce-iB-ESh"/>
                             <constraint firstItem="yvz-M1-Juq" firstAttribute="trailing" secondItem="g7h-J3-ZzS" secondAttribute="trailing" constant="133" id="1qD-sX-ib1"/>
                             <constraint firstItem="yvz-M1-Juq" firstAttribute="trailing" secondItem="tpD-rG-MEX" secondAttribute="trailing" constant="24" id="5cT-d4-U5p"/>
-                            <constraint firstItem="1HN-Kh-cTd" firstAttribute="centerX" secondItem="tpD-rG-MEX" secondAttribute="centerX" id="G1e-KP-lPW"/>
+                            <constraint firstItem="1HN-Kh-cTd" firstAttribute="centerX" secondItem="tpD-rG-MEX" secondAttribute="centerX" constant="-7.5" id="G1e-KP-lPW"/>
                             <constraint firstItem="bdJ-c8-43Z" firstAttribute="top" secondItem="1HN-Kh-cTd" secondAttribute="bottom" constant="17" id="NSc-2X-74s"/>
                             <constraint firstItem="g7h-J3-ZzS" firstAttribute="leading" secondItem="yvz-M1-Juq" secondAttribute="leading" constant="133" id="OVq-4Q-4J8"/>
                             <constraint firstItem="g7h-J3-ZzS" firstAttribute="top" secondItem="bdJ-c8-43Z" secondAttribute="bottom" constant="64" id="OhI-tT-3F6"/>
@@ -128,6 +131,11 @@
                     <navigationItem key="navigationItem" id="VS2-EC-me0">
                         <barButtonItem key="backBarButtonItem" title="Change Shopping List" id="Sud-0m-pIG"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addressTextField" destination="bdJ-c8-43Z" id="Jb5-c4-3i3"/>
+                        <outlet property="checkoutMsg" destination="tpD-rG-MEX" id="xNT-cR-XJi"/>
+                        <outlet property="nameTextField" destination="1HN-Kh-cTd" id="meF-fE-Vbu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qhN-TC-E9O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
