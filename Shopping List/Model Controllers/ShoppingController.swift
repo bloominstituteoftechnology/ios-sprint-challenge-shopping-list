@@ -13,11 +13,12 @@ class ShoppingController {
     let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     var shoppingList: [ShoppingList] = []
     
-    
+   
+    }
     //MARK: -   CRUD
    
     
 
     
-}
+
 

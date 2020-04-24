@@ -11,15 +11,9 @@ import Foundation
 
 
 
-struct ShoppingList: Codable {
+struct ShoppingList: Equatable {
     var itemName: String
     var addedItem: Bool
-    var image: UIImage? {
-        for item in itemNames {
-            if item == name {
-                return UIImage(named: item)
-            }
-        }
-        return UIImage(named: itemNames[0])
-    }
+
+    
 }

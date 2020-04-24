@@ -18,20 +18,15 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
     
     var shoppingList: ShoppingList? {
         didSet {
-            updateViews()
+        
         }
     }
 
     
 
-    func updateViews() {
-        guard let didAddItem = shoppingList else { return }
-        if didAddItem == true {
-            nameLabel.text = "Added" } else
-        { nameLabel.text = "Not Added"
-        }
+
     }
 
     
     
-}
+

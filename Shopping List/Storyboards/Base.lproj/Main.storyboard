@@ -80,7 +80,7 @@
                     <navigationItem key="navigationItem" title="Shopping List" id="tO0-eb-gZR">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="w84-qw-Vi1">
                             <connections>
-                                <segue destination="z4c-Qh-DQG" kind="presentation" identifier="ShowDetailSegue" id="4rm-H1-UJa"/>
+                                <segue destination="z4c-Qh-DQG" kind="show" identifier="ShowDetailSegue" id="4rm-H1-UJa"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -94,7 +94,7 @@
             <objects>
                 <viewController id="z4c-Qh-DQG" customClass="ShoppingDetailViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rrf-an-TVl">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cY-tq-sYJ">
@@ -129,6 +129,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="RKb-wb-3ae"/>
                     </view>
+                    <navigationItem key="navigationItem" id="qWp-Oe-Gmd"/>
                     <connections>
                         <outlet property="addressTextField" destination="Zpp-ef-gVt" id="4z4-Xc-fW2"/>
                         <outlet property="nameTextField" destination="Zlj-Z6-II3" id="5kR-fn-2aP"/>
