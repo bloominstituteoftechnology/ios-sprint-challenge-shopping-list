@@ -43,6 +43,8 @@ class ShoppingListViewController: UICollectionViewController, ShoppingItemViewCe
         
         shoppingListController.shoppingList[indexPath.row].isAddedToShoppingList = !currentStatus
         
+        shoppingListController.saveToPersistentStore()
+        
         collectionView?.reloadData()
     }
     

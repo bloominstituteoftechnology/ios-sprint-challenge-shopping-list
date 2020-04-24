@@ -51,7 +51,7 @@ class ShoppingCartViewController: UIViewController, UITextFieldDelegate {
         content.body = "Your shopping items will be delivered to \(unwrappedAddress) in 15 minutes!"
         content.sound = UNNotificationSound.default()
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 15, repeats: false)
         
         let action = UNNotificationAction(identifier: "done", title: "Done", options: [.destructive])
     
@@ -66,5 +66,11 @@ class ShoppingCartViewController: UIViewController, UITextFieldDelegate {
             
         }
     
+        
+        let alert = UIAlertController(title: "Success", message: "Delivery Scheduled.", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Done", style: .cancel, handler: { action in self.dismiss(animated: true, completion: nil)} ))
+        
+        present(alert, animated: true)
     }
 }
