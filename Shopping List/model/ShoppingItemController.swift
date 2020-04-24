@@ -8,29 +8,18 @@
 
 import Foundation
 
-extension String {
-    static let shouldSave = "shouldSave"
-}
-
 class ShoppingItemController {
     
     let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     
     var items: [ShoppingItem] = []
     
+    var listSave: Bool = false
+    
+    let listSaveKey = "key"
+    
     var addedItems: [ShoppingItem] {
         return items.filter { $0.isAdded == true }
-    }
-    
-    func shopList() {
-        
-        loadFromPersistentStore()
-        if items.count == 0 {
-            for name in itemNames {
-                items.append(ShoppingItem(name: name))
-            }
-        }
-        saveToPersistentStore()
     }
     
     var fileLocation: URL? {
@@ -38,12 +27,18 @@ class ShoppingItemController {
         let fileManager = FileManager.default
         
         //  unwrap document directory
-        guard let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
+        guard let documentDir = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
         
         //  append file location to doc dir; create file at path
-        let fileURL = documentDirectory.appendingPathComponent("shoppingItems.plist")
+        let fileURL = documentDir.appendingPathComponent("shoppingItems.plist")
         
         return fileURL
+    }
+    
+    func createItem(name: String) {
+        let newItem = ShoppingItem(name: name, isAdded: false)
+        items.append(newItem)
+        saveToPersistentStore()
     }
     
     //  access the property list stored on the device, and convert the information in it back into an array of objects
@@ -85,5 +80,14 @@ class ShoppingItemController {
             print("error saving shopping list: \(error)")
         }
     }
-
+    
+    func setList() {
+        listSave = true
+        UserDefaults.standard.set(listSave, forKey: listSaveKey)
+    }
+    
+    func loadList() {
+        listSave = UserDefaults.standard.bool(forKey: listSaveKey)
+    }
+    
 }
