@@ -77,7 +77,13 @@
                             <outlet property="delegate" destination="QIH-0u-Jp5" id="yQ7-0d-gOD"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Shopping List" id="tO0-eb-gZR"/>
+                    <navigationItem key="navigationItem" title="Shopping List" id="tO0-eb-gZR">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="w84-qw-Vi1">
+                            <connections>
+                                <segue destination="z4c-Qh-DQG" kind="presentation" identifier="ShowDetailSegue" id="4rm-H1-UJa"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SYw-CG-bD4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -88,7 +94,7 @@
             <objects>
                 <viewController id="z4c-Qh-DQG" customClass="ShoppingDetailViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rrf-an-TVl">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cY-tq-sYJ">
