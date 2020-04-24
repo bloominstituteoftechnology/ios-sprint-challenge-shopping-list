@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  Shopping List
+//  ShoppingList
 //
-//  Created by Spencer Curtis on 8/3/18.
-//  Copyright © 2018 Lambda School. All rights reserved.
+//  Created by Jason on 4/24/20.
+//  Copyright © 2020 Jason Thomas. All rights reserved.
 //
 
 import UIKit
@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true
     }
