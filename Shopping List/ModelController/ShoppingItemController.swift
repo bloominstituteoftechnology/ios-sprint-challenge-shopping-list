@@ -11,7 +11,7 @@ import Foundation
 
 
 class ShoppingItemController {
-    
+
     let itemNames: [ShoppingItem] = [ShoppingItem(name: "Apple",
                                                   isOnShoppingList: false, image: "apple"),
                                      ShoppingItem(name: "Grapes",
@@ -29,7 +29,10 @@ class ShoppingItemController {
     
     
     
-    
-    
+    let isOnShoppingList = UserDefaults.standard.bool(forKey: //Haven't madde this yet)
+        
+        if isOnShoppingList {
+        //show as such in it's collection view cell.
+    }
     
 }
