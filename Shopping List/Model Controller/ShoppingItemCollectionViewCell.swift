@@ -29,23 +29,23 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
     func updateViews() {
         
-//        shoppingItemName.text = shoppingItem?.name
-//
-//        if let shoppingItem = shoppingItem {
-//
-//            itemImageView.image = shoppingItem.image
-//
-//            switch shoppingItem.isAdded {
-//
-//            case true:
-//
-//                addedOrNotLabel.text = "Added"
-//
-//            case false:
-//
-//                addedOrNotLabel.text = "Not Added"
-//            }
-//        }
+        shoppingItemName.text = shoppingItem?.name
+
+        if let shoppingItem = shoppingItem {
+
+            itemImageView.image = shoppingItem.image
+
+            switch shoppingItem.isAdded {
+
+            case true:
+
+                addedOrNotLabel.text = "Added"
+
+            case false:
+
+                addedOrNotLabel.text = "Not Added"
+            }
+        }
         
         
         

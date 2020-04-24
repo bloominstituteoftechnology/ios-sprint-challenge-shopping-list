@@ -28,13 +28,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         super.viewWillAppear(animated)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "sendOrderSegue" {
-            guard let detailVC = segue.destination as? ShoppingItemsDetailViewController else { return }
-            detailVC.shoppingItemCount = shoppingItemController.totalItemsAdded
-        }
-    }
+
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return shoppingItemController.shoppingItems.count
@@ -42,16 +36,18 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingItemCell", for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingItemCell", for: indexPath) as? ShoppingItemCollectionViewCell else { fatalError("Not a shopping item cell")}
         
         
-        guard let myCell = cell as? ShoppingItemCollectionViewCell else { return UICollectionViewCell() }
-        myCell.shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
+   
+        let myItem = shoppingItemController.shoppingItems[indexPath.row]
+        
+        cell.shoppingItem = myItem
+        
         return cell
         
     }
 
-    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         var shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
@@ -63,5 +59,13 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         shoppingItemController.saveToPersistentStore()
         
         collectionView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "sendOrderSegue" {
+            guard let detailVC = segue.destination as? ShoppingItemsDetailViewController else { return }
+            detailVC.shoppingItemCount = shoppingItemController.totalItemsAdded
+        }
     }
 }
