@@ -11,7 +11,11 @@ import Foundation
 
 
 class ShoppingItemController {
-
+    
+    init() {
+        loadFromPersistentStore()
+    }
+    
     let itemNames: [ShoppingItem] = [ShoppingItem(name: "Apple",
                                                   isOnShoppingList: false, image: "apple"),
                                      ShoppingItem(name: "Grapes",
@@ -31,8 +35,67 @@ class ShoppingItemController {
     
     let isOnShoppingList = UserDefaults.standard.bool(forKey: //Haven't madde this yet)
         
-        if isOnShoppingList {
+        if ShoppingItem.isOnShoppingList = true {
         //show as such in it's collection view cell.
     }
     
+    var persistentFileURL: URL? {
+        
+        let fileManager = FileManager.default
+        
+        let documentsDir = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
+        
+        let shoppingListItemsURL = documentsDir?.appendingPathComponent("shoppingList.plist")
+        
+        return shoppingListItemsURL
+    }
+    
+    func saveToPersistantStore() {
+        
+        do {
+            
+            let encoder = PropertyListEncoder()
+            
+            let shoppingListPlist = try encoder.encode(isOnShoppingList)
+            
+            guard let persistentFileURL = persistentFileURL else {
+                return
+            }
+            
+            try shoppingListPlist.write(to: persistentFileURL)
+            
+            
+        } catch {
+            
+            print("things broke while trying to save status:\(error)")
+            
+        }
+        
+    }
+    func loadFromPersistentStore() {
+        
+        guard let persistentFileURL = persistentFileURL else {
+            
+            return
+            
+        }
+        
+        do {
+            
+            let decoder = PropertyListDecoder()
+            
+            
+            let shoppingListPlist = try Data(contentsOf: persistentFileURL)
+            
+            
+            let shoppingItems = try decoder.decode([ShoppingItem].self, from: shoppingListPlist)
+            
+            self.shoppingItems = shoppingItems
+            
+        } catch {
+            
+            print("Error loading info from plist: \(error)")
+            
+        }
+    }
 }

@@ -9,16 +9,17 @@
 import UIKit
 
 
-struct ShoppingItem {
+struct ShoppingItem: Encodable {
     
     let name: String
     let isOnShoppingList: Bool
     let image: UIImage
+    
     init(name: String, isOnShoppingList: Bool, image: String) {
         
         self.name = name
         self.isOnShoppingList = isOnShoppingList
-        self.image = UIImage(named: imageName)!
+        self.image = UIImage(named: image)!
         
     }
 }
