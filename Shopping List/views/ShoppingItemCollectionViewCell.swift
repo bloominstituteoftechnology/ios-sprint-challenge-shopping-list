@@ -24,16 +24,16 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
     func updateViews() {
         
-        guard let item = item else { return }
+        nameLabel.text = item?.name
         
-        nameLabel.text = item.name
+        imageView.image = item?.image
         
-        imageView.image = item.image
-        
-        switch item.isAdded {
+        switch item?.isAdded {
         case true:
             addLabel.text = "added"
         case false:
+            addLabel.text = "not added"
+        default:
             addLabel.text = "not added"
         }
     }

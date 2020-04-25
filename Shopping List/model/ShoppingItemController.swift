@@ -41,7 +41,15 @@ class ShoppingItemController {
         saveToPersistentStore()
     }
     
-    //  access the property list stored on the device, and convert the information in it back into an array of objects
+    
+    func updateAdded(item: ShoppingItem) {
+        guard let itemIndex = items.firstIndex(of: item) else { return }
+        items[itemIndex].isAdded = !items[itemIndex].isAdded
+        saveToPersistentStore()
+    }
+    
+    //  access the property list stored on the device,
+    //  and convert the information in it back into an array of objects
     func loadFromPersistentStore() {
         guard let fileURL = fileLocation else { return }
         
