@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Qaj-5h-pf5">
-                            <size key="itemSize" width="179" height="159"/>
+                            <size key="itemSize" width="179" height="170"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -97,36 +97,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cY-tq-sYJ">
-                                <rect key="frame" x="160" y="78" width="94" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zlj-Z6-II3">
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zlj-Z6-II3">
                                 <rect key="frame" x="20" y="150" width="374" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zpp-ef-gVt">
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zpp-ef-gVt">
                                 <rect key="frame" x="20" y="192" width="374" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s74-IJ-0Ix">
-                                <rect key="frame" x="157" y="234" width="88" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s74-IJ-0Ix">
+                                <rect key="frame" x="163" y="234" width="88" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Send Order"/>
                                 <connections>
                                     <action selector="sendOrderButton:" destination="z4c-Qh-DQG" eventType="touchUpInside" id="JLv-yV-IpO"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cY-tq-sYJ">
+                                <rect key="frame" x="160" y="94" width="94" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Zlj-Z6-II3" firstAttribute="leading" secondItem="RKb-wb-3ae" secondAttribute="leading" constant="20" id="CcI-sX-oz2"/>
+                            <constraint firstItem="RKb-wb-3ae" firstAttribute="trailing" secondItem="Zpp-ef-gVt" secondAttribute="trailing" constant="20" id="FoZ-qL-z7y"/>
+                            <constraint firstItem="RKb-wb-3ae" firstAttribute="trailing" secondItem="1cY-tq-sYJ" secondAttribute="trailing" constant="160" id="HJq-ym-74M"/>
+                            <constraint firstItem="1cY-tq-sYJ" firstAttribute="top" secondItem="RKb-wb-3ae" secondAttribute="top" constant="6" id="KH3-d9-vZK"/>
+                            <constraint firstItem="s74-IJ-0Ix" firstAttribute="centerX" secondItem="rrf-an-TVl" secondAttribute="centerX" id="O2j-Ul-qtk"/>
+                            <constraint firstItem="RKb-wb-3ae" firstAttribute="trailing" secondItem="Zlj-Z6-II3" secondAttribute="trailing" constant="20" id="gz4-Mn-lh5"/>
+                            <constraint firstItem="Zpp-ef-gVt" firstAttribute="leading" secondItem="RKb-wb-3ae" secondAttribute="leading" constant="20" id="lMj-Rx-TpS"/>
+                            <constraint firstItem="1cY-tq-sYJ" firstAttribute="leading" secondItem="RKb-wb-3ae" secondAttribute="leading" constant="160" id="mqF-Ir-W4d"/>
+                            <constraint firstItem="RKb-wb-3ae" firstAttribute="bottom" secondItem="s74-IJ-0Ix" secondAttribute="bottom" constant="595" id="qwy-a9-mev"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="RKb-wb-3ae"/>
                     </view>
                     <navigationItem key="navigationItem" id="qWp-Oe-Gmd"/>
