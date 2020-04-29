@@ -39,16 +39,17 @@ class ShoppingItemCollectionViewController: UICollectionViewController {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as? ShoppingItemCollectionViewCell else { return UICollectionViewCell() }
     
-        let item = shoppingItemController.items[indexPath.row]
-        
+        let item = shoppingItemController.items[indexPath.item]
         cell.item = item
-        
+        cell.isUserInteractionEnabled = true
         return cell
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedItem = shoppingItemController.items[indexPath.item]
-        shoppingItemController.updateIsAdded(item: selectedItem)
+        var selectedItem = shoppingItemController.items[indexPath.item]
+        selectedItem.isAdded.toggle()
+        shoppingItemController.items[indexPath.item] = selectedItem
+        shoppingItemController.saveToPersistentStore()
         collectionView.reloadData()
     }
 }
