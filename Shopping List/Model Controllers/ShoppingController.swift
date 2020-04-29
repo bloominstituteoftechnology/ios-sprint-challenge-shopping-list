@@ -13,13 +13,10 @@ class ShoppingController {
     let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     var shoppingList: [ShoppingList] = []
     
-   
+    
     
     var foodItems: [ShoppingList] {
-        let list = shoppingList
-        let foodItems = list.filter{ $0.addedItem == true }
-        
-        return foodItems
+        return shoppingList.filter{ $0.addedItem == true }
     }
     
     private var shoppingListURL: URL? {
@@ -46,7 +43,7 @@ class ShoppingController {
             let shoppingListData = try Data(contentsOf: url)
             let decoder = PropertyListDecoder()
             let decodedShoppingList = try decoder.decode([ShoppingList].self, from: shoppingListData)
-        
+            
         } catch {
             print("error loading shopping list")
         }
@@ -64,14 +61,13 @@ class ShoppingController {
     
     func addedItems(itemName: ShoppingList, addedItem: Bool) {
         guard let itemIndex = foodItems.firstIndex(of: itemName) else { return }
-      
+        
     }
     
-    }
-    //MARK: -   CRUD
-   
-    
+}
 
-    
+
+
+
 
 

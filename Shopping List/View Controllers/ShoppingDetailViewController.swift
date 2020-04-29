@@ -12,7 +12,7 @@ class ShoppingDetailViewController: UIViewController {
     
     var shoppingController: ShoppingController?
     var customerItems = 0
-
+    
     //MARK: - OUTLETS
     @IBOutlet weak var numberOfItemsLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
@@ -22,8 +22,8 @@ class ShoppingDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         guard let shoppingController = shoppingController else { return }
-        customerItems = shoppingController.addedItems
-        numberOfItemsLabel.text = "You have \(customerItems) in your shopping bag"
+        customerItems = shoppingController.foodItems.count
+        numberOfItemsLabel.text = "You have \(customerItems) items in your shopping bag"
     }
     
     //MARK: - ACTIONS
@@ -32,16 +32,16 @@ class ShoppingDetailViewController: UIViewController {
             !name.isEmpty,
             let address = addressTextField.text,
             !address.isEmpty {
-            let alert = UIAlertController(title: "Delivery for \(name)", message: "\(customerItems) of items in your cart will be shipped to \(address)", preferredStyle: .alert)
-          present(alert, animated: true, completion: nil)
-            
+            let alert = UIAlertController(title: "Delivery for \(name)", message: "The \(customerItems) item(s) in your shopping cart will be shipped to \(address)", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
         }
     }
     
     func updateViews() {
         if let shoppingController = shoppingController {
-           
+            
         }
     }
-
+    
 }

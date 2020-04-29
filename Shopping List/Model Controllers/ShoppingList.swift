@@ -11,14 +11,14 @@ import Foundation
 
 
 
-struct ShoppingList: Encodable, Decodable, Equatable {
-    static func == (lhs: ShoppingList, rhs: ShoppingList) -> Bool {
-        return lhs.itemName == rhs.itemName && lhs.addedItem == rhs.addedItem
-    }
+struct ShoppingList: Codable, Equatable {
+    
     
     var itemName: String
-    var addedItem: Bool = false
-//    var image: UIImage
-
+    var addedItem: Bool
     
+    init(itemName: String) {
+        self.itemName = itemName
+        addedItem = false
+    }
 }
