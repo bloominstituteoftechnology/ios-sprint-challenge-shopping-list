@@ -12,11 +12,10 @@ class ShoppingItemCollectionViewController: UICollectionViewController {
 
     var shoppingItemController = ShoppingItemController()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        }
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowOrder" {
@@ -48,15 +47,8 @@ class ShoppingItemCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         let selectedItem = shoppingItemController.items[indexPath.item]
-
-        shoppingItemController.updateAdded(item: selectedItem)
-        
+        shoppingItemController.updateIsAdded(item: selectedItem)
         collectionView.reloadData()
     }
-}
-
-extension ShoppingItemCollectionViewController {
-    
 }

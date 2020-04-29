@@ -14,8 +14,6 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
-    var shoppingController: ShoppingItemController?
-    
     var item: ShoppingItem? {
         didSet {
             updateViews()

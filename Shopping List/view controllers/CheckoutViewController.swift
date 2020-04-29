@@ -23,7 +23,8 @@ class CheckoutViewController: UIViewController {
     }
 
     @IBAction func sendOrder(_ sender: Any) {
-        let alert = UIAlertController(title: "special delivery for \(nameTextField.text ?? "sorry - not found")" , message: "your shopping list will be delivered to \(addressTextField.text ?? "no such number").", preferredStyle: .alert)
+        
+        let alert = UIAlertController(title: "special delivery for \(nameTextField.text ?? "sorry - not found")" , message: "your shopping list will be delivered to \(addressTextField.text ?? "no such number") in 15 minutes.", preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         

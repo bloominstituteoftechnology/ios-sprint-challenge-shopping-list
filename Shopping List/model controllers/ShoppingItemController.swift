@@ -6,33 +6,42 @@
 //  Copyright © 2020 Lambda School. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class ShoppingItemController {
     
     let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     
-    var items: [ShoppingItem] = []
-    
-    var listSave: Bool = false
-    
-    let listSaveKey = "key"
-    
-    var addedItems: [ShoppingItem] {
-        return items.filter { $0.isAdded == true }
+    var items: [ShoppingItem] {
+        get {
+            [
+            ShoppingItem(name: "Apple", isAdded: false),
+            ShoppingItem(name: "Grapes", isAdded: true),
+            ShoppingItem(name: "Milk", isAdded: true),
+            ShoppingItem(name: "Muffin", isAdded: false),
+            ShoppingItem(name: "Popcorn", isAdded: true),
+            ShoppingItem(name: "Soda", isAdded: true),
+            ShoppingItem(name: "Strawberries", isAdded: true),
+            ]
+            }
+        set { }
     }
     
     var fileLocation: URL? {
         
         let fileManager = FileManager.default
-        
         //  unwrap document directory
         guard let documentDir = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
-        
         //  append file location to doc dir; create file at path
-        let fileURL = documentDir.appendingPathComponent("shoppingItems.plist")
+        let itemsURL = documentDir.appendingPathComponent("shoppingItems.plist")
         
-        return fileURL
+        return itemsURL
+    }
+    
+    func updateIsAdded(item: ShoppingItem) {
+        guard let itemIndex = items.firstIndex(of: item) else { return }
+        items[itemIndex].isAdded = !items[itemIndex].isAdded
+        saveToPersistentStore()
     }
     
     func createItem(name: String) {
@@ -41,24 +50,16 @@ class ShoppingItemController {
         saveToPersistentStore()
     }
     
-    
-    func updateAdded(item: ShoppingItem) {
-        guard let itemIndex = items.firstIndex(of: item) else { return }
-        items[itemIndex].isAdded = !items[itemIndex].isAdded
-        saveToPersistentStore()
-    }
-    
     //  access the property list stored on the device,
     //  and convert the information in it back into an array of objects
     func loadFromPersistentStore() {
+        
         guard let fileURL = fileLocation else { return }
         
         do {
-            let shoppingData = try Data(contentsOf: fileURL)
-            
             let decoder = PropertyListDecoder()
-            
-            let shoppingArray = try decoder.decode([ShoppingItem].self, from: shoppingData)
+            let shoppingPList = try Data(contentsOf: fileURL)
+            let shoppingArray = try decoder.decode([ShoppingItem].self, from: shoppingPList)
             
             self.items = shoppingArray
             
@@ -77,25 +78,16 @@ class ShoppingItemController {
             let encoder = PropertyListEncoder()
             
             //  convert into a plist
-            let shoppingData = try encoder.encode(items)
+            let shoppingPlist = try encoder.encode(items)
             
             //  save the file to the documents directory
-            try shoppingData.write(to: fileURL)
+            try shoppingPlist.write(to: fileURL)
             
         } catch {
             //  handle the error that gets "thrown" here
             //  this catch statement will only run if a throwing method fails
             print("error saving shopping list: \(error)")
         }
-    }
-    
-    func setList() {
-        listSave = true
-        UserDefaults.standard.set(listSave, forKey: listSaveKey)
-    }
-    
-    func loadList() {
-        listSave = UserDefaults.standard.bool(forKey: listSaveKey)
     }
     
 }

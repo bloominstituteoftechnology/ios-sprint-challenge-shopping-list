@@ -11,14 +11,10 @@ import UIKit
 struct ShoppingItem: Equatable, Codable {
     var name: String
     var isAdded: Bool
-    var image: UIImage {
-        //  computed property to return image
-        return UIImage(named: name)!
-    }
     
-    init(name: String, isAdded: Bool = false) {
-        self.name = name
-        self.isAdded = isAdded
+    var image: UIImage {
+        guard let image = (UIImage(named: name)) else { return UIImage() }
+        return image
     }
     
 }
