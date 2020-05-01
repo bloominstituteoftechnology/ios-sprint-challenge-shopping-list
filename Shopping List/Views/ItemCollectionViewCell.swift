@@ -13,23 +13,30 @@ class ItemCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var itemImage: UIImageView!
     @IBOutlet weak var itemNameLabel: UILabel!
-    @IBOutlet weak var hasBeenAdded: UIButton!
+    @IBOutlet weak var addedOrNotAdded: UILabel!
     
+    
+    var delegate: ItemDelegate?
     
     var shoppingItem: ShoppingItem? {
         
         didSet {
-            
-            
-            
+           updateViews()
         }
     }
+    
     
     func updateViews() {
         
         itemImage.image = shoppingItem?.image
         itemNameLabel.text = shoppingItem?.itemName
-        hasBeenAdded.setTitle("Not Added", for: .normal)
+        
+        switch shoppingItem?.itemHasBeenAdded {
+        case true:
+            addedOrNotAdded.text = "Added"
+        default:
+            addedOrNotAdded.text = "Not Added"
+        }
         
     }
     

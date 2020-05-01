@@ -9,7 +9,7 @@
 import UIKit
 
 
-struct ShoppingItem: Codable{
+struct ShoppingItem {
     
     var itemName: String
     var itemHasBeenAdded: Bool
@@ -17,7 +17,10 @@ struct ShoppingItem: Codable{
     
     init(itemName: String, imageName: String) {
         self.itemName = itemName
-        self.image = UIImage(named: imageName)!
+        self.image = UIImage(named: itemName)!
+        self.itemHasBeenAdded = false
     }
+        
+        
     
 }
