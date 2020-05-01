@@ -39,8 +39,11 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        var item = shoppingListController.shoppingItems[indexPath.item]
         
-        shoppingListController.shoppingItems[indexPath.item].itemHasBeenAdded.toggle()
+        item.itemHasBeenAdded = !item.itemHasBeenAdded
+        
+        collectionView.reloadItems(at: [indexPath])
 }
   
     

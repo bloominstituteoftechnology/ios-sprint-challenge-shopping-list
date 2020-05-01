@@ -16,8 +16,6 @@ class ItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var addedOrNotAdded: UILabel!
     
     
-    var delegate: ItemDelegate?
-    
     var shoppingItem: ShoppingItem? {
         
         didSet {

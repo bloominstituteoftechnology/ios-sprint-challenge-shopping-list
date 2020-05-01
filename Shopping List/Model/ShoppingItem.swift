@@ -9,7 +9,7 @@
 import UIKit
 
 
-struct ShoppingItem {
+struct ShoppingItem: Codable {
     
     var itemName: String
     var itemHasBeenAdded: Bool
