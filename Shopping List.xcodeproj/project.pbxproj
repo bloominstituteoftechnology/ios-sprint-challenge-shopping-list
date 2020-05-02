@@ -8,20 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		4613E91221143BFC00E7FF73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4613E91121143BFC00E7FF73 /* AppDelegate.swift */; };
-		4613E91421143BFC00E7FF73 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4613E91321143BFC00E7FF73 /* ViewController.swift */; };
 		4613E91721143BFC00E7FF73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91521143BFC00E7FF73 /* Main.storyboard */; };
 		4613E91921143BFD00E7FF73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91821143BFD00E7FF73 /* Assets.xcassets */; };
 		4613E91C21143BFD00E7FF73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91A21143BFD00E7FF73 /* LaunchScreen.storyboard */; };
+		E34A8CCF245D01F800EC1FCD /* ShoppingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34A8CCE245D01F800EC1FCD /* ShoppingItem.swift */; };
+		E34A8CD2245D0AFC00EC1FCD /* ShoppingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34A8CD1245D0AFC00EC1FCD /* ShoppingController.swift */; };
+		E34A8CD5245D132200EC1FCD /* ShoppingListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34A8CD4245D132200EC1FCD /* ShoppingListCollectionViewController.swift */; };
+		E34A8CD7245D134000EC1FCD /* OrderScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34A8CD6245D134000EC1FCD /* OrderScreenViewController.swift */; };
+		E34A8CD9245D136D00EC1FCD /* ShoppingItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34A8CD8245D136D00EC1FCD /* ShoppingItemCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4613E90E21143BFC00E7FF73 /* Shopping List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shopping List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4613E91121143BFC00E7FF73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4613E91321143BFC00E7FF73 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4613E91621143BFC00E7FF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4613E91821143BFD00E7FF73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4613E91B21143BFD00E7FF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4613E91D21143BFD00E7FF73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E34A8CCE245D01F800EC1FCD /* ShoppingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItem.swift; sourceTree = "<group>"; };
+		E34A8CD1245D0AFC00EC1FCD /* ShoppingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingController.swift; sourceTree = "<group>"; };
+		E34A8CD4245D132200EC1FCD /* ShoppingListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListCollectionViewController.swift; sourceTree = "<group>"; };
+		E34A8CD6245D134000EC1FCD /* OrderScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderScreenViewController.swift; sourceTree = "<group>"; };
+		E34A8CD8245D136D00EC1FCD /* ShoppingItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +62,42 @@
 		4613E91021143BFC00E7FF73 /* Shopping List */ = {
 			isa = PBXGroup;
 			children = (
+				E34A8CD3245D130000EC1FCD /* View Controllers */,
+				E34A8CD0245D0ADA00EC1FCD /* Model Controllers */,
+				E34A8CCD245D01E500EC1FCD /* Model */,
 				4613E91121143BFC00E7FF73 /* AppDelegate.swift */,
-				4613E91321143BFC00E7FF73 /* ViewController.swift */,
 				4613E91521143BFC00E7FF73 /* Main.storyboard */,
 				4613E91821143BFD00E7FF73 /* Assets.xcassets */,
 				4613E91A21143BFD00E7FF73 /* LaunchScreen.storyboard */,
 				4613E91D21143BFD00E7FF73 /* Info.plist */,
 			);
 			path = "Shopping List";
+			sourceTree = "<group>";
+		};
+		E34A8CCD245D01E500EC1FCD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E34A8CCE245D01F800EC1FCD /* ShoppingItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E34A8CD0245D0ADA00EC1FCD /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E34A8CD1245D0AFC00EC1FCD /* ShoppingController.swift */,
+			);
+			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
+		E34A8CD3245D130000EC1FCD /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E34A8CD4245D132200EC1FCD /* ShoppingListCollectionViewController.swift */,
+				E34A8CD6245D134000EC1FCD /* OrderScreenViewController.swift */,
+				E34A8CD8245D136D00EC1FCD /* ShoppingItemCollectionViewCell.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,8 +171,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4613E91421143BFC00E7FF73 /* ViewController.swift in Sources */,
+				E34A8CD5245D132200EC1FCD /* ShoppingListCollectionViewController.swift in Sources */,
+				E34A8CD9245D136D00EC1FCD /* ShoppingItemCollectionViewCell.swift in Sources */,
+				E34A8CCF245D01F800EC1FCD /* ShoppingItem.swift in Sources */,
 				4613E91221143BFC00E7FF73 /* AppDelegate.swift in Sources */,
+				E34A8CD2245D0AFC00EC1FCD /* ShoppingController.swift in Sources */,
+				E34A8CD7245D134000EC1FCD /* OrderScreenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
