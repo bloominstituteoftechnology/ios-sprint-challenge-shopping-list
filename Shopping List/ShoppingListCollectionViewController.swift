@@ -20,15 +20,14 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         collectionView.reloadData()
     }
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if let orderVC = segue.destination as? OrderItemsViewController {
+            orderVC.itemCount = shoppingController.addedItems.count
+        }
     }
-    */
 
     // MARK: UICollectionViewDataSource
 
@@ -42,7 +41,11 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         let item = shoppingController.items[indexPath.item]
         cell.itemImage.image = item.itemImage
         cell.itemLabel.text = item.itemName
-        cell.addedLabel.text = String(item.itemAdded)
+        if item.itemAdded {
+            cell.addedLabel.text = "Added"
+        } else {
+            cell.addedLabel.text = "Not Added"
+        }
     
         return cell
     }
@@ -50,7 +53,6 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDelegate
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = shoppingController.items[indexPath.item]
-        self.title = item.itemName
         shoppingController.updateAdded(for: item)
         collectionView.reloadData()
     }

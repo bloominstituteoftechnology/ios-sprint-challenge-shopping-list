@@ -15,7 +15,7 @@ class OrderItemsViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     
-    var shoppingController: ShoppingList?
+    var itemCount: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,12 +25,10 @@ class OrderItemsViewController: UIViewController {
     
     @IBAction func orderSubmitted(_ sender: Any) {
         showAlert()
-        navigationController?.popViewController(animated: true)
     }
     
     func updateLabel() {
-        guard let shoppingC = shoppingController else { return }
-        numberOfItemsLabel.text = "You currently have \(shoppingC.addedItems.count) item(s) in your shopping list."
+        numberOfItemsLabel.text = "You currently have \(itemCount) item(s) in your shopping list."
     }
     
     private func showAlert() {
@@ -49,7 +47,10 @@ class OrderItemsViewController: UIViewController {
         
         let alert = UIAlertController(title: "Delivery for \(name)!", message: "Your items will be delivered to \(address) in 15 minutes.", preferredStyle: .alert)
             
-        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: {
+            action in
+            self.navigationController?.popViewController(animated: true)
+        })
             
         alert.addAction(okAction)
             
