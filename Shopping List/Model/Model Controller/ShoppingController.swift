@@ -65,4 +65,13 @@ class ShoppingControler {
         }
     }
     
+    //MARK: - Helper Functions
+    func shoppingItemWasSelected(shoppingItem: ShoppingItem){
+        guard let index = shoppingItems.index(of: shoppingItem) else {return}
+        var item = shoppingItem
+        item.hasBeenAdded = !shoppingItem.hasBeenAdded
+        shoppingItems.remove(at: index)
+        shoppingItems.insert(item, at: index)
+        saveToPersistentStore()
+    }
 }

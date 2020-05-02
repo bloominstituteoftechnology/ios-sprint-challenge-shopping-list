@@ -28,7 +28,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let tappedShoppingItem = shoppingItemController.shoppingItems[indexPath.item]
-        
+        shoppingItemController.shoppingItemWasSelected(shoppingItem: tappedShoppingItem)
         collectionView.reloadData()
     }
 
@@ -37,6 +37,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         
         let shoppingItem = shoppingItemController.shoppingItems[indexPath.item]
         cell.shoppingItem = shoppingItem
+        
         return cell
     }
 
