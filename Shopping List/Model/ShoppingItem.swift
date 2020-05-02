@@ -7,15 +7,18 @@
 //
 
 import UIKit
+import Foundation
 
 struct ShoppingItem: Codable, Equatable{
     var itemName: String
     var hasBeenAdded: Bool = false
-    var imageName: String
-    var imageData: Data?
+    var itemImageName: String
+    var image: UIImage {
+         return UIImage(named: itemImageName)!
+    }
     
-    init(itemName: String, imageName: String){
+    init(itemName: String, itemImageName: String){
         self.itemName = itemName
-        self.imageName = imageName
+        self.itemImageName = itemImageName
     }
 }

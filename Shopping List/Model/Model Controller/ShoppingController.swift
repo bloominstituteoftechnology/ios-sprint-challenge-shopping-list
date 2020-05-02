@@ -28,7 +28,7 @@ class ShoppingControler {
     //Create:
     func createShoppingItem(){
         for name in itemNames{
-            let newItem = ShoppingItem(itemName: name, imageName: name)
+            let newItem = ShoppingItem(itemName: name, itemImageName: name)
             shoppingItems.append(newItem)
             saveToPersistentStore()
         }
