@@ -10,6 +10,10 @@ import UIKit
 
 class OrderViewController: UIViewController {
 
+    @IBOutlet weak var addressTextField: UITextField!
+  
+    @IBOutlet weak var currentNumberOfItemsLabel: UILabel!
+    @IBOutlet weak var nameTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,6 +21,8 @@ class OrderViewController: UIViewController {
     }
     
 
+    @IBAction func sendOrderButtonTapped(_ sender: Any) {
+    }
     /*
     // MARK: - Navigation
 

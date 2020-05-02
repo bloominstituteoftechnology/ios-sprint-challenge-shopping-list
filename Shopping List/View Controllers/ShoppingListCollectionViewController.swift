@@ -12,6 +12,7 @@ private let reuseIdentifier = "Cell"
 
 class ShoppingListCollectionViewController: UICollectionViewController {
 
+  
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,6 +25,8 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func nextButtomPressed(_ sender: Any) {
+    }
     /*
     // MARK: - Navigation
 
