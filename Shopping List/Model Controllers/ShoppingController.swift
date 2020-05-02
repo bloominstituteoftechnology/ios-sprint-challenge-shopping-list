@@ -9,8 +9,10 @@
 import Foundation
 
 class ShoppingController: Codable {
+    
+    let firstRun: Bool = !UserDefaults.standard.bool(forKey: .isInitializedKey)
+    
     init() {
-        let firstRun: Bool = UserDefaults.standard.bool(forKey: .isInitializedKey)
         if firstRun {
             createInitialShoppingItems()
             UserDefaults.standard.set(true, forKey: .isInitializedKey)
@@ -25,7 +27,7 @@ class ShoppingController: Codable {
     ]
     
     var shoppingItems: [ShoppingItem] = []
-    
+    /*
     var addedItems: [ShoppingItem] {
         let added = shoppingItems.filter( { return $0.hasBeenAdded } )
         return added
@@ -35,6 +37,7 @@ class ShoppingController: Codable {
         let notAdded = shoppingItems.filter( { return !$0.hasBeenAdded } )
         return notAdded
     }
+     */
     
     // MARK : - Persistence
     
