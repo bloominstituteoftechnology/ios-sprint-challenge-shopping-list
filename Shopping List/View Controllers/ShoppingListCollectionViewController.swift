@@ -16,6 +16,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView?.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,7 +52,5 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         shoppingController.itemToggled(item: itemTapped)
         collectionView.reloadData()
     }
-
-    // MARK: UICollectionViewDelegate
 
 }
