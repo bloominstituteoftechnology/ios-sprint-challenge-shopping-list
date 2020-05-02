@@ -1,24 +1,181 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MkW-HW-ge8">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Shopping List-->
+        <scene sceneID="KlR-Pl-RCy">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <collectionViewController id="xEU-6M-vBe" customClass="ShoppingListCollectionViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="8Jb-mN-Eng">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Q5v-nu-9hT">
+                            <size key="itemSize" width="150" height="210"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoppingItemCell" id="jsV-28-88V" customClass="ShoppingListCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="150" height="210"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="1xo-oW-hra">
+                                    <rect key="frame" x="0.0" y="0.0" width="150" height="210"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="57f-Qx-5ml">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="210"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Added" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hzk-tI-89u">
+                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="20.333333333333332"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FTs-4I-NTT">
+                                                    <rect key="frame" x="0.0" y="28.333333333333329" width="150" height="147.33333333333337"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apple" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6F8-hH-Gf8">
+                                                    <rect key="frame" x="0.0" y="183.66666666666666" width="150" height="26.333333333333343"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="6F8-hH-Gf8" secondAttribute="bottom" id="cHe-gc-kNk"/>
+                                                <constraint firstItem="hzk-tI-89u" firstAttribute="top" secondItem="57f-Qx-5ml" secondAttribute="top" id="xmN-To-V70"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="57f-Qx-5ml" secondAttribute="bottom" id="Mpk-IR-Rv1"/>
+                                        <constraint firstItem="57f-Qx-5ml" firstAttribute="leading" secondItem="1xo-oW-hra" secondAttribute="leading" id="ZEC-m6-QdS"/>
+                                        <constraint firstAttribute="trailing" secondItem="57f-Qx-5ml" secondAttribute="trailing" id="lQy-Jg-XOS"/>
+                                        <constraint firstItem="57f-Qx-5ml" firstAttribute="top" secondItem="1xo-oW-hra" secondAttribute="top" id="tXU-nI-2zU"/>
+                                    </constraints>
+                                </collectionViewCellContentView>
+                                <size key="customSize" width="150" height="210"/>
+                                <connections>
+                                    <outlet property="imageView" destination="FTs-4I-NTT" id="xE0-tG-bzw"/>
+                                    <outlet property="isOnShoppingListLabel" destination="hzk-tI-89u" id="WTE-j2-mp9"/>
+                                    <outlet property="itemNameLabel" destination="6F8-hH-Gf8" id="bBK-1a-oGl"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="xEU-6M-vBe" id="x3Z-pN-Lxx"/>
+                            <outlet property="delegate" destination="xEU-6M-vBe" id="3dp-7h-yL3"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Shopping List" id="nOz-HI-2cy">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="dbr-bK-f9y">
+                            <connections>
+                                <segue destination="oBH-v0-zs9" kind="show" identifier="showNextDetail" id="4cg-nI-7qu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fEd-gt-gRa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1321.7391304347827" y="120.53571428571428"/>
+        </scene>
+        <!--Shopping List Detail View Controller-->
+        <scene sceneID="li5-bd-wJa">
+            <objects>
+                <viewController id="oBH-v0-zs9" customClass="ShoppingListDetailViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZXw-jl-seN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jET-EW-v7a">
+                                <rect key="frame" x="0.0" y="148" width="375" height="165"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="mAp-b2-uCI">
+                                        <rect key="frame" x="34.333333333333343" y="0.0" width="306.66666666666663" height="127"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="67C-83-j0H">
+                                                <rect key="frame" x="0.0" y="0.0" width="306.66666666666669" height="43"/>
+                                                <string key="text">You currently have 3 item(s) in your
+shopping list.</string>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="VeI-Jo-RYW">
+                                                <rect key="frame" x="0.0" y="51" width="306.66666666666669" height="76"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DfE-I0-qaC">
+                                                        <rect key="frame" x="0.0" y="0.0" width="306.66666666666669" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your address:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="brz-BE-kfs">
+                                                        <rect key="frame" x="0.0" y="42" width="306.66666666666669" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DvV-bD-HoE">
+                                        <rect key="frame" x="148" y="135" width="79" height="30"/>
+                                        <state key="normal" title="Send Order"/>
+                                        <connections>
+                                            <action selector="sendOrderButtonTapped:" destination="oBH-v0-zs9" eventType="touchUpInside" id="TRE-cV-DPM"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="jET-EW-v7a" firstAttribute="leading" secondItem="xtl-9x-XUS" secondAttribute="leading" id="XWX-kV-sJB"/>
+                            <constraint firstItem="jET-EW-v7a" firstAttribute="top" secondItem="xtl-9x-XUS" secondAttribute="top" constant="8" id="ZHr-gB-4Px"/>
+                            <constraint firstItem="xtl-9x-XUS" firstAttribute="trailing" secondItem="jET-EW-v7a" secondAttribute="trailing" id="u68-sC-1cc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xtl-9x-XUS"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="35C-OW-lEt">
+                        <barButtonItem key="backBarButtonItem" title="Change Shopping List" id="SKF-Ut-wwY"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addressTextField" destination="brz-BE-kfs" id="U2J-t4-H7f"/>
+                        <outlet property="cartSummaryLabel" destination="67C-83-j0H" id="POe-h7-r1t"/>
+                        <outlet property="nameTextField" destination="DfE-I0-qaC" id="RI7-j7-MvH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nrz-UA-yV6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2088.8000000000002" y="119.70443349753695"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0bT-Lo-amf">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MkW-HW-ge8" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="kif-Yu-3cQ">
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="xEU-6M-vBe" kind="relationship" relationship="rootViewController" id="kWl-0p-tFa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N5S-3J-tGX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="411.59420289855075" y="120.53571428571428"/>
         </scene>
     </scenes>
 </document>
