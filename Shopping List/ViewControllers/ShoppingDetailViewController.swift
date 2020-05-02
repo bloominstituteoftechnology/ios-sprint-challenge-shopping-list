@@ -15,15 +15,32 @@ class ShoppingDetailViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     
+    //MARK: - Properties
+    var shoppingItemController: ShoppingControler?
+    var shoppingItem: ShoppingItem?
+    
+    
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        updateViews()
     }
     
     //MARK: - IBActions
     @IBAction func sendOrderTapped(_ sender: Any) {
         
     }
+    
+    //MARK: - Helper Functions:
+    func updateViews(){
+        guard let shoppingItemController = shoppingItemController else {return}
+        let itemsInCart = shoppingItemController.shoppingItems.filter{$0.hasBeenAdded == true}
+        itemsInCartLabel.text = "You have added \(itemsInCart.count) to your cart."
+    }
+    
+    func showAlert(){
+        let alert = UIAlertController(title: "BadaBing BadaBoom", message: "Gracias friend. Your groceries will be delivered to you address in 15 minutes.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
 
+    }
 }

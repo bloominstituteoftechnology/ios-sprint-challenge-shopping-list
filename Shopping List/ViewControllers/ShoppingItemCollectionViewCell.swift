@@ -15,6 +15,7 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var itemImageView: UIImageView!
     
+    
     //MARK: - Properties
     var shoppingItem: ShoppingItem?{
         didSet{

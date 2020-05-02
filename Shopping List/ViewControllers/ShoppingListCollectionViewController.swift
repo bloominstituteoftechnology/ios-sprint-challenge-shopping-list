@@ -40,7 +40,13 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         
         return cell
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showCartSegue"{
+            guard let detailVC = segue.destination as? ShoppingDetailViewController else { return }
+            detailVC.shoppingItemController = shoppingItemController
+        }
+    }
     // MARK: UICollectionViewDelegate
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking

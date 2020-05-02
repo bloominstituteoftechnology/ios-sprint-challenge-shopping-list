@@ -17,7 +17,7 @@ class ShoppingControler {
     
  init(){
     let isInitiated = UserDefaults.standard.bool(forKey: .isInitialized)
-        if isInitiated {
+        if isInitiated == true {
             loadFromPersistentStore()
         } else {
             createShoppingItem()
@@ -38,7 +38,7 @@ class ShoppingControler {
     var persistentFileURL: URL?{
         let fm = FileManager.default
         let documents = fm.urls(for: .documentDirectory, in: .userDomainMask).first
-        return documents?.appendingPathComponent("ShoppingItems.plist")
+        return documents?.appendingPathComponent("items.plist")
     }
     
     func saveToPersistentStore(){
@@ -48,7 +48,7 @@ class ShoppingControler {
             let data = try encoder.encode(self.shoppingItems)
             try data.write(to: url)
         }catch{
-            print("Error encoding items to ShoppingItems.plist")
+            print("Error encoding items to items.plist")
         }
     }
     
@@ -61,7 +61,7 @@ class ShoppingControler {
             let decoder = PropertyListDecoder()
             self.shoppingItems = try decoder.decode([ShoppingItem].self, from: data)
         }catch{
-            print("Error decoding items from ShoppingItem.plist")
+            print("Error decoding items from item.plist")
         }
     }
     
