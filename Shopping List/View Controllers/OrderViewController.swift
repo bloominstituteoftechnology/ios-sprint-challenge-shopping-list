@@ -9,20 +9,32 @@
 import UIKit
 
 class OrderViewController: UIViewController {
+    
+    
+    var shoppingListController: ShoppingListController?
+    var orderItems = 0
 
     @IBOutlet weak var addressTextField: UITextField!
-  
     @IBOutlet weak var currentNumberOfItemsLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        guard let shoppingListController = shoppingListController else { return }
+        orderItems = shoppingListController.fruitItem.count
+        currentNumberOfItemsLabel.text = "You have \(orderItems) items in your shopping cart."
     }
     
 
     @IBAction func sendOrderButtonTapped(_ sender: Any) {
+        if let name = nameTextField.text, !name.isEmpty,
+            let address = addressTextField.text, !address.isEmpty {
+            let alert = UIAlertController(title: "Delivery for \(name)", message: "The \(orderItems) in your shopping cart will be shipped to \(address) in 30 minutes", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
+    
     /*
     // MARK: - Navigation
 
