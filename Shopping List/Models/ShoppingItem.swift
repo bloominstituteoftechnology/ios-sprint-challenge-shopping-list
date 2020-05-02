@@ -8,14 +8,13 @@
 
 import Foundation
 
+let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+
+
+
 struct ShoppingItem {
-    let apple: Bool
-    let grapes: Bool
-    let milk: Bool
-    let muffin: Bool
-    let popcorn: Bool
-    let soda: Bool
-    let strawberries: Bool 
+    var itemNames: FileManager
+    
 }
 
 
