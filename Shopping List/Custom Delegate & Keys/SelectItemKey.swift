@@ -9,5 +9,5 @@
 import Foundation
 
 extension String {
-    static var didSelectItemAtKey = "ShouldShowPluto"
+    static var addItemKey = "ShouldShowPluto"
 }

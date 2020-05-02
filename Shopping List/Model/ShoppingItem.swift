@@ -6,17 +6,16 @@
 //  Copyright © 2020 Lambda School. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct ShoppingItem  {
     
-    
     var didSelectItemAt: Bool
     var image: UIImage
-    var names: [String]
+    var names: String
 
 
-    init(didSelectItemAt: Bool = false, imageName: String, names: [String]) {
+    init(didSelectItemAt: Bool = false, imageName: String, names: String) {
         self.didSelectItemAt = didSelectItemAt
         self.image = UIImage(named: imageName)!
         self.names = names
