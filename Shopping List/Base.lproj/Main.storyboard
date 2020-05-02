@@ -12,7 +12,7 @@
         <!--Shopping List-->
         <scene sceneID="vw1-Cc-fjW">
             <objects>
-                <collectionViewController id="ZKD-SP-mmu" sceneMemberID="viewController">
+                <collectionViewController id="ZKD-SP-mmu" customClass="ShoppingListCollectionViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="FMf-qM-Xpz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,7 +24,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoppingCell" id="dOr-wb-adF">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoppingCell" id="dOr-wb-adF" customClass="ShoppingItemCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="160" height="180"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="dkX-bS-369">
@@ -71,6 +71,11 @@
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="160" height="180"/>
+                                <connections>
+                                    <outlet property="addedNotAddedLabel" destination="EG6-ew-bFK" id="Gl3-gL-bXa"/>
+                                    <outlet property="imageLabel" destination="aJf-sF-GgR" id="t9k-ov-bmK"/>
+                                    <outlet property="nameLabel" destination="1gn-XJ-a9A" id="jX2-KZ-s9n"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -81,7 +86,7 @@
                     <navigationItem key="navigationItem" title="Shopping List" id="zlp-jG-EuF">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="uY0-sx-dwH">
                             <connections>
-                                <segue destination="CJX-rt-tO5" kind="show" id="2ov-Jp-0af"/>
+                                <segue destination="CJX-rt-tO5" kind="show" identifier="FinishOrderSegue" id="2ov-Jp-0af"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -90,10 +95,10 @@
             </objects>
             <point key="canvasLocation" x="826" y="268"/>
         </scene>
-        <!--View Controller-->
+        <!--Order Screen View Controller-->
         <scene sceneID="QgF-3I-L8j">
             <objects>
-                <viewController id="CJX-rt-tO5" sceneMemberID="viewController">
+                <viewController id="CJX-rt-tO5" customClass="OrderScreenViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UoE-kf-ry3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

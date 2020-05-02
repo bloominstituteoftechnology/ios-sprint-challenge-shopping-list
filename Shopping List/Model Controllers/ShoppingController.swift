@@ -10,10 +10,31 @@ import Foundation
 
 class ShoppingController: Codable {
     init() {
-        self.loadFromPersistentStore()
+        let firstRun: Bool = UserDefaults.standard.bool(forKey: .isInitializedKey)
+        if firstRun {
+            createInitialShoppingItems()
+            UserDefaults.standard.set(true, forKey: .isInitializedKey)
+        } else {
+            loadFromPersistentStore()
+        }
     }
     
+    let itemNames = [
+        "Apple", "Grapes", "Milk", "Muffin",
+        "Popcorn", "Soda", "Strawberries"
+    ]
+    
     var shoppingItems: [ShoppingItem] = []
+    
+    var addedItems: [ShoppingItem] {
+        let added = shoppingItems.filter( { return $0.hasBeenAdded } )
+        return added
+    }
+    
+    var notAddedItems: [ShoppingItem] {
+        let notAdded = shoppingItems.filter( { return !$0.hasBeenAdded } )
+        return notAdded
+    }
     
     // MARK : - Persistence
     
@@ -47,6 +68,26 @@ class ShoppingController: Codable {
         }
     }
     
-    // MARK: - CRUD
+    func itemToggled(item: ShoppingItem) {
+        if let itemIndex = shoppingItems.firstIndex(of: item) {
+            var shoppingItem = shoppingItems[itemIndex]
+            shoppingItem.hasBeenAdded.toggle()
+            shoppingItems[itemIndex] = shoppingItem
+            saveToPersistentStore()
+        }
+    }
     
+    // MARK: - CRUD
+    func createInitialShoppingItems() {
+        for item in itemNames {
+            let newItem = ShoppingItem(itemName: item, imageString: item)
+            shoppingItems.append(newItem)
+        }
+        saveToPersistentStore()
+    }
+    
+}
+
+extension String {
+    static let isInitializedKey = "isInitialized"
 }
