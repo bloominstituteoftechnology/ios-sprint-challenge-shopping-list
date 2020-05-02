@@ -11,7 +11,7 @@ import Foundation
 
 struct ShoppingItem: Codable, Equatable{
     var itemName: String
-    var hasBeenAdded: Bool = false
+    var hasBeenAdded: Bool
     var itemImageName: String
     var image: UIImage {
          return UIImage(named: itemImageName)!
@@ -20,5 +20,6 @@ struct ShoppingItem: Codable, Equatable{
     init(itemName: String, itemImageName: String){
         self.itemName = itemName
         self.itemImageName = itemImageName
+        self.hasBeenAdded = false
     }
 }

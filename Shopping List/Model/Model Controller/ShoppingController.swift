@@ -17,10 +17,11 @@ class ShoppingControler {
     
  init(){
     let isInitiated = UserDefaults.standard.bool(forKey: .isInitialized)
-        if isInitiated == true {
+        if isInitiated{
             loadFromPersistentStore()
         } else {
             createShoppingItem()
+            UserDefaults.standard.set(true, forKey: .isInitialized)
         }
     }
     
