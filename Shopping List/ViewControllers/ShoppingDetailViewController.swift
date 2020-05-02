@@ -28,7 +28,7 @@ class ShoppingDetailViewController: UIViewController {
     
     //MARK: - IBActions
     @IBAction func sendOrderTapped(_ sender: Any) {
-        
+        showAlert()
     }
     
     //MARK: - Helper Functions:
@@ -39,8 +39,11 @@ class ShoppingDetailViewController: UIViewController {
     }
     
     func showAlert(){
-        let alert = UIAlertController(title: "BadaBing BadaBoom", message: "Gracias friend. Your groceries will be delivered to you address in 15 minutes.", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
-
+        guard let name = nameTextField.text, !name.isEmpty,
+        let address = addressTextField.text, !address.isEmpty else {return}
+        let alert = UIAlertController(title: "Gracias \(name)", message: "Your groceries will be delivered to you at \(address) in 15 minutes.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "BadaBing BadaBoom", style: .default, handler: nil)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
     }
 }
