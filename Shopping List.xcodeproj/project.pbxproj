@@ -12,6 +12,10 @@
 		4613E91721143BFC00E7FF73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91521143BFC00E7FF73 /* Main.storyboard */; };
 		4613E91921143BFD00E7FF73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91821143BFD00E7FF73 /* Assets.xcassets */; };
 		4613E91C21143BFD00E7FF73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91A21143BFD00E7FF73 /* LaunchScreen.storyboard */; };
+		5246C711245DE01400B6B558 /* ShoppingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5246C710245DE01400B6B558 /* ShoppingItem.swift */; };
+		5246C713245DE19400B6B558 /* ShoppingListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5246C712245DE19400B6B558 /* ShoppingListCollectionViewController.swift */; };
+		5246C715245DE1EB00B6B558 /* ShoppingItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5246C714245DE1EB00B6B558 /* ShoppingItemCollectionViewCell.swift */; };
+		5246C717245DE6D700B6B558 /* SendOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5246C716245DE6D700B6B558 /* SendOrderViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		4613E91821143BFD00E7FF73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4613E91B21143BFD00E7FF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4613E91D21143BFD00E7FF73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5246C710245DE01400B6B558 /* ShoppingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItem.swift; sourceTree = "<group>"; };
+		5246C712245DE19400B6B558 /* ShoppingListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListCollectionViewController.swift; sourceTree = "<group>"; };
+		5246C714245DE1EB00B6B558 /* ShoppingItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		5246C716245DE6D700B6B558 /* SendOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendOrderViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +62,8 @@
 		4613E91021143BFC00E7FF73 /* Shopping List */ = {
 			isa = PBXGroup;
 			children = (
+				5246C70F245DDACC00B6B558 /* Models */,
+				5246C70E245DDA7F00B6B558 /* Controllers */,
 				4613E91121143BFC00E7FF73 /* AppDelegate.swift */,
 				4613E91321143BFC00E7FF73 /* ViewController.swift */,
 				4613E91521143BFC00E7FF73 /* Main.storyboard */,
@@ -62,6 +72,24 @@
 				4613E91D21143BFD00E7FF73 /* Info.plist */,
 			);
 			path = "Shopping List";
+			sourceTree = "<group>";
+		};
+		5246C70E245DDA7F00B6B558 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5246C712245DE19400B6B558 /* ShoppingListCollectionViewController.swift */,
+				5246C714245DE1EB00B6B558 /* ShoppingItemCollectionViewCell.swift */,
+				5246C716245DE6D700B6B558 /* SendOrderViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		5246C70F245DDACC00B6B558 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5246C710245DE01400B6B558 /* ShoppingItem.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,6 +163,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5246C715245DE1EB00B6B558 /* ShoppingItemCollectionViewCell.swift in Sources */,
+				5246C713245DE19400B6B558 /* ShoppingListCollectionViewController.swift in Sources */,
+				5246C711245DE01400B6B558 /* ShoppingItem.swift in Sources */,
+				5246C717245DE6D700B6B558 /* SendOrderViewController.swift in Sources */,
 				4613E91421143BFC00E7FF73 /* ViewController.swift in Sources */,
 				4613E91221143BFC00E7FF73 /* AppDelegate.swift in Sources */,
 			);
