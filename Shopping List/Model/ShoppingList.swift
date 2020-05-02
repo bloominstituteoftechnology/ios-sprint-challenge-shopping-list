@@ -9,15 +9,19 @@
 import Foundation
 import UIKit
 
-struct ShoppingItem {
+struct ShoppingItem: Codable, Equatable {
     
     var name: String
-    var hasBeenAdded: Bool
-    var image: UIImage
-    
-    init(name: String, imageName: String, hasBeenAdded: Bool = false) {
-        self.name = name
-        self.image = UIImage(named: imageName)!
-        self.hasBeenAdded = hasBeenAdded
+    var hasBeenAdded: Bool = false
+    var image: UIImage {
+        get {
+            return UIImage(named: name)!
+        }
     }
+    
+//    init(name: String, imageName: String, hasBeenAdded: Bool = false) {
+//        self.name = name
+//        self.image = UIImage(named: imageName)!
+//        self.hasBeenAdded = hasBeenAdded
+//    }
 }
