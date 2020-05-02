@@ -13,22 +13,23 @@ class ShoppingListDetailViewController: UIViewController {
     @IBOutlet weak var customersNameText: UITextField!
     @IBOutlet weak var customersAddressText: UITextField!
     
-    var itemsAdded: [ShoppingItems]?
-    var numberOfItemsAdded: Int? {
-        return itemsAdded?.count
+    var itemsAdded: ShoppingItems?
+    var shoppingListController: ShoppingListController?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateViews()
     }
 
     func updateViews() {
-        guard let itemsAdded = numberOfItemsAdded else { return }
-        itemsAddedLabel.text = "You currently have \(itemsAdded) item(s) int your shopping list."
+        guard let itemsAdded = shoppingListController else { return }
+        let selectedItems = itemsAdded.shoppingList.filter( { $0.hasBeenAdded == true } )
+        itemsAddedLabel.text = "You currently have \(selectedItems.count) item(s) in your shopping list."
     }
     
     @IBAction func sendOrderTapped(_ sender: Any) {
-        guard let numberOfItems = numberOfItemsAdded,
-        numberOfItems > 0,
-        let name = customersNameText.text,
-        let address = customersAddressText.text else { return }
-        dismiss(animated: true, completion: nil)
+        guard let name = customersNameText.text,
+            let address = customersAddressText.text else { return }
         showAlert(name: name, address: address)
     }
     
@@ -37,10 +38,5 @@ class ShoppingListDetailViewController: UIViewController {
         
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        updateViews()
     }
 }

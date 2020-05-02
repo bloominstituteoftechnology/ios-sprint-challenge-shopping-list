@@ -11,23 +11,24 @@ import Foundation
 class ShoppingListController {
     
     var shoppingList: [ShoppingItems] = []
-    var itemsAdded: [ShoppingItems] {
-        return shoppingList.filter( { $0.hasBeenAdded})
-    }
+    let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     
-    func createItems(name: String, hasBeenAdded: Bool = false) {
-        let item = ShoppingItems(name: name, hasBeenAdded: hasBeenAdded)
-        shoppingList.contains(item)
+    func createItems() {
+        for name in itemNames{
+        let item = ShoppingItems(name: name, imageName: name)
         shoppingList.append(item)
         saveToPersistenceStore()
-    }
-    
-    func updateShoppintList(for item: ShoppingItems) {
-        if let list = shoppingList.firstIndex(of: item) {
-            shoppingList[list].hasBeenAdded.toggle()
-            saveToPersistenceStore()
         }
     }
+    
+    func updateShoppingList(for item: ShoppingItems) {
+        guard let list = shoppingList.index(of: item) else { return }
+            var thisItem = item
+            thisItem.hasBeenAdded = !item.hasBeenAdded
+            shoppingList.remove(at: list)
+            shoppingList.insert(thisItem, at: list)
+            saveToPersistenceStore()
+        }
         
         var shoppingListURL: URL? {
             let fm = FileManager.default
@@ -37,9 +38,9 @@ class ShoppingListController {
         
         func saveToPersistenceStore() {
             guard let url = shoppingListURL else { return }
-            let encoder = PropertyListEncoder()
             
             do {
+                let encoder = PropertyListEncoder()
                 let shoppingListData = try encoder.encode(shoppingList)
                 try shoppingListData.write(to: url)
             } catch {
@@ -65,16 +66,14 @@ class ShoppingListController {
         let itemsAreInitialized = userDefaults.bool(forKey: .itemsAreInitialized)
         
         if itemsAreInitialized {
-            let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
-            for name in itemNames {
-                createItems(name: name)
+            loadFromPersistenceStore()
+        } else {
+                createItems()
+                userDefaults.set(true, forKey: .itemsAreInitialized)
                 saveToPersistenceStore()
-            }
-            userDefaults.set(true, forKey: .itemsAreInitialized)
         }
     }
 }
-
 extension String {
     static var itemsAreInitialized = "ItemsAreInitialized"
 }

@@ -12,13 +12,9 @@ private let reuseIdentifier = "ShoppingListCell"
 
 class ShoppingListCollectionViewController: UICollectionViewController {
     
-    let shoppingListController = ShoppingListController()
+    var shoppingListController = ShoppingListController()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        shoppingListController.loadFromPersistenceStore()
-    }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         collectionView?.reloadData()
@@ -26,7 +22,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return shoppingListController.shoppingList.count
     }
 
@@ -38,15 +34,16 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = self.collectionView(collectionView, cellForItemAt: indexPath) as? ShoppingListCollectionViewCell, let item = cell.shoppingItems else { return }
-        
-        shoppingListController.updateShoppintList(for: item)
+        let item = shoppingListController.shoppingList[indexPath.item]
+        shoppingListController.updateShoppingList(for: item)
+        collectionView.reloadData()
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "ShoppingListDetailSegue":
             let detailVC = segue.destination as? ShoppingListDetailViewController
-                detailVC?.itemsAdded = shoppingListController.itemsAdded
+            detailVC?.shoppingListController = shoppingListController
         default:
             break
         }
