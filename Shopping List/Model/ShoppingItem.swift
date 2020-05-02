@@ -8,18 +8,19 @@
 
 import Foundation
 
-struct ShoppingItem {
+struct ShoppingItem  {
+    
     
     var didSelectItemAt: Bool
-//    var image: UIImage
-    var item: [String]
-    
-    
-//    init(didSelectItemAt: Bool = false, image: UIImage, item: [String]) {
-//        self.added = added
-//        self.image = image
-//        self.item = item
-//    }
+    var image: UIImage
+    var names: [String]
+
+
+    init(didSelectItemAt: Bool = false, imageName: String, names: [String]) {
+        self.didSelectItemAt = didSelectItemAt
+        self.image = UIImage(named: imageName)!
+        self.names = names
+    }
 }
 
 

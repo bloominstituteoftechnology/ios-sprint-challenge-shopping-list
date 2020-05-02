@@ -7,3 +7,19 @@
 //
 
 import Foundation
+
+class ShoppingListItems {
+    var items: [ShoppingItem] {
+        
+       var items = [
+        ShoppingItem(didSelectItemAt: Bool, itemImage: "Apple", itemNames: "apple"),
+        ShoppingItem(didSelectItemAt: Bool, itemImage: "Grapes", itemNames: "grapes"),
+        ShoppingItem(didSelectItemAt: Bool, itemImage: "Milk", itemNames: "milk"),
+        ShoppingItem(didSelectItemAt: Bool, itemImage: "Muffin", itemNames: "muffin"),
+        ShoppingItem(didSelectItemAt: Bool, itemImage: "Popcorn", itemNames: "popcorn"),
+        ShoppingItem(didSelectItemAt: Bool, itemImage: "Soda", itemNames: "soda"),
+        ShoppingItem(didSelectItemAt: Bool, itemImage: "Strawberries", itemNames: "strawberries"),
+        ]
+        if UserDefaults.standard.bool(forKey: <#T##String#>)
+    }
+}
