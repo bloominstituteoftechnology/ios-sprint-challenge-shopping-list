@@ -17,7 +17,8 @@
 		E113CC88245D17540012E47B /* ShoppingListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E113CC87245D17540012E47B /* ShoppingListCollectionViewController.swift */; };
 		E113CC8A245D1A740012E47B /* ShoppingListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E113CC89245D1A740012E47B /* ShoppingListController.swift */; };
 		E113CC8D245D20890012E47B /* SelectItemKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = E113CC8C245D20890012E47B /* SelectItemKey.swift */; };
-		E113CC91245D3C120012E47B /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E113CC90245D3C120012E47B /* FileManager.swift */; };
+		E113CC94245D48DD0012E47B /* ItemCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E113CC93245D48DD0012E47B /* ItemCollectionViewDelegate.swift */; };
+		E113CC98245D4C340012E47B /* ShoppingListDetialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E113CC97245D4C340012E47B /* ShoppingListDetialViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +34,8 @@
 		E113CC87245D17540012E47B /* ShoppingListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListCollectionViewController.swift; sourceTree = "<group>"; };
 		E113CC89245D1A740012E47B /* ShoppingListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListController.swift; sourceTree = "<group>"; };
 		E113CC8C245D20890012E47B /* SelectItemKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectItemKey.swift; sourceTree = "<group>"; };
-		E113CC90245D3C120012E47B /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		E113CC93245D48DD0012E47B /* ItemCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewDelegate.swift; sourceTree = "<group>"; };
+		E113CC97245D4C340012E47B /* ShoppingListDetialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListDetialViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +83,6 @@
 			isa = PBXGroup;
 			children = (
 				E113CC7E245D0FC80012E47B /* ShoppingItem.swift */,
-				E113CC90245D3C120012E47B /* FileManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -110,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				E113CC87245D17540012E47B /* ShoppingListCollectionViewController.swift */,
+				E113CC97245D4C340012E47B /* ShoppingListDetialViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				E113CC8C245D20890012E47B /* SelectItemKey.swift */,
+				E113CC93245D48DD0012E47B /* ItemCollectionViewDelegate.swift */,
 			);
 			path = "Custom Delegate & Keys";
 			sourceTree = "<group>";
@@ -203,13 +206,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E113CC98245D4C340012E47B /* ShoppingListDetialViewController.swift in Sources */,
+				E113CC94245D48DD0012E47B /* ItemCollectionViewDelegate.swift in Sources */,
 				E113CC8D245D20890012E47B /* SelectItemKey.swift in Sources */,
 				E113CC7F245D0FC80012E47B /* ShoppingItem.swift in Sources */,
 				E113CC8A245D1A740012E47B /* ShoppingListController.swift in Sources */,
 				E113CC86245D172E0012E47B /* ShoppingListCollectionViewCell.swift in Sources */,
 				E113CC88245D17540012E47B /* ShoppingListCollectionViewController.swift in Sources */,
 				4613E91221143BFC00E7FF73 /* AppDelegate.swift in Sources */,
-				E113CC91245D3C120012E47B /* FileManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

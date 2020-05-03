@@ -12,14 +12,31 @@ class ShoppingListItems {
     var items: [ShoppingItem] {
 
         let items = [
-        ShoppingItem(imageName: "Apple", names: "Apple"),
-        ShoppingItem(imageName: "Grapes", names: "Grapes"),
-        ShoppingItem(imageName: "Milk", names: "Milk"),
-        ShoppingItem(imageName: "Muffin", names: "Muffin"),
-        ShoppingItem(imageName: "Popcorn", names: "Popcorn"),
-        ShoppingItem(imageName: "Soda", names: "Soda"),
-        ShoppingItem(imageName: "Strawberries", names: "Strawberries"),
+            ShoppingItem(imageName: "Apple", itemName: "Apple"),
+            ShoppingItem(imageName: "Grapes", itemName: "Grapes"),
+            ShoppingItem(imageName: "Milk", itemName: "Milk"),
+            ShoppingItem(imageName: "Muffin", itemName: "Muffin"),
+            ShoppingItem(imageName: "Popcorn", itemName: "Popcorn"),
+            ShoppingItem(imageName: "Soda", itemName: "Soda"),
+            ShoppingItem(imageName: "Strawberries", itemName: "Strawberries"),
         ]
+        
+//        var item: ShoppingItem? {
+//            didSet {
+//                updateViews()
+//            }
+//        }
+//        
+//        private func updateViews() {
+//            guard let item = self.items else { return }
+//            
+//            // This allows me to which off and on the button.
+//            let addItemTitle = item.didSelectItemAt ? "Added" : "Not Added"
+//            didAddButtonLabel.setTitle(addItemTitle, for: [])
+//        
+//        }
+        
+        
         return items
     }
 }

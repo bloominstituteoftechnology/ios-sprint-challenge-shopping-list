@@ -12,21 +12,22 @@ import UIKit
 class ShoppingListCollectionViewController: UICollectionViewController {
     
     let shoppingListController = ShoppingListItems()
-
+    var items: [ShoppingItem] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
+//    // MARK: - Navigation
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let navController = segue.destination as? UINavigationController,
+//            let detailVC = navController.viewControllers.first as? ShoppingListDetialViewController{
+////            detailVC
+//        }
+//    }
+    
 
     // MARK: UICollectionViewDataSource
 
@@ -40,7 +41,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
         let item = shoppingListController.items[indexPath.item]
         cell.itemImageView.image = item.image
-        cell.itemNameLabel.text = item.names
+        cell.itemNameLabel.text = item.itemName
     
         return cell
     }
@@ -56,7 +57,24 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             
         let item = shoppingListController.items[indexPath.item]
-        self.title = item.names
+        self.title = item.itemName
        }
 
 }
+
+//extension ShoppingListCollectionViewController: UITableViewDataSource, ItemCollectionViewDelegate {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        <#code#>
+//    }
+//    
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        <#code#>
+//    }
+//    
+//    func wasAddedTapped(onCell cell: ShoppingListCollectionViewCell) {
+//        <#code#>
+//    }
+//    
+//
+//}
+

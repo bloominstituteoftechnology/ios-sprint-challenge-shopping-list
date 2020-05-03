@@ -8,17 +8,17 @@
 
 import UIKit
 
-struct ShoppingItem  {
+struct ShoppingItem: Equatable {
     
+    var itemName: String
     var didSelectItemAt: Bool
     var image: UIImage
-    var names: String
 
 
-    init(didSelectItemAt: Bool = false, imageName: String, names: String) {
+    init(didSelectItemAt: Bool = false, imageName: String, itemName: String) {
         self.didSelectItemAt = didSelectItemAt
         self.image = UIImage(named: imageName)!
-        self.names = names
+        self.itemName = itemName
     }
 }
 
