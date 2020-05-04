@@ -22,7 +22,7 @@ var foods: [ShopList] {
 
 }
    
-     var shopListURL: URL? {
+     private var shopListURL: URL? {
                  let fm = FileManager.default
              
                  guard let directory = fm.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
@@ -33,9 +33,11 @@ var foods: [ShopList] {
              }
     
     func saveToPersistentStore() {
-                
-                  do {
-                    guard let url = shopListURL else { return }
+                  guard let url = shopListURL else { return }
+                 
+        
+                    do {
+                  
 
                     let encoder = PropertyListEncoder()
                     let shopData = try encoder.encode(shopList)
@@ -48,9 +50,9 @@ var foods: [ShopList] {
     
     
     func loadFromPersistentStore() {
-                 
-                   do {
-                      let fm = FileManager.default
+                 let fm = FileManager.default
+                   
+                  do {
                       guard let url = shopListURL,
                       fm.fileExists(atPath: url.path) else { return }
                  
@@ -58,19 +60,27 @@ var foods: [ShopList] {
                      let data = try Data(contentsOf: url)
                      let decoder = PropertyListDecoder()
                      let decodedItems = try decoder.decode([ShopList].self, from: data)
-                     shopList = decodedItems
+                    self.shopList = decodedItems
                  } catch {
                      NSLog("Error loading books data: \(error)")
                  }
              }
     
     
-    
+    init() {
+        loadFromPersistentStore()
+        if shopList.count == 0 {
+            for name in itemNames {
+                shopList.append(ShopList(item: name))
+            }
+            saveToPersistentStore()
+        }
+    }
     
     
       
     func addItem(item: ShopList, addItem: Bool){
-        guard let itemIndex = foods.firstIndex(of: item) else
+        guard foods.firstIndex(of: item) != nil else
         { return }
     }
 
