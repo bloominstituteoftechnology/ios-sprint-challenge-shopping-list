@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct shoppingItem {
+struct ShoppingItem {
     
     var name: String
     var isAdded: Bool = false
