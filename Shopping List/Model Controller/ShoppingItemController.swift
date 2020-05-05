@@ -10,12 +10,12 @@ import Foundation
 
 class ShoppingItemController {
     var shoppingItems = [
-        ShoppingItem(name: "Apple", imageName: "Apple"),
-        ShoppingItem(name: "Grapes", imageName: "Grapes"),
-        ShoppingItem(name: "Milk", imageName: "Milk"),
-        ShoppingItem(name: "Muffin", imageName: "Muffin"),
-        ShoppingItem(name: "Popcorn", imageName: "Popcorn"),
-        ShoppingItem(name: "Soda", imageName: "Soda"),
-        ShoppingItem(name: "Strawberries", imageName: "Strawberries"),
+        ShoppingItem(name: "Apple", isAdded: true, imageName: "Apple"),
+        ShoppingItem(name: "Grapes", isAdded: false, imageName: "Grapes"),
+        ShoppingItem(name: "Milk", isAdded: false, imageName: "Milk"),
+        ShoppingItem(name: "Muffin", isAdded: false, imageName: "Muffin"),
+        ShoppingItem(name: "Popcorn", isAdded: false, imageName: "Popcorn"),
+        ShoppingItem(name: "Soda", isAdded: false, imageName: "Soda"),
+        ShoppingItem(name: "Strawberries", isAdded: false, imageName: "Strawberries"),
     ]
 }

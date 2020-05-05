@@ -11,11 +11,12 @@ import UIKit
 struct ShoppingItem {
     
     var name: String
-    var isAdded: Bool = false
+    var isAdded: Bool
     var image: UIImage
     
-    init(name: String, imageName: String) {
+    init(name: String, isAdded: Bool, imageName: String) {
         self.name = name
+        self.isAdded = isAdded
         self.image = UIImage(named: imageName)!
     }
 }
