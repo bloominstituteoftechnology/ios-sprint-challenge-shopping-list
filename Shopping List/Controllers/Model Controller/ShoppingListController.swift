@@ -14,7 +14,7 @@ class ShoppingListController {
     let itemName = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     var shoppingList: [ShoppingItem] = []
     
-        var fruitItem : [ShoppingItem] {
+    var fruitItem : [ShoppingItem] {
             return shoppingList.filter{$0.hasBeenAdded == true}
         }
     
@@ -56,7 +56,7 @@ class ShoppingListController {
         if shoppingList.count == 0 {
             
             for item in itemName {
-                shoppingList.append(ShoppingItem(name: item))
+                shoppingList.append(ShoppingItem(itemName: item))
             }
             saveToPresistentStore()
         }
@@ -66,5 +66,14 @@ class ShoppingListController {
     func addedItem(name: ShoppingItem, hasBeenAdded: Bool) {
         guard let itemIndex = fruitItem.firstIndex(of: name) else { return }
     }
+    
+//    func update (shoppingItem: ShoppingItem, isAdded: Bool) {
+//            for i in shoppingItems.indices {
+//                if shoppingItem.name == shoppingItems[i].name {
+//                    shoppingItems[i].isAdded = isAdded
+//                    saveToPersistentStore()
+//             }
+//         }
+//     }
     
 }
