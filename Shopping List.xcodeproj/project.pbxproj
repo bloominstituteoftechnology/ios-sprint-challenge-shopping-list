@@ -8,20 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		4613E91221143BFC00E7FF73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4613E91121143BFC00E7FF73 /* AppDelegate.swift */; };
-		4613E91421143BFC00E7FF73 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4613E91321143BFC00E7FF73 /* ViewController.swift */; };
 		4613E91721143BFC00E7FF73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91521143BFC00E7FF73 /* Main.storyboard */; };
-		4613E91921143BFD00E7FF73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91821143BFD00E7FF73 /* Assets.xcassets */; };
 		4613E91C21143BFD00E7FF73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91A21143BFD00E7FF73 /* LaunchScreen.storyboard */; };
+		DDE700B4231038AB00D7B057 /* ShoppingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE700B3231038AB00D7B057 /* ShoppingItem.swift */; };
+		DDEF4B0D231048EA0079EBC7 /* ShoppingItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF4B0C231048EA0079EBC7 /* ShoppingItemController.swift */; };
+		DDEF4B0F231049F30079EBC7 /* SettingsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF4B0E231049F30079EBC7 /* SettingsKeys.swift */; };
+		DDEF4B1123104A680079EBC7 /* ShoppingListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF4B1023104A680079EBC7 /* ShoppingListCollectionViewController.swift */; };
+		DDEF4B13231052D30079EBC7 /* ShoppingItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF4B12231052D30079EBC7 /* ShoppingItemCollectionViewCell.swift */; };
+		DDEF4B15231055580079EBC7 /* OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF4B14231055580079EBC7 /* OrderDetailViewController.swift */; };
+		DDEF4B1723107AF00079EBC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91821143BFD00E7FF73 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4613E90E21143BFC00E7FF73 /* Shopping List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shopping List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4613E91121143BFC00E7FF73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4613E91321143BFC00E7FF73 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4613E91621143BFC00E7FF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4613E91821143BFD00E7FF73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4613E91B21143BFD00E7FF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4613E91D21143BFD00E7FF73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DDE700B3231038AB00D7B057 /* ShoppingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItem.swift; sourceTree = "<group>"; };
+		DDEF4B0C231048EA0079EBC7 /* ShoppingItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemController.swift; sourceTree = "<group>"; };
+		DDEF4B0E231049F30079EBC7 /* SettingsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsKeys.swift; sourceTree = "<group>"; };
+		DDEF4B1023104A680079EBC7 /* ShoppingListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListCollectionViewController.swift; sourceTree = "<group>"; };
+		DDEF4B12231052D30079EBC7 /* ShoppingItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		DDEF4B14231055580079EBC7 /* OrderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +49,10 @@
 			isa = PBXGroup;
 			children = (
 				4613E91021143BFC00E7FF73 /* Shopping List */,
+				DDE700AF2310384800D7B057 /* Models */,
+				DDE700B12310385D00D7B057 /* Model Controllers */,
+				DDEF4B1623106CBB0079EBC7 /* Views */,
+				DDE700B22310386B00D7B057 /* View Controllers */,
 				4613E90F21143BFC00E7FF73 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,14 +68,47 @@
 		4613E91021143BFC00E7FF73 /* Shopping List */ = {
 			isa = PBXGroup;
 			children = (
-				4613E91121143BFC00E7FF73 /* AppDelegate.swift */,
-				4613E91321143BFC00E7FF73 /* ViewController.swift */,
 				4613E91521143BFC00E7FF73 /* Main.storyboard */,
+				4613E91121143BFC00E7FF73 /* AppDelegate.swift */,
 				4613E91821143BFD00E7FF73 /* Assets.xcassets */,
 				4613E91A21143BFD00E7FF73 /* LaunchScreen.storyboard */,
 				4613E91D21143BFD00E7FF73 /* Info.plist */,
+				DDEF4B0E231049F30079EBC7 /* SettingsKeys.swift */,
 			);
 			path = "Shopping List";
+			sourceTree = "<group>";
+		};
+		DDE700AF2310384800D7B057 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DDE700B3231038AB00D7B057 /* ShoppingItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DDE700B12310385D00D7B057 /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DDEF4B0C231048EA0079EBC7 /* ShoppingItemController.swift */,
+			);
+			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
+		DDE700B22310386B00D7B057 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DDEF4B1023104A680079EBC7 /* ShoppingListCollectionViewController.swift */,
+				DDEF4B14231055580079EBC7 /* OrderDetailViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		DDEF4B1623106CBB0079EBC7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DDEF4B12231052D30079EBC7 /* ShoppingItemCollectionViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,7 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4613E91C21143BFD00E7FF73 /* LaunchScreen.storyboard in Resources */,
-				4613E91921143BFD00E7FF73 /* Assets.xcassets in Resources */,
+				DDEF4B1723107AF00079EBC7 /* Assets.xcassets in Resources */,
 				4613E91721143BFC00E7FF73 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -135,7 +182,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4613E91421143BFC00E7FF73 /* ViewController.swift in Sources */,
+				DDEF4B15231055580079EBC7 /* OrderDetailViewController.swift in Sources */,
+				DDE700B4231038AB00D7B057 /* ShoppingItem.swift in Sources */,
+				DDEF4B13231052D30079EBC7 /* ShoppingItemCollectionViewCell.swift in Sources */,
+				DDEF4B0F231049F30079EBC7 /* SettingsKeys.swift in Sources */,
+				DDEF4B0D231048EA0079EBC7 /* ShoppingItemController.swift in Sources */,
+				DDEF4B1123104A680079EBC7 /* ShoppingListCollectionViewController.swift in Sources */,
 				4613E91221143BFC00E7FF73 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -281,13 +333,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = T87Y8KB3R4;
 				INFOPLIST_FILE = "Shopping List/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.LambdaSchool.Shopping-List";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.percivalngan.Shopping-List";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -299,13 +351,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = T87Y8KB3R4;
 				INFOPLIST_FILE = "Shopping List/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.LambdaSchool.Shopping-List";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.percivalngan.Shopping-List";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
