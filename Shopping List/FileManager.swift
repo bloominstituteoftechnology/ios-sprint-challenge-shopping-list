@@ -31,7 +31,7 @@ var shoppingListURL: URL? {
             // Try to turn the stars into a property list
             let shoppingPlist = try encoder.encode(shopping)
             // Save the stars plist to the location that we specified in the persistentFileURL
-            try readingPlist.write(to: readListURL)
+            try shoppingPlist.write(to: shoppingListURL)
             
         } catch {
             print("Error saving star \(error)")

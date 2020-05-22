@@ -12,7 +12,7 @@ import UIKit
 struct ShoppingItem: Encodable {
     let name: String
     var purchased: Bool
-    let image: UIImage
+    let image: String
     
 }
 
