@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		389B958C247833D900C97B5D /* ShoppingListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389B958B247833D900C97B5D /* ShoppingListCollectionViewController.swift */; };
+		389B958E2478356E00C97B5D /* PlaceOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389B958D2478356E00C97B5D /* PlaceOrderViewController.swift */; };
+		389B95902478362E00C97B5D /* ShoppingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389B958F2478362E00C97B5D /* ShoppingItem.swift */; };
+		389B95922478374100C97B5D /* ShoppingItemsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389B95912478374100C97B5D /* ShoppingItemsController.swift */; };
+		389B959424783AB300C97B5D /* ShoppingCartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389B959324783AB300C97B5D /* ShoppingCartController.swift */; };
 		4613E91221143BFC00E7FF73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4613E91121143BFC00E7FF73 /* AppDelegate.swift */; };
 		4613E91721143BFC00E7FF73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91521143BFC00E7FF73 /* LaunchScreen.storyboard */; };
 		4613E91921143BFD00E7FF73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91821143BFD00E7FF73 /* Assets.xcassets */; };
@@ -16,6 +20,10 @@
 
 /* Begin PBXFileReference section */
 		389B958B247833D900C97B5D /* ShoppingListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListCollectionViewController.swift; sourceTree = "<group>"; };
+		389B958D2478356E00C97B5D /* PlaceOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceOrderViewController.swift; sourceTree = "<group>"; };
+		389B958F2478362E00C97B5D /* ShoppingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItem.swift; sourceTree = "<group>"; };
+		389B95912478374100C97B5D /* ShoppingItemsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemsController.swift; sourceTree = "<group>"; };
+		389B959324783AB300C97B5D /* ShoppingCartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartController.swift; sourceTree = "<group>"; };
 		4613E90E21143BFC00E7FF73 /* Shopping List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shopping List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4613E91121143BFC00E7FF73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4613E91621143BFC00E7FF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -57,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				389B958B247833D900C97B5D /* ShoppingListCollectionViewController.swift */,
+				389B958D2478356E00C97B5D /* PlaceOrderViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -64,6 +73,9 @@
 		389B958A2478233500C97B5D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				389B958F2478362E00C97B5D /* ShoppingItem.swift */,
+				389B95912478374100C97B5D /* ShoppingItemsController.swift */,
+				389B959324783AB300C97B5D /* ShoppingCartController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -167,8 +179,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				389B95902478362E00C97B5D /* ShoppingItem.swift in Sources */,
+				389B959424783AB300C97B5D /* ShoppingCartController.swift in Sources */,
 				389B958C247833D900C97B5D /* ShoppingListCollectionViewController.swift in Sources */,
 				4613E91221143BFC00E7FF73 /* AppDelegate.swift in Sources */,
+				389B95922478374100C97B5D /* ShoppingItemsController.swift in Sources */,
+				389B958E2478356E00C97B5D /* PlaceOrderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
