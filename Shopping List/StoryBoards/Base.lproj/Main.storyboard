@@ -84,10 +84,10 @@
             </objects>
             <point key="canvasLocation" x="913.04347826086962" y="185.49107142857142"/>
         </scene>
-        <!--View Controller-->
+        <!--Order View Controller-->
         <scene sceneID="sDT-DS-GgW">
             <objects>
-                <viewController id="9Ff-qV-7PE" sceneMemberID="viewController">
+                <viewController id="9Ff-qV-7PE" customClass="OrderViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="niL-Uy-hEl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -140,6 +140,12 @@
                         <viewLayoutGuide key="safeArea" id="sdE-so-oUz"/>
                     </view>
                     <navigationItem key="navigationItem" id="3YH-Km-eyO"/>
+                    <connections>
+                        <outlet property="addressTextField" destination="EHw-A0-mHn" id="z2N-Dn-GpA"/>
+                        <outlet property="itemAmountLabel" destination="wFA-U2-VZd" id="P06-MO-WlA"/>
+                        <outlet property="nameTextField" destination="LVL-qJ-iZP" id="Zop-y9-7lH"/>
+                        <outlet property="sendOrderButton" destination="EH7-eh-6aq" id="Ies-FA-GkR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yGX-I7-fsH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
