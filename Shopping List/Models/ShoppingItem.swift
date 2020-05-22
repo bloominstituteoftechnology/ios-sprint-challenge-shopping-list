@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct ShoppingItem {
+struct ShoppingItem: Codable {
     var itemName: String
     var isOnList: Bool 
     var itemImage:  UIImage? {

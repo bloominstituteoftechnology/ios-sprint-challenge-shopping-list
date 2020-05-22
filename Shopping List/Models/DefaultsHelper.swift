@@ -9,5 +9,6 @@
 import Foundation
 
 extension String {
-    static var isNewUser = true
+    static var isNewUser = "isNewUser"
 }
+

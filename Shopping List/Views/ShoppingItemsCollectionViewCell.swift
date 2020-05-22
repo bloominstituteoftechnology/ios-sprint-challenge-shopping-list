@@ -8,11 +8,26 @@
 
 import UIKit
 
-class ShoppingItemsCollectionViewCell: UICollectionViewCell {
+protocol ShoppingListCellDelegate: class {
+    func cellWasTapped()
+    
+    func updateViews()
+}
+
+class ShoppingItemsCollectionViewCell: UICollectionViewCell, ShoppingListCellDelegate {
+    
+    weak var delegate: ShoppingListCellDelegate?
     
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var itemNameLabel: UILabel!
     @IBOutlet weak var isOnListButton: UIButton!
     
-
+    func cellWasTapped(cell: ShoppingItemsCollectionViewCell) {
+        if cell.isOnListButton.isSelected == true {
+            cell.isOnListButton.isSelected = false
+        } else {
+            cell.isOnListButton.isSelected = true
+        }
+        saveToPersistentStore()
+    }
 }

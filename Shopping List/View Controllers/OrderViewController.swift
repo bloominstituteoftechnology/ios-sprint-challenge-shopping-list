@@ -9,22 +9,21 @@
 import UIKit
 
 class OrderViewController: UIViewController {
+    
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var addressTextField: UITextField!
+    @IBOutlet weak var itemCountLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
+
+
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func submitWasTapped(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Thank you, \(String(describing: nameTextField.text))!", message: "Your items will be delivered to \(String(describing: addressTextField.text)) in the next 15 minutes.", preferredStyle: .alert)
+        present(alert, animated: true, completion: nil)
+        
     }
-    */
-
 }

@@ -12,32 +12,33 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
     
     var myList = ShoppingList()
     
-    var delegate: ShoppingListDelegate?
+    var delegate: ShoppingListCellDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-    }
-    
-    
-    @IBAction func itemTapped(_ sender: UIButton) {
-        
-        
+        collectionView?.dataSource = self
+        collectionView?.delegate = self
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        
+        guard let destinationVC = segue.destination as? OrderViewController else { return }
+        
+        var itemsOnList: Int = 0
+        for item in myList.shoppingList {
+                  if item.isOnList == true {
+                    itemsOnList += 1
+                  }
+              }
+        destinationVC.itemCountLabel.text = String(itemsOnList)
     }
     
 
-    // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
-
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
@@ -57,6 +58,11 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
         return cell
     
 }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
+        delegate?.cellWasTapped(cell)
+    }
     // MARK: UICollectionViewDelegate
 
     /*
@@ -73,22 +79,18 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
     }
     */
 
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
 
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
-    
     
 
+}
+
+extension ShoppingItemsCollectionViewController: ShoppingListCellDelegate {
+    func updateViews() {
+        
+    }
+    
+    func cellWasTapped() {
+        
+    }
 }
 
