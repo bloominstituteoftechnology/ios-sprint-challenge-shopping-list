@@ -30,7 +30,7 @@ class ShoppingListController {
     }
     
     //MARK: - Persistence
-    
+/*
     var persistentFileURL: URL? {
         
         let fileManager = FileManager.default
@@ -78,4 +78,7 @@ class ShoppingListController {
         }
         
     }
+ */
 }
+
+ 

@@ -8,11 +8,12 @@
 
 import UIKit
 
-struct ShoppingItem: Encodable {
+struct ShoppingItem {
     
     let name: String
     var hasBeenAdded: Bool
-    var image: UIImage
+    
+    var image: UIImage 
     
     init(name: String, hasBeenAdded: Bool, imageName: String) {
         self.name = name
@@ -20,3 +21,4 @@ struct ShoppingItem: Encodable {
         self.image = UIImage(named: imageName)!
     }
 }
+
