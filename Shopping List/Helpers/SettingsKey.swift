@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+extension String {
+    
+    static var hasBeenAddedKey = "HasBeenAdded"
+}
