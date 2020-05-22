@@ -12,33 +12,15 @@ import UIKit
 struct ShoppingItem: Codable  {
     var name: String
     var added: Bool
-    var imageData: Data
-    var image = UIImage(data: imageData)
-    
+    var imageName: String
+    var image: UIImage {
+        return UIImage(named: imageName)!
+    }
     init(name: String, imageName: String) {
     self.name = name
     self.added = true
-    self.image = UIImage(named: imageName)!
+    self.imageName = imageName
     }
 }
 
 
-extension UIImage {
-    var data: Data? {
-        if let data = self {
-            return data
-        } else {
-            return nil
-        }
-    }
-}
-
-extension Data {
-    var image: UIImage? {
-        if let image = UIImage(data: self) {
-            return image
-        } else {
-            return nil
-        }
-    }
-}
