@@ -12,13 +12,13 @@ class ShoppingItemController: Codable {
     var shoppingItems: [ShoppingItem] {
         
         let list = [
-            ShoppingItem(name: "Apple", added: true, imageName: "apple"),
-            ShoppingItem(name: "Grapes", added: true, imageName: "grapes"),
-            ShoppingItem(name: "Milk", added: true, imageName: "milk"),
-            ShoppingItem(name: "Muffin", added: true, imageName: "muffin"),
-            ShoppingItem(name: "Popcorn", added: true, imageName: "popcorn"),
-            ShoppingItem(name: "Soda", added: true, imageName: "soda"),
-            ShoppingItem(name: "Strawberries", added: true, imageName: "strawberries"),
+            ShoppingItem(name: "Apple", imageName: "apple"),
+            ShoppingItem(name: "Grapes", imageName: "grapes"),
+            ShoppingItem(name: "Milk", imageName: "milk"),
+            ShoppingItem(name: "Muffin", imageName: "muffin"),
+            ShoppingItem(name: "Popcorn", imageName: "popcorn"),
+            ShoppingItem(name: "Soda", imageName: "soda"),
+            ShoppingItem(name: "Strawberries", imageName: "strawberries"),
         ]
         
         
