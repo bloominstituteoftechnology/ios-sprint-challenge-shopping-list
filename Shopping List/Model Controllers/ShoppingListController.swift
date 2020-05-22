@@ -11,8 +11,8 @@ import UIKit
 class ShoppingListController {
     
     var groceryItems: [ShoppingItem] {
-    
-        var itemNames = [ShoppingItem(groceryItem: "Apple"),
+        
+        let itemNames = [ShoppingItem(groceryItem: "Apple"),
                          ShoppingItem(groceryItem: "Grapes"),
                          ShoppingItem(groceryItem: "Milk"),
                          ShoppingItem(groceryItem: "Muffin"),
@@ -20,6 +20,7 @@ class ShoppingListController {
                          ShoppingItem(groceryItem: "Soda"),
                          ShoppingItem(groceryItem:"Strawberries")]
         
+        return itemNames
         
-    
+    }
 }

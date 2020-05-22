@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol GroceryItemDelegate {
+    <#requirements#>
+}
+
 class GroceryItemDetailViewController: UIViewController {
 
     override func viewDidLoad() {
