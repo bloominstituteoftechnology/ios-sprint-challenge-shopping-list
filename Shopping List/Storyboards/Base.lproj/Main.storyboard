@@ -66,7 +66,11 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Shopping List" id="xhB-nf-v9q">
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="kiF-Hq-rjy"/>
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="kiF-Hq-rjy">
+                            <connections>
+                                <segue destination="iEP-um-LSE" kind="showDetail" id="FU4-dY-pmY"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q4M-tW-2am" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -78,11 +82,11 @@
             <objects>
                 <viewController id="iEP-um-LSE" customClass="OrderSubmitterViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="75E-cX-cur">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="Qqh-y4-2HT">
-                                <rect key="frame" x="10" y="144" width="394" height="157.5"/>
+                                <rect key="frame" x="10" y="100" width="394" height="157.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VJQ-EY-dTM">
                                         <rect key="frame" x="10" y="0.0" width="374" height="20.5"/>
