@@ -9,7 +9,9 @@
 import UIKit
 
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
+    
     @IBOutlet var hasBeenAddedButton: UIButton!
     @IBOutlet var image: UIImageView!
+    @IBOutlet var nameLabel: UILabel!
     
 }
