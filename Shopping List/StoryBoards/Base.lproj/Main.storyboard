@@ -91,7 +91,52 @@
                     <view key="view" contentMode="scaleToFill" id="niL-Uy-hEl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Ckh-Cb-0Vt">
+                                <rect key="frame" x="0.0" y="88" width="414" height="138.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wFA-U2-VZd">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="33.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="HuO-0k-JQx"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Enter your name..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LVL-qJ-iZP">
+                                        <rect key="frame" x="0.0" y="38.5" width="414" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Cgt-KF-Ce3"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Enter your address..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EHw-A0-mHn">
+                                        <rect key="frame" x="0.0" y="73.5" width="414" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="3QN-h3-lkY"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EH7-eh-6aq">
+                                        <rect key="frame" x="0.0" y="108.5" width="414" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="22c-te-rPC"/>
+                                        </constraints>
+                                        <state key="normal" title="Send Order"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Ckh-Cb-0Vt" firstAttribute="top" secondItem="sdE-so-oUz" secondAttribute="top" id="P7o-HP-bym"/>
+                            <constraint firstItem="sdE-so-oUz" firstAttribute="trailing" secondItem="Ckh-Cb-0Vt" secondAttribute="trailing" id="SYV-07-AuM"/>
+                            <constraint firstItem="sdE-so-oUz" firstAttribute="bottom" secondItem="Ckh-Cb-0Vt" secondAttribute="bottom" constant="563.5" id="oaN-aj-dDx"/>
+                            <constraint firstItem="Ckh-Cb-0Vt" firstAttribute="leading" secondItem="sdE-so-oUz" secondAttribute="leading" id="zpE-It-CFB"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="sdE-so-oUz"/>
                     </view>
                     <navigationItem key="navigationItem" id="3YH-Km-eyO"/>
@@ -106,6 +151,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="U7H-Et-fJG" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cU4-jN-P5t">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
