@@ -9,25 +9,25 @@
 import UIKit
 
 protocol ShoppingListCellDelegate: class {
-    func cellWasTapped()
-    
-    func updateViews()
+    func itemSelected(_ cell: ShoppingItemsCollectionViewCell)
+
 }
 
 class ShoppingItemsCollectionViewCell: UICollectionViewCell, ShoppingListCellDelegate {
     
-    weak var delegate: ShoppingListCellDelegate?
+    var delegate: ShoppingListDelegate?
     
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var itemNameLabel: UILabel!
     @IBOutlet weak var isOnListButton: UIButton!
     
-    func cellWasTapped(cell: ShoppingItemsCollectionViewCell) {
+    func itemSelected(_ cell: ShoppingItemsCollectionViewCell) {
         if cell.isOnListButton.isSelected == true {
             cell.isOnListButton.isSelected = false
+            
         } else {
             cell.isOnListButton.isSelected = true
         }
-        saveToPersistentStore()
+        delegate?.saveToPersistentStore()
     }
 }

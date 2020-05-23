@@ -61,36 +61,9 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
-        delegate?.cellWasTapped(cell)
-    }
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-
-    
-
-}
-
-extension ShoppingItemsCollectionViewController: ShoppingListCellDelegate {
-    func updateViews() {
         
+        delegate?.itemSelected(cell as! ShoppingItemsCollectionViewCell)
     }
-    
-    func cellWasTapped() {
-        
-    }
+
 }
 

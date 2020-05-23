@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ShoppingListDelegate: class {
+protocol ShoppingListDelegate {
     func saveToPersistentStore()
     
     func loadFromPersistentStore()
@@ -17,6 +17,8 @@ protocol ShoppingListDelegate: class {
 
 class ShoppingList: Codable  {
     
+    var delegate: ShoppingListDelegate?
+
     var shoppingList: [ShoppingItem] = []
     var persistentFileURL: URL? {
         let fileManager = FileManager.default
@@ -24,6 +26,22 @@ class ShoppingList: Codable  {
         let url = documentsDir?.appendingPathComponent("shoppingList.plist")
         
         return url
+    }
+
+    init() {
+        let isNewUser = UserDefaults.standard.bool(forKey: "isNewUser")
+        if isNewUser == true {
+            let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+            for item in itemNames {
+                let item = ShoppingItem(itemName: item, isOnList: false)
+                shoppingList.append(item)
+            }
+            saveToPersistentStore()
+            let defaults = UserDefaults.standard
+            defaults.set(false, forKey: "isNewUser")
+        }  else {
+            loadFromPersistentStore()
+        }
     }
     
     func loadFromPersistentStore() {
@@ -37,21 +55,6 @@ class ShoppingList: Codable  {
             
         } catch {
             fatalError("Failed to load list")
-        }
-    }
-    
-    init() {
-        let isNewUser = UserDefaults.standard.bool(forKey: "isNewUser")
-        if isNewUser == true {
-            let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
-            for item in itemNames {
-                let item = ShoppingItem(itemName: item, isOnList: false)
-                shoppingList.append(item)
-            }
-            let defaults = UserDefaults.standard
-            defaults.set(false, forKey: "isNewUser")
-        }  else {
-            loadFromPersistentStore()
         }
     }
     
