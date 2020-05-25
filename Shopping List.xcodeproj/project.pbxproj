@@ -12,6 +12,8 @@
 		4613E91921143BFD00E7FF73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91821143BFD00E7FF73 /* Assets.xcassets */; };
 		4613E91C21143BFD00E7FF73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91A21143BFD00E7FF73 /* LaunchScreen.storyboard */; };
 		B149E374247828A6004EF640 /* ShoppingItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B149E373247828A6004EF640 /* ShoppingItemController.swift */; };
+		B18018E4247C1605003B5B6A /* ShoppingListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18018E3247C1605003B5B6A /* ShoppingListCollectionViewController.swift */; };
+		B18018E6247C2AFE003B5B6A /* ShoppingListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18018E5247C2AFE003B5B6A /* ShoppingListDetailViewController.swift */; };
 		B1DAC5632478255B00BE7822 /* ShoppingItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DAC5622478255B00BE7822 /* ShoppingItemModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +25,8 @@
 		4613E91B21143BFD00E7FF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4613E91D21143BFD00E7FF73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B149E373247828A6004EF640 /* ShoppingItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemController.swift; sourceTree = "<group>"; };
+		B18018E3247C1605003B5B6A /* ShoppingListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListCollectionViewController.swift; sourceTree = "<group>"; };
+		B18018E5247C2AFE003B5B6A /* ShoppingListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShoppingListDetailViewController.swift; path = "Shopping List/View Controllers/ShoppingListDetailViewController.swift"; sourceTree = SOURCE_ROOT; };
 		B1DAC5622478255B00BE7822 /* ShoppingItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,6 +90,8 @@
 		B1DAC560247824C400BE7822 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B18018E5247C2AFE003B5B6A /* ShoppingListDetailViewController.swift */,
+				B18018E3247C1605003B5B6A /* ShoppingListCollectionViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -178,7 +184,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B18018E4247C1605003B5B6A /* ShoppingListCollectionViewController.swift in Sources */,
 				B1DAC5632478255B00BE7822 /* ShoppingItemModel.swift in Sources */,
+				B18018E6247C2AFE003B5B6A /* ShoppingListDetailViewController.swift in Sources */,
 				B149E374247828A6004EF640 /* ShoppingItemController.swift in Sources */,
 				4613E91221143BFC00E7FF73 /* AppDelegate.swift in Sources */,
 			);

@@ -16,6 +16,7 @@ struct ShoppingItem: Codable  {
     var image: UIImage {
         return UIImage(named: imageName)!
     }
+    
     init(name: String, imageName: String) {
     self.name = name
     self.added = true
