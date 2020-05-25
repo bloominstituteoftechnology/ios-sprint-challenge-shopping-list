@@ -10,15 +10,28 @@ import UIKit
 
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
+    var item: ShoppingItem? {
+        didSet {
+            if self.isSelected {
+                updateViews()
+            }
+        }
+    }
     var shoppingItemController = ShoppingItemController()
+    
     @IBOutlet weak var shoppingItemLabel: UILabel!
-    
     @IBOutlet weak var imageView: UIImageView!
-    
-    
     @IBOutlet weak var hasBeenAddedLabel: UILabel!
-   
-    func udateViews() {
-
+    
+    func changeLabelHopefully() {
+    }
+    
+    func updateViews() {
+        guard let item = item else { return }
+        switch item.added {
+        case true: hasBeenAddedLabel.text = "Added"
+        default:
+            hasBeenAddedLabel.text = "Not Added"
+        }
     }
 }

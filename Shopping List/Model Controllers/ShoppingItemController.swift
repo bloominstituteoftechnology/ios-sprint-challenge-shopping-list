@@ -18,4 +18,6 @@ class ShoppingItemController: Codable {
             ShoppingItem(name: "Soda", imageName: "Soda"),
             ShoppingItem(name: "Strawberries", imageName: "Strawberries"),
         ]
-    }
+    
+    
+}

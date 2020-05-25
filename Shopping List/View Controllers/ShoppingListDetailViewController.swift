@@ -11,13 +11,16 @@ import UIKit
 
 class ShoppingListDetailViewController: UIViewController {
 
-    
+    var shoppingItemController = ShoppingItemController()
     
     @IBOutlet weak var numberOfItemsLabel: UILabel!
     @IBOutlet weak var userAddressTextField: UITextField!
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var submitOrderButton: UIButton!
     
+    @IBAction func tappedSubmitOrder(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
     
     
     override func viewDidLoad() {

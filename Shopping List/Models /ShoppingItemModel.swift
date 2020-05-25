@@ -21,6 +21,12 @@ struct ShoppingItem: Codable, Equatable  {
     self.name = name
     self.imageName = imageName
     }
+    
+    
+    func updateViews() {
+        
+    }
 }
+
 
 

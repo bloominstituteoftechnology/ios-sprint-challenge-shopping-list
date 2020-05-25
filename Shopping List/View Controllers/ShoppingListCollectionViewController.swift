@@ -13,9 +13,12 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
     var shoppingItemController = ShoppingItemController()
 
+    var shoppingItemCollectionViewCell = ShoppingItemCollectionViewCell()
     override func viewDidLoad() {
         super.viewDidLoad()
+        shoppingItemCollectionViewCell.updateViews()
 
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -31,8 +34,8 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         
         if segue.identifier == "ShoppingListDetailSegue" {
             
-            guard let shoppingListDetailVC = segue.destination as? ShoppingListDetailViewController else {
-                return
+          guard let shoppingListDetailVC = segue.destination as? ShoppingListDetailViewController else {
+                return 
             }
 //            shoppingListDetailVC.delegate = self
         }
@@ -58,11 +61,25 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         let shoppingListItem = shoppingItemController.shoppingItems[indexPath.item]
         cell.imageView.image = shoppingListItem.image
         cell.shoppingItemLabel.text = shoppingListItem.imageName
-        cell.hasBeenAddedLabel.isEnabled = shoppingListItem.added
+        if shoppingListItem.added == true {
+            cell.hasBeenAddedLabel.text = "Added"
+        } else {
+            cell.hasBeenAddedLabel.text = "Not Added"
+        }
         return cell
     }
 
     // MARK: UICollectionViewDelegate
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        var chosenItem = shoppingItemController.shoppingItems[indexPath.item]
+        chosenItem.added = !chosenItem.added
+        shoppingItemController.shoppingItems[indexPath.item] = chosenItem
+        chosenItem.updateViews()
+        
+        print(chosenItem.added)
+    }
+
 
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
