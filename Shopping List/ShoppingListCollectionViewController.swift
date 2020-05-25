@@ -11,8 +11,6 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class ShoppingListCollectionViewController: UICollectionViewController {
-
-    let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

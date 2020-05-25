@@ -9,10 +9,10 @@
 import Foundation
 import UIKit
 
-struct ShoppingItem: Encodable {
-    let name: String
-    var purchased: Bool
-    let image: String
+struct ShoppingItem: Codable, Equatable {
+    var name: String
+    var purchased: Bool = false
+    var image: String
     
 }
 

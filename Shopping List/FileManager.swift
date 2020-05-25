@@ -8,9 +8,14 @@
 
 import Foundation
 
-var shopping: [ShoppingItem] = []
+class ShoppingListControler {
 
-var shoppingListURL: URL? {
+var shoppingList: [ShoppingItem] = []
+    
+let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+    
+
+private var shoppingListURL: URL? {
        
        let fileManager = FileManager.default
        
@@ -19,6 +24,8 @@ var shoppingListURL: URL? {
        let shoppingItemURL = documentsDir?.appendingPathComponent("shoppingList.plist")
        
        return shoppingItemURL
+    
+}
    
     func saveToPersistentStore() {
         
@@ -29,7 +36,7 @@ var shoppingListURL: URL? {
             //This is the machine that we can run our array of stars through that turns it into a property list
             let encoder = PropertyListEncoder()
             // Try to turn the stars into a property list
-            let shoppingPlist = try encoder.encode(shopping)
+            let shoppingPlist = try encoder.encode(shoppingList)
             // Save the stars plist to the location that we specified in the persistentFileURL
             try shoppingPlist.write(to: shoppingListURL)
             
@@ -40,8 +47,6 @@ var shoppingListURL: URL? {
         
     }
 
-
-
-
 }
+
 
