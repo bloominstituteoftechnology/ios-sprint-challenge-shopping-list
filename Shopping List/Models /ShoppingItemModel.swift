@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 
-struct ShoppingItem: Codable  {
+struct ShoppingItem: Codable, Equatable  {
     var name: String
-    var added: Bool
+    var added: Bool = true
     var imageName: String
     var image: UIImage {
         return UIImage(named: imageName)!
@@ -19,7 +19,6 @@ struct ShoppingItem: Codable  {
     
     init(name: String, imageName: String) {
     self.name = name
-    self.added = true
     self.imageName = imageName
     }
 }

@@ -10,8 +10,15 @@ import UIKit
 
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
+    var shoppingItemController = ShoppingItemController()
+    @IBOutlet weak var shoppingItemLabel: UILabel!
+    
+    @IBOutlet weak var imageView: UIImageView!
     
     
-    
-    
+    @IBOutlet weak var hasBeenAddedLabel: UILabel!
+   
+    func udateViews() {
+
+    }
 }

@@ -8,8 +8,18 @@
 
 import UIKit
 
+
 class ShoppingListDetailViewController: UIViewController {
 
+    
+    
+    @IBOutlet weak var numberOfItemsLabel: UILabel!
+    @IBOutlet weak var userAddressTextField: UITextField!
+    @IBOutlet weak var userNameTextField: UITextField!
+    @IBOutlet weak var submitOrderButton: UIButton!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
