@@ -19,6 +19,7 @@ class ShoppingListDetailViewController: UIViewController {
     @IBOutlet weak var submitOrderButton: UIButton!
     
     @IBAction func tappedSubmitOrder(_ sender: Any) {
+        showAlert()
         navigationController?.popViewController(animated: true)
     }
     
@@ -29,6 +30,13 @@ class ShoppingListDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+       func showAlert() {
+        let alert = UIAlertController(title: "Order Successful!!!", message: "\(userNameTextField.text ?? " ") your order will be delivered to \(userAddressTextField.text ?? " ") in 15 mins", preferredStyle: .alert)
+           
+           let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+           alert.addAction(okAction)
+           present(alert,animated: true, completion: nil)
+       }
 
     /*
     // MARK: - Navigation
