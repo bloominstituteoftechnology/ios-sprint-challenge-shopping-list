@@ -11,7 +11,7 @@ import UIKit
 
 struct ShoppingItem: Codable, Equatable  {
     var name: String
-    var added: Bool = true
+    var added: Bool = false
     var imageName: String
     var image: UIImage {
         return UIImage(named: imageName)!

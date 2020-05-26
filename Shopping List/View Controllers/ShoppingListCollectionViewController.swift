@@ -76,7 +76,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         var chosenItem = shoppingItemController.shoppingItems[indexPath.item]
         chosenItem.added.toggle()
         cell.hasBeenAddedLabel.text = chosenItem.added ? "Added" : "Not Added"
-                print(chosenItem.added)
+        print(chosenItem.added)
         }
         
         
