@@ -8,9 +8,7 @@
 
 import Foundation
 
-protocol ShoppingListItemDelegate: class {
-    func itemAddedToCard(cell: ShoppingItemCollectionViewCell)
-}
+
 
 class ShoppingItemController: Codable {
     var shoppingItems = [
