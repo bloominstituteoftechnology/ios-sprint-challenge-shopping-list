@@ -72,13 +72,15 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDelegate
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! ShoppingItemCollectionViewCell
         var chosenItem = shoppingItemController.shoppingItems[indexPath.item]
-        chosenItem.added = !chosenItem.added
-        shoppingItemController.shoppingItems[indexPath.item] = chosenItem
-        chosenItem.updateViews()
+        chosenItem.added.toggle()
+        cell.hasBeenAddedLabel.text = chosenItem.added ? "Added" : "Not Added"
+                print(chosenItem.added)
+        }
         
-        print(chosenItem.added)
-    }
+        
+    
 
 
     /*
