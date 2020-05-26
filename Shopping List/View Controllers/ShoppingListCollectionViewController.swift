@@ -12,6 +12,7 @@ import UIKit
 class ShoppingListCollectionViewController: UICollectionViewController {
     
     var shoppingItemController = ShoppingItemController()
+    var shoppingListDetailViewController = ShoppingListDetailViewController()
 
     var shoppingItemCollectionViewCell = ShoppingItemCollectionViewCell()
     override func viewDidLoad() {
@@ -78,9 +79,12 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         chosenItem.added.toggle()
         cell.hasBeenAddedLabel.text = chosenItem.added ? "Added" : "Not Added"
         print(chosenItem.added)
+        func onSelectedAddCart(with item: ShoppingItem) {
+            shoppingListDetailViewController.shoppingItem.append(item)
+            
+        }
         }
         
         
-    
 
 }

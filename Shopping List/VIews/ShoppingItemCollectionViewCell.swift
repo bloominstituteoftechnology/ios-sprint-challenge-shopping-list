@@ -24,7 +24,6 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var hasBeenAddedLabel: UILabel!
     
     
-    
     func updateViews() {
         guard let item = item else { return }
         switch item.added {

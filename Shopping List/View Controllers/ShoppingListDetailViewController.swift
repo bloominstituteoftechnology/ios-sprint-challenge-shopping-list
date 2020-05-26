@@ -11,9 +11,18 @@ import UIKit
 
 class ShoppingListDetailViewController: UIViewController {
     
-    var shoppingItemController = ShoppingItemController()
-    var itemsInCart = 0
-    var shoppingItem: ShoppingItem?
+    var shoppingItemController: ShoppingItemController?
+    var itemsInCart = 0 {
+        didSet {
+            numberOfItemsLabel.text = "You currently have \(itemsInCart) item(s) in your shopping list"
+        }
+    }
+    var shoppingItem: [ShoppingItem] = [] {
+        didSet {
+            numberOfItemsLabel.text = "You currently have \(itemsInCart) item(s) in your shopping list"
+        }
+    }
+    
     @IBOutlet weak var numberOfItemsLabel: UILabel!
     @IBOutlet weak var userAddressTextField: UITextField!
     @IBOutlet weak var userNameTextField: UITextField!
@@ -23,12 +32,6 @@ class ShoppingListDetailViewController: UIViewController {
         showAlert()
     }
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-    }
     
     func showAlert() {
         let alert = UIAlertController(title: "Order Successful!!!", message: "\(userNameTextField.text ?? " ") your order will be delivered to \(userAddressTextField.text ?? " ")in 15 mins", preferredStyle: .alert)
@@ -40,10 +43,13 @@ class ShoppingListDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        itemsInCart = shoppingItemController.shoppingItems.count
+        guard let shoppingItemController = shoppingItemController else { return }
         numberOfItemsLabel.text = "You currently have \(itemsInCart) items(s) in your shopping list"
     }
     
+    func onSelectedAddCart(with item: ShoppingItem) {
+        
+    }
     /*
      // MARK: - Navigation
      
