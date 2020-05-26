@@ -20,16 +20,16 @@ class ShoppingItemController: Codable {
             ShoppingItem(name: "Soda", imageName: "Soda"),
             ShoppingItem(name: "Strawberries", imageName: "Strawberries"),
         ]
-    
+    let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     var items: [ShoppingItem] = []
     
     init() {
-        loadFromPersistentStore()
+        self.loadFromPersistentStore()
         
     }
     func createShoppingItem(name: String, imageName: String) {
-        let item = ShoppingItem(name: name, imageName: imageName)
-        shoppingItems.append(item)
+        let shoppingitem = ShoppingItem(name: name, imageName: imageName)
+        shoppingItems.append(shoppingitem)
         saveToPersistentStore()
     }
     
@@ -59,7 +59,7 @@ class ShoppingItemController: Codable {
             let decodedItems = try decoder.decode([ShoppingItem].self, from: itemsPlist)
             self.items = decodedItems
         } catch {
-            print("Error loading items: \(error)")
+            print("Error loading items from plist: \(error)")
         }
     }
 }

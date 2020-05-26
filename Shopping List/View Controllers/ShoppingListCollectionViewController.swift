@@ -17,10 +17,12 @@ class ShoppingListCollectionViewController: UICollectionViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        shoppingItemController.loadFromPersistentStore()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        shoppingItemController.loadFromPersistentStore()
     }
     // MARK: - Navigation
     
@@ -64,6 +66,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         chosenItem.added.toggle()
         shoppingItemController.shoppingItems[indexPath.item] = chosenItem
         cell.hasBeenAddedLabel.text = chosenItem.added ? "Added" : "Not Added"
+        shoppingItemController.saveToPersistentStore()
         print(chosenItem.added)
         
             

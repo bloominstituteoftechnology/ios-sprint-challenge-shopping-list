@@ -43,9 +43,7 @@ class ShoppingListDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //    guard let shoppingItemController = shoppingItemController else { return }
-        //    itemsInCart = shoppingItemController.shoppingItems.count
-        //    numberOfItemsLabel.text = "You currently have \(itemsInCart) items(s) in your shopping list"
+      
     }
     func updateViews() {
         if let shoppingController = shoppingItemController {
@@ -55,8 +53,7 @@ class ShoppingListDetailViewController: UIViewController {
                     itemsInCart += 1
                 }
                 numberOfItemsLabel.text = "You currently have \(itemsInCart) item(s) in your shopping list"
-                print(cartItems)
-                print(itemsInCart)
+                shoppingController.saveToPersistentStore()
             }
         }
     }
