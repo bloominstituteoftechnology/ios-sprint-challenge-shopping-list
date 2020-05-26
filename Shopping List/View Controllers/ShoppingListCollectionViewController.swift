@@ -13,40 +13,25 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
     var shoppingItemController = ShoppingItemController()
     var shoppingListDetailViewController = ShoppingListDetailViewController()
-    
     var shoppingItemCollectionViewCell = ShoppingItemCollectionViewCell()
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-        shoppingItemCollectionViewCell.updateViews()
-        
-        
-        // Uncomment the following line to preserve selection between presentations
-        self.clearsSelectionOnViewWillAppear = false
-        
-        // Register cell classes
-        // Do any additional setup after loading the view.
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == "ShoppingListDetailSegue" {
-            
             let shoppingListDetailVC = segue.destination as? ShoppingListDetailViewController
             shoppingListDetailVC?.shoppingItemController = shoppingItemController
             return
         }
-        //            shoppingListDetailVC.delegate = self
     }
-    
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    
-    
-    
     // MARK: UICollectionViewDataSource
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -77,12 +62,12 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         let cell = collectionView.cellForItem(at: indexPath) as! ShoppingItemCollectionViewCell
         var chosenItem = shoppingItemController.shoppingItems[indexPath.item]
         chosenItem.added.toggle()
+        shoppingItemController.shoppingItems[indexPath.item] = chosenItem
         cell.hasBeenAddedLabel.text = chosenItem.added ? "Added" : "Not Added"
         print(chosenItem.added)
-        func onSelectedAddCart(with item: ShoppingItem) {
-            shoppingListDetailViewController.shoppingItem.append(item)
+        
             
-        }
+        
     }
     
     

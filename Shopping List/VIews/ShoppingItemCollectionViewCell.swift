@@ -27,8 +27,9 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     func updateViews() {
         guard let item = item else { return }
         switch item.added {
-        case true: hasBeenAddedLabel.text = "Added"
-        default:
+        case true:
+            hasBeenAddedLabel.text = "Added"
+        case false:
             hasBeenAddedLabel.text = "Not Added"
         }
     }
