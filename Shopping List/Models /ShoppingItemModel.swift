@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct ShoppingItem: Codable, Equatable  {
+struct ShoppingItem: Codable {
     var name: String
     var added: Bool = false
     var imageName: String
@@ -22,10 +22,7 @@ struct ShoppingItem: Codable, Equatable  {
     self.imageName = imageName
     }
     
-    
-    func updateViews() {
-        
-    }
+
 }
 
 

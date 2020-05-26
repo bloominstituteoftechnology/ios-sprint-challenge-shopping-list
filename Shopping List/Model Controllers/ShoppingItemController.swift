@@ -21,5 +21,45 @@ class ShoppingItemController: Codable {
             ShoppingItem(name: "Strawberries", imageName: "Strawberries"),
         ]
     
+    var items: [ShoppingItem] = []
     
+    init() {
+        loadFromPersistentStore()
+        
+    }
+    func createShoppingItem(name: String, imageName: String) {
+        let item = ShoppingItem(name: name, imageName: imageName)
+        shoppingItems.append(item)
+        saveToPersistentStore()
+    }
+    
+    var persistentFileURL: URL? {
+        let fileManager = FileManager.default
+        let documentsDir = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
+        let itemsURL = documentsDir?.appendingPathComponent("items.plist")
+        return itemsURL
+    }
+    
+    func saveToPersistentStore() {
+        do {
+            guard let persistentFileURL = persistentFileURL else { return }
+            let encoder = PropertyListEncoder()
+            let itemsPlist = try encoder.encode(items)
+            try itemsPlist.write(to: persistentFileURL)
+        } catch {
+            print("Error saving items: \(error)")
+        }
+    }
+    
+    func loadFromPersistentStore() {
+        do {
+            guard let persistentFileURL = persistentFileURL else { return }
+            let itemsPlist = try Data(contentsOf: persistentFileURL)
+            let decoder = PropertyListDecoder()
+            let decodedItems = try decoder.decode([ShoppingItem].self, from: itemsPlist)
+            self.items = decodedItems
+        } catch {
+            print("Error loading items: \(error)")
+        }
+    }
 }
