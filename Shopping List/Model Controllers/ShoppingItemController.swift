@@ -11,80 +11,72 @@ import Foundation
 
 
 class ShoppingItemController: Codable {
-    var shoppingItems = [
-        ShoppingItem(name: "Apple", imageName: "Apple"),
-        ShoppingItem(name: "Grapes", imageName: "Grapes"),
-        ShoppingItem(name: "Milk", imageName: "Milk"),
-        ShoppingItem(name: "Muffin", imageName: "Muffin"),
-        ShoppingItem(name: "Popcorn", imageName: "Popcorn"),
-        ShoppingItem(name: "Soda", imageName: "Soda"),
-        ShoppingItem(name: "Strawberries", imageName: "Strawberries"),
-    ]
+    
     let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     var items: [ShoppingItem] = []
-    
-    init() {
-        let defaults = UserDefaults.standard
-        let initializeItems = defaults.bool(forKey: .initializeItems)
-        if initializeItems {
-            loadFromPersistentStore()
-        } else {
-            createShoppingItem()
-            defaults.set(true, forKey: .initializeItems)
-            saveToPersistentStore()
-        }
-    }
-    
+    var newItems: ShoppingItem?
     func createShoppingItem() {
         for itemName in itemNames {
-            let shoppingItem = ShoppingItem(name: itemName, imageName: itemName)
-            shoppingItems.append(shoppingItem)
-            saveToPersistentStore()
+            items.append(ShoppingItem(name: itemName, imageName: itemName))
         }
-    }
-//    func createShoppingItem(name: String, imageName: String) {
-//        let shoppingitem = ShoppingItem(name: name, imageName: imageName)
-//        shoppingItems.append(shoppingitem)
-//        saveToPersistentStore()
-//    }
-
-    func newShoppingList(for shoppingItem: ShoppingItem) {
-        guard let shoppingList = shoppingItems.index(of: shoppingItem) else { return }
-        var selectedItem = shoppingItem
-        selectedItem.added = !shoppingItem.added
-        shoppingItems.remove(at: shoppingList)
-        shoppingItems.insert(selectedItem, at: shoppingList)
         saveToPersistentStore()
     }
     
-    var persistentFileURL: URL? {
-        let fileManager = FileManager.default
-        let documentsDir = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
-        let itemsURL = documentsDir?.appendingPathComponent("items.plist")
-        return itemsURL
-    }
     
-    func saveToPersistentStore() {
-        do {
-            guard let persistentFileURL = persistentFileURL else { return }
-            let encoder = PropertyListEncoder()
-            let itemsPlist = try encoder.encode(items)
-            try itemsPlist.write(to: persistentFileURL)
-        } catch {
-            print("Error saving items: \(error)")
+    init() {
+        if UserDefaults.standard.bool(forKey: .initializeItems) != true {
+            createShoppingItem()
+        } else {
+            loadFromPersistentStore()
+            UserDefaults.standard.set(true, forKey: .initializeItems)
         }
     }
     
-    func loadFromPersistentStore() {
-        do {
+    // I need to access the .added property of my shopping item and toggle between added and not added
+    
+    // need an object
+    
+        
+        
+        
+        var persistentFileURL: URL? {
+            let fileManager = FileManager.default
+            guard let documentsDir = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
+            let itemsURL = documentsDir.appendingPathComponent("items.plist")
+            return itemsURL
+        }
+        
+        func saveToPersistentStore() {
             guard let persistentFileURL = persistentFileURL else { return }
-            let itemsPlist = try Data(contentsOf: persistentFileURL)
-            let decoder = PropertyListDecoder()
-            let decodedItems = try decoder.decode([ShoppingItem].self, from: itemsPlist)
-            self.items = decodedItems
-        } catch {
-            print("Error loading items from plist: \(error)")
+            do {
+                let encoder = PropertyListEncoder()
+                let itemsPlist = try encoder.encode(items)
+                try itemsPlist.write(to: persistentFileURL)
+            } catch {
+                print("Error saving items: \(error)")
+            }
+        }
+        
+        func loadFromPersistentStore() {
+            guard let persistentFileURL = persistentFileURL else { return }
+            do {
+                let itemsPlist = try Data(contentsOf: persistentFileURL)
+                let decoder = PropertyListDecoder()
+                let decodedItems = try decoder.decode([ShoppingItem].self, from: itemsPlist)
+                self.items = decodedItems
+                print(self.items.count)
+            } catch {
+                print("Error loading items from plist: \(error)")
+            }
+        }
+    func updateShoppingList(for item: ShoppingItem) {
+        if let itemAdded = items.firstIndex(of: item) {
+            var shoppingItem = items[itemAdded]
+            shoppingItem.added.toggle()
+            items[itemAdded] = shoppingItem
+            saveToPersistentStore()
+            print(shoppingItem.added)
         }
     }
+    
 }
-

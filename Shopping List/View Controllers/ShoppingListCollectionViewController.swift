@@ -15,13 +15,10 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     var shoppingListDetailViewController = ShoppingListDetailViewController()
     var shoppingItemCollectionViewCell = ShoppingItemCollectionViewCell()
    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+   
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-         self.clearsSelectionOnViewWillAppear = false
     }
     // MARK: - Navigation
     
@@ -37,7 +34,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return shoppingItemController.shoppingItems.count
+        return shoppingItemController.items.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -45,27 +42,24 @@ class ShoppingListCollectionViewController: UICollectionViewController {
             fatalError("Collection view cell identifier is wrong or the cell is not a ShoppingItemCollectionViewCell")
         }
         
-        // Configure the cell
-        let shoppingListItem = shoppingItemController.shoppingItems[indexPath.item]
-        cell.imageView.image = shoppingListItem.image
-        cell.shoppingItemLabel.text = shoppingListItem.imageName
-        if shoppingListItem.added == true {
-            cell.hasBeenAddedLabel.text = "Added"
-        } else {
-            cell.hasBeenAddedLabel.text = "Not Added"
-        }
+        // Configure the cell                                       spot 13
+        let shoppingListItem = shoppingItemController.items[indexPath.item]
+        //shopping item to shopping item
+        cell.item = shoppingListItem
         return cell
     }
     
     // MARK: UICollectionViewDelegate
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as! ShoppingItemCollectionViewCell
-        var chosenItem = shoppingItemController.shoppingItems[indexPath.item]
-        chosenItem.added.toggle() // violating MVC
-        shoppingItemController.shoppingItems[indexPath.item] = chosenItem
-        cell.hasBeenAddedLabel.text = chosenItem.added ? "Added" : "Not Added" // Violating Custom Cell Responsibility
-        print(chosenItem.added)
+        var chosenItem = shoppingItemController.items[indexPath.item]
+        chosenItem.added.toggle()
+        shoppingItemController.items[indexPath.item] = chosenItem
+        shoppingItemController.saveToPersistentStore()
+        collectionView.reloadData()
+//        let cell = collectionView.cellForItem(at: indexPath) as! ShoppingItemCollectionViewCell
+//        let chosenItem = shoppingItemController.items[indexPath.item]
+//        cell.item = chosenItem
         
             
         

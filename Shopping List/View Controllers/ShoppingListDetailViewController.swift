@@ -48,7 +48,7 @@ class ShoppingListDetailViewController: UIViewController {
     }
     func updateViews() {
         if let shoppingController = shoppingItemController {
-            let cartItems = shoppingController.shoppingItems
+            let cartItems = shoppingController.items
             for items in cartItems {
                 if items.added == true{
                     itemsInCart += 1

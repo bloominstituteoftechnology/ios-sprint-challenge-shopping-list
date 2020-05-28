@@ -16,11 +16,11 @@ struct ShoppingItem: Codable, Equatable {
     var image: UIImage {
         return UIImage(named: imageName)!
     }
-    
-    init(name: String, imageName: String) {
-    self.name = name
-    self.imageName = imageName
-    }
+//    
+//    init(name: String, imageName: String) {
+//    self.name = name
+//    self.imageName = imageName
+//    }
     
 
 }

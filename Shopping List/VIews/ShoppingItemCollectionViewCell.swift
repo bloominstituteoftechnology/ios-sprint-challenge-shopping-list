@@ -12,9 +12,7 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
     var item: ShoppingItem? {
         didSet {
-            if self.isSelected {
-                updateViews()
-            }
+            updateViews()
         }
     }
     var shoppingItemController = ShoppingItemController()
@@ -24,13 +22,27 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var hasBeenAddedLabel: UILabel!
     
     
+    
     func updateViews() {
         guard let item = item else { return }
+        shoppingItemLabel.text = item.name
+        imageView.image = UIImage(named: item.imageName)!
         switch item.added {
         case true:
             hasBeenAddedLabel.text = "Added"
         case false:
             hasBeenAddedLabel.text = "Not Added"
         }
+        shoppingItemController.saveToPersistentStore()
+        shoppingItemController.updateShoppingList(for: item)
     }
+    
+    
 }
+//    cell.imageView.image = shoppingListItem.image
+//     cell.shoppingItemLabel.text = shoppingListItem.imageName
+//     if shoppingListItem.added == true {
+//         cell.hasBeenAddedLabel.text = "Added"
+//     } else {
+//         cell.hasBeenAddedLabel.text = "Not Added"
+//     }
