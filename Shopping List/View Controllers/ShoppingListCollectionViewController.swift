@@ -56,7 +56,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         chosenItem.added.toggle()
         shoppingItemController.items[indexPath.item] = chosenItem
         shoppingItemController.saveToPersistentStore()
-        collectionView.reloadData()
+        collectionView.reloadData() 
 //        let cell = collectionView.cellForItem(at: indexPath) as! ShoppingItemCollectionViewCell
 //        let chosenItem = shoppingItemController.items[indexPath.item]
 //        cell.item = chosenItem
