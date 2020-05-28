@@ -34,16 +34,23 @@ class ShoppingItemController {
     
     
      init() {
-            let added = UserDefaults.standard.bool(forKey: .addPreferenceKey)
-            if added != false {
-                createShoppingListItem()
-                saveToPersistentStore()
-                 }
-            else {
-                loadFromPersistentStore()
-                UserDefaults.standard.set(true, forKey: .addPreferenceKey)
-                saveToPersistentStore()
-            }
+        if UserDefaults.standard.bool(forKey: .addPreferenceKey) != true {
+            createShoppingListItem()
+            UserDefaults.standard.set(true, forKey: .addPreferenceKey)
+        } else {
+            loadFromPersistentStore()
+        }
+        
+//            let added = UserDefaults.standard.bool(forKey: .addPreferenceKey)
+//            if added != false {
+//                createShoppingListItem()
+//                saveToPersistentStore()
+//                 }
+//            else {
+//                loadFromPersistentStore()
+//                UserDefaults.standard.set(true, forKey: .addPreferenceKey)
+//                saveToPersistentStore()
+//            }
         }
     
 

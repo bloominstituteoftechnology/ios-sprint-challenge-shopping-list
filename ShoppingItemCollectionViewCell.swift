@@ -27,9 +27,9 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
                      shoppingItemLabel.text = item.name
 
                 if item.addedToCart == false {
-                    addedToCartLabel.text = "Add"
-                } else {
                     addedToCartLabel.text = "Added"
+                } else {
+                    addedToCartLabel.text = "Add"
                 }
              }
     }

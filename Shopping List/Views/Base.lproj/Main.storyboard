@@ -87,7 +87,7 @@
                     <navigationItem key="navigationItem" title="Shopping List" id="xhB-nf-v9q">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="kiF-Hq-rjy">
                             <connections>
-                                <segue destination="iEP-um-LSE" kind="showDetail" identifier="CheckoutSegue" id="FU4-dY-pmY"/>
+                                <segue destination="iEP-um-LSE" kind="show" identifier="CheckoutSegue" id="FU4-dY-pmY"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -101,11 +101,11 @@
             <objects>
                 <viewController id="iEP-um-LSE" customClass="OrderSubmitterViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="75E-cX-cur">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="Qqh-y4-2HT">
-                                <rect key="frame" x="10" y="99.999999999999986" width="355" height="177.66666666666663"/>
+                                <rect key="frame" x="10" y="240" width="355" height="177.66666666666663"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your currently have 0 item(s) in your shopping cart." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VJQ-EY-dTM">
                                         <rect key="frame" x="10" y="0.0" width="335" height="40.666666666666664"/>
@@ -114,17 +114,17 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your Name:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mDz-ek-PAv">
-                                        <rect key="frame" x="10" y="53.666666666666657" width="335" height="34"/>
+                                        <rect key="frame" x="10" y="53.666666666666686" width="335" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Swl-VA-H76">
-                                        <rect key="frame" x="10" y="100.66666666666666" width="335" height="34"/>
+                                        <rect key="frame" x="10" y="100.66666666666669" width="335" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hl7-tw-cEI">
-                                        <rect key="frame" x="135.66666666666666" y="147.66666666666666" width="84" height="30"/>
+                                        <rect key="frame" x="135.66666666666666" y="147.66666666666669" width="84" height="30"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Send Order"/>
                                         <connections>
@@ -150,6 +150,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nkC-4M-axZ"/>
                     </view>
+                    <navigationItem key="navigationItem" id="gGa-gF-u29"/>
                     <connections>
                         <outlet property="totalItemsLabel" destination="VJQ-EY-dTM" id="nEh-1G-2rp"/>
                         <outlet property="userAddressTextField" destination="Swl-VA-H76" id="EgA-zt-3zp"/>
