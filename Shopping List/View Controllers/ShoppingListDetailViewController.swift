@@ -25,6 +25,7 @@ class ShoppingListDetailViewController: UIViewController {
     @IBOutlet weak var submitOrderButton: UIButton!
     
     @IBAction func tappedSubmitOrder(_ sender: Any) {
+        shoppingItemController?.saveToPersistentStore()
         showAlert()
     }
     
@@ -34,7 +35,7 @@ class ShoppingListDetailViewController: UIViewController {
     }
     
     func showAlert() {
-        let alert = UIAlertController(title: "Order Successful!!!", message: "\(userNameTextField.text ?? " ") your order will be delivered to \(userAddressTextField.text ?? " ")in 15 mins", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Order Successful!!!", message: "\(userNameTextField.text ?? " ") your order will be delivered to \(userAddressTextField.text ?? " ") in 15 mins", preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(okAction)

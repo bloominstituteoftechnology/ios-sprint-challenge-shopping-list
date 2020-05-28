@@ -17,12 +17,11 @@ class ShoppingListCollectionViewController: UICollectionViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        shoppingItemController.loadFromPersistentStore()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        shoppingItemController.loadFromPersistentStore()
+         self.clearsSelectionOnViewWillAppear = false
     }
     // MARK: - Navigation
     
@@ -63,10 +62,9 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! ShoppingItemCollectionViewCell
         var chosenItem = shoppingItemController.shoppingItems[indexPath.item]
-        chosenItem.added.toggle()
+        chosenItem.added.toggle() // violating MVC
         shoppingItemController.shoppingItems[indexPath.item] = chosenItem
-        cell.hasBeenAddedLabel.text = chosenItem.added ? "Added" : "Not Added"
-        shoppingItemController.saveToPersistentStore()
+        cell.hasBeenAddedLabel.text = chosenItem.added ? "Added" : "Not Added" // Violating Custom Cell Responsibility
         print(chosenItem.added)
         
             
