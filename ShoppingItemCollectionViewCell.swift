@@ -22,17 +22,14 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
     
     private func updateViews() {
-                guard let item = shoppingItem else { return }
-                     shoppingItemImageView.image = UIImage(named: item.name)
-                     shoppingItemLabel.text = item.name
-
-                if item.addedToCart == false {
-                    addedToCartLabel.text = "Added"
-                } else {
-                    addedToCartLabel.text = "Add"
-                }
-             }
+        guard let item = shoppingItem else { return }
+        shoppingItemImageView.image = UIImage(named: item.name)
+        shoppingItemLabel.text = item.name
+        
+        if item.addedToCart == false {
+            addedToCartLabel.text = "Added"
+        } else {
+            addedToCartLabel.text = "Add"
+        }
     }
-    
-
-
+}
