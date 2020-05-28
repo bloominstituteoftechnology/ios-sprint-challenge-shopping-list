@@ -8,21 +8,59 @@
 
 import UIKit
 
-private let reuseIdentifier = "Shopping Item Cell"
 
 class FoodMenuCollectionViewController: UICollectionViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    let shoppingItemController = ShoppingItemController()
+    
+
+    // MARK: - Navigation
+        
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if segue.identifier == "CheckoutSegue" {
+                guard let destination = segue.destination as? OrderSubmitterViewController else { return }
+                    destination.shoppingList = shoppingItemController
+                }
+            }
+
+    // MARK: - UICollectionViewDataSource
+        
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return shoppingItemController.shoppingItems.count
+    }
+        
+        
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingItemCell", for: indexPath) as? ShoppingItemCollectionViewCell else { return UICollectionViewCell() }
+        let item = shoppingItemController.shoppingItems[indexPath.item]
+        cell.shoppingItem = item
+        return cell
+    }
+
+// MARK: - UICollectionViewDelegate
+        
+        override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            var item = shoppingItemController.shoppingItems[indexPath.item]
+            item.addedToCart.toggle()
+            shoppingItemController.shoppingItems[indexPath.item] = item
+            shoppingItemController.saveToPersistentStore()
+            collectionView.reloadData()
+        }
+    }
+
+
+
+
+
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+
 
         // Do any additional setup after loading the view.
-    }
+    
 
     /*
     // MARK: - Navigation
@@ -37,20 +75,13 @@ class FoodMenuCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
 
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
-    }
 
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingItemCell", for: indexPath) as? ShoppingItemCollectionViewCell else { return } UICollectionViewCell() {
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingItemCell", for: indexPath) as? ShoppingItemCollectionViewCell else { return } UICollectionViewCell() {
             
         
     
         // Configure the cell
-    
-        return cell
-    }
+
 
     // MARK: UICollectionViewDelegate
 
@@ -83,4 +114,6 @@ class FoodMenuCollectionViewController: UICollectionViewController {
     }
     */
 
-}
+    
+
+

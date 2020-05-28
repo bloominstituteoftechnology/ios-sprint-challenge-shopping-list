@@ -8,14 +8,10 @@
 
 import UIKit
 
-struct ShoppingItem {
+struct ShoppingItem: Codable, Equatable {
     var name: String
     var addedToCart: Bool = false
-    var image: UIImage
-    
-    init(name: String, addedToCart: Bool, imageName: String) {
-        self.name = name
-        self.addedToCart = addedToCart
-        self.image = UIImage(named: imageName)!
-    }
-}
+     var image: UIImage? {
+            return UIImage(named: name)
+        }
+     }
