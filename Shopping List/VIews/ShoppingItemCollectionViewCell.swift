@@ -35,14 +35,8 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         }
         shoppingItemController.saveToPersistentStore()
         shoppingItemController.updateShoppingList(for: item)
+    
     }
     
     
 }
-//    cell.imageView.image = shoppingListItem.image
-//     cell.shoppingItemLabel.text = shoppingListItem.imageName
-//     if shoppingListItem.added == true {
-//         cell.hasBeenAddedLabel.text = "Added"
-//     } else {
-//         cell.hasBeenAddedLabel.text = "Not Added"
-//     }

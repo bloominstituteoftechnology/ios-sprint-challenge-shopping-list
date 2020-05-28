@@ -14,15 +14,13 @@ class ShoppingItemController: Codable {
     
     let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     var items: [ShoppingItem] = []
-    var newItems: ShoppingItem?
     func createShoppingItem() {
         for itemName in itemNames {
             items.append(ShoppingItem(name: itemName, imageName: itemName))
         }
         saveToPersistentStore()
     }
-    
-    
+
     init() {
         if UserDefaults.standard.bool(forKey: .initializeItems) != true {
             createShoppingItem()
@@ -35,9 +33,6 @@ class ShoppingItemController: Codable {
     // I need to access the .added property of my shopping item and toggle between added and not added
     
     // need an object
-    
-        
-        
         
         var persistentFileURL: URL? {
             let fileManager = FileManager.default
@@ -64,11 +59,12 @@ class ShoppingItemController: Codable {
                 let decoder = PropertyListDecoder()
                 let decodedItems = try decoder.decode([ShoppingItem].self, from: itemsPlist)
                 self.items = decodedItems
-                print(self.items.count)
             } catch {
                 print("Error loading items from plist: \(error)")
             }
         }
+    
+                            //Here is the opject
     func updateShoppingList(for item: ShoppingItem) {
         if let itemAdded = items.firstIndex(of: item) {
             var shoppingItem = items[itemAdded]
