@@ -33,8 +33,6 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         case false:
             hasBeenAddedLabel.text = "Not Added"
         }
-        shoppingItemController.saveToPersistentStore()
-        shoppingItemController.updateShoppingList(for: item)
     
     }
     

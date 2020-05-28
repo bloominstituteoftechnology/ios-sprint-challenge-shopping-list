@@ -15,11 +15,6 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     var shoppingListDetailViewController = ShoppingListDetailViewController()
     var shoppingItemCollectionViewCell = ShoppingItemCollectionViewCell()
    
-   
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -40,9 +35,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingItemCell", for: indexPath) as? ShoppingItemCollectionViewCell else {
             fatalError("Collection view cell identifier is wrong or the cell is not a ShoppingItemCollectionViewCell")
-        }
-        
-        // Configure the cell                                       spot 13
+        }// Configure the cell                                       spot 13
         let shoppingListItem = shoppingItemController.items[indexPath.item]
         //shopping item to shopping item
         cell.item = shoppingListItem
@@ -52,11 +45,13 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDelegate
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        var chosenItem = shoppingItemController.items[indexPath.item]
-        chosenItem.added.toggle()
-        shoppingItemController.items[indexPath.item] = chosenItem
-        shoppingItemController.saveToPersistentStore()
-        collectionView.reloadData() 
+        let chosenItem = shoppingItemController.items[indexPath.item]
+        shoppingItemController.updateShoppingList(for: chosenItem)
+        collectionView.reloadData()
+        
+//        chosenItem.added.toggle()
+//        shoppingItemController.items[indexPath.item] = chosenItem
+//        shoppingItemController.saveToPersistentStore()
 //        let cell = collectionView.cellForItem(at: indexPath) as! ShoppingItemCollectionViewCell
 //        let chosenItem = shoppingItemController.items[indexPath.item]
 //        cell.item = chosenItem

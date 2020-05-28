@@ -24,9 +24,9 @@ class ShoppingItemController: Codable {
     init() {
         if UserDefaults.standard.bool(forKey: .initializeItems) != true {
             createShoppingItem()
+            UserDefaults.standard.set(true, forKey: .initializeItems)
         } else {
             loadFromPersistentStore()
-            UserDefaults.standard.set(true, forKey: .initializeItems)
         }
     }
     
@@ -69,9 +69,10 @@ class ShoppingItemController: Codable {
         if let itemAdded = items.firstIndex(of: item) {
             var shoppingItem = items[itemAdded]
             shoppingItem.added.toggle()
+            print("\(shoppingItem.name) was updated to \(shoppingItem.added)")
             items[itemAdded] = shoppingItem
             saveToPersistentStore()
-            print(shoppingItem.added)
+            print(items.count)
         }
     }
     
