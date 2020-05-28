@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ShoppingListViewController.swift
 //  Shopping List
 //
 //  Created by Spencer Curtis on 8/3/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ShoppingListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
