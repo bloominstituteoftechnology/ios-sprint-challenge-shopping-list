@@ -69,6 +69,7 @@
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="150" height="200"/>
                                 <connections>
+                                    <outlet property="addedToListLabel" destination="Ybe-E0-zD7" id="SWw-oP-Pi3"/>
                                     <outlet property="itemImageView" destination="xfW-Ua-DfS" id="i9g-id-SuV"/>
                                     <outlet property="nameLabel" destination="cTk-s2-2Ta" id="7Hh-Jj-J9Z"/>
                                 </connections>
@@ -122,6 +123,9 @@
                                         <rect key="frame" x="0.0" y="144" width="300" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Place Order"/>
+                                        <connections>
+                                            <action selector="placeOrderButton:" destination="okb-C8-BFM" eventType="touchUpInside" id="Mav-K7-chO"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -139,6 +143,11 @@
                         <viewLayoutGuide key="safeArea" id="w3j-vd-sHe"/>
                     </view>
                     <navigationItem key="navigationItem" title="Order Details" id="95e-Hu-nZ2"/>
+                    <connections>
+                        <outlet property="addressTextField" destination="cL0-Ie-yj4" id="joR-pe-0wE"/>
+                        <outlet property="nameTextField" destination="7nN-Yo-ymc" id="AJe-5I-Dge"/>
+                        <outlet property="orderSummaryLabel" destination="d6y-R4-G3J" id="qeO-ZQ-Pfw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jnl-Ij-t5d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

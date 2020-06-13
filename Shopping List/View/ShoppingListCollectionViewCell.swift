@@ -11,6 +11,7 @@ import UIKit
 class ShoppingListCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var addedToListLabel: UILabel!
     @IBOutlet weak var itemImageView: UIImageView!
 
     
@@ -25,11 +26,10 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
             nameLabel.text = item.name
             itemImageView.image = UIImage(named: item.imageName)
             if item.addedToList == true {
-                addedToListButton.setTitle("Added", for: .normal)
+                addedToListLabel.text = "Added"
             } else {
-                addedToListButton.setTitle("Not Added", for: .normal)
+                addedToListLabel.text = "Not Added"
             }
-            
         }
     }
 }

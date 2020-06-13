@@ -12,16 +12,15 @@ class ShoppingItemController {
     
     init() {
         loadFromPersistentStore()
+        let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
         for item in itemNames {
-            if shoppingItems.isEmpty {
-                shoppingItems.append(ShoppingItem(name: item, addedToList: false, imageName: item))
-            }
+            shoppingItems.append(ShoppingItem(name: item, addedToList: false, imageName: item))
         }
     }
     
-    var shoppingItems: [ShoppingItem] = []
-    
     let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+    
+    var shoppingItems: [ShoppingItem] = []
     
     // MARK: Persistence
     
