@@ -30,6 +30,16 @@ class ShoppingItemController {
         saveToPersistentStore()
     }
     
+    var addedItems: [ShoppingItem] {
+        let addedItemsArray = shoppingItems.filter { $0.addedToList == true }
+        return addedItemsArray.sorted(by: { $0.name < $1.name })
+    }
+    
+    var unaddedItems: [ShoppingItem] {
+        let unaddedItemsArray = shoppingItems.filter { $0.addedToList == false }
+        return unaddedItemsArray.sorted(by: { $0.name < $1.name })
+    }
+    
     // MARK: Persistence
     
     private var ShoppingListURL: URL? {

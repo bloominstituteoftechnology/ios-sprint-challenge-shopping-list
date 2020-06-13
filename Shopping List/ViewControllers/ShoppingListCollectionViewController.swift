@@ -32,20 +32,33 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return 2
     }
 
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return shoppingItemController.shoppingItems.count
+        if section == 0 {
+            return shoppingItemController.addedItems.count
+        } else {
+            return shoppingItemController.unaddedItems.count
+        }
+    }
+    
+    func itemFor(indexPath: IndexPath) -> ShoppingItem {
+        if indexPath.section == 0 {
+            return shoppingItemController.addedItems[indexPath.item]
+        } else {
+            return shoppingItemController.unaddedItems[indexPath.item]
+        }
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "itemCell", for: indexPath) as? ShoppingListCollectionViewCell else { return UICollectionViewCell() }
-        cell.item = shoppingItemController.shoppingItems[indexPath.item]
+        cell.item = itemFor(indexPath: indexPath)
         return cell
     }
 
+    
+    
     // MARK: UICollectionViewDelegate
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
