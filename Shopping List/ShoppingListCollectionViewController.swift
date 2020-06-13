@@ -59,16 +59,18 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
+//        return shoppingItemController.items.count
         return shoppingItemController.items.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "shoppingCell", for: indexPath) as? ShoppingItemCollectionViewCell else { return  UICollectionViewCell() }
-
+        
+        
         cell.shoppingItem = shoppingItemController.items[indexPath.item]
         cell.delegate = self
         cell.shoppingItemController = shoppingItemController
-
+        
         return cell
     }
 
@@ -114,21 +116,21 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
 extension ShoppingListCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
-        let maxWidth: CGFloat = 200
+        
+        let maxWidth: CGFloat = 120
         let availableWidth = collectionView.frame.width
 
         var numColumns: CGFloat {
             if availableWidth < maxWidth * 3 {
-                return 2
-            } else {
+               return 2
+           } else {
                 return (availableWidth / maxWidth).rounded(.down)
             }
         }
 
-        let cellWidth = (availableWidth / numColumns) - 16
+       let cellWidth = (availableWidth / numColumns) - 16
         let cellHeight = cellWidth * 1.15
 
-        return CGSize(width: cellWidth, height: cellHeight)
+       return CGSize(width: cellWidth, height: cellHeight)
     }
 }
