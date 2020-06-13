@@ -7,17 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A8AD3DD2495312900D4EAF9 /* ShoppingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8AD3DC2495312900D4EAF9 /* ShoppingItem.swift */; };
+		1A8AD3E02495363700D4EAF9 /* ShoppingItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8AD3DF2495363700D4EAF9 /* ShoppingItemController.swift */; };
+		1A8AD3E2249545AF00D4EAF9 /* ShoppingListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8AD3E1249545AE00D4EAF9 /* ShoppingListCollectionViewController.swift */; };
+		1A8AD3E4249545C400D4EAF9 /* ShoppingListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8AD3E3249545C400D4EAF9 /* ShoppingListCollectionViewCell.swift */; };
+		1A8AD3E82495460900D4EAF9 /* OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8AD3E72495460900D4EAF9 /* OrderDetailViewController.swift */; };
 		4613E91221143BFC00E7FF73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4613E91121143BFC00E7FF73 /* AppDelegate.swift */; };
-		4613E91421143BFC00E7FF73 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4613E91321143BFC00E7FF73 /* ViewController.swift */; };
 		4613E91721143BFC00E7FF73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91521143BFC00E7FF73 /* Main.storyboard */; };
 		4613E91921143BFD00E7FF73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91821143BFD00E7FF73 /* Assets.xcassets */; };
 		4613E91C21143BFD00E7FF73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91A21143BFD00E7FF73 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A8AD3DC2495312900D4EAF9 /* ShoppingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItem.swift; sourceTree = "<group>"; };
+		1A8AD3DF2495363700D4EAF9 /* ShoppingItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShoppingItemController.swift; path = Model/ShoppingItemController.swift; sourceTree = "<group>"; };
+		1A8AD3E1249545AE00D4EAF9 /* ShoppingListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListCollectionViewController.swift; sourceTree = "<group>"; };
+		1A8AD3E3249545C400D4EAF9 /* ShoppingListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListCollectionViewCell.swift; sourceTree = "<group>"; };
+		1A8AD3E72495460900D4EAF9 /* OrderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailViewController.swift; sourceTree = "<group>"; };
 		4613E90E21143BFC00E7FF73 /* Shopping List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shopping List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4613E91121143BFC00E7FF73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4613E91321143BFC00E7FF73 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4613E91621143BFC00E7FF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4613E91821143BFD00E7FF73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4613E91B21143BFD00E7FF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -35,6 +43,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A8AD3DE2495313000D4EAF9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1A8AD3DC2495312900D4EAF9 /* ShoppingItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1A8AD3E9249549E500D4EAF9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1A8AD3E3249545C400D4EAF9 /* ShoppingListCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1A8AD3EA249549F000D4EAF9 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				1A8AD3E1249545AE00D4EAF9 /* ShoppingListCollectionViewController.swift */,
+				1A8AD3E72495460900D4EAF9 /* OrderDetailViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		4613E90521143BFC00E7FF73 = {
 			isa = PBXGroup;
 			children = (
@@ -55,8 +88,11 @@
 			isa = PBXGroup;
 			children = (
 				4613E91121143BFC00E7FF73 /* AppDelegate.swift */,
-				4613E91321143BFC00E7FF73 /* ViewController.swift */,
 				4613E91521143BFC00E7FF73 /* Main.storyboard */,
+				1A8AD3EA249549F000D4EAF9 /* ViewControllers */,
+				1A8AD3E9249549E500D4EAF9 /* View */,
+				1A8AD3DE2495313000D4EAF9 /* Model */,
+				1A8AD3DF2495363700D4EAF9 /* ShoppingItemController.swift */,
 				4613E91821143BFD00E7FF73 /* Assets.xcassets */,
 				4613E91A21143BFD00E7FF73 /* LaunchScreen.storyboard */,
 				4613E91D21143BFD00E7FF73 /* Info.plist */,
@@ -96,6 +132,7 @@
 				TargetAttributes = {
 					4613E90D21143BFC00E7FF73 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1150;
 					};
 				};
 			};
@@ -135,7 +172,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4613E91421143BFC00E7FF73 /* ViewController.swift in Sources */,
+				1A8AD3E82495460900D4EAF9 /* OrderDetailViewController.swift in Sources */,
+				1A8AD3E2249545AF00D4EAF9 /* ShoppingListCollectionViewController.swift in Sources */,
+				1A8AD3E4249545C400D4EAF9 /* ShoppingListCollectionViewCell.swift in Sources */,
+				1A8AD3DD2495312900D4EAF9 /* ShoppingItem.swift in Sources */,
+				1A8AD3E02495363700D4EAF9 /* ShoppingItemController.swift in Sources */,
 				4613E91221143BFC00E7FF73 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,7 +330,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LambdaSchool.Shopping-List";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -307,7 +348,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LambdaSchool.Shopping-List";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
