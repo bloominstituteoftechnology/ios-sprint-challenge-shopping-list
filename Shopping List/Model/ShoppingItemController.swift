@@ -11,16 +11,24 @@ import UIKit
 class ShoppingItemController {
     
     init() {
-        loadFromPersistentStore()
-        let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+        if UserDefaults.standard.bool(forKey: "shoppingItemsInitialized") {
+            loadFromPersistentStore()
+        } else {
         for item in itemNames {
             shoppingItems.append(ShoppingItem(name: item, addedToList: false, imageName: item))
+        }
+        saveToPersistentStore()
+        UserDefaults.standard.set(true, forKey: "shoppingItemsInitialized")
         }
     }
     
     let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     
     var shoppingItems: [ShoppingItem] = []
+    
+    func itemWasUpdated() {
+        saveToPersistentStore()
+    }
     
     // MARK: Persistence
     
