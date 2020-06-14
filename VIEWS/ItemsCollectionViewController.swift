@@ -8,10 +8,15 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
 class ItemsCollectionViewController: UICollectionViewController {
     
+    
+    let shoppingItemControlla = shoppingItemController()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView?.reloadData()
+    }
     
     
     
@@ -20,32 +25,36 @@ class ItemsCollectionViewController: UICollectionViewController {
         // Do any additional setup after loading the view.
     }
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "detailVCSegue" {
+            if let detailVC = segue.destination as? ShoppingListDetailViewController {
+                detailVC.shoppingItemControlla = shoppingItemControlla
+            }
+        }
+        
     }
-    */
+    
 
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return shoppingItemControlla.itemNames.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as? ItemsCollectionViewCell else { return UICollectionViewCell() }
+        cell.item = shoppingItemControlla.shoppingItems[indexPath.item]
         // Configure the cell
     
         return cell
