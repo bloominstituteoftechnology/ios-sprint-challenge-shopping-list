@@ -13,9 +13,7 @@ struct ShoppingItem: Codable, Equatable {
 
     var name : String
     var added : Bool = false
-
     var image : UIImage? {
         return UIImage(named: name)
     }
-
 }

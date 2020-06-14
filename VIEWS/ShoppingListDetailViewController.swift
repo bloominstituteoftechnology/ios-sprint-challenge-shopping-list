@@ -1,5 +1,5 @@
 //
-//  SaveOrderViewController.swift
+//  ShoppingListDetailViewController.swift
 //  Shopping List
 //
 //  Created by B$hady on 6/13/20.
@@ -8,15 +8,37 @@
 
 import UIKit
 
-class SaveOrderViewController: UIViewController {
-
+class ShoppingListDetailViewController: UIViewController {
+    
+    
+    @IBOutlet weak var enterName: UITextField!
+    @IBOutlet weak var enterAddress: UITextField!
+    
+    @IBOutlet weak var itemsCountLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
+    
+    
+    @IBAction func sendOrderTapped(_ sender: Any) {
+    }
+    
+    
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /*
     // MARK: - Navigation
 

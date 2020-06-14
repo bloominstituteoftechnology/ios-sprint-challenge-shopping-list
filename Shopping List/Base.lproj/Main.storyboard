@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4hV-A4-wGk">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -12,7 +12,7 @@
         <!--Shopping List-->
         <scene sceneID="f7i-Ii-3Iy">
             <objects>
-                <collectionViewController id="wlv-bZ-4MT" sceneMemberID="viewController">
+                <collectionViewController id="wlv-bZ-4MT" customClass="ItemsCollectionViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="mzV-UV-PEu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,7 +24,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemCell" id="Pau-Hd-fCT">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemCell" id="Pau-Hd-fCT" customClass="ItemsCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="185" height="230"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="U7N-1v-twP">
@@ -36,7 +36,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
+                                            <color key="highlightedColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="added" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BmT-9a-8SH">
                                             <rect key="frame" x="122" y="195" width="49" height="21"/>
@@ -46,12 +46,18 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Apple" translatesAutoresizingMaskIntoConstraints="NO" id="HxR-JC-vwV">
-                                            <rect key="frame" x="5" y="51" width="177" height="128"/>
+                                            <rect key="frame" x="25" y="51" width="135" height="128"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
                                 </collectionViewCellContentView>
+                                <color key="backgroundColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <size key="customSize" width="185" height="230"/>
+                                <connections>
+                                    <outlet property="addedLabel" destination="BmT-9a-8SH" id="HSb-uM-wJH"/>
+                                    <outlet property="itemImageView" destination="HxR-JC-vwV" id="2Mp-rI-Dxt"/>
+                                    <outlet property="itemNameLabel" destination="n7u-Sl-CBs" id="yPf-XH-cB8"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -62,7 +68,7 @@
                     <navigationItem key="navigationItem" title="Shopping List" id="yHY-03-iQY">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="Pt3-S2-TfB">
                             <connections>
-                                <segue destination="IKE-TP-tAn" kind="show" id="XHU-B8-uHY"/>
+                                <segue destination="IKE-TP-tAn" kind="show" identifier="detailVCSegue" id="XHU-B8-uHY"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -71,10 +77,10 @@
             </objects>
             <point key="canvasLocation" x="-1081.1594202898552" y="-460.04464285714283"/>
         </scene>
-        <!--View Controller-->
+        <!--Shopping List Detail View Controller-->
         <scene sceneID="Axn-qa-3cI">
             <objects>
-                <viewController id="IKE-TP-tAn" sceneMemberID="viewController">
+                <viewController id="IKE-TP-tAn" customClass="ShoppingListDetailViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="afG-0C-dz6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -105,12 +111,20 @@
                                 <rect key="frame" x="168" y="341" width="79" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Send Order"/>
+                                <connections>
+                                    <action selector="sendOrderTapped:" destination="IKE-TP-tAn" eventType="touchUpInside" id="lLb-LE-NJd"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="KA3-Rb-BNy"/>
                     </view>
                     <navigationItem key="navigationItem" id="LKO-ix-nxU"/>
+                    <connections>
+                        <outlet property="enterAddress" destination="Eov-XJ-UwU" id="IBY-jn-hlr"/>
+                        <outlet property="enterName" destination="BJe-wt-gYv" id="nOv-dF-IxA"/>
+                        <outlet property="itemsCountLabel" destination="odk-WD-a3s" id="TVW-nW-p5o"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jas-xd-CYI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
