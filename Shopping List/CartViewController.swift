@@ -10,6 +10,14 @@ import UIKit
 
 class CartViewController: UIViewController {
 
+    @IBOutlet weak var cartLabel: UILabel!
+    @IBOutlet weak var nameLabel: UITextField!
+    @IBOutlet weak var addressField: UITextField!
+    @IBAction func sendOrder(_ sender: Any) {
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
