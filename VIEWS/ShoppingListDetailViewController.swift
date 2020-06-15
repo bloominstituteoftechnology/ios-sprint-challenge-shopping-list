@@ -10,44 +10,28 @@ import UIKit
 
 class ShoppingListDetailViewController: UIViewController {
     
-    var shoppingItemControlla: shoppingItemController?
     
     @IBOutlet weak var enterName: UITextField!
     @IBOutlet weak var enterAddress: UITextField!
     
     @IBOutlet weak var itemsCountLabel: UILabel!
     
+    var shoppingItemController: shoppingItemController?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+  
 
         // Do any additional setup after loading the view.
+override func viewDidLoad() {
+      super.viewDidLoad()
+    
     }
-    
-    
     
     @IBAction func sendOrderTapped(_ sender: Any) {
+        
+        let addedItems = shoppingItemController?.shoppingItems.filter { $0.added == true }
+        let alert = UIAlertController(title: "Thanks, \(enterName.text ?? "User")", message: "Your order contains \(addedItems?.count ?? 0) items", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(okButton)
+        present(alert, animated: true, completion: nil)
     }
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

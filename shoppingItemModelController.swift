@@ -19,7 +19,7 @@ class shoppingItemController {
                 shoppingItems.append(ShoppingItem(name: item, added: false, imageName: item))
             }
             saveToPersistentStore()
-            UserDefaults.standard.set(true, forKey: "shoppingListLoaded" )
+            UserDefaults.standard.set(true, forKey: "shoppingListLoaded")
         }
     }
     
@@ -27,8 +27,11 @@ class shoppingItemController {
     var itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     var shoppingItems: [ShoppingItem] = []
     
+    func itemWasUpdated() {
+        saveToPersistentStore()
+    }
     
-    
+    //MARK: Persistence
     
     var persistentFileURL: URL? {
         let fileMAnager = FileManager.default
@@ -37,9 +40,7 @@ class shoppingItemController {
         return shoppingItemsURL
     }
     
-
-    
-    func loadFromPersistantStore() {
+    private func loadFromPersistantStore() {
         guard let fileURL = persistentFileURL else { return }
         do {
             let itemsData = try Data(contentsOf: fileURL)
@@ -51,7 +52,7 @@ class shoppingItemController {
         }
     }
 
-    func saveToPersistentStore() {
+    private func saveToPersistentStore() {
         guard let fileURL = persistentFileURL else { return }
         do {
             let encoder = PropertyListEncoder()
@@ -61,12 +62,4 @@ class shoppingItemController {
             print("error encoding itemsArray: \(error)")
         }
     }
-    
-
-
-
-
-
-
-
-}
+ }
