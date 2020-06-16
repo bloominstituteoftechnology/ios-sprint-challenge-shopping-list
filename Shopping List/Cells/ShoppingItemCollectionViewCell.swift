@@ -22,12 +22,12 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     }
     func updateViews() {
         guard let shoppingItem = shoppingItem else {return}
-        itemNameLabel.text = shoppingItem.name
+        itemNameLabel.text = shoppingItem.itemName
         itemImageView.image = shoppingItem.image
         
-        if shoppingItem.added == false {
+        if shoppingItem.hasBeenAdded == false {
             addedLabel.text = "Not added"
-        } else if shoppingItem.added == true {
+        } else if shoppingItem.hasBeenAdded == true {
             addedLabel.text = "Added"
         }
         

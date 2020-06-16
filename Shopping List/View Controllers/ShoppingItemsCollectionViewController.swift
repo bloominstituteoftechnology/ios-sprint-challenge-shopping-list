@@ -10,7 +10,9 @@ import UIKit
 
 class ShoppingItemsCollectionViewController: UICollectionViewController {
     
-    let shoppingItems = ShoppingModelController()
+    //MARK: - Variables
+    
+    var shoppingController = ShoppingController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,11 +21,10 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
 
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Detail" {
             guard let destinationVC = segue.destination as? ShoppingItemsDetailViewController else {return}
-            destinationVC.shoppingItems = shoppingItems
+            destinationVC.shoppingController = shoppingController
             
         }
     }
@@ -34,7 +35,7 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return shoppingItems.items.count
+        return shoppingController.shoppingItems.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -43,21 +44,23 @@ class ShoppingItemsCollectionViewController: UICollectionViewController {
         }
         
         
-        cell.shoppingItem = shoppingItems.items[indexPath.item]
+        cell.shoppingItem = shoppingController.shoppingItems[indexPath.item]
         
         return cell
     }
 
-    // MARK: UICollectionViewDelegate
+    // MARK: UICollectionViewDelegate didSelect Function
     
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if shoppingItems.items[indexPath.item].added == false {
-            shoppingItems.items[indexPath.item].added = true
+        if shoppingController.shoppingItems[indexPath.item].hasBeenAdded == false {
+            shoppingController.shoppingItems[indexPath.item].hasBeenAdded = true
+            shoppingController.saveToPersistenceStore()
             collectionView.reloadData()
-        } else if shoppingItems.items[indexPath.item].added == true {
-        shoppingItems.items[indexPath.item].added = false
+        } else if shoppingController.shoppingItems[indexPath.item].hasBeenAdded == true {
+        shoppingController.shoppingItems[indexPath.item].hasBeenAdded = false
+            shoppingController.saveToPersistenceStore()
             collectionView.reloadData()
         }
        

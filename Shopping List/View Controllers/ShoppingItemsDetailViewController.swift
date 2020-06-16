@@ -10,25 +10,36 @@ import UIKit
 
 class ShoppingItemsDetailViewController: UIViewController {
     
-    var shoppingItems: ShoppingModelController?
+    //MARK: -Variables
+    
+    var shoppingController: ShoppingController?
 
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
-    @IBOutlet weak var itemsLabel: UILabel!
+    @IBOutlet weak var itemsLabel: UILabel! {
+        didSet {
+            guard let shoppingController = shoppingController else {return}
+            itemsLabel.text = "You have \(shoppingController.calculateTotalAddedItems()) items in your order."
+               }
+    }
+    @IBOutlet weak var sendOrderButton: UIButton! {
+        didSet {
+            guard let shoppingController = shoppingController else {return}
+            if shoppingController.calculateTotalAddedItems() == 0 { sendOrderButton.isEnabled = false
+        }
+    }
+    }
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setLabelText()
     }
     
     @IBAction func sendButtonTapped(_ sender: Any) {
         showAlert()
     }
     
-    func setLabelText() {
-        guard let shoppingItems = shoppingItems else {return}
-        itemsLabel.text = "You currently have \(shoppingItems.addedItems.count) items in your cart"
-    }
+    //MARK: - UIAlertController Function
     
     func showAlert() {
         

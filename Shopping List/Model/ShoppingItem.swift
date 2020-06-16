@@ -11,11 +11,18 @@ import UIKit
 
 struct ShoppingItem: Codable, Equatable {
     
-    var name : String
-    var added : Bool = false
+    var itemName : String
+    var imageString : String
+    var hasBeenAdded : Bool = false
     
     var image : UIImage? {
-        return UIImage(named: name)
+        return UIImage(named: imageString)
     }
+    
+    init(itemName: String, imageString: String) {
+          self.itemName = itemName
+          self.hasBeenAdded = false
+          self.imageString = imageString
+      }
     
 }

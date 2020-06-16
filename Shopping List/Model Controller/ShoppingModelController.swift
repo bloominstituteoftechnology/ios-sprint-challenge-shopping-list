@@ -9,109 +9,94 @@
 import Foundation
 import UIKit
 
-class ShoppingModelController {
-    var items : [ShoppingItem] = [
-            ShoppingItem(name: "Apple"),
-            ShoppingItem(name: "Grapes"),
-            ShoppingItem(name: "Milk"),
-            ShoppingItem(name: "Muffin"),
-            ShoppingItem(name: "Popcorn"),
-            ShoppingItem(name: "Soda"),
-            ShoppingItem(name: "Strawberries")
-    ]
+class ShoppingController {
     
-        
-        var shoppingListURL : URL? {
-            let fm = FileManager.default
-                   guard let dir = fm.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
-                   return dir.appendingPathComponent("ShoppingItems.plist")
-        }
+    //MARK: -Variables and Constants
     
-        var addedItems: [ShoppingItem] {
-               return items.filter({ $0.added == true })
-           }
-           
-           var unAddedItems: [ShoppingItem] {
-               return items.filter({ $0.added == false })
-           }
+    let items : Bool = UserDefaults.standard.bool(forKey: .itemListInitializedKey)
+    
+    
+    let itemsNames = ["Apple", "Grapes", "Milk", "Muffin", "Soda", "Strawberries", "Popcorn"]
+    
+    var shoppingItems : [ShoppingItem] = []
+    
+    var shoppingListURL : URL? {
+        let fm = FileManager.default
+        guard let dir = fm.urls(for: .documentDirectory, in: .userDomainMask).first else {return nil}
         
-        init() {
-            loadFromPersistentStore()
-        }
-        
-        //MARK: -Persistence
-           
-           
-           func saveToPersistentStore() {
-               guard let url = shoppingListURL else {
-                   return
-               }
-               
-               do {
-                   
-                   let encoder = PropertyListEncoder()
-                   let data = try encoder.encode(items)
-                   try data.write(to: url)
-                   
-               } catch {
-                   fatalError("Was not able to encode data")
-               }
-               
-           }
-           
-           private func loadFromPersistentStore() {
-               let fm = FileManager.default
-               guard let shoppingListURL = shoppingListURL, fm.fileExists(atPath: shoppingListURL.path) else { return
-           }
-               
-               do {
-                   let data = try Data(contentsOf: shoppingListURL)
-                   let decoder = PropertyListDecoder()
-                    items = try decoder.decode([ShoppingItem].self, from: data)
-                   print(shoppingListURL)
-                   
-                   
-                   
-               } catch {
-                   fatalError("No data was saved")
-                   
-               }
-               
-           }
-//        func updateAdded(for item: ShoppingItem) {
-//
-//               guard let itemIndex = items.firstIndex(of: item) else { return }
-//             items[itemIndex].added = !items[itemIndex].added
-//               saveToPersistentStore()
-//
-//           }
-        
-//        func createBook(title: String, reasonToRead: String) {
-//
-//              let book = Book(title: title, reasonToRead: reasonToRead)
-//              books.append(book)
-//              saveToPersistentStore()
-//          }
-        
-//        func updateBookData(for book: Book, title: String, reasonToRead: String) {
-//            guard let bookIndex = books.firstIndex(of: book) else { return }
-//
-//            var temp = book
-//            temp.title = title
-//            temp.reasonToRead = reasonToRead
-//
-//            books.remove(at: bookIndex)
-//            books.insert(temp, at: bookIndex)
-//
-//            saveToPersistentStore()
-//        }
-        
-//        func deleteBook(book: Book) {
-//            guard let index = books.firstIndex(of: book) else { return }
-//            books.remove(at: index)
-//            saveToPersistentStore()
-//        }
-        
-           
+        return dir.appendingPathComponent("TheShoppingItemsList.plist")
     }
+    
+    //MARK: - Initializer
+    
+    init() {
+        if items == false {
+            createInitialShoppingItems()
+            UserDefaults.standard.set(true, forKey: .itemListInitializedKey)
+            print("created \(items)")
+        } else {
+            loadFromPersistenceStore()
+            print("loaded \(items)")
+        }
+    }
+    
+    
+    //MARK: -Persistence Functions
+    
+    func createInitialShoppingItems() {
+        for item in itemsNames {
+            let newItem = ShoppingItem(itemName: item, imageString: item)
+            shoppingItems.append(newItem)
+        }
+        saveToPersistenceStore()
+    }
+    
+    
+    func saveToPersistenceStore() {
+        guard let url = shoppingListURL else {return}
+        do {
+        let encoder = PropertyListEncoder()
+        let data = try encoder.encode(shoppingItems)
+        try data.write(to: url)
+            
+        } catch  {
+            print("Not able to encode the data")
+        }
+    }
+    
+    func loadFromPersistenceStore() {
+        let fm = FileManager.default
+        guard let url = shoppingListURL, fm.fileExists(atPath: url.path) else {return}
+            do {
+                let data = try Data(contentsOf: url)
+                let decoder = PropertyListDecoder()
+                shoppingItems = try decoder.decode([ShoppingItem].self, from: data)
+                
+            } catch  {
+                print("Not able to decode the data")
+            }
+        
+    }
+    
+    //MARK: - Function to Calculate the number of total items added
+    
+    func calculateTotalAddedItems() -> Int {
+        var count = 0
+        for item in shoppingItems {
+            if item.hasBeenAdded == true {
+                count += 1
+            }
+        }
+         return count
+    }
+    
+    
+}
+
+    //MARK: -Extension of String Class for Key in User Defaults
+
+extension String {
+    static let itemListInitializedKey = "itemListInitializedKey"
+    
+}
 
