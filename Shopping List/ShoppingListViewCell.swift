@@ -12,8 +12,7 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
    
     @IBOutlet weak var itemImage: UIImageView!
     @IBOutlet weak var itemLabel: UILabel!
+    @IBOutlet weak var addedLabel: UILabel!
     
-    @IBAction func itemAdded(_ sender: Any) {
-    }
     
 }

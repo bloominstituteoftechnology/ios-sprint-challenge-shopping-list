@@ -6,14 +6,28 @@
 //  Copyright © 2020 Lambda School. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class ShoppingListController {
     
-
+    
     let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     
-    var shoppingList: [ShoppingList] = []
+    init() {
+        loadFromPersistentStore()
+        if shoppingList.count == 0 {
+            for item in itemNames {
+                let nItem = ShoppingList(name: item, imageName: item, itemAdded: false)
+                shoppingList.append(nItem)
+            }
+        }
+    }
+    
+    var shoppingList: [ShoppingList] = [] {
+        didSet {
+            updateViews()
+        }
+    }
     
     var shoppingListURL: URL? {
         let fileManager = FileManager.default
@@ -21,8 +35,9 @@ class ShoppingListController {
         let shoppingListURL = documentsDirectory?.appendingPathComponent("ShoppingListURL.plist")
         return shoppingListURL
     }
-
-
+    
+    
+    
     func saveToPersistentStore () {
         do {
             let encoder = PropertyListEncoder()
@@ -39,17 +54,30 @@ class ShoppingListController {
             let data = try Data(contentsOf: shoppingListURL!)
             shoppingList = try decoder.decode([ShoppingList].self, from: data)
         } catch {
-            print("Error")
+            print("Persistent Error")
         }
     }
     
     func addedItem(item: ShoppingList) {
-    guard let index: Int = shoppingList.firstIndex(of: item) else {return}
-    
-    shoppingList.remove(at: index)
-    saveToPersistentStore()
+        guard let index: Int = shoppingList.firstIndex(of: item) else {return}
+        
+        shoppingList.remove(at: index)
+        saveToPersistentStore()
     }
     
+    func cartItems() -> Int {
+        var count = 0
+        for cartItems in shoppingList {
+            if cartItems.itemAdded {
+                count += 1
+            }
+        }
+        return count
+    }
     
-
+    func updateViews() {
+        _ = shoppingList
+    }
+    
 }
+
