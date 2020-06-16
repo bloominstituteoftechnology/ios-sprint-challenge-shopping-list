@@ -37,7 +37,7 @@ Please view the screen recording so you will know what your finished project sho
 1. A `ShoppingItem` model object with properties: 
 	1. A name of the item ("Apple").
 	2. A `Bool` indicating whether the item has been added to the shopping list.
-	3. You will need to make a computed property that initializes a `UIImage` from the name of the item.
+	3. You will need to make a computed property that initializes a `UIImage` from the name of the item. -done
 2. **The shopping items should be persisted between launches of the application.** On the first launch of the application, use the given shopping `itemNames` to create instances of the `ShoppingItem` model, and save them to a file using `FileManager`. To help you do this, read the following substeps:
 	1. Use this snippet of names of images from the asset catalog to create instances of items in the `ShoppingList` model controller:
 
