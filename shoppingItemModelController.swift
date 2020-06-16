@@ -25,6 +25,16 @@ class shoppingItemController {
         }
     }
     
+    func addItemCount() -> Int {
+        var count = 0
+        for item in shoppingItems {
+            if item.added {
+                count += 1
+            }
+        }
+        return count
+    }
+    
     
     var itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     var shoppingItems: [ShoppingItem] = []

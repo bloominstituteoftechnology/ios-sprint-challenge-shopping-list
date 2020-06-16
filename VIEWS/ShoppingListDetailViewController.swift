@@ -23,7 +23,15 @@ class ShoppingListDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
 override func viewDidLoad() {
       super.viewDidLoad()
+    updateViews()
+    }
     
+    func updateViews() {
+        if let count = shoppingItemController?.addItemCount() {
+            itemsCountLabel.text = "You currently have \(count) in your shopping list"
+        }
+        
+        
     }
     
     @IBAction func sendOrderTapped(_ sender: Any) {

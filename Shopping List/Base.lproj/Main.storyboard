@@ -21,11 +21,11 @@
                             <size key="itemSize" width="158" height="207"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="ItemCell" id="ZF8-hA-8CW" customClass="ItemsCollectionViewCell" customModule="Shopping_List" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="158" height="207"/>
+                                <rect key="frame" x="10" y="10" width="158" height="207"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="nYn-6G-hNM">
                                     <rect key="frame" x="0.0" y="0.0" width="158" height="207"/>
@@ -34,22 +34,24 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="9m8-OH-CNz">
                                             <rect key="frame" x="0.0" y="0.0" width="158" height="207"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgV-c2-bK9">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgV-c2-bK9">
                                                     <rect key="frame" x="0.0" y="0.0" width="158" height="62.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3KN-rS-MHW">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4T6-1z-bdY">
                                                     <rect key="frame" x="0.0" y="64.5" width="158" height="120"/>
-                                                    <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.29999999999999999"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="120" id="Lqe-88-ctV"/>
-                                                        <constraint firstAttribute="width" constant="120" id="kPm-6N-0U5"/>
+                                                        <constraint firstAttribute="height" constant="120" id="2cW-8r-EEE"/>
+                                                        <constraint firstAttribute="width" constant="120" id="RZg-EM-BdG"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xOB-vi-6nR">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xOB-vi-6nR">
                                                     <rect key="frame" x="0.0" y="186.5" width="158" height="20.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20.5" id="c6a-2W-Wjp"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -68,7 +70,7 @@
                                 <size key="customSize" width="158" height="207"/>
                                 <connections>
                                     <outlet property="addedLabel" destination="xOB-vi-6nR" id="65e-td-CCu"/>
-                                    <outlet property="itemImageView" destination="3KN-rS-MHW" id="WFG-Di-O7N"/>
+                                    <outlet property="itemImageView" destination="4T6-1z-bdY" id="U1h-3a-CWj"/>
                                     <outlet property="itemNameLabel" destination="hgV-c2-bK9" id="ghe-8E-7mO"/>
                                 </connections>
                             </collectionViewCell>
