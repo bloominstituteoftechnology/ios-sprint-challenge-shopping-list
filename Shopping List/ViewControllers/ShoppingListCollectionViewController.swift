@@ -62,7 +62,10 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDelegate
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        shoppingItemController.shoppingItems[indexPath.item].addedToList.toggle()
+        let item = itemFor(indexPath: indexPath)
+        if let itemIndex = shoppingItemController.shoppingItems.firstIndex(of: item) {
+            shoppingItemController.shoppingItems[itemIndex].addedToList.toggle()
+        }
         shoppingItemController.itemWasUpdated()
         collectionView.reloadData()
     }

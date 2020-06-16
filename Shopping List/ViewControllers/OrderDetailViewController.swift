@@ -18,14 +18,13 @@ class OrderDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    @IBAction func placeOrderButton(_ sender: UIButton) {
         let addedItems = shoppingItemController?.shoppingItems.filter { $0.addedToList == true }
-        let alert = UIAlertController(title: "Thank you, \(nameTextField.text ?? "User")", message: "Your order contains \(addedItems?.count ?? 0) items. Your order will be delivered in 15 minutes.", preferredStyle: .alert)
-        let okButton = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        orderSummaryLabel.text = "Your order contains \(addedItems?.count ?? 0) items."
+    }
+    
+    @IBAction func placeOrderButton(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Thank you, \(nameTextField.text ?? "User")", message: "Your order will be delivered in 15 minutes.", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "OK", style: .cancel, handler: { action in self.navigationController?.popViewController(animated: true) })
         alert.addAction(okButton)
         present(alert, animated: true, completion: nil)
     }
