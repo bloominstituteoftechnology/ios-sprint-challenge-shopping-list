@@ -17,7 +17,7 @@ class ShoppingListCollectionVC: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+ //       collectionView?.backgroundColor = UIColor.darkGray
         collectionView?.reloadData()
     }
 

@@ -26,6 +26,10 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
         
         nameLabel.text = shoppingItem.itemName
         imageView.image = shoppingItem.itemImage
+        imageView.layer.cornerRadius = 15
+        imageView.layer.borderWidth = 2
+        imageView.layer.borderColor = UIColor.black.cgColor
+ //       imageView.clipsToBounds = true
         
         if shoppingItem.hasBeenAdded == true {
             addedLabel.text = "Added"
@@ -36,3 +40,6 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
     
     
 }
+
+
+
