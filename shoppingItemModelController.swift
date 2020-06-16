@@ -12,13 +12,15 @@ import UIKit
 class shoppingItemController {
     
     init() {
-        if UserDefaults.standard.bool(forKey: "shoppingListLoaded") {
+        if UserDefaults.standard.bool(forKey: "shoppingListLoaded") == true {
             loadFromPersistantStore()
+            print("working")
         } else {
             for item in itemNames {
                 shoppingItems.append(ShoppingItem(name: item, added: false, imageName: item))
             }
             saveToPersistentStore()
+            print("not working")
             UserDefaults.standard.set(true, forKey: "shoppingListLoaded")
         }
     }
@@ -52,7 +54,7 @@ class shoppingItemController {
         }
     }
 
-    private func saveToPersistentStore() {
+        func saveToPersistentStore() {
         guard let fileURL = persistentFileURL else { return }
         do {
             let encoder = PropertyListEncoder()

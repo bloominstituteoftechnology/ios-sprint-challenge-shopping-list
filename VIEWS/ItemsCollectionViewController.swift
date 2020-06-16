@@ -59,5 +59,6 @@ class ItemsCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         shoppingItemControlla.shoppingItems[indexPath.item].added.toggle()
         collectionView.reloadData()
+        shoppingItemControlla.saveToPersistentStore()
     }
 }
