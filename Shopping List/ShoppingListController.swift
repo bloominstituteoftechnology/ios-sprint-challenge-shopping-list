@@ -69,21 +69,5 @@ class ShoppingListController {
         saveToPersistentStore()
     }
     
-    func cartItems() -> Int {
-        var count = 0
-        for cartItems in shoppingList {
-            if cartItems.itemAdded {
-                count += 1
-            }
-        }
-        return count
-    }
-    
-    func updateViews() {
-        _ = shoppingList
-        
-        
-    }
-    
 }
 
