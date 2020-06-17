@@ -77,6 +77,8 @@ class ShoppingListController {
     
     func updateViews() {
         _ = shoppingList
+        
+        
     }
     
 }
