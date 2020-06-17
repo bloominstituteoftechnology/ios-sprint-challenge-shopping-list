@@ -12,57 +12,52 @@ private let reuseIdentifier = "Cell"
 
 class ShoppingListCollectionViewController: UICollectionViewController {
     
-    let shoppingList = ShoppingListController()
+    var shoppingListController = ShoppingListController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
+       // shoppingList.updateViews()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+       // self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
         // Do any additional setup after loading the view.
     }
     
-  
+ 
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return shoppingList.itemNames.count
+        
+        return shoppingListController.shoppingList.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Shopping Items", for: indexPath) as? ShoppingListCollectionViewCell else { return UICollectionViewCell() }
         
+        
         // Configure the cell
-        let item = shoppingList.shoppingList[indexPath.item]
-        cell.itemImage.image = UIImage(named: item.image)
-        cell.itemLabel.text = item.name
-        cell.addedLabel.text = "Not Added"
-        
-        
-        func updateViews() {
-               if item.itemAdded == false {
-                   cell.addedLabel.text = "Added"
-               } else {
-                   cell.addedLabel.text = "Not Added"
-               }
-           }
-        
+        let item = shoppingListController.shoppingList[indexPath.item]
+        cell.itemInCart = item
+    
         return cell
-    
-    
-   
+        
     }
     // MARK: UICollectionViewDelegate
-    
+        
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        var item = shoppingList.shoppingList[indexPath.item]
-        item.itemAdded.toggle()
+        shoppingListController.toggleItemAdded(indexPath: indexPath)
+        collectionView.reloadData()
         
-   
-        
+       // shoppingList.saveToPersistentStore()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let detailedCart = segue.destination as? CartViewController else { return }
+        detailedCart.shoppingListController = shoppingListController
     }
     /*
      // Uncomment this method to specify if the specified item should be highlighted during tracking

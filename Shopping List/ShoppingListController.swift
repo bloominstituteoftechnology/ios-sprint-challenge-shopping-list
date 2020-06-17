@@ -14,18 +14,20 @@ class ShoppingListController {
     let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     
     init() {
-        loadFromPersistentStore()
+        for item in itemNames {
+            let nItem = ShoppingList(name: item, imageName: item, itemAdded: false)
+            shoppingList.append(nItem)
+            
+        }
+//        loadFromPersistentStore()
         if shoppingList.count == 0 {
-            for item in itemNames {
-                let nItem = ShoppingList(name: item, imageName: item, itemAdded: false)
-                shoppingList.append(nItem)
-            }
+            saveToPersistentStore()
         }
     }
     
     var shoppingList: [ShoppingList] = [] {
         didSet {
-            updateViews()
+        
         }
     }
     
@@ -36,7 +38,9 @@ class ShoppingListController {
         return shoppingListURL
     }
     
-    
+    func toggleItemAdded(indexPath: IndexPath) {
+        shoppingList[indexPath.item].itemAdded.toggle()
+    }
     
     func saveToPersistentStore () {
         do {
