@@ -26,9 +26,7 @@ class CartViewController: UIViewController {
     func updateViews() {
         if let cartItems = shoppingListController?.shoppingList.filter({ $0.itemAdded })  {
             cartLabel.text = "You currently have \(cartItems.count) item(s) in your cart"
-        } else {
-            cartLabel.text = "You have no items in your cart"
-        }
+        } else {}
     }
 
         /*

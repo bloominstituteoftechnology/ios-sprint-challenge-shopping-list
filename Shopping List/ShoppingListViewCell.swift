@@ -28,10 +28,8 @@ class ShoppingListCollectionViewCell: UICollectionViewCell {
         
         if itemInCart.itemAdded {
             addedLabel.text = "Added"
-            print(itemInCart.itemAdded)
         } else {
             addedLabel.text = "Not Added"
-            print(itemInCart.itemAdded)
         }
     }
     
