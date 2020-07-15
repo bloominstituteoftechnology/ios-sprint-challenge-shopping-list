@@ -43,6 +43,7 @@ class ShopplingListController {
   
   private func createShoppingLists()  {
     shoppingItems = itemNames.map { ShoppingItem(name: $0, hasAdded: false) }
+    persister.saveToPersistStore(for: shoppingItems)
   }
   
   var addedItems: [ShoppingItem] {

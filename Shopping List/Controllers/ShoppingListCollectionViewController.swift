@@ -17,7 +17,11 @@ class ShoppingListCollectionViewController: UICollectionViewController {
   //MARK:- Properties
   private let shopController = ShopplingListController()
 
-
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    collectionView.reloadData()
+  }
+  
  // MARK:- UICollectionViewDataSource
   
   override func numberOfSections(in collectionView: UICollectionView) -> Int {

@@ -47,6 +47,9 @@ class DetailViewController: UIViewController {
     setNotification(title: "You currently have \(shopController.addedItems.count) items in you shoppling list.",
                     body: "Hi \(nameTextField.text ?? "Nick").Your order will be delivered in 15 mins to \(addressTextField.text ?? "1 Hacker Way")")
     navigationController?.popViewController(animated: true)
+    
+    // Reset the items to not-added after finish sending the orders.
+    shopController.addedItems.forEach { shopController.toggleHasBeenAdded(for: $0) }
   }
   
   private func setNotification(title: String, body: String ) {
