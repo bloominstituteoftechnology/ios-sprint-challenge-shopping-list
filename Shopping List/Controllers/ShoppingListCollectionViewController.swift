@@ -17,8 +17,10 @@ class ShoppingListCollectionViewController: UICollectionViewController {
   //MARK:- Properties
   private let shopController = ShopplingListController()
 
+  
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    nextButton.isEnabled = shopController.addedItems.count > 0
     collectionView.reloadData()
   }
   
@@ -27,6 +29,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
   override func numberOfSections(in collectionView: UICollectionView) -> Int {
     return 2
   }
+  
   
   override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return section == 0 ? shopController.addedItems.count : shopController.notAddedItems.count
@@ -40,11 +43,19 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
   }
   
+  override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    if let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeader", for: indexPath) as? SectionHeader {
+      sectionHeader.sectionHeaderLabel.text = indexPath.section == 0 ? "Cart: \(shopController.addedItems.count)" : "Shopping Store: \(shopController.notAddedItems.count)"
+      return sectionHeader
+    }
+    return UICollectionReusableView()
+  }
+  
   override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
    
     let item = getItemAt(indexPath: indexPath)
     shopController.toggleHasBeenAdded(for: item)
-
+    nextButton.isEnabled = shopController.addedItems.count > 0
     collectionView.reloadData()
 
   }

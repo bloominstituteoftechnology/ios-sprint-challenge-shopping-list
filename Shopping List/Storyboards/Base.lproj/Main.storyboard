@@ -20,13 +20,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Wcp-gI-XS8">
                             <size key="itemSize" width="202" height="207"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="headerReferenceSize" width="50" height="50"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShopCell" id="bSE-es-u0T" customClass="ShopCell" customModule="Shopping_List" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="220"/>
+                                <rect key="frame" x="0.0" y="50" width="200" height="220"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="9AX-5U-u1S">
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="220"/>
@@ -70,6 +70,28 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="SectionHeader" id="icC-4t-c42" customClass="SectionHeader" customModule="Shopping_List" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Section Header" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XwV-l4-3lw">
+                                    <rect key="frame" x="4" y="4" width="406" height="42"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="XwV-l4-3lw" secondAttribute="bottom" constant="4" id="ZvU-ww-QWe"/>
+                                <constraint firstItem="XwV-l4-3lw" firstAttribute="leading" secondItem="icC-4t-c42" secondAttribute="leading" constant="4" id="eha-lS-wB4"/>
+                                <constraint firstAttribute="trailing" secondItem="XwV-l4-3lw" secondAttribute="trailing" constant="4" id="lEn-io-sQ1"/>
+                                <constraint firstItem="XwV-l4-3lw" firstAttribute="top" secondItem="icC-4t-c42" secondAttribute="top" constant="4" id="uga-qm-CzP"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="sectionHeaderLabel" destination="XwV-l4-3lw" id="C4K-s8-y1t"/>
+                            </connections>
+                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="giD-1s-C8z" id="fYJ-v0-Mra"/>
                             <outlet property="delegate" destination="giD-1s-C8z" id="uqL-CM-Osv"/>

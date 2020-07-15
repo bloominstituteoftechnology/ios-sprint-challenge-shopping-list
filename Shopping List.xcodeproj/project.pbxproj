@@ -19,6 +19,7 @@
 		B6785A6E23E48D3F00F9DD67 /* ShoppingListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6785A6D23E48D3F00F9DD67 /* ShoppingListController.swift */; };
 		B696231024BEAAB0008E8276 /* String + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B696230F24BEAAB0008E8276 /* String + Ext.swift */; };
 		B696231224BF23DA008E8276 /* PersistenceStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B696231124BF23DA008E8276 /* PersistenceStorage.swift */; };
+		B696231624BF3DD8008E8276 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B696231524BF3DD8008E8276 /* SectionHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		B6785A6D23E48D3F00F9DD67 /* ShoppingListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListController.swift; sourceTree = "<group>"; };
 		B696230F24BEAAB0008E8276 /* String + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Ext.swift"; sourceTree = "<group>"; };
 		B696231124BF23DA008E8276 /* PersistenceStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceStorage.swift; sourceTree = "<group>"; };
+		B696231524BF3DD8008E8276 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +76,6 @@
 				B6785A5D23E4878A00F9DD67 /* Resources */,
 				B696230E24BEAAA1008E8276 /* Extension */,
 				B6785A6323E4886F00F9DD67 /* Storyboards */,
-				4613E91D21143BFD00E7FF73 /* Info.plist */,
 				B6785A6023E4884200F9DD67 /* Controllers */,
 			);
 			path = "Shopping List";
@@ -85,6 +86,7 @@
 			children = (
 				4613E91121143BFC00E7FF73 /* AppDelegate.swift */,
 				4613E91821143BFD00E7FF73 /* Assets.xcassets */,
+				4613E91D21143BFD00E7FF73 /* Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				B6785A6823E4896000F9DD67 /* ShopCell.swift */,
+				B696231524BF3DD8008E8276 /* SectionHeader.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 				4613E91221143BFC00E7FF73 /* AppDelegate.swift in Sources */,
 				B6785A6E23E48D3F00F9DD67 /* ShoppingListController.swift in Sources */,
 				B6785A6223E4886800F9DD67 /* DetailViewController.swift in Sources */,
+				B696231624BF3DD8008E8276 /* SectionHeader.swift in Sources */,
 				B6785A6923E4896000F9DD67 /* ShopCell.swift in Sources */,
 				B6785A6B23E48B5A00F9DD67 /* Helper.swift in Sources */,
 			);
@@ -377,8 +381,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
-				INFOPLIST_FILE = "Shopping List/Info.plist";
+				DEVELOPMENT_TEAM = 4939K9623X;
+				INFOPLIST_FILE = "Shopping List/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -396,8 +400,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
-				INFOPLIST_FILE = "Shopping List/Info.plist";
+				DEVELOPMENT_TEAM = 4939K9623X;
+				INFOPLIST_FILE = "Shopping List/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
