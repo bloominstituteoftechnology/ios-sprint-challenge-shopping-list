@@ -9,31 +9,26 @@
 import UIKit
 
 class ShopCell: UICollectionViewCell {
-    
-    @IBOutlet weak var itemStatus: UILabel!
-    @IBOutlet weak var itemImage: UIImageView!
-    @IBOutlet weak var itemName: UILabel!
   
-    var shoppingItem : ShoppingItem? {
-        didSet {
-            updateViews()
-        }
+  //MARK:- IBOutlets
+  @IBOutlet private weak var itemStatus: UILabel!
+  @IBOutlet private weak var itemImage: UIImageView!
+  @IBOutlet private weak var itemName: UILabel!
+  
+  //MARK:- Properties
+  
+  var shoppingItem : ShoppingItem? {
+    didSet {
+      updateViews()
     }
-    
-    
-    
-    func updateViews() {
-        guard let shoppingItem = shoppingItem else { return }
-        if shoppingItem.isAdded {
-            itemStatus.text = "Added"
-            itemStatus.textColor = UIColor.green
-        } else {
-            itemStatus.text = "Not added"
-            itemStatus.textColor = UIColor.red
-        }
-        
-        itemImage.image = shoppingItem.image
-        itemName.text = shoppingItem.name
-    }
-    
+  }
+  
+  //MARK:- Helper
+  private func updateViews() {
+    guard let shoppingItem = shoppingItem else { return }
+    itemStatus.text = shoppingItem.hasAdded ? "Added" : "Not Added"
+    itemStatus.textColor = shoppingItem.hasAdded ? UIColor.link : UIColor.red
+    itemImage.image = shoppingItem.image
+    itemName.text = shoppingItem.name
+  }
 }

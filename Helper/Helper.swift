@@ -8,9 +8,7 @@
 
 import Foundation
 
-
 struct Helper {
-    static let shopSegue = "ShopSegue"
+    static let nextSeque = "NextSegue"
     static let shopCellId = "ShopCell"
-    
 }
