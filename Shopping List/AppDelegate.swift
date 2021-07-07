@@ -7,16 +7,28 @@
 //
 
 import UIKit
+import UserNotifications
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
+    
     var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        askPermission()
         return true
+    }
+    
+    func askPermission() {
+        let current = UNUserNotificationCenter.current()
+        
+        current.requestAuthorization(options: [.alert, .badge]) { (granted, error) in
+            print(granted)
+        }
+        
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
