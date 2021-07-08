@@ -8,20 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		4613E91221143BFC00E7FF73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4613E91121143BFC00E7FF73 /* AppDelegate.swift */; };
-		4613E91421143BFC00E7FF73 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4613E91321143BFC00E7FF73 /* ViewController.swift */; };
 		4613E91721143BFC00E7FF73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91521143BFC00E7FF73 /* Main.storyboard */; };
 		4613E91921143BFD00E7FF73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91821143BFD00E7FF73 /* Assets.xcassets */; };
 		4613E91C21143BFD00E7FF73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4613E91A21143BFD00E7FF73 /* LaunchScreen.storyboard */; };
+		E50912E923110494005719B7 /* ShoppingItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50912E823110494005719B7 /* ShoppingItemController.swift */; };
+		E52046DF23103AC300A80304 /* ShoppingListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52046DE23103AC300A80304 /* ShoppingListItem.swift */; };
+		E52046E12310549600A80304 /* ShoppingListItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52046E02310549600A80304 /* ShoppingListItemCollectionViewCell.swift */; };
+		E52046E3231054C700A80304 /* ShoppingListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52046E2231054C600A80304 /* ShoppingListCollectionViewController.swift */; };
+		E52046E6231063F300A80304 /* UserDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52046E5231063F300A80304 /* UserDetailedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4613E90E21143BFC00E7FF73 /* Shopping List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shopping List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4613E91121143BFC00E7FF73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4613E91321143BFC00E7FF73 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4613E91621143BFC00E7FF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4613E91821143BFD00E7FF73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4613E91B21143BFD00E7FF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4613E91D21143BFD00E7FF73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E50912E823110494005719B7 /* ShoppingItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemController.swift; sourceTree = "<group>"; };
+		E52046DE23103AC300A80304 /* ShoppingListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListItem.swift; sourceTree = "<group>"; };
+		E52046E02310549600A80304 /* ShoppingListItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		E52046E2231054C600A80304 /* ShoppingListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListCollectionViewController.swift; sourceTree = "<group>"; };
+		E52046E5231063F300A80304 /* UserDetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +46,7 @@
 		4613E90521143BFC00E7FF73 = {
 			isa = PBXGroup;
 			children = (
+				E52046E42310551800A80304 /* Views */,
 				4613E91021143BFC00E7FF73 /* Shopping List */,
 				4613E90F21143BFC00E7FF73 /* Products */,
 			);
@@ -55,13 +64,32 @@
 			isa = PBXGroup;
 			children = (
 				4613E91121143BFC00E7FF73 /* AppDelegate.swift */,
-				4613E91321143BFC00E7FF73 /* ViewController.swift */,
+				E52046DD23103A9E00A80304 /* Modals */,
 				4613E91521143BFC00E7FF73 /* Main.storyboard */,
 				4613E91821143BFD00E7FF73 /* Assets.xcassets */,
 				4613E91A21143BFD00E7FF73 /* LaunchScreen.storyboard */,
 				4613E91D21143BFD00E7FF73 /* Info.plist */,
 			);
 			path = "Shopping List";
+			sourceTree = "<group>";
+		};
+		E52046DD23103A9E00A80304 /* Modals */ = {
+			isa = PBXGroup;
+			children = (
+				E52046DE23103AC300A80304 /* ShoppingListItem.swift */,
+				E50912E823110494005719B7 /* ShoppingItemController.swift */,
+			);
+			path = Modals;
+			sourceTree = "<group>";
+		};
+		E52046E42310551800A80304 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E52046E2231054C600A80304 /* ShoppingListCollectionViewController.swift */,
+				E52046E5231063F300A80304 /* UserDetailedViewController.swift */,
+				E52046E02310549600A80304 /* ShoppingListItemCollectionViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,8 +163,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4613E91421143BFC00E7FF73 /* ViewController.swift in Sources */,
+				E52046E3231054C700A80304 /* ShoppingListCollectionViewController.swift in Sources */,
+				E50912E923110494005719B7 /* ShoppingItemController.swift in Sources */,
+				E52046DF23103AC300A80304 /* ShoppingListItem.swift in Sources */,
 				4613E91221143BFC00E7FF73 /* AppDelegate.swift in Sources */,
+				E52046E6231063F300A80304 /* UserDetailedViewController.swift in Sources */,
+				E52046E12310549600A80304 /* ShoppingListItemCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
