@@ -11,7 +11,6 @@ import UIKit
 
 class SkuCollectionViewCELL: UICollectionViewCell {
     
-    
     //MARK: PROPERTIES
     @IBOutlet var booleanButtonLabel: UIButton!
     @IBOutlet var imageView: UIImageView!
@@ -27,8 +26,6 @@ class SkuCollectionViewCELL: UICollectionViewCell {
     
     
     //MARK: METHODS
-    
-    
     @IBAction func booleanButtonTapped(_ sender: Any) {
     
         delegate?.toggleSkuInCart(for: self)

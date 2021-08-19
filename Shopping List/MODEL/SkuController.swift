@@ -58,7 +58,7 @@ class SkuController {
     }
     
     
-    // Persistent Store funcs
+    //MARK: PERSISTENT STORE
     func saveToPersistentStore() {
         
             //guard UserDefaults.standard.bool(forKey: "persistenceStoreInitialized") == false else { return }
