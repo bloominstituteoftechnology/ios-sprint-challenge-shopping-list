@@ -16,7 +16,7 @@ class SkuCollectionVC: UICollectionViewController, SkuCollectionViewCELLDelegate
     let skuController = SkuController()
     
     
-    //MARK: Functions
+    //MARK: Required CollectionViewCellDelegate method
     func toggleSkuInCart(for cell: SkuCollectionViewCELL) {
         
         guard let indexPath = collectionView?.indexPath(for: cell) else { return }
@@ -25,6 +25,7 @@ class SkuCollectionVC: UICollectionViewController, SkuCollectionViewCELLDelegate
         collectionView?.reloadItems(at: [indexPath])
     }
     
+    //MARK: VIEW standard methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,6 +42,7 @@ class SkuCollectionVC: UICollectionViewController, SkuCollectionViewCELLDelegate
     }
     
     
+    //MARK: ACTION functions
     @IBAction func nextButtonPressed(_ sender: Any) {
     
         // prepare for segue to viewcontroller and pass count, by perhaps calling collectionView to update/reload forcing a prepare for segue
@@ -49,8 +51,7 @@ class SkuCollectionVC: UICollectionViewController, SkuCollectionViewCELLDelegate
     }
     
     
-    // MARK: UICollectionViewDataSource
-    
+    // MARK: COLLECTIONVIEW DATASOURCE
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return skuController.skus.count
