@@ -10,19 +10,26 @@ import UIKit
 
 class CartVC: UIViewController {
 
+    //MARK: PROPERTIES
+    @IBOutlet var cartMessageLabel: UILabel!
+    @IBOutlet var nameTextField: UITextField!
+    @IBOutlet var addressTextField: UITextField!
+    
+    var addedCount: Int?
+    
+    var skuController = SkuController()
+    var sku: Sku?
     
     //collectionView?.delegate = self  // SUNDAY/MONDAY edit
     
-
-    
+    //MARK: STANDARD METHODS
     override func viewWillAppear(_ animated: Bool) {
         
         cartMessageLabel.text = "You currently have \(skuController.cartCount()) items in your shopping list"
     }
     
     
-
-
+    //MARK: CUSTOM FUNCTIONS
     @IBAction func sendOrderButtonTapped(_ sender: Any) {
     
         // write optional if let for nameTextField.text to remove forced unwrap !
@@ -34,20 +41,7 @@ class CartVC: UIViewController {
         
         self.present(alert, animated: true, completion: nil)
         
-       
-        
         // need to now show an .actionsheet alert with name and address, similar to above, but this time make it run after user shuts down the app like in the gif.
-        
     }
     
-   // PROPERTIES
-
-    @IBOutlet var cartMessageLabel: UILabel!
-    @IBOutlet var nameTextField: UITextField!
-    @IBOutlet var addressTextField: UITextField!
-    
-    var addedCount: Int?
-    
-    var skuController = SkuController()
-    var sku: Sku?
 }

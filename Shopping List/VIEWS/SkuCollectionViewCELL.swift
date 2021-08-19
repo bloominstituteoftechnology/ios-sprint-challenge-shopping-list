@@ -12,12 +12,12 @@ import UIKit
 class SkuCollectionViewCELL: UICollectionViewCell {
     
     
-    // PROPERTIES
-    
+    //MARK: PROPERTIES
     @IBOutlet var booleanButtonLabel: UIButton!
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var skuLabel: UILabel!
     
+    var skuController = SkuController()
     var sku: Sku? {
         didSet {
             updateViews()
@@ -25,29 +25,31 @@ class SkuCollectionViewCELL: UICollectionViewCell {
     }
     var delegate: SkuCollectionViewCELLDelegate?
     
-    var skuController = SkuController()
+    
+    //MARK: METHODS
     
     
-
     @IBAction func booleanButtonTapped(_ sender: Any) {
     
         delegate?.toggleSkuInCart(for: self)
     }
     
+    
     func updateViews() {
         
         guard let sku = sku else {return}
+        skuLabel.text = sku.skuName
+        imageView.image = UIImage(named: "\(sku.skuImageName.capitalized)")
         
-            skuLabel.text = sku.skuName
-            print("we got to the image load statement which clearly isn't working")
-            imageView.image = UIImage(named: "\(sku.skuImageName.capitalized)")
-        print(sku.skuImageName)
-        
-        
+        // set the change in button title and titleColor for user selection
         if sku.skuInCart == true {
-            booleanButtonLabel.setTitle("Added", for: .normal)                  // .text is for TEXTFIELDS not LABLES .titleLabel?.text = "Added"
+            //NOTE: .text is for TEXTFIELDS not LABLES .titleLabel?.text = "Added"
+            booleanButtonLabel.setTitleColor(.green, for: .normal)
+            booleanButtonLabel.setTitle("ADDED!", for: .normal)
         } else {
-            booleanButtonLabel.setTitle("not added", for: .normal)                     //.titleLabel?.text = "not added"
+            //NOTE! setTitleColor is used, not textColor
+            booleanButtonLabel.setTitleColor(.white, for: .normal)
+            booleanButtonLabel.setTitle("not added", for: .normal)
         }
     }
     

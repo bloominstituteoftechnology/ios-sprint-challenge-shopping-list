@@ -10,25 +10,41 @@ import Foundation
 
 class SkuController {
     
+    //MARK: PROPERTIES
+    private var shoppingListURL: URL? {
+        let fileManager = FileManager.default
+        guard let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
+        
+        let finalURL = documentsDirectory.appendingPathComponent("skus.plist")
+        return finalURL
+    }
+    var skus: [Sku] = [
+        Sku(skuName: "apple", skuImageName: "Apple"),
+        Sku(skuName: "grapes", skuImageName: "Grapes"),
+        Sku(skuName: "milk", skuImageName: "Milk"),
+        Sku(skuName: "muffin", skuImageName: "Muffin"),
+        Sku(skuName: "popcorn", skuImageName: "Popcorn"),
+        Sku(skuName: "soda", skuImageName: "Soda"),
+        Sku(skuName: "strawberries", skuImageName: "Strawberries"),
+    ]
+    
+    
     init() {
-        
         //TEMPORARILY COMMENTED OUT the DEFAULT STORAGE LOGIC BELOW TO DEBUG
-        
         loadFromPersistentStore()
     }
+    
     
     func updateSkuInCart(for sku: Sku) {
         
         if let index = skus.firstIndex(of: sku) {
-            
-            print("\(skus[index].skuName)")
-            
-            skus[index].skuInCart.toggle()   // or skus[index].skuInCart = !sku.skuInCart
-            
+            //Can also use: skus[index].skuInCart = !sku.skuInCart
+            skus[index].skuInCart.toggle()
         } else { return }
 
         saveToPersistentStore()
     }
+    
     
     func cartCount() -> Int {
         var addedCount: Int = 0
@@ -83,23 +99,4 @@ class SkuController {
      }
      */
     
-    //PROPERTIES
-    
-    private var shoppingListURL: URL? {
-        let fileManager = FileManager.default
-        guard let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
-        
-        let finalURL = documentsDirectory.appendingPathComponent("skus.plist")
-        return finalURL
-    }
-    
-    var skus: [Sku] = [
-        Sku(skuName: "apple", skuImageName: "Apple"),
-        Sku(skuName: "grapes", skuImageName: "Grapes"),
-        Sku(skuName: "milk", skuImageName: "Milk"),
-        Sku(skuName: "muffin", skuImageName: "Muffin"),
-        Sku(skuName: "popcorn", skuImageName: "Popcorn"),
-        Sku(skuName: "soda", skuImageName: "Soda"),
-        Sku(skuName: "strawberries", skuImageName: "Strawberries"),
-    ]
 }

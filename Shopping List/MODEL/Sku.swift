@@ -10,7 +10,6 @@ import UIKit
 
 class Sku: Codable {  //to get rid of error
     
-    
     var skuName: String
     var skuImageName: String
     var skuInCart: Bool
@@ -21,9 +20,9 @@ class Sku: Codable {  //to get rid of error
         //see SkuController file for "imageName"
         self.skuInCart = skuInCart
     }
-    
-    
 }
+
+
 
 extension Sku: Equatable {
     
