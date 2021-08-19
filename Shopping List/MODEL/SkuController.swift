@@ -14,10 +14,10 @@ class SkuController {
     private var shoppingListURL: URL? {
         let fileManager = FileManager.default
         guard let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
-        
         let finalURL = documentsDirectory.appendingPathComponent("skus.plist")
         return finalURL
     }
+    
     var skus: [Sku] = [
         Sku(skuName: "apple", skuImageName: "Apple"),
         Sku(skuName: "grapes", skuImageName: "Grapes"),
@@ -35,6 +35,7 @@ class SkuController {
     }
     
     
+    //MARK: METHODS
     func updateSkuInCart(for sku: Sku) {
         
         if let index = skus.firstIndex(of: sku) {
@@ -74,6 +75,7 @@ class SkuController {
                 print(error)
         }
     }
+    
     
     func loadFromPersistentStore() {
         guard let url = shoppingListURL,
