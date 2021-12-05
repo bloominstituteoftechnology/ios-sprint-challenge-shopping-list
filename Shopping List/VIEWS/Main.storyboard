@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QKf-78-5nX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QKf-78-5nX">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -34,14 +35,14 @@
                                             <rect key="frame" x="8" y="8" width="144" height="144"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="aqa-Jj-4kC">
-                                                    <rect key="frame" x="0.0" y="8" width="144" height="136"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="144" height="144"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wOO-ge-zKm">
-                                                            <rect key="frame" x="16" y="0.0" width="112" height="27"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wOO-ge-zKm">
+                                                            <rect key="frame" x="16" y="0.0" width="112" height="29"/>
                                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                                                             <state key="normal" title="Not added">
-                                                                <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="titleColor" systemColor="linkColor"/>
                                                             </state>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -53,17 +54,17 @@
                                                             </connections>
                                                         </button>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="YKp-Wq-Jqj">
-                                                            <rect key="frame" x="16" y="33" width="112" height="70"/>
+                                                            <rect key="frame" x="16" y="35" width="112" height="74"/>
                                                         </imageView>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" text="Text" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IE5-JI-gLv">
-                                                            <rect key="frame" x="0.0" y="109" width="144" height="27"/>
+                                                            <rect key="frame" x="0.0" y="115" width="144" height="29"/>
                                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                            <color key="textColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="textColor" systemColor="systemGray6Color"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="IE5-JI-gLv" secondAttribute="bottom" id="FUc-Zk-I1W"/>
                                                         <constraint firstAttribute="trailing" secondItem="wOO-ge-zKm" secondAttribute="trailing" constant="16" id="G0x-yc-wx1"/>
@@ -81,7 +82,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="aqa-Jj-4kC" secondAttribute="trailing" id="65r-ZT-zhe"/>
                                                 <constraint firstItem="aqa-Jj-4kC" firstAttribute="leading" secondItem="rKQ-bW-mHy" secondAttribute="leading" id="Bk8-D0-uln"/>
-                                                <constraint firstItem="aqa-Jj-4kC" firstAttribute="top" secondItem="rKQ-bW-mHy" secondAttribute="top" constant="8" id="eOt-GW-aVR"/>
+                                                <constraint firstItem="aqa-Jj-4kC" firstAttribute="top" secondItem="rKQ-bW-mHy" secondAttribute="top" id="eOt-GW-aVR"/>
                                                 <constraint firstAttribute="bottom" secondItem="aqa-Jj-4kC" secondAttribute="bottom" id="np5-OM-vQH"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
@@ -151,7 +152,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1hi-Dc-dGl">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1hi-Dc-dGl">
                                         <rect key="frame" x="140" y="199.5" width="79" height="30"/>
                                         <state key="normal" title="Send Order"/>
                                         <connections>
@@ -165,13 +166,13 @@
                                 </constraints>
                             </stackView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="L6t-Uy-YeM"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="L6t-Uy-YeM" firstAttribute="trailing" secondItem="xyU-rs-MLD" secondAttribute="trailing" constant="8" id="0Yb-g2-v9d"/>
                             <constraint firstItem="xyU-rs-MLD" firstAttribute="leading" secondItem="L6t-Uy-YeM" secondAttribute="leading" constant="8" id="30h-4g-rWd"/>
                             <constraint firstItem="xyU-rs-MLD" firstAttribute="top" secondItem="L6t-Uy-YeM" secondAttribute="top" constant="40" id="LIK-vy-hVv"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="L6t-Uy-YeM"/>
                     </view>
                     <connections>
                         <outlet property="addressTextField" destination="Hu8-hu-t6l" id="3kS-0k-LvQ"/>
@@ -202,4 +203,15 @@
             <point key="canvasLocation" x="341.60000000000002" y="226.23688155922042"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

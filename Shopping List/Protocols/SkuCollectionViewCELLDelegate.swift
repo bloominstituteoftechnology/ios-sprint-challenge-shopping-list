@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol SkuCollectionViewCELLDelegate: class {
+protocol SkuCollectionViewCELLDelegate: AnyObject {
     
     func toggleSkuInCart(for cell: SkuCollectionViewCELL)
 }
